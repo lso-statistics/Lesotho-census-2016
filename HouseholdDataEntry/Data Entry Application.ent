@@ -1,0 +1,15 @@
+﻿[CSPro Application]
+Version=CSPro 6.1
+Label=DATA_ENTRY_APPLICATION
+Name=DATA_ENTRY_APPLICATION
+AppType=DataEntry
+[AppCode]
+File=.\Data Entry Application.ent.apc
+[Message]
+File=.\Data Entry Application.ent.mgf
+[Help]
+File=.\Data Entry Application.ent.qsf
+[Forms]
+File=.\Data Entry Application.fmf
+[Dictionary Types]
+Dict-Type=.\HouseholdDataEntry.dcf,Input,.\Data Entry Application.fmf
