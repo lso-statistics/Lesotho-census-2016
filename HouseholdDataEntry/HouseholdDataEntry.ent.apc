@@ -109,6 +109,13 @@ preproc
 B2(1) = strip(HOUSEHOLD_HEAD_NAMES);
 
 postproc
+//Consistency on the name of the household head.
+if B2(1) <> strip(HOUSEHOLD_HEAD_NAMES) then
+     errmsg("This Household head name cannot be different from the one given in the ID ")
+     select("correct Heads Name", HOUSEHOLD_HEAD_NAMES);
+endif;
+
+//The name of the household member cannot be blank
 if curocc() = 1 then
 	if B2 = "" then
 		errmsg("Please enter name of the household member")
@@ -120,6 +127,7 @@ if B2 = "" then
 	errmsg("Please enter name of the household member")
 	select("Enter name", B2, "Correct more people response", MORE_PEOPLE(curocc() - 1));
 endif;
+
 B2=toupper(B2);
 // Set occurrence labels for individual rosters to use name
 string occurrenceLabel = strip(B2);
@@ -136,6 +144,7 @@ PROC MORE_PEOPLE
 
 // End roster if there are no more household members to enter
 if MORE_PEOPLE = 2 then
+	B2(1) = strip(HOUSEHOLD_HEAD_NAMES);
 	endgroup;
 endif;
 
@@ -147,6 +156,19 @@ preproc
 NUMBER_OF_HOUSEHOLD_MEMBERS = totocc(PERSON_ROSTER);
 
 
+PROC IS_RESPONDENT_HOUSEHOLD_MEMBER
+
+//This is if the respodent is the member of the household
+if IS_RESPONDENT_HOUSEHOLD_MEMBER = 1 then
+  skip to RESPONDENT;
+endif
+  
+PROC RESPONDENT_NAME
+
+//this is the case where the respondent is not a member of the household
+if RESPONDENT_NAME <> '' then
+ skip to B3;
+endif
 PROC RESPONDENT
 
 // set value set to be list of names of household members
@@ -2758,6 +2780,23 @@ endif;
 PROC H76_OTHER
 
 H76_OTHER = toupper(H76_OTHER);
+PROC H77
+
+// Fill in Assets repeating item based on assets checkbox
+numeric i;
+string alphabet = "ABCDEFGHIJKLM"; // used to convert from index to letter
+
+// Loop from 1 (Radio) to 7 (Refrigirator) and for
+// each asset find out if it was checked by
+// seeing if the ith letter of the alphabet is in the
+// checkbox field.
+do i = 1 while i <= 13
+    if pos(alphabet[i:1], H77) > 0 then
+        NEW_ASSETS(i) = 1;
+    else
+        NEW_ASSETS(i) = 0;
+    endif;
+enddo;
 PROC NUMBER_OF_REFRIGERATORS
 preproc
 Numeric R;
@@ -2765,8 +2804,16 @@ Numeric R;
 //if checked enter the total number of refrigerators
 R = pos("M",H77);
 if R < 1 then
-	skip to H78;
+	skip to H78
+
 endif;	
+
+postproc
+
+if R = 1 and NUMBER_OF_REFRIGERATORS = 0 then
+   errmsg("You must have atleast one fridge");
+   reenter;		
+endif
 PROC REFRIGERANT
 
 REFRIGERANT = toupper(REFRIGERANT);

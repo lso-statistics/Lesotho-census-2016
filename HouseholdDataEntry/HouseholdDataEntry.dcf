@@ -365,7 +365,7 @@ Name=HOUSEHOLD_NUMBER_VS1
 Value=1:999;1-999
 
 [Item]
-Label=Names of Household Head 
+Label=Names of Household Head
 Name=HOUSEHOLD_HEAD_NAMES
 Start=79
 Len=50
@@ -6012,7 +6012,7 @@ Label=Housing
 Name=HOUSING
 RecordTypeValue='H'
 Required=No
-RecordLen=632
+RecordLen=676
 
 [Item]
 Label=Tenure Status
@@ -6643,6 +6643,16 @@ Start=530
 Len=1
 ZeroFill=Yes
 
+[ValueSet]
+Label=Number of Refrigerators
+Name=NUMBER_OF_REFRIGERATORS_VS1
+Value=1;1
+Value=2;2
+Value=3;3
+Value=4;4
+Value=5;5
+Value=6;6
+
 [Item]
 Label=Refrigerant
 Name=REFRIGERANT
@@ -6657,6 +6667,52 @@ Name=RESPONDENT
 Start=631
 Len=2
 ZeroFill=Yes
+
+[Item]
+Label=Is Respondent Household Member
+Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
+Start=633
+Len=1
+
+[ValueSet]
+Label=Is Respondent Household Member
+Name=VS_RESPONDENT
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Respondent Name
+Name=RESPONDENT_NAME
+Start=634
+Len=30
+DataType=Alpha
+
+[Item]
+Label=New Assets
+Name=NEW_ASSETS
+Start=664
+Len=1
+Occurrences=13
+ZeroFill=Yes
+OccurrenceLabel=1,Radio
+OccurrenceLabel=2,Landline Tel
+OccurrenceLabel=3,Cell Phone
+OccurrenceLabel=4,TV
+OccurrenceLabel=5,Tractor
+OccurrenceLabel=6,Stove
+OccurrenceLabel=7,Scotch Card
+OccurrenceLabel=8,Bed
+OccurrenceLabel=9,Computer
+OccurrenceLabel=10,Internet
+OccurrenceLabel=11,Vehicle
+OccurrenceLabel=12,Generator
+OccurrenceLabel=13,Refrigirator
+
+[ValueSet]
+Label=New Assets
+Name=NEW_ASSETS_VS1
+Value=1;Yes
+Value=0;No
 
 [Record]
 Label=Visits
