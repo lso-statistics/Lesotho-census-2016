@@ -21,6 +21,13 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs24 Please c
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUSMENU_DICT.CHOOSE_REPORT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs24 Please choose the enumeration area code you want to view it's report:\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUSMENU_DICT.ENUMERATOR_MENU
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
 ENG={\colortbl ;\red0\green0\blue0;}

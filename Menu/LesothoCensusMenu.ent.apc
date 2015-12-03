@@ -3,16 +3,21 @@ PROC GLOBAL
 // Arrays for dynamic value sets
 array numeric codes(200);
 array string labels(200);
+
+array string mycodes(200);
+array string mylabels(200);
+
 string loginFilename;
 string enumeratorEA;
 file tmpFile;
-string enumeratorDataFileName;
-string supervisorDataFilename;
-string enumtempFileName;
-numeric ea;
+string enumeratorDataFileName; //
+string supervisorDataFilename; //
+string enumtempFileName; //
+numeric ea; //
 
-// File variable for writing out data entry pff file
-file pffFile;
+list string fileListing; //variable to store all data files in a directory
+
+file pffFile; // File variable for writing out data entry pff file
 
 function CreateAndRunPFF()
 
@@ -22,6 +27,7 @@ function CreateAndRunPFF()
 
 	string menuApplicationFolder = pathname(Application);
 	string householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
+	
 	setfile(pffFile,pffFilename,create);
 
 	filewrite(pffFile,"[Run Information]");
@@ -102,62 +108,83 @@ end;
 
 file tempFile;
 function ShowSummaryReport()
-		string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
-		setfile(tempFile, reportFilename);
-		filewrite(tempFile, "Household Summary Report");
-		filewrite(tempFile, "-------------------------------------------");
-		filewrite(tempFile, "");
-		//filewrite(tempFile, "EA Code: %011d", ENUMERATION_AREA); 
-		//filewrite(tempfile,"Total Households%s","                    Household Status");
+
+	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
+	setfile(tempFile, reportFilename);
+	filewrite(tempFile, "Enumeration Area Summary Report");
+	filewrite(tempFile, "-------------------------------");
+	filewrite(tempFile, "");
+
+	string menuApplicationFolder = pathname(Application); //this is the path of our application
+	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+		
+	numeric ctr;
+    dirlist(fileListing,dataFolder,"*.dat");
+    
+	do ctr = 1 while ctr <= length(fileListing)
+		string eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
-	// Create a dynamic value set of all completed households
-	// in the enumerator data file.	
-	numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
-	if result <> 1 then
-		errmsg("Unable to load enumerator data file");
-		reenter ASSISTANT_SUPERVISOR_MENU;
-	endif;
-	
-	// Start at first household in enumerator data file
-	locate(LESOTHOCENSUS2016_DICT, >=, "");	
-		// Loop through all households 
-		// until loadcase returns zero when it hits end of file.
-		numeric i;
-		numeric TotalHH =0;
-		numeric CompletedHH = 0;
-		numeric PartialHH = 0;
-		numeric NoMember = 0;
-		numeric Absent = 0;
-		numeric Vacant = 0;
-		numeric Destroyed = 0;
-		do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
-			if FINAL_RESULT_CODE = 1 then
-				CompletedHH = CompletedHH + 1;
-			elseif FINAL_RESULT_CODE = 6 then
-				PartialHH = PartialHH + 1;
-			elseif HOUSEHOLD_STATUS = 2 then
-				NoMember = NoMember + 1;
-			elseif HOUSEHOLD_STATUS = 3 then
-				Absent = Absent + 1;
-			elseif HOUSEHOLD_STATUS = 4 then
-				Vacant = Vacant + 1;
-			elseif HOUSEHOLD_STATUS = 5 then
-				Destroyed = Destroyed + 1;
-			endif;
-			TotalHH = TotalHH +1;
-		enddo;
-	filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
-	filewrite(tempfile,"Households%s","             Household Status");
-	filewrite(tempFile,"%d                                   %s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
-	filewrite(tempFile,"%d                                   %s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
-	filewrite(tempFile,"%d                                   %s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
-	filewrite(tempFile,"%d                                   %s",Absent,getlabel(HOUSEHOLD_STATUS,3));
-	filewrite(tempFile,"%d                                   %s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
-	filewrite(tempFile,"%d                                   %s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
-	filewrite(tempFile, "-------------------------------------------");
-	filewrite(tempFile,"%d                                   %s",TotalHH,"Total Households");
-close(tempFile);
-if getos() in 20:29 then
+		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		// Create a dynamic value set of all completed households
+		// in the enumerator data file.	
+		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
+		if result <> 1 then
+			errmsg("Unable to load enumerator data file");
+			reenter ASSISTANT_SUPERVISOR_MENU;
+		endif;
+		
+		// Start at first household in enumerator data file
+		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+			// Loop through all households 
+			// until loadcase returns zero when it hits end of file.
+			numeric i;
+			numeric TotalHH =0;
+			numeric CompletedHH = 0;
+			numeric PartialHH = 0;
+			numeric NoMember = 0;
+			numeric Absent = 0;
+			numeric Vacant = 0;
+			numeric Destroyed = 0;
+			numeric PartialSave = 0;
+			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
+				if FINAL_RESULT_CODE = 1 then
+					CompletedHH = CompletedHH + 1;
+				elseif FINAL_RESULT_CODE = 6 then
+					PartialHH = PartialHH + 1;
+				elseif HOUSEHOLD_STATUS = 2 then
+					NoMember = NoMember + 1;
+				elseif HOUSEHOLD_STATUS = 3 then
+					Absent = Absent + 1;
+				elseif HOUSEHOLD_STATUS = 4 then
+					Vacant = Vacant + 1;
+				elseif HOUSEHOLD_STATUS = 5 then
+					Destroyed = Destroyed + 1;
+				elseif not FINAL_RESULT_CODE in 1,6 then
+					PartialSave = PartialSave + 1;
+				endif;
+				TotalHH = TotalHH +1;
+			enddo;
+		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
+		filewrite(tempfile,"Households%s","								Household Status");
+		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile, "----------------------------------------------------------");
+		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"******end of report for current enumeration area code******");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"");
+
+	enddo;
+	    
+	close(tempFile);
+	if getos() in 20:29 then
 		// Android - use "browse:"
 		execsystem(maketext("view:%s", reportFilename));
 	else
@@ -166,7 +193,86 @@ if getos() in 20:29 then
 						    pathname(Windows), 
 						    reportFilename));
 	endif;
+end;
 
+function ShowSummaryReport_EA(string eacode)
+
+	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
+	setfile(tempFile, reportFilename);
+	filewrite(tempFile, "Enumeration Area Summary Report");
+	filewrite(tempFile, "-------------------------------");
+	filewrite(tempFile, "");
+
+	string menuApplicationFolder = pathname(Application); //this is the path of our application
+	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+	
+		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		// Create a dynamic value set of all completed households
+		// in the enumerator data file.	
+		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
+		if result <> 1 then
+			errmsg("Unable to load enumerator data file");
+			reenter ASSISTANT_SUPERVISOR_MENU;
+		endif;
+		
+		// Start at first household in enumerator data file
+		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+			// Loop through all households 
+			// until loadcase returns zero when it hits end of file.
+			numeric i;
+			numeric TotalHH =0;
+			numeric CompletedHH = 0;
+			numeric PartialHH = 0;
+			numeric NoMember = 0;
+			numeric Absent = 0;
+			numeric Vacant = 0;
+			numeric Destroyed = 0;
+			numeric PartialSave = 0;
+			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
+				if FINAL_RESULT_CODE = 1 then
+					CompletedHH = CompletedHH + 1;
+				elseif FINAL_RESULT_CODE = 6 then
+					PartialHH = PartialHH + 1;
+				elseif HOUSEHOLD_STATUS = 2 then
+					NoMember = NoMember + 1;
+				elseif HOUSEHOLD_STATUS = 3 then
+					Absent = Absent + 1;
+				elseif HOUSEHOLD_STATUS = 4 then
+					Vacant = Vacant + 1;
+				elseif HOUSEHOLD_STATUS = 5 then
+					Destroyed = Destroyed + 1;
+				elseif not FINAL_RESULT_CODE in 1,6 then
+					PartialSave = PartialSave + 1;
+				endif;
+				TotalHH = TotalHH +1;
+			enddo;
+		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
+		filewrite(tempfile,"Households%s","								Household Status");
+		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile, "----------------------------------------------------------");
+		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"******end of report for current enumeration area code******");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"");
+	    
+	close(tempFile);
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
 end;
 
 PROC LESOTHOCENSUSMENU_FF
@@ -285,12 +391,11 @@ endif;
 
 PROC ASSISTANT_SUPERVISOR_MENU
 
-//if ASSISTANT_SUPERVISOR_MENU = 1 then
-
-if ASSISTANT_SUPERVISOR_MENU = 2 then
-	//summary report
-	ShowSummaryReport();
-	reenter;
+postproc
+if ASSISTANT_SUPERVISOR_MENU = 1 then
+	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
+elseif ASSISTANT_SUPERVISOR_MENU = 2 then
+	skip to CHOOSE_REPORT;
 elseif ASSISTANT_SUPERVISOR_MENU = 3 then
 	if sync("Server.pnc") then
 		errmsg("Sync was successful");
@@ -314,6 +419,37 @@ elseif ASSISTANT_SUPERVISOR_MENU = 5 then
 	// Quit data entry
 	stop(1);
 endif;
+PROC CHOOSE_REPORT
+
+onfocus
+
+string menuApplicationFolder = pathname(Application); //this is the path of our application
+string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+string eacode;
+		
+numeric i = 2, ctr;
+dirlist(fileListing,dataFolder,"*.dat");
+    mycodes(1) = "View all";
+    
+	do ctr = 1 while ctr <= length(fileListing)
+		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
+		mycodes(i) = eacode;
+		mylabels(i) = "";
+		i = i + 1;
+    enddo;
+
+//mycodes(i) = notappl;
+setvalueset(CHOOSE_REPORT, mycodes, mylabels);
+
+postproc
+if CHOOSE_REPORT = "View all" then
+	ShowSummaryReport();
+	reenter;
+else
+	ShowSummaryReport_EA(CHOOSE_REPORT);
+	reenter;
+endif;
+
 PROC CHOOSE_POSTCHECK_HOUSEHOLD
 
 onfocus
@@ -362,14 +498,3 @@ enddo;
 
 errmsg("Something went horribly wrong. Please contact technical support");
 reenter ASSISTANT_SUPERVISOR_MENU;
-{
-// Check to see if there is a user data file (and if it is a valid ea code) and 
-// if there is one then create and run the pff file for assistant supervisor review application
-if loadcase(ASS_SUP_DICT, ASS_SUP_EA) = 1 then
-	CreateAndRunSRPFF();
-else
-// The code was not found in the staff lookup file.
-	errmsg("Unable to load the supervisor review application.");
-	reenter;
-endif;
-}
