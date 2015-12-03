@@ -24,13 +24,14 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=11
+RecordLen=22
 
 [Item]
 Label=User Code
 Name=USER_CODE
 Start=3
 Len=4
+ZeroFill=Yes
 
 [Item]
 Label=Enumerator Menu
@@ -65,3 +66,11 @@ Label=Choose Postcheck Household
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
 Start=9
 Len=3
+ZeroFill=Yes
+
+[Item]
+Label=Choose Report
+Name=CHOOSE_REPORT
+Start=12
+Len=11
+DataType=Alpha

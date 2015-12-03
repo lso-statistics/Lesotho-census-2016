@@ -377,7 +377,7 @@ Name=INDIVIDUAL
 RecordTypeValue='I'
 Required=No
 MaxRecords=50
-RecordLen=614
+RecordLen=616
 
 [Item]
 Label=Person Number
@@ -589,9 +589,26 @@ Start=186
 Len=2
 
 [Item]
+Label=Institution
+Name=B9B
+Start=188
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Institution
+Name=B9B_VS1
+Value=1;School
+Value=2;Prison
+Value=3;Convents
+Value=4;Barracks
+Value=5;Hospitals
+Value=6;None
+
+[Item]
 Label=Where Born
 Name=B10
-Start=188
+Start=189
 Len=2
 ZeroFill=Yes
 
@@ -645,7 +662,7 @@ Value=99;Don't know
 [Item]
 Label=How Long Lived in Village/Town
 Name=B11
-Start=190
+Start=191
 Len=3
 ZeroFill=Yes
 
@@ -659,7 +676,7 @@ Value=998;Since birth
 [Item]
 Label=Residence April 2015
 Name=B12
-Start=193
+Start=194
 Len=1
 ZeroFill=Yes
 
@@ -675,7 +692,7 @@ Value=4;Other countries
 [Item]
 Label=Residence April 2015 Elsewhere Lesotho
 Name=B12A
-Start=194
+Start=195
 Len=2
 ZeroFill=Yes
 
@@ -696,7 +713,7 @@ Value=10;Thaba-Tseka
 [Item]
 Label=Residence April 2015 Other Countries
 Name=B12B
-Start=196
+Start=197
 Len=2
 
 [ValueSet]
@@ -737,7 +754,7 @@ Value=99;Don't know
 [Item]
 Label=Residence April 2011
 Name=B13
-Start=198
+Start=199
 Len=1
 ZeroFill=Yes
 
@@ -753,7 +770,7 @@ Value=4;Other countries
 [Item]
 Label=Residence April 2011 Elsewhere Lesotho
 Name=B13A
-Start=199
+Start=200
 Len=2
 ZeroFill=Yes
 
@@ -774,7 +791,7 @@ Value=10;Thaba-Tseka
 [Item]
 Label=Residence April 2015 Other Countries
 Name=B13B
-Start=201
+Start=202
 Len=2
 
 [ValueSet]
@@ -815,7 +832,7 @@ Value=99;Don't know
 [Item]
 Label=Residence April 2006
 Name=B14
-Start=203
+Start=204
 Len=1
 
 [ValueSet]
@@ -830,7 +847,7 @@ Value=4;Other countries
 [Item]
 Label=Residence April 2006 Elsewhere Lesotho
 Name=B14A
-Start=204
+Start=205
 Len=2
 ZeroFill=Yes
 
@@ -851,7 +868,7 @@ Value=10;Thaba-Tseka
 [Item]
 Label=Residence April 2006
 Name=B14B
-Start=206
+Start=207
 Len=2
 
 [ValueSet]
@@ -892,7 +909,7 @@ Value=99;Don't know
 [Item]
 Label=Citizenship
 Name=B15
-Start=208
+Start=209
 Len=2
 ZeroFill=Yes
 
@@ -935,7 +952,7 @@ Value=99;Don't know
 [Item]
 Label=Language Spoken Mostly
 Name=B16
-Start=210
+Start=211
 Len=1
 
 [ValueSet]
@@ -952,14 +969,14 @@ Value=7;Other specify
 [Item]
 Label=Other Language Spoken Mostly
 Name=B16A
-Start=211
+Start=212
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Father Alive
 Name=B17
-Start=231
+Start=232
 Len=1
 
 [ValueSet]
@@ -972,7 +989,7 @@ Value=9;Don't know
 [Item]
 Label=Mother Alive
 Name=B18
-Start=232
+Start=233
 Len=1
 
 [ValueSet]
@@ -985,7 +1002,7 @@ Value=9;Don't know
 [Item]
 Label=Marital Status
 Name=B19
-Start=233
+Start=234
 Len=1
 
 [ValueSet]
@@ -1003,7 +1020,7 @@ Value=9;Don't know
 [Item]
 Label=Age at First Marriage
 Name=B20
-Start=234
+Start=235
 Len=2
 
 [ValueSet]
@@ -1016,7 +1033,7 @@ Value=88;Not applicable
 [Item]
 Label=First or Only Spouse Alive
 Name=B21
-Start=236
+Start=237
 Len=1
 
 [ValueSet]
@@ -1029,7 +1046,7 @@ Value=9;Don't know
 [Item]
 Label=Albino
 Name=C22
-Start=237
+Start=238
 Len=1
 ZeroFill=Yes
 
@@ -1042,7 +1059,7 @@ Value=2;No
 [Item]
 Label=Difficulty Seeing
 Name=C23A
-Start=238
+Start=239
 Len=1
 ZeroFill=Yes
 
@@ -1059,7 +1076,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Hearing
 Name=C23B
-Start=239
+Start=240
 Len=1
 ZeroFill=Yes
 
@@ -1076,7 +1093,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Communication
 Name=C23C
-Start=240
+Start=241
 Len=1
 ZeroFill=Yes
 
@@ -1093,7 +1110,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Walking
 Name=C23D
-Start=241
+Start=242
 Len=1
 ZeroFill=Yes
 
@@ -1110,7 +1127,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Remembering
 Name=C23E
-Start=242
+Start=243
 Len=1
 ZeroFill=Yes
 
@@ -1127,7 +1144,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Self Care
 Name=C23F
-Start=243
+Start=244
 Len=1
 ZeroFill=Yes
 
@@ -1144,7 +1161,7 @@ Value=9;Don't Know
 [Item]
 Label=Main Cause Seeing
 Name=C24A
-Start=244
+Start=245
 Len=2
 ZeroFill=Yes
 
@@ -1169,14 +1186,14 @@ Value=99;Don't Know
 [Item]
 Label=Cause Seeing Other
 Name=C24A_OTHER
-Start=246
+Start=247
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Main Cause Hearing
 Name=C24B
-Start=266
+Start=267
 Len=2
 ZeroFill=Yes
 
@@ -1200,14 +1217,14 @@ Value=99;Don't Know
 [Item]
 Label=Cause Hearing Other
 Name=C24B_OTHER
-Start=268
+Start=269
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Main Cause Communication
 Name=C24C
-Start=288
+Start=289
 Len=2
 ZeroFill=Yes
 
@@ -1231,14 +1248,14 @@ Value=99;Don't Know
 [Item]
 Label=Cause Communicating Other
 Name=C24C_OTHER
-Start=290
+Start=291
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Main Cause Walking
 Name=C24D
-Start=310
+Start=311
 Len=2
 ZeroFill=Yes
 
@@ -1262,14 +1279,14 @@ Value=99;Don't Know
 [Item]
 Label=Cause Walking Other
 Name=C24D_OTHER
-Start=312
+Start=313
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Main Cause Remembering
 Name=C24E
-Start=332
+Start=333
 Len=2
 ZeroFill=Yes
 
@@ -1293,14 +1310,14 @@ Value=99;Don't Know
 [Item]
 Label=Cause Remembering Other
 Name=C24E_OTHER
-Start=334
+Start=335
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Main Cause Self Care
 Name=C24F
-Start=354
+Start=355
 Len=2
 ZeroFill=Yes
 
@@ -1324,14 +1341,14 @@ Value=99;Don't Know
 [Item]
 Label=Cause Self Care Other
 Name=C24F_OTHER
-Start=356
+Start=357
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Use Eye Glasses
 Name=C25A
-Start=376
+Start=377
 Len=1
 ZeroFill=Yes
 
@@ -1345,7 +1362,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Hearing Aid
 Name=C25B
-Start=377
+Start=378
 Len=1
 ZeroFill=Yes
 
@@ -1359,12 +1376,12 @@ Value=9;Don't Know
 [Item]
 Label=Use Working Stick
 Name=C25C
-Start=378
+Start=379
 Len=1
 ZeroFill=Yes
 
 [ValueSet]
-Label=Use Working Stick
+Label=Use Walking Stick
 Name=C25C_VS1
 Value=1;Yes
 Value=2;No
@@ -1373,7 +1390,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Wheelchair
 Name=C25D
-Start=379
+Start=380
 Len=1
 ZeroFill=Yes
 
@@ -1387,7 +1404,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Chronic Medication
 Name=C25E
-Start=380
+Start=381
 Len=1
 ZeroFill=Yes
 
@@ -1401,7 +1418,7 @@ Value=9;Don't Know
 [Item]
 Label=Use White Cane
 Name=C25F
-Start=381
+Start=382
 Len=1
 ZeroFill=Yes
 
@@ -1415,7 +1432,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Guide Dog
 Name=C25G
-Start=382
+Start=383
 Len=1
 ZeroFill=Yes
 
@@ -1429,7 +1446,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Official Sign Language
 Name=C25H1
-Start=383
+Start=384
 Len=1
 ZeroFill=Yes
 
@@ -1443,7 +1460,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Non Official Sign Language
 Name=C25H2
-Start=384
+Start=385
 Len=1
 ZeroFill=Yes
 
@@ -1457,7 +1474,7 @@ Value=9;Don't Know
 [Item]
 Label=Ever Attended School
 Name=D26
-Start=385
+Start=386
 Len=1
 ZeroFill=Yes
 
@@ -1472,7 +1489,7 @@ Value=9;Don't Know
 [Item]
 Label=Highest Education Level
 Name=D27
-Start=386
+Start=387
 Len=2
 ZeroFill=Yes
 
@@ -1511,14 +1528,14 @@ Value=99;Don’t know
 [Item]
 Label=Highest Education Level Other
 Name=D27_OTHER
-Start=388
+Start=389
 Len=20
 DataType=Alpha
 
 [Item]
 Label=How to Read
 Name=D28
-Start=408
+Start=409
 Len=1
 ZeroFill=Yes
 
@@ -1528,11 +1545,12 @@ Name=D28_VS1
 Value=1;Yes With Ease
 Value=2;Yes With Difficulty
 Value=3;Not At All
+Value=9;Don't Know
 
 [Item]
 Label=How to Write
 Name=D29
-Start=409
+Start=410
 Len=1
 ZeroFill=Yes
 
@@ -1542,11 +1560,12 @@ Name=D29_VS1
 Value=1;Yes With Ease
 Value=2;Yes With Difficulty
 Value=3;Not At All
+Value=9;Don't Know
 
 [Item]
 Label=Field of Specialization - Major
 Name=D30
-Start=410
+Start=411
 Len=2
 ZeroFill=Yes
 
@@ -1568,7 +1587,7 @@ Value=11;Social and religious professionals
 [Item]
 Label=Field of Specialization - Minor
 Name=D30B
-Start=412
+Start=413
 Len=4
 ZeroFill=Yes
 
@@ -1724,7 +1743,7 @@ Value=1123;Hardy crafts and designers
 [Item]
 Label=Main Activity Status in Past 7 Days
 Name=E31
-Start=416
+Start=417
 Len=2
 ZeroFill=Yes
 
@@ -1748,14 +1767,14 @@ Value=99;Don’t know
 [Item]
 Label=7 Days Other
 Name=E31OTHER
-Start=418
+Start=419
 Len=50
 DataType=Alpha
 
 [Item]
 Label=Main Activity Status in Past 12 Days
 Name=E32
-Start=468
+Start=469
 Len=2
 ZeroFill=Yes
 
@@ -1778,14 +1797,14 @@ Value=99;Don’t know
 [Item]
 Label=12 Months Other
 Name=E32OTHER
-Start=470
+Start=471
 Len=50
 DataType=Alpha
 
 [Item]
 Label=Employer
 Name=E33
-Start=520
+Start=521
 Len=1
 ZeroFill=Yes
 
@@ -1804,15 +1823,15 @@ Value=9;Other (Specify)
 [Item]
 Label=Employer
 Name=E33OTHER
-Start=521
+Start=522
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Occupation - Major Group
 Name=OCCUPATION_LEVEL_1
-Start=541
-Len=1
+Start=542
+Len=2
 ZeroFill=Yes
 
 [ValueSet]
@@ -1828,11 +1847,12 @@ Value=7;Craft and related trades workers
 Value=8;Plant and machine operators, and assemblers
 Value=9;Elementary occupations
 Value=0;Armed forces occupations
+Value=11;Show All
 
 [Item]
 Label=Occupation - Sub Major Group
 Name=OCCUPATION_LEVEL_2
-Start=542
+Start=544
 Len=2
 ZeroFill=Yes
 
@@ -1922,7 +1942,7 @@ Value=3;Armed forces occupations, other ranks
 [Item]
 Label=Occupation - Minor Group
 Name=OCCUPATION_LEVEL_3
-Start=544
+Start=546
 Len=3
 ZeroFill=Yes
 
@@ -2231,7 +2251,7 @@ Value=31;Armed forces occupations, other ranks
 [Item]
 Label=Occupation - Unit Group
 Name=OCCUPATION_LEVEL_4
-Start=547
+Start=549
 Len=4
 ZeroFill=Yes
 
@@ -3191,10 +3211,450 @@ Label=Occupation Level 4
 Name=OCCUPATION_LEVEL_4_VS031
 Value=310;Armed forces occupations, other ranks
 
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS033
+Value=2411;Accountants
+Value=4311;Accounting and bookkeeping clerks
+Value=3313;Accounting associate professionals
+Value=2655;Actors
+Value=3343;Administrative and executive secretaries
+Value=2431;Advertising and marketing professionals
+Value=1222;Advertising and public relations managers
+Value=1343;Aged care services managers
+Value=1311;Agricultural and forestry production managers
+Value=7233;Agricultural and industrial machinery mechanics and repairers
+Value=3142;Agricultural technicians
+Value=7127;Air conditioning and refrigeration mechanics
+Value=3154;Air traffic controllers
+Value=3155;Air traffic safety electronics technicians
+Value=7232;Aircraft engine mechanics and repairers
+Value=3153;Aircraft pilots and related associate professionals
+Value=3258;Ambulance workers
+Value=6129;Animal producers not elsewhere classified
+Value=2656;Announcers on radio, television and other media
+Value=6123;Apiarists and sericulturists
+Value=2514;Applications programmers
+Value=1312;Aquaculture and fisheries production managers
+Value=6221;Aquaculture workers
+Value=2621;Archivists and curators
+Value=310;Armed forces occupations, other ranks
+Value=8219;Assemblers not elsewhere classified
+Value=5161;Astrologers, fortune-tellers and related workers
+Value=3421;Athletes and sports players
+Value=2266;Audiologists and speech therapists
+Value=2641;Authors and related writers
+Value=7512;Bakers, pastry-cooks and confectionery makers
+Value=4211;Bank tellers and related clerks
+Value=5132;Bartenders
+Value=5142;Beauticians and related workers
+Value=7234;Bicycle and related repairers
+Value=2131;Biologists, botanists, zoologists and related professionals
+Value=7221;Blacksmiths, hammersmiths and forging press workers
+Value=8154;Bleaching, dyeing and fabric cleaning machine operators
+Value=4212;Bookmakers, croupiers and related gaming workers
+Value=7112;Bricklayers and related workers
+Value=3521;Broadcasting and audio-visual technicians
+Value=7411;Building and related electricians
+Value=2161;Building architects
+Value=5153;Building caretakers
+Value=9313;Building construction labourers
+Value=7119;Building frame and related trades workers not elsewhere classified
+Value=7133;Building structure cleaners
+Value=8331;Bus and tram drivers
+Value=3339;Business services agents not elsewhere classified
+Value=1219;Business services and administration managers not elsewhere classified
+Value=7511;Butchers, fishmongers and related food preparers
+Value=3323;Buyers
+Value=7522;Cabinet-makers and related workers
+Value=8322;Car, taxi and van drivers
+Value=7115;Carpenters and joiners
+Value=2165;Cartographers and surveyors
+Value=5230;Cashiers and ticket clerks
+Value=8114;Cement, stone and other mineral products machine operators
+Value=3434;Chefs
+Value=3111;Chemical and physical science technicians
+Value=3116;Chemical engineering technicians
+Value=2145;Chemical engineers
+Value=3133;Chemical processing plant controllers
+Value=8131;Chemical products plant and machine operators
+Value=2113;Chemists
+Value=1341;Child care services managers
+Value=5311;Child care workers
+Value=9312;Civil engineering labourers
+Value=3112;Civil engineering technicians
+Value=2142;Civil engineers
+Value=9112;Cleaners and helpers in offices, hotels and other establishments
+Value=5151;Cleaning and housekeeping supervisors in offices, hotels and other establishments
+Value=3331;Clearing and forwarding agents
+Value=4419;Clerical support workers not elsewhere classified
+Value=4229;Client information workers not elsewhere classified
+Value=4413;Coding, proof-reading and related clerks
+Value=3322;Commercial sales representatives
+Value=110;Commissioned armed forces officers
+Value=3253;Community health workers
+Value=5162;Companions and valets
+Value=3513;Computer network and systems technicians
+Value=2523;Computer network professionals
+Value=7114;Concrete placers, concrete finishers and related workers
+Value=3332;Conference and event planners
+Value=1323;Construction managers
+Value=3123;Construction supervisors
+Value=4222;Contact centre information clerks
+Value=5244;Contact centre salespersons
+Value=5120;Cooks
+Value=7549;Craft and related workers not elsewhere classified
+Value=8343;Crane, hoist and related plant operators
+Value=2659;Creative and performing artists not elsewhere classified
+Value=3312;Credit and loans officers
+Value=9211;Crop farm labourers
+Value=3351;Customs and border inspectors
+Value=7513;Dairy-products makers
+Value=2653;Dancers and choreographers
+Value=4132;Data entry clerks
+Value=2529;Database and network professionals not elsewhere classified
+Value=2521;Database designers and administrators
+Value=4214;Debt-collectors and related workers
+Value=6223;Deep-sea fishery workers
+Value=3251;Dental assistants and therapists
+Value=2261;Dentists
+Value=2265;Dieticians and nutritionists
+Value=3254;Dispensing opticians
+Value=9111;Domestic cleaners and helpers
+Value=5152;Domestic housekeepers
+Value=5243;Door to door salespersons
+Value=3118;Draughtspersons
+Value=9332;Drivers of animal-drawn vehicles and machinery
+Value=5165;Driving instructors
+Value=2342;Early childhood educators
+Value=8342;Earthmoving and related plant operators
+Value=2631;Economists
+Value=1345;Education managers
+Value=2351;Education methods specialists
+Value=8212;Electrical and electronic equipment assemblers
+Value=3113;Electrical engineering technicians
+Value=2151;Electrical engineers
+Value=7413;Electrical line installers and repairers
+Value=7412;Electrical mechanics and fitters
+Value=3114;Electronics engineering technicians
+Value=2152;Electronics engineers
+Value=7421;Electronics mechanics and servicers
+Value=9629;Elementary workers not elsewhere classified
+Value=3333;Employment agents and contractors
+Value=2149;Engineering professionals not elsewhere classified
+Value=4225;Enquiry clerks
+Value=2263;Environmental and occupational health and hygiene professionals
+Value=3257;Environmental and occupational health inspectors and associates
+Value=2143;Environmental engineers
+Value=2133;Environmental protection professionals
+Value=2132;Farming, forestry and fisheries advisers
+Value=5241;Fashion and other models
+Value=9411;Fast food preparers
+Value=8151;Fibre preparing, spinning and winding machine operators
+Value=6111;Field crop and vegetable growers
+Value=4415;Filing and copying clerks
+Value=2654;Film, stage and related directors and producers
+Value=1211;Finance managers
+Value=2413;Financial analysts
+Value=1346;Financial and insurance services branch managers
+Value=2412;Financial and investment advisers
+Value=5411;Fire-fighters
+Value=9216;Fishery and aquaculture labourers
+Value=3423;Fitness and recreation instructors and program leaders
+Value=7122;Floor layers and tile setters
+Value=7515;Food and beverage tasters and graders
+Value=8160;Food and related products machine operators
+Value=5246;Food service counter attendants
+Value=6210;Forestry and related workers
+Value=9215;Forestry labourers
+Value=3143;Forestry technicians
+Value=9333;Freight handlers
+Value=7514;Fruit, vegetable and related preservers
+Value=7544;Fumigators and other pest and weed controllers
+Value=8155;Fur and leather preparing machine operators
+Value=3433;Gallery, museum and library technicians
+Value=9611;Garbage and recycling collectors
+Value=9214;Garden and horticultural labourers
+Value=6113;Gardeners, horticultural and nursery growers
+Value=7532;Garment and related pattern-makers and cutters
+Value=4110;General office clerks
+Value=2211;Generalist medical practitioners
+Value=2114;Geologists and geophysicists
+Value=8181;Glass and ceramics plant operators
+Value=7315;Glass makers, cutters, grinders and finishers
+Value=7125;Glaziers
+Value=3354;Government licensing officials
+Value=3353;Government social benefits officials
+Value=3352;Government tax and excise officials
+Value=2166;Graphic and multimedia designers
+Value=5141;Hairdressers
+Value=9331;Hand and pedal vehicle drivers
+Value=9121;Hand launderers and pressers
+Value=9321;Hand packers
+Value=7318;Handicraft workers in textile, leather and related materials
+Value=7317;Handicraft workers in wood, basketry and related materials
+Value=7319;Handicraft workers not elsewhere classified
+Value=3259;Health associate professionals not elsewhere classified
+Value=5321;Health care assistants
+Value=2269;Health professionals not elsewhere classified
+Value=1342;Health services managers
+Value=8332;Heavy truck and lorry drivers
+Value=5322;Home-based personal care workers
+Value=1411;Hotel managers
+Value=4224;Hotel receptionists
+Value=7111;House builders
+Value=1212;Human resource managers
+Value=6224;Hunters and trappers
+Value=3132;Incinerator and water treatment plant operators
+Value=2141;Industrial and production engineers
+Value=7422;Information and communications technology installers and servicers
+Value=3511;Information and communications technology operations technicians
+Value=2434;Information and communications technology sales professionals
+Value=1330;Information and communications technology service managers
+Value=3512;Information and communications technology user support technicians
+Value=2356;Information technology trainers
+Value=6222;Inland and coastal waters fishery workers
+Value=7124;Insulation workers
+Value=3321;Insurance representatives
+Value=3432;Interior designers and decorators
+Value=7313;Jewellery and precious-metal workers
+Value=2642;Journalists
+Value=2612;Judges
+Value=9412;Kitchen helpers
+Value=2162;Landscape architects
+Value=8157;Laundry machine operators
+Value=2611;Lawyers
+Value=3411;Legal and related associate professionals
+Value=2619;Legal professionals not elsewhere classified
+Value=3342;Legal secretaries
+Value=1111;Legislators
+Value=2622;Librarians and related information professionals
+Value=4411;Library clerks
+Value=3141;Life science technicians (excluding medical)
+Value=8344;Lifting truck operators
+Value=6121;Livestock and dairy producers
+Value=9212;Livestock farm labourers
+Value=8311;Locomotive engine drivers
+Value=4412;Mail carriers and sorting clerks
+Value=2421;Management and organization analysts
+Value=1120;Managing directors and chief executives
+Value=9329;Manufacturing labourers not elsewhere classified
+Value=1321;Manufacturing managers
+Value=3122;Manufacturing supervisors
+Value=2120;Mathematicians, actuaries and statisticians
+Value=3115;Mechanical engineering technicians
+Value=2144;Mechanical engineers
+Value=8211;Mechanical machinery assemblers
+Value=3214;Medical and dental prosthetic technicians
+Value=3212;Medical and pathology laboratory technicians
+Value=3256;Medical assistants
+Value=3211;Medical imaging and therapeutic equipment technicians
+Value=3252;Medical records and health information technicians
+Value=3344;Medical secretaries
+Value=9621;Messengers, package deliverers and luggage porters
+Value=8122;Metal finishing, plating and coating machine operators
+Value=7211;Metal moulders and coremakers
+Value=7224;Metal polishers, wheel grinders and tool sharpeners
+Value=8121;Metal processing plant operators
+Value=3135;Metal production process controllers
+Value=7223;Metal working machine tool setters and operators
+Value=2112;Meteorologists
+Value=9623;Meter readers and vending-machine collectors
+Value=3222;Midwifery associate professionals
+Value=2222;Midwifery professionals
+Value=8112;Mineral and stone processing plant operators
+Value=8111;Miners and quarriers
+Value=3117;Mining and metallurgical technicians
+Value=9311;Mining and quarrying labourers
+Value=2146;Mining engineers, metallurgists and related professionals
+Value=1322;Mining managers
+Value=3121;Mining supervisors
+Value=6130;Mixed crop and animal producers
+Value=9213;Mixed crop and livestock farm labourers
+Value=6114;Mixed crop growers
+Value=8341;Mobile farm and forestry plant operators
+Value=7231;Motor vehicle mechanics and repairers
+Value=8321;Motorcycle drivers
+Value=7312;Musical instrument makers and tuners
+Value=2652;Musicians, singers and composers
+Value=210;Non-commissioned armed forces officers
+Value=3221;Nursing associate professionals
+Value=2221;Nursing professionals
+Value=9622;Odd job persons
+Value=3341;Office supervisors
+Value=2267;Optometrists and ophthalmic opticians
+Value=3435;Other artistic and cultural associate professionals
+Value=2355;Other arts teachers
+Value=9129;Other cleaning workers
+Value=2353;Other language teachers
+Value=2354;Other music teachers
+Value=8183;Packing, bottling and labelling machine operators
+Value=7131;Painters and related workers
+Value=8143;Paper products machine operators
+Value=2240;Paramedical practitioners
+Value=4213;Pawnbrokers and money-lenders
+Value=4313;Payroll clerks
+Value=7535;Pelt dressers, tanners and fellmongers
+Value=5329;Personal care workers in health services not elsewhere classified
+Value=5169;Personal services workers not elsewhere classified
+Value=2423;Personnel and careers professionals
+Value=4416;Personnel clerks
+Value=5164;Pet groomers and animal care workers
+Value=3134;Petroleum and natural gas refining plant operators
+Value=3213;Pharmaceutical technicians and assistants
+Value=2262;Pharmacists
+Value=2633;Philosophers, historians and political scientists
+Value=3431;Photographers
+Value=8132;Photographic products machine operators
+Value=3119;Physical and engineering science technicians not elsewhere classified
+Value=2111;Physicists and astronomers
+Value=2264;Physiotherapists
+Value=3255;Physiotherapy technicians and assistants
+Value=7123;Plasterers
+Value=8142;Plastic products machine operators
+Value=7126;Plumbers and pipe fitters
+Value=3355;Police inspectors and detectives
+Value=5412;Police officers
+Value=2422;Policy administration professionals
+Value=1213;Policy and planning managers
+Value=7314;Potters and related workers
+Value=6122;Poultry producers
+Value=3131;Power production plant operators
+Value=7311;Precision-instrument makers and repairers
+Value=7321;Pre-press technicians
+Value=2341;Primary school teachers
+Value=7323;Print finishing and binding workers
+Value=7322;Printers
+Value=5413;Prison guards
+Value=3139;Process control technicians not elsewhere classified
+Value=2163;Product and garment designers
+Value=7543;Product graders and testers (excluding foods and beverages)
+Value=4322;Production clerks
+Value=1349;Professional services managers not elsewhere classified
+Value=5419;Protective services workers not elsewhere classified
+Value=2634;Psychologists
+Value=2432;Public relations professionals
+Value=8171;Pulp and papermaking plant operators
+Value=8312;Railway brake, signal and switch operators
+Value=3334;Real estate agents and property managers
+Value=4226;Receptionists (general)
+Value=9612;Refuse sorters
+Value=3359;Regulatory government associate professionals not elsewhere classified
+Value=3413;Religious associate professionals
+Value=2636;Religious professionals
+Value=1223;Research and development managers
+Value=1412;Restaurant managers
+Value=1420;Retail and wholesale trade managers
+Value=7215;Riggers and cable splicers
+Value=7121;Roofers
+Value=8141;Rubber products machine operators
+Value=1221;Sales and marketing managers
+Value=5242;Sales demonstrators
+Value=5249;Sales workers not elsewhere classified
+Value=4414;Scribes and related workers
+Value=2330;Secondary education teachers
+Value=4120;Secretaries (general)
+Value=3311;Securities and finance dealers and brokers
+Value=5414;Security guards
+Value=1112;Senior government officials
+Value=1114;Senior officials of special-interest organizations
+Value=5245;Service station attendants
+Value=1439;Services managers not elsewhere classified
+Value=8153;Sewing machine operators
+Value=7533;Sewing, embroidery and related workers
+Value=7213;Sheet-metal workers
+Value=9334;Shelf fillers
+Value=8350;Ships' deck crews and related workers
+Value=3152;Ships' deck officers and pilots
+Value=3151;Ships' engineers
+Value=7536;Shoemakers and related workers
+Value=8156;Shoemaking and related machine operators
+Value=5221;Shop keepers
+Value=5223;Shop sales assistants
+Value=5222;Shop supervisors
+Value=7542;Shotfirers and blasters
+Value=7316;Sign writers, decorative painters, engravers and etchers
+Value=1344;Social welfare managers
+Value=2635;Social work and counselling professionals
+Value=3412;Social work associate professionals
+Value=2632;Sociologists, anthropologists and related professionals
+Value=2519;Software and applications developers and analysts not elsewhere classified
+Value=2512;Software developers
+Value=2352;Special needs teachers
+Value=2212;Specialist medical practitioners
+Value=3422;Sports coaches, instructors and officials
+Value=1431;Sports, recreation and cultural centre managers
+Value=7132;Spray painters and varnishers
+Value=5211;Stall and market salespersons
+Value=8189;Stationary plant and machine operators not elsewhere classified
+Value=4312;Statistical, finance and insurance clerks
+Value=3314;Statistical, mathematical and related associate professionals
+Value=8182;Steam engine and boiler operators
+Value=4321;Stock clerks
+Value=7113;Stonemasons, stone cutters, splitters and carvers
+Value=9510;Street and related service workers
+Value=5212;Street food salespersons
+Value=9520;Street vendors (excluding food)
+Value=7214;Structural-metal preparers and erectors
+Value=6310;Subsistence crop farmers
+Value=6340;Subsistence fishers, hunters, trappers and gatherers
+Value=6320;Subsistence livestock farmers
+Value=6330;Subsistence mixed crop and livestock farmers
+Value=1324;Supply, distribution and related managers
+Value=4227;Survey and market research interviewers
+Value=9613;Sweepers and related labourers
+Value=2522;Systems administrators
+Value=2511;Systems analysts
+Value=7531;Tailors, dressmakers, furriers and hatters
+Value=5312;Teachers' aides
+Value=2359;Teaching professionals not elsewhere classified
+Value=2433;Technical and medical sales professionals (excluding ICT)
+Value=3522;Telecommunications engineering technicians
+Value=2153;Telecommunications engineers
+Value=4223;Telephone switchboard operators
+Value=8159;Textile, fur and leather products machine operators not elsewhere classified
+Value=7516;Tobacco preparers and tobacco products makers
+Value=7222;Toolmakers and related workers
+Value=2164;Town and traffic planners
+Value=3324;Trade brokers
+Value=3230;Traditional and complementary medicine associate professionals
+Value=2230;Traditional and complementary medicine professionals
+Value=1113;Traditional chiefs and heads of village
+Value=2424;Training and staff development professionals
+Value=2643;Translators, interpreters and other linguists
+Value=4323;Transport clerks
+Value=5112;Transport conductors
+Value=5111;Travel attendants and travel stewards
+Value=4221;Travel consultants and clerks
+Value=5113;Travel guides
+Value=6112;Tree and shrub crop growers
+Value=4131;Typists and word processing operators
+Value=5163;Undertakers and embalmers
+Value=7541;Underwater divers
+Value=2310;University and higher education teachers
+Value=7534;Upholsterers and related workers
+Value=3315;Valuers and loss assessors
+Value=9122;Vehicle cleaners
+Value=2250;Veterinarians
+Value=3240;Veterinary technicians and assistants
+Value=2651;Visual artists
+Value=2320;Vocational education teachers
+Value=5131;Waiters
+Value=9624;Water and firewood collectors
+Value=8152;Weaving and knitting machine operators
+Value=2513;Web and multimedia developers
+Value=3514;Web technicians
+Value=7212;Welders and flamecutters
+Value=8113;Well drillers and borers and related workers
+Value=9123;Window cleaners
+Value=8172;Wood processing plant operators
+Value=7521;Wood treaters
+Value=7523;Woodworking-machine tool setters and operators
+
 [Item]
 Label=Section
 Name=SECTION
-Start=551
+Start=553
 Len=2
 
 [ValueSet]
@@ -3225,7 +3685,7 @@ Value=21;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Divisions
 Name=DIVISIONS
-Start=553
+Start=555
 Len=2
 ZeroFill=Yes
 
@@ -3404,7 +3864,7 @@ Value=99;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Groups
 Name=GROUPS
-Start=555
+Start=557
 Len=3
 ZeroFill=Yes
 
@@ -4001,7 +4461,7 @@ Value=990;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Class
 Name=CLASS
-Start=558
+Start=560
 Len=4
 ZeroFill=Yes
 
@@ -5379,7 +5839,7 @@ Value=9900;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Employment Location
 Name=E36
-Start=562
+Start=564
 Len=2
 ZeroFill=Yes
 
@@ -5433,7 +5893,7 @@ Value=99;Don’t know
 [Item]
 Label=Location in Urban/Peri-Urban
 Name=E37
-Start=564
+Start=566
 Len=4
 ZeroFill=Yes
 
@@ -5533,7 +5993,7 @@ Value=8888;Not Applicable
 [Item]
 Label=Worked in RSA
 Name=E38
-Start=568
+Start=570
 Len=1
 ZeroFill=Yes
 
@@ -5548,7 +6008,7 @@ Value=9;Don't Know
 [Item]
 Label=RSA Work Duration
 Name=E39
-Start=569
+Start=571
 Len=2
 ZeroFill=Yes
 
@@ -5560,7 +6020,7 @@ Value=0:10;00-10
 [Item]
 Label=Ever Pregnant
 Name=F40
-Start=571
+Start=573
 Len=1
 ZeroFill=Yes
 
@@ -5574,7 +6034,7 @@ Value=9;Don't Know
 [Item]
 Label=Ever Given Live Birth
 Name=F41
-Start=572
+Start=574
 Len=1
 ZeroFill=Yes
 
@@ -5588,7 +6048,7 @@ Value=9;Don't Know
 [Item]
 Label=Boys Born Alive
 Name=F42A
-Start=573
+Start=575
 Len=2
 ZeroFill=Yes
 
@@ -5600,7 +6060,7 @@ Value=0:20;0-20
 [Item]
 Label=Girls Born Alive
 Name=F42B
-Start=575
+Start=577
 Len=2
 ZeroFill=Yes
 
@@ -5612,7 +6072,7 @@ Value=0:20;0-20
 [Item]
 Label=Total Born Alive
 Name=F42C
-Start=577
+Start=579
 Len=2
 ZeroFill=Yes
 
@@ -5624,7 +6084,7 @@ Value=1:20;1-20
 [Item]
 Label=Boys Living in Household
 Name=F43A
-Start=579
+Start=581
 Len=2
 ZeroFill=Yes
 
@@ -5636,7 +6096,7 @@ Value=0:20;0-20
 [Item]
 Label=Girls Living in Household
 Name=F43B
-Start=581
+Start=583
 Len=2
 ZeroFill=Yes
 
@@ -5648,14 +6108,14 @@ Value=0:20;0-20
 [Item]
 Label=Total Living in Household
 Name=F43C
-Start=583
+Start=585
 Len=2
 ZeroFill=Yes
 
 [Item]
 Label=Boys Living Elsewhere
 Name=F44A
-Start=585
+Start=587
 Len=2
 ZeroFill=Yes
 
@@ -5667,7 +6127,7 @@ Value=0:20;0-20
 [Item]
 Label=Girls Living Elsewhere
 Name=F44B
-Start=587
+Start=589
 Len=2
 ZeroFill=Yes
 
@@ -5679,7 +6139,7 @@ Value=0:20;0-20
 [Item]
 Label=Total Living Elsewhere
 Name=F44C
-Start=589
+Start=591
 Len=2
 ZeroFill=Yes
 
@@ -5691,7 +6151,7 @@ Value=0:20;0-20
 [Item]
 Label=Boys Deceased
 Name=F45A
-Start=591
+Start=593
 Len=2
 ZeroFill=Yes
 
@@ -5703,7 +6163,7 @@ Value=0:20;0-20
 [Item]
 Label=Girls Deceased
 Name=F45B
-Start=593
+Start=595
 Len=2
 ZeroFill=Yes
 
@@ -5715,7 +6175,7 @@ Value=0:20;0-20
 [Item]
 Label=Total Deceased
 Name=F45C
-Start=595
+Start=597
 Len=2
 ZeroFill=Yes
 
@@ -5727,7 +6187,7 @@ Value=0:20;0-20
 [Item]
 Label=First Child Bearing Age
 Name=F46
-Start=597
+Start=599
 Len=2
 ZeroFill=Yes
 
@@ -5739,14 +6199,14 @@ Value=12:50;Dec-50
 [Item]
 Label=Last Child Birth Date
 Name=F47
-Start=599
+Start=601
 Len=6
 DataType=Alpha
 
 [Item]
 Label=Last Child Birth Month
 Name=F47A
-Start=599
+Start=601
 Len=2
 ItemType=SubItem
 ZeroFill=Yes
@@ -5770,7 +6230,7 @@ Value=12;December
 [Item]
 Label=Last Child Birth Year
 Name=F47B
-Start=601
+Start=603
 Len=4
 ItemType=SubItem
 ZeroFill=Yes
@@ -5783,7 +6243,7 @@ Value=1978:2016;1978-2016
 [Item]
 Label=Last Born Alive
 Name=F48
-Start=605
+Start=607
 Len=1
 ZeroFill=Yes
 
@@ -5797,14 +6257,14 @@ Value=9;Don't Know
 [Item]
 Label=Last Born Deceased Date
 Name=F49
-Start=606
+Start=608
 Len=6
 DataType=Alpha
 
 [Item]
 Label=Last Born Deceased Month
 Name=F49A
-Start=606
+Start=608
 Len=2
 ItemType=SubItem
 ZeroFill=Yes
@@ -5828,7 +6288,7 @@ Value=12;December
 [Item]
 Label=Last Born Deceased Year
 Name=F49B
-Start=608
+Start=610
 Len=4
 ItemType=SubItem
 ZeroFill=Yes
@@ -5841,7 +6301,7 @@ Value=1978:2016;1978-2016
 [Item]
 Label=Sex of Last Born
 Name=F50
-Start=612
+Start=614
 Len=1
 ZeroFill=Yes
 
@@ -5855,7 +6315,7 @@ Value=9;Don't Know
 [Item]
 Label=More People
 Name=MORE_PEOPLE
-Start=613
+Start=615
 Len=1
 ZeroFill=Yes
 
@@ -5868,7 +6328,7 @@ Value=2;No
 [Item]
 Label=Orphan
 Name=ORPHAN
-Start=614
+Start=616
 Len=1
 ZeroFill=Yes
 
@@ -6012,7 +6472,7 @@ Label=Housing
 Name=HOUSING
 RecordTypeValue='H'
 Required=No
-RecordLen=632
+RecordLen=676
 
 [Item]
 Label=Tenure Status
@@ -6643,6 +7103,16 @@ Start=530
 Len=1
 ZeroFill=Yes
 
+[ValueSet]
+Label=Number of Refrigerators
+Name=NUMBER_OF_REFRIGERATORS_VS1
+Value=1;1
+Value=2;2
+Value=3;3
+Value=4;4
+Value=5;5
+Value=6;6
+
 [Item]
 Label=Refrigerant
 Name=REFRIGERANT
@@ -6657,6 +7127,52 @@ Name=RESPONDENT
 Start=631
 Len=2
 ZeroFill=Yes
+
+[Item]
+Label=Is Respondent Household Member
+Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
+Start=633
+Len=1
+
+[ValueSet]
+Label=Is Respondent Household Member
+Name=VS_RESPONDENT
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Respondent Name
+Name=RESPONDENT_NAME
+Start=634
+Len=30
+DataType=Alpha
+
+[Item]
+Label=New Assets
+Name=NEW_ASSETS
+Start=664
+Len=1
+Occurrences=13
+ZeroFill=Yes
+OccurrenceLabel=1,Radio
+OccurrenceLabel=2,Landline Tel
+OccurrenceLabel=3,Cell Phone
+OccurrenceLabel=4,TV
+OccurrenceLabel=5,Tractor
+OccurrenceLabel=6,Stove
+OccurrenceLabel=7,Scotch Card
+OccurrenceLabel=8,Bed
+OccurrenceLabel=9,Computer
+OccurrenceLabel=10,Internet
+OccurrenceLabel=11,Vehicle
+OccurrenceLabel=12,Generator
+OccurrenceLabel=13,Refrigirator
+
+[ValueSet]
+Label=New Assets
+Name=NEW_ASSETS_VS1
+Value=1;Yes
+Value=0;No
 
 [Record]
 Label=Visits

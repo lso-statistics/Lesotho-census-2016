@@ -243,6 +243,14 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B9. If \c
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B9B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang7177{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\b\f0\fs18 B9B. If \cf1\f1 %getocclabel%\cf0\f0  is outside Lesotho in which of the Institution is %getocclabel%?\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.C22
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
@@ -1250,13 +1258,19 @@ ENG=}
 Field=LESOTHOCENSUS2016_DICT.HOUSEHOLD_HEAD_NAMES
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B1. PERSON NUMBER\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Give the Name of the Household Head.\par
 ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.HOUSEHOLD_NUMBER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Enter Household Number\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.IS_RESPONDENT_HOUSEHOLD_MEMBER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Is the Respondent the member of the household?\par
 ENG=}
 
 [QUESTION]
@@ -1332,11 +1346,23 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Who is th
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.RESPONDENT_NAME
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Who is the the Respondent?\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.SECTION
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s section of place of work? (main product/service/activity)\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.VILLAGE_NAME
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 What is the Village Name?\par
 ENG=}
 
 [QUESTION]
