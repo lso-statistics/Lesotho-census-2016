@@ -365,7 +365,7 @@ Name=HOUSEHOLD_NUMBER_VS1
 Value=1:999;1-999
 
 [Item]
-Label=Names of Household Head 
+Label=Names of Household Head
 Name=HOUSEHOLD_HEAD_NAMES
 Start=79
 Len=50
@@ -6543,7 +6543,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of Deaths in the Last Five Years
 Name=G52_VS1
-Value=1:10;10-Jan
+Value=1:10
 
 [Item]
 Label=Tenure Other
