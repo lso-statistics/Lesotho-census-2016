@@ -1,0 +1,68 @@
+﻿[CAPI QUESTIONS]
+Version=CSPro 6.1
+
+[LANGUAGES]
+ENG=English
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_B1
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B1. \b0 Please enter Person Number\b\i\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_B2
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B2. \b0 Please enter/confirm the name of the household member\b\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_B3
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B3. What is %getocclabel%'s relationship to the head of the household?\cf0\f1\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_B4
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B4. Is %getocclabel% a male or a female?\cf0\f1\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_B5
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 B5. How old is \cf1\f1 %getocclabel%\cf0\f0  in completed years?\fs20\par
+ENG=\pard\b0\i\fs16 Enter age in completed years (\ldblquote 0\rdblquote  for children less than one year old)\cf1\b\i0\f1\fs18\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_B7
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B7. What is \cf1\f1 %getocclabel%'s\cf0\f0  current residential status?\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_IN_HOUSEHOLD
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\f0\fs18 Is \cf1\b\f1 %getocclabel% \b0 a member of this household?\cf0\b\f0\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_MORE_PEOPLE
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Are there more people in this household?\b0\par
+ENG=}
+

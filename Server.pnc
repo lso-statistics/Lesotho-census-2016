@@ -1,0 +1,7 @@
+[SyncFile]
+Version=CSPro 6.1
+Description=Sync with Enumerator
+RootFolder=storage/emulated/0/csentry/LesothoCensus2016
+
+[Connection]
+Type=BluetoothServer

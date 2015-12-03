@@ -1,0 +1,479 @@
+﻿[Dictionary]
+Version=CSPro 6.1
+Label=Assistant Supervisor Review
+Name=ASSIST_SUPERVISOR_REVIEW_DICT
+RecordTypeStart=1
+RecordTypeLen=1
+Positions=Relative
+ZeroFill=Yes
+DecimalChar=Yes
+
+[Level]
+Label=LesothoCensus2016 questionnaire
+Name=RV_LESOTHOCENSUS2016_QUEST
+
+[IdItems]
+
+[Item]
+Label=District
+Name=RV_DISTRICT
+Start=2
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=District
+Name=RV_DISTRICT_VS1
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+
+[Item]
+Label=Constituency
+Name=RV_CONSTITUENCY
+Start=4
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Constituency
+Name=RV_CONSTITUENCY_VS1
+Value=1;Mechachane
+Value=2;Hololo
+Value=3;Motete
+Value=4;Qalo
+Value=5;Butha-buthe
+Value=6;Maliba-mats'o
+Value=7;Mphosong
+Value=8;Thaba-phats'oa
+Value=9;Mahobong
+Value=10;Pela-ts'oeu
+Value=11;Matlakeng
+Value=12;Leribe
+Value=13;Hlotse
+Value=14;Tsikoane
+Value=15;Maputsoe
+Value=16;Likhetlane
+Value=17;Peka
+Value=18;Kolonyama
+Value=19;Mosalemane
+Value=20;Makhoroana
+Value=21;Bela-bela
+Value=22;Malimong
+Value=23;Khafung
+Value=24;Teya-teyaneng
+Value=25;T'soana-makhulo
+Value=26;Thupa-kubu
+Value=27;Berea
+Value=28;Khubetsoana
+Value=29;Mabote
+Value=30;Motimposo
+Value=31;Stadium Area
+Value=32;Maseru
+Value=33;Thetsane
+Value=34;Qoaling
+Value=35;Lithoteng
+Value=36;Lithabaneng
+Value=37;Abia
+Value=38;Thaba-bosiu
+Value=39;Machache
+Value=40;Thaba-putsoa
+Value=41;Maama
+Value=42;Koro-koro
+Value=43;Qeme
+Value=44;Rothe
+Value=45;Matsieng
+Value=46;Makhaleng
+Value=47;Maletsunyane
+Value=48;Thaba-phechela
+Value=49;Kolo
+Value=50;Matelile
+Value=51;Maliepetsane
+Value=52;Thabana Morena
+Value=53;Likhoele
+Value=54;Qalabane
+Value=55;Mafeteng
+Value=56;Taung
+Value=57;Qhalasi
+Value=58;Mohale's Hoek
+Value=59;Mekaling
+Value=60;Qaqatu
+Value=61;Mpharane
+Value=62;Ketane
+Value=63;Hloahloeng
+Value=64;Tele
+Value=65;Moyeni
+Value=66;Sebapala
+Value=67;Mt.moorosi
+Value=68;Qhoali
+Value=69;Qacha'snek
+Value=70;Lebakeng
+Value=71;Tsoelike
+Value=72;Mantsonyane
+Value=73;Thaba-moea
+Value=74;Thaba-tseka
+Value=75;Semena
+Value=76;Mashai
+Value=77;Malingoaneng
+Value=78;Senqu
+Value=79;Mokhotlong
+Value=80;Bobatsi
+
+[Item]
+Label=Community Council
+Name=RV_COMMUNITY_COUNCIL
+Start=6
+Len=3
+DataType=Alpha
+
+[ValueSet]
+Label=Community Council
+Name=RV_COMMUNITY_COUNCIL_VS1
+Value='B01';Ngoajane
+Value='B02';Likila
+Value='B03';Nqoe
+Value='B04';Tŝa-le-Moleka
+Value='B05';Botha-Bothe
+Value='C01';Matsoku
+Value='C02';Bolahla
+Value='C03';Ramapepe
+Value='C04';Mamafubelu
+Value='C05';Menkhoaneng
+Value='C06';Maisa-Phoka
+Value='C07';Sephokong
+Value='C08';Litjotjela
+Value='C09';Hleoheng
+Value='C10';Manka
+Value='C11';Tsoili-tsoili
+Value='C12';Hlotse
+Value='C13';Maputsoe
+Value='D01';Makeoane
+Value='D02';Mapoteng
+Value='D03';Kueneng
+Value='D04';Teba-Tebe
+Value='D05';Phuthiatsana
+Value='D06';Motanasela
+Value='D07';Senekane
+Value='D08';Kanana
+Value='D10';Berea
+Value='A01';Qiloane
+Value='A02';Ratau
+Value='A03';Likolobeng
+Value='A04';Manonyane
+Value='A05';Mohlakeng
+Value='A06';Mazenod
+Value='A07';Lilala
+Value='A08';Makhoarane
+Value='A09';Kubake
+Value='A10';Makhoalipana
+Value='A11';Maseru
+Value='A12';Semonkong
+Value='E01';Metsi-Maholo
+Value='E02';Mamantso
+Value='E03';Ramoetsana
+Value='E04';Lehlakaneng
+Value='E05';Makoabating
+Value='E06';Tsana-Talana
+Value='E07';Qibing
+Value='E08';Mafeteng
+Value='F01';Siloe
+Value='F02';Mashaleng
+Value='F03';Khoelenya
+Value='F04';Lithipeng
+Value='F05';Thaba-Mokhele
+Value='F06';Qhoasing
+Value='F07';Senqunyane
+Value='F08';Mohales Hoek
+Value='G01';Mtjanyane
+Value='G02';Qomoqomong
+Value='G03';Tosing
+Value='G04';Telle
+Value='G05';Tsitsong
+Value='G06';Quthing
+Value='H01';Qanya
+Value='H02';Ntsupe
+Value='H03';Tsoelikana
+Value='H04';Qachas Nek
+Value='K01';Tenesolo
+Value='K02';Khutlo-se-Metsi
+Value='K03';Litsoetse
+Value='K04';Bokong
+Value='K05';Linakeng
+Value='K06';Thaba-Tseka
+Value='J01';Seate
+Value='J02';Mphokojoane
+Value='J03';Senqebethu
+Value='J04';Menoaneng
+Value='J05';Mokhotlong
+
+[Item]
+Label=Zone
+Name=RV_ZONE
+Start=9
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Zone
+Name=RV_ZONE_VS1
+Value=1;Lowlands
+Value=2;Foothills
+Value=3;Mountains
+Value=4;Senqu river valley
+
+[Item]
+Label=Enumeration Area
+Name=RV_ENUMERATION_AREA
+Start=10
+Len=11
+ZeroFill=Yes
+
+[Item]
+Label=Ward
+Name=RV_WARD
+Start=21
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS1
+Value=1;Butha-Buthe
+Value=2;Makhoakhoeng
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS2
+Value=3;Leribe
+Value=4;Tsikoane, Peka le Kolobere
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS3
+Value=5;Mamathe le Thupa Kubu
+Value=6;Kueneng le Mapoteng
+Value=7;Maqhaka
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS4
+Value=8;Thaba-Bosiu le Ratau
+Value=9;Matsieng
+Value=10;Rothe, Kolo le Thaba-tseka
+Value=11;Kubake le Ramabanta
+Value=12;Maama
+Value=13;Tebang
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS5
+Value=9;Matsieng
+Value=10;Rothe, Kolo le Thaba-tseka
+Value=13;Tebang
+Value=14;Likhoele
+Value=15;Tajane le Pontseng
+Value=16;Matelile
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS6
+Value=9;Matsieng
+Value=15;Tajane le Pontseng
+Value=17;Phamong
+Value=18;Taung
+Value=19;Likoeneng
+Value=20;Thaba-Tsoeu
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS7
+Value=21;Sebapala
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS8
+Value=22;Qacha’s Nek
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS9
+Value=23;Mokhotlong
+Value=24;Tlokoeng
+
+[ValueSet]
+Label=Ward
+Name=RV_WARD_VS10
+Value=3;Leribe
+Value=4;Tsikoane, Peka le Kolobere
+Value=9;Matsieng
+Value=10;Rothe, Kolo le Thaba-tseka
+Value=22;Qacha’s Nek
+Value=24;Tlokoeng
+
+[Item]
+Label=Settlement
+Name=RV_SETTLEMENT
+Start=23
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Settlement
+Name=RV_SETTLEMENT_VS1
+Value=1;Urban
+Value=2;Peri-Urban
+Value=3;Rural
+
+[Item]
+Label=Village Number
+Name=RV_VILLAGE_NUMBER
+Start=24
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Household Number
+Name=RV_HOUSEHOLD_NUMBER
+Start=26
+Len=3
+ZeroFill=Yes
+
+[Record]
+Label=Individual
+Name=RV_INDIVIDUAL
+RecordTypeValue='I'
+Required=No
+MaxRecords=50
+RecordLen=79
+
+[Item]
+Label=Person Number
+Name=RV_B1
+Start=29
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Person Number
+Name=RV_B1_VS1
+Value=1:50;1-50
+
+[Item]
+Label=Names
+Name=RV_B2
+Start=31
+Len=40
+DataType=Alpha
+
+[Item]
+Label=Relationship
+Name=RV_B3
+Start=71
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Relationship
+Name=RV_B3_VS1
+Value=1;Household Head
+Value=2;Spouse
+Value=3;Partner(Cohabiting)
+Value=4;Son/Daughter
+Value=5;Son/daughter in-law
+Value=6;Step child
+Value=7;Sibling
+Value=8;Own Parent
+Value=9;Step Parent
+Value=10;Parent in-law
+Value=11;Grandmother/father
+Value=12;Grandchild/Great grandchild
+Value=13;Other relative
+Value=14;Not related
+
+[Item]
+Label=Sex
+Name=RV_B4
+Start=73
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Sex
+Name=RV_B4_VS1
+Value=1;Male
+Value=2;Female
+
+[Item]
+Label=Age
+Name=RV_B5
+Start=74
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Age
+Name=RV_B5_VS1
+Value=0:130;0-130
+
+[Item]
+Label=Residential status
+Name=RV_B7
+Start=77
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residential status
+Name=RV_B7_VS1
+Value=1;Present
+Value=2;Visitor
+Value=3;Member elsewhere in Lesotho
+Value=4;Member in RSA
+Value=5;Outside Lesotho and RSA
+
+[Item]
+Label=In household
+Name=RV_IN_HOUSEHOLD
+Start=78
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=In household
+Name=RV_IN_HOUSEHOLD_VS1
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=More People
+Name=RV_MORE_PEOPLE
+Start=79
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=More People
+Name=RV_MORE_PEOPLE_VS1
+Value=1;Yes
+Value=2;No
+
+[Record]
+Label=RV_Control
+Name=RV_CONTROL
+RecordTypeValue='C'
+Required=No
+RecordLen=30
+
+[Item]
+Label=No of household members
+Name=NO_OF_HOUSEHOLD_MEMBERS
+Start=29
+Len=2
+ZeroFill=Yes

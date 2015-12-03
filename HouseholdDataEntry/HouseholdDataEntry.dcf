@@ -1,0 +1,6747 @@
+﻿[Dictionary]
+Version=CSPro 6.1
+Label=LesothoCensus2016
+Name=LESOTHOCENSUS2016_DICT
+RecordTypeStart=1
+RecordTypeLen=1
+Positions=Relative
+ZeroFill=Yes
+DecimalChar=Yes
+
+[Level]
+Label=LesothoCensus2016 questionnaire
+Name=LESOTHOCENSUS2016_QUEST
+
+[IdItems]
+
+[Item]
+Label=District
+Name=DISTRICT
+Start=2
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=District
+Name=DISTRICT_VS1
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+
+[Item]
+Label=Constituency
+Name=CONSTITUENCY
+Start=4
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Constituency
+Name=CONSTITUENCY_VS1
+Value=1;Mechachane
+Value=2;Hololo
+Value=3;Motete
+Value=4;Qalo
+Value=5;Butha-buthe
+Value=6;Maliba-mats'o
+Value=7;Mphosong
+Value=8;Thaba-phats'oa
+Value=9;Mahobong
+Value=10;Pela-ts'oeu
+Value=11;Matlakeng
+Value=12;Leribe
+Value=13;Hlotse
+Value=14;Tsikoane
+Value=15;Maputsoe
+Value=16;Likhetlane
+Value=17;Peka
+Value=18;Kolonyama
+Value=19;Mosalemane
+Value=20;Makhoroana
+Value=21;Bela-bela
+Value=22;Malimong
+Value=23;Khafung
+Value=24;Teya-teyaneng
+Value=25;T'soana-makhulo
+Value=26;Thupa-kubu
+Value=27;Berea
+Value=28;Khubetsoana
+Value=29;Mabote
+Value=30;Motimposo
+Value=31;Stadium Area
+Value=32;Maseru
+Value=33;Thetsane
+Value=34;Qoaling
+Value=35;Lithoteng
+Value=36;Lithabaneng
+Value=37;Abia
+Value=38;Thaba-bosiu
+Value=39;Machache
+Value=40;Thaba-putsoa
+Value=41;Maama
+Value=42;Koro-koro
+Value=43;Qeme
+Value=44;Rothe
+Value=45;Matsieng
+Value=46;Makhaleng
+Value=47;Maletsunyane
+Value=48;Thaba-phechela
+Value=49;Kolo
+Value=50;Matelile
+Value=51;Maliepetsane
+Value=52;Thabana Morena
+Value=53;Likhoele
+Value=54;Qalabane
+Value=55;Mafeteng
+Value=56;Taung
+Value=57;Qhalasi
+Value=58;Mohale's Hoek
+Value=59;Mekaling
+Value=60;Qaqatu
+Value=61;Mpharane
+Value=62;Ketane
+Value=63;Hloahloeng
+Value=64;Tele
+Value=65;Moyeni
+Value=66;Sebapala
+Value=67;Mt.moorosi
+Value=68;Qhoali
+Value=69;Qacha'snek
+Value=70;Lebakeng
+Value=71;Tsoelike
+Value=72;Mantsonyane
+Value=73;Thaba-moea
+Value=74;Thaba-tseka
+Value=75;Semena
+Value=76;Mashai
+Value=77;Malingoaneng
+Value=78;Senqu
+Value=79;Mokhotlong
+Value=80;Bobatsi
+
+[Item]
+Label=Community Council
+Name=COMMUNITY_COUNCIL
+Start=6
+Len=3
+DataType=Alpha
+
+[ValueSet]
+Label=Community Council
+Name=COMMUNITY_COUNCIL_VS1
+Value='B01';Ngoajane
+Value='B02';Likila
+Value='B03';Nqoe
+Value='B04';Tŝa-le-Moleka
+Value='B05';Botha-Bothe
+Value='C01';Matsoku
+Value='C02';Bolahla
+Value='C03';Ramapepe
+Value='C04';Mamafubelu
+Value='C05';Menkhoaneng
+Value='C06';Maisa-Phoka
+Value='C07';Sephokong
+Value='C08';Litjotjela
+Value='C09';Hleoheng
+Value='C10';Manka
+Value='C11';Tsoili-tsoili
+Value='C12';Hlotse
+Value='C13';Maputsoe
+Value='D01';Makeoane
+Value='D02';Mapoteng
+Value='D03';Kueneng
+Value='D04';Teba-Tebe
+Value='D05';Phuthiatsana
+Value='D06';Motanasela
+Value='D07';Senekane
+Value='D08';Kanana
+Value='D10';Berea
+Value='A01';Qiloane
+Value='A02';Ratau
+Value='A03';Likolobeng
+Value='A04';Manonyane
+Value='A05';Mohlakeng
+Value='A06';Mazenod
+Value='A07';Lilala
+Value='A08';Makhoarane
+Value='A09';Kubake
+Value='A10';Makhoalipana
+Value='A11';Maseru
+Value='A12';Semonkong
+Value='E01';Metsi-Maholo
+Value='E02';Mamantso
+Value='E03';Ramoetsana
+Value='E04';Lehlakaneng
+Value='E05';Makoabating
+Value='E06';Tsana-Talana
+Value='E07';Qibing
+Value='E08';Mafeteng
+Value='F01';Siloe
+Value='F02';Mashaleng
+Value='F03';Khoelenya
+Value='F04';Lithipeng
+Value='F05';Thaba-Mokhele
+Value='F06';Qhoasing
+Value='F07';Senqunyane
+Value='F08';Mohales Hoek
+Value='G01';Mtjanyane
+Value='G02';Qomoqomong
+Value='G03';Tosing
+Value='G04';Telle
+Value='G05';Tsitsong
+Value='G06';Quthing
+Value='H01';Qanya
+Value='H02';Ntsupe
+Value='H03';Tsoelikana
+Value='H04';Qachas Nek
+Value='K01';Tenesolo
+Value='K02';Khutlo-se-Metsi
+Value='K03';Litsoetse
+Value='K04';Bokong
+Value='K05';Linakeng
+Value='K06';Thaba-Tseka
+Value='J01';Seate
+Value='J02';Mphokojoane
+Value='J03';Senqebethu
+Value='J04';Menoaneng
+Value='J05';Mokhotlong
+
+[Item]
+Label=Zone
+Name=ZONE
+Start=9
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Zone
+Name=ZONE_VS1
+Value=1;Lowlands
+Value=2;Foothills
+Value=3;Mountains
+Value=4;Senqu river valley
+
+[Item]
+Label=Enumeration Area
+Name=ENUMERATION_AREA
+Start=10
+Len=11
+ZeroFill=Yes
+
+[Item]
+Label=Ward
+Name=WARD
+Start=21
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ward
+Name=WARD_01_VS
+Value=1;Butha-Buthe
+Value=2;Makhoakhoeng
+
+[ValueSet]
+Label=Ward
+Name=WARD_02_VS
+Value=3;Leribe
+Value=4;Tsikoane, Peka le Kolobere
+
+[ValueSet]
+Label=Ward
+Name=WARD_03_VS
+Value=5;Mamathe le Thupa Kubu
+Value=6;Kueneng le Mapoteng
+Value=7;Maqhaka
+
+[ValueSet]
+Label=Ward
+Name=WARD_04_VS
+Value=8;Thaba-Bosiu le Ratau
+Value=9;Matsieng
+Value=10;Rothe, Kolo le Thaba-tseka
+Value=11;Kubake le Ramabanta
+Value=12;Maama
+Value=13;Tebang
+
+[ValueSet]
+Label=Ward
+Name=WARD_05_VS
+Value=9;Matsieng
+Value=10;Rothe, Kolo le Thaba-tseka
+Value=13;Tebang
+Value=14;Likhoele
+Value=15;Tajane le Pontseng
+Value=16;Matelile
+
+[ValueSet]
+Label=Ward
+Name=WARD_06_VS
+Value=9;Matsieng
+Value=15;Tajane le Pontseng
+Value=17;Phamong
+Value=18;Taung
+Value=19;Likoeneng
+Value=20;Thaba-Tsoeu
+
+[ValueSet]
+Label=Ward
+Name=WARD_07_VS
+Value=21;Sebapala
+
+[ValueSet]
+Label=Ward
+Name=WARD_08_VS
+Value=22;Qacha’s Nek
+
+[ValueSet]
+Label=Ward
+Name=WARD_09_VS
+Value=23;Mokhotlong
+Value=24;Tlokoeng
+
+[ValueSet]
+Label=Ward
+Name=WARD_10_VS
+Value=3;Leribe
+Value=4;Tsikoane, Peka le Kolobere
+Value=6;Kueneng le Mapoteng
+Value=8;Thaba-Bosiu le Ratau
+Value=9;Matsieng
+Value=10;Rothe, Kolo le Thaba-tseka
+Value=22;Qacha’s Nek
+Value=24;Tlokoeng
+
+[Item]
+Label=Settlement
+Name=SETTLEMENT
+Start=23
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Settlement
+Name=SETTLEMENT_VS1
+Value=1;Urban
+Value=2;Peri-Urban
+Value=3;Rural
+
+[Item]
+Label=Village Number
+Name=VILLAGE_NUMBER
+Start=24
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Village Number
+Name=VILLAGE_NUMBER_VS1
+Value=1:99;Jan-99
+
+[Item]
+Label=Village Name
+Name=VILLAGE_NAME
+Start=26
+Len=50
+DataType=Alpha
+
+[Item]
+Label=Household Number
+Name=HOUSEHOLD_NUMBER
+Start=76
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Number
+Name=HOUSEHOLD_NUMBER_VS1
+Value=1:999;1-999
+
+[Item]
+Label=Names of Household Head 
+Name=HOUSEHOLD_HEAD_NAMES
+Start=79
+Len=50
+DataType=Alpha
+
+[Record]
+Label=Individual
+Name=INDIVIDUAL
+RecordTypeValue='I'
+Required=No
+MaxRecords=50
+RecordLen=614
+
+[Item]
+Label=Person Number
+Name=B1
+Start=129
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Person Number
+Name=B1_VS1
+Value=1:50;Jan-50
+
+[Item]
+Label=Names
+Name=B2
+Start=131
+Len=40
+DataType=Alpha
+
+[Item]
+Label=Relationship
+Name=B3
+Start=171
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Relationship
+Name=B3_VS1
+Value=1;Household Head
+Value=2;Spouse
+Value=3;Partner(Cohabiting)
+Value=4;Son/Daughter
+Value=5;Son/daughter in-law
+Value=6;Step child
+Value=7;Sibling
+Value=8;Own Parent
+Value=9;Step Parent
+Value=10;Parent in-law
+Value=11;Grandmother/father
+Value=12;Grandchild/Great grandchild
+Value=13;Other relative
+Value=14;Not related
+
+[Item]
+Label=Sex
+Name=B4
+Start=173
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Sex
+Name=B4_VS1
+Value=1;Male
+Value=2;Female
+
+[Item]
+Label=Age
+Name=B5
+Start=174
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Age
+Name=B5_VS1
+Value=0:130;0-130
+
+[Item]
+Label=Date of Birth
+Name=B6
+Start=177
+Len=6
+DataType=Alpha
+
+[Item]
+Label=Month of Birth
+Name=B6A
+Start=177
+Len=2
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Month of Birth
+Name=B6A_VS1
+Value=1;January
+Value=2;February
+Value=3;March
+Value=4;April
+Value=5;May
+Value=6;June
+Value=7;July
+Value=8;August
+Value=9;September
+Value=10;October
+Value=11;November
+Value=12;December
+
+[Item]
+Label=Year of  Birth
+Name=B6B
+Start=179
+Len=4
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Year of  Birth
+Name=B6B_VS1
+Value=1886:2016;1886-2016
+
+[Item]
+Label=Residential Status
+Name=B7
+Start=183
+Len=1
+
+[ValueSet]
+Label=Residential Status
+Name=B7_VS1
+Value=1;Present
+Value=2;Visitor
+Value=3;Member elsewhere in Lesotho
+Value=4;Member in RSA
+Value=5;Outside Lesotho and RSA
+
+[Item]
+Label=Residence Absent/Outside Lesotho
+Name=B8
+Start=184
+Len=2
+
+[ValueSet]
+Label=Residence Absent/Outside Lesotho
+Name=B8_WITH_RSA_VS
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America(USA, Canada)
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[ValueSet]
+Label=Residence Absent/outside Lesotho
+Name=B8_NO_RSA_VS
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America(USA, Canada)
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[Item]
+Label=How Long Outside Lesotho
+Name=B9
+Start=186
+Len=2
+
+[Item]
+Label=Where Born
+Name=B10
+Start=188
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Where Born
+Name=B10_VS1
+Value=11;Same village/town
+Value=12;Different village /town,same district
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[Item]
+Label=How Long Lived in Village/Town
+Name=B11
+Start=190
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=How Long Lived in Village/Town
+Name=B11_VS1
+Value=0;Less than 1 year (enter 0)
+Value=1:130;1-130 (enter number of years)
+Value=998;Since birth
+
+[Item]
+Label=Residence April 2015
+Name=B12
+Start=193
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residence April 2015
+Name=B12_VS1
+Value=0;Not  born
+Value=1;In this village
+Value=2;Elsewhere in this district
+Value=3;Elsewhere in Lesotho
+Value=4;Other countries
+
+[Item]
+Label=Residence April 2015 Elsewhere Lesotho
+Name=B12A
+Start=194
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residence April 2015 Elsewhere Lesotho
+Name=B12A_VS1
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+
+[Item]
+Label=Residence April 2015 Other Countries
+Name=B12B
+Start=196
+Len=2
+
+[ValueSet]
+Label=Residence April 2015 Other Countries
+Name=B12B_VS1
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[Item]
+Label=Residence April 2011
+Name=B13
+Start=198
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residence April 2011
+Name=B13_VS1
+Value=0;Not  born
+Value=1;In this village
+Value=2;Elsewhere in this district
+Value=3;Elsewhere in Lesotho
+Value=4;Other countries
+
+[Item]
+Label=Residence April 2011 Elsewhere Lesotho
+Name=B13A
+Start=199
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residence April 2011 Elsewhere Lesotho
+Name=B13A_VS1
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+
+[Item]
+Label=Residence April 2015 Other Countries
+Name=B13B
+Start=201
+Len=2
+
+[ValueSet]
+Label=Residence April 2015 Other Countries
+Name=B13B_VS1
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[Item]
+Label=Residence April 2006
+Name=B14
+Start=203
+Len=1
+
+[ValueSet]
+Label=Residence April 2006
+Name=B14_VS1
+Value=0;Not  born
+Value=1;In this village
+Value=2;Elsewhere in this district
+Value=3;Elsewhere in Lesotho
+Value=4;Other countries
+
+[Item]
+Label=Residence April 2006 Elsewhere Lesotho
+Name=B14A
+Start=204
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residence April 2006 Elsewhere Lesotho
+Name=B14A_VS1
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+
+[Item]
+Label=Residence April 2006
+Name=B14B
+Start=206
+Len=2
+
+[ValueSet]
+Label=Residence April 2006
+Name=B14B_VS1
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[Item]
+Label=Citizenship
+Name=B15
+Start=208
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Citizenship
+Name=B15_VS1
+Value=0;Lesotho
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Malawi
+Value=23;DRC
+Value=24;Mauritius
+Value=25;Seychelles
+Value=26;Madagascar
+Value=27;Nigeria
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America(USA, Canada)
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don't know
+
+[Item]
+Label=Language Spoken Mostly
+Name=B16
+Start=210
+Len=1
+
+[ValueSet]
+Label=Language Spoken Mostly
+Name=B16_VS1
+Value=1;Sesotho
+Value=2;English
+Value=3;Xhosa/Sethepu
+Value=4;Sephuthi
+Value=5;Setebele/Zulu
+Value=6;Chinese
+Value=7;Other specify
+
+[Item]
+Label=Other Language Spoken Mostly
+Name=B16A
+Start=211
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Father Alive
+Name=B17
+Start=231
+Len=1
+
+[ValueSet]
+Label=Father Alive
+Name=B17_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't know
+
+[Item]
+Label=Mother Alive
+Name=B18
+Start=232
+Len=1
+
+[ValueSet]
+Label=Mother Alive
+Name=B18_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't know
+
+[Item]
+Label=Marital Status
+Name=B19
+Start=233
+Len=1
+
+[ValueSet]
+Label=Marital Status
+Name=B19_VS1
+Value=1;Never married
+Value=2;Monogamously married
+Value=3;Polygamously married
+Value=4;Living together
+Value=5;Separated
+Value=6;Divorced
+Value=7;Widowed
+Value=9;Don't know
+
+[Item]
+Label=Age at First Marriage
+Name=B20
+Start=234
+Len=2
+
+[ValueSet]
+Label=Age at First Marriage
+Name=B20_VS1
+Value=0;Less than a year
+Value=1:99;1 - 99
+Value=88;Not applicable
+
+[Item]
+Label=First or Only Spouse Alive
+Name=B21
+Start=236
+Len=1
+
+[ValueSet]
+Label=First or Only Spouse Alive
+Name=B21_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't know
+
+[Item]
+Label=Albino
+Name=C22
+Start=237
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Albino
+Name=C22_VS1
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Difficulty Seeing
+Name=C23A
+Start=238
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Difficulty Seeing
+Name=C23A_VS1
+Value=1;No Difficulty
+Value=2;Some Difficulty
+Value=3;A Lot of Difficulty
+Value=4;Cannot Do at All
+Value=5;Cannot Yet be Determined
+Value=9;Don't Know
+
+[Item]
+Label=Difficulty Hearing
+Name=C23B
+Start=239
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Difficulty Hearing
+Name=C23B_VS1
+Value=1;No Difficulty
+Value=2;Some Difficulty
+Value=3;A Lot of Difficulty
+Value=4;Cannot Do at All
+Value=5;Cannot Yet be Determined
+Value=9;Don't Know
+
+[Item]
+Label=Difficulty Communication
+Name=C23C
+Start=240
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Difficulty Communication
+Name=C23C_VS1
+Value=1;No Difficulty
+Value=2;Some Difficulty
+Value=3;A Lot of Difficulty
+Value=4;Cannot Do at All
+Value=5;Cannot Yet be Determined
+Value=9;Don't Know
+
+[Item]
+Label=Difficulty Walking
+Name=C23D
+Start=241
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Difficulty Walking
+Name=C23D_VS1
+Value=1;No Difficulty
+Value=2;Some Difficulty
+Value=3;A Lot of Difficulty
+Value=4;Cannot Do at All
+Value=5;Cannot Yet be Determined
+Value=9;Don't Know
+
+[Item]
+Label=Difficulty Remembering
+Name=C23E
+Start=242
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Difficulty Remembering
+Name=C23E_VS1
+Value=1;No Difficulty
+Value=2;Some Difficulty
+Value=3;A Lot of Difficulty
+Value=4;Cannot Do at All
+Value=5;Cannot Yet be Determined
+Value=9;Don't Know
+
+[Item]
+Label=Difficulty Self Care
+Name=C23F
+Start=243
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Difficulty Self Care
+Name=C23F_VS1
+Value=1;No Difficulty
+Value=2;Some Difficulty
+Value=3;A Lot of Difficulty
+Value=4;Cannot Do at All
+Value=5;Cannot Yet be Determined
+Value=9;Don't Know
+
+[Item]
+Label=Main Cause Seeing
+Name=C24A
+Start=244
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Cause Seeing
+Name=C24A_VS1
+Value=1;Born Disabled
+Value=2;Illness
+Value=3;Road/Railway Accident
+Value=4;Domestic Accident
+Value=5;Mine Accident
+Value=6;Other Work/Farming Accident
+Value=7;Fight/Assault
+Value=8;Playing/Sport
+Value=9;Animal Accident
+Value=10;Unknown
+Value=11;Domestic Violence
+Value=12;Albinism
+Value=13;Other (Specify)
+Value=99;Don't Know
+
+[Item]
+Label=Cause Seeing Other
+Name=C24A_OTHER
+Start=246
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Main Cause Hearing
+Name=C24B
+Start=266
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Cause Hearing
+Name=C24B_VS1
+Value=1;Born Disabled
+Value=2;Illness
+Value=3;Road/Railway Accident
+Value=4;Domestic Accident
+Value=5;Mine Accident
+Value=6;Other Work/Farming Accident
+Value=7;Fight/Assault
+Value=8;Playing/Sport
+Value=9;Animal Accident
+Value=10;Unknown
+Value=11;Domestic Violence
+Value=13;Other (Specify)
+Value=99;Don't Know
+
+[Item]
+Label=Cause Hearing Other
+Name=C24B_OTHER
+Start=268
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Main Cause Communication
+Name=C24C
+Start=288
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Cause Communication
+Name=C24C_VS1
+Value=1;Born Disabled
+Value=2;Illness
+Value=3;Road/Railway Accident
+Value=4;Domestic Accident
+Value=5;Mine Accident
+Value=6;Other Work/Farming Accident
+Value=7;Fight/Assault
+Value=8;Playing/Sport
+Value=9;Animal Accident
+Value=10;Unknown
+Value=11;Domestic Violence
+Value=13;Other (Specify)
+Value=99;Don't Know
+
+[Item]
+Label=Cause Communicating Other
+Name=C24C_OTHER
+Start=290
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Main Cause Walking
+Name=C24D
+Start=310
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Cause Walking
+Name=C24D_VS1
+Value=1;Born Disabled
+Value=2;Illness
+Value=3;Road/Railway Accident
+Value=4;Domestic Accident
+Value=5;Mine Accident
+Value=6;Other Work/Farming Accident
+Value=7;Fight/Assault
+Value=8;Playing/Sport
+Value=9;Animal Accident
+Value=10;Unknown
+Value=11;Domestic Violence
+Value=13;Other (Specify)
+Value=99;Don't Know
+
+[Item]
+Label=Cause Walking Other
+Name=C24D_OTHER
+Start=312
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Main Cause Remembering
+Name=C24E
+Start=332
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Cause Remembering
+Name=C24E_VS1
+Value=1;Born Disabled
+Value=2;Illness
+Value=3;Road/Railway Accident
+Value=4;Domestic Accident
+Value=5;Mine Accident
+Value=6;Other Work/Farming Accident
+Value=7;Fight/Assault
+Value=8;Playing/Sport
+Value=9;Animal Accident
+Value=10;Unknown
+Value=11;Domestic Violence
+Value=13;Other (Specify)
+Value=99;Don't Know
+
+[Item]
+Label=Cause Remembering Other
+Name=C24E_OTHER
+Start=334
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Main Cause Self Care
+Name=C24F
+Start=354
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Cause Self Care
+Name=C24F_VS1
+Value=1;Born Disabled
+Value=2;Illness
+Value=3;Road/Railway Accident
+Value=4;Domestic Accident
+Value=5;Mine Accident
+Value=6;Other Work/Farming Accident
+Value=7;Fight/Assault
+Value=8;Playing/Sport
+Value=9;Animal Accident
+Value=10;Unknown
+Value=11;Domestic Violence
+Value=13;Other (Specify)
+Value=99;Don't Know
+
+[Item]
+Label=Cause Self Care Other
+Name=C24F_OTHER
+Start=356
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Use Eye Glasses
+Name=C25A
+Start=376
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Eye Glasses
+Name=C25A_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Hearing Aid
+Name=C25B
+Start=377
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Hearing Aid
+Name=C25B_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Working Stick
+Name=C25C
+Start=378
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Working Stick
+Name=C25C_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Wheelchair
+Name=C25D
+Start=379
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Wheelchair
+Name=C25D_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Chronic Medication
+Name=C25E
+Start=380
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Chronic Medication
+Name=C25E_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use White Cane
+Name=C25F
+Start=381
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use White Cane
+Name=C25F_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Guide Dog
+Name=C25G
+Start=382
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Guide Dog
+Name=C25G_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Official Sign Language
+Name=C25H1
+Start=383
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Official Sign Language
+Name=C25H1_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Use Non Official Sign Language
+Name=C25H2
+Start=384
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Use Non Official Sign Language
+Name=C25H2_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Ever Attended School
+Name=D26
+Start=385
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ever Attended School
+Name=D26_VS1
+Value=1;Never Attended
+Value=2;Still Attending
+Value=3;Left School
+Value=9;Don't Know
+
+[Item]
+Label=Highest Education Level
+Name=D27
+Start=386
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Highest Education Level
+Name=D27_VS1
+Value=0;Pre – school
+Value=1;Standard 1
+Value=2;Standard 2
+Value=3;Standard 3
+Value=4;Standard 4
+Value=5;Standard 5
+Value=6;Standard 6
+Value=7;Standard 7
+Value=11;Form 1
+Value=12;Form 2
+Value=13;Form 3
+Value=14;Form 4
+Value=15;Form 5
+Value=18;None
+Value=19;Non-Formal Education
+Value=20;Diploma/certificate after primary
+Value=21;Vocational and technical  after primary
+Value=22;Diploma /certificate after secondary
+Value=23;Vocational and technical after secondary
+Value=24;Diploma /certificate after high school
+Value=25;Vocational and technical after high school
+Value=26;Graduate
+Value=27;Post graduate Diploma/Honors
+Value=28;Masters
+Value=29;PHD
+Value=30;Other  (specify)
+Value=88;N/A
+Value=99;Don’t know
+
+[Item]
+Label=Highest Education Level Other
+Name=D27_OTHER
+Start=388
+Len=20
+DataType=Alpha
+
+[Item]
+Label=How to Read
+Name=D28
+Start=408
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=How to Read
+Name=D28_VS1
+Value=1;Yes With Ease
+Value=2;Yes With Difficulty
+Value=3;Not At All
+
+[Item]
+Label=How to Write
+Name=D29
+Start=409
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=How to Write
+Name=D29_VS1
+Value=1;Yes With Ease
+Value=2;Yes With Difficulty
+Value=3;Not At All
+
+[Item]
+Label=Field of Specialization - Major
+Name=D30
+Start=410
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Field of Specialization - Major
+Name=D30_VS1
+Value=1;Physical and earth science professionals
+Value=2;Life science professionals
+Value=3;Engineering professionals
+Value=4;Architects, planners, surveyors and designers
+Value=5;Health professionals
+Value=6;Teaching professionals
+Value=7;Business and administration professionals
+Value=8;Information and communications technology professionals
+Value=9;Legal professionals
+Value=10;Librarians, archivists and curators
+Value=11;Social and religious professionals
+
+[Item]
+Label=Field of Specialization - Minor
+Name=D30B
+Start=412
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS1
+Value=11;Physics
+Value=12;Astronomy
+Value=13;Meteorology
+Value=14;Chemistry
+Value=15;Geology
+Value=16;Mathematics
+Value=17;Actuaries
+Value=18;Statistics
+Value=19;Demography and Population
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS2
+Value=21;Biology
+Value=22;Zoology
+Value=23;Farming
+Value=24;Forestry
+Value=25;Environmental protection
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS3
+Value=31;Industrial and production engineering
+Value=32;Civil engineering
+Value=33;Environmental engineering
+Value=34;Mechanical engineering
+Value=35;Chemical engineering
+Value=36;Mining engineering
+Value=37;Electrical engineering
+Value=38;Electronics engineering
+Value=39;Telecommunications engineers
+Value=310;Ships' engineers
+Value=311;Aircraft pilots and related associate professionals
+Value=312;Air traffic controllers
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS4
+Value=41;Building architecture
+Value=42;Landscape architecture
+Value=43;Product and garment design
+Value=44;Town and traffic planners
+Value=45;Cartographers and surveyors
+Value=46;Graphic and multimedia design
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS5
+Value=51;Medical doctors
+Value=52;Generalist medical practitioners
+Value=53;Specialist medical practitioners
+Value=54;Nursing professionals
+Value=55;Midwifery professionals
+Value=56;Paramedical practitioners
+Value=57;Veterinarians
+Value=58;Dentists
+Value=59;Pharmacy
+Value=510;Physiotherapists
+Value=511;Dieticians and nutritionists
+Value=512;Audiologists and speech therapists
+Value=513;Optometrists and ophthalmic opticians
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS6
+Value=61;University and higher education teachers
+Value=62;Vocational education teachers
+Value=63;Secondary education teachers
+Value=64;Primary school teachers
+Value=65;Early childhood teachers
+Value=66;Other teaching professionals
+Value=67;Education methods specialists
+Value=68;Special needs teachers
+Value=69;Other language teachers
+Value=610;Other music teachers
+Value=611;Other arts teachers
+Value=612;Information technology trainers
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS7
+Value=71;Finance professionals
+Value=72;Accountants
+Value=73;Financial
+Value=74;Investment analysts
+Value=75;Administration professionals
+Value=76;Management, procurement and organization
+Value=77;Policy administration professionals
+Value=78;Personnel and careers professionals
+Value=79;Training and staff development professionals
+Value=710;Sales, marketing and public relations professionals
+Value=711;Advertising
+Value=712;Marketing professionals
+Value=713;Public relations professionals
+Value=714;Tourism and hospitality
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS8
+Value=81;Systems analysts
+Value=82;Software developers
+Value=83;Web and multimedia developers
+Value=84;Applications programmers
+Value=85;Database designers and administrators
+Value=86;Systems administrators
+Value=87;Computer network professionals
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS9
+Value=91;Legal studies/Law
+Value=92;Peace and conflict studies
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS10
+Value=101;Archivists and curators
+Value=102;Librarians and related information professionals
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS11
+Value=111;Economists
+Value=112;Sociologists, anthropologists and related professionals
+Value=113;Philosophers, historians and political scientists
+Value=114;Psychologists
+Value=115;Social work and counselling professionals
+Value=116;Religious/Theology professionals
+Value=117;Authors, journalists and linguists
+Value=118;Authors and related writers
+Value=119;Journalists
+Value=1110;Translators, interpreters and other linguists
+Value=1111;Creative and performing artists
+Value=1112;Visual artists
+Value=1113;Musicians, singers and composers
+Value=1114;Dancers and choreographers
+Value=1115;Film, stage and related directors and producers
+Value=1116;Actors
+Value=1117;Announcers on radio, television and other media
+Value=1118;Sports coaches, instructors and officials
+Value=1119;Fitness and recreation instructors and program leaders
+Value=1120;Interior designers and decorators
+Value=1121;Gallery and museum
+Value=1122;Chefs
+Value=1123;Hardy crafts and designers
+
+[Item]
+Label=Main Activity Status in Past 7 Days
+Name=E31
+Start=416
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Activity Status in Past 7 Days
+Name=E31_VS1
+Value=10;Employer
+Value=20;Own account worker/farmer
+Value=31;Regular wage/ salary earner
+Value=32;Casual worker
+Value=40;Unpaid family worker
+Value=50;Job seeking
+Value=55;Job seeking for the first time
+Value=60;Homemaker
+Value=65;Housewife
+Value=70;Retired
+Value=80;Student
+Value=81;Other (specify)
+Value=99;Don’t know
+
+[Item]
+Label=7 Days Other
+Name=E31OTHER
+Start=418
+Len=50
+DataType=Alpha
+
+[Item]
+Label=Main Activity Status in Past 12 Days
+Name=E32
+Start=468
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Activity Status in Past 12 Days
+Name=E32_VS1
+Value=10;Employer
+Value=20;Own account worker/farmer
+Value=31;Regular wage/ salary earner
+Value=32;Casual worker
+Value=40;Unpaid family worker
+Value=50;Job seeking
+Value=60;Homemaker
+Value=65;Housewife
+Value=70;Retired
+Value=80;Student
+Value=81;Other (specify)
+Value=99;Don’t know
+
+[Item]
+Label=12 Months Other
+Name=E32OTHER
+Start=470
+Len=50
+DataType=Alpha
+
+[Item]
+Label=Employer
+Name=E33
+Start=520
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Employer
+Name=E33_VS1
+Value=1;Government
+Value=2;Parastatal
+Value=3;Private
+Value=4;Manufacturing
+Value=5;Self-employed
+Value=6;Private Household
+Value=7;RSA
+Value=9;Other (Specify)
+
+[Item]
+Label=Employer
+Name=E33OTHER
+Start=521
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Occupation - Major Group
+Name=OCCUPATION_LEVEL_1
+Start=541
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Occupation - Major Group
+Name=OCCUPATION_LEVEL_1_VS1
+Value=1;Managers
+Value=2;Professionals
+Value=3;Technicians and associate professionals
+Value=4;Clerical support workers
+Value=5;Service and sales workers
+Value=6;Skilled agricultural, forestry and fishery workers
+Value=7;Craft and related trades workers
+Value=8;Plant and machine operators, and assemblers
+Value=9;Elementary occupations
+Value=0;Armed forces occupations
+
+[Item]
+Label=Occupation - Sub Major Group
+Name=OCCUPATION_LEVEL_2
+Start=542
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS1
+Value=11;Chief executives, senior officials and legislators
+Value=12;Administrative and commercial managers
+Value=13;Production and specialized services managers
+Value=14;Hospitality, retail and other services managers
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS2
+Value=21;Science and engineering professionals
+Value=22;Health professionals
+Value=23;Teaching professionals
+Value=24;Business and administration professionals
+Value=25;Information and communications technology professionals
+Value=26;Legal, social and cultural professionals
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS3
+Value=31;Science and engineering associate professionals
+Value=32;Health associate professionals
+Value=33;Business and administration associate professionals
+Value=34;Legal, social, cultural and related associate professionals
+Value=35;Information and communications technicians
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS4
+Value=41;General and keyboard clerks
+Value=42;Customer services clerks
+Value=43;Numerical and material recording clerks
+Value=44;Other clerical support workers
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS5
+Value=51;Personal service workers
+Value=52;Sales workers
+Value=53;Personal care workers
+Value=54;Protective services workers
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS6
+Value=61;Market-oriented skilled agricultural workers
+Value=62;Market-oriented skilled forestry, fishing and hunting workers
+Value=63;Subsistence farmers, fishers, hunters and gatherers
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS7
+Value=71;Building and related trades workers, excluding electricians
+Value=72;Metal, machinery and related trades workers
+Value=73;Handicraft and printing workers
+Value=74;Electrical and electronic trades workers
+Value=75;Food processing, wood working, garment and other craft and related trades workers
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS8
+Value=81;Stationary plant and machine operators
+Value=82;Assemblers
+Value=83;Drivers and mobile plant operators
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS9
+Value=91;Cleaners and helpers
+Value=92;Agricultural, forestry and fishery labourers
+Value=93;Labourers in mining, construction, manufacturing and transport
+Value=94;Food preparation assistants
+Value=95;Street and related sales and service workers
+Value=96;Refuse workers and other elementary workers
+
+[ValueSet]
+Label=Occupation Level 2
+Name=OCCUPATION_LEVEL_2_VS0
+Value=1;Commissioned armed forces officers
+Value=2;Non-commissioned armed forces officers
+Value=3;Armed forces occupations, other ranks
+
+[Item]
+Label=Occupation - Minor Group
+Name=OCCUPATION_LEVEL_3
+Start=544
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS11
+Value=111;Legislators and senior officials
+Value=112;Managing directors and chief executives
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS12
+Value=121;Business services and administration managers
+Value=122;Sales, marketing and development managers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS13
+Value=131;Production managers in agriculture, forestry and fisheries
+Value=132;Manufacturing, mining, construction, and distribution managers
+Value=133;Information and communications technology service managers
+Value=134;Professional services managers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS14
+Value=141;Hotel and restaurant managers
+Value=142;Retail and wholesale trade managers
+Value=143;Other services managers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS21
+Value=211;Physical and earth science professionals
+Value=212;Mathematicians, actuaries and statisticians
+Value=213;Life science professionals
+Value=214;Engineering professionals (excluding electrotechnology)
+Value=215;Electrotechnology engineers
+Value=216;Architects, planners, surveyors and designers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS22
+Value=221;Medical doctors
+Value=222;Nursing and midwifery professionals
+Value=223;Traditional and complementary medicine professionals
+Value=224;Paramedical practitioners
+Value=225;Veterinarians
+Value=226;Other health professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS23
+Value=231;University and higher education teachers
+Value=232;Vocational education teachers
+Value=233;Secondary education teachers
+Value=234;Primary school and early childhood teachers
+Value=235;Other teaching professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS24
+Value=241;Finance professionals
+Value=242;Administration professionals
+Value=243;Sales, marketing and public relations professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS25
+Value=251;Software and applications developers and analysts
+Value=252;Database and network professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS26
+Value=261;Legal professionals
+Value=262;Librarians, archivists and curators
+Value=263;Social and religious professionals
+Value=264;Authors, journalists and linguists
+Value=265;Creative and performing artists
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS31
+Value=311;Physical and engineering science technicians
+Value=312;Mining, manufacturing and construction supervisors
+Value=313;Process control technicians
+Value=314;Life science technicians and related associate professionals
+Value=315;Ship and aircraft controllers and technicians
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS32
+Value=321;Medical and pharmaceutical technicians
+Value=322;Nursing and midwifery associate professionals
+Value=323;Traditional and complementary medicine associate professionals
+Value=324;Veterinary technicians and assistants
+Value=325;Other health associate professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS33
+Value=331;Financial and mathematical associate professionals
+Value=332;Sales and purchasing agents and brokers
+Value=333;Business services agents
+Value=334;Administrative and specialized secretaries
+Value=335;Regulatory government associate professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS34
+Value=341;Legal, social and religious associate professionals
+Value=342;Sports and fitness workers
+Value=343;Artistic, cultural and culinary associate professionals
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS35
+Value=351;Information and communications technology operations and user support technicians
+Value=352;Telecommunications and broadcasting technicians
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS41
+Value=411;General office clerks
+Value=412;Secretaries (general)
+Value=413;Keyboard operators
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS42
+Value=421;Tellers, money collectors and related clerks
+Value=422;Client information workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS43
+Value=431;Numerical clerks
+Value=432;Material-recording and transport clerks
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS44
+Value=441;Other clerical support workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS51
+Value=511;Travel attendants, conductors and guides
+Value=512;Cooks
+Value=513;Waiters and bartenders
+Value=514;Hairdressers, beauticians and related workers
+Value=515;Building and housekeeping supervisors
+Value=516;Other personal services workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS52
+Value=521;Street and market salespersons
+Value=522;Shop salespersons
+Value=523;Cashiers and ticket clerks
+Value=524;Other sales workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS53
+Value=531;Child care workers and teachers' aides
+Value=532;Personal care workers in health services
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS54
+Value=541;Protective services workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS61
+Value=611;Market gardeners and crop growers
+Value=612;Animal producers
+Value=613;Mixed crop and animal producers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS62
+Value=621;Forestry and related workers
+Value=622;Fishery workers, hunters and trappers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS63
+Value=631;Subsistence crop farmers
+Value=632;Subsistence livestock farmers
+Value=633;Subsistence mixed crop and livestock farmers
+Value=634;Subsistence fishers, hunters, trappers and gatherers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS71
+Value=711;Building frame and related trades workers
+Value=712;Building finishers and related trades workers
+Value=713;Painters, building structure cleaners and related trades workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS72
+Value=721;Sheet and structural metal workers, moulders and welders, and related workers
+Value=722;Blacksmiths, toolmakers and related trades workers
+Value=723;Machinery mechanics and repairers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS73
+Value=731;Handicraft workers
+Value=732;Printing trades workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS74
+Value=741;Electrical equipment installers and repairers
+Value=742;Electronics and telecommunications installers and repairers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS75
+Value=751;Food processing and related trades workers
+Value=752;Wood treaters, cabinet-makers and related trades workers
+Value=753;Garment and related trades workers
+Value=754;Other craft and related workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS81
+Value=811;Mining and mineral processing plant operators
+Value=812;Metal processing and finishing plant operators
+Value=813;Chemical and photographic products plant and machine operators
+Value=814;Rubber, plastic and paper products machine operators
+Value=815;Textile, fur and leather products machine operators
+Value=816;Food and related products machine operators
+Value=817;Wood processing and papermaking plant operators
+Value=818;Other stationary plant and machine operators
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS82
+Value=821;Assemblers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS83
+Value=831;Locomotive engine drivers and related workers
+Value=832;Car, van and motorcycle drivers
+Value=833;Heavy truck and bus drivers
+Value=834;Mobile plant operators
+Value=835;Ships' deck crews and related workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS91
+Value=911;Domestic, hotel and office cleaners and helpers
+Value=912;Vehicle, window, laundry and other hand cleaning workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS92
+Value=921;Agricultural, forestry and fishery labourers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS93
+Value=931;Mining and construction labourers
+Value=932;Manufacturing labourers
+Value=933;Transport and storage labourers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS94
+Value=941;Food preparation assistants
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS95
+Value=951;Street and related service workers
+Value=952;Street vendors (excluding food)
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS96
+Value=961;Refuse workers
+Value=962;Other elementary workers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS01
+Value=11;Commissioned armed forces officers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS02
+Value=21;Non-commissioned armed forces officers
+
+[ValueSet]
+Label=Occupation Level 3
+Name=OCCUPATION_LEVEL_3_VS03
+Value=31;Armed forces occupations, other ranks
+
+[Item]
+Label=Occupation - Unit Group
+Name=OCCUPATION_LEVEL_4
+Start=547
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS111
+Value=1111;Legislators
+Value=1112;Senior government officials
+Value=1113;Traditional chiefs and heads of village
+Value=1114;Senior officials of special-interest organizations
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS112
+Value=1120;Managing directors and chief executives
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS121
+Value=1211;Finance managers
+Value=1212;Human resource managers
+Value=1213;Policy and planning managers
+Value=1219;Business services and administration managers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS122
+Value=1221;Sales and marketing managers
+Value=1222;Advertising and public relations managers
+Value=1223;Research and development managers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS131
+Value=1311;Agricultural and forestry production managers
+Value=1312;Aquaculture and fisheries production managers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS132
+Value=1321;Manufacturing managers
+Value=1322;Mining managers
+Value=1323;Construction managers
+Value=1324;Supply, distribution and related managers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS133
+Value=1330;Information and communications technology service managers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS134
+Value=1341;Child care services managers
+Value=1342;Health services managers
+Value=1343;Aged care services managers
+Value=1344;Social welfare managers
+Value=1345;Education managers
+Value=1346;Financial and insurance services branch managers
+Value=1349;Professional services managers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS141
+Value=1411;Hotel managers
+Value=1412;Restaurant managers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS142
+Value=1420;Retail and wholesale trade managers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS143
+Value=1431;Sports, recreation and cultural centre managers
+Value=1439;Services managers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS211
+Value=2111;Physicists and astronomers
+Value=2112;Meteorologists
+Value=2113;Chemists
+Value=2114;Geologists and geophysicists
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS212
+Value=2120;Mathematicians, actuaries and statisticians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS213
+Value=2131;Biologists, botanists, zoologists and related professionals
+Value=2132;Farming, forestry and fisheries advisers
+Value=2133;Environmental protection professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS214
+Value=2141;Industrial and production engineers
+Value=2142;Civil engineers
+Value=2143;Environmental engineers
+Value=2144;Mechanical engineers
+Value=2145;Chemical engineers
+Value=2146;Mining engineers, metallurgists and related professionals
+Value=2149;Engineering professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS215
+Value=2151;Electrical engineers
+Value=2152;Electronics engineers
+Value=2153;Telecommunications engineers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS216
+Value=2161;Building architects
+Value=2162;Landscape architects
+Value=2163;Product and garment designers
+Value=2164;Town and traffic planners
+Value=2165;Cartographers and surveyors
+Value=2166;Graphic and multimedia designers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS221
+Value=2211;Generalist medical practitioners
+Value=2212;Specialist medical practitioners
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS222
+Value=2221;Nursing professionals
+Value=2222;Midwifery professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS223
+Value=2230;Traditional and complementary medicine professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS224
+Value=2240;Paramedical practitioners
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS225
+Value=2250;Veterinarians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS226
+Value=2261;Dentists
+Value=2262;Pharmacists
+Value=2263;Environmental and occupational health and hygiene professionals
+Value=2264;Physiotherapists
+Value=2265;Dieticians and nutritionists
+Value=2266;Audiologists and speech therapists
+Value=2267;Optometrists and ophthalmic opticians
+Value=2269;Health professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS231
+Value=2310;University and higher education teachers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS232
+Value=2320;Vocational education teachers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS233
+Value=2330;Secondary education teachers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS234
+Value=2341;Primary school teachers
+Value=2342;Early childhood educators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS235
+Value=2351;Education methods specialists
+Value=2352;Special needs teachers
+Value=2353;Other language teachers
+Value=2354;Other music teachers
+Value=2355;Other arts teachers
+Value=2356;Information technology trainers
+Value=2359;Teaching professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS241
+Value=2411;Accountants
+Value=2412;Financial and investment advisers
+Value=2413;Financial analysts
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS242
+Value=2421;Management and organization analysts
+Value=2422;Policy administration professionals
+Value=2423;Personnel and careers professionals
+Value=2424;Training and staff development professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS243
+Value=2431;Advertising and marketing professionals
+Value=2432;Public relations professionals
+Value=2433;Technical and medical sales professionals (excluding ICT)
+Value=2434;Information and communications technology sales professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS251
+Value=2511;Systems analysts
+Value=2512;Software developers
+Value=2513;Web and multimedia developers
+Value=2514;Applications programmers
+Value=2519;Software and applications developers and analysts not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS252
+Value=2521;Database designers and administrators
+Value=2522;Systems administrators
+Value=2523;Computer network professionals
+Value=2529;Database and network professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS261
+Value=2611;Lawyers
+Value=2612;Judges
+Value=2619;Legal professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS262
+Value=2621;Archivists and curators
+Value=2622;Librarians and related information professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS263
+Value=2631;Economists
+Value=2632;Sociologists, anthropologists and related professionals
+Value=2633;Philosophers, historians and political scientists
+Value=2634;Psychologists
+Value=2635;Social work and counselling professionals
+Value=2636;Religious professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS264
+Value=2641;Authors and related writers
+Value=2642;Journalists
+Value=2643;Translators, interpreters and other linguists
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS265
+Value=2651;Visual artists
+Value=2652;Musicians, singers and composers
+Value=2653;Dancers and choreographers
+Value=2654;Film, stage and related directors and producers
+Value=2655;Actors
+Value=2656;Announcers on radio, television and other media
+Value=2659;Creative and performing artists not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS311
+Value=3111;Chemical and physical science technicians
+Value=3112;Civil engineering technicians
+Value=3113;Electrical engineering technicians
+Value=3114;Electronics engineering technicians
+Value=3115;Mechanical engineering technicians
+Value=3116;Chemical engineering technicians
+Value=3117;Mining and metallurgical technicians
+Value=3118;Draughtspersons
+Value=3119;Physical and engineering science technicians not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS312
+Value=3121;Mining supervisors
+Value=3122;Manufacturing supervisors
+Value=3123;Construction supervisors
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS313
+Value=3131;Power production plant operators
+Value=3132;Incinerator and water treatment plant operators
+Value=3133;Chemical processing plant controllers
+Value=3134;Petroleum and natural gas refining plant operators
+Value=3135;Metal production process controllers
+Value=3139;Process control technicians not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS314
+Value=3141;Life science technicians (excluding medical)
+Value=3142;Agricultural technicians
+Value=3143;Forestry technicians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS315
+Value=3151;Ships' engineers
+Value=3152;Ships' deck officers and pilots
+Value=3153;Aircraft pilots and related associate professionals
+Value=3154;Air traffic controllers
+Value=3155;Air traffic safety electronics technicians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS321
+Value=3211;Medical imaging and therapeutic equipment technicians
+Value=3212;Medical and pathology laboratory technicians
+Value=3213;Pharmaceutical technicians and assistants
+Value=3214;Medical and dental prosthetic technicians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS322
+Value=3221;Nursing associate professionals
+Value=3222;Midwifery associate professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS323
+Value=3230;Traditional and complementary medicine associate professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS324
+Value=3240;Veterinary technicians and assistants
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS325
+Value=3251;Dental assistants and therapists
+Value=3252;Medical records and health information technicians
+Value=3253;Community health workers
+Value=3254;Dispensing opticians
+Value=3255;Physiotherapy technicians and assistants
+Value=3256;Medical assistants
+Value=3257;Environmental and occupational health inspectors and associates
+Value=3258;Ambulance workers
+Value=3259;Health associate professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS331
+Value=3311;Securities and finance dealers and brokers
+Value=3312;Credit and loans officers
+Value=3313;Accounting associate professionals
+Value=3314;Statistical, mathematical and related associate professionals
+Value=3315;Valuers and loss assessors
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS332
+Value=3321;Insurance representatives
+Value=3322;Commercial sales representatives
+Value=3323;Buyers
+Value=3324;Trade brokers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS333
+Value=3331;Clearing and forwarding agents
+Value=3332;Conference and event planners
+Value=3333;Employment agents and contractors
+Value=3334;Real estate agents and property managers
+Value=3339;Business services agents not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS334
+Value=3341;Office supervisors
+Value=3342;Legal secretaries
+Value=3343;Administrative and executive secretaries
+Value=3344;Medical secretaries
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS335
+Value=3351;Customs and border inspectors
+Value=3352;Government tax and excise officials
+Value=3353;Government social benefits officials
+Value=3354;Government licensing officials
+Value=3355;Police inspectors and detectives
+Value=3359;Regulatory government associate professionals not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS341
+Value=3411;Legal and related associate professionals
+Value=3412;Social work associate professionals
+Value=3413;Religious associate professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS342
+Value=3421;Athletes and sports players
+Value=3422;Sports coaches, instructors and officials
+Value=3423;Fitness and recreation instructors and program leaders
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS343
+Value=3431;Photographers
+Value=3432;Interior designers and decorators
+Value=3433;Gallery, museum and library technicians
+Value=3434;Chefs
+Value=3435;Other artistic and cultural associate professionals
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS351
+Value=3511;Information and communications technology operations technicians
+Value=3512;Information and communications technology user support technicians
+Value=3513;Computer network and systems technicians
+Value=3514;Web technicians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS352
+Value=3521;Broadcasting and audio-visual technicians
+Value=3522;Telecommunications engineering technicians
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS411
+Value=4110;General office clerks
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS412
+Value=4120;Secretaries (general)
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS413
+Value=4131;Typists and word processing operators
+Value=4132;Data entry clerks
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS421
+Value=4211;Bank tellers and related clerks
+Value=4212;Bookmakers, croupiers and related gaming workers
+Value=4213;Pawnbrokers and money-lenders
+Value=4214;Debt-collectors and related workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS422
+Value=4221;Travel consultants and clerks
+Value=4222;Contact centre information clerks
+Value=4223;Telephone switchboard operators
+Value=4224;Hotel receptionists
+Value=4225;Enquiry clerks
+Value=4226;Receptionists (general)
+Value=4227;Survey and market research interviewers
+Value=4229;Client information workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS431
+Value=4311;Accounting and bookkeeping clerks
+Value=4312;Statistical, finance and insurance clerks
+Value=4313;Payroll clerks
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS432
+Value=4321;Stock clerks
+Value=4322;Production clerks
+Value=4323;Transport clerks
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS441
+Value=4411;Library clerks
+Value=4412;Mail carriers and sorting clerks
+Value=4413;Coding, proof-reading and related clerks
+Value=4414;Scribes and related workers
+Value=4415;Filing and copying clerks
+Value=4416;Personnel clerks
+Value=4419;Clerical support workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS511
+Value=5111;Travel attendants and travel stewards
+Value=5112;Transport conductors
+Value=5113;Travel guides
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS512
+Value=5120;Cooks
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS513
+Value=5131;Waiters
+Value=5132;Bartenders
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS514
+Value=5141;Hairdressers
+Value=5142;Beauticians and related workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS515
+Value=5151;Cleaning and housekeeping supervisors in offices, hotels and other establishments
+Value=5152;Domestic housekeepers
+Value=5153;Building caretakers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS516
+Value=5161;Astrologers, fortune-tellers and related workers
+Value=5162;Companions and valets
+Value=5163;Undertakers and embalmers
+Value=5164;Pet groomers and animal care workers
+Value=5165;Driving instructors
+Value=5169;Personal services workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS521
+Value=5211;Stall and market salespersons
+Value=5212;Street food salespersons
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS522
+Value=5221;Shop keepers
+Value=5222;Shop supervisors
+Value=5223;Shop sales assistants
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS523
+Value=5230;Cashiers and ticket clerks
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS524
+Value=5241;Fashion and other models
+Value=5242;Sales demonstrators
+Value=5243;Door to door salespersons
+Value=5244;Contact centre salespersons
+Value=5245;Service station attendants
+Value=5246;Food service counter attendants
+Value=5249;Sales workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS531
+Value=5311;Child care workers
+Value=5312;Teachers' aides
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS532
+Value=5321;Health care assistants
+Value=5322;Home-based personal care workers
+Value=5329;Personal care workers in health services not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS541
+Value=5411;Fire-fighters
+Value=5412;Police officers
+Value=5413;Prison guards
+Value=5414;Security guards
+Value=5419;Protective services workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS611
+Value=6111;Field crop and vegetable growers
+Value=6112;Tree and shrub crop growers
+Value=6113;Gardeners, horticultural and nursery growers
+Value=6114;Mixed crop growers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS612
+Value=6121;Livestock and dairy producers
+Value=6122;Poultry producers
+Value=6123;Apiarists and sericulturists
+Value=6129;Animal producers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS613
+Value=6130;Mixed crop and animal producers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS621
+Value=6210;Forestry and related workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS622
+Value=6221;Aquaculture workers
+Value=6222;Inland and coastal waters fishery workers
+Value=6223;Deep-sea fishery workers
+Value=6224;Hunters and trappers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS631
+Value=6310;Subsistence crop farmers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS632
+Value=6320;Subsistence livestock farmers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS633
+Value=6330;Subsistence mixed crop and livestock farmers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS634
+Value=6340;Subsistence fishers, hunters, trappers and gatherers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS711
+Value=7111;House builders
+Value=7112;Bricklayers and related workers
+Value=7113;Stonemasons, stone cutters, splitters and carvers
+Value=7114;Concrete placers, concrete finishers and related workers
+Value=7115;Carpenters and joiners
+Value=7119;Building frame and related trades workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS712
+Value=7121;Roofers
+Value=7122;Floor layers and tile setters
+Value=7123;Plasterers
+Value=7124;Insulation workers
+Value=7125;Glaziers
+Value=7126;Plumbers and pipe fitters
+Value=7127;Air conditioning and refrigeration mechanics
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS713
+Value=7131;Painters and related workers
+Value=7132;Spray painters and varnishers
+Value=7133;Building structure cleaners
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS721
+Value=7211;Metal moulders and coremakers
+Value=7212;Welders and flamecutters
+Value=7213;Sheet-metal workers
+Value=7214;Structural-metal preparers and erectors
+Value=7215;Riggers and cable splicers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS722
+Value=7221;Blacksmiths, hammersmiths and forging press workers
+Value=7222;Toolmakers and related workers
+Value=7223;Metal working machine tool setters and operators
+Value=7224;Metal polishers, wheel grinders and tool sharpeners
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS723
+Value=7231;Motor vehicle mechanics and repairers
+Value=7232;Aircraft engine mechanics and repairers
+Value=7233;Agricultural and industrial machinery mechanics and repairers
+Value=7234;Bicycle and related repairers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS731
+Value=7311;Precision-instrument makers and repairers
+Value=7312;Musical instrument makers and tuners
+Value=7313;Jewellery and precious-metal workers
+Value=7314;Potters and related workers
+Value=7315;Glass makers, cutters, grinders and finishers
+Value=7316;Sign writers, decorative painters, engravers and etchers
+Value=7317;Handicraft workers in wood, basketry and related materials
+Value=7318;Handicraft workers in textile, leather and related materials
+Value=7319;Handicraft workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS732
+Value=7321;Pre-press technicians
+Value=7322;Printers
+Value=7323;Print finishing and binding workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS741
+Value=7411;Building and related electricians
+Value=7412;Electrical mechanics and fitters
+Value=7413;Electrical line installers and repairers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS742
+Value=7421;Electronics mechanics and servicers
+Value=7422;Information and communications technology installers and servicers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS751
+Value=7511;Butchers, fishmongers and related food preparers
+Value=7512;Bakers, pastry-cooks and confectionery makers
+Value=7513;Dairy-products makers
+Value=7514;Fruit, vegetable and related preservers
+Value=7515;Food and beverage tasters and graders
+Value=7516;Tobacco preparers and tobacco products makers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS752
+Value=7521;Wood treaters
+Value=7522;Cabinet-makers and related workers
+Value=7523;Woodworking-machine tool setters and operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS753
+Value=7531;Tailors, dressmakers, furriers and hatters
+Value=7532;Garment and related pattern-makers and cutters
+Value=7533;Sewing, embroidery and related workers
+Value=7534;Upholsterers and related workers
+Value=7535;Pelt dressers, tanners and fellmongers
+Value=7536;Shoemakers and related workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS754
+Value=7541;Underwater divers
+Value=7542;Shotfirers and blasters
+Value=7543;Product graders and testers (excluding foods and beverages)
+Value=7544;Fumigators and other pest and weed controllers
+Value=7549;Craft and related workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS811
+Value=8111;Miners and quarriers
+Value=8112;Mineral and stone processing plant operators
+Value=8113;Well drillers and borers and related workers
+Value=8114;Cement, stone and other mineral products machine operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS812
+Value=8121;Metal processing plant operators
+Value=8122;Metal finishing, plating and coating machine operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS813
+Value=8131;Chemical products plant and machine operators
+Value=8132;Photographic products machine operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS814
+Value=8141;Rubber products machine operators
+Value=8142;Plastic products machine operators
+Value=8143;Paper products machine operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS815
+Value=8151;Fibre preparing, spinning and winding machine operators
+Value=8152;Weaving and knitting machine operators
+Value=8153;Sewing machine operators
+Value=8154;Bleaching, dyeing and fabric cleaning machine operators
+Value=8155;Fur and leather preparing machine operators
+Value=8156;Shoemaking and related machine operators
+Value=8157;Laundry machine operators
+Value=8159;Textile, fur and leather products machine operators not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS816
+Value=8160;Food and related products machine operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS817
+Value=8171;Pulp and papermaking plant operators
+Value=8172;Wood processing plant operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS818
+Value=8181;Glass and ceramics plant operators
+Value=8182;Steam engine and boiler operators
+Value=8183;Packing, bottling and labelling machine operators
+Value=8189;Stationary plant and machine operators not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS821
+Value=8211;Mechanical machinery assemblers
+Value=8212;Electrical and electronic equipment assemblers
+Value=8219;Assemblers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS831
+Value=8311;Locomotive engine drivers
+Value=8312;Railway brake, signal and switch operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS832
+Value=8321;Motorcycle drivers
+Value=8322;Car, taxi and van drivers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS833
+Value=8331;Bus and tram drivers
+Value=8332;Heavy truck and lorry drivers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS834
+Value=8341;Mobile farm and forestry plant operators
+Value=8342;Earthmoving and related plant operators
+Value=8343;Crane, hoist and related plant operators
+Value=8344;Lifting truck operators
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS835
+Value=8350;Ships' deck crews and related workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS911
+Value=9111;Domestic cleaners and helpers
+Value=9112;Cleaners and helpers in offices, hotels and other establishments
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS912
+Value=9121;Hand launderers and pressers
+Value=9122;Vehicle cleaners
+Value=9123;Window cleaners
+Value=9129;Other cleaning workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS921
+Value=9211;Crop farm labourers
+Value=9212;Livestock farm labourers
+Value=9213;Mixed crop and livestock farm labourers
+Value=9214;Garden and horticultural labourers
+Value=9215;Forestry labourers
+Value=9216;Fishery and aquaculture labourers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS931
+Value=9311;Mining and quarrying labourers
+Value=9312;Civil engineering labourers
+Value=9313;Building construction labourers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS932
+Value=9321;Hand packers
+Value=9329;Manufacturing labourers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS933
+Value=9331;Hand and pedal vehicle drivers
+Value=9332;Drivers of animal-drawn vehicles and machinery
+Value=9333;Freight handlers
+Value=9334;Shelf fillers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS941
+Value=9411;Fast food preparers
+Value=9412;Kitchen helpers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS951
+Value=9510;Street and related service workers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS952
+Value=9520;Street vendors (excluding food)
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS961
+Value=9611;Garbage and recycling collectors
+Value=9612;Refuse sorters
+Value=9613;Sweepers and related labourers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS962
+Value=9621;Messengers, package deliverers and luggage porters
+Value=9622;Odd job persons
+Value=9623;Meter readers and vending-machine collectors
+Value=9624;Water and firewood collectors
+Value=9629;Elementary workers not elsewhere classified
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS011
+Value=110;Commissioned armed forces officers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS021
+Value=210;Non-commissioned armed forces officers
+
+[ValueSet]
+Label=Occupation Level 4
+Name=OCCUPATION_LEVEL_4_VS031
+Value=310;Armed forces occupations, other ranks
+
+[Item]
+Label=Section
+Name=SECTION
+Start=551
+Len=2
+
+[ValueSet]
+Label=Section
+Name=SECTION_VS1
+Value=1;Agriculture, forestry and fishing
+Value=2;Mining and quarrying
+Value=3;Manufacturing
+Value=4;Electricity, gas, steam and air conditioning supply
+Value=5;Water supply; sewerage, waste management and remediation activities
+Value=6;Construction
+Value=7;Wholesale and retail trade; repair of motor vehicles and motorcycles
+Value=8;Transportation and storage
+Value=9;Accommodation and food service activities
+Value=10;Information and communication
+Value=11;Financial and insurance activities
+Value=12;Real estate activities
+Value=13;Professional, scientific and technical activities
+Value=14;Administrative and support service activities
+Value=15;Public administration and defence; compulsory social security
+Value=16;Education
+Value=17;Human health and social work activities
+Value=18;Arts, entertainment and recreation
+Value=19;Other service activities
+Value=20;Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use
+Value=21;Activities of extraterritorial organizations and bodies
+
+[Item]
+Label=Divisions
+Name=DIVISIONS
+Start=553
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSA
+Value=1;Crop and animal production, hunting and related service activities
+Value=2;Forestry and logging
+Value=3;Fishing and aquaculture
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSB
+Value=5;Mining of coal and lignite
+Value=6;Extraction of crude petroleum and natural gas
+Value=7;Mining of metal ores
+Value=8;Other mining and quarrying
+Value=9;Mining support service activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSC
+Value=10;Manufacture of food products
+Value=11;Manufacture of beverages
+Value=12;Manufacture of tobacco products
+Value=13;Manufacture of textiles
+Value=14;Manufacture of wearing apparel
+Value=15;Manufacture of leather and related products
+Value=16;Manufacture of wood and of products of wood and cork, except furniture; manufacture of articles of straw and plaiting materials
+Value=17;Manufacture of paper and paper products
+Value=18;Printing and reproduction of recorded media
+Value=19;Manufacture of coke and refined petroleum products
+Value=20;Manufacture of chemicals and chemical products
+Value=21;Manufacture of pharmaceuticals, medicinal chemical and botanical products
+Value=22;Manufacture of rubber and plastics products
+Value=23;Manufacture of other non-metallic mineral products
+Value=24;Manufacture of basic metals
+Value=25;Manufacture of fabricated metal products, except machinery and equipment
+Value=26;Manufacture of computer, electronic and optical products
+Value=27;Manufacture of electrical equipment
+Value=28;Manufacture of machinery and equipment n.e.c.
+Value=29;Manufacture of motor vehicles, trailers and semi-trailers
+Value=30;Manufacture of other transport equipment
+Value=31;Manufacture of furniture
+Value=32;Other manufacturing
+Value=33;Repair and installation of machinery and equipment
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSD
+Value=35;Electricity, gas, steam and air conditioning supply
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSE
+Value=36;Water collection, treatment and supply
+Value=37;Sewerage
+Value=38;Waste collection, treatment and disposal activities; materials recovery
+Value=39;Remediation activities and other waste management services
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSF
+Value=41;Construction of buildings
+Value=42;Civil engineering
+Value=43;Specialized construction activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSG
+Value=45;Wholesale and retail trade and repair of motor vehicles and motorcycles
+Value=46;Wholesale trade, except of motor vehicles and motorcycles
+Value=47;Retail trade, except of motor vehicles and motorcycles
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSH
+Value=49;Land transport and transport via pipelines
+Value=50;Water transport
+Value=51;Air transport
+Value=52;Warehousing and support activities for transportation
+Value=53;Postal and courier activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSI
+Value=55;Accommodation
+Value=56;Food and beverage service activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSJ
+Value=58;Publishing activities
+Value=59;Motion picture, video and television programme production, sound recording and music publishing activities
+Value=60;Programming and broadcasting activities
+Value=61;Telecommunications
+Value=62;Computer programming, consultancy and related activities
+Value=63;Information service activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSK
+Value=64;Financial service activities, except insurance and pension funding
+Value=65;Insurance, reinsurance and pension funding, except compulsory social security
+Value=66;Activities auxiliary to financial service and insurance activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSL
+Value=68;Real estate activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSM
+Value=69;Legal and accounting activities
+Value=70;Activities of head offices; management consultancy activities
+Value=71;Architectural and engineering activities; technical testing and analysis
+Value=72;Scientific research and development
+Value=73;Advertising and market research
+Value=74;Other professional, scientific and technical activities
+Value=75;Veterinary activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSN
+Value=77;Rental and leasing activities
+Value=78;Employment activities
+Value=79;Travel agency, tour operator, reservation service and related activities
+Value=80;Security and investigation activities
+Value=81;Services to buildings and landscape activities
+Value=82;Office administrative, office support and other business support activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSO
+Value=84;Public administration and defence; compulsory social security
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSP
+Value=85;Education
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSQ
+Value=86;Human health activities
+Value=87;Residential care activities
+Value=88;Social work activities without accommodation
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSR
+Value=90;Creative, arts and entertainment activities
+Value=91;Libraries, archives, museums and other cultural activities
+Value=92;Gambling and betting activities
+Value=93;Sports activities and amusement and recreation activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSS
+Value=94;Activities of membership organizations
+Value=95;Repair of computers and personal and household goods
+Value=96;Other personal service activities
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VST
+Value=97;Activities of households as employers of domestic personnel
+Value=98;Undifferentiated goods- and services-producing activities of private households for own use
+
+[ValueSet]
+Label=Divisions
+Name=DIVISIONS_VSU
+Value=99;Activities of extraterritorial organizations and bodies
+
+[Item]
+Label=Groups
+Name=GROUPS
+Start=555
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS01
+Value=11;Growing of non-perennial crops
+Value=12;Growing of perennial crops
+Value=13;Plant propagation
+Value=14;Animal production
+Value=15;Mixed farming
+Value=16;Support activities to agriculture and post-harvest crop activities
+Value=17;Hunting, trapping and related service activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS02
+Value=21;Silviculture and other forestry activities
+Value=22;Logging
+Value=23;Gathering of non-wood forest products
+Value=24;Support services to forestry
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS03
+Value=31;Fishing
+Value=32;Aquaculture
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS05
+Value=51;Mining of hard coal
+Value=52;Mining of lignite
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS06
+Value=61;Extraction of crude petroleum
+Value=62;Extraction of natural gas
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS07
+Value=71;Mining of iron ores
+Value=72;Mining of non-ferrous metal ores
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS08
+Value=81;Quarrying of stone, sand and clay
+Value=89;Mining and quarrying n.e.c.
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS09
+Value=91;Support activities for petroleum and natural gas extraction
+Value=99;Support activities for other mining and quarrying
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS10
+Value=101;Processing and preserving of meat
+Value=102;Processing and preserving of fish, crustaceans and molluscs
+Value=103;Processing and preserving of fruit and vegetables
+Value=104;Manufacture of vegetable and animal oils and fats
+Value=105;Manufacture of dairy products
+Value=106;Manufacture of grain mill products, starches and starch products
+Value=107;Manufacture of other food products
+Value=108;Manufacture of prepared animal feeds
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS11
+Value=110;Manufacture of beverages
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS12
+Value=120;Manufacture of tobacco products
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS13
+Value=131;Spinning, weaving and finishing of textiles
+Value=139;Manufacture of other textiles
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS14
+Value=141;Manufacture of wearing apparel, except fur apparel
+Value=142;Manufacture of articles of fur
+Value=143;Manufacture of knitted and crocheted apparel
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS15
+Value=151;Tanning and dressing of leather; manufacture of luggage, handbags, saddlery and harness; dressing and dyeing of fur
+Value=152;Manufacture of footwear
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS16
+Value=161;Sawmilling and planing of wood
+Value=162;Manufacture of products of wood, cork, straw and plaiting materials
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS17
+Value=170;Manufacture of paper and paper products
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS18
+Value=181;Printing and service activities related to printing
+Value=182;Reproduction of recorded media
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS19
+Value=191;Manufacture of coke oven products
+Value=192;Manufacture of refined petroleum products
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS20
+Value=201;Manufacture of basic chemicals, fertilizers and nitrogen compounds, plastics and synthetic rubber in primary forms
+Value=202;Manufacture of other chemical products
+Value=203;Manufacture of man-made fibres
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS21
+Value=210;Manufacture of pharmaceuticals, medicinal chemical and botanical products
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS22
+Value=221;Manufacture of rubber products
+Value=222;Manufacture of plastics products
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS23
+Value=231;Manufacture of glass and glass products
+Value=239;Manufacture of non-metallic mineral products n.e.c.
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS24
+Value=241;Manufacture of basic iron and steel
+Value=242;Manufacture of basic precious and other non-ferrous metals
+Value=243;Casting of metals
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS25
+Value=251;Manufacture of structural metal products, tanks, reservoirs and steam generators
+Value=252;Manufacture of weapons and ammunition
+Value=259;Manufacture of other fabricated metal products; metalworking service activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS26
+Value=261;Manufacture of electronic components and boards
+Value=262;Manufacture of computers and peripheral equipment
+Value=263;Manufacture of communication equipment
+Value=264;Manufacture of consumer electronics
+Value=265;Manufacture of measuring, testing, navigating and control equipment; watches and clocks
+Value=266;Manufacture of irradiation, electromedical and electrotherapeutic equipment
+Value=267;Manufacture of optical instruments and photographic equipment
+Value=268;Manufacture of magnetic and optical media
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS27
+Value=271;Manufacture of electric motors, generators, transformers and electricity distribution and control apparatus
+Value=272;Manufacture of batteries and accumulators
+Value=273;Manufacture of wiring and wiring devices
+Value=274;Manufacture of electric lighting equipment
+Value=275;Manufacture of domestic appliances
+Value=279;Manufacture of other electrical equipment
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS28
+Value=281;Manufacture of general-purpose machinery
+Value=282;Manufacture of special-purpose machinery
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS29
+Value=291;Manufacture of motor vehicles
+Value=292;Manufacture of bodies (coachwork) for motor vehicles; manufacture of trailers and semi-trailers
+Value=293;Manufacture of parts and accessories for motor vehicles
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS30
+Value=301;Building of ships and boats
+Value=302;Manufacture of railway locomotives and rolling stock
+Value=303;Manufacture of air and spacecraft and related machinery
+Value=304;Manufacture of military fighting vehicles
+Value=309;Manufacture of transport equipment n.e.c.
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS31
+Value=310;Manufacture of furniture
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS32
+Value=321;Manufacture of jewellery, bijouterie and related articles
+Value=322;Manufacture of musical instruments
+Value=323;Manufacture of sports goods
+Value=324;Manufacture of games and toys
+Value=325;Manufacture of medical and dental instruments and supplies
+Value=329;Other manufacturing n.e.c.
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS33
+Value=331;Repair of fabricated metal products, machinery and equipment
+Value=332;Installation of industrial machinery and equipment
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS35
+Value=351;Electric power generation, transmission and distribution
+Value=352;Manufacture of gas; distribution of gaseous fuels through mains
+Value=353;Steam and air conditioning supply
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS36
+Value=360;Water collection, treatment and supply
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS37
+Value=370;Sewerage
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS38
+Value=381;Waste collection
+Value=382;Waste treatment and disposal
+Value=383;Materials recovery
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS39
+Value=390;Remediation activities and other waste management services
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS41
+Value=410;Construction of buildings
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS42
+Value=421;Construction of roads and railways
+Value=422;Construction of utility projects
+Value=429;Construction of other civil engineering projects
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS43
+Value=431;Demolition and site preparation
+Value=432;Electrical, plumbing and other construction installation activities
+Value=433;Building completion and finishing
+Value=439;Other specialized construction activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS45
+Value=451;Sale of motor vehicles
+Value=452;Maintenance and repair of motor vehicles
+Value=453;Sale of motor vehicle parts and accessories
+Value=454;Sale, maintenance and repair of motorcycles and related parts and accessories
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS46
+Value=461;Wholesale on a fee or contract basis
+Value=462;Wholesale of agricultural raw materials and live animals
+Value=463;Wholesale of food, beverages and tobacco
+Value=464;Wholesale of household goods
+Value=465;Wholesale of machinery, equipment and supplies
+Value=466;Other specialized wholesale
+Value=469;Non-specialized wholesale trade
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS47
+Value=471;Retail sale in non-specialized stores
+Value=472;Retail sale of food, beverages and tobacco in specialized stores
+Value=473;Retail sale of automotive fuel in specialized stores
+Value=474;Retail sale of information and communications equipment in specialized stores
+Value=475;Retail sale of other household equipment in specialized stores
+Value=476;Retail sale of cultural and recreation goods in specialized stores
+Value=477;Retail sale of other goods in specialized stores
+Value=478;Retail sale via stalls and markets
+Value=479;Retail trade not in stores, stalls or markets
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS49
+Value=491;Transport via railways
+Value=492;Other land transport
+Value=493;Transport via pipeline
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS50
+Value=501;Sea and coastal water transport
+Value=502;Inland water transport
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS51
+Value=511;Passenger air transport
+Value=512;Freight air transport
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS52
+Value=521;Warehousing and storage
+Value=522;Support activities for transportation
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS53
+Value=531;Postal activities
+Value=532;Courier activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS55
+Value=551;Short term accommodation activities
+Value=552;Camping grounds, recreational vehicle parks and trailer parks
+Value=559;Other accommodation
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS56
+Value=561;Restaurants and mobile food service activities
+Value=562;Event catering and other food service activities
+Value=563;Beverage serving activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS58
+Value=581;Publishing of books, periodicals and other publishing activities
+Value=582;Software publishing
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS59
+Value=591;Motion picture, video and television programme activities
+Value=592;Sound recording and music publishing activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS60
+Value=601;Radio broadcasting
+Value=602;Television programming and broadcasting activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS61
+Value=611;Wired telecommunications activities
+Value=612;Wireless telecommunications activities
+Value=613;Satellite telecommunications activities
+Value=619;Other telecommunications activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS62
+Value=620;Computer programming, consultancy and related activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS63
+Value=631;Data processing, hosting and related activities; web portals
+Value=639;Other information service activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS64
+Value=641;Monetary intermediation
+Value=642;Activities of holding companies
+Value=643;Trusts, funds and similar financial entities
+Value=649;Other financial service activities, except insurance and pension funding activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS65
+Value=651;Insurance
+Value=652;Reinsurance
+Value=653;Pension funding
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS66
+Value=661;Activities auxiliary to financial service activities, except insurance and pension funding
+Value=662;Activities auxiliary to insurance and pension funding
+Value=663;Fund management activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS68
+Value=681;Real estate activities with own or leased property
+Value=682;Real estate activities on a fee or contract basis
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS69
+Value=691;Legal activities
+Value=692;Accounting, bookkeeping and auditing activities; tax consultancy
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS70
+Value=701;Activities of head offices
+Value=702;Management consultancy activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS71
+Value=711;Architectural and engineering activities and related technical consultancy
+Value=712;Technical testing and analysis
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS72
+Value=721;Research and experimental development on natural sciences and engineering
+Value=722;Research and experimental development on social sciences and humanities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS73
+Value=731;Advertising
+Value=732;Market research and public opinion polling
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS74
+Value=741;Specialized design activities
+Value=742;Photographic activities
+Value=749;Other professional, scientific and technical activities n.e.c.
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS75
+Value=750;Veterinary activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS77
+Value=771;Renting and leasing of motor vehicles
+Value=772;Renting and leasing of personal and household goods
+Value=773;Renting and leasing of other machinery, equipment and tangible goods
+Value=774;Leasing of intellectual property and similar products, except copyrighted works
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS78
+Value=781;Activities of employment placement agencies
+Value=782;Temporary employment agency activities
+Value=783;Other human resources provision
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS79
+Value=791;Travel agency and tour operator activities
+Value=799;Other reservation service and related activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS80
+Value=801;Private security activities
+Value=802;Security systems service activities
+Value=803;Investigation activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS81
+Value=811;Combined facilities support activities
+Value=812;Cleaning activities
+Value=813;Landscape care and maintenance service activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS82
+Value=821;Office administrative and support activities
+Value=822;Activities of call centres
+Value=823;Organization of conventions and trade shows
+Value=829;Business support service activities n.e.c.
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS84
+Value=841;Administration of the State and the economic and social policy of the community
+Value=842;Provision of services to the community as a whole
+Value=843;Compulsory social security activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS85
+Value=851;Pre-primary and primary education
+Value=852;Secondary education
+Value=853;Higher education
+Value=854;Other education
+Value=855;Educational support activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS86
+Value=861;Hospital activities
+Value=862;Medical and dental practice activities
+Value=869;Other human health activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS87
+Value=871;Residential nursing care facilities
+Value=872;Residential care activities for mental retardation, mental health and substance abuse
+Value=873;Residential care activities for the elderly and disabled
+Value=879;Other residential care activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS88
+Value=881;Social work activities without accommodation for the elderly and disabled
+Value=889;Other social work activities without accommodation
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS90
+Value=900;Creative, arts and entertainment activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS91
+Value=910;Libraries, archives, museums and other cultural activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS92
+Value=920;Gambling and betting activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS93
+Value=931;Sports activities
+Value=932;Other amusement and recreation activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS94
+Value=941;Activities of business, employers and professional membership organizations
+Value=942;Activities of trade unions
+Value=949;Activities of other membership organizations
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS95
+Value=951;Repair of computers and communication equipment
+Value=952;Repair of personal and household goods
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS96
+Value=960;Other personal service activities
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS97
+Value=970;Activities of households as employers of domestic personnel
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS98
+Value=981;Undifferentiated goods-producing activities of private households for own use
+Value=982;Undifferentiated service-producing activities of private households for own use
+
+[ValueSet]
+Label=Groups
+Name=GROUPS_VS99
+Value=990;Activities of extraterritorial organizations and bodies
+
+[Item]
+Label=Class
+Name=CLASS
+Start=558
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS011
+Value=111;Growing of cereals (except rice), leguminous crops and oil seeds
+Value=112;Growing of rice
+Value=113;Growing of vegetables and melons, roots and tubers
+Value=114;Growing of sugar cane
+Value=115;Growing of tobacco
+Value=116;Growing of fibre crops
+Value=119;Growing of other non-perennial crops
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS012
+Value=121;Growing of grapes
+Value=122;Growing of tropical and subtropical fruits
+Value=123;Growing of citrus fruits
+Value=124;Growing of pome fruits and stone fruits
+Value=125;Growing of other tree and bush fruits and nuts
+Value=126;Growing of oleaginous fruits
+Value=127;Growing of beverage crops
+Value=128;Growing of spices, aromatic, drug and pharmaceutical crops
+Value=129;Growing of other perennial crops
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS013
+Value=130;Plant propagation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS014
+Value=141;Raising of cattle and buffaloes
+Value=142;Raising of horses and other equines
+Value=143;Raising of camels and camelids
+Value=144;Raising of sheep and goats
+Value=145;Raising of swine/pigs
+Value=146;Raising of poultry
+Value=149;Raising of other animals
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS015
+Value=150;Mixed farming
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS016
+Value=161;Support activities for crop production
+Value=162;Support activities for animal production
+Value=163;Post-harvest crop activities
+Value=164;Seed processing for propagation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS017
+Value=170;Hunting, trapping and related service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS021
+Value=210;Silviculture and other forestry activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS022
+Value=220;Logging
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS023
+Value=230;Gathering of non-wood forest products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS024
+Value=240;Support services to forestry
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS031
+Value=311;Marine fishing
+Value=312;Freshwater fishing
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS032
+Value=321;Marine aquaculture
+Value=322;Freshwater aquaculture
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS051
+Value=510;Mining of hard coal
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS052
+Value=520;Mining of lignite
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS061
+Value=610;Extraction of crude petroleum
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS062
+Value=620;Extraction of natural gas
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS071
+Value=710;Mining of iron ores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS072
+Value=721;Mining of uranium and thorium ores
+Value=729;Mining of other non-ferrous metal ores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS081
+Value=810;Quarrying of stone, sand and clay
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS089
+Value=891;Mining of chemical and fertilizer minerals
+Value=892;Extraction of peat
+Value=893;Extraction of salt
+Value=899;Other mining and quarrying n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS091
+Value=910;Support activities for petroleum and natural gas extraction
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS099
+Value=990;Support activities for other mining and quarrying
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS101
+Value=1010;Processing and preserving of meat
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS102
+Value=1020;Processing and preserving of fish, crustaceans and molluscs
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS103
+Value=1030;Processing and preserving of fruit and vegetables
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS104
+Value=1040;Manufacture of vegetable and animal oils and fats
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS105
+Value=1050;Manufacture of dairy products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS106
+Value=1061;Manufacture of grain mill products
+Value=1062;Manufacture of starches and starch products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS107
+Value=1071;Manufacture of bakery products
+Value=1072;Manufacture of sugar
+Value=1073;Manufacture of cocoa, chocolate and sugar confectionery
+Value=1074;Manufacture of macaroni, noodles, couscous and similar farinaceous products
+Value=1075;Manufacture of prepared meals and dishes
+Value=1079;Manufacture of other food products n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS108
+Value=1080;Manufacture of prepared animal feeds
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS110
+Value=1101;Distilling, rectifying and blending of spirits
+Value=1102;Manufacture of wines
+Value=1103;Manufacture of malt liquors and malt
+Value=1104;Manufacture of soft drinks; production of mineral waters and other bottled waters
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS120
+Value=1200;Manufacture of tobacco products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS131
+Value=1311;Preparation and spinning of textile fibres
+Value=1312;Weaving of textiles
+Value=1313;Finishing of textiles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS139
+Value=1391;Manufacture of knitted and crocheted fabrics
+Value=1392;Manufacture of made-up textile articles, except apparel
+Value=1393;Manufacture of carpets and rugs
+Value=1394;Manufacture of cordage, rope, twine and netting
+Value=1399;Manufacture of other textiles n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS141
+Value=1410;Manufacture of wearing apparel, except fur apparel
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS142
+Value=1420;Manufacture of articles of fur
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS143
+Value=1430;Manufacture of knitted and crocheted apparel
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS151
+Value=1511;Tanning and dressing of leather; dressing and dyeing of fur
+Value=1512;Manufacture of luggage, handbags and the like, saddlery and harness
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS152
+Value=1520;Manufacture of footwear
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS161
+Value=1610;Sawmilling and planing of wood
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS162
+Value=1621;Manufacture of veneer sheets and wood-based panels
+Value=1622;Manufacture of builders’ carpentry and joinery
+Value=1623;Manufacture of wooden containers
+Value=1629;Manufacture of other products of wood; manufacture of articles of cork, straw and plaiting materials
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS170
+Value=1701;Manufacture of pulp, paper and paperboard
+Value=1702;Manufacture of corrugated paper and paperboard and of containers of paper and paperboard
+Value=1709;Manufacture of other articles of paper and paperboard
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS181
+Value=1811;Printing
+Value=1812;Service activities related to printing
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS182
+Value=1820;Reproduction of recorded media
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS191
+Value=1910;Manufacture of coke oven products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS192
+Value=1920;Manufacture of refined petroleum products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS201
+Value=2011;Manufacture of basic chemicals
+Value=2012;Manufacture of fertilizers and nitrogen compounds
+Value=2013;Manufacture of plastics and synthetic rubber in primary forms
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS202
+Value=2021;Manufacture of pesticides and other agrochemical products
+Value=2022;Manufacture of paints, varnishes and similar coatings, printing ink and mastics
+Value=2023;Manufacture of soap and detergents, cleaning and polishing preparations, perfumes and toilet preparations
+Value=2029;Manufacture of other chemical products n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS203
+Value=2030;Manufacture of man-made fibres
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS210
+Value=2100;Manufacture of pharmaceuticals, medicinal chemical and botanical products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS221
+Value=2211;Manufacture of rubber tyres and tubes; retreading and rebuilding of rubber tyres
+Value=2219;Manufacture of other rubber products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS222
+Value=2220;Manufacture of plastics products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS231
+Value=2310;Manufacture of glass and glass products
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS239
+Value=2391;Manufacture of refractory products
+Value=2392;Manufacture of clay building materials
+Value=2393;Manufacture of other porcelain and ceramic products
+Value=2394;Manufacture of cement, lime and plaster
+Value=2395;Manufacture of articles of concrete, cement and plaster
+Value=2396;Cutting, shaping and finishing of stone
+Value=2399;Manufacture of other non-metallic mineral products n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS241
+Value=2410;Manufacture of basic iron and steel
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS242
+Value=2420;Manufacture of basic precious and other non-ferrous metals
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS243
+Value=2431;Casting of iron and steel
+Value=2432;Casting of non-ferrous metals
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS251
+Value=2511;Manufacture of structural metal products
+Value=2512;Manufacture of tanks, reservoirs and containers of metal
+Value=2513;Manufacture of steam generators, except central heating hot water boilers
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS252
+Value=2520;Manufacture of weapons and ammunition
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS259
+Value=2591;Forging, pressing, stamping and roll-forming of metal; powder metallurgy
+Value=2592;Treatment and coating of metals; machining
+Value=2593;Manufacture of cutlery, hand tools and general hardware
+Value=2599;Manufacture of other fabricated metal products n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS261
+Value=2610;Manufacture of electronic components and boards
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS262
+Value=2620;Manufacture of computers and peripheral equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS263
+Value=2630;Manufacture of communication equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS264
+Value=2640;Manufacture of consumer electronics
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS265
+Value=2651;Manufacture of measuring, testing, navigating and control equipment
+Value=2652;Manufacture of watches and clocks
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS266
+Value=2660;Manufacture of irradiation, electromedical and electrotherapeutic equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS267
+Value=2670;Manufacture of optical instruments and photographic equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS268
+Value=2680;Manufacture of magnetic and optical media
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS271
+Value=2710;Manufacture of electric motors, generators, transformers and electricity distribution and control apparatus
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS272
+Value=2720;Manufacture of batteries and accumulators
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS273
+Value=2731;Manufacture of fibre optic cables
+Value=2732;Manufacture of other electronic and electric wires and cables
+Value=2733;Manufacture of wiring devices
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS274
+Value=2740;Manufacture of electric lighting equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS275
+Value=2750;Manufacture of domestic appliances
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS279
+Value=2790;Manufacture of other electrical equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS281
+Value=2811;Manufacture of engines and turbines, except aircraft, vehicle and cycle engines
+Value=2812;Manufacture of fluid power equipment
+Value=2813;Manufacture of other pumps, compressors, taps and valves
+Value=2814;Manufacture of bearings, gears, gearing and driving elements
+Value=2815;Manufacture of ovens, furnaces and furnace burners
+Value=2816;Manufacture of lifting and handling equipment
+Value=2817;Manufacture of office machinery and equipment (except computers and peripheral equipment)
+Value=2818;Manufacture of power-driven hand tools
+Value=2819;Manufacture of other general-purpose machinery
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS282
+Value=2821;Manufacture of agricultural and forestry machinery
+Value=2822;Manufacture of metal-forming machinery and machine tools
+Value=2823;Manufacture of machinery for metallurgy
+Value=2824;Manufacture of machinery for mining, quarrying and construction
+Value=2825;Manufacture of machinery for food, beverage and tobacco processing
+Value=2826;Manufacture of machinery for textile, apparel and leather production
+Value=2829;Manufacture of other special-purpose machinery
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS291
+Value=2910;Manufacture of motor vehicles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS292
+Value=2920;Manufacture of bodies (coachwork) for motor vehicles; manufacture of trailers and semi-trailers
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS293
+Value=2930;Manufacture of parts and accessories for motor vehicles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS301
+Value=3011;Building of ships and floating structures
+Value=3012;Building of pleasure and sporting boats
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS302
+Value=3020;Manufacture of railway locomotives and rolling stock
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS303
+Value=3030;Manufacture of air and spacecraft and related machinery
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS304
+Value=3040;Manufacture of military fighting vehicles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS309
+Value=3091;Manufacture of motorcycles
+Value=3092;Manufacture of bicycles and invalid carriages
+Value=3099;Manufacture of other transport equipment n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS310
+Value=3100;Manufacture of furniture
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS321
+Value=3211;Manufacture of jewellery and related articles
+Value=3212;Manufacture of imitation jewellery and related articles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS322
+Value=3220;Manufacture of musical instruments
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS323
+Value=3230;Manufacture of sports goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS324
+Value=3240;Manufacture of games and toys
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS325
+Value=3250;Manufacture of medical and dental instruments and supplies
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS329
+Value=3290;Other manufacturing n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS331
+Value=3311;Repair of fabricated metal products
+Value=3312;Repair of machinery
+Value=3313;Repair of electronic and optical equipment
+Value=3314;Repair of electrical equipment
+Value=3315;Repair of transport equipment, except motor vehicles
+Value=3319;Repair of other equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS332
+Value=3320;Installation of industrial machinery and equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS351
+Value=3510;Electric power generation, transmission and distribution
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS352
+Value=3520;Manufacture of gas; distribution of gaseous fuels through mains
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS353
+Value=3530;Steam and air conditioning supply
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS360
+Value=3600;Water collection, treatment and supply
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS370
+Value=3700;Sewerage
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS381
+Value=3811;Collection of non-hazardous waste
+Value=3812;Collection of hazardous waste
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS382
+Value=3821;Treatment and disposal of non-hazardous waste
+Value=3822;Treatment and disposal of hazardous waste
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS383
+Value=3830;Materials recovery
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS390
+Value=3900;Remediation activities and other waste management services
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS410
+Value=4100;Construction of buildings
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS421
+Value=4210;Construction of roads and railways
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS422
+Value=4220;Construction of utility projects
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS429
+Value=4290;Construction of other civil engineering projects
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS431
+Value=4311;Demolition
+Value=4312;Site preparation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS432
+Value=4321;Electrical installation
+Value=4322;Plumbing, heat and air-conditioning installation
+Value=4329;Other construction installation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS433
+Value=4330;Building completion and finishing
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS439
+Value=4390;Other specialized construction activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS451
+Value=4510;Sale of motor vehicles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS452
+Value=4520;Maintenance and repair of motor vehicles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS453
+Value=4530;Sale of motor vehicle parts and accessories
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS454
+Value=4540;Sale, maintenance and repair of motorcycles and related parts and accessories
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS461
+Value=4610;Wholesale on a fee or contract basis
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS462
+Value=4620;Wholesale of agricultural raw materials and live animals
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS463
+Value=4630;Wholesale of food, beverages and tobacco
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS464
+Value=4641;Wholesale of textiles, clothing and footwear
+Value=4649;Wholesale of other household goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS465
+Value=4651;Wholesale of computers, computer peripheral equipment and software
+Value=4652;Wholesale of electronic and telecommunications equipment and parts
+Value=4653;Wholesale of agricultural machinery, equipment and supplies
+Value=4659;Wholesale of other machinery and equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS466
+Value=4661;Wholesale of solid, liquid and gaseous fuels and related products
+Value=4662;Wholesale of metals and metal ores
+Value=4663;Wholesale of construction materials, hardware, plumbing and heating equipment and supplies
+Value=4669;Wholesale of waste and scrap and other products n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS469
+Value=4690;Non-specialized wholesale trade
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS471
+Value=4711;Retail sale in non-specialized stores with food, beverages or tobacco predominating
+Value=4719;Other retail sale in non-specialized stores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS472
+Value=4721;Retail sale of food in specialized stores
+Value=4722;Retail sale of beverages in specialized stores
+Value=4723;Retail sale of tobacco products in specialized stores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS473
+Value=4730;Retail sale of automotive fuel in specialized stores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS474
+Value=4741;Retail sale of computers, peripheral units, software and telecommunications equipment in specialized stores
+Value=4742;Retail sale of audio and video equipment in specialized stores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS475
+Value=4751;Retail sale of textiles in specialized stores
+Value=4752;Retail sale of hardware, paints and glass in specialized stores
+Value=4753;Retail sale of carpets, rugs, wall and floor coverings in specialized stores
+Value=4759;Retail sale of electrical household appliances, furniture, lighting equipment and other household articles in specialized stores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS476
+Value=4761;Retail sale of books, newspapers and stationary in specialized stores
+Value=4762;Retail sale of music and video recordings in specialized stores
+Value=4763;Retail sale of sporting equipment in specialized stores
+Value=4764;Retail sale of games and toys in specialized stores
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS477
+Value=4771;Retail sale of clothing, footwear and leather articles in specialized stores
+Value=4772;Retail sale of pharmaceutical and medical goods, cosmetic and toilet articles in specialized stores
+Value=4773;Other retail sale of new goods in specialized stores
+Value=4774;Retail sale of second-hand goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS478
+Value=4781;Retail sale via stalls and markets of food, beverages and tobacco products
+Value=4782;Retail sale via stalls and markets of textiles, clothing and footwear
+Value=4789;Retail sale via stalls and markets of other goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS479
+Value=4791;Retail sale via mail order houses or via Internet
+Value=4799;Other retail sale not in stores, stalls or markets
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS491
+Value=4911;Passenger rail transport, interurban
+Value=4912;Freight rail transport
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS492
+Value=4921;Urban and suburban passenger land transport
+Value=4922;Other passenger land transport
+Value=4923;Freight transport by road
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS493
+Value=4930;Transport via pipeline
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS501
+Value=5011;Sea and coastal passenger water transport
+Value=5012;Sea and coastal freight water transport
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS502
+Value=5021;Inland passenger water transport
+Value=5022;Inland freight water transport
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS511
+Value=5110;Passenger air transport
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS512
+Value=5120;Freight air transport
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS521
+Value=5210;Warehousing and storage
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS522
+Value=5221;Service activities incidental to land transportation
+Value=5222;Service activities incidental to water transportation
+Value=5223;Service activities incidental to air transportation
+Value=5224;Cargo handling
+Value=5229;Other transportation support activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS531
+Value=5310;Postal activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS532
+Value=5320;Courier activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS551
+Value=5510;Short term accommodation activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS552
+Value=5520;Camping grounds, recreational vehicle parks and trailer parks
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS559
+Value=5590;Other accommodation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS561
+Value=5610;Restaurants and mobile food service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS562
+Value=5621;Event catering
+Value=5629;Other food service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS563
+Value=5630;Beverage serving activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS581
+Value=5811;Book publishing
+Value=5812;Publishing of directories and mailing lists
+Value=5813;Publishing of newspapers, journals and periodicals
+Value=5819;Other publishing activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS582
+Value=5820;Software publishing
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS591
+Value=5911;Motion picture, video and television programme production activities
+Value=5912;Motion picture, video and television programme post-production activities
+Value=5913;Motion picture, video and television programme distribution activities
+Value=5914;Motion picture projection activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS592
+Value=5920;Sound recording and music publishing activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS601
+Value=6010;Radio broadcasting
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS602
+Value=6020;Television programming and broadcasting activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS611
+Value=6110;Wired telecommunications activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS612
+Value=6120;Wireless telecommunications activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS613
+Value=6130;Satellite telecommunications activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS619
+Value=6190;Other telecommunications activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS620
+Value=6201;Computer programming activities
+Value=6202;Computer consultancy and computer facilities management activities
+Value=6209;Other information technology and computer service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS631
+Value=6311;Data processing, hosting and related activities
+Value=6312;Web portals
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS639
+Value=6391;News agency activities
+Value=6399;Other information service activities n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS641
+Value=6411;Central banking
+Value=6419;Other monetary intermediation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS642
+Value=6420;Activities of holding companies
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS643
+Value=6430;Trusts, funds and similar financial entities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS649
+Value=6491;Financial leasing
+Value=6492;Other credit granting
+Value=6499;Other financial service activities, except insurance and pension funding activities, n.e.c
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS651
+Value=6511;Life insurance
+Value=6512;Non-life insurance
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS652
+Value=6520;Reinsurance
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS653
+Value=6530;Pension funding
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS661
+Value=6611;Administration of financial markets
+Value=6612;Security and commodity contracts brokerage
+Value=6619;Other activities auxiliary to financial service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS662
+Value=6621;Risk and damage evaluation
+Value=6622;Activities of insurance agents and brokers
+Value=6629;Other activities auxiliary to insurance and pension funding
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS663
+Value=6630;Fund management activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS681
+Value=6810;Real estate activities with own or leased property
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS682
+Value=6820;Real estate activities on a fee or contract basis
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS691
+Value=6910;Legal activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS692
+Value=6920;Accounting, bookkeeping and auditing activities; tax consultancy
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS701
+Value=7010;Activities of head offices
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS702
+Value=7020;Management consultancy activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS711
+Value=7110;Architectural and engineering activities and related technical consultancy
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS712
+Value=7120;Technical testing and analysis
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS721
+Value=7210;Research and experimental development on natural sciences and engineering
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS722
+Value=7220;Research and experimental development on social sciences and humanities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS731
+Value=7310;Advertising
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS732
+Value=7320;Market research and public opinion polling
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS741
+Value=7410;Specialized design activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS742
+Value=7420;Photographic activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS749
+Value=7490;Other professional, scientific and technical activities n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS750
+Value=7500;Veterinary activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS771
+Value=7710;Renting and leasing of motor vehicles
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS772
+Value=7721;Renting and leasing of recreational and sports goods
+Value=7722;Renting of video tapes and disks
+Value=7729;Renting and leasing of other personal and household goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS773
+Value=7730;Renting and leasing of other machinery, equipment and tangible goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS774
+Value=7740;Leasing of intellectual property and similar products, except copyrighted works
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS781
+Value=7810;Activities of employment placement agencies
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS782
+Value=7820;Temporary employment agency activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS783
+Value=7830;Other human resources provision
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS791
+Value=7911;Travel agency activities
+Value=7912;Tour operator activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS799
+Value=7990;Other reservation service and related activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS801
+Value=8010;Private security activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS802
+Value=8020;Security systems service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS803
+Value=8030;Investigation activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS811
+Value=8110;Combined facilities support activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS812
+Value=8121;General cleaning of buildings
+Value=8129;Other building and industrial cleaning activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS813
+Value=8130;Landscape care and maintenance service activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS821
+Value=8211;Combined office administrative service activities
+Value=8219;Photocopying, document preparation and other specialized office support activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS822
+Value=8220;Activities of call centres
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS823
+Value=8230;Organization of conventions and trade shows
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS829
+Value=8291;Activities of collection agencies and credit bureaus
+Value=8292;Packaging activities
+Value=8299;Other business support service activities n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS841
+Value=8411;General public administration activities
+Value=8412;Regulation of the activities of providing health care, education, cultural services and other social services, excluding social security
+Value=8413;Regulation of and contribution to more efficient operation of businesses
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS842
+Value=8421;Foreign affairs
+Value=8422;Defence activities
+Value=8423;Public order and safety activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS843
+Value=8430;Compulsory social security activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS851
+Value=8510;Pre-primary and primary education
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS852
+Value=8521;General secondary education
+Value=8522;Technical and vocational secondary education
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS853
+Value=8530;Higher education
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS854
+Value=8541;Sports and recreation education
+Value=8542;Cultural education
+Value=8549;Other education n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS855
+Value=8550;Educational support activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS861
+Value=8610;Hospital activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS862
+Value=8620;Medical and dental practice activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS869
+Value=8690;Other human health activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS871
+Value=8710;Residential nursing care facilities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS872
+Value=8720;Residential care activities for mental retardation, mental health and substance abuse
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS873
+Value=8730;Residential care activities for the elderly and disabled
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS879
+Value=8790;Other residential care activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS881
+Value=8810;Social work activities without accommodation for the elderly and disabled
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS889
+Value=8890;Other social work activities without accommodation
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS900
+Value=9000;Creative, arts and entertainment activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS910
+Value=9101;Library and archives activities
+Value=9102;Museums activities and operation of historical sites and buildings
+Value=9103;Botanical and zoological gardens and nature reserves activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS920
+Value=9200;Gambling and betting activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS931
+Value=9311;Operation of sports facilities
+Value=9312;Activities of sports clubs
+Value=9319;Other sports activities
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS932
+Value=9321;Activities of amusement parks and theme parks
+Value=9329;Other amusement and recreation activities n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS941
+Value=9411;Activities of business and employers membership organizations
+Value=9412;Activities of professional membership organizations
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS942
+Value=9420;Activities of trade unions
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS949
+Value=9491;Activities of religious organizations
+Value=9492;Activities of political organizations
+Value=9499;Activities of other membership organizations n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS951
+Value=9511;Repair of computers and peripheral equipment
+Value=9512;Repair of communication equipment
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS952
+Value=9521;Repair of consumer electronics
+Value=9522;Repair of household appliances and home and garden equipment
+Value=9523;Repair of footwear and leather goods
+Value=9524;Repair of furniture and home furnishings
+Value=9529;Repair of other personal and household goods
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS960
+Value=9601;Washing and (dry-) cleaning of textile and fur products
+Value=9602;Hairdressing and other beauty treatment
+Value=9603;Funeral and related activities
+Value=9609;Other personal service activities n.e.c.
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS970
+Value=9700;Activities of households as employers of domestic personnel for own use
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS981
+Value=9810;Undifferentiated goods-producing activities of private households for own use
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS982
+Value=9820;Undifferentiated service-producing activities of private households for own use
+
+[ValueSet]
+Label=Class
+Name=CLASS_VS990
+Value=9900;Activities of extraterritorial organizations and bodies
+
+[Item]
+Label=Employment Location
+Name=E36
+Start=562
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Employment Location
+Name=E36_VS1
+Value=11;Same village/town
+Value=12;Different village /town, same district
+Value=1;Botha-Bothe
+Value=2;Leribe
+Value=3;Berea
+Value=4;Maseru
+Value=5;Mafeteng
+Value=6;Mohale’sHoek
+Value=7;Quthing
+Value=8;Qacha’s Nek
+Value=9;Mokhotlong
+Value=10;Thaba-Tseka
+Value=13;RSA
+Value=14;Swaziland
+Value=15;Botswana
+Value=16;Namibia
+Value=17;Zimbabwe
+Value=18;Zambia
+Value=19;Mozambique
+Value=20;Angola
+Value=21;Tanzania
+Value=22;Nigeria
+Value=23;Malawi
+Value=24;DRC
+Value=25;Mauritius
+Value=26;Seychelles
+Value=27;Madagascar
+Value=28;Ghana
+Value=29;Sudan
+Value=30;Kenya
+Value=31;Uganda
+Value=32;Other Africa
+Value=33;America
+Value=34;China
+Value=35;UK(England, Ireland, Scotland, Wales)
+Value=36;Germany
+Value=37;France
+Value=38;Australia
+Value=39;Other Europe
+Value=40;Other Asia
+Value=41;South America
+Value=42;India
+Value=99;Don’t know
+
+[Item]
+Label=Location in Urban/Peri-Urban
+Name=E37
+Start=564
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=District 01
+Name=DISTRICT_01_VS
+Value=101;Botha-Bothe
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 02
+Name=DISTRICT_02_VS
+Value=201;Hlotse
+Value=202;Maputsoe
+Value=203;Pitseng
+Value=204;Peka
+Value=205;Kolonyama
+Value=206;Seshote
+Value=207;Lejone
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 03
+Name=DISTRICT_03_VS
+Value=301;Teya-teyaneng
+Value=302;Mapoteng-Makhoroana
+Value=303;Sefikeng
+Value=304;Mamathe
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 04
+Name=DISTRICT_04_VS
+Value=401;Maseru
+Value=402;Semonkong
+Value=403;Roma
+Value=404;Mazenod
+Value=405;Morija
+Value=406;Matsieng
+Value=407;Marakabei
+Value=408;Likalaneng
+Value=409;Ramabanta
+Value=410;Rothe
+Value=411;Mantsebo
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 05
+Name=DISTRICT_05_VS
+Value=501;Mafeteng
+Value=502;Tsa-Kholo
+Value=503;Matelile
+Value=504;Makhakhe
+Value=505;Kolo
+Value=506;Thabana-Morena
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 06
+Name=DISTRICT_06_VS
+Value=601;Mohale’s Hoek
+Value=602;Ketane
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 07
+Name=DISTRICT_07_VS
+Value=701;Moyeni
+Value=702;Mount Moorosi
+Value=703;Mphaki
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 08
+Name=DISTRICT_08_VS
+Value=801;Qacha’s Nek
+Value=802;Sekake
+Value=803;Sehlabathebe
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 09
+Name=DISTRICT_09_VS
+Value=901;Mokhotlong
+Value=902;Mapholaneng
+Value=8888;Not Applicable
+
+[ValueSet]
+Label=District 10
+Name=DISTRICT_10_VS
+Value=1001;Thaba-Tseka
+Value=1002;Katse
+Value=1003;Mantsonyane
+Value=1004;Sehonghong
+Value=8888;Not Applicable
+
+[Item]
+Label=Worked in RSA
+Name=E38
+Start=568
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Worked in RSA
+Name=E38_VS1
+Value=1;Never Worked
+Value=2;Worked in the Past
+Value=3;Presently Working
+Value=9;Don't Know
+
+[Item]
+Label=RSA Work Duration
+Name=E39
+Start=569
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=RSA Work Duration
+Name=E39_VS1
+Value=0:10;00-10
+
+[Item]
+Label=Ever Pregnant
+Name=F40
+Start=571
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ever Pregnant
+Name=F40_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Ever Given Live Birth
+Name=F41
+Start=572
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ever Given Live Birth
+Name=F41_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Boys Born Alive
+Name=F42A
+Start=573
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Boys Born Alive
+Name=F42A_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Girls Born Alive
+Name=F42B
+Start=575
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Girls Born Alive
+Name=F42B_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Total Born Alive
+Name=F42C
+Start=577
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Born Alive
+Name=F42C_VS1
+Value=1:20;1-20
+
+[Item]
+Label=Boys Living in Household
+Name=F43A
+Start=579
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Boys Living in Household
+Name=F43A_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Girls Living in Household
+Name=F43B
+Start=581
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Girls Living in Household
+Name=F43B_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Total Living in Household
+Name=F43C
+Start=583
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Boys Living Elsewhere
+Name=F44A
+Start=585
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Boys Living Elsewhere
+Name=F44A_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Girls Living Elsewhere
+Name=F44B
+Start=587
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Girls Living Elsewhere
+Name=F44B_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Total Living Elsewhere
+Name=F44C
+Start=589
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Living Elsewhere
+Name=F44C_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Boys Deceased
+Name=F45A
+Start=591
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Boys Deceased
+Name=F45A_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Girls Deceased
+Name=F45B
+Start=593
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Girls Deceased
+Name=F45B_VS1
+Value=0:20;0-20
+
+[Item]
+Label=Total Deceased
+Name=F45C
+Start=595
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Deceased
+Name=F45C_VS1
+Value=0:20;0-20
+
+[Item]
+Label=First Child Bearing Age
+Name=F46
+Start=597
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=First Child Bearing Age
+Name=F46_VS1
+Value=12:50;Dec-50
+
+[Item]
+Label=Last Child Birth Date
+Name=F47
+Start=599
+Len=6
+DataType=Alpha
+
+[Item]
+Label=Last Child Birth Month
+Name=F47A
+Start=599
+Len=2
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Last Child Birth Month
+Name=F47A_VS1
+Value=1;January
+Value=2;February
+Value=3;March
+Value=4;April
+Value=5;May
+Value=6;June
+Value=7;July
+Value=8;August
+Value=9;September
+Value=10;October
+Value=11;November
+Value=12;December
+
+[Item]
+Label=Last Child Birth Year
+Name=F47B
+Start=601
+Len=4
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Last Child Birth Year
+Name=F47B_VS1
+Value=1978:2016;1978-2016
+
+[Item]
+Label=Last Born Alive
+Name=F48
+Start=605
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Last Born Alive
+Name=F48_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Last Born Deceased Date
+Name=F49
+Start=606
+Len=6
+DataType=Alpha
+
+[Item]
+Label=Last Born Deceased Month
+Name=F49A
+Start=606
+Len=2
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Last Born Deceased Month
+Name=F49A_VS1
+Value=1;January
+Value=2;February
+Value=3;March
+Value=4;April
+Value=5;May
+Value=6;June
+Value=7;July
+Value=8;August
+Value=9;September
+Value=10;October
+Value=11;November
+Value=12;December
+
+[Item]
+Label=Last Born Deceased Year
+Name=F49B
+Start=608
+Len=4
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Last Born Deceased Year
+Name=F49B_VS1
+Value=1978:2016;1978-2016
+
+[Item]
+Label=Sex of Last Born
+Name=F50
+Start=612
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Sex of Last Born
+Name=F50_VS1
+Value=1;Male
+Value=2;Female
+Value=9;Don't Know
+
+[Item]
+Label=More People
+Name=MORE_PEOPLE
+Start=613
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=More People
+Name=MORE_PEOPLE_VS1
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Orphan
+Name=ORPHAN
+Start=614
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Orphan
+Name=ORPHAN_VS1
+Value=1;Paternal Orphan
+Value=2;Maternal Orphan
+Value=3;Double Oprhan
+Value=4;Not an Orphan
+Value=9;Don't know
+
+[Record]
+Label=Deaths
+Name=DEATHS
+RecordTypeValue='D'
+Required=No
+MaxRecords=10
+RecordLen=171
+
+[Item]
+Label=Deceased Name
+Name=G53
+Start=129
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Date of Death
+Name=G54
+Start=159
+Len=6
+ZeroFill=Yes
+
+[Item]
+Label=Month of Death
+Name=G54A
+Start=159
+Len=2
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Month of Death
+Name=G54A_VS1
+Value=1;January
+Value=2;February
+Value=3;March
+Value=4;April
+Value=5;May
+Value=6;June
+Value=7;July
+Value=8;August
+Value=9;September
+Value=10;October
+Value=11;November
+Value=12;December
+
+[Item]
+Label=Year of Death
+Name=G54B
+Start=161
+Len=4
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Year of Death
+Name=G54B_VS1
+Value=2011:2016;Year of Death
+
+[Item]
+Label=Deceased Sex
+Name=G55
+Start=165
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Deceased Sex
+Name=G55_VS1
+Value=1;Male
+Value=2;Female
+
+[Item]
+Label=Deceased Age at Death
+Name=G56
+Start=166
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Deceased Age at Death
+Name=G56_VS1
+Value=0:130;0-130
+
+[Item]
+Label=While Pregnant
+Name=G57
+Start=169
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=While Pregnant
+Name=G57_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=While Giving Birth
+Name=G58
+Start=170
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=While Giving Birth
+Name=G58_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Six Weeks After Delivery
+Name=G59
+Start=171
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Six Weeks After Delivery
+Name=G59_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Record]
+Label=Housing
+Name=HOUSING
+RecordTypeValue='H'
+Required=No
+RecordLen=632
+
+[Item]
+Label=Tenure Status
+Name=H60
+Start=129
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Tenure Status
+Name=H60_VS1
+Value=1;Leasehold
+Value=2;Title deed
+Value=3;Form C
+Value=4;No title
+Value=5;No legal right
+Value=6;Other (specify)
+Value=9;Don't know
+
+[Item]
+Label=Land Acquired From
+Name=H61
+Start=130
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Land Acquired From
+Name=H61_VS1
+Value=1;Government Agency
+Value=2;Private developer
+Value=3;Bought from somebody
+Value=4;Allocated by chief
+Value=5;Inherited/gift
+Value=6;Other
+Value=9;Don’t Know
+
+[Item]
+Label=Number of Household Members
+Name=NUMBER_OF_HOUSEHOLD_MEMBERS
+Start=131
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Agency Land Acquired From
+Name=H62
+Start=133
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Agency Land Acquired From
+Name=H62_VS1
+Value=1;LEHCOOP/ Lesotho housing/ LHLDC
+Value=2;UDS/Mabote project
+Value=3;MCC/ Councils
+Value=4;Private developer
+Value=5;Other
+Value=9;Don’t know
+
+[Item]
+Label=Type of Main Dwelling
+Name=H63
+Start=134
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of Main Dwelling
+Name=H63_VS1
+Value=1;Rontabole/Mokhoro
+Value=2;Heisi
+Value=3;Polata
+Value=4;Malaene
+Value=5;Optaka
+Value=6;Apartment/Town House
+Value=7;Bungalow/Mansion
+Value=8;Temporary Structure/Mok’huk’hu
+
+[Item]
+Label=Ownership Status of Main Dwelling
+Name=H64
+Start=135
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ownership Status of Main Dwelling
+Name=H64_VS1
+Value=1;Owned by household
+Value=2;Free government housing
+Value=3;Free Private housing
+Value=4;Subsidized government housing
+Value=5;Subsidized private housing
+Value=6;Rented by government
+Value=7;Rented private housing
+Value=8;Other
+
+[Item]
+Label=Main Roofing Material
+Name=H65
+Start=136
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Roofing Material
+Name=H65_VS1
+Value=1;Thatch/grass/straw
+Value=2;Corrugated Iron/Metal sheets
+Value=3;Corrugated roof tiles
+Value=4;Ceramic/clay tiles
+Value=5;Slab
+Value=6;Other
+
+[Item]
+Label=Main Wall Material
+Name=H66
+Start=137
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Wall Material
+Name=H66_VS1
+Value=1;Cane/ Tree trunks
+Value=2;Stick and mud
+Value=3;Masonite/Cardboard
+Value=4;Stone with mud
+Value=5;Burned Mud Bricks
+Value=6;Mud Bricks
+Value=7;Stone with lime/cement
+Value=8;Advanced Stone
+Value=9;Sand/Concrete Blocks
+Value=10;Advanced Burned Bricks
+Value=11;Corrugated Iron/ Metal sheets
+Value=12;Other (specify)_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+[Item]
+Label=Main Floor Material
+Name=H67
+Start=139
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Floor Material
+Name=H67_VS1
+Value=1;Mud or Dung
+Value=2;Laminated board
+Value=3;Brick tiles
+Value=4;Tiles
+Value=5;Cement
+Value=6;Vinyl/Linoleum
+Value=7;Carpet
+Value=8;Wood
+Value=9;Other
+
+[Item]
+Label=Housing Units - Rontabole
+Name=H68_RONTABOLE
+Start=140
+Len=2
+ZeroFill=Yes
+OccurrenceLabel=1,Rontabole
+
+[Item]
+Label=Housing Units - Heisi
+Name=H68_HEISI
+Start=142
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Polata
+Name=H68_POLATA
+Start=144
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Malaene
+Name=H68_MALAENE
+Start=146
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Optaka
+Name=H68_OPTAKA
+Start=148
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Apartment
+Name=H68_APARTMENT
+Start=150
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Mansion
+Name=H68_MANSION
+Start=152
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Temporary Structure
+Name=H68_TEMP_STRUCTURE
+Start=154
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Housing Units - Total
+Name=H68_TOTAL
+Start=156
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Rontabole
+Name=H69_RONTABOLE
+Start=158
+Len=2
+ZeroFill=Yes
+OccurrenceLabel=1,Rontabole
+
+[Item]
+Label=Number of Rooms - Heisi
+Name=H69_HEISI
+Start=160
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Polata
+Name=H69_POLATA
+Start=162
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Malaene
+Name=H69_MALAENE
+Start=164
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Optaka
+Name=H69_OPTAKA
+Start=166
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Apartment
+Name=H69_APARTMENT
+Start=168
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Mansion
+Name=H69_MANSION
+Start=170
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Temporary Structure
+Name=H69_TEMP_STRUCTURE
+Start=172
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Number of Rooms - Total
+Name=H69_TOTAL
+Start=174
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Main Source of Drinking Water
+Name=H70
+Start=176
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Source of Drinking Water
+Name=H70_VS1
+Value=1;Piped water into dwelling
+Value=2;Piped water into yard/plot
+Value=3;Piped into someone else's yard/plot
+Value=4;Borehole into yard/plot
+Value=5;Rainwater harvesting at home
+Value=6;Rainwater harvesting, neighbor
+Value=7;Public tap/standpipe
+Value=8;Public borehole
+Value=9;Protected spring
+Value=10;Unprotected spring
+Value=11;Surface water (river, dam, lake, pond, stream,  canal, irrigation channels)
+Value=12;Cart with small tank/drum
+Value=13;Tanker-truck
+Value=14;Other
+
+[Item]
+Label=Distance to Get Drinking Water
+Name=H71
+Start=178
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Distance to Get Drinking Water
+Name=H71_VS1
+Value=1;00 - 14
+Value=2;15 - 29
+Value=3;30 - 44
+Value=4;45 - 49
+Value=5;50 - 59
+Value=6;60 - 119
+Value=7;120+
+
+[Item]
+Label=Main Source of Energy for Cooking
+Name=H72
+Start=179
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Source of Energy for Cooking
+Name=H72_VS1
+Value=1;Electricity Grid
+Value=2;Electricity Generator
+Value=3;Electricity Solar
+Value=4;Liquefied Petroleum Gas (LPG)
+Value=5;Biogas
+Value=6;Paraffin
+Value=7;Coal
+Value=8;Wood
+Value=9;Animal dung
+Value=10;Crop waste
+Value=11;Straw/shrubs/grass
+Value=12;Other
+
+[Item]
+Label=Main Source of Energy for Heating
+Name=H73
+Start=181
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Source of Energy for Heating
+Name=H73_VS1
+Value=1;Electricity Grid
+Value=2;Electricity Generator
+Value=3;Electricity Solar
+Value=4;Liquefied Petroleum Gas (LPG)
+Value=5;Biogas
+Value=6;Paraffin
+Value=7;Coal
+Value=8;Wood
+Value=9;Animal dung
+Value=10;Crop waste
+Value=11;Straw/shrubs/grass
+Value=12;Other
+
+[Item]
+Label=Main Source of Energy for Lighting
+Name=H74
+Start=183
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Source of Energy for Lighting
+Name=H74_VS1
+Value=1;Electricity Grid
+Value=2;Electricity Generator
+Value=3;Electricity Solar
+Value=4;Battery
+Value=5;Liquefied Petroleum Gas (LPG)
+Value=6;Paraffin
+Value=7;Candle
+Value=8;Other
+
+[Item]
+Label=Main Type of Sanitation
+Name=H75
+Start=184
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Type of Sanitation
+Name=H75_VS1
+Value=1;Flush to piped sewer system
+Value=2;Flush to septic tank/Biogas digester
+Value=3;Flush to pit latrine
+Value=4;Ventilated Improved Pit latrine (VIP)
+Value=5;Unimproved Pit latrine
+Value=6;Bucket toilet
+Value=7;Public/Neighbour toilet
+Value=8;Open Defecation (Bush/field)
+Value=9;Other
+
+[Item]
+Label=Disposal of Rubbish or Refuse
+Name=H76
+Start=185
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Disposal of Rubbish or Refuse
+Name=H76_VS1
+Value=1;Municipal collected/ Private
+Value=2;Communal  collected
+Value=3;Communal refuse dump
+Value=4;Roadside dumping
+Value=5;Burnt
+Value=6;Burying/pit
+Value=7;Own refuse dump
+Value=8;Other
+
+[Item]
+Label=Assets
+Name=H77
+Start=186
+Len=13
+DataType=Alpha
+
+[ValueSet]
+Label=Assets
+Name=H77_VS1
+Value='A            ';Radio
+Value='B            ';Landline telephone
+Value='C            ';Cellular phone
+Value='D            ';Television
+Value='E            ';Tractor
+Value='F            ';Electric/Gas/Coal stove
+Value='G            ';Scotch cart
+Value='H            ';Bed/mattress
+Value='I            ';Computer/laptop
+Value='J            ';Access to internet
+Value='K            ';Vehicle
+Value='L            ';Generator
+Value='M            ';Refrigerator
+
+[Item]
+Label=Ownership of Fields
+Name=H78
+Start=199
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Ownership of Fields
+Name=H78_VS1
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Operation of Fields
+Name=H79
+Start=200
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Operation of Fields
+Name=H79_VS1
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Livestock and Poultry
+Name=H80
+Start=201
+Len=4
+Occurrences=14
+ZeroFill=Yes
+OccurrenceLabel=1,Cattle
+OccurrenceLabel=2,Sheep
+OccurrenceLabel=3,Goats
+OccurrenceLabel=4,Horses
+OccurrenceLabel=5,Mules
+OccurrenceLabel=6,Donkeys
+OccurrenceLabel=7,Improved pigs
+OccurrenceLabel=8,Improved poultry
+OccurrenceLabel=9,Dogs
+OccurrenceLabel=10,Bees(Hives)
+OccurrenceLabel=11,Ducks
+OccurrenceLabel=12,Geese
+OccurrenceLabel=13,Turkey
+OccurrenceLabel=14,Rabbits
+
+[Item]
+Label=Any Deaths in the Last Five Years
+Name=G51
+Start=257
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Any Deaths in the Last Five Years
+Name=G51_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Number of Deaths in the Last Five Years
+Name=G52
+Start=258
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Deaths in the Last Five Years
+Name=G52_VS1
+Value=1:10;10-Jan
+
+[Item]
+Label=Tenure Other
+Name=H60_OTHER
+Start=260
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Land Acquired Other
+Name=H61_OTHER
+Start=280
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Agency Other
+Name=H62_OTHER
+Start=300
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Ownership Status Other
+Name=H64_OTHER
+Start=320
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Roofing Material Other
+Name=H65_OTHER
+Start=350
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Wall Material Other
+Name=H66_OTHER
+Start=370
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Floor Material Other
+Name=H67_OTHER
+Start=390
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Drinking Water Other
+Name=H70_OTHER
+Start=410
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Energy for Cooking Other
+Name=H72_OTHER
+Start=430
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Energy for Heating Other
+Name=H73_OTHER
+Start=450
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Energy for Lighting Other
+Name=H74_OTHER
+Start=470
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Sanitation Other
+Name=H75_OTHER
+Start=490
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Rubish Other
+Name=H76_OTHER
+Start=510
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Number of Refrigerators
+Name=NUMBER_OF_REFRIGERATORS
+Start=530
+Len=1
+ZeroFill=Yes
+
+[Item]
+Label=Refrigerant
+Name=REFRIGERANT
+Start=531
+Len=20
+DataType=Alpha
+Occurrences=5
+
+[Item]
+Label=Respondent
+Name=RESPONDENT
+Start=631
+Len=2
+ZeroFill=Yes
+
+[Record]
+Label=Visits
+Name=VISITS
+RecordTypeValue='V'
+RecordLen=185
+
+[Item]
+Label=Number of visits
+Name=NUMBER_OF_VISITS
+Start=129
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of visits
+Name=NUMBER_OF_VISITS_VS1
+Value=1:3;3-Jan
+
+[Item]
+Label=Visit date
+Name=VISIT_DATE
+Start=130
+Len=8
+DataType=Alpha
+Occurrences=3
+OccurrenceLabel=1,first
+OccurrenceLabel=2,second
+OccurrenceLabel=3,third
+
+[Item]
+Label=Visit year
+Name=VISIT_YEAR
+Start=130
+Len=4
+ItemType=SubItem
+
+[Item]
+Label=Visit month
+Name=VISIT_MONTH
+Start=134
+Len=2
+ItemType=SubItem
+ZeroFill=Yes
+
+[Item]
+Label=Visit day
+Name=VISIT_DAY
+Start=136
+Len=2
+ItemType=SubItem
+ZeroFill=Yes
+
+[Item]
+Label=Household Status
+Name=HOUSEHOLD_STATUS
+Start=154
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Status
+Name=HOUSEHOLD_STATUS_VS1
+Value=7;Continue with interview
+Value=2;No household member at home
+Value=3;Entire household absent for extended period of time
+Value=4;Dwelling vacant
+Value=5;Dwelling destroyed
+
+[Item]
+Label=Final Result Code
+Name=FINAL_RESULT_CODE
+Start=155
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Final Result Code
+Name=FINAL_RESULT_CODE_VS1
+Value=1;Completed
+Value=6;Partially Complete
+
+[Item]
+Label=Partially Complete Reason
+Name=PARTIALLY_COMPLETE_REASON
+Start=156
+Len=30
+DataType=Alpha

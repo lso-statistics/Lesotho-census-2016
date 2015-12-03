@@ -1,0 +1,24 @@
+﻿[Run Information]
+Version=CSPro 6.1
+AppType=Entry
+
+[DataEntryInit]
+Interactive=Ask
+
+[Files]
+Application=.\LesothoCensusMenu.ent
+InputData=.\menu.dat
+
+[ExternalFiles]
+LESOTHOCENSUS2016_DICT=.\dummy.dat
+STAFF_DICT=.\staff.dat
+ASS_SUP_DICT=.\AssSup.dat
+
+[UserFiles]
+SR_PFFFILE=
+TMPFILE=
+TEMPFILE=
+PFFFILE=
+
+[Parameters]
+

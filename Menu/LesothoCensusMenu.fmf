@@ -1,0 +1,84 @@
+﻿[FormFile]
+Version=CSPro 6.1
+Name=LESOTHOCENSUSMENU_FF
+Label=LesothoCensusMenu
+DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
+FieldEntryFont=0018 0000 0000 0000 0600 0000 0000 0000 0000 0000 0000 0000 0000 Courier New
+Type=SystemControlled
+  
+[Dictionaries]
+File=.\LesothoCensusMenu.dcf
+  
+[Form]
+Name=FORM000
+Label=LesothoCensusMenu questionnaire
+Level=1
+Size=336,171
+  
+Item=USER_CODE
+Item=ENUMERATOR_MENU
+Item=ASSISTANT_SUPERVISOR_MENU
+Item=CHOOSE_POSTCHECK_HOUSEHOLD
+  
+[EndForm]
+  
+[Level]
+Name=LESOTHOCENSUSMENU_QUEST
+Label=LesothoCensusMenu questionnaire
+  
+[Group]
+Required=Yes
+Name=LESOTHOCENSUSMENU_QUEST_FORM
+Label=LesothoCensusMenu questionnaire
+Form=1
+LogicControl=No
+Max=1
+  
+[Field]
+Name=USER_CODE
+Position=254,36,311,56
+Item=USER_CODE,LESOTHOCENSUSMENU_DICT
+Form=1
+  
+[Text]
+Position=46,39,111,55
+Text=User Code
+ 
+  
+[Field]
+Name=ENUMERATOR_MENU
+Position=254,66,269,86
+Item=ENUMERATOR_MENU,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=46,69,159,85
+Text=Enumerator Menu
+ 
+  
+[Field]
+Name=ASSISTANT_SUPERVISOR_MENU
+Position=254,96,269,116
+Item=ASSISTANT_SUPERVISOR_MENU,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=46,99,212,115
+Text=Assistant Supervisor Menu
+ 
+  
+[Field]
+Name=CHOOSE_POSTCHECK_HOUSEHOLD
+Position=254,126,297,146
+Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=46,129,232,145
+Text=Choose Postcheck Household
+ 
+[EndGroup]
+  

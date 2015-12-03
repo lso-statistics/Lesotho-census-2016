@@ -1,0 +1,1368 @@
+﻿[CAPI QUESTIONS]
+Version=CSPro 6.1
+
+[LANGUAGES]
+ENG=English
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B10
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 B10. Where was \cf1\f1 %getocclabel%\cf0\f0  born?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B11
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\brdrt\brdrs\brdrw10\brsp20 \sa200\sl276\slmult1\cf1\b\f0\fs18 B11. For how long has \f1 %getocclabel%\f0  lived in this village /town?\b0\i\par
+ENG=\pard\cf0\b\i0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B12
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B12. Where did \f1 %getocclabel%\f0  live in April 2015?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B12A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B12A. Where did \f1 %getocclabel%\f0  live in April 2015 (if elsewhere in Lesotho)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B12B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B12B. Where did \f1 %getocclabel%\f0  live in April 2015 (if in other countries)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B13
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B13. Where did \f1 %getocclabel%\f0  live in April 2011?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B13A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B13A. Where did \f1 %getocclabel%\f0  live in April 2011 (if elsewhere in Lesotho)?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B13B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B13B. Where did \f1 %getocclabel%\f0  live in April 2011 (if in other countries)?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B14
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B14. Where did \f1 %getocclabel%\f0  live in April 2006?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B14A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B14A. Where did \f1 %getocclabel%\f0  live in April 2006 (if elsewhere in Lesotho)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B14B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B14B. Where did \f1 %getocclabel%\f0  live in April 2006 (if in other countries)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B15
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B15. What is \f1 %getocclabel%\f0\rquote s citizenship?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B16
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B16. What language does \cf1\f1 %getocclabel%\cf0\f0  speak most often at home?\cf1\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B16A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B16A. Write the language \cf1\f1 %getocclabel%\cf0\f0  speaks most often at home \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B17
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B17. Is father of \f1 %getocclabel%\f0  alive?\cf0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B18
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B18. Is mother of \f1 %getocclabel%\f0  alive?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B19
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B19. What is \f1 %getocclabel%\f0\rquote s present marital status?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B2
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs16 B2.\b0\i  Write names of all persons who were present in this household on the census night (i.e. Saturday night 09\super th\nosupersub  April 2016). Start with head of household. Consider surname for the household head and those different from the household head.\par
+ENG=\pard\sl276\slmult1\i0\f1\'b7 \i\f0 Please include babies, small children, old people and visitors who were present on the census night (i.e. 9\super h\nosupersub April 2016). For babies with no names, write BABY.\par
+ENG=\i0\f1\'b7 \i\f0 Also include usual members of the household who did not sleep in the household during the reference night, were absent for less than six months and are elsewhere in Lesotho.\par
+ENG=\pard\fi-360\li360\sl276\slmult1\i0\f1\'b7 \i\f0 Include usual members who are absent and are outside the country for less than three years.\par
+ENG=\pard\sa200\sl276\slmult1\i0\f1\'b7 \i\f0 Include those in Institutions outside the country irrespective of duration of stay.\b\fs22\par
+ENG=\pard\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B20
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B21
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B21. Is \f1 %getocclabel%\f0\rquote s first or only spouse alive?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B3
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B3. What is %getocclabel%'s relationship to the head of the household?\b0\f1\fs24\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B4
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B4. Is %getocclabel% a male or a female?\b0\f1\fs24\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B5
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 B5. How old is \cf1\f1 %getocclabel%\cf0\f0  in completed years?\fs20\par
+ENG=\pard\b0\i\fs16 Enter age in completed years (\ldblquote 0\rdblquote  for children less than one year old)\cf1\i0\f2\fs24\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B6A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B6A. What is \cf1\f1 %getocclabel%'s\cf0\f0  month of birth?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B6B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B6B. What is \cf1\f1 %getocclabel%'s\cf0\f0  year of birth?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B7
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 B7. What is \cf1\f1 %getocclabel%'s\cf0\f0  current residential status?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B8
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B8. If \cf1\f1 %getocclabel%\cf0\f0  is absent/ outside Lesotho where is s/he staying? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B9
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B9. If \cf1\f1 %getocclabel%\cf0\f0  is outside Lesotho how long has (name) lived in that country?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C22
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C22. Is  %getocclabel% an Albino?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C23A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23A. Does %getocclabel% have a difficulty in seeing even when wearing glasses (if %getocclabel% usualy wears them)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C23B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23B. Does %getocclabel% have a difficulty in hearing even when using hearing aid (if %getocclabel% usualy uses them)?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C23C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 C23C. Does %getocclabel% have a difficulty in communicating in his/her language (\cf0\f1 understanding others or being understood by others)?\par
+ENG=\pard\cf1\f0\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C23D
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23D. Does %getocclabel% have a difficulty in walking or climbing stairs?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C23E
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23E. Does %getocclabel% have a difficulty in remembering or concentrating?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C23F
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23F. Does %getocclabel% have a difficulty with \cf0\f1 self-care such as washing all over, dressing or feeding?\cf1\f0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24A. What is the MAIN cause of disability in seeing?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24A_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24A. Specify that other cause of disability in seeing?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24B. What is the MAIN cause of disability in hearing?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24B_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24B. Specify that other cause of disability in hearing?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24C. What is the MAIN cause of disability in communicating?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24C_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24C. Specify that other cause of disability in communicating?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24D
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24D. What is the MAIN cause of disability in walking or climbing stairs?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24D_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24D. Specify that other cause of disability in walking or climbing stairs?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24E
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24E. What is the MAIN cause of disability in remembering or concentrating?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24E_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24E. Specify that other cause of disabilty in remembering or concentrating?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24F
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24F. What is the MAIN cause of disability with \cf0\f1 self-care such as washing all over, dressing or feeding\cf1\f0 ?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C24F_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C24F. Specify that other cause of disability with \cf0\f1 self-care such as washing all over, dressing or feeding\cf1\f0 ?\par
+ENG=\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25A. Does %getocclabel% use eye glasses?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25B. Does %getocclabel% use hearing aid?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25C. Does %getocclabel% use walking stick/ frame/ crutches?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25D
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25D. Does %getocclabel% use a wheelchair?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25E
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25E. Does %getocclabel% use chronic medication?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25F
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25F. Does %getocclabel% use white cane?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25G
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25G. Does %getocclabel% use guide dog?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25H1
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25H. Does %getocclabel% use official sign language?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.C25H2
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C25H. Does %getocclabel% use non official sign language?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.CLASS
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s class of place of work? (main product/service/activity)\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D26
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 D26. Has \cf1\f1 %getocclabel% \cf0\f0 ever attended school?\b0\i\fs16\par
+ENG=\pard\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D27
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\brdrt\brdrs\brdrw10\brsp20 \sa200\sl276\slmult1\b\f0\fs18 D27. What is the highest level of education that \cf1\f1 %getocclabel%\cf0\f0  has completed?\b0\i\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D27_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 D27. Specify \cf1\f1 %getocclabel%'s highst level of education.\cf0\f0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D28
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\b\f0\fs18 D28\b0 . \cf1\expndtw-6\b Does \expndtw0\f1 %getocclabel%\expndtw-6\f0  know how to read?\cf0\expndtw0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D29
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\cf1\expndtw-6\b\f0\fs18 D29. Does \expndtw0\f1 %getocclabel%\expndtw-6\f0  know how to write?\cf0\expndtw0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D30
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\cf1\expndtw-6\b\f0\fs18 D30. What is \expndtw0\f1 %getocclabel%'s\expndtw-6\f0  field of  specialization (major group)?\b0\i\fs16\par
+ENG=\pard\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D30B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\expndtw-6\b\f0\fs18 D30. What is \expndtw0\f1 %getocclabel%'s\expndtw-6\f0  field of  specialization (minor group)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.DIVISIONS
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s division of place of work? (main product/service/activity)\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E31
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E31. What was \cf1\f1 %getocclabel%\cf0\f0\rquote s main activity status in the past 7 days?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E31OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E31. What was \cf1\f1 %getocclabel%\cf0\f0\rquote s main activity status in the past 7 days?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E32
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E32. If job seeking (coded 50 in E31) what was \cf1\f1 %getocclabel%\cf0\f0\rquote s main activity status in the past 12 months?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E32OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E32. If job seeking (coded 50 in E31) what was \cf1\f1 %getocclabel%\cf0\f0\rquote s main activity status in the past 12 months ?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E33
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E33. If employed, who was \cf1\f1 %getocclabel%\cf0\f0\rquote s employer?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E33OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E33. If employed, who was \cf1\f1 %getocclabel%\cf0\f0\rquote s employer?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E34
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\b\f0\fs18 E34.\cf1\expndtw-4 What was \expndtw0\f1 %getocclabel%\expndtw-4\f0\rquote s last type of work done in the past 7 days?\b0\i\fs16\par
+ENG=\pard\cf0\expndtw0\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E35
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\b\f0\fs18 E35.What was \cf1\f1 %getocclabel%\cf0\f0\rquote s main product/service/activity of place of work?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E36
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E36. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s location of employment\b0\i\fs16\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E37
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E37. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s location of employment in Urban/ Peri-urban areas.\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E38
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E38. Has \cf1\f1 %getocclabel%\cf0\f0  ever worked in RSA in the past 10 years (since April 2006)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.E39
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E39. For how long has \cf1\f1 %getocclabel%\cf0\f0  worked in RSA in the past 10 years (since April 2006)?\cf1\b0\i\fs16\par
+ENG=\pard\cf0\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F40
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 F40. Has \cf1\f1 %getocclabel%\cf0\f0  ever been pregnant?\i\fs16\par
+ENG=\pard\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F41
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 F41. Has \cf1\f1 %getocclabel%\cf0\f0  ever given a live birth, even if the child died soon after birth?\i\fs16\par
+ENG=\pard\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F42A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F42. How many boys has \cf1\f1 %getocclabel%\cf0\f0  ever had that were born alive?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F42B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F42. How many girls has \cf1\f1 %getocclabel%\cf0\f0  ever had that were born alive?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F42C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F42. How many children has \cf1\f1 %getocclabel%\cf0\f0  ever had that were born alive?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F43A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F43. How many of \cf1\f1 %getocclabel%\cf0\f0  boys are still alive and living with her in this household?  \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F43B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F43. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s girls are still alive and living with her in this household?  \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F43C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F43. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s children are still alive and living with her in this household?  \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F44A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F44. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s boys are still alive and living elsewhere\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F44B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F44. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s girls are still alive and living elsewhere\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F44C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F44. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s children are still alive and living elsewhere\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F45A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 F45. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s boys are no longer alive?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F45B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 F45. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s girls are no longer alive?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F45C
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 F45. How many of \cf1\f1 %getocclabel%\cf0\f0\rquote s children are no longer alive?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F46
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\tx2325\b\f0\fs18 F46. At what age did \cf1\f1 %getocclabel%\cf0\f0  have her first child born?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F47A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F47. When was \cf1\f1 %getocclabel%\cf0\f0\rquote s last child born month, even if the child died soon after birth?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F47B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F47. When was \cf1\f1 %getocclabel%\cf0\f0\rquote s last child born year, even if the child died soon after birth?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F48
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 F48. Is \cf1\f1 %getocclabel%\cf0\f0\rquote s last born child still alive?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F49A
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 F49. What was \cf1\f1 %getocclabel% last born child month \cf0\f0 death?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F49B
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 F49. What was \cf1\f1 %getocclabel% last born child year \cf0\f0 death?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.F50
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 F50. Is \cf1\f1 %getocclabel%\cf0\f0\rquote s last born child male or female?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.FINAL_RESULT_CODE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Result code\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G51
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 G51. Has any member of this household passed away in the past five years (since April 2011)?\cf0\i\fs16\par
+ENG=\pard\cf1\expndtw-6\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G52
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 G52. How many members of the household passed away in the past five years (since April 2011)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G53
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 G53. What was the name of the deceased?\par
+ENG=\pard\b0\i List in order of occurrence\cf1\b\i0\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G54A
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 G54. In what month did \cf1\f1 %getocclabel% die\cf0\f0 ?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G54B
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 G54. In what year did \cf1\f1 %getocclabel% die\cf0\f0  ?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G55
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 G55. Was \cf1\f1 %getocclabel%\cf0\f0  a male or female?  \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G56
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 G56. What was \cf1\f1 %getocclabel%\cf0\f0\rquote s age in completed years at the time of death?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G57
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 G57. Did \cf1\f1 %getocclabel%\cf0\f0  die while pregnant?\b0\i\fs16\par
+ENG=\pard\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G58
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 G58. Did \cf1\f1 %getocclabel%\cf0\f0  die while giving birth?\b0\i\fs16\par
+ENG=\pard\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.G59
+Occurrences=1:10
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 G59. Did \cf1\f1 %getocclabel%\cf0\f0  die within six weeks after the delivery?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.GROUPS
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s group of place of work? (main product/service/activity)\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H60
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 H60. What is the tenure status of the MAIN dwelling of the household?\cf1\b0\f1\fs24\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H60_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify other tenure status of the MAIN dwelling of the household\cf1\b0\f1\fs24\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H61
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H61. From whom did the owner acquire his/her land?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H61_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify other whom the owner acquired his/her land from\fs22\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H62
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 H62. From which agency did the owner acquire his/her land?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H62_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify other agency from which the owner acquire his/her land\fs22\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H63
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 H63. What is the type of the MAIN dwelling of the household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H64
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 H64. What is the ownership status of the MAIN dwelling used by the household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H64_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other ownership status of the MAIN dwelling used by the household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H65
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H65. What is the main roofing material used for the main house of this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H65_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other  main roofing material used for the main house of this household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H66
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H66. What is the wall material used for construction of the main house of this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H66_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other wall material used for construction of the main house of this household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H67
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H67. What is the main floor material used for the main house of the household?\par
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H67_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main floor material used for the main house of the household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68
+Occurrences=1:8
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H68. How many %getocclabel% are available in this household?\par
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68
+Occurrences=9:9
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 Enter total number of housing units\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_APARTMENT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Town House/Apartment \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_HEISI
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Heisi \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_MALAENE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Malaene\i0  are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_MANSION
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Bungalow/Mansion \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_OPTAKA
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Optaka \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_POLATA
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Polata \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_RONTABOLE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Rontabole(s)\i0  are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_TEMP_STRUCTURE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Temporary Structure/Mokh'ukh'u \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_TOTAL
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. Enter total number of housing units\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_APARTMENT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Town House/Apartment \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_HEISI
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Heisi \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_MALAENE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Malaene \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_MANSION
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Bungalow/Mansion \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_OPTAKA
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Optaka \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_POLATA
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Polata \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_RONTABOLE
+Occurrences=1:8
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H69. How many rooms are available in all \i Rontabole(s) \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_RONTABOLE
+Occurrences=9:9
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 Enter total number of rooms\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_TEMP_STRUCTURE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Temporary Structure/Mokh'ukh'u \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_TOTAL
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. Enter total number of rooms\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H70
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H70. What is the main source of drinking water for the household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H70_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of drinking water for the household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H71
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H71. How long does it take to get drinking water, i.e time to go, get water and come back walking?\fs22\par
+ENG=\pard\b0\fs16 (T\i ime in minutes\i0 )\b\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H72
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H72. What is the main source of energy for cooking for the household?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H72_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of energy for cooking for the household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H73
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 H73. What is the main source of energy for heating for the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H73_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of energy for heating for the household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H74
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H74. What is the main source of energy for lighting for the household?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H74_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of energy for lighting for the household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H75
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H75. What is the main type of sanitation facility used by this household?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H75_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main type of sanitation facility used by this household\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H76
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H76. How is the refuse or rubbish from this household disposed off?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H76_OTHER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other method how refuse or rubbish from this household disposed off\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H77
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H77. Does this household own any of the following in working condition?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H78
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 H78. Does this household own any fields?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H79
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H79. Do you operate any?\par
+ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H80
+Occurrences=1:14
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H80. How many %getocclabel% does the household have/keep?\b0\par
+ENG=\pard\b\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.HOUSEHOLD_HEAD_NAMES
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B1. PERSON NUMBER\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.HOUSEHOLD_NUMBER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Enter Household Number\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.MORE_PEOPLE
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Are there more people in this household?\cf1\b0\f1\fs24\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.NUMBER_OF_REFRIGERATORS
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 Enter the number of refrigerators the household have\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.NUMBER_OF_VISITS
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Ke lekhetlo la bokae u etela lelapa lee?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.OCCUPATION_LEVEL_1
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s major group of occupation?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.OCCUPATION_LEVEL_2
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s sub-major group of occupation?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.OCCUPATION_LEVEL_3
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s minor group of occupation?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.OCCUPATION_LEVEL_4
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s unit group of occupation?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.PARTIALLY_COMPLETE_REASON
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Reason why the questionnaire is partially complete\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.REFRIGERANT
+Occurrences=1:5
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\i\f0\fs16 Enter the code of the %getocclabel% :\cf0\b\i0\f1\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.RESPONDENT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Who is the respondent?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.SECTION
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s section of place of work? (main product/service/activity)\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.VILLAGE_NUMBER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Enter Village Number\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.VISIT_DATE
+Occurrences=1:3
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\i\f0\fs16 Enter the date of the %getocclabel% visit:\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.WARD
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Select Ward Code\cf1\b0\i0\f1\fs24\par
+ENG=}
+
+[HELP]
+Field=LESOTHOCENSUS2016_DICT.H67
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H67. What is the main floor material used for the main house of the household?\par
+ENG=}
+

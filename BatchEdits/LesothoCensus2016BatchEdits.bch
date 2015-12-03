@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.1
+Label=LESOTHOCENSUS2016BATCHEDITS
+Name=LESOTHOCENSUS2016BATCHEDITS
+AppType=Batch
+[AppCode]
+File=.\LesothoCensus2016BatchEdits.bch.apc
+[Message]
+File=.\LesothoCensus2016BatchEdits.bch.mgf
+[Order]
+File=.\LesothoCensus2016BatchEdits.ord
+[Dictionary Types]
+Dict-Type=.\LesothoCensus2016.dcf,Input,.\LesothoCensus2016BatchEdits.ord

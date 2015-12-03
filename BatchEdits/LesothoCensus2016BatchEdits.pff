@@ -1,0 +1,19 @@
+﻿[Run Information]
+Version=CSPro 6.1
+AppType=Batch
+
+[Files]
+Application=.\LesothoCensus2016BatchEdits.bch
+InputData=..\LesothoCensus2016marital\LesothoCensus2016.dat
+OutputData=..\LesothoCensus2016marital\LesothoCensus2016Edited.dat
+Listing=.\LesothoCensus2016BatchEdits.lst
+ImputeFreqs=.\LesothoCensus2016BatchEdits.freq.lst
+
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+
