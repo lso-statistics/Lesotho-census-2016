@@ -363,8 +363,8 @@ Item=HOUSEHOLD_HEAD_NAMES,LESOTHOCENSUS2016_DICT
 Form=1
   
 [Text]
-Position=23,380,194,396
-Text=Names of Household Head 
+Position=23,380,190,396
+Text=Names of Household Head
  
   
 [Field]
@@ -1216,6 +1216,25 @@ Item=B9,LESOTHOCENSUS2016_DICT
   
 [Text]
 Text=How Long Outside Lesotho
+ 
+[EndColumn]
+  
+[Column]
+Width=70
+  
+[HeaderText]
+Position=0,48,70,72
+Text=Institution
+ 
+[Field]
+Name=B9B
+Position=47,0,62,20
+Item=B9B,LESOTHOCENSUS2016_DICT
+DataCaptureType=RadioButton
+  
+[Text]
+Position=0,0,64,16
+Text=Institution
  
 [EndColumn]
   
