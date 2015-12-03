@@ -108,6 +108,9 @@ preproc
 //Set names of household head to be the first names in B2
 B2(1) = strip(HOUSEHOLD_HEAD_NAMES);
 
+
+
+
 postproc
 //Consistency on the name of the household head.
 if B2(1) <> strip(HOUSEHOLD_HEAD_NAMES) then
@@ -129,6 +132,9 @@ if B2 = "" then
 endif;
 
 B2=toupper(B2);
+
+
+
 // Set occurrence labels for individual rosters to use name
 string occurrenceLabel = strip(B2);
 
@@ -145,9 +151,9 @@ PROC MORE_PEOPLE
 // End roster if there are no more household members to enter
 if MORE_PEOPLE = 2 then
 	B2(1) = strip(HOUSEHOLD_HEAD_NAMES);
+
 	endgroup;
 endif;
-
 PROC NUMBER_OF_HOUSEHOLD_MEMBERS
 preproc
 // Set number of household members to size of person roster.
@@ -379,9 +385,19 @@ if  B9(curocc()) > B5(curocc()) then
 	select("Correct age",B5(curocc()),
 		   "Correct years lived outside Lesotho",B9(curocc()));
 	reenter;
-
 endif;
 
+if B9 <= 3 then
+	skip to B10;
+endif;
+PROC B9B
+// Name must be in Institutions if duration outside Lesotho is
+// more than 3 years
+if B9B(curocc()) = 6 then
+	errmsg("%s must not appear in the Houshold Roaster", strip(B2(curocc())))
+	select("Correct Instutions in RSA", B9B(curocc()),
+		   "Correct duration outside Lesotho",B9(curocc()));
+endif
 PROC B11
 //Years lived in a village/town (B11) should not be more than age (B5)
 if B11 > B5 and B11 <> 998 then
@@ -790,6 +806,31 @@ endif;
 PROC C24F_OTHER
 
 C24F_OTHER = toupper(C24F_OTHER);
+PROC C25A
+//Should not be asked about using eye glasses if no difficulty in seeing
+preproc
+if not C23A(curocc()) in 2:4 then
+	skip to C25B;
+endif;
+PROC C25B
+//Should not be asked about using hearing aid if no difficulty in hearing
+preproc
+if not C23B(curocc()) in 2:4 then
+	skip to C25C;
+	skip to C25H1;
+endif;
+PROC C25C
+//Should not be asked about using walking stick/frame/cruches if no difficulty in walking or climbing stairs
+preproc
+if not (C23D(curocc()) in 2:4 or C23F(curocc()) in 2:4) then
+	skip to C25D;
+endif;
+PROC C25D
+//Should not be asked about using a wheelchair if no difficulty in walking or climbing stairs
+preproc
+if not (C23D(curocc()) in 2:4 or C23F(curocc()) in 2:4) then
+	skip to C25E;
+endif;
 PROC C25E
 //chronic medication for albino
 if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9 
@@ -797,6 +838,24 @@ and C23E in 1,5,9 and C23F in 1,5,9 and C22=1  then
 	skip to next;
 endif;
 
+PROC C25F
+//Should not be asked about using white cane if no difficulty in seeing
+preproc
+if not C23A(curocc()) in 2:4 then
+	skip to C25G;
+endif;
+PROC C25G
+//Should not be asked about using guide dog if no difficulty in seeing
+preproc
+if not C23A(curocc()) in 2:4 then
+	skip to C25H1;
+endif;
+PROC C25H1
+//Should not be asked about using sign language if no difficulty in hearing
+preproc
+if not (C23B(curocc()) in 2:4 or C23C(curocc()) in 2:4) then
+	skip to next;
+endif;
 PROC D26
 
 preproc
@@ -810,10 +869,25 @@ if B7(curocc()) = 2 then
 endif;
 
 postproc
+{
 //Name should not be more than 3 years outside Lesotho yet is not in any institution
 if B9(curocc()) > 3 and D26 <> 2 then
   errmsg("%s should not be more than 3 years outside Lesotho yet is not in any institution", strip(B2(curocc()))) 
   select("Correct years outside Lesotho",B9(curocc()), "Correct ever attended school",D26(curocc()))
+endif;
+}
+
+// Name is in Institutions and therefore should be still attending
+if B9B(curocc()) = 1 and D26(curocc()) <> 2 then
+	errmsg("%s is in Institution(School) hence must be still attending", strip(B2(curocc())))
+	select("Correct Institutions outside Lesotho", B9B(curocc()),
+		   "Correct ever attended school", D26(curocc()));
+endif;
+// People not at school and prison must not be atttending school
+if not B9B(curocc()) in 1:3 and D26(curocc()) = 2 then
+	errmsg("%s is in Institution but not attending school", strip(B2(curocc())))
+	select("Correct Institutions outside Lesotho", B9B(curocc()),
+		   "Correct ever attended school", D26(curocc()));
 endif;
 
 // For those coded 9 skip to next section
@@ -1101,6 +1175,12 @@ if not E33 = 9 then
 	skip to OCCUPATION_LEVEL_1;
 endif;
 
+PROC OCCUPATION_LEVEL_1
+
+if OCCUPATION_LEVEL_1 = 11 then
+	setvalueset(OCCUPATION_LEVEL_4, OCCUPATION_LEVEL_4_VS033);
+	skip to OCCUPATION_LEVEL_4;
+endif;
 PROC OCCUPATION_LEVEL_2
 
 preproc
@@ -1483,8 +1563,13 @@ elseif OCCUPATION_LEVEL_3 = 011 then
 elseif OCCUPATION_LEVEL_3 = 021 then
 	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS021);	
 elseif OCCUPATION_LEVEL_3 = 031 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS031);				
+	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS031);			
 endif;
+{
+if OCCUPATION_LEVEL_1 = 11 then
+	setvalueset (OCCUPATION_LEVEL_4, OCCUPATION_LEVEL_4_VS033);
+endif;
+}
 PROC DIVISIONS
 
 preproc

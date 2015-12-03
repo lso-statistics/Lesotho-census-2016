@@ -6,7 +6,7 @@ AppType=Entry
 Interactive=Ask
 
 [Files]
-Application=.\HouseholdDataEntry.ent
+Application=.\Data Entry Application.ent
 InputData=..\..\..\..\..\New folder\fox\LesothoCensus2016\HouseholdDataEntry\newData
 
 

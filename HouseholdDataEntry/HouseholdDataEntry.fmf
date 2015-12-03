@@ -1256,6 +1256,25 @@ Text=How Long Outside Lesotho
 [EndColumn]
   
 [Column]
+Width=70
+  
+[HeaderText]
+Position=0,48,70,72
+Text=Institution
+ 
+[Field]
+Name=B9B
+Position=47,0,62,20
+Item=B9B,LESOTHOCENSUS2016_DICT
+DataCaptureType=RadioButton
+  
+[Text]
+Position=0,0,64,16
+Text=Institution
+ 
+[EndColumn]
+  
+[Column]
 Width=50
   
 [HeaderText]
