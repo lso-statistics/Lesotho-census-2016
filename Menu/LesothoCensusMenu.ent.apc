@@ -431,11 +431,12 @@ numeric i = 2, ctr;
 dirlist(fileListing,dataFolder,"*.dat");
     if length(fileListing) > 0 then
 	    mycodes(1) = "View all";
+    	mylabels(1) = "View all";
     
 		do ctr = 1 while ctr <= length(fileListing)
 			eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 			mycodes(i) = eacode;
-			mylabels(i) = "";
+			mylabels(i) = eacode;
 			i = i + 1;
 	    enddo;
 	else
