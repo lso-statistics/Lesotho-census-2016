@@ -30,6 +30,7 @@ Item=VISIT_DATE000
 Item=HOUSEHOLD_STATUS
 Item=VILLAGE_NAME
 Item=HOUSEHOLD_HEAD_NAMES
+Item=INTERVIEW_DATE
   
   
 [Text]
@@ -231,15 +232,6 @@ Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskervill
  
 [EndForm]
   
-[Form]
-Name=FORM002
-Label=New Assets
-Level=1
-Size=712,374
-  
-  
-[EndForm]
-  
 [Level]
 Name=LESOTHOCENSUS2016_QUEST
 Label=LesothoCensus2016 questionnaire
@@ -251,6 +243,18 @@ Label=Identification
 Form=1
 LogicControl=No
 Max=1
+  
+[Field]
+Name=INTERVIEW_DATE
+Position=661,505,802,525
+Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
+Protected=Yes
+Form=1
+  
+[Text]
+Position=507,508,636,524
+Text=Interview Start Time
+ 
   
 [Field]
 Name=DISTRICT
@@ -5290,14 +5294,5 @@ Text=New Assets
   
 [EndGrid]
  
-[EndGroup]
-  
-[Group]
-Required=Yes
-Name=NEW_ASSETS_FORM
-Label=New Assets
-Form=9
-LogicControl=No
-Max=1
 [EndGroup]
   
