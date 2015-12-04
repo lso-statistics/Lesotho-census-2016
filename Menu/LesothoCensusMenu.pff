@@ -15,10 +15,10 @@ STAFF_DICT=.\staff.dat
 ASS_SUP_DICT=.\AssSup.dat
 
 [UserFiles]
-SR_PFFFILE=
 TMPFILE=
-TEMPFILE=
+SR_PFFFILE=
 PFFFILE=
+TEMPFILE=
 
 [Parameters]
 
