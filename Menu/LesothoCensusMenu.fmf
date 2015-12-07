@@ -13,13 +13,14 @@ File=.\LesothoCensusMenu.dcf
 Name=FORM000
 Label=LesothoCensusMenu questionnaire
 Level=1
-Size=434,210
+Size=434,230
   
 Item=USER_CODE
 Item=ENUMERATOR_MENU
 Item=ASSISTANT_SUPERVISOR_MENU
 Item=CHOOSE_POSTCHECK_HOUSEHOLD
 Item=CHOOSE_REPORT
+Item=CONSISTENCY_CHECK_BY_AGE_AND_SEX
   
 [EndForm]
   
@@ -72,26 +73,38 @@ Text=Assistant Supervisor Menu
   
 [Field]
 Name=CHOOSE_REPORT
-Position=254,130,409,150
+Position=254,122,409,142
 Item=CHOOSE_REPORT,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=48,130,141,146
+Position=53,128,146,144
 Text=Choose Report
  
   
 [Field]
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Position=254,165,297,185
+Position=255,155,298,175
 Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=47,168,233,184
+Position=48,159,234,175
 Text=Choose Postcheck Household
+ 
+  
+[Field]
+Name=CONSISTENCY_CHECK_BY_AGE_AND_SEX
+Position=295,185,310,205
+Item=CONSISTENCY_CHECK_BY_AGE_AND_SEX,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=46,186,269,202
+Text=Consistency Check by Age and Sex
  
 [EndGroup]
   

@@ -6,6 +6,9 @@ array string labels(200);
 
 array string mycodes(200);
 array string mylabels(200);
+file tempFile;
+array ageBySex5YearGroups(27, 2);
+
 
 string loginFilename;
 string enumeratorEA;
@@ -18,6 +21,73 @@ numeric ea; //
 list string fileListing; //variable to store all data files in a directory
 
 file pffFile; // File variable for writing out data entry pff file
+
+
+function SexRatioReport()
+
+	//numeric males = 0, females = 0;
+	// Loop through all households 
+	// until loadcase returns zero when it hits end of file.
+	locate(LESOTHOCENSUS2016_DICT, >=, "");	
+	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
+		
+		// Loop through each individual in household
+		numeric personNum;
+		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
+			if (B5(personNum) in 0:130) then
+				numeric ageGroup = int(B5(personNum)/5) + 1;
+				inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+			endif;
+		enddo;
+	enddo;
+	
+	
+	// Write out age by sex distribution to JSON array that looks like:
+	// var data = [
+	//    {group: '0-9', male: 10, female: 12, total: 22},
+	//    {group: '10-19', male: 14, female: 15, total: 29},
+	//    ...
+	// ];
+
+	string reportFilename = maketext("%sexratio.txt", pathname(Application));
+	setfile(tempFile, reportFilename);
+
+	filewrite(tempFile, "Age Groups   Males   Female   Sex Ratio");
+	filewrite(tempFile, "----------------------------------------");
+	//filewrite(tempFile, "");
+
+	//filewrite(tempFile, "var data = [");
+  	numeric groupNum;
+  	do groupNum = 1 while groupNum <= 27
+  		numeric lowerBound = (groupNum - 1) * 5;
+  		numeric upperBound = groupNum * 5 - 1;
+  		numeric male = ageBySex5YearGroups(groupNum, 1);
+  		numeric female = ageBySex5YearGroups(groupNum, 2);
+  		numeric SexRatio = (male/female) * 100;
+
+  		filewrite(tempFile, " %02d-%02d      %03d       %03d         %03d", 
+  				  lowerBound, upperBound, male, female, SexRatio); 
+  	    
+	enddo;
+	filewrite(tempFile, "----------------------------------------");
+	filewrite(tempFile, "-------------END OF REPORT--------------");
+	//filewrite(tempFile, "];");
+	close(tempFile);
+
+//	string reportFilename = maketext("%sagebysex.txt", pathname(Application));
+
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
+
+
 
 function CreateAndRunPFF()
 
@@ -106,7 +176,7 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 
 end;
 
-file tempFile;
+//file tempFile;
 function ShowSummaryReport()
 
 	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
@@ -275,6 +345,8 @@ function ShowSummaryReport_EA(string eacode)
 	endif;
 end;
 
+
+
 PROC LESOTHOCENSUSMENU_FF
 preproc
 loginFilename = pathname(Application) + "login.txt";
@@ -396,21 +468,25 @@ if ASSISTANT_SUPERVISOR_MENU = 1 then
 	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
 elseif ASSISTANT_SUPERVISOR_MENU = 2 then
 	skip to CHOOSE_REPORT;
+	
 elseif ASSISTANT_SUPERVISOR_MENU = 3 then
+    SexRatioReport();
+     
+elseif ASSISTANT_SUPERVISOR_MENU = 4 then
 	if sync("Server.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif ASSISTANT_SUPERVISOR_MENU = 4 then
+elseif ASSISTANT_SUPERVISOR_MENU = 5 then
 	if sync("SyncWithServer.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif ASSISTANT_SUPERVISOR_MENU = 5 then
+elseif ASSISTANT_SUPERVISOR_MENU = 6 then
 	// Logout
 	// Erase login file so that we don't automatically
 	// login next time.
@@ -504,3 +580,15 @@ enddo;
 
 errmsg("Something went horribly wrong. Please contact technical support");
 reenter ASSISTANT_SUPERVISOR_MENU;
+PROC CONSISTENCY_CHECK_BY_AGE_AND_SEX
+
+if CONSISTENCY_CHECK_BY_AGE_AND_SEX = 3 then
+	SexRatioReport();
+elseif CONSISTENCY_CHECK_BY_AGE_AND_SEX = 6 then
+	stop(1);
+endif;
+
+reenter;
+
+
+	

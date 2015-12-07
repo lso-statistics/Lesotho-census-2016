@@ -231,15 +231,6 @@ Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskervill
  
 [EndForm]
   
-[Form]
-Name=FORM002
-Label=New Assets
-Level=1
-Size=712,374
-  
-  
-[EndForm]
-  
 [Level]
 Name=LESOTHOCENSUS2016_QUEST
 Label=LesothoCensus2016 questionnaire
@@ -5290,14 +5281,5 @@ Text=New Assets
   
 [EndGrid]
  
-[EndGroup]
-  
-[Group]
-Required=Yes
-Name=NEW_ASSETS_FORM
-Label=New Assets
-Form=9
-LogicControl=No
-Max=1
 [EndGroup]
   
