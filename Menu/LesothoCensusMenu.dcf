@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=22
+RecordLen=24
 
 [Item]
 Label=User Code
@@ -62,15 +62,41 @@ Value=4;Sync With Server
 Value=5;Logout
 
 [Item]
+Label=Constituency Supervisor
+Name=CONSTITUENCY_SUPERVISOR_MENU
+Start=9
+Len=1
+
+[ValueSet]
+Label=Constituency Supervisor
+Name=CONSTITUENCY_SUPERVISOR_MENU_VS1
+Value=1;Summary Report
+Value=2;Sync With Enumerator
+Value=3;Sync With Server
+Value=4;Logout
+
+[Item]
 Label=Choose Postcheck Household
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Start=9
+Start=10
 Len=3
 ZeroFill=Yes
 
 [Item]
+Label=Summary Report Menu
+Name=SUMMARY_REPORT_MENU
+Start=13
+Len=1
+
+[ValueSet]
+Label=Summary Report Menu
+Name=SUMMARY_REPORT_MENU_VS1
+Value=1;Age by Sex
+Value=2;Sex Ratio
+
+[Item]
 Label=Choose Report
 Name=CHOOSE_REPORT
-Start=12
+Start=14
 Len=11
 DataType=Alpha

@@ -45,6 +45,7 @@ Label=STAFF_ROLE
 Name=STAFF_ROLE_VS1
 Value=1;Enumerator
 Value=2;Assistant Supervisor
+Value=3;Constituency Supervisor
 
 [Item]
 Label=STAFF_EA
