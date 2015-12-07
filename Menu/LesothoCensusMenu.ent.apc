@@ -499,10 +499,12 @@ PROC CONSTITUENCY_SUPERVISOR_MENU
 
 if CONSTITUENCY_SUPERVISOR_MENU = 1 then
 	skip to SUMMARY_REPORT_MENU;
+elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
+    SexRatioReport();
 endif;
 
 
-if ASSISTANT_SUPERVISOR_MENU = 4 then
+if ASSISTANT_SUPERVISOR_MENU = 5 then
 	// Logout
 	// Erase login file so that we don't automatically
 	// login next time.
@@ -594,3 +596,9 @@ enddo;
 
 errmsg("Something went horribly wrong. Please contact technical support");
 reenter ASSISTANT_SUPERVISOR_MENU;
+PROC SUMMARY_REPORT_MENU
+
+if SUMMARY_REPORT_MENU = 2 then
+   SexRatioReport();
+   
+endif
