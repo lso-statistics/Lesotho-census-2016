@@ -1268,6 +1268,12 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Enter H
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.INTERVIEW_DATE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Reason why the questionnaire is partially complete\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.IS_RESPONDENT_HOUSEHOLD_MEMBER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Is the Respondent the member of the household?\par
@@ -1323,12 +1329,6 @@ Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s unit group of occupation?\par
-ENG=}
-
-[QUESTION]
-Field=LESOTHOCENSUS2016_DICT.PARTIALLY_COMPLETE_REASON
-ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Reason why the questionnaire is partially complete\par
 ENG=}
 
 [QUESTION]

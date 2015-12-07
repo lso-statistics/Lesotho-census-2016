@@ -30,6 +30,7 @@ Item=VISIT_DATE000
 Item=HOUSEHOLD_STATUS
 Item=VILLAGE_NAME
 Item=HOUSEHOLD_HEAD_NAMES
+Item=INTERVIEW_DATE
   
   
 [Text]
@@ -242,6 +243,18 @@ Label=Identification
 Form=1
 LogicControl=No
 Max=1
+  
+[Field]
+Name=INTERVIEW_DATE
+Position=661,505,802,525
+Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
+Protected=Yes
+Form=1
+  
+[Text]
+Position=507,508,636,524
+Text=Interview Start Time
+ 
   
 [Field]
 Name=DISTRICT

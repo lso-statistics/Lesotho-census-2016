@@ -7178,7 +7178,7 @@ Value=0;No
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=185
+RecordLen=195
 
 [Item]
 Label=Number of visits
@@ -7260,4 +7260,11 @@ Label=Partially Complete Reason
 Name=PARTIALLY_COMPLETE_REASON
 Start=156
 Len=30
+DataType=Alpha
+
+[Item]
+Label=Interview Date
+Name=INTERVIEW_DATE
+Start=186
+Len=10
 DataType=Alpha
