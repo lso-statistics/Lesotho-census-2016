@@ -25,6 +25,12 @@ file pffFile; // File variable for writing out data entry pff file
 
 function SexRatioReport()
 
+	numeric i;
+	do i = 1 while i <= 27 
+		ageBySex5YearGroups(i, 1) = 0;
+		ageBySex5YearGroups(i, 2) = 0;
+	enddo;
+	
 	//numeric males = 0, females = 0;
 	// Loop through all households 
 	// until loadcase returns zero when it hits end of file.
@@ -49,7 +55,7 @@ function SexRatioReport()
 	//    ...
 	// ];
 
-	string reportFilename = maketext("%sexratio.txt", pathname(Application));
+	string reportFilename = maketext("%sSex Ratio Report.txt", pathname(Application));
 	setfile(tempFile, reportFilename);
 
 	filewrite(tempFile, "Age Groups   Males   Female   Sex Ratio");
@@ -65,7 +71,7 @@ function SexRatioReport()
   		numeric female = ageBySex5YearGroups(groupNum, 2);
   		numeric SexRatio = (male/female) * 100;
 
-  		filewrite(tempFile, " %02d-%02d      %03d       %03d         %03d", 
+  		filewrite(tempFile, " %03d-%03d      %03d       %03d         %03d", 
   				  lowerBound, upperBound, male, female, SexRatio); 
   	    
 	enddo;
@@ -675,17 +681,6 @@ elseif ASSISTANT_SUPERVISOR_MENU = 6 then
 	stop(1);
 endif;
 
-PROC VIEW_DATE
-
-postproc
-if VIEW_DATE = "View all" then
-	ShowSummaryReport();
-	reenter;
-//else
-//	ShowSummaryReport_EA(CHOOSE_REPORT);
-//	reenter;
-endif;
-
 PROC CONSTITUENCY_SUPERVISOR_MENU
 
 if CONSTITUENCY_SUPERVISOR_MENU = 1 then
@@ -700,6 +695,17 @@ if ASSISTANT_SUPERVISOR_MENU = 5 then
 	// Erase login file so that we don't automatically
 	// login next time.
 	filedelete(loginFilename);
+endif;
+
+PROC VIEW_DATE
+
+postproc
+if VIEW_DATE = "View all" then
+	ShowSummaryReport();
+	reenter;
+//else
+//	ShowSummaryReport_EA(CHOOSE_REPORT);
+//	reenter;
 endif;
 
 PROC CHOOSE_REPORT
@@ -794,4 +800,5 @@ PROC SUMMARY_REPORT_MENU
 if SUMMARY_REPORT_MENU = 2 then
    SexRatioReport();
    
-endif
+endif;
+reenter;
