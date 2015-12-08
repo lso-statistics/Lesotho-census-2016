@@ -16,7 +16,7 @@ file tmpFile;
 string enumeratorDataFileName; //
 string supervisorDataFilename; //
 string enumtempFileName; //
-numeric ea; //
+numeric ea, totMales = 0, totFemales = 0, totPopulation = 0, males, females, population; //
 
 list string fileListing; //variable to store all data files in a directory
 
@@ -234,7 +234,18 @@ function ShowSummaryReport()
 					PartialSave = PartialSave + 1;
 				endif;
 				TotalHH = TotalHH +1;
+				
+				males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+				females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+				//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+			
+				totMales = totMales + males;
+				totFemales = totFemales + females;
+				//totPopulation = totPopulation + population;
 			enddo;
+			
+			totPopulation = totMales + totFemales;
+				
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -247,6 +258,10 @@ function ShowSummaryReport()
 		filewrite(tempFile, "----------------------------------------------------------");
 		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -317,7 +332,18 @@ function ShowSummaryReport_EA(string eacode)
 					PartialSave = PartialSave + 1;
 				endif;
 				TotalHH = TotalHH +1;
+				
+				males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+				females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+				//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+			
+				totMales = totMales + males;
+				totFemales = totFemales + females;
+				//totPopulation = totPopulation + population;
 			enddo;
+			
+			totPopulation = totMales + totFemales;
+				
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -330,6 +356,10 @@ function ShowSummaryReport_EA(string eacode)
 		filewrite(tempFile, "----------------------------------------------------------");
 		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -406,9 +436,20 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 						PartialSave = PartialSave + 1;
 					endif;
 					TotalHH = TotalHH +1;
+				
+					males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+					females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+					//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+				
+					totMales = totMales + males;
+					totFemales = totFemales + females;
+					//totPopulation = totPopulation + population;
 				endif;
 			enddo;
-	    filewrite(tempFile,"%s										",viewdate);
+			
+			totPopulation = totMales + totFemales;
+								
+		filewrite(tempFile,"DATE: %s", viewdate);
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -421,6 +462,10 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 		filewrite(tempFile, "----------------------------------------------------------");
 		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -492,9 +537,20 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 						PartialSave = PartialSave + 1;
 					endif;
 					TotalHH = TotalHH +1;
+				
+					males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+					females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+					//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+				
+					totMales = totMales + males;
+					totFemales = totFemales + females;
+					//totPopulation = totPopulation + population;
 				endif;
 			enddo;
-		filewrite(tempFile,"%s										",viewdate);
+			
+			totPopulation = totMales + totFemales;
+				
+		filewrite(tempFile,"DATE: %s", viewdate);
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -507,6 +563,10 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 		filewrite(tempFile, "----------------------------------------------------------");
 		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -675,17 +735,6 @@ elseif ASSISTANT_SUPERVISOR_MENU = 6 then
 	stop(1);
 endif;
 
-PROC VIEW_DATE
-
-postproc
-if VIEW_DATE = "View all" then
-	ShowSummaryReport();
-	reenter;
-//else
-//	ShowSummaryReport_EA(CHOOSE_REPORT);
-//	reenter;
-endif;
-
 PROC CONSTITUENCY_SUPERVISOR_MENU
 
 if CONSTITUENCY_SUPERVISOR_MENU = 1 then
@@ -700,6 +749,17 @@ if ASSISTANT_SUPERVISOR_MENU = 5 then
 	// Erase login file so that we don't automatically
 	// login next time.
 	filedelete(loginFilename);
+endif;
+
+PROC VIEW_DATE
+
+postproc
+if VIEW_DATE = "View all" then
+	ShowSummaryReport();
+	reenter;
+//else
+//	ShowSummaryReport_EA(CHOOSE_REPORT);
+//	reenter;
 endif;
 
 PROC CHOOSE_REPORT

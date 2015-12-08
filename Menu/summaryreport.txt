@@ -1,19 +1,62 @@
-﻿Enumeration Area Summary Report by Day
+﻿Enumeration Area Summary Report
 -------------------------------
 
-10/04/2016										
-EA CODE: 02090413042
+EA CODE: 03220423038
 Households								Household Status
-93										Completed
+61										Completed
 0										Partially Complete
 0										No household member at home
-0										Entire household absent for extended period of time
+1										Entire household absent for extended period of time
 0										Dwelling vacant
+0										Dwelling destroyed
+9										Partially saved
+----------------------------------------------------------
+71										Total Households
+
+==========================================================
+199										Total Males
+178										Total Females
+377										Total Population
+***********************************************************
+******end of report for current enumeration area code******
+***********************************************************
+
+EA CODE: 04380113020
+Households								Household Status
+94										Completed
+0										Partially Complete
+0										No household member at home
+3										Entire household absent for extended period of time
+7										Dwelling vacant
 0										Dwelling destroyed
 0										Partially saved
 ----------------------------------------------------------
-93										Total Households
+104										Total Households
 
+==========================================================
+405										Total Males
+405										Total Females
+810										Total Population
+***********************************************************
+******end of report for current enumeration area code******
+***********************************************************
+
+EA CODE: 04450813015
+Households								Household Status
+94										Completed
+5										Partially Complete
+1										No household member at home
+1										Entire household absent for extended period of time
+0										Dwelling vacant
+0										Dwelling destroyed
+2										Partially saved
+----------------------------------------------------------
+103										Total Households
+
+==========================================================
+598										Total Males
+631										Total Females
+1229										Total Population
 ***********************************************************
 ******end of report for current enumeration area code******
 ***********************************************************

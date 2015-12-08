@@ -354,6 +354,8 @@ Text=Village Number
 Name=VILLAGE_NAME
 Position=169,305,870,325
 Item=VILLAGE_NAME,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
+UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
@@ -376,6 +378,8 @@ Text=Household Number
 Name=HOUSEHOLD_HEAD_NAMES
 Position=198,383,899,403
 Item=HOUSEHOLD_HEAD_NAMES,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
+UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
@@ -827,6 +831,8 @@ Text=Is Respondent Household Member
 Name=RESPONDENT_NAME
 Position=315,424,736,444
 Item=RESPONDENT_NAME,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
+UseUnicodeTextBox=Yes
 Form=2
   
 [Text]
