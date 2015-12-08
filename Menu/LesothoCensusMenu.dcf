@@ -24,11 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-<<<<<<< HEAD
-RecordLen=24
-=======
 RecordLen=33
->>>>>>> 7da4ec8d4d72277506d7170f1d42d3b559e441f0
 
 [Item]
 Label=User Code
