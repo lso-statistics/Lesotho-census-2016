@@ -15,10 +15,10 @@ STAFF_DICT=.\staff.dat
 ASS_SUP_DICT=..\HouseholdDataEntry\PHC2016PILOTDATA-reformatted.dat
 
 [UserFiles]
-TMPFILE=
 SR_PFFFILE=
-PFFFILE=
+TMPFILE=
 TEMPFILE=
+PFFFILE=
 
 [Parameters]
 

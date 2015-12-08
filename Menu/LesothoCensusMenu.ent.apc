@@ -71,7 +71,7 @@ function SexRatioReport()
   		numeric female = ageBySex5YearGroups(groupNum, 2);
   		numeric SexRatio = (male/female) * 100;
 
-  		filewrite(tempFile, " %03d-%03d      %03d       %03d         %03d", 
+  		filewrite(tempFile, " %3d-%3d      %3d       %3d         %3d", 
   				  lowerBound, upperBound, male, female, SexRatio); 
   	    
 	enddo;
@@ -653,25 +653,42 @@ postproc
 if ASSISTANT_SUPERVISOR_MENU = 1 then
 	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
 elseif ASSISTANT_SUPERVISOR_MENU = 2 then
-	skip to VIEW_DATE;
-elseif ASSISTANT_SUPERVISOR_MENU = 3 then
-    SexRatioReport();
-     
-elseif ASSISTANT_SUPERVISOR_MENU = 4 then
+	//skip to household_status;
+elseif ASSISTANT_SUPERVISOR_MENU = 9 then
+	// Logout
+	// Erase login file so that we don't automatically
+	// login next time.
+	filedelete(loginFilename);
+	// Quit data entry
+	stop(1);
+endif;
+
+PROC CONSTITUENCY_SUPERVISOR_MENU
+
+postproc
+if CONSTITUENCY_SUPERVISOR_MENU = 1 then
+	//skip to view_data;
+elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
+	skip to SexRatioReport();
+elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
+	//skip to population_pyramid();
+elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
+	//skip to household_status;     
+elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
 	if sync("Server.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif ASSISTANT_SUPERVISOR_MENU = 5 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then
 	if sync("SyncWithServer.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif ASSISTANT_SUPERVISOR_MENU = 6 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
 	// Logout
 	// Erase login file so that we don't automatically
 	// login next time.
@@ -679,22 +696,6 @@ elseif ASSISTANT_SUPERVISOR_MENU = 6 then
 	
 	// Quit data entry
 	stop(1);
-endif;
-
-PROC CONSTITUENCY_SUPERVISOR_MENU
-
-if CONSTITUENCY_SUPERVISOR_MENU = 1 then
-	skip to SUMMARY_REPORT_MENU;
-elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
-    SexRatioReport();
-endif;
-
-
-if ASSISTANT_SUPERVISOR_MENU = 5 then
-	// Logout
-	// Erase login file so that we don't automatically
-	// login next time.
-	filedelete(loginFilename);
 endif;
 
 PROC VIEW_DATE
