@@ -13,7 +13,7 @@ File=.\LesothoCensusMenu.dcf
 Name=FORM000
 Label=LesothoCensusMenu questionnaire
 Level=1
-Size=434,316
+Size=434,277
   
 Item=USER_CODE
 Item=ENUMERATOR_MENU
@@ -120,7 +120,7 @@ Text=Choose Report
   
 [Field]
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Position=254,231,297,251
+Position=257,232,300,252
 Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
