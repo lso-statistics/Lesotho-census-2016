@@ -57,12 +57,8 @@ Label=Assistant Supervisor Menu
 Name=ASSISTANT_SUPERVISOR_MENU_VS1
 Value=1;Postcheck Households
 Value=2;Summary Report
-Value=3;Sync With Enumerator
-Value=4;Sync With Server
-Value=3;Check Sex Ratio by Age
-Value=4;Sync With Enumerator
-Value=5;Sync With Server
-Value=6;Logout
+Value=3;Household Status
+Value=4;Logout
 
 [Item]
 Label=Constituency Supervisor
@@ -73,11 +69,13 @@ Len=1
 [ValueSet]
 Label=Constituency Supervisor
 Name=CONSTITUENCY_SUPERVISOR_MENU_VS1
-Value=1;Summary Report
-Value=2;Sync With Enumerator
-Value=3;Check Sex Ratio by Age
-Value=4;Sync With Server
-Value=5;Logout
+Value=1;View Data
+Value=2;Sex Ratio
+Value=3;Population Pyramid
+Value=4;Household Status
+Value=5;Sync With Enum
+Value=6;Sync With HQ
+Value=7;Logout
 
 [Item]
 Label=Choose Postcheck Household
