@@ -7,7 +7,7 @@ Interactive=Ask
 
 [Files]
 Application=.\HouseholdDataEntry.ent
-InputData=..\Menu\reformatted.dat
+InputData=..\..\..\Version 11.0\LesothoCensus2016\HouseholdDataEntry\newData
 
 
 [Parameters]
