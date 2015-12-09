@@ -22,6 +22,111 @@ list string fileListing; //variable to store all data files in a directory
 
 file pffFile; // File variable for writing out data entry pff file
 
+//********************************************************************************************************
+array string EAarray(25);
+
+
+function pickEA()
+
+	string menuApplicationFolder = pathname(Application); //this is the path of our application;
+	string dataFolder = menuApplicationFolder + "../Data/Enumerator"; //this is the data folder (all our data is stored in here)
+	string eacode;
+		
+	numeric i = i;
+	
+	dirlist(fileListing,dataFolder,"*.dat");
+		
+	    if length(fileListing) > 0 then
+		   
+			do i = 1 while i <= length(fileListing)
+				eacode = fileListing(i)[length(fileListing(i))-14:11];
+				
+				EAarray(i) = eacode;
+		    enddo;
+		else
+			errmsg("No data files found.");
+		endif;
+		
+		EAarray(i) = "";
+		
+	trace("about to call accept");
+	numeric indexChosen = accept("Choose EA", EAarray);
+	pickEA = tonumber(EAarray(indexChosen));	
+
+end;
+
+//************************************************************************************************************
+
+
+
+
+	// Loop through all households 
+	// until loadcase returns zero when it hits end of file.	
+function  ageBySexTable()
+	numeric EApicked = pickEA();
+	
+	trace(maketext("Load file: %s", maketext("%s%011d.dat", "../Data/Enumerator/", EApicked)));
+	setfile(LESOTHOCENSUS2016_DICT, maketext("%s%011d.dat", "../Data/Enumerator/", EApicked));
+	string reportFilename;
+	string agebysex;
+	
+	locate(LESOTHOCENSUS2016_DICT, >=, "");	
+	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
+		
+		trace(maketext("Found hh with %d members------------------------", count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)));
+		// Loop through each individual in household
+		numeric personNum;
+		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
+			trace(maketext("Person age = %d sex = %d", B5(personNum), B4(personNum)));
+			if (B4(personNum) in 0:130) then
+				numeric ageGroup = int(B5(personNum)/5) + 1;
+				inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+			endif;
+		enddo;
+		
+	 enddo;
+	
+
+	// Write out age by sex distribution to EA array that looks like:
+	// var data = [
+	//    {group: '0-9', male: 10, female: 12, total: 22},
+	//    {group: '10-19', male: 14, female: 15, total: 29},
+	//    ...
+	// ];
+
+	string reportDataFilename = maketext("%sagebysex.js", pathname(Application));
+	setfile(tempFile, reportDataFilename);
+	
+	filewrite(tempFile, "var data = [");
+  	numeric groupNum;
+  	do groupNum = 1 while groupNum <= 20
+  		numeric lowerBound = (groupNum - 1) * 5;
+  		numeric upperBound = groupNum * 5 - 1;
+  		numeric male = ageBySex5YearGroups(groupNum, 1);
+  		numeric female = ageBySex5YearGroups(groupNum, 2);
+  		numeric total = male + female;
+
+  		filewrite(tempFile, "  {group: '%d-%d', male: %d, female: %d, total: %d},", 
+  				  lowerBound, upperBound, male, female, total); 
+  								  
+	enddo;
+	
+	filewrite(tempFile, "];");
+	close(tempFile);
+
+	reportFilename = maketext("%sagebysex.html", pathname(Application));
+	agebysex = maketext("%s%d.dat", "../Data/Enumerator/", EApicked);
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
+//******************************************************************************************************
 
 function SexRatioReport()
 //Clearing the array before generating the report,
@@ -45,10 +150,9 @@ function SexRatioReport()
 				   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
 				
 			endif;
-		enddo;
-	enddo;
+		enddo;		
+	 enddo;
 	
-
 	string reportFilename = maketext("%sSex Ratio Report.txt", pathname(Application));
 	setfile(tempFile, reportFilename);
 
@@ -86,8 +190,7 @@ function SexRatioReport()
 						    pathname(Windows), 
 						    reportFilename));
 	endif;
-end;
-
+end
 
 
 function CreateAndRunPFF()
@@ -585,7 +688,6 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 	endif;
 end;
 
-
 PROC LESOTHOCENSUSMENU_FF
 preproc
 loginFilename = pathname(Application) + "login.txt";
@@ -726,7 +828,7 @@ if CONSTITUENCY_SUPERVISOR_MENU = 1 then
 elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
 	SexRatioReport();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
-	//skip to population_pyramid();
+	agebysexTable();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
 	//skip to household_status;     
 elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
@@ -753,6 +855,7 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
 	stop(1);
 endif;
 
+reenter;
 PROC VIEW_DATE
 
 postproc

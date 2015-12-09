@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by jshanley (http://jsbin.com/jalex/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+	<script src="d3.v3.min.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="mustache.min.js"></script>
+	<meta charset="utf-8">
+  <title>Lesotho Census 2016</title>
+<style id="jsbin-css">
+
+.axis line,
+.axis path {
+  shape-rendering: crispEdges;
+  fill: transparent;
+  stroke: #555;
+  stroke-opacity: 0.5;
+}
+.axis text {
+  font-size: 11px;
+}
+
+.bar.left {
+  fill: steelblue;
+}
+.bar.right {
+  fill: firebrick;
+}
+</style>
+
+<style type='text/css'>
+body {
+	font-family: verdana,arial,sans-serif;
+}
+h1 {
+	font-size:14px;
+	color:blue;
+}	
+
+#tableContainer {
+	width: 500px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: black;
+	text-color: white;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Age by Sex Table</h1>
+<br />
+<div id ="tableContainer">
+	<div id="table" ></div>
+</div>
+<br />
+<br />
+<div id="pyramid" ></div>
+
+
+<script src="agebysex.js"></script>
+
+<script id="table-template" type="text/template">
+<table>
+<tr>
+    <th>Age</th>
+    <th>Male</th>
+    <th>Female</th>
+    <th>Total</th>
+</tr>
+{{#.}}
+<tr>
+    <th>{{group}}</th>
+    <td>{{male}}</td>
+    <td>{{female}}</td>
+    <td>{{total}}</td>
+</tr>
+{{/.}}
+</table>
+<br>
+<br>
+<br>
+<h1>POPULATION PYRAMID</h1>
+
+</script>
+
+<script id="jsbin-javascript">
+
+function popPyramid(data, selector) {
+
+// margin.middle is distance from center line to each y-axis
+	var margin = {
+		top: 30,
+		right: 20,
+		bottom: 45,
+		left: 20,
+		middle: 28
+	};
+
+	// SET UP DIMENSIONS
+	var w = 600 - margin.left - margin.right,
+		h = 400 - margin.bottom - margin.top;
+	
+	// the width of each side of the chart
+	var regionWidth = w / 2 - margin.middle;
+	
+	// these are the x-coordinates of the y-axes
+	var pointA = regionWidth,
+		pointB = w - regionWidth;
+		
+	// GET THE TOTAL POPULATION SIZE AND CREATE A FUNCTION FOR RETURNING THE PERCENTAGE
+	var totalPopulation = d3.sum(data, function(d) {
+			return d.male + d.female;
+		});
+		
+	var percentage = function(d) {
+			return d / totalPopulation;
+	};
+	
+	// CREATE SVG
+	var svg = d3.select('#pyramid')
+		.append('svg')
+		.attr('width', margin.left + w + margin.right)
+		.attr('height', margin.top + h + margin.bottom)
+		// ADD A GROUP FOR THE SPACE WITHIN THE MARGINS
+		.append('g')
+		.attr('transform', translation(margin.left, margin.top));
+		
+	// find the maximum data value on either side
+	//  since this will be shared by both of the x-axes
+	var maxValue = Math.max(
+					d3.max(data, function(d) {
+									return percentage(d.male);
+								 }), 
+					d3.max(data, function(d) {
+									return percentage(d.female);
+								  })
+					);
+	
+	// SET UP SCALES
+	// the xScale goes from 0 to the width of a region
+	//  it will be reversed for the left x-axis
+	var xScale = d3.scale.linear()
+		.domain([0, maxValue])
+		.range([0, regionWidth])
+		.nice();
+		
+	var xScaleLeft = d3.scale.linear()
+		.domain([0, maxValue])
+		.range([regionWidth, 0]);
+		
+	var xScaleRight = d3.scale.linear()
+		.domain([0, maxValue])
+		.range([0, regionWidth]);
+		
+	var yScale = d3.scale.ordinal()
+		.domain(data.map(function(d) {
+							return d.group;
+						 })
+			   )
+		.rangeRoundBands([h, 0], 0.1);
+
+	// SET UP AXES
+	var yAxisLeft = d3.svg.axis()
+		.scale(yScale)
+		.orient('right')
+		.tickSize(4, 0)
+		.tickPadding(margin.middle - 4);
+		
+	var yAxisRight = d3.svg.axis()
+		.scale(yScale)
+		.orient('left')
+		.tickSize(4, 0)
+		.tickFormat('');
+
+	var xAxisRight = d3.svg.axis()
+		.scale(xScale)
+		.orient('bottom')
+		.tickFormat(percent)
+		.tickSize(10 - h)
+		.outerTickSize(0);
+
+	var xAxisLeft = d3.svg.axis()
+		// REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
+		.scale(xScale.copy()
+		.range([pointA, 0]))
+		.orient('bottom')
+		.tickFormat(percent)
+		.tickSize(10 - h)
+		.outerTickSize(0);
+
+	// DRAW AXES
+	svg.append('g')
+		.attr('class', 'axis y left')
+		.attr('transform', translation(pointA, 0))
+		.call(yAxisLeft)
+		.selectAll('text')
+		.style('text-anchor', 'middle');
+	svg.append('g')
+		.attr('class', 'axis y right')
+		.attr('transform', translation(pointB, 0))
+		.call(yAxisRight);
+	svg.append('g')
+		.attr('class', 'axis x left')
+		.attr('transform', translation(0, h))
+		.call(xAxisLeft);
+	svg.append('g')
+		.attr('class', 'axis x right')
+		.attr('transform', translation(pointB, h))
+		.call(xAxisRight);
+	svg.append('text')
+		.attr('transform', translation(w / 2, h + margin.bottom - 5))
+		.style('text-anchor', 'middle')
+		.text('Percent of Total Population');
+	svg.append('text')
+		.attr('transform', translation(w / 4, -5))
+		.style('text-anchor', 'middle')
+		.text('Male');
+	svg.append('text')
+		.attr('transform', translation(3 * w / 4, -5))
+		.style('text-anchor', 'middle')
+		.text('Female');
+	svg.append('text')
+		.attr('transform', translation(w / 2, -5))
+		.style('text-anchor', 'middle')
+		.text('Age');
+
+	// MAKE GROUPS FOR EACH SIDE OF CHART
+	// scale(-1,1) is used to reverse the left side so the bars grow left instead of right
+	var leftBarGroup = svg.append('g')
+		.attr('transform', translation(pointA, 0) + 'scale(-1,1)');
+	var rightBarGroup = svg.append('g')
+		.attr('transform', translation(pointB, 0));
+		
+	// DRAW BARS
+	leftBarGroup.selectAll('.bar.left')
+		.data(data)
+		.enter()
+		.append('rect')
+		.attr('class', 'bar left')
+		.attr('x', 0)
+		.attr('y', function(d) {return yScale(d.group);})
+		.attr('width', function(d) {return xScale(percentage(d.male));})
+		.attr('height', yScale.rangeBand());
+		
+	rightBarGroup.selectAll('.bar.right')
+		.data(data)
+		.enter()
+		.append('rect')
+		.attr('class', 'bar right')
+		.attr('x', 0)
+		.attr('y', function(d) {return yScale(d.group);})
+		.attr('width', function(d) {return xScale(percentage(d.female));})
+		.attr('height', yScale.rangeBand());
+}
+
+
+// Convert decimal to percent without % sign
+// D3 has a percent formatter but it uses the % sign
+function percent(d) {
+	return (d * 100).toFixed();
+}
+
+
+// so sick of string concatenation for translations
+function translation(x,y) {
+  return 'translate(' + x + ',' + y + ')';
+}
+
+function ageBySexTable(data, selector) {
+	var template = $('#table-template').html();
+    var renderedTable = Mustache.to_html(template, data);
+    $(selector).html(renderedTable);
+}
+
+popPyramid(data, '#pyramid');
+
+ageBySexTable(data, '#table');
+
+</script>
+</body>
+</html>
