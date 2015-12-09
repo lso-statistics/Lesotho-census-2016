@@ -1,9 +1,13 @@
 *.dat
+*.idx
+*.sts
 *.dat.*
 *.pen
 *.err
 *.lst
 *.tbw
+*.log
+~$*.xlsx
 Menu/login.txt
 Menu/eacode.txt
 Deployment

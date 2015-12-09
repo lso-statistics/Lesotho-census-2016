@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=24
+RecordLen=34
 
 [Item]
 Label=User Code
@@ -57,9 +57,8 @@ Label=Assistant Supervisor Menu
 Name=ASSISTANT_SUPERVISOR_MENU_VS1
 Value=1;Postcheck Households
 Value=2;Summary Report
-Value=3;Sync With Enumerator
-Value=4;Sync With Server
-Value=5;Logout
+Value=3;Household Status
+Value=4;Logout
 
 [Item]
 Label=Constituency Supervisor
@@ -70,10 +69,13 @@ Len=1
 [ValueSet]
 Label=Constituency Supervisor
 Name=CONSTITUENCY_SUPERVISOR_MENU_VS1
-Value=1;Summary Report
-Value=2;Sync With Enumerator
-Value=3;Sync With Server
-Value=4;Logout
+Value=1;View Data
+Value=2;Sex Ratio
+Value=3;Population Pyramid
+Value=4;Household Status
+Value=5;Sync With Enum
+Value=6;Sync With HQ
+Value=7;Logout
 
 [Item]
 Label=Choose Postcheck Household
@@ -83,20 +85,53 @@ Len=3
 ZeroFill=Yes
 
 [Item]
+Label=View Date
+Name=VIEW_DATE
+Start=13
+Len=10
+DataType=Alpha
+
+[ValueSet]
+Label=View Date
+Name=VIEW_DATE_VS1
+Value='View all  ';View all
+Value='10/04/2016';10/04/2016
+Value='11/04/2016';11/04/2016
+Value='12/04/2016';12/04/2016
+Value='13/04/2016';13/04/2016
+Value='14/04/2016';14/04/2016
+Value='15/04/2016';15/04/2016
+Value='16/04/2016';16/04/2016
+Value='17/04/2016';17/04/2016
+Value='18/04/2016';18/04/2016
+Value='19/04/2016';19/04/2016
+Value='20/04/2016';20/04/2016
+Value='21/04/2016';21/04/2016
+Value='22/04/2016';22/04/2016
+Value='23/04/2016';23/04/2016
+Value='24/04/2016';24/04/2016
+Value='25/04/2016';25/04/2016
+Value='26/04/2016';26/04/2016
+Value='27/04/2016';27/04/2016
+Value='28/04/2016';28/04/2016
+Value='29/04/2016';29/04/2016
+Value='30/04/2016';30/04/2016
+
+[Item]
 Label=Summary Report Menu
 Name=SUMMARY_REPORT_MENU
-Start=13
+Start=23
 Len=1
 
 [ValueSet]
 Label=Summary Report Menu
 Name=SUMMARY_REPORT_MENU_VS1
 Value=1;Age by Sex
-Value=2;Sex Ratio
+Value=2;Sex Ratio Report
 
 [Item]
 Label=Choose Report
 Name=CHOOSE_REPORT
-Start=14
+Start=24
 Len=11
 DataType=Alpha

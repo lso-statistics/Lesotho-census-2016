@@ -13,13 +13,15 @@ File=.\LesothoCensusMenu.dcf
 Name=FORM000
 Label=LesothoCensusMenu questionnaire
 Level=1
-Size=434,246
+
+Size=434,277
   
 Item=USER_CODE
 Item=ENUMERATOR_MENU
 Item=ASSISTANT_SUPERVISOR_MENU
 Item=CHOOSE_POSTCHECK_HOUSEHOLD
 Item=CHOOSE_REPORT
+Item=VIEW_DATE
 Item=CONSTITUENCY_SUPERVISOR_MENU
   
 [EndForm]
@@ -83,37 +85,49 @@ Text=Assistant Supervisor Menu
   
 [Field]
 Name=CONSTITUENCY_SUPERVISOR_MENU
-Position=256,129,271,149
+Position=253,128,268,148
 Item=CONSTITUENCY_SUPERVISOR_MENU,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=48,132,240,148
+Position=44,134,236,150
 Text=Constituency Supervisor Menu
  
   
 [Field]
+Name=VIEW_DATE
+Position=252,162,393,182
+Item=VIEW_DATE,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=46,164,75,180
+Text=Date
+ 
+  
+[Field]
 Name=CHOOSE_REPORT
-Position=254,166,409,186
+Position=253,196,408,216
 Item=CHOOSE_REPORT,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=48,166,141,182
+Position=46,201,139,217
 Text=Choose Report
  
   
 [Field]
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Position=254,201,297,221
+Position=257,232,300,252
 Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=47,204,233,220
+Position=47,236,233,252
 Text=Choose Postcheck Household
  
 [EndGroup]

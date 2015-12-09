@@ -6,6 +6,9 @@ array string labels(200);
 
 array string mycodes(200);
 array string mylabels(200);
+file tempFile;
+array ageBySex5YearGroups(20, 2); // 13 rows for Age group and 2 columns for Male and Female.
+
 
 string loginFilename;
 string enumeratorEA;
@@ -13,8 +16,7 @@ file tmpFile;
 string enumeratorDataFileName; //
 string supervisorDataFilename; //
 string enumtempFileName; //
-numeric ea; //
-
+numeric ea, totMales = 0, totFemales = 0, totPopulation = 0, males, females, population; //
 
 list string fileListing; //variable to store all data files in a directory
 
@@ -56,8 +58,6 @@ end;
 //************************************************************************************************************
 
 
-file tempFile;
-array ageBySex5YearGroups(20, 2); // 13 rows for Age group and 2 columns for Male and Female.
 
 
 	// Loop through all households 
@@ -116,7 +116,65 @@ function  ageBySexTable()
 
 	reportFilename = maketext("%sagebysex.html", pathname(Application));
 	agebysex = maketext("%s%d.dat", "../Data/Enumerator/", EApicked);
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
+//******************************************************************************************************
+
+function SexRatioReport()
+//Clearing the array before generating the report,
+//to avoid double counting.
+	numeric i;
+	do i = 1 while i <= 27 
+		ageBySex5YearGroups(i, 1) = 0;
+		ageBySex5YearGroups(i, 2) = 0;
+	enddo;
 	
+	// Loop through all households 
+	// until loadcase returns zero when it hits end of file.
+	locate(LESOTHOCENSUS2016_DICT, >=, "");	
+	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
+		
+		// Loop through each individual in household
+		numeric personNum;
+		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
+			if (B5(personNum) in 0:130) then
+				numeric ageGroup = int(B5(personNum)/5) + 1;
+				inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+			endif;
+		enddo;		
+	 enddo;
+	
+	string reportFilename = maketext("%sSex Ratio Report.txt", pathname(Application));
+	setfile(tempFile, reportFilename);
+
+	filewrite(tempFile, "Age Groups   Males   Female   Sex Ratio");
+	filewrite(tempFile, "----------------------------------------");
+	
+  	numeric groupNum;
+  	do groupNum = 1 while groupNum <= 27
+  		numeric lowerBound = (groupNum - 1) * 5;
+  		numeric upperBound = groupNum * 5 - 1;
+  		numeric male = ageBySex5YearGroups(groupNum, 1);
+  		numeric female = ageBySex5YearGroups(groupNum, 2);
+  		numeric SexRatio = (male/female) * 100;
+
+  		filewrite(tempFile, " %3d-%3d      %3d       %3d         %3d", 
+  				  lowerBound, upperBound, male, female, SexRatio); 
+  	    
+	enddo;
+	filewrite(tempFile, "----------------------------------------");
+	filewrite(tempFile, "-------------END OF REPORT--------------");
+	//filewrite(tempFile, "];");
+	close(tempFile);
+
 	if getos() in 20:29 then
 		// Android - use "browse:"
 		execsystem(maketext("view:%s", reportFilename));
@@ -128,7 +186,6 @@ function  ageBySexTable()
 	endif;
 end
 
-//******************************************************************************************************
 
 function CreateAndRunPFF()
 
@@ -217,7 +274,8 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 
 end;
 
-//file tempFile;
+
+//function to display data for all the enumeration areas irrespective of the date they were enumerated on.
 function ShowSummaryReport()
 
 	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
@@ -274,7 +332,18 @@ function ShowSummaryReport()
 					PartialSave = PartialSave + 1;
 				endif;
 				TotalHH = TotalHH +1;
+				
+				males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+				females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+				//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+			
+				totMales = totMales + males;
+				totFemales = totFemales + females;
+				//totPopulation = totPopulation + population;
 			enddo;
+			
+			totPopulation = totMales + totFemales;
+				
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -287,6 +356,10 @@ function ShowSummaryReport()
 		filewrite(tempFile, "----------------------------------------------------------");
 		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -306,6 +379,7 @@ function ShowSummaryReport()
 	endif;
 end;
 
+{
 function ShowSummaryReport_EA(string eacode)
 
 	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
@@ -356,7 +430,18 @@ function ShowSummaryReport_EA(string eacode)
 					PartialSave = PartialSave + 1;
 				endif;
 				TotalHH = TotalHH +1;
+				
+				males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+				females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+				//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+			
+				totMales = totMales + males;
+				totFemales = totFemales + females;
+				//totPopulation = totPopulation + population;
 			enddo;
+			
+			totPopulation = totMales + totFemales;
+				
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -369,6 +454,10 @@ function ShowSummaryReport_EA(string eacode)
 		filewrite(tempFile, "----------------------------------------------------------");
 		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -385,7 +474,213 @@ function ShowSummaryReport_EA(string eacode)
 						    reportFilename));
 	endif;
 end;
+}
 
+//function to display all the EAs for a specific date selected by the supervisor
+function ShowSummaryReportAllbyDATE(string viewdate)
+
+	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
+	setfile(tempFile, reportFilename);
+	filewrite(tempFile, "Enumeration Area Summary Report");
+	filewrite(tempFile, "-------------------------------");
+	filewrite(tempFile, "");
+
+	string menuApplicationFolder = pathname(Application); //this is the path of our application
+	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+		
+	numeric ctr;
+    dirlist(fileListing,dataFolder,"*.dat");
+    
+	do ctr = 1 while ctr <= length(fileListing)
+		string eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
+	
+		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		// Create a dynamic value set of all completed households
+		// in the enumerator data file.	
+		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
+		if result <> 1 then
+			errmsg("Unable to load enumerator data file");
+			reenter ASSISTANT_SUPERVISOR_MENU;
+		endif;
+		
+		// Start at first household in enumerator data file
+		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+			// Loop through all households 
+			// until loadcase returns zero when it hits end of file.
+			numeric i;
+			numeric TotalHH =0;
+			numeric CompletedHH = 0;
+			numeric PartialHH = 0;
+			numeric NoMember = 0;
+			numeric Absent = 0;
+			numeric Vacant = 0;
+			numeric Destroyed = 0;
+			numeric PartialSave = 0;
+			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0				
+				if viewdate = INTERVIEW_DATE then
+					if FINAL_RESULT_CODE = 1 then
+						CompletedHH = CompletedHH + 1;
+					elseif FINAL_RESULT_CODE = 6 then
+						PartialHH = PartialHH + 1;
+					elseif HOUSEHOLD_STATUS = 2 then
+						NoMember = NoMember + 1;
+					elseif HOUSEHOLD_STATUS = 3 then
+						Absent = Absent + 1;
+					elseif HOUSEHOLD_STATUS = 4 then
+						Vacant = Vacant + 1;
+					elseif HOUSEHOLD_STATUS = 5 then
+						Destroyed = Destroyed + 1;
+					elseif not FINAL_RESULT_CODE in 1,6 then
+						PartialSave = PartialSave + 1;
+					endif;
+					TotalHH = TotalHH +1;
+				
+					males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+					females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+					//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+				
+					totMales = totMales + males;
+					totFemales = totFemales + females;
+					//totPopulation = totPopulation + population;
+				endif;
+			enddo;
+			
+			totPopulation = totMales + totFemales;
+								
+		filewrite(tempFile,"DATE: %s", viewdate);
+		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
+		filewrite(tempfile,"Households%s","								Household Status");
+		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile, "----------------------------------------------------------");
+		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"******end of report for current enumeration area code******");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"");
+
+	enddo;
+	    
+	close(tempFile);
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
+
+//function to display data for the EA selected by the supervisor on a specific date
+function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
+
+	string reportFilename = maketext("%ssummaryreport.txt", pathname(Application));
+	setfile(tempFile, reportFilename);
+	filewrite(tempFile, "Enumeration Area Summary Report by Day");
+	filewrite(tempFile, "-------------------------------");
+	filewrite(tempFile, "");
+
+	string menuApplicationFolder = pathname(Application); //this is the path of our application
+	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+	
+		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		// Create a dynamic value set of all completed households
+		// in the enumerator data file.	
+		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
+		if result <> 1 then
+			errmsg("Unable to load enumerator data file");
+			reenter ASSISTANT_SUPERVISOR_MENU;
+		endif;
+		
+		// Start at first household in enumerator data file
+		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+			// Loop through all households 
+			// until loadcase returns zero when it hits end of file.
+			numeric i;
+			numeric TotalHH =0;
+			numeric CompletedHH = 0;
+			numeric PartialHH = 0;
+			numeric NoMember = 0;
+			numeric Absent = 0;
+			numeric Vacant = 0;
+			numeric Destroyed = 0;
+			numeric PartialSave = 0;
+			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
+				if viewdate = INTERVIEW_DATE then
+					if FINAL_RESULT_CODE = 1 then
+						CompletedHH = CompletedHH + 1;
+					elseif FINAL_RESULT_CODE = 6 then
+						PartialHH = PartialHH + 1;
+					elseif HOUSEHOLD_STATUS = 2 then
+						NoMember = NoMember + 1;
+					elseif HOUSEHOLD_STATUS = 3 then
+						Absent = Absent + 1;
+					elseif HOUSEHOLD_STATUS = 4 then
+						Vacant = Vacant + 1;
+					elseif HOUSEHOLD_STATUS = 5 then
+						Destroyed = Destroyed + 1;
+					elseif not FINAL_RESULT_CODE in 1,6 then
+						PartialSave = PartialSave + 1;
+					endif;
+					TotalHH = TotalHH +1;
+				
+					males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+					females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
+					//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
+				
+					totMales = totMales + males;
+					totFemales = totFemales + females;
+					//totPopulation = totPopulation + population;
+				endif;
+			enddo;
+			
+			totPopulation = totMales + totFemales;
+				
+		filewrite(tempFile,"DATE: %s", viewdate);
+		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
+		filewrite(tempfile,"Households%s","								Household Status");
+		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile, "----------------------------------------------------------");
+		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"");
+		filewrite(tempFile, "==========================================================");
+		filewrite(tempFile,"%d										%s",totMales,"Total Males");
+		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"******end of report for current enumeration area code******");
+		filewrite(tempFile,"***********************************************************");
+		filewrite(tempFile,"");
+	    
+	close(tempFile);
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
 
 PROC LESOTHOCENSUSMENU_FF
 preproc
@@ -509,22 +804,42 @@ postproc
 if ASSISTANT_SUPERVISOR_MENU = 1 then
 	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
 elseif ASSISTANT_SUPERVISOR_MENU = 2 then
-	skip to CHOOSE_REPORT;
-elseif ASSISTANT_SUPERVISOR_MENU = 3 then
+	//skip to household_status;
+elseif ASSISTANT_SUPERVISOR_MENU = 9 then
+	// Logout
+	// Erase login file so that we don't automatically
+	// login next time.
+	filedelete(loginFilename);
+	// Quit data entry
+	stop(1);
+endif;
+
+PROC CONSTITUENCY_SUPERVISOR_MENU
+
+postproc
+if CONSTITUENCY_SUPERVISOR_MENU = 1 then
+	//skip to view_data;
+elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
+	SexRatioReport();
+elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
+	agebysexTable();
+elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
+	//skip to household_status;     
+elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
 	if sync("Server.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif ASSISTANT_SUPERVISOR_MENU = 4 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then
 	if sync("SyncWithServer.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif ASSISTANT_SUPERVISOR_MENU = 5 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
 	// Logout
 	// Erase login file so that we don't automatically
 	// login next time.
@@ -533,18 +848,17 @@ elseif ASSISTANT_SUPERVISOR_MENU = 5 then
 	// Quit data entry
 	stop(1);
 endif;
-PROC CONSTITUENCY_SUPERVISOR_MENU
 
-if CONSTITUENCY_SUPERVISOR_MENU = 1 then
-	skip to SUMMARY_REPORT_MENU;
-endif;
+reenter;
+PROC VIEW_DATE
 
-
-if ASSISTANT_SUPERVISOR_MENU = 4 then
-	// Logout
-	// Erase login file so that we don't automatically
-	// login next time.
-	filedelete(loginFilename);
+postproc
+if VIEW_DATE = "View all" then
+	ShowSummaryReport();
+	reenter;
+//else
+//	ShowSummaryReport_EA(CHOOSE_REPORT);
+//	reenter;
 endif;
 
 PROC CHOOSE_REPORT
@@ -577,10 +891,12 @@ setvalueset(CHOOSE_REPORT, mycodes, mylabels);
 
 postproc
 if CHOOSE_REPORT = "View all" then
-	ShowSummaryReport();
+	//ShowSummaryReport();
+	ShowSummaryReportAllbyDATE(VIEW_DATE);
 	reenter;
 else
-	ShowSummaryReport_EA(CHOOSE_REPORT);
+	//ShowSummaryReport_EA(CHOOSE_REPORT);
+	ShowSummaryReport_EAbyDATE(CHOOSE_REPORT, VIEW_DATE);
 	reenter;
 endif;
 
@@ -634,11 +950,8 @@ errmsg("Something went horribly wrong. Please contact technical support");
 reenter ASSISTANT_SUPERVISOR_MENU;
 PROC SUMMARY_REPORT_MENU
 
-if SUMMARY_REPORT_MENU = 1 then
-	ageBySexTable();
-//elseif SUMMARY_REPORT_MENU = 2 then
-    //sexRatio();
+if SUMMARY_REPORT_MENU = 2 then
+   SexRatioReport();
+   
 endif;
-
 reenter;
-

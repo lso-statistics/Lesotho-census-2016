@@ -161,6 +161,9 @@ preproc
 updateOccurrenceLabels();
 
 	
+PROC INTERVIEW_DATE
+preproc
+INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
 PROC DISTRICT
 preproc
 
@@ -288,7 +291,9 @@ PROC RESPONDENT_NAME
 
 //this is the case where the respondent is not a member of the household
 if RESPONDENT_NAME <> '' then
+
  skip to DEMOGRAPHIC_ROSTER;
+
 endif
 
 PROC RESPONDENT
