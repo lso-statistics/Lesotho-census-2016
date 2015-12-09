@@ -23,7 +23,7 @@ function PickFromPERSON_ROSTER()
 		PickFromPERSON_ROSTER = picked;
 end;
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+//*****************************************************************************************
 
 function PickFromDEATHS_ROSTER()
    numeric deceased;
@@ -88,10 +88,7 @@ function checkdelete()
 	   numeric choice = errmsg("Do you really want to delete %s's record?", strip(B2(person)))
 				select("YES",CONTINUE, "NO",CONTINUE);
 				
-		//if choice = 1 and person = 1 then
-		if person = 1 then
-			errmsg("You cannon delete %s's record (householdhead)", strip(B2(person)));
-		elseif choice = 1 then		
+		if choice = 1 and person <> 1 then	
 	 		delete (PERSON_ROSTER(person));
 	 		delete (DEMOGRAPHIC_ROSTER(person));
 	 		delete (DISABILITY_ROSTER(person));
@@ -100,38 +97,48 @@ function checkdelete()
 	 		delete (FERTILITY_ROSTER(person));
 	 		
 	 		numeric i;
+	 		trace(on);
 	 		do i = person while i<=totocc(PERSON_ROSTER)
-	 		B1=i;
+	 			trace(maketext("set B1(%d) = %d", i, i));
+	 			B1(i)=i;
 	 		enddo;
 	 		
+	 		updateOccurrenceLabels();
 	 		numeric lastPerson =totocc(PERSON_ROSTER);
 	 		move to MORE_PEOPLE(lastPerson);
- 		//updateOccurrenceLabels();
+	 		
+	 		else errmsg("You cannot delete %s's record because %s is Householdhead", strip(B2(person)), strip(B2(person))); 
  		endif;
  	
  	endif;
- 		updateOccurrenceLabels();
 end; 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+//*********************************************************************************************************
+	
 function deletedeaths()
 	numeric deceased = PickFromDEATHS_ROSTER();
 	if deceased > 0 then
- 		delete (DEATHS_ROSTER(deceased));
- 		G52 = visualvalue(G52)-1;
-		if visualvalue(G52) = 0 then
-			G51 = 2;
+	
+		numeric choice = errmsg("Do you really want to delete %s's record?", strip(G53(deceased)))
+				select("YES",CONTINUE, "NO",CONTINUE);
+			
+		if choice = 1 then	
+	 		delete (DEATHS_ROSTER(deceased));
+	 		G52 = visualvalue(G52)-1;
+			if visualvalue(G52) = 0 then
+				G51 = 2;
 		endif;
+	endif;	
 		
 		// check the current Field from G53 to G59...
-		string currentField = getsymbol();
-		string currentRecord = getrecord(currentField);
+	string currentField = getsymbol();
+	string currentRecord = getrecord(currentField);
 		
 		// After deletion we move back the cursor to the beginning of the Deaths Section
 		if currentRecord = "DEATHS" then
 			updateOccurrenceLabels();
-	    	move to G51;	
-	    endif;
+		    	move to G51;	
+		endif;
 	endif;
 end; 
 
@@ -281,8 +288,9 @@ PROC RESPONDENT_NAME
 
 //this is the case where the respondent is not a member of the household
 if RESPONDENT_NAME <> '' then
- skip to B3;
+ skip to DEMOGRAPHIC_ROSTER;
 endif
+
 PROC RESPONDENT
 
 // set value set to be list of names of household members
