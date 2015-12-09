@@ -56,8 +56,9 @@ Len=1
 Label=Assistant Supervisor Menu
 Name=ASSISTANT_SUPERVISOR_MENU_VS1
 Value=1;Postcheck Households
-Value=2;Household Status
-Value=9;Logout
+Value=2;Summary Report
+Value=3;Household Status
+Value=4;Logout
 
 [Item]
 Label=Constituency Supervisor
