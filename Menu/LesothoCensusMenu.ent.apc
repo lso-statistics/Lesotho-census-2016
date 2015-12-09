@@ -32,7 +32,6 @@ function SexRatioReport()
 		ageBySex5YearGroups(i, 2) = 0;
 	enddo;
 	
-	//numeric males = 0, females = 0;
 	// Loop through all households 
 	// until loadcase returns zero when it hits end of file.
 	locate(LESOTHOCENSUS2016_DICT, >=, "");	
@@ -48,22 +47,13 @@ function SexRatioReport()
 		enddo;
 	enddo;
 	
-	
-	// Write out age by sex distribution to JSON array that looks like:
-	// var data = [
-	//    {group: '0-9', male: 10, female: 12, total: 22},
-	//    {group: '10-19', male: 14, female: 15, total: 29},
-	//    ...
-	// ];
 
 	string reportFilename = maketext("%sSex Ratio Report.txt", pathname(Application));
 	setfile(tempFile, reportFilename);
 
 	filewrite(tempFile, "Age Groups   Males   Female   Sex Ratio");
 	filewrite(tempFile, "----------------------------------------");
-	//filewrite(tempFile, "");
-
-	//filewrite(tempFile, "var data = [");
+	
   	numeric groupNum;
   	do groupNum = 1 while groupNum <= 27
   		numeric lowerBound = (groupNum - 1) * 5;
@@ -80,8 +70,6 @@ function SexRatioReport()
 	filewrite(tempFile, "-------------END OF REPORT--------------");
 	//filewrite(tempFile, "];");
 	close(tempFile);
-
-//	string reportFilename = maketext("%sagebysex.txt", pathname(Application));
 
 	if getos() in 20:29 then
 		// Android - use "browse:"
