@@ -343,7 +343,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Village Number
 Name=VILLAGE_NUMBER_VS1
-Value=1:99;Jan-99
+Value=1:99;1-99
 
 [Item]
 Label=Village Name
@@ -389,7 +389,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Person Number
 Name=B1_VS1
-Value=1:50;Jan-50
+Value=1:50;1-50
 
 [Item]
 Label=Names
@@ -838,7 +838,7 @@ Len=1
 [ValueSet]
 Label=Residence April 2006
 Name=B14_VS1
-Value=0;Not  born
+Value=0;Not born
 Value=1;In this village
 Value=2;Elsewhere in this district
 Value=3;Elsewhere in Lesotho
@@ -1521,7 +1521,7 @@ Value=26;Graduate
 Value=27;Post graduate Diploma/Honors
 Value=28;Masters
 Value=29;PHD
-Value=30;Other  (specify)
+Value=30;Other (specify)
 Value=88;N/A
 Value=99;Don’t know
 
@@ -6194,7 +6194,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=First Child Bearing Age
 Name=F46_VS1
-Value=12:50;Dec-50
+Value=12:50;12-50
 
 [Item]
 Label=Last Child Birth Date
@@ -6610,7 +6610,7 @@ Value=8;Advanced Stone
 Value=9;Sand/Concrete Blocks
 Value=10;Advanced Burned Bricks
 Value=11;Corrugated Iron/ Metal sheets
-Value=12;Other (specify)_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Value=12;Other (specify)
 
 [Item]
 Label=Main Floor Material
@@ -7190,7 +7190,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of visits
 Name=NUMBER_OF_VISITS_VS1
-Value=1:3;3-Jan
+Value=1:3;1-3
 
 [Item]
 Label=Visit date
