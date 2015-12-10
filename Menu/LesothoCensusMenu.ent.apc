@@ -193,35 +193,33 @@ end;
 
 
 function SexRatioReport()
-//Clearing the array before generating the report,
-//to avoid double counting.
+	//Clearing the array before generating the report,
+	//to avoid double counting.
 	numeric i;
 	do i = 1 while i <= 21 
 		ageBySex5YearGroups(i, 1) = 0;
 		ageBySex5YearGroups(i, 2) = 0;
 	enddo;
 	
-	// Loop through all households 
-	// until loadcase returns zero when it hits end of file.
-	locate(LESOTHOCENSUS2016_DICT, >=, "");	
-	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
-		
-		// Loop through each individual in household
-		numeric personNum;
-		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
-			if (B5(personNum) in 0:130) then
-				   numeric ageGroup = int (low(100,B5(personNum))/5) + 1;
-				   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
-				
-			endif;
-		enddo;		
-	 enddo;
+
+	numeric EApicked = pickEA(); // 0 = view all, 1+ = index of EA
+
+	if EApicked >= 1 then
+		SexRatioProcessing(fileListing(EApicked));
 	
+	else // they selected View All
+		do i = 1 while i <= length(fileListing)
+			SexRatioProcessing(fileListing(i));
+		enddo;
+	
+	endif;
+ 
 	string reportFilename = maketext("%sSex Ratio Report.txt", pathname(Application));
 	setfile(tempFile, reportFilename);
+	
 
-	filewrite(tempFile, "Age Groups   Males   Female   Sex Ratio");
-	filewrite(tempFile, "----------------------------------------");
+	filewrite(tempFile, "Age Groups    Males      Female     Total    Sex Ratio");
+	filewrite(tempFile, "------------------------------------------------------");
 	
   	numeric groupNum;
   	do groupNum = 1 while groupNum <= 21
@@ -229,19 +227,20 @@ function SexRatioReport()
   		numeric upperBound = groupNum * 5 - 1;
   		numeric male = ageBySex5YearGroups(groupNum, 1);
   		numeric female = ageBySex5YearGroups(groupNum, 2);
+  		numeric total = male + female;
   		numeric SexRatio = (male/female) * 100;
 		
 		if groupNum <= 20 then
-  		   filewrite(tempFile, " %3d -%3d      %3d       %3d         %3d", 
-  				      lowerBound, upperBound, male, female, SexRatio); 
+  		   filewrite(tempFile, " %3d -%3d       %3d       %3d        %3d        %3d", 
+  				      lowerBound, upperBound, male, female, total, SexRatio); 
   		elseif groupNum = 21 then
-  			filewrite(tempFile, "  100+         %3d       %3d         %3d", 
-  				       male, female, SexRatio); 
+  			filewrite(tempFile, "  100+          %3d       %3d        %3d         %3d", 
+  				       male, female, total, SexRatio); 
   		endif	  
   	    
 	enddo;
-	filewrite(tempFile, "----------------------------------------");
-	filewrite(tempFile, "-------------END OF REPORT--------------");
+	filewrite(tempFile, "------------------------------------------------------");
+	filewrite(tempFile, "--------------------END OF REPORT---------------------");
 	//filewrite(tempFile, "];");
 	close(tempFile);
 
@@ -254,7 +253,7 @@ function SexRatioReport()
 						    pathname(Windows), 
 						    reportFilename));
 	endif;
-end
+end;
 
 //****************************************************************************************************
 
