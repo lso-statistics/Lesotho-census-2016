@@ -7,7 +7,7 @@ array string labels(200);
 array string mycodes(200);
 array string mylabels(200);
 file tempFile;
-array ageBySex5YearGroups(27, 2);
+array ageBySex5YearGroups(21, 2);
 
 
 string loginFilename;
@@ -22,15 +22,111 @@ list string fileListing; //variable to store all data files in a directory
 
 file pffFile; // File variable for writing out data entry pff file
 
+//********************************************************************************************************
+array string EAarray(25);
 
-function SexRatioReport()
-//Clearing the array before generating the report,
-//to avoid double counting.
-	numeric i;
-	do i = 1 while i <= 27 
-		ageBySex5YearGroups(i, 1) = 0;
-		ageBySex5YearGroups(i, 2) = 0;
+
+function pickEA()
+
+	string menuApplicationFolder = pathname(Application); //this is the path of our application;
+	string dataFolder = menuApplicationFolder + "../Data/Enumerator"; //this is the data folder (all our data is stored in here)
+	string eacode;
+		
+	numeric i = i;
+	
+	dirlist(fileListing,dataFolder,"*.dat");
+		
+	    if length(fileListing) > 0 then
+		   eaarray(1) = "View All";
+			do i = 1 while i <= length(fileListing)
+				eacode = fileListing(i)[length(fileListing(i))-14:11];
+				
+				EAarray(i+1) = eacode;
+		    enddo;
+		else
+			errmsg("No data files found.");
+		endif;
+		
+		EAarray(i+1) = "";
+		
+	numeric indexChosen = accept("Choose EA", EAarray);
+	if indexChosen = 0 then
+		reenter;
+	endif;
+	
+	pickEA = indexChosen - 1;
+	
+end;
+
+//************************************************************************************************************
+
+
+
+
+	// Loop through all households 
+	// until loadcase returns zero when it hits end of file.	
+function  ageBySexTable()
+	numeric EApicked = pickEA();
+	
+	trace(maketext("Load file: %s", maketext("%s%011d.dat", "../Data/Enumerator/", EApicked)));
+	setfile(LESOTHOCENSUS2016_DICT, maketext("%s%011d.dat", "../Data/Enumerator/", EApicked));
+	string reportFilename;
+	string agebysex;
+	
+	locate(LESOTHOCENSUS2016_DICT, >=, "");	
+	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
+		
+		trace(maketext("Found hh with %d members------------------------", count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)));
+		// Loop through each individual in household
+		numeric personNum;
+		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
+			trace(maketext("Person age = %d sex = %d", B5(personNum), B4(personNum)));
+			if (B4(personNum) in 0:130) then
+				numeric ageGroup = int(B5(personNum)/5) + 1;
+				inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+			endif;
+		enddo;
+		
+	 enddo;
+	
+
+	string reportDataFilename = maketext("%sagebysex.js", pathname(Application));
+	setfile(tempFile, reportDataFilename);
+	
+	filewrite(tempFile, "var data = [");
+  	numeric groupNum;
+  	do groupNum = 1 while groupNum <= 20
+  		numeric lowerBound = (groupNum - 1) * 5;
+  		numeric upperBound = groupNum * 5 - 1;
+  		numeric male = ageBySex5YearGroups(groupNum, 1);
+  		numeric female = ageBySex5YearGroups(groupNum, 2);
+  		numeric total = male + female;
+
+  		filewrite(tempFile, "  {group: '%d-%d', male: %d, female: %d, total: %d},", 
+  				  lowerBound, upperBound, male, female, total); 
+  								  
 	enddo;
+	
+	filewrite(tempFile, "];");
+	close(tempFile);
+
+	reportFilename = maketext("%sagebysex.html", pathname(Application));
+	agebysex = maketext("%s%d.dat", "../Data/Enumerator/", EApicked);
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
+//******************************************************************************************************
+
+function SexRatioProcessing(string eaFilename)
+
+	setfile(LESOTHOCENSUS2016_DICT, eaFilename);
 	
 	// Loop through all households 
 	// until loadcase returns zero when it hits end of file.
@@ -41,33 +137,66 @@ function SexRatioReport()
 		numeric personNum;
 		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
 			if (B5(personNum) in 0:130) then
-				numeric ageGroup = int(B5(personNum)/5) + 1;
-				inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+			   numeric ageGroup = int (low(100,B5(personNum))/5) + 1;
+			   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+				
 			endif;
-		enddo;
+		enddo;		
+	 enddo;
+	 
+	 close(LESOTHOCENSUS2016_DICT);
+
+end;
+
+function SexRatioReport()
+	//Clearing the array before generating the report,
+	//to avoid double counting.
+	numeric i;
+	do i = 1 while i <= 21 
+		ageBySex5YearGroups(i, 1) = 0;
+		ageBySex5YearGroups(i, 2) = 0;
 	enddo;
 	
 
+	numeric EApicked = pickEA(); // 0 = view all, 1+ = index of EA
+
+	if EApicked >= 1 then
+		SexRatioProcessing(fileListing(EApicked));
+	
+	else // they selected View All
+		do i = 1 while i <= length(fileListing)
+			SexRatioProcessing(fileListing(i));
+		enddo;
+	
+	endif;
+ 
 	string reportFilename = maketext("%sSex Ratio Report.txt", pathname(Application));
 	setfile(tempFile, reportFilename);
+	
 
-	filewrite(tempFile, "Age Groups   Males   Female   Sex Ratio");
-	filewrite(tempFile, "----------------------------------------");
+	filewrite(tempFile, "Age Groups    Males      Female     Total    Sex Ratio");
+	filewrite(tempFile, "------------------------------------------------------");
 	
   	numeric groupNum;
-  	do groupNum = 1 while groupNum <= 27
+  	do groupNum = 1 while groupNum <= 21
   		numeric lowerBound = (groupNum - 1) * 5;
   		numeric upperBound = groupNum * 5 - 1;
   		numeric male = ageBySex5YearGroups(groupNum, 1);
   		numeric female = ageBySex5YearGroups(groupNum, 2);
+  		numeric total = male + female;
   		numeric SexRatio = (male/female) * 100;
-
-  		filewrite(tempFile, " %3d-%3d      %3d       %3d         %3d", 
-  				  lowerBound, upperBound, male, female, SexRatio); 
+		
+		if groupNum <= 20 then
+  		   filewrite(tempFile, " %3d -%3d       %3d       %3d        %3d        %3d", 
+  				      lowerBound, upperBound, male, female, total, SexRatio); 
+  		elseif groupNum = 21 then
+  			filewrite(tempFile, "  100+          %3d       %3d        %3d         %3d", 
+  				       male, female, total, SexRatio); 
+  		endif	  
   	    
 	enddo;
-	filewrite(tempFile, "----------------------------------------");
-	filewrite(tempFile, "-------------END OF REPORT--------------");
+	filewrite(tempFile, "------------------------------------------------------");
+	filewrite(tempFile, "--------------------END OF REPORT---------------------");
 	//filewrite(tempFile, "];");
 	close(tempFile);
 
@@ -81,7 +210,6 @@ function SexRatioReport()
 						    reportFilename));
 	endif;
 end;
-
 
 
 function CreateAndRunPFF()
@@ -591,7 +719,6 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 	endif;
 end;
 
-
 PROC LESOTHOCENSUSMENU_FF
 preproc
 loginFilename = pathname(Application) + "login.txt";
@@ -732,7 +859,7 @@ if CONSTITUENCY_SUPERVISOR_MENU = 1 then
 elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
 	SexRatioReport();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
-	//skip to population_pyramid();
+	agebysexTable();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
 	//skip to household_status;     
 elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
@@ -759,6 +886,7 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
 	stop(1);
 endif;
 
+reenter;
 PROC VIEW_DATE
 
 postproc
