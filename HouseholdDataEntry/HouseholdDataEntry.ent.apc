@@ -13,12 +13,13 @@ array string deceasedArray(30, 1);
 
 function PickFromPERSON_ROSTER()
    numeric person;
-   do person = 1 while person <= totocc(PERSON_ROSTER)
+
+   do person = 1 while person <= totocc(PERSON_ROSTER);	//visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS)
       personsArray(person, 1) =  maketext("%d", visualvalue(B1(person)));
 	  personsArray(person, 2) =  strip(B2(person));     
 		
 	enddo;
-		personsArray(person, 2) = "";
+		personsArray(person, 1) = "";
 		numeric picked = showarray(personsArray, title("Person Number", "Names"));
 		PickFromPERSON_ROSTER = picked;
 end;
@@ -82,34 +83,58 @@ end;
 //**************************************************************************************
 
  
-function checkdelete()
+function checkdelete()	//delete Person's Record
 	numeric person = PickFromPERSON_ROSTER();
 	if person > 0 then
 	   numeric choice = errmsg("Do you really want to delete %s's record?", strip(B2(person)))
 				select("YES",CONTINUE, "NO",CONTINUE);
 				
-		if choice = 1 and person <> 1 then	
-	 		delete (PERSON_ROSTER(person));
-	 		delete (DEMOGRAPHIC_ROSTER(person));
-	 		delete (DISABILITY_ROSTER(person));
-	 		delete (EDUCATION_ROSTER(person));
-	 		delete (ECONOMIC_ACTIVITY_ROSTER(person));
-	 		delete (FERTILITY_ROSTER(person));
-	 		
-	 		numeric i;
-	 		trace(on);
-	 		do i = person while i<=totocc(PERSON_ROSTER)
-	 			trace(maketext("set B1(%d) = %d", i, i));
-	 			B1(i)=i;
-	 		enddo;
-	 		
-	 		updateOccurrenceLabels();
-	 		numeric lastPerson =totocc(PERSON_ROSTER);
-	 		move to MORE_PEOPLE(lastPerson);
-	 		
-	 		else errmsg("You cannot delete %s's record because %s is Householdhead", strip(B2(person)), strip(B2(person))); 
+		if choice = 1 then
+		
+			if person <> 1 then	
+		 		delete (PERSON_ROSTER(person));
+		 		
+		 		if person <= totocc(DEMOGRAPHIC_ROSTER) then
+		 			delete (DEMOGRAPHIC_ROSTER(person));
+		 		endif;
+		 		
+		 		if person <= totocc(DISABILITY_ROSTER) then
+		 			delete (DISABILITY_ROSTER(person));
+		 		endif;
+		 		
+		 		if person <= totocc(EDUCATION_ROSTER) then
+		 			delete (EDUCATION_ROSTER(person));
+		 		endif;
+		 		
+		 		if person <= totocc(ECONOMIC_ACTIVITY_ROSTER) then
+		 			delete (ECONOMIC_ACTIVITY_ROSTER(person));
+		 		endif;
+		 		
+		 		if person <= totocc(FERTILITY_ROSTER) then
+		 			delete (FERTILITY_ROSTER(person));
+		 		endif;
+		 		
+		 		NUMBER_OF_HOUSEHOLD_MEMBERS =totocc(PERSON_ROSTER);	// visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS) - 1;
+		 		updateOccurrenceLabels();
+		 		
+		 		numeric i;
+		 	
+		 		//trace(on);
+		 		do i = person while i<=totocc(PERSON_ROSTER);	//visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS)
+		 			trace(maketext("set B1(%d) = %d", i, i));
+		 			B1(i)=i;
+		 		enddo;
+		
+		 		numeric lastPerson =totocc(PERSON_ROSTER);	//visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS);
+		 		move to MORE_PEOPLE(lastPerson) advance;
+		 		
+	 		else
+	 			errmsg("You cannot delete %s's record because %s is Householdhead", strip(B2(person)), strip(B2(person))); 
+ 
+ 			endif;
+ 		
  		endif;
- 	
+ 		
  	endif;
 end; 
 
@@ -124,6 +149,9 @@ function deletedeaths()
 			
 		if choice = 1 then	
 	 		delete (DEATHS_ROSTER(deceased));
+	 		
+				{} updateOccurrenceLabels();
+				
 	 		G52 = visualvalue(G52)-1;
 			if visualvalue(G52) = 0 then
 				G51 = 2;
@@ -136,9 +164,10 @@ function deletedeaths()
 		
 		// After deletion we move back the cursor to the beginning of the Deaths Section
 		if currentRecord = "DEATHS" then
-			updateOccurrenceLabels();
-		    	move to G51;	
+			
+		    	move to G51 advance;	
 		endif;
+		{} //updateOccurrenceLabels();
 	endif;
 end; 
 
@@ -150,8 +179,8 @@ PROC LESOTHOCENSUS2016_FF
 preproc
 
 userbar (clear);
-userbar (add button, "checkdelete", checkdelete);
-userbar (add button, "deletedeaths", deletedeaths);
+userbar (add button, "Delete Person's Record", checkdelete);
+userbar (add button, "Delete Deceased",deletedeaths);
 userbar (show);
 
 PROC LESOTHOCENSUS2016_QUEST
