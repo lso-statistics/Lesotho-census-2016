@@ -212,6 +212,9 @@ function ShowSummaryReport()
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if FINAL_RESULT_CODE = 1 then
 					CompletedHH = CompletedHH + 1;
@@ -310,6 +313,9 @@ function ShowSummaryReport_EA(string eacode)
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if FINAL_RESULT_CODE = 1 then
 					CompletedHH = CompletedHH + 1;
@@ -413,6 +419,9 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0				
 				if viewdate = INTERVIEW_DATE then
 					if FINAL_RESULT_CODE = 1 then
@@ -514,6 +523,9 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if viewdate = INTERVIEW_DATE then
 					if FINAL_RESULT_CODE = 1 then
@@ -779,8 +791,8 @@ dirlist(fileListing,dataFolder,"*.dat");
 			i = i + 1;
 	    enddo;
 	else
-		errmsg("No data files found.");
-		stop(1); 
+		errmsg("There are no data files found. Please synchronize with the enumerator")
+			  select("Sync with enumerator", CONSTITUENCY_SUPERVISOR_MENU, "Logout", CONSTITUENCY_SUPERVISOR_MENU);
 	endif;
 
 //mycodes(i) = notappl;
