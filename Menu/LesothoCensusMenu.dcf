@@ -44,7 +44,7 @@ Label=Enumerator Menu
 Name=ENUMERATOR_MENU_VS1
 Value=1;Data Entry
 Value=2;Sync with Supervisor
-Value=3;Logout
+Value=9;Logout
 
 [Item]
 Label=Assistant Supervisor Menu
@@ -58,7 +58,7 @@ Name=ASSISTANT_SUPERVISOR_MENU_VS1
 Value=1;Postcheck Households
 Value=2;Summary Report
 Value=3;Household Status
-Value=4;Logout
+Value=9;Logout
 
 [Item]
 Label=Constituency Supervisor
@@ -75,7 +75,7 @@ Value=3;Population Pyramid
 Value=4;Household Status
 Value=5;Sync With Enum
 Value=6;Sync With HQ
-Value=7;Logout
+Value=9;Logout
 
 [Item]
 Label=Choose Postcheck Household

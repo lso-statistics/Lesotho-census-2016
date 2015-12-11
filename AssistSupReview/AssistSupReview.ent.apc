@@ -86,10 +86,12 @@ if sysparm("DISTRICT") <> "" then
 	RV_ENUMERATION_AREA = tonumber(sysparm("ENUMERATION_AREA"));
 	RV_WARD = tonumber(sysparm("WARD"));
 	RV_VILLAGE_NUMBER = tonumber(sysparm("VILLAGE_NUMBER"));
+	RV_VILLAGE_NAME = sysparm("VILLAGE_NAME");
 	RV_HOUSEHOLD_NUMBER = tonumber(sysparm("HOUSEHOLD_NUMBER"));
+	RV_HOUSEHOLD_HEAD_NAMES = sysparm("HOUSEHOLD_HEAD_NAMES");
 	
 	// Make protected so interviewer cannot change id-items
-	set attributes (RV_DISTRICT, RV_CONSTITUENCY, RV_COMMUNITY_COUNCIL, RV_ZONE, RV_SETTLEMENT, RV_ENUMERATION_AREA, RV_WARD, RV_VILLAGE_NUMBER,RV_HOUSEHOLD_NUMBER) protect;
+	set attributes (RV_DISTRICT, RV_CONSTITUENCY, RV_COMMUNITY_COUNCIL, RV_ZONE, RV_SETTLEMENT, RV_ENUMERATION_AREA, RV_WARD, RV_VILLAGE_NUMBER, RV_VILLAGE_NAME, RV_HOUSEHOLD_NUMBER, RV_HOUSEHOLD_HEAD_NAMES) protect;
 endif;
 PROC RV_WARD
 preproc
@@ -121,8 +123,9 @@ endif;
 PROC RV_HOUSEHOLD_NUMBER
 
 string reviewApplicationFolder = pathname(Application);
-string householdApplicationFolder = reviewApplicationFolder + "../HouseholdDataEntry/";
-string enumeratorDataFilename = maketext("%s%011d.dat", householdApplicationFolder, RV_ENUMERATION_AREA);
+//string householdApplicationFolder = reviewApplicationFolder + "../HouseholdDataEntry/";
+string dataFileFolder = reviewApplicationFolder + "../../Data/Enumerator/";
+string enumeratorDataFilename = maketext("%s%011d.dat", dataFileFolder, RV_ENUMERATION_AREA);
 
 numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
 if result <> 1 then
@@ -133,7 +136,7 @@ endif;
 // Load in case (household) in enumerator data file that corresponds to our case ids.
 if loadcase(LESOTHOCENSUS2016_DICT, RV_DISTRICT, RV_CONSTITUENCY, RV_COMMUNITY_COUNCIL,
 			RV_ZONE, RV_ENUMERATION_AREA, RV_WARD, RV_SETTLEMENT, RV_VILLAGE_NUMBER,
-			RV_HOUSEHOLD_NUMBER ) <> 1 then
+			RV_VILLAGE_NAME, RV_HOUSEHOLD_NUMBER, RV_HOUSEHOLD_HEAD_NAMES ) <> 1 then
 	errmsg("Household not found in enumerator data file");
 	reenter;
 endif;

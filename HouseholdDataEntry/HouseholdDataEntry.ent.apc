@@ -194,7 +194,10 @@ updateOccurrenceLabels();
 	
 PROC INTERVIEW_DATE
 preproc
-INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
+
+if demode() = add then
+	INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
+endif;
 PROC DISTRICT
 preproc
 
@@ -245,7 +248,17 @@ PROC VISIT_DATE000
 PROC HOUSEHOLD_STATUS
 //the status of the household is incomplete
 if HOUSEHOLD_STATUS in 2:5 then
-	endlevel;
+	numeric i = 0;
+	i = accept("Do you want to save this household as partial save or completed?", "Partial Save", "Complete");
+	
+	if i = 1 then
+		savepartial();
+		stop(0);
+	elseif i = 2 then
+		endlevel;
+	else
+		reenter HOUSEHOLD_STATUS;
+	endif;	
 endif;
 PROC B1
 preproc
@@ -1046,7 +1059,7 @@ if B9B(curocc()) = 1 and D26(curocc()) <> 2 then
 		   "Correct ever attended school", D26(curocc()));
 endif;
 // People not at school and prison must not be atttending school
-if not B9B(curocc()) in 1:3 and D26(curocc()) = 2 then
+if B7 in 4,5 and not B9B(curocc()) in 1:3 and D26(curocc()) = 2 then
 	errmsg("%s is in Institution but not attending school", strip(B2(curocc())))
 	select("Correct Institutions outside Lesotho", B9B(curocc()),
 		   "Correct ever attended school", D26(curocc()));
@@ -3075,6 +3088,7 @@ do i = 1 while i <= 13
         NEW_ASSETS(i) = 0;
     endif;
 enddo;
+
 PROC NUMBER_OF_REFRIGERATORS
 preproc
 Numeric R;

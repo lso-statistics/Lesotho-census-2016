@@ -246,14 +246,15 @@ Max=1
   
 [Field]
 Name=INTERVIEW_DATE
-Position=661,505,802,525
+Position=578,487,668,507
 Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=507,508,636,524
-Text=Interview Start Time
+Position=468,490,560,506
+Text=Interview Date
  
   
 [Field]
@@ -1172,6 +1173,7 @@ Item=B5,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
 [Text]
+Position=0,0,24,16
 Text=Age
  
 [EndColumn]
@@ -1249,19 +1251,21 @@ Text=Residence Absent/Outside Lesotho
 [EndColumn]
   
 [Column]
-Width=62
+Width=142
   
 [HeaderText]
-Position=0,0,62,72
-Text=How Long Outside Lesotho
+Position=46,32,142,72
+Text=Time Outside Lesotho
  
 [Field]
 Name=B9
-Position=21,0,50,20
+Position=22,0,51,20
 Item=B9,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
   
 [Text]
-Text=How Long Outside Lesotho
+Position=0,0,142,16
+Text=Time Outside Lesotho
  
 [EndColumn]
   
@@ -1412,11 +1416,11 @@ Text=Residence April 2011 Elsewhere Lesotho
 [EndColumn]
   
 [Column]
-Width=74
+Width=78
   
 [HeaderText]
-Position=0,0,74,72
-Text=Residence April 2015 Other Countries
+Position=0,0,78,72
+Text=Residence April 2011 Other Countries
  
 [Field]
 Name=B13B
@@ -2305,11 +2309,11 @@ Text=Use Hearing Aid
 [EndColumn]
   
 [Column]
-Width=62
+Width=91
   
 [HeaderText]
-Position=1,16,62,72
-Text=Use Working Stick
+Position=0,32,91,72
+Text=Use Walking Stick
  
 [Field]
 Name=C25C
@@ -3879,6 +3883,7 @@ Item=F43C,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
 [Text]
+Position=0,0,166,16
 Text=Total Living in Household
  
 [EndColumn]
@@ -4584,6 +4589,7 @@ Text=Floor Material Other
 Name=H68_RONTABOLE
 Position=225,322,254,342
 Item=H68_RONTABOLE,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4595,6 +4601,7 @@ Text=Housing Units - Rontabole
 Name=H69_RONTABOLE
 Position=537,320,566,340
 Item=H69_RONTABOLE,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4606,6 +4613,7 @@ Text=Number of Rooms - Rontabole
 Name=H68_HEISI
 Position=225,348,254,368
 Item=H68_HEISI,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4617,6 +4625,7 @@ Text=Housing Units - Heisi
 Name=H69_HEISI
 Position=537,347,566,367
 Item=H69_HEISI,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4628,6 +4637,7 @@ Text=Number of Rooms - Heisi
 Name=H68_POLATA
 Position=224,376,253,396
 Item=H68_POLATA,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4639,6 +4649,7 @@ Text=Housing Units - Polata
 Name=H69_POLATA
 Position=536,375,565,395
 Item=H69_POLATA,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4650,6 +4661,7 @@ Text=Number of Rooms - Polata
 Name=H68_MALAENE
 Position=224,403,253,423
 Item=H68_MALAENE,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4661,6 +4673,7 @@ Text=Housing Units - Malaene
 Name=H69_MALAENE
 Position=536,401,565,421
 Item=H69_MALAENE,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4672,6 +4685,7 @@ Text=Number of Rooms - Malaene
 Name=H68_OPTAKA
 Position=224,431,253,451
 Item=H68_OPTAKA,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4683,6 +4697,7 @@ Text=Housing Units - Optaka
 Name=H69_OPTAKA
 Position=537,426,566,446
 Item=H69_OPTAKA,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4694,6 +4709,7 @@ Text=Number of Rooms - Optaka
 Name=H68_APARTMENT
 Position=225,457,254,477
 Item=H68_APARTMENT,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4705,6 +4721,7 @@ Text=Housing Units - Apartment
 Name=H69_APARTMENT
 Position=537,456,566,476
 Item=H69_APARTMENT,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4716,6 +4733,7 @@ Text=Number of Rooms - Apartment
 Name=H68_MANSION
 Position=224,485,253,505
 Item=H68_MANSION,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4727,6 +4745,7 @@ Text=Housing Units - Mansion
 Name=H69_MANSION
 Position=538,483,567,503
 Item=H69_MANSION,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4738,6 +4757,7 @@ Text=Number of Rooms - Mansion
 Name=H68_TEMP_STRUCTURE
 Position=293,517,322,537
 Item=H68_TEMP_STRUCTURE,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4749,6 +4769,7 @@ Text=Housing Units - Temporary Structure
 Name=H69_TEMP_STRUCTURE
 Position=600,508,629,528
 Item=H69_TEMP_STRUCTURE,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4760,6 +4781,7 @@ Text=Number of Rooms - Temporary Structure
 Name=H68_TOTAL
 Position=226,538,255,558
 Item=H68_TOTAL,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4771,6 +4793,7 @@ Text=Housing Units - Total
 Name=H69_TOTAL
 Position=543,537,572,557
 Item=H69_TOTAL,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
 Form=8
   
 [Text]
@@ -4943,8 +4966,8 @@ UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=360,766,442,782
-Text=Rubish Other
+Position=360,766,450,782
+Text=Rubbish Other
  
   
 [Field]
@@ -4958,6 +4981,111 @@ Form=8
 Position=47,808,86,824
 Text=Assets
 Form=8
+ 
+  
+[Grid]
+Name=NEW_ASSETS000
+Label=New Assets
+Form=8
+Required=No
+Type=Item
+TypeName=NEW_ASSETS
+Max=13
+DisplaySize=551,809,734,1113
+Orientation=Horizontal
+FieldRowHeight=31
+HeadingRowHeight=0
+FreeMovement=No
+ 
+[Text]
+Position=42,7,87,31
+Text=Radio
+ 
+  
+[Text]
+Position=0,7,87,31
+Text=Landline Tel
+ 
+  
+[Text]
+Position=9,7,87,31
+Text=Cell Phone
+ 
+  
+[Text]
+Position=62,7,87,31
+Text=TV
+ 
+  
+[Text]
+Position=35,7,87,31
+Text=Tractor
+ 
+  
+[Text]
+Position=43,7,87,31
+Text=Stove
+ 
+  
+[Text]
+Position=2,7,87,31
+Text=Scotch Card
+ 
+  
+[Text]
+Position=54,7,87,31
+Text=Bed
+ 
+  
+[Text]
+Position=17,7,87,31
+Text=Computer
+ 
+  
+[Text]
+Position=30,7,87,31
+Text=Internet
+ 
+  
+[Text]
+Position=32,7,87,31
+Text=Vehicle
+ 
+  
+[Text]
+Position=15,7,87,31
+Text=Generator
+ 
+  
+[Text]
+Position=7,7,87,31
+Text=Refrigirator
+ 
+  
+[Column]
+Width=10
+[EndColumn]
+  
+[Column]
+Width=79
+  
+[HeaderText]
+Position=0,0,79,24
+Text=New Assets
+ 
+[Field]
+Name=NEW_ASSETS
+Position=56,0,71,20
+Item=NEW_ASSETS,LESOTHOCENSUS2016_DICT
+Protected=Yes
+  
+[Text]
+Position=0,0,76,16
+Text=New Assets
+ 
+[EndColumn]
+  
+[EndGrid]
  
   
 [Field]
@@ -5164,8 +5292,10 @@ Text=Livestock and Poultry
 Name=H80
 Position=34,0,91,20
 Item=H80,LESOTHOCENSUS2016_DICT
+DataCaptureType=ComboBox
   
 [Text]
+Position=0,0,140,16
 Text=Livestock and Poultry
  
 [EndColumn]
@@ -5196,109 +5326,6 @@ Form=8
 [Text]
 Position=41,1508,210,1524
 Text=Partially Complete Reason
- 
-  
-[Grid]
-Name=NEW_ASSETS000
-Label=New Assets
-Form=8
-Required=No
-Type=Item
-TypeName=NEW_ASSETS
-Max=13
-DisplaySize=551,809,734,1113
-Orientation=Horizontal
-FieldRowHeight=0
-HeadingRowHeight=0
-FreeMovement=No
- 
-[Text]
-Position=42,4,87,28
-Text=Radio
- 
-  
-[Text]
-Position=0,4,87,28
-Text=Landline Tel
- 
-  
-[Text]
-Position=9,4,87,28
-Text=Cell Phone
- 
-  
-[Text]
-Position=62,4,87,28
-Text=TV
- 
-  
-[Text]
-Position=35,4,87,28
-Text=Tractor
- 
-  
-[Text]
-Position=43,4,87,28
-Text=Stove
- 
-  
-[Text]
-Position=2,4,87,28
-Text=Scotch Card
- 
-  
-[Text]
-Position=54,4,87,28
-Text=Bed
- 
-  
-[Text]
-Position=17,4,87,28
-Text=Computer
- 
-  
-[Text]
-Position=30,4,87,28
-Text=Internet
- 
-  
-[Text]
-Position=32,4,87,28
-Text=Vehicle
- 
-  
-[Text]
-Position=15,4,87,28
-Text=Generator
- 
-  
-[Text]
-Position=7,4,87,28
-Text=Refrigirator
- 
-  
-[Column]
-Width=10
-[EndColumn]
-  
-[Column]
-Width=79
-  
-[HeaderText]
-Position=0,0,79,24
-Text=New Assets
- 
-[Field]
-Name=NEW_ASSETS
-Position=56,0,71,20
-Item=NEW_ASSETS,LESOTHOCENSUS2016_DICT
-  
-[Text]
-Text=New Assets
- 
-[EndColumn]
-  
-[EndGrid]
  
 [EndGroup]
   
