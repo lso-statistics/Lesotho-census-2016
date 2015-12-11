@@ -339,11 +339,25 @@ Len=2
 ZeroFill=Yes
 
 [Item]
+Label=Village Name
+Name=RV_VILLAGE_NAME
+Start=26
+Len=50
+DataType=Alpha
+
+[Item]
 Label=Household Number
 Name=RV_HOUSEHOLD_NUMBER
-Start=26
+Start=76
 Len=3
 ZeroFill=Yes
+
+[Item]
+Label=Names of Household Head
+Name=RV_HOUSEHOLD_HEAD_NAMES
+Start=79
+Len=50
+DataType=Alpha
 
 [Record]
 Label=Individual
@@ -351,12 +365,12 @@ Name=RV_INDIVIDUAL
 RecordTypeValue='I'
 Required=No
 MaxRecords=50
-RecordLen=79
+RecordLen=179
 
 [Item]
 Label=Person Number
 Name=RV_B1
-Start=29
+Start=129
 Len=2
 ZeroFill=Yes
 
@@ -368,14 +382,14 @@ Value=1:50;1-50
 [Item]
 Label=Names
 Name=RV_B2
-Start=31
+Start=131
 Len=40
 DataType=Alpha
 
 [Item]
 Label=Relationship
 Name=RV_B3
-Start=71
+Start=171
 Len=2
 ZeroFill=Yes
 
@@ -400,7 +414,7 @@ Value=14;Not related
 [Item]
 Label=Sex
 Name=RV_B4
-Start=73
+Start=173
 Len=1
 ZeroFill=Yes
 
@@ -413,7 +427,7 @@ Value=2;Female
 [Item]
 Label=Age
 Name=RV_B5
-Start=74
+Start=174
 Len=3
 ZeroFill=Yes
 
@@ -425,7 +439,7 @@ Value=0:130;0-130
 [Item]
 Label=Residential status
 Name=RV_B7
-Start=77
+Start=177
 Len=1
 ZeroFill=Yes
 
@@ -441,7 +455,7 @@ Value=5;Outside Lesotho and RSA
 [Item]
 Label=In household
 Name=RV_IN_HOUSEHOLD
-Start=78
+Start=178
 Len=1
 ZeroFill=Yes
 
@@ -454,7 +468,7 @@ Value=2;No
 [Item]
 Label=More People
 Name=RV_MORE_PEOPLE
-Start=79
+Start=179
 Len=1
 ZeroFill=Yes
 
@@ -469,11 +483,11 @@ Label=RV_Control
 Name=RV_CONTROL
 RecordTypeValue='C'
 Required=No
-RecordLen=30
+RecordLen=130
 
 [Item]
 Label=No of household members
 Name=NO_OF_HOUSEHOLD_MEMBERS
-Start=29
+Start=129
 Len=2
 ZeroFill=Yes
