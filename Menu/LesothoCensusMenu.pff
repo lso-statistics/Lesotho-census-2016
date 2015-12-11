@@ -1,7 +1,7 @@
 ﻿[Run Information]
 Version=CSPro 6.1
 AppType=Entry
-Description=PHC 2016
+Description=2016 LESOTHO PHC
 
 [DataEntryInit]
 Interactive=Ask
@@ -11,15 +11,15 @@ Application=.\LesothoCensusMenu.ent
 InputData=.\menu.dat
 
 [ExternalFiles]
-LESOTHOCENSUS2016_DICT=.\PHC2016PILOTDATA-reformatted.dat
+LESOTHOCENSUS2016_DICT=.\dummy.dat
 STAFF_DICT=.\staff.dat
-ASS_SUP_DICT=.\PHC2016PILOTDATA-reformatted.dat
+ASS_SUP_DICT=.\AssSup.dat
 
 [UserFiles]
 TMPFILE=
 SR_PFFFILE=
-PFFFILE=
 TEMPFILE=
+PFFFILE=
 
 [Parameters]
 

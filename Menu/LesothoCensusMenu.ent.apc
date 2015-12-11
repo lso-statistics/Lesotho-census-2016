@@ -28,7 +28,7 @@ array string EAarray(25);
 function pickEA()
 
     string menuApplicationFolder = pathname(Application); //this is the path of our application;
-	string dataFolder = menuApplicationFolder + "../Data/Enumerator"; //this is the data folder (all our data is stored in here)
+	string dataFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
 	string eacode;
         
     numeric i = i;
@@ -154,7 +154,7 @@ function  ageBySexTable()
 	close(tempFile);
 
 	reportFilename = maketext("%sagebysex.html", pathname(Application));
-	agebysex = maketext("%s%d.dat", "../Data/Enumerator/", EApicked);
+	agebysex = maketext("%s%d.dat", "../../Data/Enumerator/", EApicked);
 	if getos() in 20:29 then
 		// Android - use "browse:"
 		execsystem(maketext("view:%s", reportFilename));
@@ -265,6 +265,7 @@ function CreateAndRunPFF()
 
 	string menuApplicationFolder = pathname(Application);
 	string householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
+	string dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
 	
 	setfile(pffFile,pffFilename,create);
 
@@ -278,7 +279,7 @@ function CreateAndRunPFF()
 	filewrite(pffFile,"[Files]");
 	filewrite(pffFile,"Application=%sHouseholdDataEntry.ent", householdApplicationFolder);	
 	enumeratorDataFilename = maketext("%s.dat", STAFF_EA);
-	filewrite(pffFile,"InputData=%s%s",householdApplicationFolder,enumeratorDataFilename);
+	filewrite(pffFile,"InputData=%s%s",dataFileFolder,enumeratorDataFilename);
 
 	filewrite(pffFile,"[Parameters]");
 	filewrite(pffFile,"DISTRICT=%02d",S_DISTRICT);
@@ -301,7 +302,7 @@ end;
 // File variable for writing out supervisor review pff file
 file sr_pffFile;
 
-function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, asEA, asWard, asSettlement, asVillageno, asHouseholdno)
+function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, asEA, asWard, asSettlement, asVillageno, alpha asVillageName, asHouseholdno, alpha asHouseholdHead)
 
 	string tempFolder = pathname(Temp);
 	string pffFilename = tempFolder + "AssistSupReview.pff";
@@ -309,6 +310,7 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 
 	string menuApplicationFolder = pathname(Application);
 	string assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
+	string dataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
 	setfile(sr_pffFile,pffFilename,create);
 
 	filewrite(sr_pffFile,"[Run Information]");
@@ -321,7 +323,7 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 	filewrite(sr_pffFile,"[Files]");
 	filewrite(sr_pffFile,"Application=%sAssistSupReview.ent", assSupRevApplicationFolder);	
 	supervisorDataFilename = maketext("RV%011d.dat", asEA);
-	filewrite(sr_pffFile,"InputData=%s%s",assSupRevApplicationFolder,supervisorDataFilename);
+	filewrite(sr_pffFile,"InputData=%s%s",dataFileFolder,supervisorDataFilename);
 
 	filewrite(sr_pffFile,"[Parameters]");
 	filewrite(sr_pffFile,"DISTRICT=%02d",asDistrict);
@@ -332,7 +334,9 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 	filewrite(sr_pffFile,"ENUMERATION_AREA=%011d",asEA);
 	filewrite(sr_pffFile,"WARD=%02d",asWard);
 	filewrite(sr_pffFile,"VILLAGE_NUMBER=%02d",asVillageno);
+	filewrite(sr_pffFile,"VILLAGE_NAME=%s",asVillageName);
 	filewrite(sr_pffFile,"HOUSEHOLD_NUMBER=%03d",asHouseholdno);
+	filewrite(sr_pffFile,"HOUSEHOLD_HEAD_NAMES=%s",asHouseholdHead);
 	
 	close(sr_pffFile);
 
@@ -385,6 +389,9 @@ function ShowSummaryReport()
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if FINAL_RESULT_CODE = 1 then
 					CompletedHH = CompletedHH + 1;
@@ -483,6 +490,9 @@ function ShowSummaryReport_EA(string eacode)
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if FINAL_RESULT_CODE = 1 then
 					CompletedHH = CompletedHH + 1;
@@ -586,6 +596,9 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0				
 				if viewdate = INTERVIEW_DATE then
 					if FINAL_RESULT_CODE = 1 then
@@ -687,6 +700,9 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			totMales = 0;
+			totFemales = 0;
+			totPopulation = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if viewdate = INTERVIEW_DATE then
 					if FINAL_RESULT_CODE = 1 then
@@ -757,7 +773,7 @@ preproc
 loginFilename = pathname(Application) + "login.txt";
 enumeratorEA = pathname(Application) + "eacode.txt";	
 string menuApplicationFolder = pathname(Application);
-string householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
+string dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
 
 // Check to see if user is already logged in
 if fileexist(enumeratorEA) = 1 then
@@ -773,7 +789,7 @@ if fileexist(enumeratorEA) = 1 then
 	endif;
 endif;
 
-enumeratorDataFilename = maketext("%s%011d.dat", householdApplicationFolder, ea);
+enumeratorDataFilename = maketext("%s%011d.dat", dataFileFolder, ea);
 
 
 PROC USER_CODE
@@ -859,7 +875,7 @@ elseif ENUMERATOR_MENU = 2 then
 	else
 		reenter;
 	endif;
-elseif ENUMERATOR_MENU = 3 then
+elseif ENUMERATOR_MENU = 9 then
 	// Logout	
 	// Erase login file so that we don't automatically
 	// login next time.
@@ -894,9 +910,9 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
 elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
 	agebysexTable();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
-	//skip to household_status;     
+	 skip to VIEW_DATE;  
 elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
-	if sync("Server.pnc") then
+	if sync("ServerWithEnumerator.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
@@ -909,7 +925,7 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then
 	else
 		reenter;
 	endif;
-elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 9 then
 	// Logout
 	// Erase login file so that we don't automatically
 	// login next time.
@@ -952,8 +968,8 @@ dirlist(fileListing,dataFolder,"*.dat");
 			i = i + 1;
 	    enddo;
 	else
-		errmsg("No data files found.");
-		stop(1); 
+		errmsg("There are no data files found. Please synchronize with the enumerator")
+			  select("Sync with enumerator", CONSTITUENCY_SUPERVISOR_MENU, "Logout", CONSTITUENCY_SUPERVISOR_MENU);
 	endif;
 
 //mycodes(i) = notappl;
@@ -977,6 +993,7 @@ onfocus
 // in the enumerator data file.
 
 numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
+
 if result <> 1 then
 	errmsg("Unable to load enumerator data file");
 	reenter ASSISTANT_SUPERVISOR_MENU;
@@ -984,7 +1001,6 @@ endif;
 
 // Start at first household in enumerator data file
 locate(LESOTHOCENSUS2016_DICT, >=, "");
-	
 // Loop through all households 
 // until loadcase returns zero when it hits end of file.
 numeric i;
@@ -1012,7 +1028,7 @@ postproc
 locate(LESOTHOCENSUS2016_DICT, >=, "");
 while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
 	if CHOOSE_POSTCHECK_HOUSEHOLD = HOUSEHOLD_NUMBER then
-		CreateAndRunSRPFF(DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, ENUMERATION_AREA, WARD, SETTLEMENT, VILLAGE_NUMBER, HOUSEHOLD_NUMBER);
+		CreateAndRunSRPFF(DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, ENUMERATION_AREA, WARD, SETTLEMENT, VILLAGE_NUMBER, VILLAGE_NAME, HOUSEHOLD_NUMBER, HOUSEHOLD_HEAD_NAMES);
 	endif;
 enddo;
 

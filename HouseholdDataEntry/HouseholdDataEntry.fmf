@@ -246,14 +246,15 @@ Max=1
   
 [Field]
 Name=INTERVIEW_DATE
-Position=661,505,802,525
+Position=578,487,668,507
 Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=507,508,636,524
-Text=Interview Start Time
+Position=468,490,560,506
+Text=Interview Date
  
   
 [Field]
