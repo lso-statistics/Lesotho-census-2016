@@ -97,14 +97,20 @@ table td {
     <th>Female</th>
     <th>Total</th>
 </tr>
-{{#.}}
+{{#ageGroups}}
 <tr>
     <th>{{group}}</th>
     <td>{{male}}</td>
     <td>{{female}}</td>
     <td>{{total}}</td>
 </tr>
-{{/.}}
+{{/ageGroups}}
+<tr>
+    <th>Total</th>
+    <td>{{total.male}}</td>
+    <td>{{total.female}}</td>
+    <td>{{total.total}}</td>
+</tr>
 </table>
 <br>
 <br>
@@ -297,12 +303,12 @@ function translation(x,y) {
 }
 
 function ageBySexTable(data, selector) {
-	var template = $('#table-template').html();
+    var template = $('#table-template').html();
     var renderedTable = Mustache.to_html(template, data);
     $(selector).html(renderedTable);
 }
 
-popPyramid(data, '#pyramid');
+popPyramid(data.ageGroups, '#pyramid');
 
 ageBySexTable(data, '#table');
 
