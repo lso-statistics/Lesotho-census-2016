@@ -588,6 +588,11 @@ Name=B9
 Start=186
 Len=2
 
+[ValueSet]
+Label=How Long Outside Lesotho
+Name=B9_VS1
+Value=0:30;0 - 30
+
 [Item]
 Label=Institution
 Name=B9B
@@ -6112,6 +6117,11 @@ Start=585
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Total Living in Household
+Name=F43C_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Boys Living Elsewhere
 Name=F44A
@@ -6640,12 +6650,22 @@ Len=2
 ZeroFill=Yes
 OccurrenceLabel=1,Rontabole
 
+[ValueSet]
+Label=Housing Units - Rontabole
+Name=H68_RONTABOLE_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Housing Units - Heisi
 Name=H68_HEISI
 Start=142
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Housing Units - Heisi
+Name=H68_HEISI_VS1
+Value=0:20;0 - 20
 
 [Item]
 Label=Housing Units - Polata
@@ -6654,12 +6674,22 @@ Start=144
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Housing Units - Polata
+Name=H68_POLATA_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Housing Units - Malaene
 Name=H68_MALAENE
 Start=146
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Housing Units - Malaene
+Name=H68_MALAENE_VS1
+Value=0:20;0 - 20
 
 [Item]
 Label=Housing Units - Optaka
@@ -6668,12 +6698,22 @@ Start=148
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Housing Units - Optaka
+Name=H68_OPTAKA_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Housing Units - Apartment
 Name=H68_APARTMENT
 Start=150
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Housing Units - Apartment
+Name=H68_APARTMENT_VS1
+Value=0:20;0 - 20
 
 [Item]
 Label=Housing Units - Mansion
@@ -6682,6 +6722,11 @@ Start=152
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Housing Units - Mansion
+Name=H68_MANSION_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Housing Units - Temporary Structure
 Name=H68_TEMP_STRUCTURE
@@ -6689,12 +6734,22 @@ Start=154
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Housing Units - Temporary Structure
+Name=H68_TEMP_STRUCTURE_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Housing Units - Total
 Name=H68_TOTAL
 Start=156
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Housing Units - Total
+Name=H68_TOTAL_VS1
+Value=0:40;0 - 40
 
 [Item]
 Label=Number of Rooms - Rontabole
@@ -6704,12 +6759,22 @@ Len=2
 ZeroFill=Yes
 OccurrenceLabel=1,Rontabole
 
+[ValueSet]
+Label=Number of Rooms - Rontabole
+Name=H69_RONTABOLE_VS1
+Value=0:10;0 - 10
+
 [Item]
 Label=Number of Rooms - Heisi
 Name=H69_HEISI
 Start=160
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Rooms - Heisi
+Name=H69_HEISI_VS1
+Value=0:10;0 - 10
 
 [Item]
 Label=Number of Rooms - Polata
@@ -6718,12 +6783,22 @@ Start=162
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Number of Rooms - Polata
+Name=H69_POLATA_VS1
+Value=0:30;0 - 30
+
 [Item]
 Label=Number of Rooms - Malaene
 Name=H69_MALAENE
 Start=164
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Rooms - Malaene
+Name=H69_MALAENE_VS1
+Value=0:10;0 - 10
 
 [Item]
 Label=Number of Rooms - Optaka
@@ -6732,12 +6807,22 @@ Start=166
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Number of Rooms - Optaka
+Name=H69_OPTAKA_VS1
+Value=0:30;0-30
+
 [Item]
 Label=Number of Rooms - Apartment
 Name=H69_APARTMENT
 Start=168
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Rooms - Apartment
+Name=H69_APARTMENT_VS1
+Value=0:15;0 - 15
 
 [Item]
 Label=Number of Rooms - Mansion
@@ -6746,6 +6831,11 @@ Start=170
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Number of Rooms - Mansion
+Name=H69_MANSION_VS1
+Value=0:99;0 - 99
+
 [Item]
 Label=Number of Rooms - Temporary Structure
 Name=H69_TEMP_STRUCTURE
@@ -6753,12 +6843,22 @@ Start=172
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Number of Rooms - Temporary Structure
+Name=H69_TEMP_STRUCTURE_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Number of Rooms - Total
 Name=H69_TOTAL
 Start=174
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Rooms - Total
+Name=H69_TOTAL_VS1
+Value=0:99;0 - 99
 
 [Item]
 Label=Main Source of Drinking Water
@@ -6978,6 +7078,11 @@ OccurrenceLabel=11,Ducks
 OccurrenceLabel=12,Geese
 OccurrenceLabel=13,Turkey
 OccurrenceLabel=14,Rabbits
+
+[ValueSet]
+Label=Livestock and Poultry
+Name=H80_VS1
+Value=0:9999
 
 [Item]
 Label=Any Deaths in the Last Five Years
