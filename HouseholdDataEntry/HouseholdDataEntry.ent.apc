@@ -3034,6 +3034,7 @@ do i = 1 while i <= 13
         NEW_ASSETS(i) = 0;
     endif;
 enddo;
+Skip to NUMBER_OF_REFRIGERATORS;
 PROC NUMBER_OF_REFRIGERATORS
 preproc
 Numeric R;
