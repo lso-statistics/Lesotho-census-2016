@@ -5077,8 +5077,10 @@ Text=New Assets
 Name=NEW_ASSETS
 Position=56,0,71,20
 Item=NEW_ASSETS,LESOTHOCENSUS2016_DICT
+Protected=Yes
   
 [Text]
+Position=0,0,76,16
 Text=New Assets
  
 [EndColumn]
