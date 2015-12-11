@@ -794,13 +794,13 @@ Value=9;Mokhotlong
 Value=10;Thaba-Tseka
 
 [Item]
-Label=Residence April 2015 Other Countries
+Label=Residence April 2011 Other Countries
 Name=B13B
 Start=202
 Len=2
 
 [ValueSet]
-Label=Residence April 2015 Other Countries
+Label=Residence April 2011 Other Countries
 Name=B13B_VS1
 Value=13;RSA
 Value=14;Swaziland
@@ -1379,7 +1379,7 @@ Value=2;No
 Value=9;Don't Know
 
 [Item]
-Label=Use Working Stick
+Label=Use Walking Stick
 Name=C25C
 Start=379
 Len=1
@@ -6762,7 +6762,7 @@ OccurrenceLabel=1,Rontabole
 [ValueSet]
 Label=Number of Rooms - Rontabole
 Name=H69_RONTABOLE_VS1
-Value=0:10;0 - 10
+Value=0:20;0 - 20
 
 [Item]
 Label=Number of Rooms - Heisi
@@ -6774,7 +6774,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of Rooms - Heisi
 Name=H69_HEISI_VS1
-Value=0:10;0 - 10
+Value=0:20;0 - 20
 
 [Item]
 Label=Number of Rooms - Polata
@@ -6798,7 +6798,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of Rooms - Malaene
 Name=H69_MALAENE_VS1
-Value=0:10;0 - 10
+Value=0:20;0 - 20
 
 [Item]
 Label=Number of Rooms - Optaka
@@ -7195,7 +7195,7 @@ Len=20
 DataType=Alpha
 
 [Item]
-Label=Rubish Other
+Label=Rubbish Other
 Name=H76_OTHER
 Start=510
 Len=20
@@ -7216,7 +7216,6 @@ Value=2;2
 Value=3;3
 Value=4;4
 Value=5;5
-Value=6;6
 
 [Item]
 Label=Refrigerant

@@ -1415,11 +1415,11 @@ Text=Residence April 2011 Elsewhere Lesotho
 [EndColumn]
   
 [Column]
-Width=74
+Width=78
   
 [HeaderText]
-Position=0,0,74,72
-Text=Residence April 2015 Other Countries
+Position=0,0,78,72
+Text=Residence April 2011 Other Countries
  
 [Field]
 Name=B13B
@@ -2308,11 +2308,11 @@ Text=Use Hearing Aid
 [EndColumn]
   
 [Column]
-Width=62
+Width=91
   
 [HeaderText]
-Position=1,16,62,72
-Text=Use Working Stick
+Position=0,32,91,72
+Text=Use Walking Stick
  
 [Field]
 Name=C25C
@@ -4965,8 +4965,8 @@ UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=360,766,442,782
-Text=Rubish Other
+Position=360,766,450,782
+Text=Rubbish Other
  
   
 [Field]
