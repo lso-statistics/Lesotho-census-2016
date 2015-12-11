@@ -861,7 +861,8 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
 elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
 	agebysexTable();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
-	//skip to household_status;     
+	//skip to household_status;
+	 skip to VIEW_DATE;  
 elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
 	if sync("Server.pnc") then
 		errmsg("Sync was successful");

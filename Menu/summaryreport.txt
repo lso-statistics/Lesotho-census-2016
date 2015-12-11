@@ -1,10 +1,10 @@
-﻿Enumeration Area Summary Report
+﻿Enumeration Area Summary Report by Day
 -------------------------------
 
 DATE: 10/04/2016
 EA CODE: 02090413042
 Households								Household Status
-0										Completed
+89										Completed
 0										Partially Complete
 0										No household member at home
 0										Entire household absent for extended period of time
@@ -12,75 +12,12 @@ Households								Household Status
 0										Dwelling destroyed
 0										Partially saved
 ----------------------------------------------------------
-0										Total Households
+89										Total Households
 
 ==========================================================
-0										Total Males
-0										Total Females
-0										Total Population
-***********************************************************
-******end of report for current enumeration area code******
-***********************************************************
-
-DATE: 10/04/2016
-EA CODE: 04450813015
-Households								Household Status
-0										Completed
-0										Partially Complete
-0										No household member at home
-0										Entire household absent for extended period of time
-0										Dwelling vacant
-0										Dwelling destroyed
-0										Partially saved
-----------------------------------------------------------
-0										Total Households
-
-==========================================================
-0										Total Males
-0										Total Females
-0										Total Population
-***********************************************************
-******end of report for current enumeration area code******
-***********************************************************
-
-DATE: 10/04/2016
-EA CODE: 05490213037
-Households								Household Status
-0										Completed
-0										Partially Complete
-0										No household member at home
-0										Entire household absent for extended period of time
-0										Dwelling vacant
-0										Dwelling destroyed
-0										Partially saved
-----------------------------------------------------------
-0										Total Households
-
-==========================================================
-0										Total Males
-0										Total Females
-0										Total Population
-***********************************************************
-******end of report for current enumeration area code******
-***********************************************************
-
-DATE: 10/04/2016
-EA CODE: 10740631011
-Households								Household Status
-0										Completed
-0										Partially Complete
-0										No household member at home
-0										Entire household absent for extended period of time
-0										Dwelling vacant
-0										Dwelling destroyed
-0										Partially saved
-----------------------------------------------------------
-0										Total Households
-
-==========================================================
-0										Total Males
-0										Total Females
-0										Total Population
+172										Total Males
+190										Total Females
+362										Total Population
 ***********************************************************
 ******end of report for current enumeration area code******
 ***********************************************************
