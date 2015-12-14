@@ -159,11 +159,23 @@ ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.B20
+Condition=B19 <> 4
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage?\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
 ENG=\pard\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B20
+Condition=B19 = 4
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
+ENG=\par
+ENG=If the person has never been married, enter 88\par
 ENG=}
 
 [QUESTION]
