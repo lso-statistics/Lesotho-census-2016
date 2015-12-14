@@ -7345,6 +7345,7 @@ Value=2;No household member at home
 Value=3;Entire household absent for extended period of time
 Value=4;Dwelling vacant
 Value=5;Dwelling destroyed
+Value=6;Refusal 
 
 [Item]
 Label=Final Result Code

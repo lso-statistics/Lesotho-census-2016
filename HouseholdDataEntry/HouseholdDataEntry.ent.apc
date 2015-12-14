@@ -246,6 +246,15 @@ PROC HOUSEHOLD_HEAD_NAMES
 PROC VISIT_DATE000
 
 PROC HOUSEHOLD_STATUS
+
+if HOUSEHOLD_STATUS = 6 then
+   if NUMBER_OF_VISITS < 3 then
+	   errmsg('Refusal can only be accepted if there had been atleast 3 attempts or visits');
+	   reenter HOUSEHOLD_STATUS;
+   else
+       endlevel;
+   endif;
+endif;
 //the status of the household is incomplete
 if HOUSEHOLD_STATUS in 2:5 then
 	numeric i = 0;
@@ -260,6 +269,9 @@ if HOUSEHOLD_STATUS in 2:5 then
 		reenter HOUSEHOLD_STATUS;
 	endif;	
 endif;
+
+
+
 PROC B1
 preproc
 // Automatically fill in person number

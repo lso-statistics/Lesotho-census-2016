@@ -4,6 +4,7 @@ AppType=Entry
 Description=2016 LESOTHO PHC
 
 [DataEntryInit]
+StartMode=Add
 Interactive=Ask
 
 [Files]
@@ -11,9 +12,9 @@ Application=.\LesothoCensusMenu.ent
 InputData=.\menu.dat
 
 [ExternalFiles]
-LESOTHOCENSUS2016_DICT=.\dummy.dat
+LESOTHOCENSUS2016_DICT=..\Data\Enumerator\02171013027.dat
 STAFF_DICT=.\staff.dat
-ASS_SUP_DICT=.\AssSup.dat
+ASS_SUP_DICT=..\Data\Enumerator\02181113010.dat
 
 [UserFiles]
 TMPFILE=
