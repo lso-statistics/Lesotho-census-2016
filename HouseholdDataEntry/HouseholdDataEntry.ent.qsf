@@ -18,8 +18,8 @@ Field=LESOTHOCENSUS2016_DICT.B11
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\brdrt\brdrs\brdrw10\brsp20 \sa200\sl276\slmult1\cf1\b\f0\fs18 B11. For how long has \f1 %getocclabel%\f0  lived in this village /town?\b0\i\par
-ENG=\pard\cf0\b\i0\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\brdrt\brdrs\brdrw10\brsp20 \sa200\sl276\slmult1\cf1\b\f0\fs18 B11. For how long has \f1 %getocclabel%\f0  lived in this village /town?\par
+ENG=E\b0\i nter Number of Years. Enter 000 for less than one (1) year, 998 since birth.\cf0\b\i0\par
 ENG=}
 
 [QUESTION]
@@ -141,7 +141,9 @@ Field=LESOTHOCENSUS2016_DICT.B19
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B19. What is \f1 %getocclabel%\f0\rquote s present marital status?\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B19. What is \f1 %getocclabel%\f0\rquote s present marital status?\par
+ENG=\b0\i\fs16\par
+ENG=\b\i0\fs18\par
 ENG=\pard\par
 ENG=}
 
@@ -164,7 +166,8 @@ Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
-ENG=\pard\par
+ENG=\b0\i\fs16 Enter age in completed years. \par
+ENG=\pard Code 888 for those Living together but never married before\i0 .\b\fs18\par
 ENG=}
 
 [QUESTION]
@@ -209,8 +212,8 @@ Field=LESOTHOCENSUS2016_DICT.B5
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil\fcharset0 Arial;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 B5. How old is \cf1\f1 %getocclabel%\cf0\f0  in completed years?\fs20\par
-ENG=\pard\b0\i\fs16 Enter age in completed years (\ldblquote 0\rdblquote  for children less than one year old)\cf1\i0\f2\fs24\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 B5. How old is \cf1\f1 %getocclabel%\cf0\f0  in completed years?\fs20\par
+ENG=\pard\b0\i\fs16 Enter age in completed years (\ldblquote 000\rdblquote  for children less than one year old).\cf1\i0\f2\fs24\par
 ENG=}
 
 [QUESTION]
@@ -251,7 +254,14 @@ Field=LESOTHOCENSUS2016_DICT.B9
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B9. If \cf1\f1 %getocclabel%\cf0\f0  is outside Lesotho how long has (name) lived in that country?\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 B9. If \cf1\f1 %getocclabel%\cf0\f0  is outside Lesotho how long has (name) lived in that country?\par
+ENG=\par
+ENG=Note:\par
+ENG=\tab Give duration since last visit home and it should be less than tthree (3) years. Except those in institutions (barracks and convents)\par
+ENG=\tab Enter 00 for less than 1 year.\par
+ENG=\par
+ENG=\tab Total number of lived outside for thise away for more than 1 year. \par
+ENG=\par
 ENG=}
 
 [QUESTION]
@@ -532,7 +542,8 @@ Field=LESOTHOCENSUS2016_DICT.D28
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\b\f0\fs18 D28\b0 . \cf1\expndtw-6\b Does \expndtw0\f1 %getocclabel%\expndtw-6\f0  know how to read?\cf0\expndtw0\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\b\f0\fs18 D28\b0 . \cf1\expndtw-6\b Does \expndtw0\f1 %getocclabel%\expndtw-6\f0  know how to read?\par
+ENG=\b0\i\fs16 Ask those coded 00 to 07 and 18,\cf0  19 \cf1 in  D27: Produce a literacy card.\cf0\expndtw0\b\i0\fs18\par
 ENG=}
 
 [QUESTION]
@@ -540,7 +551,8 @@ Field=LESOTHOCENSUS2016_DICT.D29
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\cf1\expndtw-6\b\f0\fs18 D29. Does \expndtw0\f1 %getocclabel%\expndtw-6\f0  know how to write?\cf0\expndtw0\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\cf1\expndtw-6\b\f0\fs18 D29. Does \expndtw0\f1 %getocclabel%\expndtw-6\f0  know how to write?\par
+ENG=\b0\i\fs16 Ask those coded 00 to 07, 18 and 19 in D27\cf0\expndtw0\b\i0\fs18\par
 ENG=}
 
 [QUESTION]
@@ -548,7 +560,8 @@ Field=LESOTHOCENSUS2016_DICT.D30
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\cf1\expndtw-6\b\f0\fs18 D30. What is \expndtw0\f1 %getocclabel%'s\expndtw-6\f0  field of  specialization (major group)?\b0\i\fs16\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\cf1\expndtw-6\b\f0\fs18 D30. What is \expndtw0\f1 %getocclabel%'s\expndtw-6\f0  field of  specialization (major group)?\b0\i\fs16\par
+ENG=\pard\nowidctlpar Ask those coded 20 to 29 in D27\par
 ENG=\pard\b\i0\fs18\par
 ENG=}
 
@@ -605,7 +618,8 @@ Field=LESOTHOCENSUS2016_DICT.E33
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E33. If employed, who was \cf1\f1 %getocclabel%\cf0\f0\rquote s employer?\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E33. If employed, who was \cf1\f1 %getocclabel%\cf0\f0\rquote s employer?\par
+ENG=\b0\i\fs16 That is, ask those Coded  10 to 40, 60 and 81 in E31 and  E32\b\i0\fs18\par
 ENG=}
 
 [QUESTION]
@@ -662,7 +676,8 @@ Field=LESOTHOCENSUS2016_DICT.E39
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E39. For how long has \cf1\f1 %getocclabel%\cf0\f0  worked in RSA in the past 10 years (since April 2006)?\cf1\b0\i\fs16\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E39. For how long has \cf1\f1 %getocclabel%\cf0\f0  worked in RSA in the past 10 years (since April 2006)?\cf1\b0\i\fs16\par
+ENG=\cf0 Enter 00 for less than one year and then the number of years \cf1 worked between 2006 and 2016\par
 ENG=\pard\cf0\b\i0\fs18\par
 ENG=}
 
@@ -1316,7 +1331,10 @@ Field=LESOTHOCENSUS2016_DICT.OCCUPATION_LEVEL_1
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s major group of occupation?\par
+ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s major group of occupation?\par
+ENG=\pard\sa200\sl276\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\cf1\expndtw-4\b0\i\fs16\par
+ENG=Ask all those coded 10 to 40, 60 and 81 in E31 and E32. \par
+ENG=\pard\cf0\expndtw0\b\i0\fs18\par
 ENG=}
 
 [QUESTION]
