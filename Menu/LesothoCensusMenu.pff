@@ -17,10 +17,10 @@ STAFF_DICT=.\staff.dat
 ASS_SUP_DICT=..\Data\Enumerator\02181113010.dat
 
 [UserFiles]
-TMPFILE=
 SR_PFFFILE=
-TEMPFILE=
+TMPFILE=
 PFFFILE=
+TEMPFILE=
 
 [Parameters]
 

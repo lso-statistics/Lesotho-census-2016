@@ -377,7 +377,7 @@ function ShowSummaryReport()
 		endif;
 		
 		// Start at first household in enumerator data file
-		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+		if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 0 then	
 			// Loop through all households 
 			// until loadcase returns zero when it hits end of file.
 			numeric i;
@@ -420,7 +420,7 @@ function ShowSummaryReport()
 			enddo;
 			
 			totPopulation = totMales + totFemales;
-				
+		endif;		
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
 		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -584,7 +584,7 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 		endif;
 		
 		// Start at first household in enumerator data file
-		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+		if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 0 then
 			// Loop through all households 
 			// until loadcase returns zero when it hits end of file.
 			numeric i;
@@ -629,7 +629,7 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 			enddo;
 			
 			totPopulation = totMales + totFemales;
-								
+		endif;						
 		filewrite(tempFile,"DATE: %s", viewdate);
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
@@ -688,7 +688,7 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 		endif;
 		
 		// Start at first household in enumerator data file
-		locate(LESOTHOCENSUS2016_DICT, >=, "");	
+		if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 0 then
 			// Loop through all households 
 			// until loadcase returns zero when it hits end of file.
 			numeric i;
@@ -733,7 +733,7 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 			enddo;
 			
 			totPopulation = totMales + totFemales;
-				
+		endif;		
 		filewrite(tempFile,"DATE: %s", viewdate);
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
@@ -885,21 +885,50 @@ elseif ENUMERATOR_MENU = 9 then
 endif;
 
 PROC ASSISTANT_SUPERVISOR_MENU
-
+	
 postproc
-if ASSISTANT_SUPERVISOR_MENU = 1 then
-	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
-elseif ASSISTANT_SUPERVISOR_MENU = 2 then
-	//skip to household_status;
-elseif ASSISTANT_SUPERVISOR_MENU = 9 then
-	// Logout
-	// Erase login file so that we don't automatically
-	// login next time.
+if fileexist(enumeratorDataFilename) = 1 then
+	if ASSISTANT_SUPERVISOR_MENU = 1 then
+		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
+	elseif ASSISTANT_SUPERVISOR_MENU = 2 then
+		//skip to household_status;
+	elseif ASSISTANT_SUPERVISOR_MENU = 9 then
+		// Logout
+		// Erase login file so that we don't automatically
+		// login next time.
+		filedelete(loginFilename);
+		// Quit data entry
+		stop(1);
+	endif;
+elseif fileexist(enumeratorDataFilename) = 0 and ASSISTANT_SUPERVISOR_MENU <> 9 then
+	errmsg("There is no data entered yet");
+	reenter;
+else
 	filedelete(loginFilename);
 	// Quit data entry
 	stop(1);
 endif;
 
+
+
+
+{
+postproc
+if fileexist(enumeratorDataFilename) = 1 then
+	if ASSISTANT_SUPERVISOR_MENU = 1 then
+		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
+	elseif ASSISTANT_SUPERVISOR_MENU = 2 then
+		//skip to household_status;
+	elseif ASSISTANT_SUPERVISOR_MENU = 9 then
+		// Logout
+		// Erase login file so that we don't automatically
+		// login next time.
+		filedelete(loginFilename);
+		// Quit data entry
+		stop(1);
+	endif;
+endif;
+}
 PROC CONSTITUENCY_SUPERVISOR_MENU
 
 postproc
