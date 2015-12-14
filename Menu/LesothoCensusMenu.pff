@@ -12,15 +12,15 @@ Application=.\LesothoCensusMenu.ent
 InputData=.\menu.dat
 
 [ExternalFiles]
-LESOTHOCENSUS2016_DICT=..\Data\Enumerator\02171013027.dat
+LESOTHOCENSUS2016_DICT=.\dummy.dat
 STAFF_DICT=.\staff.dat
-ASS_SUP_DICT=..\Data\Enumerator\02181113010.dat
+ASS_SUP_DICT=.\AssSup.dat
 
 [UserFiles]
-SR_PFFFILE=
 TMPFILE=
-PFFFILE=
+SR_PFFFILE=
 TEMPFILE=
+PFFFILE=
 
 [Parameters]
 
