@@ -137,7 +137,6 @@ Text=Choose Postcheck Household
 Name=POSTCHECK
 Position=253,277,268,297
 Item=POSTCHECK,LESOTHOCENSUSMENU_DICT
-FieldLabelType=DictionaryLabel
 DataCaptureType=RadioButton
 Form=1
   
@@ -171,7 +170,6 @@ Text=Summary Report Menu
 Name=CONSTITUENCY_EACODE
 Position=241,143,396,163
 Item=CONSTITUENCY_EACODE,LESOTHOCENSUSMENU_DICT
-FieldLabelType=DictionaryLabel
 Form=2
   
 [Text]
@@ -183,7 +181,6 @@ Text=Constituency EACode
 Name=IDENTIFIER
 Position=241,216,2034,236
 Item=IDENTIFIER,LESOTHOCENSUSMENU_DICT
-FieldLabelType=DictionaryLabel
 Form=2
   
 [Text]
