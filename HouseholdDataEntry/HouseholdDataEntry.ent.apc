@@ -1310,7 +1310,7 @@ endif;
 //Name should be a student (80) if is still attending school (code 2 in D26)
 if D26(curocc()) = 2 and E31 <> 80 then
 	errmsg("%s is still attending hence a student",strip(B2))
-	select("Correct ever attended school", D26,
+	select("Correct ever attended school", D26(curocc()),
 		   "Correct main activity in the past 7 days", E31);
 endif;
 //skip to Section F(Fertility) if Main Activity Status in Past 7 Days is Job seeking for the first time 
