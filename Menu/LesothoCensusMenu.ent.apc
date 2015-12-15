@@ -9,8 +9,9 @@ array string mylabels(200);
 file tempFile;
 array ageBySex5YearGroups(22, 2);
 
-
-string loginFilename;
+string menuApplicationFolder, householdApplicationFolder;
+string dataFolder, dataFileFolder,eacode;
+string loginFilename, assSupRevApplicationFolder;
 string enumeratorEA;
 file tmpFile;
 string enumeratorDataFileName; //
@@ -27,10 +28,9 @@ array string EAarray(25);
 
 function pickEA()
 
-    string menuApplicationFolder = pathname(Application); //this is the path of our application;
-	string dataFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
-	string eacode;
-        
+    menuApplicationFolder = pathname(Application); //this is the path of our application;
+	dataFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
+	      
     numeric i = i;
     
     dirlist(fileListing,dataFolder,"*.dat");
@@ -263,9 +263,10 @@ function CreateAndRunPFF()
 	string pffFilename = tempFolder + "HouseholdDataEntry.pff";
 	string fileDescription = maketext("EA - %s", STAFF_EA);
 
-	string menuApplicationFolder = pathname(Application);
-	string householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
-	string dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+	menuApplicationFolder = pathname(Application);
+	householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
+	dircreate(householdApplicationFolder);
+	dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
 	
 	setfile(pffFile,pffFilename,create);
 
@@ -308,9 +309,9 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 	string pffFilename = tempFolder + "AssistSupReview.pff";
 	string fileDescription = maketext("EA - %011d", asEA);
 
-	string menuApplicationFolder = pathname(Application);
-	string assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
-	string dataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
+	menuApplicationFolder = pathname(Application);
+	assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
+	dataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
 	setfile(sr_pffFile,pffFilename,create);
 
 	filewrite(sr_pffFile,"[Run Information]");
@@ -358,14 +359,14 @@ function ShowSummaryReport()
 	filewrite(tempFile, "-------------------------------");
 	filewrite(tempFile, "");
 
-	string menuApplicationFolder = pathname(Application); //this is the path of our application
-	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+	menuApplicationFolder = pathname(Application); //this is the path of our application
+	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 		
 	numeric ctr;
     dirlist(fileListing,dataFolder,"*.dat");
     
 	do ctr = 1 while ctr <= length(fileListing)
-		string eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
+		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
 		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
 		// Create a dynamic value set of all completed households
@@ -565,14 +566,14 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 	filewrite(tempFile, "-------------------------------");
 	filewrite(tempFile, "");
 
-	string menuApplicationFolder = pathname(Application); //this is the path of our application
-	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+	menuApplicationFolder = pathname(Application); //this is the path of our application
+	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 		
 	numeric ctr;
     dirlist(fileListing,dataFolder,"*.dat");
     
 	do ctr = 1 while ctr <= length(fileListing)
-		string eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
+		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
 		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
 		// Create a dynamic value set of all completed households
@@ -675,8 +676,8 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 	filewrite(tempFile, "-------------------------------");
 	filewrite(tempFile, "");
 
-	string menuApplicationFolder = pathname(Application); //this is the path of our application
-	string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+    menuApplicationFolder = pathname(Application); //this is the path of our application
+	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 	
 		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
 		// Create a dynamic value set of all completed households
@@ -770,10 +771,12 @@ end;
 
 PROC LESOTHOCENSUSMENU_FF
 preproc
+
 loginFilename = pathname(Application) + "login.txt";
 enumeratorEA = pathname(Application) + "eacode.txt";	
-string menuApplicationFolder = pathname(Application);
-string dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+menuApplicationFolder = pathname(Application);
+dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+dircreate(dataFileFolder);
 
 // Check to see if user is already logged in
 if fileexist(enumeratorEA) = 1 then
@@ -980,9 +983,8 @@ PROC CHOOSE_REPORT
 
 onfocus
 
-string menuApplicationFolder = pathname(Application); //this is the path of our application
-string dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
-string eacode;
+menuApplicationFolder = pathname(Application); //this is the path of our application
+dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here
 		
 numeric i = 2, ctr;
 dirlist(fileListing,dataFolder,"*.dat");
@@ -991,7 +993,7 @@ dirlist(fileListing,dataFolder,"*.dat");
     	mylabels(1) = "View all";
     
 		do ctr = 1 while ctr <= length(fileListing)
-			eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
+			string eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 			mycodes(i) = eacode;
 			mylabels(i) = eacode;
 			i = i + 1;
