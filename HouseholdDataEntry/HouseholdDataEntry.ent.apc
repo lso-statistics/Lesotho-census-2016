@@ -256,18 +256,14 @@ if HOUSEHOLD_STATUS = 6 then
    endif;
 endif;
 //the status of the household is incomplete
-if HOUSEHOLD_STATUS in 2:5 then
-	numeric i = 0;
-	i = accept("Do you want to save this household as partial save or completed?", "Partial Save", "Complete");
-	
-	if i = 1 then
-		savepartial();
-		stop(0);
-	elseif i = 2 then
+if HOUSEHOLD_STATUS in 2:6 then 
+	if APPROVAL_STATUS = 1 then
 		endlevel;
 	else
-		reenter HOUSEHOLD_STATUS;
-	endif;	
+		savepartial();
+		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+		stop(0);
+	endif;
 endif;
 
 

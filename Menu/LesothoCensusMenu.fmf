@@ -13,7 +13,7 @@ File=.\LesothoCensusMenu.dcf
 Name=FORM000
 Label=LesothoCensusMenu questionnaire
 Level=1
-Size=433,324
+Size=433,352
   
 Item=USER_CODE
 Item=ENUMERATOR_MENU
@@ -23,6 +23,7 @@ Item=CHOOSE_REPORT
 Item=VIEW_DATE
 Item=CONSTITUENCY_SUPERVISOR_MENU
 Item=POSTCHECK
+Item=APPROVE_CASES
   
 [EndForm]
   
@@ -143,6 +144,18 @@ Form=1
 [Text]
 Position=44,280,108,296
 Text=Postcheck
+ 
+  
+[Field]
+Name=APPROVE_CASES
+Position=253,306,296,326
+Item=APPROVE_CASES,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=44,311,138,327
+Text=Approve Cases
  
 [EndGroup]
   

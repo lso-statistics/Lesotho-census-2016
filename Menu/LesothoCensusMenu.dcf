@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=174
+RecordLen=177
 
 [Item]
 Label=User Code
@@ -58,6 +58,7 @@ Name=ASSISTANT_SUPERVISOR_MENU_VS1
 Value=1;Postcheck Households
 Value=2;Summary Report
 Value=3;Household Status
+Value=4;Approve cases
 Value=9;Logout
 
 [Item]
@@ -163,3 +164,10 @@ Name=IDENTIFIER
 Start=47
 Len=128
 DataType=Alpha
+
+[Item]
+Label=Approve Cases
+Name=APPROVE_CASES
+Start=175
+Len=3
+ZeroFill=Yes

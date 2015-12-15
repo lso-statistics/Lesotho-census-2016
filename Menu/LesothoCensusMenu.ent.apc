@@ -7,12 +7,13 @@ array string labels(200);
 array string mycodes(200);
 array string mylabels(200);
 array string mylabels2(200);
+array string myID(200);
 
 file tempFile;
 array ageBySex5YearGroups(22, 2);
 
 string menuApplicationFolder, householdApplicationFolder;
-string dataFolder, dataFileFolder,eacode;
+string supervisorDataFileFolder, enumeratorDataFileFolder,eacode;
 string loginFilename, assSupRevApplicationFolder;
 string enumeratorEA;
 file tmpFile;
@@ -31,11 +32,11 @@ array string EAarray(25);
 function pickEA()
 
     //menuApplicationFolder = pathname(Application); //this is the path of our application;
-	//dataFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
+	//enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
 	      
     numeric i = i;
     
-    dirlist(fileListing,dataFolder,"*.dat");
+    dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
         
         if length(fileListing) > 0 then
            eaarray(1) = "View All";
@@ -268,7 +269,7 @@ function CreateAndRunPFF()
 //	menuApplicationFolder = pathname(Application);
 //	householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
 //	dircreate(householdApplicationFolder);
-//	dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
 	
 	setfile(pffFile,pffFilename,create);
 
@@ -282,7 +283,7 @@ function CreateAndRunPFF()
 	filewrite(pffFile,"[Files]");
 	filewrite(pffFile,"Application=%sHouseholdDataEntry.ent", householdApplicationFolder);	
 	enumeratorDataFilename = maketext("%s.dat", STAFF_EA);
-	filewrite(pffFile,"InputData=%s%s",dataFileFolder,enumeratorDataFilename);
+	filewrite(pffFile,"InputData=%s%s",enumeratorDataFileFolder,enumeratorDataFilename);
 
 	filewrite(pffFile,"[Parameters]");
 	filewrite(pffFile,"DISTRICT=%02d",S_DISTRICT);
@@ -313,7 +314,7 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 
 //	menuApplicationFolder = pathname(Application);
 //	assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
-//	dataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
+//	supervisorDataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
 	setfile(sr_pffFile,pffFilename,create);
 
 	filewrite(sr_pffFile,"[Run Information]");
@@ -326,7 +327,7 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 	filewrite(sr_pffFile,"[Files]");
 	filewrite(sr_pffFile,"Application=%sAssistSupReview.ent", assSupRevApplicationFolder);	
 	supervisorDataFilename = maketext("RV%011d.dat", asEA);
-	filewrite(sr_pffFile,"InputData=%s%s",dataFileFolder,supervisorDataFilename);
+	filewrite(sr_pffFile,"InputData=%s%s",supervisorDataFileFolder,supervisorDataFilename);
 
 	filewrite(sr_pffFile,"[Parameters]");
 	filewrite(sr_pffFile,"DISTRICT=%02d",asDistrict);
@@ -362,15 +363,15 @@ function ShowSummaryReport()
 	filewrite(tempFile, "");
 
 //	menuApplicationFolder = pathname(Application); //this is the path of our application
-//	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 		
 	numeric ctr;
-    dirlist(fileListing,dataFolder,"*.dat");
+    dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
     
 	do ctr = 1 while ctr <= length(fileListing)
 		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
-		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
 		// Create a dynamic value set of all completed households
 		// in the enumerator data file.	
 		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
@@ -469,9 +470,9 @@ function ShowSummaryReport_EA(string eacode)
 	filewrite(tempFile, "");
 
 //	menuApplicationFolder = pathname(Application); //this is the path of our application
-//	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 	
-		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
 		// Create a dynamic value set of all completed households
 		// in the enumerator data file.	
 		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
@@ -569,15 +570,15 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 	filewrite(tempFile, "");
 
 //	menuApplicationFolder = pathname(Application); //this is the path of our application
-//	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 		
 	numeric ctr;
-    dirlist(fileListing,dataFolder,"*.dat");
+    dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
     
 	do ctr = 1 while ctr <= length(fileListing)
 		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
-		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
 		// Create a dynamic value set of all completed households
 		// in the enumerator data file.	
 		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
@@ -679,9 +680,9 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 	filewrite(tempFile, "");
 
 //  menuApplicationFolder = pathname(Application); //this is the path of our application
-//	dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 	
-		enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, eacode);
+		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
 		// Create a dynamic value set of all completed households
 		// in the enumerator data file.	
 		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
@@ -811,10 +812,12 @@ preproc
 loginFilename = pathname(Application) + "login.txt";
 enumeratorEA = pathname(Application) + "eacode.txt";	
 menuApplicationFolder = pathname(Application);
-dataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+supervisorDataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
 householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
 assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
-dircreate(dataFileFolder);
+dircreate(enumeratorDataFileFolder);
+dircreate(supervisorDataFileFolder);
 dircreate(householdApplicationFolder);
 dircreate(assSupRevApplicationFolder);
 
@@ -832,7 +835,7 @@ if fileexist(enumeratorEA) = 1 then
 	endif;
 endif;
 
-enumeratorDataFilename = maketext("%s%011d.dat", dataFileFolder, ea);
+enumeratorDataFilename = maketext("%s%011d.dat", enumeratorDataFileFolder, ea);
 
 
 PROC USER_CODE
@@ -935,6 +938,8 @@ if fileexist(enumeratorDataFilename) = 1 then
 		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
 	elseif ASSISTANT_SUPERVISOR_MENU = 2 then
 		//skip to household_status;
+	elseif ASSISTANT_SUPERVISOR_MENU = 4 then
+		skip to APPROVE_CASES;
 	elseif ASSISTANT_SUPERVISOR_MENU = 9 then
 		// Logout
 		// Erase login file so that we don't automatically
@@ -1025,10 +1030,10 @@ PROC CHOOSE_REPORT
 onfocus
 
 //menuApplicationFolder = pathname(Application); //this is the path of our application
-//dataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here
+//enumeratorDataFileFolderdataFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here
 		
 numeric i = 2, ctr;
-dirlist(fileListing,dataFolder,"*.dat");
+dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
     if length(fileListing) > 0 then
 	    mycodes(1) = "View all";
     	mylabels(1) = "View all";
@@ -1078,13 +1083,10 @@ locate(LESOTHOCENSUS2016_DICT, >=, "");
 numeric i = 1;
 do while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 	codes(i) = HOUSEHOLD_NUMBER;
-
 	
-	if FINAL_RESULT_CODE = 1 then
-		
-		labels(i) = maketext("HOUSEHOLD %03d - %s", HOUSEHOLD_NUMBER, HOUSEHOLD_HEAD_NAMES);
+	if FINAL_RESULT_CODE = 1 then		
+		labels(i) = maketext("%s", HOUSEHOLD_HEAD_NAMES);
 		i = i + 1;
-
 	endif;	
 enddo;
 codes(i) = notappl;
@@ -1092,16 +1094,15 @@ setvalueset(CHOOSE_POSTCHECK_HOUSEHOLD, codes, labels);
 
 postproc
 
-
 /////////////////////////////////////
-{
+
 locate(LESOTHOCENSUS2016_DICT, >=, "");
 while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
 	if CHOOSE_POSTCHECK_HOUSEHOLD = HOUSEHOLD_NUMBER then
 		CreateAndRunSRPFF(DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, ENUMERATION_AREA, WARD, SETTLEMENT, VILLAGE_NUMBER, VILLAGE_NAME, HOUSEHOLD_NUMBER, HOUSEHOLD_HEAD_NAMES);
 	endif;
 enddo;
-}
+
 
 
 errmsg("Something went horribly wrong. Please contact technical support");
@@ -1113,14 +1114,57 @@ if POSTCHECK = 1 then
 endif;
 
 reenter;
+PROC APPROVE_CASES
+
+onfocus
+// Create a dynamic value set of all completed households
+// in the enumerator data file.
+
+numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
+
+if result <> 1 then
+	errmsg("Unable to load enumerator data file");
+	reenter ASSISTANT_SUPERVISOR_MENU;
+endif;
+
+// Start at first household in enumerator data file
+locate(LESOTHOCENSUS2016_DICT, >=, "");
+// Loop through all households 
+// until loadcase returns zero when it hits end of file.
+numeric i = 1;
+do while loadcase(LESOTHOCENSUS2016_DICT) <> 0	
+	if HOUSEHOLD_STATUS in 2:6 and APPROVAL_STATUS <> 1 then
+		codes(i) = i;
+		myID(i) = key(LESOTHOCENSUS2016_DICT);
+		labels(i) = maketext("%s  %s", strip(HOUSEHOLD_HEAD_NAMES), getLabel(HOUSEHOLD_STATUS_VS1, HOUSEHOLD_STATUS));
+		i = i + 1;
+	endif;	
+enddo;
+if i = 1 then
+	errmsg("All cases have been approved");
+	reenter ASSISTANT_SUPERVISOR_MENU;
+endif;
+codes(i) = notappl;
+setvalueset(APPROVE_CASES, codes, labels);
+APPROVE_CASES = notappl;
+
+postproc
+// modify the variable "approved by supervisor" in the household data file
+// so that when the enumerator re-visits the household he/she can be able to
+// accept the case and complete it.
+locate(LESOTHOCENSUS2016_DICT, =, myID(APPROVE_CASES));
+retrieve(LESOTHOCENSUS2016_DICT);
+APPROVAL_STATUS = 1;
+writecase(LESOTHOCENSUS2016_DICT);
+reenter APPROVE_CASES;
 PROC SUMMARY_REPORT_MENU
 
 //menuApplicationFolder = pathname(Application); //this is the path of our application
-//dataFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+//enumeratorDataFileFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 
 		
 numeric i, ctr;
-dirlist(fileListing,dataFolder,"*.dat");
+dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
     if length(fileListing) > 0 then
 	    mycodes(1) = "EA code";
     	mylabels(1) = "EA name";
@@ -1144,9 +1188,9 @@ onfocus
 string HH_status, Checked;
 //menuApplicationFolder = pathname(Application); //this is the path of our application
 numeric b = dircreate(pathname(Application)+"Temp");
-//dataFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+//enumeratorDataFileFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 numeric i;   
-enumeratorDataFilename = maketext("%s%011s.dat", dataFolder, CONSTITUENCY_EACODE);
+enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, CONSTITUENCY_EACODE);
 if b = 1 then
 	string dataFolderCopy = menuApplicationFolder + "/Temp/";
 else
