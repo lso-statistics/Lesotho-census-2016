@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=34
+RecordLen=174
 
 [Item]
 Label=User Code
@@ -78,16 +78,28 @@ Value=6;Sync With HQ
 Value=9;Logout
 
 [Item]
+Label=Postcheck
+Name=POSTCHECK
+Start=10
+Len=1
+
+[ValueSet]
+Label=Postcheck
+Name=POSTCHECK_VS1
+Value=1;postChecked
+Value=2;not postChecked
+
+[Item]
 Label=Choose Postcheck Household
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Start=10
+Start=11
 Len=3
 ZeroFill=Yes
 
 [Item]
 Label=View Date
 Name=VIEW_DATE
-Start=13
+Start=14
 Len=10
 DataType=Alpha
 
@@ -120,18 +132,34 @@ Value='30/04/2016';30/04/2016
 [Item]
 Label=Summary Report Menu
 Name=SUMMARY_REPORT_MENU
-Start=23
+Start=24
 Len=1
 
 [ValueSet]
 Label=Summary Report Menu
 Name=SUMMARY_REPORT_MENU_VS1
 Value=1;Age by Sex
-Value=2;Sex Ratio Report
+Value=2;Sex Ratio
+Value=3;Progress Report by Date
+Value=4;Household Status Report
 
 [Item]
 Label=Choose Report
 Name=CHOOSE_REPORT
-Start=24
+Start=25
 Len=11
+DataType=Alpha
+
+[Item]
+Label=Constituency EACode
+Name=CONSTITUENCY_EACODE
+Start=36
+Len=11
+DataType=Alpha
+
+[Item]
+Label=Household ID
+Name=IDENTIFIER
+Start=47
+Len=128
 DataType=Alpha
