@@ -343,7 +343,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Village Number
 Name=VILLAGE_NUMBER_VS1
-Value=1:99;1-99
+Value=1:15;1-15
 
 [Item]
 Label=Village Name
@@ -407,8 +407,30 @@ ZeroFill=Yes
 
 [ValueSet]
 Label=Relationship
-Name=B3_VS1
+Name=B3_RELATIONSHIP
 Value=1;Household Head
+Value=2;Spouse
+Value=3;Partner(Cohabiting)
+Value=4;Son/Daughter
+Value=5;Son/daughter in-law
+Value=6;Step child
+Value=7;Sibling
+Value=8;Own Parent
+Value=9;Step Parent
+Value=10;Parent in-law
+Value=11;Grandmother/father
+Value=12;Grandchild/Great grandchild
+Value=13;Other relative
+Value=14;Not related
+
+[ValueSet]
+Label=Relationship
+Name=B3_RELATIONSHIP_OF_HEAD
+Value=1;Household Head
+
+[ValueSet]
+Label=Relationship
+Name=B3_RELATIONSHIP_TO_HEAD
 Value=2;Spouse
 Value=3;Partner(Cohabiting)
 Value=4;Son/Daughter
@@ -7345,7 +7367,7 @@ Value=2;No household member at home
 Value=3;Entire household absent for extended period of time
 Value=4;Dwelling vacant
 Value=5;Dwelling destroyed
-Value=6;Refusal 
+Value=6;Refusal
 
 [Item]
 Label=Final Result Code

@@ -241,24 +241,35 @@ if DISTRICT = 1 then
 	elseif DISTRICT = 10 then
 		setvalueset (WARD,WARD_10_VS);		
 endif;
+PROC VILLAGE_NAME
+
+if VILLAGE_NAME = " " then
+errmsg("Please enter Village name");
+  reenter;
+endif;
+
+
 PROC HOUSEHOLD_HEAD_NAMES
 
+if HOUSEHOLD_HEAD_NAMES = " " then
+errmsg("Please enter the name of the Household head");
+  reenter;
+endif;
 PROC VISIT_DATE000
 
-PROC HOUSEHOLD_STATUS
+PROC VISIT_DATE
 
-if HOUSEHOLD_STATUS = 6 then
-   if NUMBER_OF_VISITS < 3 then
-	   errmsg('Refusal can only be accepted if there had been atleast 3 attempts or visits');
-	   reenter HOUSEHOLD_STATUS;
-   else
-       endlevel;
-   endif;
-endif;
+//VISIT_DATE = sysdate("YYYYMMDD");
+PROC HOUSEHOLD_STATUS
 //the status of the household is incomplete
-if HOUSEHOLD_STATUS in 2:5 then
+if HOUSEHOLD_STATUS = 2 then
+
+	savepartial();
+	stop(0);
+
+elseif HOUSEHOLD_STATUS in 3:5 then
 	numeric i = 0;
-	i = accept("Do you want to save this household as partial save or completed?", "Partial Save", "Complete");
+	i = accept("Are you sure you  want to............?", "Partial Save", "Complete");
 	
 	if i = 1 then
 		savepartial();
@@ -269,9 +280,6 @@ if HOUSEHOLD_STATUS in 2:5 then
 		reenter HOUSEHOLD_STATUS;
 	endif;	
 endif;
-
-
-
 PROC B1
 preproc
 // Automatically fill in person number
@@ -324,8 +332,6 @@ PROC MORE_PEOPLE
 
 // End roster if there are no more household members to enter
 if MORE_PEOPLE = 2 then
-	B2(1) = strip(HOUSEHOLD_HEAD_NAMES);
-
 	endgroup;
 endif;
 PROC NUMBER_OF_HOUSEHOLD_MEMBERS
@@ -421,7 +427,31 @@ if B19(head) in 2:3,5 then
 endif;
 PROC B3
 
-B3(1) = 01;
+onfocus
+
+
+
+//if location of employment(E36) is in any of the 10 districts of Lesotho,then 
+//in E37 only the list of the district location chosen in E36 should appear  
+ 
+{numeric relationship = realdistrict;
+if if B2(1) = strip(HOUSEHOLD_HEAD_NAMES) then 
+ 		realdistrict = Relationship;
+ else
+ 	realdistrict = B2;
+endif;
+}
+	
+//if B1 = 1 then
+
+ if curocc() = 1 then 
+ 	 setvalueset(B3,B3_RELATIONSHIP_OF_HEAD);
+	else
+	setvalueset(B3,B3_RELATIONSHIP_TO_HEAD);
+endif;
+
+
+//B3(1) = 01;
 	
 
 //postproc
@@ -498,7 +528,7 @@ PROC B7
 if B3 in 1 then
 	if B7 = 2 then
 		errmsg("%s is the %s and should not be a visitor",
-			strip(B2(curocc())), getlabel(B3_VS1,B3(curocc())))
+			strip(B2(curocc())), getlabel(B3_RELATIONSHIP(curocc())))
 			select("Correct Current Residential Status",B7);
 	endif;
 endif;
@@ -571,7 +601,7 @@ PROC B9B
 // Name must be in Institutions if duration outside Lesotho is
 // more than 3 years
 if B9B(curocc()) = 6 then
-	errmsg("%s must not appear in the Houshold Roaster", strip(B2(curocc())))
+	errmsg("%s must not appear in the Houshold Roster", strip(B2(curocc())))
 	select("Correct Instutions in RSA", B9B(curocc()),
 		   "Correct duration outside Lesotho",B9(curocc()));
 endif
@@ -627,10 +657,17 @@ endif;
 
 PROC B12A
 
+if B12A = DISTRICT then
+	errmsg("You cannot choose Elsewhere in Lesotho and select the same distict as to enumeration District")
+	select("correct April 2015", B12, "correct April 2015 Elsewhere Lesotho", B12A);
+endif;
+
 //skip over other countries for elsewhere in Lesotho (B12=3)
 
 skip to B13;
 
+PROC B12B
+ 
 PROC B13
 
 //We cannot say a person was not yet born yet he was
@@ -670,6 +707,10 @@ endif;
 
 PROC B13A
 
+if B13A = DISTRICT then
+	errmsg("You cannot choose Elsewhere in Lesotho and select the same distict as to enumeration District")
+	select("correct April 2011", B13, "correct April 2011 Elsewhere Lesotho", B13A);
+endif;
 //skip over other countries for elsewhere in Lesotho (B13=3)
 
 skip to B14;
@@ -712,6 +753,10 @@ endif;
 
 PROC B14A
 
+if B14A = DISTRICT then
+	errmsg("You cannot choose Elsewhere in Lesotho and select the same distict as to enumeration District")
+	select("correct April 2006", B14, "correct April 2006 Elsewhere Lesotho", B14A);
+endif;
 //skip over other countries for elsewhere in Lesotho (B14=3)
 
 skip to B15;
@@ -750,10 +795,10 @@ if B3(curocc()) = 4 and B4(head) = 2 and B18(curocc()) <> 1 then
 endif;
 PROC B19
 
-// Ensure that under 12 is never married
+// Ensure that under 10 is never married
 if B5 < 10
  and B19 <> 1 then
-	errmsg("%s is %d years old and marital status is %s. Under 12 years old must never be married.",
+	errmsg("%s is %d years old and marital status is %s. Under 10 years old must never be married.",
 		   strip(B2(curocc())), B5(curocc()), getlabel(B19_VS1, B19(curocc())))
 	select("Correct Age", B5, 
 		   "Correct Marital Status", B19);
@@ -786,39 +831,6 @@ if B3(curocc()) = 2 then
 if B19 = 1 or B19 = 9 then
 	skip to next;
 endif;
-
-
-
-
-
-
-
-
-
-
-
-
-{
-if B19(1) = 1 and B3(curocc()) = 2 then
-    errmsg("%s cannot be a spouse to %s while is never married",
-    strip(B2(curocc())), strip(B2(1)))
-    select("Correct head marital status",B19(1),"Correct relationship",B3);    
- endif;
-
-
-// Ensure that under 12 is never married
-if B5 < 12 and B19 <> 1 then
-	errmsg("%s is %d years old and marital status is %s. Under 12 years old must never be married.",
-		   strip(B2(curocc())), B5(curocc()), getlabel(B19_VS1, B19(curocc())))
-	select("Correct Age", B5, 
-		   "Correct Marital Status", B19);
-endif;
-
-//skip for Never married (1) or Don't know (9)options
-if B19 = 1 or B19 = 9 then
-	skip to next;
-endif;
-}
 PROC B20
 
 postproc
@@ -1757,11 +1769,10 @@ endif;
 
 if OCCUPATION_LEVEL_1 = 11 then
 	setvalueset(OCCUPATION_LEVEL_4, OCCUPATION_LEVEL_4_VS033);
-	skip to OCCUPATION_LEVEL_4;
 endif;
 PROC DIVISIONS
 
-preproc
+onfocus
 //For  
  
 if SECTION = 01 then
@@ -2727,7 +2738,18 @@ if G51 = 2 or G51 = 9 then
 endif;
 
 
+
+
 PROC G53
+
+
+if G53 = "" then
+	errmsg("Please enter name of the Deceased")
+	select("Enter name", G53);
+endif;
+
+G53=toupper(G53);
+
 // Set occurrence labels for individual rosters to use name
 string occurrenceLabel = strip(G53);
 
@@ -2788,7 +2810,7 @@ PROC H62
 
 preproc
 // skip over agency for land acquired (H62)if the land was not allocated by 
-//government agency, private developer or bought from somebody
+//government agency or private developer
 if H61 in 3:9 then 
 	skip to H63;
 endif;
@@ -2847,7 +2869,7 @@ if H63 = 1 and H68_RONTABOLE = 0 then
 endif;
 PROC H69_RONTABOLE
 
-onfocus
+preproc
 if H68_RONTABOLE = 0 then
 	H69_RONTABOLE = 0;
 	noinput;
@@ -2868,7 +2890,7 @@ if H63 = 2 and H68_HEISI = 0 then
 endif;
 PROC H69_HEISI
 
-onfocus
+preproc
 if H68_HEISI = 0 then
 	H69_HEISI = 0;
 	noinput;
@@ -2889,7 +2911,7 @@ if H63 = 3 and H68_POLATA = 0 then
 endif;
 PROC H69_POLATA
 
-onfocus
+preproc
 if H68_POLATA = 0 then
 	H69_POLATA = 0;
 	noinput;
@@ -2910,7 +2932,7 @@ if H63 = 4 and H68_MALAENE = 0 then
 endif;
 PROC H69_MALAENE
 
-onfocus
+preproc
 if H68_MALAENE = 0 then
 	H69_MALAENE = 0;
 	noinput;
@@ -2931,7 +2953,7 @@ if H63 = 5 and H68_OPTAKA = 0 then
 endif;
 PROC H69_OPTAKA
 
-onfocus
+preproc
 if H68_OPTAKA = 0 then
 	H69_OPTAKA = 0;
 	noinput;
@@ -2952,7 +2974,8 @@ if H63 = 6 and H68_APARTMENT = 0 then
 endif;
 PROC H69_APARTMENT
 
-onfocus
+preproc
+
 if H68_APARTMENT = 0 then
 	H69_APARTMENT = 0;
 	noinput;
@@ -2973,7 +2996,7 @@ if H63 = 7 and H68_MANSION = 0 then
 endif;
 PROC H69_MANSION
 
-onfocus
+preproc
 if H68_MANSION = 0 then
 	H69_MANSION = 0;
 	noinput;
@@ -2994,7 +3017,7 @@ if H63 = 8 and H68_TEMP_STRUCTURE = 0 then
 endif;
 PROC H69_TEMP_STRUCTURE
 
-onfocus
+preproc
 if H68_TEMP_STRUCTURE = 0 then
 	H69_TEMP_STRUCTURE = 0;
 	noinput;
@@ -3129,3 +3152,6 @@ endif;
 PROC PARTIALLY_COMPLETE_REASON
 
 PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
+
+savepartial();
+stop(0);	//go back to the list of one /all HH.
