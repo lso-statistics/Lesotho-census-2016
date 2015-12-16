@@ -1,0 +1,14 @@
+﻿[Run Information]
+Version=CSPro 6.1
+AppType=Entry
+
+[DataEntryInit]
+Interactive=Ask
+
+[Files]
+Application=.\HouseholdDataEntry.ent
+InputData=.\03220423038.dat
+
+
+[Parameters]
+
