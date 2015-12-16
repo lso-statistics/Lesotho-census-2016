@@ -227,7 +227,6 @@ Item=H69_APARTMENT
 Item=H69_MANSION
 Item=H69_TEMP_STRUCTURE
 Item=H69_TOTAL
-Item=NEW_ASSETS000
   
   
 [Text]
@@ -5065,111 +5064,6 @@ Form=8
 Position=47,808,86,824
 Text=Assets
 Form=8
- 
-  
-[Grid]
-Name=NEW_ASSETS000
-Label=New Assets
-Form=8
-Required=No
-Type=Item
-TypeName=NEW_ASSETS
-Max=13
-DisplaySize=551,809,734,1113
-Orientation=Horizontal
-FieldRowHeight=31
-HeadingRowHeight=0
-FreeMovement=No
- 
-[Text]
-Position=42,7,87,31
-Text=Radio
- 
-  
-[Text]
-Position=0,7,87,31
-Text=Landline Tel
- 
-  
-[Text]
-Position=9,7,87,31
-Text=Cell Phone
- 
-  
-[Text]
-Position=62,7,87,31
-Text=TV
- 
-  
-[Text]
-Position=35,7,87,31
-Text=Tractor
- 
-  
-[Text]
-Position=43,7,87,31
-Text=Stove
- 
-  
-[Text]
-Position=2,7,87,31
-Text=Scotch Card
- 
-  
-[Text]
-Position=54,7,87,31
-Text=Bed
- 
-  
-[Text]
-Position=17,7,87,31
-Text=Computer
- 
-  
-[Text]
-Position=30,7,87,31
-Text=Internet
- 
-  
-[Text]
-Position=32,7,87,31
-Text=Vehicle
- 
-  
-[Text]
-Position=15,7,87,31
-Text=Generator
- 
-  
-[Text]
-Position=7,7,87,31
-Text=Refrigirator
- 
-  
-[Column]
-Width=10
-[EndColumn]
-  
-[Column]
-Width=79
-  
-[HeaderText]
-Position=0,0,79,24
-Text=New Assets
- 
-[Field]
-Name=NEW_ASSETS
-Position=56,0,71,20
-Item=NEW_ASSETS,LESOTHOCENSUS2016_DICT
-Protected=Yes
-  
-[Text]
-Position=0,0,76,16
-Text=New Assets
- 
-[EndColumn]
-  
-[EndGrid]
  
   
 [Field]

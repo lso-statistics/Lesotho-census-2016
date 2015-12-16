@@ -343,7 +343,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Village Number
 Name=VILLAGE_NUMBER_VS1
-Value=1:15;1-15
+Value=1:15;1 - 15
 
 [Item]
 Label=Village Name
@@ -362,7 +362,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Household Number
 Name=HOUSEHOLD_NUMBER_VS1
-Value=1:999;1-999
+Value=1:999;1 - 999
 
 [Item]
 Label=Names of Household Head
@@ -468,7 +468,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Age
 Name=B5_VS1
-Value=0:130;0-130
+Value=0:130;0 - 130
 
 [Item]
 Label=Date of Birth
@@ -502,7 +502,7 @@ Value=11;November
 Value=12;December
 
 [Item]
-Label=Year of  Birth
+Label=Year of Birth
 Name=B6B
 Start=179
 Len=4
@@ -510,9 +510,9 @@ ItemType=SubItem
 ZeroFill=Yes
 
 [ValueSet]
-Label=Year of  Birth
+Label=Year of Birth
 Name=B6B_VS1
-Value=1886:2016;1886-2016
+Value=1886:2016;1886 - 2016
 
 [Item]
 Label=Residential Status
@@ -697,7 +697,7 @@ ZeroFill=Yes
 Label=How Long Lived in Village/Town
 Name=B11_VS1
 Value=0;Less than 1 year (enter 0)
-Value=1:130;1-130 (enter number of years)
+Value=1:130;1 - 130 (enter number of years)
 Value=998;Since birth
 
 [Item]
@@ -710,7 +710,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Residence April 2015
 Name=B12_VS1
-Value=0;Not  born
+Value=0;Not born
 Value=1;In this village
 Value=2;Elsewhere in this district
 Value=3;Elsewhere in Lesotho
@@ -788,7 +788,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Residence April 2011
 Name=B13_VS1
-Value=0;Not  born
+Value=0;Not born
 Value=1;In this village
 Value=2;Elsewhere in this district
 Value=3;Elsewhere in Lesotho
@@ -991,7 +991,7 @@ Value=3;Xhosa/Sethepu
 Value=4;Sephuthi
 Value=5;Setebele/Zulu
 Value=6;Chinese
-Value=7;Other specify
+Value=7;Other (Specify)
 
 [Item]
 Label=Other Language Spoken Mostly
@@ -1539,7 +1539,7 @@ Value=15;Form 5
 Value=18;None
 Value=19;Non-Formal Education
 Value=20;Diploma/certificate after primary
-Value=21;Vocational and technical  after primary
+Value=21;Vocational and technical after primary
 Value=22;Diploma /certificate after secondary
 Value=23;Vocational and technical after secondary
 Value=24;Diploma /certificate after high school
@@ -1548,7 +1548,7 @@ Value=26;Graduate
 Value=27;Post graduate Diploma/Honors
 Value=28;Masters
 Value=29;PHD
-Value=30;Other (specify)
+Value=30;Other (Specify)
 Value=88;N/A
 Value=99;Don’t know
 
@@ -1788,7 +1788,7 @@ Value=60;Homemaker
 Value=65;Housewife
 Value=70;Retired
 Value=80;Student
-Value=81;Other (specify)
+Value=81;Other (Specify)
 Value=99;Don’t know
 
 [Item]
@@ -1818,7 +1818,7 @@ Value=60;Homemaker
 Value=65;Housewife
 Value=70;Retired
 Value=80;Student
-Value=81;Other (specify)
+Value=81;Other (Specify)
 Value=99;Don’t know
 
 [Item]
@@ -6042,7 +6042,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=RSA Work Duration
 Name=E39_VS1
-Value=0:10;00-10
+Value=0:10;0 - 10
 
 [Item]
 Label=Ever Pregnant
@@ -6082,7 +6082,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Boys Born Alive
 Name=F42A_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Girls Born Alive
@@ -6094,7 +6094,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Girls Born Alive
 Name=F42B_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Total Born Alive
@@ -6106,7 +6106,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Total Born Alive
 Name=F42C_VS1
-Value=1:20;1-20
+Value=1:20;1 - 20
 
 [Item]
 Label=Boys Living in Household
@@ -6118,7 +6118,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Boys Living in Household
 Name=F43A_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Girls Living in Household
@@ -6130,7 +6130,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Girls Living in Household
 Name=F43B_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Total Living in Household
@@ -6154,7 +6154,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Boys Living Elsewhere
 Name=F44A_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Girls Living Elsewhere
@@ -6166,7 +6166,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Girls Living Elsewhere
 Name=F44B_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Total Living Elsewhere
@@ -6178,7 +6178,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Total Living Elsewhere
 Name=F44C_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Boys Deceased
@@ -6190,7 +6190,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Boys Deceased
 Name=F45A_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Girls Deceased
@@ -6202,7 +6202,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Girls Deceased
 Name=F45B_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=Total Deceased
@@ -6214,7 +6214,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Total Deceased
 Name=F45C_VS1
-Value=0:20;0-20
+Value=0:20;0 - 20
 
 [Item]
 Label=First Child Bearing Age
@@ -6226,7 +6226,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=First Child Bearing Age
 Name=F46_VS1
-Value=12:50;12-50
+Value=12:50;12 - 50
 
 [Item]
 Label=Last Child Birth Date
@@ -6270,7 +6270,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Last Child Birth Year
 Name=F47B_VS1
-Value=1978:2016;1978-2016
+Value=1978:2016;1978 - 2016
 
 [Item]
 Label=Last Born Alive
@@ -6328,7 +6328,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Last Born Deceased Year
 Name=F49B_VS1
-Value=1978:2016;1978-2016
+Value=1978:2016;1978 - 2016
 
 [Item]
 Label=Sex of Last Born
@@ -6455,7 +6455,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Deceased Age at Death
 Name=G56_VS1
-Value=0:130;0-130
+Value=0:130;0 - 130
 
 [Item]
 Label=While Pregnant
@@ -6504,7 +6504,7 @@ Label=Housing
 Name=HOUSING
 RecordTypeValue='H'
 Required=No
-RecordLen=676
+RecordLen=663
 
 [Item]
 Label=Tenure Status
@@ -6521,7 +6521,7 @@ Value=2;Title deed
 Value=3;Form C
 Value=4;No title
 Value=5;No legal right
-Value=6;Other (specify)
+Value=6;Other (Specify)
 Value=9;Don't know
 
 [Item]
@@ -6642,7 +6642,7 @@ Value=8;Advanced Stone
 Value=9;Sand/Concrete Blocks
 Value=10;Advanced Burned Bricks
 Value=11;Corrugated Iron/ Metal sheets
-Value=12;Other (specify)
+Value=12;Other (Specify)
 
 [Item]
 Label=Main Floor Material
@@ -6832,7 +6832,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of Rooms - Optaka
 Name=H69_OPTAKA_VS1
-Value=0:30;0-30
+Value=0:30;0 - 30
 
 [Item]
 Label=Number of Rooms - Apartment
@@ -6902,7 +6902,7 @@ Value=7;Public tap/standpipe
 Value=8;Public borehole
 Value=9;Protected spring
 Value=10;Unprotected spring
-Value=11;Surface water (river, dam, lake, pond, stream,  canal, irrigation channels)
+Value=11;Surface water (river, dam, lake, pond, stream, canal, irrigation channels)
 Value=12;Cart with small tank/drum
 Value=13;Tanker-truck
 Value=14;Other
@@ -7021,7 +7021,7 @@ ZeroFill=Yes
 Label=Disposal of Rubbish or Refuse
 Name=H76_VS1
 Value=1;Municipal collected/ Private
-Value=2;Communal  collected
+Value=2;Communal collected
 Value=3;Communal refuse dump
 Value=4;Roadside dumping
 Value=5;Burnt
@@ -7104,7 +7104,7 @@ OccurrenceLabel=14,Rabbits
 [ValueSet]
 Label=Livestock and Poultry
 Name=H80_VS1
-Value=0:9999
+Value=0:9999;0 - 9999
 
 [Item]
 Label=Any Deaths in the Last Five Years
@@ -7130,7 +7130,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of Deaths in the Last Five Years
 Name=G52_VS1
-Value=1:10
+Value=1:10;1 - 10
 
 [Item]
 Label=Tenure Other
@@ -7273,33 +7273,6 @@ Start=634
 Len=30
 DataType=Alpha
 
-[Item]
-Label=New Assets
-Name=NEW_ASSETS
-Start=664
-Len=1
-Occurrences=13
-ZeroFill=Yes
-OccurrenceLabel=1,Radio
-OccurrenceLabel=2,Landline Tel
-OccurrenceLabel=3,Cell Phone
-OccurrenceLabel=4,TV
-OccurrenceLabel=5,Tractor
-OccurrenceLabel=6,Stove
-OccurrenceLabel=7,Scotch Card
-OccurrenceLabel=8,Bed
-OccurrenceLabel=9,Computer
-OccurrenceLabel=10,Internet
-OccurrenceLabel=11,Vehicle
-OccurrenceLabel=12,Generator
-OccurrenceLabel=13,Refrigirator
-
-[ValueSet]
-Label=New Assets
-Name=NEW_ASSETS_VS1
-Value=1;Yes
-Value=0;No
-
 [Record]
 Label=Visits
 Name=VISITS
@@ -7316,7 +7289,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Number of visits
 Name=NUMBER_OF_VISITS_VS1
-Value=1:3;1-3
+Value=1:3;1 - 3
 
 [Item]
 Label=Visit date
@@ -7397,14 +7370,14 @@ Len=10
 DataType=Alpha
 
 [Item]
-Label=Approval Status
+Label=Assistant Supervisor Approval Status
 Name=APPROVAL_STATUS
 Start=196
 Len=1
 ZeroFill=Yes
 
 [ValueSet]
-Label=Approval Status
+Label=Assistant Supervisor Approval Status
 Name=APPROVAL_STATUS_VS1
 Value=0;Not Approved
 Value=1;Approved
