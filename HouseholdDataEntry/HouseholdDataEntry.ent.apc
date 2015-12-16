@@ -1,6 +1,7 @@
 ﻿PROC GLOBAL
- 
+
 numeric CensusYear = 2016;
+numeric CensusMonth = 4;
 numeric YoungestAgeMarriage = 10;
 numeric MaxNumOfYrsOutsideLesotho = 3;
 numeric MinAgeDiffBtwnChildAndParent = 12;
@@ -9,8 +10,14 @@ numeric MinAgeForFertility = 12;
 numeric MaxAgeForFertility = 50;
 numeric MinAgeForEducation = 3;
 numeric MinAgeForEconomicActivity = 10;
-    
-//Max of 50 people in a household with 2(person number and person name) columns to be displayed.
+numeric MinAgeWorkRSA = 5;
+
+// declare arrays dynamic value set
+array numeric codes(100);
+array string labels(100);
+
+
+//Max of 50 people in a household with 2 (person number and person name) columns to be displayed.
 array string personsArray(50, 2);
 array string deceasedArray(30, 1);
 
@@ -19,43 +26,45 @@ array string deceasedArray(30, 1);
 // and let interviewer pick one.
 // Returns the row number of the person that was picked
 // or zero if the dialog was cancelled.
-
 function PickFromPERSON_ROSTER()
-   numeric person;
+	numeric person;
 
-   do person = 1 while person <= totocc(PERSON_ROSTER);	//visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS)
-      personsArray(person, 1) =  maketext("%d", visualvalue(B1(person)));
-	  personsArray(person, 2) =  strip(B2(person));     
-		
+	do person = 1 while person <= totocc(PERSON_ROSTER);
+		personsArray(person, 1) =  maketext("%d", visualvalue(B1(person)));
+		personsArray(person, 2) =  strip(B2(person));
 	enddo;
-		personsArray(person, 1) = "";
-		numeric picked = showarray(personsArray, title("Person Number", "Names"));
-		PickFromPERSON_ROSTER = picked;
+
+	personsArray(person, 1) = "";
+	numeric picked = showarray(personsArray, title("Person Number", "Names"));
+	PickFromPERSON_ROSTER = picked;
 end;
 
 //*****************************************************************************************
 
 function PickFromDEATHS_ROSTER()
-   numeric deceased;
-   do deceased = 1 while deceased <= totocc(DEATHS_ROSTER)
-	  deceasedArray(deceased, 1) =  strip(G53(deceased));     
-		
+	numeric deceased;
+
+	do deceased = 1 while deceased <= totocc(DEATHS_ROSTER)
+		deceasedArray(deceased, 1) =  strip(G53(deceased));
 	enddo;
-		deceasedArray(deceased, 1) = "";
-		numeric picked = showarray(deceasedArray, title("Deceased Name"));
-		PickFromDEATHS_ROSTER = picked;
+
+	deceasedArray(deceased, 1) = "";
+	numeric picked = showarray(deceasedArray, title("Deceased Name"));
+	PickFromDEATHS_ROSTER = picked;
 end;
-	
+
 //***************************************************************************************
 
-function updateOccurrenceLabels()
-// Fill in occurrence labels for individual rosters
-// in case we are coming into a partially saved case or
-// are in modify mode in which case the names have been entered
-// but are not yet set in case tree since we have not yet gotten
-// to field B2 (names).
+
+function UpdateOccurrenceLabels()
+	// Fill in occurrence labels for individual rosters
+	// in case we are coming into a partially saved case or
+	// are in modify mode in which case the names have been entered
+	// but are not yet set in case tree since we have not yet gotten
+	// to field B2 (names).
 	numeric i;
 	do i = 1 while i <= maxocc(PERSON_ROSTER)
+
 		string occurrenceLabel;
 		if i <= totocc(PERSON_ROSTER) then
 			occurrenceLabel = strip(B2(i));
@@ -63,123 +72,132 @@ function updateOccurrenceLabels()
 			// Work around bug in CSPro where when entering a new case
 			// the occurrence labels from the previous case are still there.
 			// This will replace the occurrence label with the row number 1,2,3...
-			occurrenceLabel = maketext("%d",(i));
+			occurrenceLabel = maketext("%d",i);
 		endif;
-		setocclabel(PERSON_ROSTER(i), occurrenceLabel);			
-		setocclabel(DEMOGRAPHIC_ROSTER(i), occurrenceLabel);			
-		setocclabel(DISABILITY_ROSTER(i), occurrenceLabel);			
-		setocclabel(EDUCATION_ROSTER(i), occurrenceLabel);			
-		setocclabel(ECONOMIC_ACTIVITY_ROSTER(i), occurrenceLabel);			
-		setocclabel(FERTILITY_ROSTER(i), occurrenceLabel);	
-					
+
+		setocclabel(PERSON_ROSTER(i), occurrenceLabel);
+		setocclabel(DEMOGRAPHIC_ROSTER(i), occurrenceLabel);
+		setocclabel(DISABILITY_ROSTER(i), occurrenceLabel);
+		setocclabel(EDUCATION_ROSTER(i), occurrenceLabel);
+		setocclabel(ECONOMIC_ACTIVITY_ROSTER(i), occurrenceLabel);
+		setocclabel(FERTILITY_ROSTER(i), occurrenceLabel);
+
 	enddo;
-	
+
 	numeric j;
 	do j = 1 while j <= maxocc(DEATHS_ROSTER)
+
 		if j <= totocc(DEATHS_ROSTER) then
 			occurrenceLabel = strip(G53(j));
 		else
 			// Work around bug in CSPro where when entering a new case
 			// the occurrence labels from the previous case are still there.
 			// This will replace the occurrence label with the row number 1,2,3...
-			occurrenceLabel = maketext("%d", (j));
+			occurrenceLabel = maketext("%d",j);
 		endif;
-		setocclabel(DEATHS_ROSTER(j), occurrenceLabel);			
-					
+
+		setocclabel(DEATHS_ROSTER(j), occurrenceLabel);
+
 	enddo;
+
 end;
 
 //**************************************************************************************
 
 //delete Person's Record
-function checkdelete()	
+
+function DeletePerson()
+
 	numeric person = PickFromPERSON_ROSTER();
 	if person > 0 then
-	   numeric choice = errmsg("Do you really want to delete %s's record?", strip(B2(person)))
-				select("YES",CONTINUE, "NO",CONTINUE);
-				
+		numeric choice = errmsg("Do you really want to delete %s's record?", strip(B2(person)))
+		select("YES",CONTINUE, "NO",CONTINUE);
+
 		if choice = 1 then
-		
-			if person <> 1 then	
-		 		delete (PERSON_ROSTER(person));
-		 		
-		 		if person <= totocc(DEMOGRAPHIC_ROSTER) then
-		 			delete (DEMOGRAPHIC_ROSTER(person));
-		 		endif;
-		 		
-		 		if person <= totocc(DISABILITY_ROSTER) then
-		 			delete (DISABILITY_ROSTER(person));
-		 		endif;
-		 		
-		 		if person <= totocc(EDUCATION_ROSTER) then
-		 			delete (EDUCATION_ROSTER(person));
-		 		endif;
-		 		
-		 		if person <= totocc(ECONOMIC_ACTIVITY_ROSTER) then
-		 			delete (ECONOMIC_ACTIVITY_ROSTER(person));
-		 		endif;
-		 		
-		 		if person <= totocc(FERTILITY_ROSTER) then
-		 			delete (FERTILITY_ROSTER(person));
-		 		endif;
-		 		
-		 		NUMBER_OF_HOUSEHOLD_MEMBERS =totocc(PERSON_ROSTER);	// visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS) - 1;
-		 		updateOccurrenceLabels();
-		 		
-		 		numeric i;
-		 	
-		 		//trace(on);
-		 		do i = person while i<=totocc(PERSON_ROSTER);	//visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS)
-		 			trace(maketext("set B1(%d) = %d", i, i));
-		 			B1(i)=i;
-		 		enddo;
-		
-		 		numeric lastPerson =totocc(PERSON_ROSTER);	//visualvalue(NUMBER_OF_HOUSEHOLD_MEMBERS);
-		 		move to MORE_PEOPLE(lastPerson) advance;
-		 		
-	 		else
-	 			errmsg("You cannot delete %s's record because %s is Householdhead", strip(B2(person)), strip(B2(person))); 
- 
- 			endif;
- 		
- 		endif;
- 		
- 	endif;
-end; 
+
+			if person = 1 then
+				errmsg("You cannot delete %s's record because %s is Household head", strip(B2(person)), strip(B2(person)));
+
+			else
+				delete (PERSON_ROSTER(person));
+
+				if person <= totocc(DEMOGRAPHIC_ROSTER) then
+					delete (DEMOGRAPHIC_ROSTER(person));
+				endif;
+
+				if person <= totocc(DISABILITY_ROSTER) then
+					delete (DISABILITY_ROSTER(person));
+				endif;
+
+				if person <= totocc(EDUCATION_ROSTER) then
+					delete (EDUCATION_ROSTER(person));
+				endif;
+
+				if person <= totocc(ECONOMIC_ACTIVITY_ROSTER) then
+					delete (ECONOMIC_ACTIVITY_ROSTER(person));
+				endif;
+
+				if person <= totocc(FERTILITY_ROSTER) then
+					delete (FERTILITY_ROSTER(person));
+				endif;
+
+				NUMBER_OF_HOUSEHOLD_MEMBERS = totocc(PERSON_ROSTER);
+				UpdateOccurrenceLabels();
+
+				numeric i;
+				do i = person while i <= totocc(PERSON_ROSTER);
+					B1(i) = i;
+				enddo;
+
+				numeric lastPerson = totocc(PERSON_ROSTER);
+				move to MORE_PEOPLE(lastPerson) advance;
+
+			endif;
+
+		endif;
+
+	endif;
+
+end;
 
 //*********************************************************************************************************
-	
-function deletedeaths()
+
+
+function DeleteDeath()
+
 	numeric deceased = PickFromDEATHS_ROSTER();
+
 	if deceased > 0 then
-	
+
 		numeric choice = errmsg("Do you really want to delete %s's record?", strip(G53(deceased)))
-				select("YES",CONTINUE, "NO",CONTINUE);
-			
-		if choice = 1 then	
-	 		delete (DEATHS_ROSTER(deceased));
-	 		
-				{} updateOccurrenceLabels();
-				
-	 		G52 = visualvalue(G52)-1;
+		select("YES",CONTINUE, "NO",CONTINUE);
+
+		if choice = 1 then
+			delete (DEATHS_ROSTER(deceased));
+			UpdateOccurrenceLabels();
+
+			G52 = visualvalue(G52) - 1;
 			if visualvalue(G52) = 0 then
 				G51 = 2;
+			endif;
 		endif;
-	endif;	
-		
-		// check the current Field from G53 to G59...
-	string currentField = getsymbol();
-	string currentRecord = getrecord(currentField);
-		
-		// After deletion we move back the cursor to the beginning of the Deaths Section
-		if currentRecord = "DEATHS" then
-			
-		    	move to G51 advance;	
-		endif;
-	endif;
-end; 
 
-function captureGPS()	
+		// check the current Field from G53 to G59...
+		string currentField = getsymbol();
+		string currentRecord = getrecord(currentField);
+
+		// After deletion we move back to the beginning of the Deaths Section
+		if currentRecord = "DEATHS" then
+			move to G51 advance;
+		endif;
+
+	endif;
+
+end;
+
+
+function captureGPS()
+
 	if gps(read) then
 		PL_LATITUDE = gps(latitude);
 		PL_LONGITUDE = gps(longitude);
@@ -187,66 +205,71 @@ function captureGPS()
 		PL_SATELLITES = gps(satellites);
 		PL_ACCURACY = gps(accuracy);
 		PL_READ_TIME = gps(readtime);
-	else		
-		errmsg("GPS signal could not be acquired");	
+	else
+		errmsg("GPS signal could not be acquired");
 	endif;
 
 	gps(close);
 
 end;
-// declare arrays dynamic value set
-array numeric codes(100);
-array string labels(100);
+
+
 
 PROC LESOTHOCENSUS2016_FF
+
 preproc
 
-userbar (clear);
-userbar (add button, "Delete Person's Record", checkdelete);
-userbar (add button, "Delete Deceased",deletedeaths);
-userbar (add button, "Capture GPS Coordinates", captureGPS);
-userbar (show);
+	userbar (clear);
+	userbar (add button, "Delete Person's Record", DeletePerson);
+	userbar (add button, "Delete Deceased",DeleteDeath);
+	userbar (add button, "Capture GPS Coordinates", captureGPS);
+	userbar (show);
+
 
 PROC LESOTHOCENSUS2016_QUEST
 
 preproc
 
-updateOccurrenceLabels();
+	UpdateOccurrenceLabels();
 
-	
+
 PROC INTERVIEW_DATE
+
 preproc
 
-if demode() = add then
-	INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
-	gps(open);
-endif;
+	if demode() = add then
+		INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
+		gps(open);
+	endif;
+
 
 PROC DISTRICT
+
 preproc
 
-if sysparm("DISTRICT") <> "" then
-	// Fill in id-items that were passed in from pff file as parameters
-	DISTRICT = tonumber(sysparm("DISTRICT"));
-	CONSTITUENCY = tonumber(sysparm("CONSTITUENCY"));
-	COMMUNITY_COUNCIL = sysparm("COMMUNITY_COUNCIL");
-	ZONE = tonumber(sysparm("ZONE"));
-	SETTLEMENT = tonumber(sysparm("SETTLEMENT"));
-	ENUMERATION_AREA = tonumber(sysparm("ENUMERATION_AREA"));
-	
-	// Make protected so interviewer cannot change id-items
-	set attributes (DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, SETTLEMENT, ENUMERATION_AREA) protect;
-endif;
+	if sysparm("DISTRICT") <> "" then
+		// Fill in id-items that were passed in from pff file as parameters
+		DISTRICT = tonumber(sysparm("DISTRICT"));
+		CONSTITUENCY = tonumber(sysparm("CONSTITUENCY"));
+		COMMUNITY_COUNCIL = sysparm("COMMUNITY_COUNCIL");
+		ZONE = tonumber(sysparm("ZONE"));
+		SETTLEMENT = tonumber(sysparm("SETTLEMENT"));
+		ENUMERATION_AREA = tonumber(sysparm("ENUMERATION_AREA"));
+
+		// Make protected so interviewer cannot change id-items
+		set attributes (DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, SETTLEMENT, ENUMERATION_AREA) protect;
+	endif;
 
 
 PROC WARD
 
 preproc
-//For a District selected in 10 districts of Lesotho,then 
-//in ward only the list of the ward for chosen district should appear  
- 
-if DISTRICT = 1 then
- 		setvalueset (WARD,WARD_01_VS);
+
+	//For a District selected in 10 districts of Lesotho, then
+	//in ward only the list of the ward for chosen district should appear
+
+	if DISTRICT = 1 then
+		setvalueset (WARD,WARD_01_VS);
 	elseif DISTRICT = 2 then
 		setvalueset (WARD,WARD_02_VS);
 	elseif DISTRICT = 3 then
@@ -256,7 +279,7 @@ if DISTRICT = 1 then
 	elseif DISTRICT = 5 then
 		setvalueset (WARD,WARD_05_VS);
 	elseif DISTRICT = 6 then
-		setvalueset (WARD,WARD_06_VS);	
+		setvalueset (WARD,WARD_06_VS);
 	elseif DISTRICT = 7 then
 		setvalueset (WARD,WARD_07_VS);
 	elseif DISTRICT = 8 then
@@ -264,2293 +287,2350 @@ if DISTRICT = 1 then
 	elseif DISTRICT = 9 then
 		setvalueset (WARD,WARD_09_VS);
 	elseif DISTRICT = 10 then
-		setvalueset (WARD,WARD_10_VS);		
-endif;
+		setvalueset (WARD,WARD_10_VS);
+	endif;
+
+
 PROC VILLAGE_NAME
 
-if VILLAGE_NAME = "" then
-errmsg("Please enter Village name");
-  reenter;
-endif;
+	if VILLAGE_NAME = "" then
+		errmsg("Please enter Village name");
+		reenter;
+	endif;
 
 
 PROC HOUSEHOLD_HEAD_NAMES
 
-if HOUSEHOLD_HEAD_NAMES = "" then
-errmsg("Please enter the name of the Household head");
-  reenter;
-endif;
+	if HOUSEHOLD_HEAD_NAMES = "" then
+		errmsg("Please enter the name of the Household head");
+		reenter;
+	endif;
 
-HOUSEHOLD_HEAD_NAMES = toupper(HOUSEHOLD_HEAD_NAMES);
+	HOUSEHOLD_HEAD_NAMES = toupper(HOUSEHOLD_HEAD_NAMES);
 
-PROC VISIT_DATE000
 
 PROC VISIT_DATE
 
-//VISIT_DATE = sysdate("YYYYMMDD");
-PROC HOUSEHOLD_STATUS
-//the status of the household is incomplete
+	// TODO!
+	//VISIT_DATE = sysdate("YYYYMMDD");
 
-if HOUSEHOLD_STATUS = 6 then
-   if NUMBER_OF_VISITS < 3 then
-	   errmsg('Refusal can only be accepted if there had been atleast 3 attempts or visits');
-	   reenter HOUSEHOLD_STATUS;
-   else
-   		if APPROVAL_STATUS = 1 then 
+
+PROC HOUSEHOLD_STATUS
+
+	//the status of the household is incomplete
+
+	if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
+		errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
+		reenter;
+	endif;
+
+	if HOUSEHOLD_STATUS in 2:6 then
+		if APPROVAL_STATUS = 1 then
 			endlevel;
 		else
 			savepartial();
 			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 			stop(0);
 		endif;
-   endif;
-endif;
-
-if HOUSEHOLD_STATUS in 2:5 then 
-	if APPROVAL_STATUS = 1 then
-		endlevel;
-	else
-		savepartial();
-		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-		stop(0);
 	endif;
-endif;
+
+
 PROC B1
+
 preproc
-// Automatically fill in person number
-B1 = curocc();
+
+	// Automatically fill in person number
+	B1 = curocc();
+
 
 PROC B2
 
 preproc
-//Set names of household head to be the first names in B2
-if curocc() = 1 then
-	B2 = strip(HOUSEHOLD_HEAD_NAMES);
-endif;
+
+	//Set name of household head to be the first name in B2
+	if curocc() = 1 then
+		B2 = HOUSEHOLD_HEAD_NAMES;
+	endif;
 
 postproc
-//Consistency on the name of the household head.
-if B2(1) <> strip(HOUSEHOLD_HEAD_NAMES) then
-     errmsg("This Household head name cannot be different from the one given in the ID ")
-     select("correct Heads Name", HOUSEHOLD_HEAD_NAMES);
-endif;
 
-//The name of the household member cannot be blank
-if curocc() = 1 then
+	B2 = toupper(B2);
+
+	//Consistency on the name of the household head.
+	if curocc() = 1 and B2 <> HOUSEHOLD_HEAD_NAMES then
+		errmsg("This Household head name cannot be different from the one given in the ID")
+		select("Correct Heads Name", HOUSEHOLD_HEAD_NAMES);
+	endif;
+
+	//The name of the household member cannot be blank
 	if B2 = "" then
 		errmsg("Please enter name of the household member")
-		select("Enter name", B2);
+		select("Enter name", B2, "Correct more people response", MORE_PEOPLE(curocc() - 1));
 	endif;
-endif;
 
-if B2 = "" then
-	errmsg("Please enter name of the household member")
-	select("Enter name", B2, "Correct more people response", MORE_PEOPLE(curocc() - 1));
-endif;
+	// Set occurrence labels for individual rosters to use name
+	string occurrenceLabel = strip(B2);
 
-B2=toupper(B2);
-
-
-
-// Set occurrence labels for individual rosters to use name
-string occurrenceLabel = strip(B2);
-
-setocclabel(PERSON_ROSTER(curocc()), occurrenceLabel);
-setocclabel(DEMOGRAPHIC_ROSTER(curocc()), occurrenceLabel);
-setocclabel(DISABILITY_ROSTER(curocc()), occurrenceLabel);
-setocclabel(EDUCATION_ROSTER(curocc()), occurrenceLabel);
-setocclabel(ECONOMIC_ACTIVITY_ROSTER(curocc()), occurrenceLabel);
-setocclabel(FERTILITY_ROSTER(curocc()), occurrenceLabel);
+	setocclabel(PERSON_ROSTER(curocc()), occurrenceLabel);
+	setocclabel(DEMOGRAPHIC_ROSTER(curocc()), occurrenceLabel);
+	setocclabel(DISABILITY_ROSTER(curocc()), occurrenceLabel);
+	setocclabel(EDUCATION_ROSTER(curocc()), occurrenceLabel);
+	setocclabel(ECONOMIC_ACTIVITY_ROSTER(curocc()), occurrenceLabel);
+	setocclabel(FERTILITY_ROSTER(curocc()), occurrenceLabel);
 
 
 PROC MORE_PEOPLE
 
-// End roster if there are no more household members to enter
-if MORE_PEOPLE = 2 then
-	endgroup;
-endif;
+	// End roster if there are no more household members to enter
+	if MORE_PEOPLE = 2 then
+		endgroup;
+	endif;
+
+
 PROC NUMBER_OF_HOUSEHOLD_MEMBERS
+
 preproc
-// Set number of household members to size of person roster.
-// We will use this as an occurrence control field for other
-// rosters (demographic, fertility, disability...)
-NUMBER_OF_HOUSEHOLD_MEMBERS = totocc(PERSON_ROSTER);
+
+	// Set number of household members to size of person roster.
+	// We will use this as an occurrence control field for other
+	// rosters (demographic, fertility, disability...)
+	NUMBER_OF_HOUSEHOLD_MEMBERS = totocc(PERSON_ROSTER);
 
 
 PROC IS_RESPONDENT_HOUSEHOLD_MEMBER
 
-//This is if the respodent is the member of the household
-if IS_RESPONDENT_HOUSEHOLD_MEMBER = 1 then
-  skip to RESPONDENT;
-endif
-  
+	//This is if the respodent is the member of the household
+	if IS_RESPONDENT_HOUSEHOLD_MEMBER = 1 then
+		skip to RESPONDENT;
+	endif
+
+
 PROC RESPONDENT_NAME
 
-//this is the case where the respondent is not a member of the household
-if RESPONDENT_NAME <> '' then
+	//this is the case where the respondent is not a member of the household
+	if RESPONDENT_NAME <> "" then
+		skip to DEMOGRAPHIC_ROSTER;
+	endif
 
- skip to DEMOGRAPHIC_ROSTER;
-
-endif
 
 PROC RESPONDENT
 
-// set value set to be list of names of household members
-// and line numbers of household members.
 onfocus
-numeric i;
-do i = 1 while i <= totocc(PERSON_ROSTER)
-	codes(i) = B1(i);
-	labels(i) = B2(i);
-enddo;
-codes(i) = notappl;
-setvalueset(RESPONDENT, codes, labels);
+
+	// set value set to be list of names of household members
+	// and line numbers of household members.
+
+	numeric i;
+	do i = 1 while i <= totocc(PERSON_ROSTER)
+		codes(i) = B1(i);
+		labels(i) = B2(i);
+	enddo;
+
+	codes(i) = notappl;
+
+	setvalueset(RESPONDENT, codes, labels);
+
 
 PROC DEMOGRAPHIC_ROSTER
 
-// Count number of heads of household so that we can ensure
-// that there is exactly one head of household.
-numeric numberOfHeads = count(DEMOGRAPHIC_ROSTER where B3 = 1);
+	// Count number of heads of household so that we can ensure
+	// that there is exactly one head of household.
+	numeric numberOfHeads = count(DEMOGRAPHIC_ROSTER where B3 = 1);
 
-if numberOfHeads <> 1 then
-	errmsg("You have entered %d heads of household. Only one head of household is allowed",
+	if numberOfHeads <> 1 then
+		errmsg("You have entered %d heads of household. Only one head of household is allowed",
 			numberOfHeads);
-	reenter B3(1);
-endif;
+		reenter B3(1);
+	endif;
 
-// If household head is monogamously married then his/her spouse must be
-// monogamously married and of different sex.
-numeric head, spouse;
-head = seek(B3 = 1);
+	// If household head is monogamously married then his/her spouse must be
+	// monogamously married and of different sex.
+	numeric head, spouse;
+	head = seek(B3 = 1);
 
-if B19(head) in 2:3,5 then
-	//Check each spouse in the household
-	do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
-		if B3(spouse) = 2 then
-			//Check for same sex
-			if B4(spouse) = B4(head) then
-				errmsg("If %s is %s's spouse, then they must be of opposite sex",
-					   strip(B2(spouse)), strip(B2(head)))
-				select("Correct household head sex", B4(head),
-					   "Correct spouse relationship", B3(spouse),
-					   "Correct spouse sex", B4(spouse));
+	if B19(head) in 2:3,5 then
+		//Check each spouse in the household
+		do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
+			if B3(spouse) = 2 then
+				//Check for same sex
+				if B4(spouse) = B4(head) then
+					errmsg("If %s is %s's spouse, then they must be of opposite sex",
+					strip(B2(spouse)), strip(B2(head)))
+					select("Correct household head sex", B4(head),
+					"Correct spouse relationship", B3(spouse),
+					"Correct spouse sex", B4(spouse));
+				endif;
+				//Check for different marrital status
+				if B19(spouse) <> B19(head) then
+					errmsg("If %s is %s's spouse, then they must have the same marital status",
+					strip(B2(spouse)), strip(B2(head)))
+					select("Correct household head marital status", B19(head),
+					"Correct spouse relationship", B3(spouse),
+					"Correct spouse marital status", B19(spouse));
+				endif;
 			endif;
-			//Check for different marrital status
-			if B19(spouse) <> B19(head) then
-				errmsg("If %s is %s's spouse, then they must have the same marital status",
-					   strip(B2(spouse)), strip(B2(head)))
-				select("Correct household head marital status", B19(head),
-					   "Correct spouse relationship", B3(spouse),
-					   "Correct spouse marital status", B19(spouse));
-			endif;
-		endif;
-	enddo;
-endif;
+		enddo;
+	endif;
+
+
 PROC B3
 
 onfocus
 
-
-
-//if location of employment(E36) is in any of the 10 districts of Lesotho,then 
-//in E37 only the list of the district location chosen in E36 should appear  
- 
-{numeric relationship = realdistrict;
-if if B2(1) = strip(HOUSEHOLD_HEAD_NAMES) then 
- 		realdistrict = Relationship;
- else
- 	realdistrict = B2;
-endif;
-}
-	
-//if B1 = 1 then
-
- if curocc() = 1 then 
- 	 setvalueset(B3,B3_RELATIONSHIP_OF_HEAD);
+	if curocc() = 1 then
+		setvalueset(B3,B3_RELATIONSHIP_OF_HEAD);
 	else
-	setvalueset(B3,B3_RELATIONSHIP_TO_HEAD);
-endif;
+		setvalueset(B3,B3_RELATIONSHIP_TO_HEAD);
+	endif;
 
 postproc
-//B3(1) = 01;
-	
- if B19(1) = 1 and B3(curocc()) = 2 then
-    errmsg("%s cannot be a spouse to %s while is never married",
-    strip(B2(curocc())), strip(B2(1)))
-    select("Correct head marital status",B19(1),"Correct relationship",B3);    
- endif;
-if B19(1) = 4 and B3(curocc()) = 2 then
-    errmsg("%s cannot be a spouse to %s while is Living Together",
-    strip(B2(curocc())), strip(B2(1)))
-    select("Correct head marital status",B19(1),"Correct relationship",B3);
-endif;
-if B19(1) = 5 and B3(curocc()) = 2 then
-    errmsg("%s cannot be a spouse to %s while is Separated",
-    strip(B2(curocc())), strip(B2(1)))
-    select("Correct head marital status",B19(1),"Correct relationship",B3);
- endif;
- if B19(1) = 6 and B3(curocc()) = 2 then
-    errmsg("%s cannot be a spouse to %s while is Divorced",
-    strip(B2(curocc())), strip(B2(1)))
-    select("Correct head marital status",B19(1),"Correct relationship",B3);
-endif;
-if B19(1) = 7 and B3(curocc()) = 2 then
-    errmsg("%s cannot be a spouse to %s while is Widowed",
-    strip(B2(curocc())), strip(B2(1)))
-    select("Correct head marital status",B19(1),"Correct relationship",B3);
-endif;
+
+	if B19(1) = 1 and B3(curocc()) = 2 then
+		errmsg("%s cannot be a spouse to %s while is never married",
+		strip(B2(curocc())), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3);
+	endif;
+	if B19(1) = 4 and B3(curocc()) = 2 then
+		errmsg("%s cannot be a spouse to %s while is Living Together",
+		strip(B2(curocc())), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3);
+	endif;
+	if B19(1) = 5 and B3(curocc()) = 2 then
+		errmsg("%s cannot be a spouse to %s while is Separated",
+		strip(B2(curocc())), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3);
+	endif;
+	if B19(1) = 6 and B3(curocc()) = 2 then
+		errmsg("%s cannot be a spouse to %s while is Divorced",
+		strip(B2(curocc())), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3);
+	endif;
+	if B19(1) = 7 and B3(curocc()) = 2 then
+		errmsg("%s cannot be a spouse to %s while is Widowed",
+		strip(B2(curocc())), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3);
+	endif;
+
 
 PROC B5
-//Parent's age should be 12 years more than child's age. 
 
-if B3(curocc()) = 4 and B5(1) < B5(curocc()) + MinAgeDiffBtwnChildAndParent then
-	errmsg("%s's age should be 12 years more than %s's age",strip(B2(1)),
-	        strip(B2(curocc())))
-	select("Correct parent's age",B5(1),"Correct child's age",B5);
-		
-//Grandparent's age should be 24 years more than grandchild's age.		
-elseif B3(curocc()) = 12 and B5(1) < B5(curocc()) + (2 * MinAgeDiffBtwnChildAndParent) then
-	errmsg("%s's age should be 24 years more than %s's age",strip(B2(1)),
-	        strip(B2(curocc())))
-	select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5);
-		
-//Own parent's age should be 12 years more than household head's age.		
-elseif B3(curocc()) = 8 and B5(curocc()) < B5(1) + MinAgeDiffBtwnChildAndParent then
-	errmsg("%s's age should be 12 years less than %s's age",strip(B2(1)),
-	        strip(B2(curocc())))
-	select("Correct household head's age",B5(1),"Correct own parent's age",B5);
+	//Parent's age should be 12 years more than child's age.
+	if B3(curocc()) = 4 and B5(1) < B5(curocc()) + MinAgeDiffBtwnChildAndParent then
+		errmsg("%s's age should be 12 years more than %s's age",strip(B2(1)),strip(B2(curocc())))
+		select("Correct parent's age",B5(1),"Correct child's age",B5);
 
-//Grandparent's age should be 24 years more than grandchild's age.		
-elseif B3(curocc()) = 11 and B5(curocc()) < B5(1) + (2 * MinAgeDiffBtwnChildAndParent) then
-	errmsg("%s's age should be 24 years more than %s's age",strip(B2(1)),
-	        strip(B2(curocc())))
-	select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5);
-endif;
+	//Grandparent's age should be 24 years more than grandchild's age.
+	elseif B3(curocc()) = 12 and B5(1) < B5(curocc()) + ( 2 * MinAgeDiffBtwnChildAndParent ) then
+		errmsg("%s's age should be 24 years more than %s's age",strip(B2(1)),strip(B2(curocc())))
+		select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5);
+
+	//Own parent's age should be 12 years more than household head's age.
+	elseif B3(curocc()) = 8 and B5(curocc()) < B5(1) + MinAgeDiffBtwnChildAndParent then
+		errmsg("%s's age should be 12 years less than %s's age",strip(B2(1)),strip(B2(curocc())))
+		select("Correct household head's age",B5(1),"Correct own parent's age",B5);
+
+	//Grandparent's age should be 24 years more than grandchild's age.
+	elseif B3(curocc()) = 11 and B5(curocc()) < B5(1) + ( 2 * MinAgeDiffBtwnChildAndParent ) then
+		errmsg("%s's age should be 24 years more than %s's age",strip(B2(1)),strip(B2(curocc())))
+		select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5);
+	endif;
 
 
 PROC B6B
 
-//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5) 
-//plus or minus one year. 
+	//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5)
+	//plus or minus one year.
+	if ((CensusYear - B6B) <> B5) and ((CensusYear - B6B) <> B5 + 1) and ((CensusYear - B6B) <> B5 - 1) then
+		errmsg("The year of birth is invalid")
+		select("Correct Age", B5(curocc()), "Correct Year of Birth", B6B(curocc()));
+	endif;
 
-if ((CensusYear - B6B) <> B5) and ((CensusYear - B6B) <> B5 + 1) and ((CensusYear - B6B) <> B5 - 1) then
-	errmsg("The year of birth is invalid")
-	select("Correct Age", B5(curocc()), 
-		   "Correct Year of Birth", B6B(curocc()));
-
-endif;
 
 PROC B7
-//checks that household Head and spouse are not visitors
 
-if B3 in 1 then
-	if B7 = 2 then
-		errmsg("%s is the %s and should not be a visitor",
+	//checks that household head and spouse are not visitors
+	if B3 = 1 then
+		if B7 = 2 then
+			errmsg("%s is the %s and should not be a visitor",
 			strip(B2(curocc())), getlabel(B3_RELATIONSHIP(curocc())))
 			select("Correct Current Residential Status",B7);
+		endif;
 	endif;
-endif;
-		
-// skip over absent/outside Lesotho (B8 and B9) 
-// for present (1) and member elsewhere in Lesotho (3)options
 
-if B7 = 1 or B7 = 3 then
-	skip to B10;
-endif;
+	// skip over absent/outside Lesotho (B8 and B9)
+	// for present (1) and member elsewhere in Lesotho (3) options
+	if B7 in 1,3 then
+		skip to B10;
 
-// for visitors (2) skip to next person
+	// for visitors (2) skip to next person
+	elseif B7 = 2 then
+		skip to next;
+	endif;
 
-if B7 = 2 then
-	skip to next;
-endif;
 
 PROC B8
 
 preproc
-// If they chose code 4 (RSA) for current residential status
-// then set B8 (where staying outside Lesotho) to RSA (code 13)
-if B7 = 4 then
-	B8 = 13;
-	noinput;
-endif;
+
+	// If they chose code 4 (RSA) for current residential status
+	// then set B8 (where staying outside Lesotho) to RSA (code 13)
+	if B7 = 4 then
+		B8 = 13;
+	endif;
 
 onfocus
-// Set valueset for B8 to include RSA only if B7 is set to code 4 (RSA)
-// otherwise use valueset that does not include RSA
-if B7 <> 4 then
-	setvalueset(B8, B8_NO_RSA_VS);
-elseif B7 = 4 then
-	setvalueset(B8, B8_WITH_RSA_VS);
-endif;
+
+	// Set valueset for B8 to include RSA only if B7 is set to code 4 (RSA)
+	// otherwise use valueset that does not include RSA
+	if B7 = 4 then
+		setvalueset(B8, B8_WITH_RSA_VS);
+	else
+		setvalueset(B8, B8_NO_RSA_VS);
+	endif;
 
 postproc
-if B7 = 4 then
-	if B8 <> 13 then
-		errmsg("%s is in RSA therefore cannot be in %s at the same time",
-		strip(B2(curocc())),getlabel(B8_WITH_RSA_VS,B8(curocc())))
-		select("Correct current residential status",B7(curocc()),
-				"Correct where outside Lesotho",B8(curocc())) ;
+
+	if B7 = 4 then
+		if B8 <> 13 then
+			errmsg("%s is in RSA therefore cannot be in %s at the same time",
+			strip(B2(curocc())),getlabel(B8_WITH_RSA_VS,B8(curocc())))
+			select("Correct current residential status",B7(curocc()),
+				   "Correct where outside Lesotho",B8(curocc())) ;
+		endif;
 	endif;
-endif;
+
 
 PROC B9
 
+	// year outside Lesotho should not be greater than one's age
+	if  B9(curocc()) > B5(curocc()) then
+		errmsg("%d is more than %s's age", B9(curocc()),strip(B2(curocc()))),
+		select("Correct age",B5(curocc()),
+			   "Correct years lived outside Lesotho",B9(curocc()));
+	endif;
 
-// year outside Lesotho should not be greater than one's age
-if  B9(curocc()) > B5(curocc()) then
-	errmsg("%d is more than %s's age", B9(curocc()),strip(B2(curocc()))),
-	select("Correct age",B5(curocc()),
-		   "Correct years lived outside Lesotho",B9(curocc()));
-	reenter;
-endif;
+	//Years lived outside Lesotho and RSA should not be more than 3 years or age.
+	if B9 <= MaxNumOfYrsOutsideLesotho then
+		skip to B10;
+	endif;
 
-//Years lived outside Lesotho and RSA should not be more than 3 years or age.
-if B9 <= MaxNumOfYrsOutsideLesotho then
-	skip to B10;
-endif;
 
 PROC B9B
-// Name must be in Institutions if duration outside Lesotho is
-// more than 3 years
-if B9B(curocc()) = 6 then
-	errmsg("%s must not appear in the Houshold Roster", strip(B2(curocc())))
-	select("Correct Instutions in RSA", B9B(curocc()),
-		   "Correct duration outside Lesotho",B9(curocc()));
-endif;
+
+	// Name must be in Institutions if duration outside Lesotho is more than 3 years
+	if B9B(curocc()) = 6 then
+		errmsg("%s must not appear in the Houshold Roster", strip(B2(curocc())))
+		select("Correct Instutions in RSA", B9B(curocc()),
+			   "Correct duration outside Lesotho",B9(curocc()));
+	endif;
+
 
 PROC B11
 
-//Years lived in a village/town (B11) should not be more than age (B5)
-if B11 > B5 and B11 <> 998 then
-	errmsg("Years lived (%d) should not be more than age (%d)", B11(curocc()), B5(curocc()))
-	select("Correct Age", B5,
-		   "Correct How Long Lived in Village", B11);
-endif;
+	//Years lived in a village/town (B11) should not be more than age (B5)
+	if B11 > B5 and B11 <> 998 then
+		errmsg("Years lived (%d) should not be more than age (%d)", B11(curocc()), B5(curocc()))
+		select("Correct Age", B5, "Correct How Long Lived in Village", B11);
+	endif;
+
 
 PROC B12
 
 preproc
-//if one's age is less than 1, then they must have not been born in 2015
-if B5 < 1 then
-  B12  = 0;
-endif;
+
+	//if one's age is less than 1, then they must have not been born in 2015
+	if B5 < 1 then
+		B12  = 0;
+	endif;
 
 postproc
-//We cannot say a person was not yet born yet he was
-if B5 > 1 and B12 = 0 then
-	errmsg("%s was already born in 2015",
-	strip(B2(curocc())))
-	select("Correct Age", B5,
-			"Correct Residence in April 2015", B12);
-endif;
+
+	//We cannot say a person was not yet born yet he was
+	if B5 >= 1 and B12 = 0 then
+		errmsg("%s was already born in 2015",strip(B2(curocc())))
+		select("Correct Age", B5, "Correct Residence in April 2015", B12);
+
+	//for those less than 1 year in B5, 2015 they were not yet born
+	elseif B5 < 1 and B12 <> 0 then
+		errmsg("%s was not yet born in 2015",strip(B2(curocc())))
+		select("Correct Age", B5, "Correct Residence in April 2015", B12);
+	endif;
 
 
-//If not yet born in april 2015
-if B12 = 0 then
-	skip to B15;
-endif;
+	//If not yet born in april 2015
+	if B12 = 0 then
+		skip to B15;
 
-//for those less than 10 years in B5,2006 they were not yet born 
-if B5 < 1 and B12 <> 0 then
-	errmsg("%s was not yet born in 2015",
-	strip(B2(curocc())))
-	select("Correct Age", B5,
-			"Correct Residence in April 2015", B12);
-endif;
+	//skip to enter country code
+	elseif B12 = 4 then
+		skip to B12B;
 
-//skip over Not Born/In this village/elsewhere in this district (0,1 and 2)
-// for elsewhere in lesotho (3) and other countries (4)options
+	//skip over Not Born/In this village/elsewhere in this district (0, 1 and 2)
+	elseif B12 in 1:2 then
+		skip to B13;
 
-if B12 <> 3 and B12 <> 4 then
-	skip to B13;
-endif;
+	endif;
 
-//skip to enter country code
-
-if B12 = 4 then
-	skip to B12B;
-endif;
 
 PROC B12A
 
-if B12A = DISTRICT then
-	errmsg("You cannot choose Elsewhere in Lesotho and select the same distict as to enumeration District")
-	select("correct April 2015", B12, "correct April 2015 Elsewhere Lesotho", B12A);
-endif;
+	if B12A = DISTRICT then
+		errmsg("You cannot choose Elsewhere in Lesotho and select the same district as to enumeration District")
+		select("correct April 2015", B12, "correct April 2015 Elsewhere Lesotho", B12A);
+	endif;
 
-//skip over other countries for elsewhere in Lesotho (B12=3)
+	//skip over other countries for elsewhere in Lesotho (B12=3)
+	skip to B13;
 
-skip to B13;
 
-PROC B12B
- 
 PROC B13
 
 preproc
 
-//if one's age is less than 5, then they must have not been born in 2011
-if B5 < 5 then
-  B13  = 0;
-endif;
+	//if one's age is less than 5, then they must have not been born in 2011
+	if B5 < 5 then
+		B13 = 0;
+	endif;
 
 postproc
-//We cannot say a person was not yet born yet he was
-if B5 > 4 and B13 = 0 then
-	errmsg("%s was already born in 2011",
-	strip(B2(curocc())))
-	select("Correct Age", B5,
-			"Correct Residence in April 2011", B13);
-endif;
 
-//If not yet born in april 2011
-if B13 = 0 then
-	skip to B15;
-endif;
+	//We cannot say a person was not yet born yet he was
+	if B5 >= 5 and B13 = 0 then
+		errmsg("%s was already born in 2011",strip(B2(curocc())))
+		select("Correct Age", B5, "Correct Residence in April 2011", B13);
 
-//for those less than 10 years in B5,2006 they were not yet born 
-if B5 < 5 and B13 <> 0 then
-	errmsg("%s was not yet born in 2011",
-	strip(B2(curocc())))
-	select("Correct Age", B5,
-			"Correct Residence in April 2011", B13);
-endif;
+	//for those less than 5 year in B5, 2011 they were not yet born
+	elseif B5 < 5 and B13 <> 0 then
+		errmsg("%s was not yet born in 2011",strip(B2(curocc())))
+		select("Correct Age", B5, "Correct Residence in April 2011", B13);
+	endif;
 
 
-//skip over Not Born/In this village/elsewhere in this district (0,1 and 2)
-// for elsewhere in lesotho (3) and other countries (4)options
+	//If not yet born in april 2011
+	if B13 = 0 then
+		skip to B15;
 
-if B13 <> 3 and B13 <> 4 then
-	skip to B14;
-endif;
+	//skip to enter country code
+	elseif B13 = 4 then
+		skip to B13B;
 
-//skip to enter country code
+	//skip over Not Born/In this village/elsewhere in this district (0, 1 and 2)
+	elseif B13 in 1:2 then
+		skip to B14;
 
-if B13 = 4 then
-	skip to B13B;
-endif;
+	endif;
+
 
 PROC B13A
 
-if B13A = DISTRICT then
-	errmsg("You cannot choose Elsewhere in Lesotho and select the same distict as to enumeration District")
-	select("correct April 2011", B13, "correct April 2011 Elsewhere Lesotho", B13A);
-endif;
-//skip over other countries for elsewhere in Lesotho (B13=3)
+	if B13A = DISTRICT then
+		errmsg("You cannot choose Elsewhere in Lesotho and select the same district as to enumeration District")
+		select("correct April 2011", B13, "correct April 2011 Elsewhere Lesotho", B13A);
+	endif;
 
-skip to B14;
+	//skip over other countries for elsewhere in Lesotho (B13=3)
+	skip to B14;
+
 
 PROC B14
 
 preproc
-//if one's age is less than 10, then they must have not been born in 2006
-if B5 < 10 then
-  B14  = 0;
-endif;
+
+	//if one's age is less than 10, then they must have not been born in 2006
+	if B5 < 10 then
+		B14 = 0;
+	endif;
 
 postproc
-//We cannot say a person was not yet born yet he was
-if B5 > 9 and B14 = 0 then
-	errmsg("%s was already born in 2006",
-	strip(B2(curocc())))
-	select("Correct Age", B5,
-	      "Correct Residence April 2006", B14);
-endif;
 
-//If not yet born in april 2006
-if B14 = 0 then
-	skip to B15;
-endif;
+	//We cannot say a person was not yet born yet he was
+	if B5 >= 10 and B14 = 0 then
+		errmsg("%s was already born in 2006",strip(B2(curocc())))
+		select("Correct Age", B5, "Correct Residence in April 2006", B14);
 
-//for those less than 10 years in B5, in 2006 they were not yet born 
-if B5 < 10 and B14 <> 0 then
-	errmsg("%s was not yet born in 2006",
-	strip(B2(curocc())))
-	select("Correct Age", B5,
-	       "Correct Residence April 2006", B14);
-endif;
+	//for those less than 1 year in B5, 2006 they were not yet born
+	elseif B5 < 10 and B14 <> 0 then
+		errmsg("%s was not yet born in 2006",strip(B2(curocc())))
+		select("Correct Age", B5, "Correct Residence in April 2006", B14);
+	endif;
 
-//skip over Not Born/In this village/elsewhere in this district (0,1 and 2)
-// for elsewhere in lesotho (3) and other countries (4)options
 
-if B14 <> 3 and B14 <> 4 then
-	skip to B15;
-endif;
+	//If not yet born in april 2006
+	if B14 = 0 then
+		skip to B15;
 
-//skip to enter country code
+	//skip to enter country code
+	elseif B14 = 4 then
+		skip to B14B;
 
-if B14 = 4 then
-	skip to B14B;
-endif;
+	//skip over Not Born/In this village/elsewhere in this district (0,1 and 2)
+	elseif B14 in 1:2 then
+		skip to B15;
+
+	endif;
+
 
 PROC B14A
 
-if B14A = DISTRICT then
-	errmsg("You cannot choose Elsewhere in Lesotho and select the same distict as to enumeration District")
-	select("correct April 2006", B14, "correct April 2006 Elsewhere Lesotho", B14A);
-endif;
-//skip over other countries for elsewhere in Lesotho (B14=3)
+	if B14A = DISTRICT then
+		errmsg("You cannot choose Elsewhere in Lesotho and select the same district as to enumeration District")
+		select("correct April 2006", B14, "correct April 2006 Elsewhere Lesotho", B14A);
+	endif;
 
-skip to B15;
+	//skip over other countries for elsewhere in Lesotho (B14=3)
+	skip to B15;
+
 
 PROC B16
 
-//skip for all except other language (B16=7)
+	//skip for all except other language (B16=7)
+	if B16 <> 7 then
+		skip to B17;
+	endif;
 
-if B16 <> 7 then
-	skip to B17;
-endif;
 
 PROC B16A
 
-B16A = toupper(B16A);
+	B16A = toupper(B16A);
+
 
 PROC B17
-//Child's father should still be alive if the head of the household is male
 
-if B3(curocc()) = 4 and B4(1) = 1 and B17(curocc()) <> 1 then
-	errmsg("%s's father is still alive",strip(B2(curocc())));
-	reenter;
-endif;
+	//Child's father should still be alive if the head of the household is male
 
-
+	if B3(curocc()) = 4 and B4(1) = 1 and B17(curocc()) <> 1 then
+		errmsg("%s's father is still alive",strip(B2(curocc())));
+		reenter;
+	endif;
 
 
 PROC B18
-//Child's mother should still be alive if the head of the household is female
-if B3(curocc()) = 4 and B4(1) = 2 and B18(curocc()) <> 1 then
-	errmsg("%s's mother is still alive",strip(B2(curocc())));
-	reenter;
-endif;
+
+	//Child's mother should still be alive if the head of the household is female
+	if B3(curocc()) = 4 and B4(1) = 2 and B18(curocc()) <> 1 then
+		errmsg("%s's mother is still alive",strip(B2(curocc())));
+		reenter;
+	endif;
+
+
 PROC B19
 
 preproc
-//if one is less than 10 years, then they should not be married.
-if  B5 < YoungestAgeMarriage then
-  B19 = 1;
-endif;
+
+	//if one is less than 10 years, then they should not be married.
+	if B5 < YoungestAgeMarriage then
+		B19 = 1;
+	endif;
 
 postproc
-// Ensure that under 10 is never married
-if B5 < YoungestAgeMarriage
- and B19 <> 1 then
-	errmsg("%s is %d years old and marital status is %s. Under %d years old must never be married.",
-		   strip(B2(curocc())), B5(curocc()), getlabel(B19_VS1, B19(curocc())),YoungestAgeMarriage)
-	select("Correct Age", B5, 
-		   "Correct Marital Status", B19);
-endif;
 
-//The Household head and Spouse should have the same matital status
+	// Ensure that under 10 is never married
+	if B5 < YoungestAgeMarriage and B19 <> 1 then
+		errmsg("%s is %d years old and marital status is %s. Under %d years old must never be married.",
+		strip(B2(curocc())), B5(curocc()), getlabel(B19_VS1, B19(curocc())),YoungestAgeMarriage)
+		select("Correct Age", B5, "Correct Marital Status", B19);
+	endif;
 
-if B3(curocc()) = 2 then
+	//The Household head and Spouse should have the same marital status
+	if B3(curocc()) = 2 then
 
-    if B19(1) = 2 and B19(curocc()) <> 2 then
-		errmsg("%s cannot be monogamously married to %s while their marital status is different",
-	    	strip(B2(curocc())), strip(B2(1)))
-	    	select("Correct head marital status",B19(1),"Correct spouse marital status",B19(2),"Correct relationship",B3);  
-	    	  
-	 elseif B19(1) = 3 and B19(curocc()) <> 3 then
-	 	errmsg("%s cannot be polygamously married to %s while their marital status is different",
-	    	strip(B2(curocc())), strip(B2(1)))
-	    	select("Correct head marital status",B19(1),"Correct spouse marital status",B19(2),"Correct relationship",B3);
-	 	
-	 endif;
- endif;
+		if B19(1) = 2 and B19(curocc()) <> 2 then
+			errmsg("%s cannot be monogamously married to %s while their marital status is different",
+			strip(B2(curocc())), strip(B2(1)))
+			select("Correct head marital status",B19(1),"Correct spouse marital status",B19(2),"Correct relationship",B3);
 
+		elseif B19(1) = 3 and B19(curocc()) <> 3 then
+			errmsg("%s cannot be polygamously married to %s while their marital status is different",
+			strip(B2(curocc())), strip(B2(1)))
+			select("Correct head marital status",B19(1),"Correct spouse marital status",B19(2),"Correct relationship",B3);
 
-//skip for Never married (1) or Don't know (9)options
-if B19 = 1 or B19 = 9 then
-	skip to next;
-endif;
+		endif;
 
+	endif;
 
-
-
-
-
-
-
-
+	//skip for Never married (1) or Don't know (9) options
+	if B19 in 1,9 then
+		skip to next;
+	endif;
 
 
 PROC B20
 
-postproc
-//Age at first marriage should not be more than the person's age
-if B20(curocc()) > B5(curocc()) and (B19(curocc()) <> 4 or B20(curocc()) <> 88) then
-	errmsg("%d years is more than %s's age (%d)",B20,Strip(B2(curocc())),B5(curocc()))
-	select("Correct age at first marriage",B20);
-endif;
+	//Age at first marriage should not be more than the person's age
+	if B20(curocc()) > B5(curocc()) and ( B19(curocc()) <> 4 or B20(curocc()) <> 88 ) then
+		errmsg("%d years is more than %s's age (%d)",B20,strip(B2(curocc())),B5(curocc()))
+		select("Correct age at first marriage",B20);
+	endif;
 
-if B20 < YoungestAgeMarriage then
-	errmsg("%s's age at first marriage cannot be less than %d",
-		   strip(B2(curocc())), B20(curocc()))
-	select("Correct Marital Status", B19, 
-		   "Correct Age at First Marriage", B20);
-endif;
+	if B20 < YoungestAgeMarriage then
+		errmsg("%s's age at first marriage cannot be less than %d", strip(B2(curocc())), YoungestAgeMarriage)
+		select("Correct Marital Status", B19,"Correct Age at First Marriage", B20);
+	endif;
 
-// for those leaving together
-if B19 = 4 and B20 = 88 then
-	skip to next;
-endif;
+	// for those living together
+	if B19 = 4 and B20 = 88 then
+		skip to next;
+	endif;
+
 
 PROC C22
+
 preproc
-if B7(curocc()) = 2 then
-	skip to next;
-endif;
+
+	if B7(curocc()) = 2 then
+		skip to next;
+	endif;
+
 
 PROC C23A
-//Disability of people aged over 3 years should not be 'cannot yet be determined' (5)
-if B5(curocc()) > 3 and C23A(curocc()) = 5 then
-	errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
-	reenter;
-endif;
-PROC C23B
-if B5(curocc()) > 3 and C23B(curocc()) = 5 then
-	errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
-	reenter;
-endif;
-PROC C23C
-if B5(curocc()) > 3 and C23C(curocc()) = 5 then
-	errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
-	reenter;
-endif;
-PROC C23D
-if B5(curocc()) > 3 and C23D(curocc()) = 5 then
-	errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
-	reenter;
-endif;
-PROC C23E
-if B5(curocc()) > 3 and C23E(curocc()) = 5 then
-	errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
-	reenter;
-endif;
-PROC C23F
-if B5(curocc()) > 3 and C23F(curocc()) = 5 then
-	errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
-	reenter;
-endif;
-PROC C24A
-preproc
-//skip the cause of disability for persons who are
-// not albino and have no difficulity
-if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9 
-and C23E in 1,5,9 and C23F in 1,5,9 then
-	if C22=2 then
-	//no albino
-		skip to next;
-	else //albino
-		skip to C25E;
+
+	//Disability of people aged over 3 years should not be 'cannot yet be determined' (5)
+	if B5(curocc()) > 3 and C23A(curocc()) = 5 then
+		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
+		reenter;
 	endif;
-endif;
-//skip to C24B if the persons don't have difficulty in seeing
-if C23A in 1,5,9 then
-	skip to C24B;
-endif;
+
+
+PROC C23B
+
+	if B5(curocc()) > 3 and C23B(curocc()) = 5 then
+		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
+		reenter;
+	endif;
+
+
+PROC C23C
+
+	if B5(curocc()) > 3 and C23C(curocc()) = 5 then
+		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
+		reenter;
+	endif;
+
+
+PROC C23D
+
+	if B5(curocc()) > 3 and C23D(curocc()) = 5 then
+		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
+		reenter;
+	endif;
+
+
+PROC C23E
+
+	if B5(curocc()) > 3 and C23E(curocc()) = 5 then
+		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
+		reenter;
+	endif;
+
+
+PROC C23F
+
+	if B5(curocc()) > 3 and C23F(curocc()) = 5 then
+		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
+		reenter;
+	endif;
+
+
+PROC C24A
+
+preproc
+
+	//skip the cause of disability for persons who are not albino and have no difficulity
+	if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9 and C23E in 1,5,9 and C23F in 1,5,9 then
+		if C22 = 2 then //not albino
+			skip to next;
+		else //albino
+			skip to C25E;
+		endif;
+	endif;
+
+	//skip to C24B if the persons don't have difficulty in seeing
+	if C23A in 1,5,9 then
+		skip to C24B;
+	endif;
 
 postproc
-//Cause of disability cannot be albinism if a person is not an albino
-if C22 = 2 and C24A = 12 then
-	errmsg("%s is not albino", strip(B2(curocc())))
-		  select("Correct albinism", C22, "Correct cause of disability", C24A);
-endif;
 
-//skip other specify if not selected
-if C24A <> 13 then
-	skip to C24B;
-endif;
+	//Cause of disability cannot be albinism if a person is not an albino
+	if C22 = 2 and C24A = 12 then
+		errmsg("%s is not albino", strip(B2(curocc())))
+		select("Correct albinism", C22, "Correct cause of disability", C24A);
+	endif;
+
+	//skip other specify if not selected
+	if C24A <> 13 then
+		skip to C24B;
+	endif;
+
 
 PROC C24A_OTHER
 
-C24A_OTHER = toupper(C24A_OTHER);
+	C24A_OTHER = toupper(C24A_OTHER);
+
+
 PROC C24B
+
 preproc
-//skip to C24C if the persons don't have difficulty in hearing
-if C23B in 1,5,9 then
-	skip to C24C;
-endif;
+
+	//skip to C24C if the persons don't have difficulty in hearing
+	if C23B in 1,5,9 then
+		skip to C24C;
+	endif;
 
 postproc
-//skip other specify if not selected
-if C24B <> 13 then
-	skip to C24C;
-endif;
+
+	//skip other specify if not selected
+	if C24B <> 13 then
+		skip to C24C;
+	endif;
+
+
 PROC C24B_OTHER
 
-C24B_OTHER = toupper(C24B_OTHER);
+	C24B_OTHER = toupper(C24B_OTHER);
+
+
 PROC C24C
+
 preproc
-//skip to C24B if the persons don't have difficulty in communicating
-if C23C in 1,5,9 then
-	skip to C24D;
-endif;
+
+	//skip to C24D if the persons don't have difficulty in communicating
+	if C23C in 1,5,9 then
+		skip to C24D;
+	endif;
+
 postproc
-//skip other specify if not selected
-if C24C <> 13 then
-	skip to C24D;
-endif;
+
+	//skip other specify if not selected
+	if C24C <> 13 then
+		skip to C24D;
+	endif;
+
+
 PROC C24C_OTHER
 
-C24C_OTHER = toupper(C24C_OTHER);
+	C24C_OTHER = toupper(C24C_OTHER);
+
+
 PROC C24D
+
 preproc
-//skip to C24B if the persons don't have difficulty in walking
-if C23D in 1,5,9 then
-	skip to C24E;
-endif;
+
+	//skip to C24E if the persons don't have difficulty in walking
+	if C23D in 1,5,9 then
+		skip to C24E;
+	endif;
 
 postproc
-//skip other specify if not selected
-If C24D <> 13 then
-	skip to C24E;
-endif;
+
+	//skip other specify if not selected
+	If C24D <> 13 then
+		skip to C24E;
+	endif;
+
+
 PROC C24D_OTHER
 
-C24D_OTHER = toupper(C24D_OTHER);
+	C24D_OTHER = toupper(C24D_OTHER);
+
+
 PROC C24E
+
 preproc
-//skip to C24B if the persons don't have difficulty in remembering
-if C23E in 1,5,9 then
-	skip to C24F;
-endif;
+
+	//skip to C24F if the persons don't have difficulty in remembering
+	if C23E in 1,5,9 then
+		skip to C24F;
+	endif;
+
 postproc
-//skip other specify if not selected
-if C24E <> 13 then
-	skip to C24F;
-endif;
+
+	//skip other specify if not selected
+	if C24E <> 13 then
+		skip to C24F;
+	endif;
+
+
 PROC C24E_OTHER
 
-C24E_OTHER = toupper(C24E_OTHER);
+	C24E_OTHER = toupper(C24E_OTHER);
+
+
 PROC C24F
+
 preproc
-//skip to C24B if the persons don't have difficulty in self-care
-if C23F in 1,5,9 then
-	skip to C25A;
-endif;
+
+	//skip to C25A if the persons don't have difficulty in self-care
+	if C23F in 1,5,9 then
+		skip to C25A;
+	endif;
 
 postproc
-//skip other specify if not selected
-if C24F <> 13 then
-	skip to C25A;
-endif;
+
+	//skip other specify if not selected
+	if C24F <> 13 then
+		skip to C25A;
+	endif;
+
+
 PROC C24F_OTHER
 
-C24F_OTHER = toupper(C24F_OTHER);
+	C24F_OTHER = toupper(C24F_OTHER);
+
+
 PROC C25A
-//Should not be asked about using eye glasses if no difficulty in seeing
+
 preproc
-if not C23A(curocc()) in 2:4 then
-	skip to C25B;
-endif;
+
+	//Should not be asked about using eye glasses if no difficulty in seeing
+	if not C23A(curocc()) in 2:4 then
+		skip to C25B;
+	endif;
+
 
 PROC C25B
-//Should not be asked about using hearing aid if no difficulty in hearing
+
 preproc
-if not C23B(curocc()) in 2:4 then
-	skip to C25C;
-	skip to C25H1;
-endif;
+
+	//Should not be asked about using hearing aid if no difficulty in hearing
+	if not C23B(curocc()) in 2:4 then
+		skip to C25C;
+	endif;
+
 
 PROC C25C
-//Should not be asked about using walking stick/frame/cruches if no difficulty in walking or climbing stairs
+
 preproc
-if not (C23D(curocc()) in 2:4 or C23F(curocc()) in 2:4) then
-	skip to C25D;
-endif;
+
+	//Should not be asked about using walking stick/frame/cruches if no difficulty in walking or climbing stairs
+	if not ( C23D(curocc()) in 2:4 or C23F(curocc()) in 2:4 ) then
+		skip to C25D;
+	endif;
+
 
 PROC C25D
-//Should not be asked about using a wheelchair if no difficulty in walking or climbing stairs
+
 preproc
-if not (C23D(curocc()) in 2:4 or C23F(curocc()) in 2:4) then
-	skip to C25E;
-endif;
+
+	//Should not be asked about using a wheelchair if no difficulty in walking or climbing stairs
+	if not ( C23D(curocc()) in 2:4 or C23F(curocc()) in 2:4 ) then
+		skip to C25E;
+	endif;
+
 
 PROC C25E
-//chronic medication for albino
-if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9 
-and C23E in 1,5,9 and C23F in 1,5,9 and C22=1  then
-	skip to next;
-endif;
+
+	//chronic medication for albino
+	if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9
+		and C23E in 1,5,9 and C23F in 1,5,9 and C22 = 1 then
+		skip to next;
+	endif;
+
 
 PROC C25F
-//Should not be asked about using white cane if no difficulty in seeing
+
 preproc
-if not C23A(curocc()) in 2:4 then
-	skip to C25G;
-endif;
+
+	//Should not be asked about using white cane if no difficulty in seeing
+	if not C23A(curocc()) in 2:4 then
+		skip to C25G;
+	endif;
+
 
 PROC C25G
-//Should not be asked about using guide dog if no difficulty in seeing
+
 preproc
-if not C23A(curocc()) in 2:4 then
-	skip to C25H1;
-endif;
+
+	//Should not be asked about using guide dog if no difficulty in seeing
+	if not C23A(curocc()) in 2:4 then
+		skip to C25H1;
+	endif;
+
 
 PROC C25H1
-//Should not be asked about using sign language if no difficulty in hearing
+
+
 preproc
-if not (C23B(curocc()) in 2:4 or C23C(curocc()) in 2:4) then
-	skip to next;
-endif;
+
+	//Should not be asked about using sign language if no difficulty in hearing/communicating
+	if not ( C23B(curocc()) in 2:4 or C23C(curocc()) in 2:4 ) then
+		skip to next;
+	endif;
 
 
 PROC D26
-preproc
-// Skip entire education row for under 3 years of age.
-if B5(curocc()) < MinAgeForEducation then
-    skip to next;
-endif;
 
-if B7(curocc()) = 2 then
-	skip to next;
-endif;
+preproc
+
+	// Skip entire education row for under 3 years of age.
+	if B5(curocc()) < MinAgeForEducation then
+		skip to next;
+	endif;
+
+	if B7(curocc()) = 2 then
+		skip to next;
+	endif;
 
 postproc
 
-// Name is in Institutions and therefore should be still attending
-if B9B(curocc()) = 1 and D26(curocc()) <> 2 then
-	errmsg("%s is in Institution(School) hence must be still attending", strip(B2(curocc())))
-	select("Correct Institutions outside Lesotho", B9B(curocc()),
-		   "Correct ever attended school", D26(curocc()));
-endif;
-// People not at school and prison must not be atttending school
-if B7 in 4,5 and not B9B(curocc()) in 1:3 and D26(curocc()) = 2 then
-	errmsg("%s is in Institution but not attending school", strip(B2(curocc())))
-	select("Correct Institutions outside Lesotho", B9B(curocc()),
-		   "Correct ever attended school", D26(curocc()));
-endif;
+	// Name is in Institutions and therefore should be still attending
+	if B9B(curocc()) = 1 and D26(curocc()) <> 2 then
+		errmsg("%s is in Institution(School) hence must be still attending", strip(B2(curocc())))
+		select("Correct Institutions outside Lesotho", B9B(curocc()),
+			   "Correct ever attended school", D26(curocc()));
+	endif;
 
-// For those coded 9 skip to next section
-if D26 = 9 then
-	skip to next;
-endif;
+	// People not at school, prison, or convents must not be atttending school
+	if B7 in 4,5 and not B9B(curocc()) in 1:3 and D26(curocc()) = 2 then
+		errmsg("%s is in Institution but not attending school", strip(B2(curocc())))
+		select("Correct Institutions outside Lesotho", B9B(curocc()),
+			   "Correct ever attended school", D26(curocc()));
+	endif;
+
+	// For those coded 9 skip to next section
+	if D26 = 9 then
+		skip to next;
+	endif;
+
 
 PROC D27
-postproc
-//There is no qualification attained as yet at age 4 years or less
-if D26 in 2:3 then
-	if B5(curocc()) <=4 then
-		if not D27 in 18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct highest education level", D27);
-		endif;
-//The qualification that could be attained at age 5 years is pre-school (00)
-	elseif B5(curocc()) =5 then
-		if not D27 in 0,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-//The qualification that could be attained at age 6 years is pre-school (00) or standard 1 (01)	
-	elseif B5(curocc()) =6 then
-			if not D27 in 0,1,18,30 then
+
+	if D26 in 2:3 then
+
+		//There is no qualification attained as yet at age 4 years or less
+		if B5(curocc()) <=4 then
+			if not D27 in 18,30 then
 				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-			   			strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct highest education level", D27);
+			endif;
+		//The qualification that could be attained at age 5 years is pre-school (00)
+		elseif B5(curocc()) =5 then
+			if not D27 in 0,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
 				select("Correct ever attended school",D26, "Correct highest education level", D27);
 			endif;
-			
-//The qualification that could be attained at age 7 years is pre-school (00), std 1 (01) or std 2 	
-	elseif B5(curocc()) =7 then
-		if not D27 in 0,1:2,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
+		//The qualification that could be attained at age 6 years is pre-school (00) or standard 1 (01)
+		elseif B5(curocc()) =6 then
+			if not D27 in 0,1,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		//The qualification that could be attained at age 7 years is pre-school (00), std 1 (01) or std 2
+		elseif B5(curocc()) =7 then
+			if not D27 in 0,1:2,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =8 then
+			if not D27 in 0,1:3,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =9 then
+			if not D27 in 0,1:4,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =10 then
+			if not D27 in 0,1:5,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =11 then
+			if not D27 in 0,1:6,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =12 then
+			if not D27 in 0,1:7,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =13 then
+			if not D27 in 0,1:7,11,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =14 then
+			if not D27 in 0,1:7,11:12,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =15 then
+			if not D27 in 0,1:7,11:13,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =16 then
+			if not D27 in 0,1:7,11:14,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct Age", B5, "Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =17 then
+			if not D27 in 0,1:7,11:15,18,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =18 then
+			if not D27 in 0,1:7,11:15,18:24,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =19 then
+			if not D27 in 0,1:7,11:15,18:25,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) = 20 then
+			if not D27 in 0,1:7,11:15,18:26,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =21 then
+			if not D27 in 0,1:7,11:15,18:27,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =22 then
+			if not D27 in 0,1:7,11:15,18:28,30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
+		elseif B5(curocc()) =23 then
+			if not D27 in 0,1:7,11:15,18:30 then
+				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
+				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
+				select("Correct ever attended school",D26, "Correct highest education level", D27);
+			endif;
 		endif;
-	elseif B5(curocc()) =8 then
-		if not D27 in 0,1:3,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;	
-	elseif B5(curocc()) =9 then
-		if not D27 in 0,1:4,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;	
-	elseif B5(curocc()) =10 then
-		if not D27 in 0,1:5,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =11 then
-		if not D27 in 0,1:6,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =12 then
-		if not D27 in 0,1:7,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;	
-	elseif B5(curocc()) =13 then
-		if not D27 in 0,1:7,11,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =14 then
-		if not D27 in 0,1:7,11:12,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =15 then
-		if not D27 in 0,1:7,11:13,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =16 then
-		if not D27 in 0,1:7,11:14,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct Age", B5, "Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =17 then
-		if not D27 in 0,1:7,11:15,18,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =18 then
-		if not D27 in 0,1:7,11:15,18:24,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =19 then
-		if not D27 in 0,1:7,11:15,18:25,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) = 20 then
-		if not D27 in 0,1:7,11:15,18:26,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =21 then
-		if not D27 in 0,1:7,11:15,18:27,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;
-	elseif B5(curocc()) =22 then
-		if not D27 in 0,1:7,11:15,18:28,30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;	
-	elseif B5(curocc()) =23 then
-		if not D27 in 0,1:7,11:15,18:30 then
-			errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
-				   strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-			select("Correct ever attended school",D26, "Correct highest education level", D27);
-		endif;				
-endif;
-//For those who never attended school (code 1 in D26) must be coded 19(Non-Formal Education) or 88(N/A)
-elseif D26 = 1 and not D27 in 19,88 then
-	errmsg("%s has never attended school, can only have Non-Formal Education or N/A",
-	strip(B2(curocc())))
-	select("Correct school attendance",D26, "Correct highest level of education",D27); 
-endif;
-//For form 1 to 5 (coded 11 to 15), other, N/A and Don't know skip to next section
 
-if D27 in 11:15,88,99 then
-	skip to next;
-endif;
+	//For those who never attended school (code 1 in D26) must be coded 19(Non-Formal Education) or 88(N/A)
+	elseif D26 = 1 and not D27 in 19,88 then
+		errmsg("%s has never attended school, can only have Non-Formal Education or N/A",strip(B2(curocc())))
+		select("Correct school attendance",D26, "Correct highest level of education",D27);
+	endif;
 
-//For those with tertiary (coded 20 to 29) skip to D30
-if D27 in 20:29 then
-	skip to D30;
-endif;
 
-//For code 30 please specify level of education
-if D27 <> 30 then
-	skip to D28;
-endif;
+	//For form 1 to 5 (coded 11 to 15), N/A and Don't know skip to next section
+	if D27 in 11:15,88,99 then
+		skip to next;
+
+	//For those with tertiary (coded 20 to 29) skip to D30
+	elseif D27 in 20:29 then
+		skip to D30;
+
+	//For code 30 please specify level of education
+	elseif D27 <> 30 then
+		skip to D28;
+
+	endif;
 
 
 PROC D27_OTHER
-//For code 30 in D27 skip to next section
 
-D27_OTHER = toupper(D27_OTHER);
-skip to next;
+	//For code 30 in D27 skip to next section
+	D27_OTHER = toupper(D27_OTHER);
+	skip to next;
+
+
 PROC D28
 
-//For People who never attended school and are able to read must have done Non-formal education
-if D26 = 1 and D28 in 1,2 and not D27 = 19 then
-errmsg("%s Has never attended school and can either read with ease or difficulty must have Non-Formal Education",
-	strip(B2(curocc())))
-	select("Correct highest level of education", D27,"Correct know how to read", D28); 
-endif;
+	//For People who never attended school and are able to read must have done Non-formal education
+	if D26 = 1 and D28 in 1,2 and not D27 = 19 then
+		errmsg("%s Has never attended school and can either read with ease or difficulty must have Non-Formal Education",
+		strip(B2(curocc())))
+		select("Correct highest level of education", D27,"Correct know how to read", D28);
+	endif;
+
+
 PROC D29
 
+	//For People who never attended school and are able to write must have done Non-formal education
+	if D26 = 1 and D29 in 1,2 and not D27 = 19 then
+		errmsg("%s Has never attended school and can either write with ease or difficulty must have Non-formal education",
+		strip(B2(curocc())))
+		select("Correct highest level of education", D27,"Correct know how to write", D29);
+	endif;
 
-//For People who never attended school and are able to write must have done Non-formal education
-if D26 = 1 and D29 in 1,2 and not D27 = 19 then
-errmsg("%s Has never attended school and can either write with ease or difficulty must have Non-formal education",
-	strip(B2(curocc())))
-	select("Correct highest level of education", D27,"Correct know how to write", D29); 
-endif;
-
-// Since we only ask this question to people who responded
-// 00-07, 18 and 19 (preschool-primary, none, none-formal) in D27 
-// and D30 does not apply to those categories skip to next section.
-skip to next;
+	// Since we only ask this question to people who responded
+	// 00-07, 18 and 19 (preschool-primary, none, none-formal) in D27
+	// and D30 does not apply to those categories skip to next section.
+	skip to next;
 
 
 PROC D30B
-onfocus  
- 
-if D30 = 1 then
- 	setvalueset (D30B,D30B_VS1);
-elseif D30 = 2 then
-	setvalueset (D30B,D30B_VS2);
-elseif D30 = 3 then
-	setvalueset (D30B,D30B_VS3);
-elseif D30 = 4 then
-	setvalueset (D30B,D30B_VS4);
-elseif D30 = 5 then
-	setvalueset (D30B,D30B_VS5);
-elseif D30 = 6 then
-	setvalueset (D30B,D30B_VS6);	
-elseif D30 = 7 then
-	setvalueset (D30B,D30B_VS7);
-elseif D30 = 8 then
-	setvalueset (D30B,D30B_VS8);
-elseif D30 = 9 then
-	setvalueset (D30B,D30B_VS9);
-elseif D30 = 10 then
-	setvalueset (D30B,D30B_VS10);	
-elseif D30 = 11 then
-	setvalueset (D30B,D30B_VS11);	
-endif;
+
+onfocus
+
+	if D30 = 1 then
+		setvalueset (D30B,D30B_VS1);
+	elseif D30 = 2 then
+		setvalueset (D30B,D30B_VS2);
+	elseif D30 = 3 then
+		setvalueset (D30B,D30B_VS3);
+	elseif D30 = 4 then
+		setvalueset (D30B,D30B_VS4);
+	elseif D30 = 5 then
+		setvalueset (D30B,D30B_VS5);
+	elseif D30 = 6 then
+		setvalueset (D30B,D30B_VS6);
+	elseif D30 = 7 then
+		setvalueset (D30B,D30B_VS7);
+	elseif D30 = 8 then
+		setvalueset (D30B,D30B_VS8);
+	elseif D30 = 9 then
+		setvalueset (D30B,D30B_VS9);
+	elseif D30 = 10 then
+		setvalueset (D30B,D30B_VS10);
+	elseif D30 = 11 then
+		setvalueset (D30B,D30B_VS11);
+	endif;
 
 
 PROC E31
+
 preproc
-// Skip entire Economic Activity Status row for person under 10 years of age
-if B5(curocc()) < MinAgeForEconomicActivity then
-    
-	skip to next;
-endif;
 
+	// Skip entire Economic Activity Status row for person under 10 years of age
+	if B5(curocc()) < MinAgeForEconomicActivity then
+		skip to next;
+	endif;
 
-//End questionnaire here for visitors
-if B7(curocc()) = 2 then
-	skip to next;
-endif;
+	//End questionnaire here for visitors
+	if B7(curocc()) = 2 then
+		skip to next;
+	endif;
 
 postproc
-// Age cannot be less than 24 for retired person
-if B5(curocc()) < MinRetirementAge and E31 = 70 then
-	errmsg("%s is too young to be retired", strip(B2(curocc())))
-	select("Correct main activity status in the past 7 days", E31);
-endif;
-//Name should be a student (80) if is still attending school (code 2 in D26)
-if D26(curocc()) = 2 and E31 <> 80 then
-	errmsg("%s is still attending hence a student",strip(B2))
-	select("Correct ever attended school", D26(curocc()),
-		   "Correct main activity in the past 7 days", E31);
-endif;
+
+	// Age cannot be less than 24 for retired person
+	if B5(curocc()) < MinRetirementAge and E31 = 70 then
+		errmsg("%s is too young to be retired", strip(B2(curocc())))
+		select("Correct main activity status in the past 7 days", E31);
+	endif;
+
+	//Name should be a student (80) if is still attending school (code 2 in D26)
+	if D26(curocc()) = 2 and E31 <> 80 then
+		errmsg("%s is still attending hence a student",strip(B2))
+		select("Correct ever attended school", D26(curocc()),
+			   "Correct main activity in the past 7 days", E31);
+	endif;
 
 
-//skip to Section F(Fertility) if Main Activity Status in Past 7 Days is Job seeking for the first time 
-if E31 = 55 then
-	skip to next;
-endif;
+	//skip to Section F(Fertility) if Main Activity Status in Past 7 Days is Job seeking for the first time
+	if E31 = 55 then
+		skip to next;
 
-//skip to Name of Employer (E33) if Main Activity Status in Past 7 Days is coded 10 to 40 and 60
-if E31 in 10:40,60 then
-	skip to E33;
-endif;
+	//skip to Name of Employer (E33) if Main Activity Status in Past 7 Days is coded 10 to 40 and 60
+	elseif E31 in 10:40,60 then
+		skip to E33;
 
-//skip to Ever worked in RSA (E38) if Main Activity Status in Past 7 Days is coded 65 to 80 and 99	
-if E31 in 65:80,99 then
-	skip to E38;
-endif;
+	//skip to Ever worked in RSA (E38) if Main Activity Status in Past 7 Days is coded 65 to 80 and 99
+	elseif E31 in 65:80,99 then
+		skip to E38;
 
-//go to specify if coded 81 in E31 then skip to E33
-if not E31 = 81 then 
-	skip to E32;
-	
-endif;
+	//go to specify if coded 81 in E31 then skip to E33
+	elseif E31 <> 81 then
+		skip to E32;
+
+	endif;
+
 
 PROC E31OTHER
-//skip to E33 if coded 81 in E31
-skip to E33;
+
+	//skip to E33 if coded 81 in E31
+	skip to E33;
 
 
 PROC E32
 
-//skip to Section F(Fertility) if Main Activity Status in Past 12 months is Job seeking for the first time 
-//skip to Name of Employer (E33) if Main Activity Status in Past 12 months is coded 10 to 40 and 60
-//skip to Ever worked in RSA (E38) if Main Activity Status in Past 12 months is coded 65 to 80 and 99
-//go to specify if coded 81 in E31 then skip to E33
-if E32 = 50 then
-	skip to E38;
-endif;
+	//skip to Ever worked in RSA (E38) if Main Activity Status in Past 12 months is Job seeking
+	if E32 = 50 then
+		skip to E38;
 
-if E32 in 10:40,60 then
-	skip to E33;
-endif;
-	
-if E32 in 65:80,99 then
-	skip to E38;
-endif;
+	//skip to Name of Employer (E33) if Main Activity Status in Past 12 months is coded 10 to 40 and 60
+	elseif E32 in 10:40,60 then
+		skip to E33;
 
-if not E32 = 81 then 
-	skip to E38;
-endif;
+	//skip to Ever worked in RSA (E38) if Main Activity Status in Past 12 months is coded 65 to 80 and 99
+	elseif E32 in 65:80,99 then
+		skip to E38;
+
+	//go to specify if coded 81 in E32 then skip to E33
+	elseif E32 <> 81 then
+		skip to E38;
+
+	endif;
+
 
 PROC E33
-//go to specify if coded 9 in E33 then skip to E34
-if not E33 = 9 then 
-	skip to OCCUPATION_LEVEL_1;
-endif;
+
+	//go to specify if coded 9 in E33 then skip to E34
+	if E33 <> 9 then
+		skip to OCCUPATION_LEVEL_1;
+	endif;
 
 
 PROC OCCUPATION_LEVEL_1
 
-if OCCUPATION_LEVEL_1 = 11 then
-	skip to OCCUPATION_LEVEL_4;
-endif;
+	if OCCUPATION_LEVEL_1 = 11 then
+		skip to OCCUPATION_LEVEL_4;
+	endif;
+
 
 PROC OCCUPATION_LEVEL_2
 
-onfocus  
- 
-if OCCUPATION_LEVEL_1 = 1 then
- 	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS1);
-elseif OCCUPATION_LEVEL_1 = 2 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS2);
-elseif OCCUPATION_LEVEL_1 = 3 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS3);
-elseif OCCUPATION_LEVEL_1 = 4 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS4);
-elseif OCCUPATION_LEVEL_1 = 5 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS5);
-elseif OCCUPATION_LEVEL_1 = 6 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS6);	
-elseif OCCUPATION_LEVEL_1 = 7 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS7);
-elseif OCCUPATION_LEVEL_1 = 8 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS8);
-elseif OCCUPATION_LEVEL_1 = 9 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS9);
-elseif OCCUPATION_LEVEL_1 = 0 then
-	setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS0);		
-endif;
+onfocus
+
+	if OCCUPATION_LEVEL_1 = 1 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS1);
+	elseif OCCUPATION_LEVEL_1 = 2 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS2);
+	elseif OCCUPATION_LEVEL_1 = 3 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS3);
+	elseif OCCUPATION_LEVEL_1 = 4 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS4);
+	elseif OCCUPATION_LEVEL_1 = 5 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS5);
+	elseif OCCUPATION_LEVEL_1 = 6 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS6);
+	elseif OCCUPATION_LEVEL_1 = 7 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS7);
+	elseif OCCUPATION_LEVEL_1 = 8 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS8);
+	elseif OCCUPATION_LEVEL_1 = 9 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS9);
+	elseif OCCUPATION_LEVEL_1 = 0 then
+		setvalueset (OCCUPATION_LEVEL_2,OCCUPATION_LEVEL_2_VS0);
+	endif;
 
 
 PROC OCCUPATION_LEVEL_3
-onfocus 
- 
-if OCCUPATION_LEVEL_2 = 11 then
- 	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS11);
-elseif OCCUPATION_LEVEL_2 = 12 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS12);
-elseif OCCUPATION_LEVEL_2 = 13 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS13);	
-elseif OCCUPATION_LEVEL_2 = 14 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS14);	
-elseif OCCUPATION_LEVEL_2 = 21 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS21);
-elseif OCCUPATION_LEVEL_2 = 22 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS22);	
-elseif OCCUPATION_LEVEL_2 = 23 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS23);	
-elseif OCCUPATION_LEVEL_2 = 24 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS24);	
-elseif OCCUPATION_LEVEL_2 = 25 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS25);	
-elseif OCCUPATION_LEVEL_2 = 26 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS26);
-elseif OCCUPATION_LEVEL_2 = 31 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS31);	
-elseif OCCUPATION_LEVEL_2 = 32 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS32);	
-elseif OCCUPATION_LEVEL_2 = 33 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS33);	
-elseif OCCUPATION_LEVEL_2 = 34 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS34);	
-elseif OCCUPATION_LEVEL_2 = 35 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS35);	
-elseif OCCUPATION_LEVEL_2 = 41 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS41);	
-elseif OCCUPATION_LEVEL_2 = 42 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS42);	
-elseif OCCUPATION_LEVEL_2 = 43 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS43);	
-elseif OCCUPATION_LEVEL_2 = 44 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS44);	
-elseif OCCUPATION_LEVEL_2 = 51 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS51);	
-elseif OCCUPATION_LEVEL_2 = 52 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS52);	
-elseif OCCUPATION_LEVEL_2 = 53 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS53);	
-elseif OCCUPATION_LEVEL_2 = 54 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS54);	
-elseif OCCUPATION_LEVEL_2 = 61 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS61);	
-elseif OCCUPATION_LEVEL_2 = 62 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS62);	
-elseif OCCUPATION_LEVEL_2 = 63 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS63);	
-elseif OCCUPATION_LEVEL_2 = 71 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS71);	
-elseif OCCUPATION_LEVEL_2 = 72 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS72);	
-elseif OCCUPATION_LEVEL_2 = 73 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS73);	
-elseif OCCUPATION_LEVEL_2 = 74 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS74);	
-elseif OCCUPATION_LEVEL_2 = 75 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS75);	
-elseif OCCUPATION_LEVEL_2 = 81 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS81);	
-elseif OCCUPATION_LEVEL_2 = 82 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS82);	
-elseif OCCUPATION_LEVEL_2 = 83 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS83);	
-elseif OCCUPATION_LEVEL_2 = 91 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS91);	
-elseif OCCUPATION_LEVEL_2 = 92 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS92);	
-elseif OCCUPATION_LEVEL_2 = 93 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS93);	
-elseif OCCUPATION_LEVEL_2 = 94 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS94);	
-elseif OCCUPATION_LEVEL_2 = 95 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS95);	
-elseif OCCUPATION_LEVEL_2 = 96 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS96);	
-elseif OCCUPATION_LEVEL_2 = 01 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS01);	
-elseif OCCUPATION_LEVEL_2 = 02 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS02);	
-elseif OCCUPATION_LEVEL_2 = 03 then
-	setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS03);				
-endif;
+
+onfocus
+
+	if OCCUPATION_LEVEL_2 = 11 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS11);
+	elseif OCCUPATION_LEVEL_2 = 12 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS12);
+	elseif OCCUPATION_LEVEL_2 = 13 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS13);
+	elseif OCCUPATION_LEVEL_2 = 14 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS14);
+	elseif OCCUPATION_LEVEL_2 = 21 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS21);
+	elseif OCCUPATION_LEVEL_2 = 22 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS22);
+	elseif OCCUPATION_LEVEL_2 = 23 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS23);
+	elseif OCCUPATION_LEVEL_2 = 24 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS24);
+	elseif OCCUPATION_LEVEL_2 = 25 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS25);
+	elseif OCCUPATION_LEVEL_2 = 26 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS26);
+	elseif OCCUPATION_LEVEL_2 = 31 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS31);
+	elseif OCCUPATION_LEVEL_2 = 32 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS32);
+	elseif OCCUPATION_LEVEL_2 = 33 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS33);
+	elseif OCCUPATION_LEVEL_2 = 34 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS34);
+	elseif OCCUPATION_LEVEL_2 = 35 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS35);
+	elseif OCCUPATION_LEVEL_2 = 41 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS41);
+	elseif OCCUPATION_LEVEL_2 = 42 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS42);
+	elseif OCCUPATION_LEVEL_2 = 43 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS43);
+	elseif OCCUPATION_LEVEL_2 = 44 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS44);
+	elseif OCCUPATION_LEVEL_2 = 51 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS51);
+	elseif OCCUPATION_LEVEL_2 = 52 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS52);
+	elseif OCCUPATION_LEVEL_2 = 53 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS53);
+	elseif OCCUPATION_LEVEL_2 = 54 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS54);
+	elseif OCCUPATION_LEVEL_2 = 61 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS61);
+	elseif OCCUPATION_LEVEL_2 = 62 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS62);
+	elseif OCCUPATION_LEVEL_2 = 63 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS63);
+	elseif OCCUPATION_LEVEL_2 = 71 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS71);
+	elseif OCCUPATION_LEVEL_2 = 72 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS72);
+	elseif OCCUPATION_LEVEL_2 = 73 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS73);
+	elseif OCCUPATION_LEVEL_2 = 74 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS74);
+	elseif OCCUPATION_LEVEL_2 = 75 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS75);
+	elseif OCCUPATION_LEVEL_2 = 81 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS81);
+	elseif OCCUPATION_LEVEL_2 = 82 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS82);
+	elseif OCCUPATION_LEVEL_2 = 83 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS83);
+	elseif OCCUPATION_LEVEL_2 = 91 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS91);
+	elseif OCCUPATION_LEVEL_2 = 92 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS92);
+	elseif OCCUPATION_LEVEL_2 = 93 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS93);
+	elseif OCCUPATION_LEVEL_2 = 94 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS94);
+	elseif OCCUPATION_LEVEL_2 = 95 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS95);
+	elseif OCCUPATION_LEVEL_2 = 96 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS96);
+	elseif OCCUPATION_LEVEL_2 = 01 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS01);
+	elseif OCCUPATION_LEVEL_2 = 02 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS02);
+	elseif OCCUPATION_LEVEL_2 = 03 then
+		setvalueset (OCCUPATION_LEVEL_3,OCCUPATION_LEVEL_3_VS03);
+	endif;
 
 
 PROC OCCUPATION_LEVEL_4
 
 onfocus
 
-if OCCUPATION_LEVEL_1 = 11 then
-	setvalueset(OCCUPATION_LEVEL_4, OCCUPATION_LEVEL_4_VS033);
+	if OCCUPATION_LEVEL_1 = 11 then
+		setvalueset(OCCUPATION_LEVEL_4, OCCUPATION_LEVEL_4_VS033);
 
-elseif OCCUPATION_LEVEL_3 = 111 then
- 	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS111);
-elseif OCCUPATION_LEVEL_3 = 112 then
- 	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS112);
-elseif OCCUPATION_LEVEL_3 = 121 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS121);
-elseif OCCUPATION_LEVEL_3 = 122 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS122);
-elseif OCCUPATION_LEVEL_3 = 131 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS131);
-elseif OCCUPATION_LEVEL_3 = 132 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS132);	
-elseif OCCUPATION_LEVEL_3 = 133 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS133);	
-elseif OCCUPATION_LEVEL_3 = 134 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS134);		
-elseif OCCUPATION_LEVEL_3 = 141 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS141);		
-elseif OCCUPATION_LEVEL_3 = 142 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS142);	
-elseif OCCUPATION_LEVEL_3 = 143 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS143);
-elseif OCCUPATION_LEVEL_3 = 211 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS211);
-elseif OCCUPATION_LEVEL_3 = 212 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS212);
-elseif OCCUPATION_LEVEL_3 = 213 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS213);
-elseif OCCUPATION_LEVEL_3 = 214 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS214);
-elseif OCCUPATION_LEVEL_3 = 215 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS215);
-elseif OCCUPATION_LEVEL_3 = 216 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS216);
-elseif OCCUPATION_LEVEL_3 = 221 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS221);
-elseif OCCUPATION_LEVEL_3 = 222 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS222);	
-elseif OCCUPATION_LEVEL_3 = 223 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS223);	
-elseif OCCUPATION_LEVEL_3 = 224 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS224);	
-elseif OCCUPATION_LEVEL_3 = 225 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS225);	
-elseif OCCUPATION_LEVEL_3 = 226 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS226);		
-elseif OCCUPATION_LEVEL_3 = 231 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS231);		
-elseif OCCUPATION_LEVEL_3 = 232 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS232);		
-elseif OCCUPATION_LEVEL_3 = 233 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS233);		
-elseif OCCUPATION_LEVEL_3 = 234 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS234);		
-elseif OCCUPATION_LEVEL_3 = 235 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS235);	
-elseif OCCUPATION_LEVEL_3 = 241 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS241);
-elseif OCCUPATION_LEVEL_3 = 242 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS242);	
-elseif OCCUPATION_LEVEL_3 = 243 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS243);		
-elseif OCCUPATION_LEVEL_3 = 251 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS251);	
-elseif OCCUPATION_LEVEL_3 = 252 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS252);	
-elseif OCCUPATION_LEVEL_3 = 261 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS261);
-elseif OCCUPATION_LEVEL_3 = 262 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS262);
-elseif OCCUPATION_LEVEL_3 = 263 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS263);
-elseif OCCUPATION_LEVEL_3 = 264 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS264);
-elseif OCCUPATION_LEVEL_3 = 265 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS265);
-elseif OCCUPATION_LEVEL_3 = 311 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS311);	
-elseif OCCUPATION_LEVEL_3 = 312 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS312);
-elseif OCCUPATION_LEVEL_3 = 313 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS313);
-elseif OCCUPATION_LEVEL_3 = 314 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS314);
-elseif OCCUPATION_LEVEL_3 = 315 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS315);
-elseif OCCUPATION_LEVEL_3 = 321 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS321);
-elseif OCCUPATION_LEVEL_3 = 322 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS322);
-elseif OCCUPATION_LEVEL_3 = 323 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS323);
-elseif OCCUPATION_LEVEL_3 = 324 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS324);
-elseif OCCUPATION_LEVEL_3 = 325 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS325);	
-elseif OCCUPATION_LEVEL_3 = 331 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS331);
-elseif OCCUPATION_LEVEL_3 = 332 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS332);	
-elseif OCCUPATION_LEVEL_3 = 333 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS333);	
-elseif OCCUPATION_LEVEL_3 = 334 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS334);	
-elseif OCCUPATION_LEVEL_3 = 335 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS335);		
-elseif OCCUPATION_LEVEL_3 = 341 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS341);	
-elseif OCCUPATION_LEVEL_3 = 342 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS342);	
-elseif OCCUPATION_LEVEL_3 = 343 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS343);	
-elseif OCCUPATION_LEVEL_3 = 351 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS351);	
-elseif OCCUPATION_LEVEL_3 = 352 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS352);
-elseif OCCUPATION_LEVEL_3 = 411 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS411);	
-elseif OCCUPATION_LEVEL_3 = 412 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS412);	
-elseif OCCUPATION_LEVEL_3 = 413 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS413);	
-elseif OCCUPATION_LEVEL_3 = 421 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS421);
-elseif OCCUPATION_LEVEL_3 = 422 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS422);	
-elseif OCCUPATION_LEVEL_3 = 431 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS431);	
-elseif OCCUPATION_LEVEL_3 = 432 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS432);	
-elseif OCCUPATION_LEVEL_3 = 441 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS441);	
-elseif OCCUPATION_LEVEL_3 = 511 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS511);		
-elseif OCCUPATION_LEVEL_3 = 512 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS512);	
-elseif OCCUPATION_LEVEL_3 = 513 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS513);	
-elseif OCCUPATION_LEVEL_3 = 514 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS514);	
-elseif OCCUPATION_LEVEL_3 = 515 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS515);	
-elseif OCCUPATION_LEVEL_3 = 516 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS516);
-elseif OCCUPATION_LEVEL_3 = 521 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS521);
-elseif OCCUPATION_LEVEL_3 = 522 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS522);
-elseif OCCUPATION_LEVEL_3 = 523 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS523);
-elseif OCCUPATION_LEVEL_3 = 524 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS524);	
-elseif OCCUPATION_LEVEL_3 = 531 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS531);	
-elseif OCCUPATION_LEVEL_3 = 532 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS532);	
-elseif OCCUPATION_LEVEL_3 = 541 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS541);	
-elseif OCCUPATION_LEVEL_3 = 611 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS611);	
-elseif OCCUPATION_LEVEL_3 = 612 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS612);	
-elseif OCCUPATION_LEVEL_3 = 613 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS613);	
-elseif OCCUPATION_LEVEL_3 = 621 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS621);
-elseif OCCUPATION_LEVEL_3 = 622 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS622);		
-elseif OCCUPATION_LEVEL_3 = 631 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS631);		
-elseif OCCUPATION_LEVEL_3 = 632 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS632);			
-elseif OCCUPATION_LEVEL_3 = 633 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS633);			
-elseif OCCUPATION_LEVEL_3 = 634 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS634);		
-elseif OCCUPATION_LEVEL_3 = 711 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS711);		
-elseif OCCUPATION_LEVEL_3 = 712 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS712);		
-elseif OCCUPATION_LEVEL_3 = 713 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS713);	
-elseif OCCUPATION_LEVEL_3 = 721 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS721);
-elseif OCCUPATION_LEVEL_3 = 722 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS722);
-elseif OCCUPATION_LEVEL_3 = 723 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS723);	
-elseif OCCUPATION_LEVEL_3 = 731 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS731);		
-elseif OCCUPATION_LEVEL_3 = 732 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS732);
-elseif OCCUPATION_LEVEL_3 = 741 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS741);
-elseif OCCUPATION_LEVEL_3 = 742 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS742);		
-elseif OCCUPATION_LEVEL_3 = 751 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS751);		
-elseif OCCUPATION_LEVEL_3 = 752 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS752);		
-elseif OCCUPATION_LEVEL_3 = 753 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS753);		
-elseif OCCUPATION_LEVEL_3 = 754 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS754);	
-elseif OCCUPATION_LEVEL_3 = 811 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS811);
-elseif OCCUPATION_LEVEL_3 = 812 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS812);
-elseif OCCUPATION_LEVEL_3 = 813 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS813);
-elseif OCCUPATION_LEVEL_3 = 814 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS814);
-elseif OCCUPATION_LEVEL_3 = 815 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS815);
-elseif OCCUPATION_LEVEL_3 = 816 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS816);
-elseif OCCUPATION_LEVEL_3 = 817 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS817);
-elseif OCCUPATION_LEVEL_3 = 818 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS818);	
-elseif OCCUPATION_LEVEL_3 = 821 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS821);	
-elseif OCCUPATION_LEVEL_3 = 831 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS831);	
-elseif OCCUPATION_LEVEL_3 = 832 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS832);	
-elseif OCCUPATION_LEVEL_3 = 833 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS833);	
-elseif OCCUPATION_LEVEL_3 = 834 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS834);	
-elseif OCCUPATION_LEVEL_3 = 835 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS835);	
-elseif OCCUPATION_LEVEL_3 = 911 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS911);	
-elseif OCCUPATION_LEVEL_3 = 912 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS912);
-elseif OCCUPATION_LEVEL_3 = 921 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS921);	
-elseif OCCUPATION_LEVEL_3 = 931 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS931);	
-elseif OCCUPATION_LEVEL_3 = 932 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS932);		
-elseif OCCUPATION_LEVEL_3 = 933 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS933);		
-elseif OCCUPATION_LEVEL_3 = 941 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS941);	
-elseif OCCUPATION_LEVEL_3 = 951 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS951);		
-elseif OCCUPATION_LEVEL_3 = 952 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS952);
-elseif OCCUPATION_LEVEL_3 = 961 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS961);
-elseif OCCUPATION_LEVEL_3 = 962 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS962);	
-elseif OCCUPATION_LEVEL_3 = 011 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS011);	
-elseif OCCUPATION_LEVEL_3 = 021 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS021);	
-elseif OCCUPATION_LEVEL_3 = 031 then
-	setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS031);			
-endif;
+	elseif OCCUPATION_LEVEL_3 = 111 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS111);
+	elseif OCCUPATION_LEVEL_3 = 112 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS112);
+	elseif OCCUPATION_LEVEL_3 = 121 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS121);
+	elseif OCCUPATION_LEVEL_3 = 122 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS122);
+	elseif OCCUPATION_LEVEL_3 = 131 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS131);
+	elseif OCCUPATION_LEVEL_3 = 132 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS132);
+	elseif OCCUPATION_LEVEL_3 = 133 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS133);
+	elseif OCCUPATION_LEVEL_3 = 134 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS134);
+	elseif OCCUPATION_LEVEL_3 = 141 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS141);
+	elseif OCCUPATION_LEVEL_3 = 142 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS142);
+	elseif OCCUPATION_LEVEL_3 = 143 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS143);
+	elseif OCCUPATION_LEVEL_3 = 211 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS211);
+	elseif OCCUPATION_LEVEL_3 = 212 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS212);
+	elseif OCCUPATION_LEVEL_3 = 213 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS213);
+	elseif OCCUPATION_LEVEL_3 = 214 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS214);
+	elseif OCCUPATION_LEVEL_3 = 215 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS215);
+	elseif OCCUPATION_LEVEL_3 = 216 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS216);
+	elseif OCCUPATION_LEVEL_3 = 221 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS221);
+	elseif OCCUPATION_LEVEL_3 = 222 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS222);
+	elseif OCCUPATION_LEVEL_3 = 223 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS223);
+	elseif OCCUPATION_LEVEL_3 = 224 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS224);
+	elseif OCCUPATION_LEVEL_3 = 225 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS225);
+	elseif OCCUPATION_LEVEL_3 = 226 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS226);
+	elseif OCCUPATION_LEVEL_3 = 231 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS231);
+	elseif OCCUPATION_LEVEL_3 = 232 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS232);
+	elseif OCCUPATION_LEVEL_3 = 233 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS233);
+	elseif OCCUPATION_LEVEL_3 = 234 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS234);
+	elseif OCCUPATION_LEVEL_3 = 235 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS235);
+	elseif OCCUPATION_LEVEL_3 = 241 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS241);
+	elseif OCCUPATION_LEVEL_3 = 242 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS242);
+	elseif OCCUPATION_LEVEL_3 = 243 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS243);
+	elseif OCCUPATION_LEVEL_3 = 251 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS251);
+	elseif OCCUPATION_LEVEL_3 = 252 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS252);
+	elseif OCCUPATION_LEVEL_3 = 261 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS261);
+	elseif OCCUPATION_LEVEL_3 = 262 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS262);
+	elseif OCCUPATION_LEVEL_3 = 263 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS263);
+	elseif OCCUPATION_LEVEL_3 = 264 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS264);
+	elseif OCCUPATION_LEVEL_3 = 265 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS265);
+	elseif OCCUPATION_LEVEL_3 = 311 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS311);
+	elseif OCCUPATION_LEVEL_3 = 312 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS312);
+	elseif OCCUPATION_LEVEL_3 = 313 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS313);
+	elseif OCCUPATION_LEVEL_3 = 314 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS314);
+	elseif OCCUPATION_LEVEL_3 = 315 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS315);
+	elseif OCCUPATION_LEVEL_3 = 321 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS321);
+	elseif OCCUPATION_LEVEL_3 = 322 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS322);
+	elseif OCCUPATION_LEVEL_3 = 323 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS323);
+	elseif OCCUPATION_LEVEL_3 = 324 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS324);
+	elseif OCCUPATION_LEVEL_3 = 325 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS325);
+	elseif OCCUPATION_LEVEL_3 = 331 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS331);
+	elseif OCCUPATION_LEVEL_3 = 332 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS332);
+	elseif OCCUPATION_LEVEL_3 = 333 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS333);
+	elseif OCCUPATION_LEVEL_3 = 334 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS334);
+	elseif OCCUPATION_LEVEL_3 = 335 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS335);
+	elseif OCCUPATION_LEVEL_3 = 341 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS341);
+	elseif OCCUPATION_LEVEL_3 = 342 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS342);
+	elseif OCCUPATION_LEVEL_3 = 343 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS343);
+	elseif OCCUPATION_LEVEL_3 = 351 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS351);
+	elseif OCCUPATION_LEVEL_3 = 352 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS352);
+	elseif OCCUPATION_LEVEL_3 = 411 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS411);
+	elseif OCCUPATION_LEVEL_3 = 412 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS412);
+	elseif OCCUPATION_LEVEL_3 = 413 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS413);
+	elseif OCCUPATION_LEVEL_3 = 421 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS421);
+	elseif OCCUPATION_LEVEL_3 = 422 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS422);
+	elseif OCCUPATION_LEVEL_3 = 431 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS431);
+	elseif OCCUPATION_LEVEL_3 = 432 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS432);
+	elseif OCCUPATION_LEVEL_3 = 441 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS441);
+	elseif OCCUPATION_LEVEL_3 = 511 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS511);
+	elseif OCCUPATION_LEVEL_3 = 512 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS512);
+	elseif OCCUPATION_LEVEL_3 = 513 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS513);
+	elseif OCCUPATION_LEVEL_3 = 514 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS514);
+	elseif OCCUPATION_LEVEL_3 = 515 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS515);
+	elseif OCCUPATION_LEVEL_3 = 516 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS516);
+	elseif OCCUPATION_LEVEL_3 = 521 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS521);
+	elseif OCCUPATION_LEVEL_3 = 522 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS522);
+	elseif OCCUPATION_LEVEL_3 = 523 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS523);
+	elseif OCCUPATION_LEVEL_3 = 524 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS524);
+	elseif OCCUPATION_LEVEL_3 = 531 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS531);
+	elseif OCCUPATION_LEVEL_3 = 532 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS532);
+	elseif OCCUPATION_LEVEL_3 = 541 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS541);
+	elseif OCCUPATION_LEVEL_3 = 611 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS611);
+	elseif OCCUPATION_LEVEL_3 = 612 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS612);
+	elseif OCCUPATION_LEVEL_3 = 613 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS613);
+	elseif OCCUPATION_LEVEL_3 = 621 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS621);
+	elseif OCCUPATION_LEVEL_3 = 622 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS622);
+	elseif OCCUPATION_LEVEL_3 = 631 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS631);
+	elseif OCCUPATION_LEVEL_3 = 632 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS632);
+	elseif OCCUPATION_LEVEL_3 = 633 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS633);
+	elseif OCCUPATION_LEVEL_3 = 634 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS634);
+	elseif OCCUPATION_LEVEL_3 = 711 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS711);
+	elseif OCCUPATION_LEVEL_3 = 712 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS712);
+	elseif OCCUPATION_LEVEL_3 = 713 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS713);
+	elseif OCCUPATION_LEVEL_3 = 721 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS721);
+	elseif OCCUPATION_LEVEL_3 = 722 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS722);
+	elseif OCCUPATION_LEVEL_3 = 723 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS723);
+	elseif OCCUPATION_LEVEL_3 = 731 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS731);
+	elseif OCCUPATION_LEVEL_3 = 732 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS732);
+	elseif OCCUPATION_LEVEL_3 = 741 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS741);
+	elseif OCCUPATION_LEVEL_3 = 742 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS742);
+	elseif OCCUPATION_LEVEL_3 = 751 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS751);
+	elseif OCCUPATION_LEVEL_3 = 752 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS752);
+	elseif OCCUPATION_LEVEL_3 = 753 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS753);
+	elseif OCCUPATION_LEVEL_3 = 754 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS754);
+	elseif OCCUPATION_LEVEL_3 = 811 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS811);
+	elseif OCCUPATION_LEVEL_3 = 812 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS812);
+	elseif OCCUPATION_LEVEL_3 = 813 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS813);
+	elseif OCCUPATION_LEVEL_3 = 814 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS814);
+	elseif OCCUPATION_LEVEL_3 = 815 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS815);
+	elseif OCCUPATION_LEVEL_3 = 816 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS816);
+	elseif OCCUPATION_LEVEL_3 = 817 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS817);
+	elseif OCCUPATION_LEVEL_3 = 818 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS818);
+	elseif OCCUPATION_LEVEL_3 = 821 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS821);
+	elseif OCCUPATION_LEVEL_3 = 831 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS831);
+	elseif OCCUPATION_LEVEL_3 = 832 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS832);
+	elseif OCCUPATION_LEVEL_3 = 833 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS833);
+	elseif OCCUPATION_LEVEL_3 = 834 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS834);
+	elseif OCCUPATION_LEVEL_3 = 835 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS835);
+	elseif OCCUPATION_LEVEL_3 = 911 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS911);
+	elseif OCCUPATION_LEVEL_3 = 912 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS912);
+	elseif OCCUPATION_LEVEL_3 = 921 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS921);
+	elseif OCCUPATION_LEVEL_3 = 931 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS931);
+	elseif OCCUPATION_LEVEL_3 = 932 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS932);
+	elseif OCCUPATION_LEVEL_3 = 933 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS933);
+	elseif OCCUPATION_LEVEL_3 = 941 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS941);
+	elseif OCCUPATION_LEVEL_3 = 951 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS951);
+	elseif OCCUPATION_LEVEL_3 = 952 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS952);
+	elseif OCCUPATION_LEVEL_3 = 961 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS961);
+	elseif OCCUPATION_LEVEL_3 = 962 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS962);
+	elseif OCCUPATION_LEVEL_3 = 011 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS011);
+	elseif OCCUPATION_LEVEL_3 = 021 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS021);
+	elseif OCCUPATION_LEVEL_3 = 031 then
+		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS031);
+	endif;
 
 
 PROC DIVISIONS
+
 onfocus
- 
-if SECTION = 01 then
- 	setvalueset (DIVISIONS,DIVISIONS_VSA);
-elseif SECTION = 02 then
-	setvalueset (DIVISIONS,DIVISIONS_VSB);
-elseif SECTION = 03 then
-	setvalueset (DIVISIONS,DIVISIONS_VSC);
-elseif SECTION = 04 then
-	setvalueset (DIVISIONS,DIVISIONS_VSD);
-elseif SECTION = 05 then
-	setvalueset (DIVISIONS,DIVISIONS_VSE);
-elseif SECTION = 06 then
-	setvalueset (DIVISIONS,DIVISIONS_VSF);
-elseif SECTION = 07 then
-	setvalueset (DIVISIONS,DIVISIONS_VSG);
-elseif SECTION = 08 then
-	setvalueset (DIVISIONS,DIVISIONS_VSH);
-elseif SECTION = 09 then
-	setvalueset (DIVISIONS,DIVISIONS_VSI);
-elseif SECTION = 10 then
-	setvalueset (DIVISIONS,DIVISIONS_VSJ);
-elseif SECTION = 11 then
-	setvalueset (DIVISIONS,DIVISIONS_VSK);
-elseif SECTION = 12 then
-	setvalueset (DIVISIONS,DIVISIONS_VSL);
-elseif SECTION = 13 then
-	setvalueset (DIVISIONS,DIVISIONS_VSM);
-elseif SECTION = 14 then
-	setvalueset (DIVISIONS,DIVISIONS_VSN);
-elseif SECTION = 15 then
-	setvalueset (DIVISIONS,DIVISIONS_VSO);
-elseif SECTION = 16 then
-	setvalueset (DIVISIONS,DIVISIONS_VSP);
-elseif SECTION = 17 then
-	setvalueset (DIVISIONS,DIVISIONS_VSQ);
-elseif SECTION = 18 then
-	setvalueset (DIVISIONS,DIVISIONS_VSR);
-elseif SECTION = 19 then
-	setvalueset (DIVISIONS,DIVISIONS_VSS);
-elseif SECTION = 20 then
-	setvalueset (DIVISIONS,DIVISIONS_VST);
-elseif SECTION = 21 then
-	setvalueset (DIVISIONS,DIVISIONS_VSU);
-endif;
+
+	if SECTION = 01 then
+		setvalueset (DIVISIONS,DIVISIONS_VSA);
+	elseif SECTION = 02 then
+		setvalueset (DIVISIONS,DIVISIONS_VSB);
+	elseif SECTION = 03 then
+		setvalueset (DIVISIONS,DIVISIONS_VSC);
+	elseif SECTION = 04 then
+		setvalueset (DIVISIONS,DIVISIONS_VSD);
+	elseif SECTION = 05 then
+		setvalueset (DIVISIONS,DIVISIONS_VSE);
+	elseif SECTION = 06 then
+		setvalueset (DIVISIONS,DIVISIONS_VSF);
+	elseif SECTION = 07 then
+		setvalueset (DIVISIONS,DIVISIONS_VSG);
+	elseif SECTION = 08 then
+		setvalueset (DIVISIONS,DIVISIONS_VSH);
+	elseif SECTION = 09 then
+		setvalueset (DIVISIONS,DIVISIONS_VSI);
+	elseif SECTION = 10 then
+		setvalueset (DIVISIONS,DIVISIONS_VSJ);
+	elseif SECTION = 11 then
+		setvalueset (DIVISIONS,DIVISIONS_VSK);
+	elseif SECTION = 12 then
+		setvalueset (DIVISIONS,DIVISIONS_VSL);
+	elseif SECTION = 13 then
+		setvalueset (DIVISIONS,DIVISIONS_VSM);
+	elseif SECTION = 14 then
+		setvalueset (DIVISIONS,DIVISIONS_VSN);
+	elseif SECTION = 15 then
+		setvalueset (DIVISIONS,DIVISIONS_VSO);
+	elseif SECTION = 16 then
+		setvalueset (DIVISIONS,DIVISIONS_VSP);
+	elseif SECTION = 17 then
+		setvalueset (DIVISIONS,DIVISIONS_VSQ);
+	elseif SECTION = 18 then
+		setvalueset (DIVISIONS,DIVISIONS_VSR);
+	elseif SECTION = 19 then
+		setvalueset (DIVISIONS,DIVISIONS_VSS);
+	elseif SECTION = 20 then
+		setvalueset (DIVISIONS,DIVISIONS_VST);
+	elseif SECTION = 21 then
+		setvalueset (DIVISIONS,DIVISIONS_VSU);
+	endif;
+
 
 PROC GROUPS
+
 onfocus
- 
-if DIVISIONS = 01 then
- 	setvalueset (GROUPS,GROUPS_VS01);
-elseif DIVISIONS = 02 then
-	setvalueset (GROUPS,GROUPS_VS02);
-elseif DIVISIONS = 03 then
-	setvalueset (GROUPS,GROUPS_VS03);
-elseif DIVISIONS = 05 then
-	setvalueset (GROUPS,GROUPS_VS05);
-elseif DIVISIONS = 06 then
-	setvalueset (GROUPS,GROUPS_VS06);
-elseif DIVISIONS = 07 then
-	setvalueset (GROUPS,GROUPS_VS07);
-elseif DIVISIONS = 08 then
-	setvalueset (GROUPS,GROUPS_VS08);
-elseif DIVISIONS = 09 then
-	setvalueset (GROUPS,GROUPS_VS09);
-elseif DIVISIONS = 10 then
-	setvalueset (GROUPS,GROUPS_VS10);
-elseif DIVISIONS = 11 then
-	setvalueset (GROUPS,GROUPS_VS11);
-elseif DIVISIONS = 12 then
-	setvalueset (GROUPS,GROUPS_VS12);
-elseif DIVISIONS = 13 then
-	setvalueset (GROUPS,GROUPS_VS13);
-elseif DIVISIONS = 14 then
-	setvalueset (GROUPS,GROUPS_VS14);
-elseif DIVISIONS = 15 then
-	setvalueset (GROUPS,GROUPS_VS15);
-elseif DIVISIONS = 16 then
-	setvalueset (GROUPS,GROUPS_VS16);
-elseif DIVISIONS = 17 then
-	setvalueset (GROUPS,GROUPS_VS17);
-elseif DIVISIONS = 18 then
-	setvalueset (GROUPS,GROUPS_VS18);
-elseif DIVISIONS = 19 then
-	setvalueset (GROUPS,GROUPS_VS02);
-elseif DIVISIONS = 02 then
-	setvalueset (GROUPS,GROUPS_VS19);
-elseif DIVISIONS = 20 then
-	setvalueset (GROUPS,GROUPS_VS20);
-elseif DIVISIONS = 21 then
-	setvalueset (GROUPS,GROUPS_VS21);
-elseif DIVISIONS = 22 then
-	setvalueset (GROUPS,GROUPS_VS22);
-elseif DIVISIONS = 23 then
-	setvalueset (GROUPS,GROUPS_VS23);
-elseif DIVISIONS = 24 then
-	setvalueset (GROUPS,GROUPS_VS24);
-elseif DIVISIONS = 25 then
-	setvalueset (GROUPS,GROUPS_VS25);
-elseif DIVISIONS = 26 then
-	setvalueset (GROUPS,GROUPS_VS26);
-elseif DIVISIONS = 27 then
-	setvalueset (GROUPS,GROUPS_VS27);
-elseif DIVISIONS = 28 then
-	setvalueset (GROUPS,GROUPS_VS28);
-elseif DIVISIONS = 29 then
-	setvalueset (GROUPS,GROUPS_VS29);
-elseif DIVISIONS = 30 then
-	setvalueset (GROUPS,GROUPS_VS30);
-elseif DIVISIONS = 31 then
-	setvalueset (GROUPS,GROUPS_VS31);
-elseif DIVISIONS = 32 then
-	setvalueset (GROUPS,GROUPS_VS32);
-elseif DIVISIONS = 33 then
-	setvalueset (GROUPS,GROUPS_VS33);
-elseif DIVISIONS = 35 then
-	setvalueset (GROUPS,GROUPS_VS35);
-elseif DIVISIONS = 36 then
-	setvalueset (GROUPS,GROUPS_VS36);
-elseif DIVISIONS = 37 then
-	setvalueset (GROUPS,GROUPS_VS37);
-elseif DIVISIONS = 38 then
-	setvalueset (GROUPS,GROUPS_VS38);
-elseif DIVISIONS = 39 then
-	setvalueset (GROUPS,GROUPS_VS39);
-elseif DIVISIONS = 41 then
-	setvalueset (GROUPS,GROUPS_VS41);
-elseif DIVISIONS = 42 then
-	setvalueset (GROUPS,GROUPS_VS42);
-elseif DIVISIONS = 43 then
-	setvalueset (GROUPS,GROUPS_VS43);
-elseif DIVISIONS = 45 then
-	setvalueset (GROUPS,GROUPS_VS45);
-elseif DIVISIONS = 46 then
-	setvalueset (GROUPS,GROUPS_VS46);
-elseif DIVISIONS = 47 then
-	setvalueset (GROUPS,GROUPS_VS47);
-elseif DIVISIONS = 49 then
-	setvalueset (GROUPS,GROUPS_VS49);
-elseif DIVISIONS = 50 then
-	setvalueset (GROUPS,GROUPS_VS50);
-elseif DIVISIONS = 51 then
-	setvalueset (GROUPS,GROUPS_VS51);
-elseif DIVISIONS = 52 then
-	setvalueset (GROUPS,GROUPS_VS52);
-elseif DIVISIONS = 53 then
-	setvalueset (GROUPS,GROUPS_VS53);
-elseif DIVISIONS = 55 then
-	setvalueset (GROUPS,GROUPS_VS55);
-elseif DIVISIONS = 56 then
-	setvalueset (GROUPS,GROUPS_VS56);
-elseif DIVISIONS = 58 then
-	setvalueset (GROUPS,GROUPS_VS58);
-elseif DIVISIONS = 59 then
-	setvalueset (GROUPS,GROUPS_VS59);
-elseif DIVISIONS = 60 then
-	setvalueset (GROUPS,GROUPS_VS60);
-elseif DIVISIONS = 61 then
-	setvalueset (GROUPS,GROUPS_VS61);
-elseif DIVISIONS = 62 then
-	setvalueset (GROUPS,GROUPS_VS62);
-elseif DIVISIONS = 63 then
-	setvalueset (GROUPS,GROUPS_VS63);
-elseif DIVISIONS = 64 then
-	setvalueset (GROUPS,GROUPS_VS64);
-elseif DIVISIONS = 65 then
-	setvalueset (GROUPS,GROUPS_VS65);
-elseif DIVISIONS = 66 then
-	setvalueset (GROUPS,GROUPS_VS66);
-elseif DIVISIONS = 68 then
-	setvalueset (GROUPS,GROUPS_VS68);
-elseif DIVISIONS = 69 then
-	setvalueset (GROUPS,GROUPS_VS69);
-elseif DIVISIONS = 70 then
-	setvalueset (GROUPS,GROUPS_VS70);
-elseif DIVISIONS = 71 then
-	setvalueset (GROUPS,GROUPS_VS71);
-elseif DIVISIONS = 72 then
-	setvalueset (GROUPS,GROUPS_VS72);
-elseif DIVISIONS = 73 then
-	setvalueset (GROUPS,GROUPS_VS73);
-elseif DIVISIONS = 74 then
-	setvalueset (GROUPS,GROUPS_VS74);
-elseif DIVISIONS = 75 then
-	setvalueset (GROUPS,GROUPS_VS75);
-elseif DIVISIONS = 77 then
-	setvalueset (GROUPS,GROUPS_VS77);
-elseif DIVISIONS = 78 then
-	setvalueset (GROUPS,GROUPS_VS78);
-elseif DIVISIONS = 79 then
-	setvalueset (GROUPS,GROUPS_VS79);
-elseif DIVISIONS = 80 then
-	setvalueset (GROUPS,GROUPS_VS80);
-elseif DIVISIONS = 81 then
-	setvalueset (GROUPS,GROUPS_VS81);
-elseif DIVISIONS = 82 then
-	setvalueset (GROUPS,GROUPS_VS82);
-elseif DIVISIONS = 84 then
-	setvalueset (GROUPS,GROUPS_VS84);
-elseif DIVISIONS = 85 then
-	setvalueset (GROUPS,GROUPS_VS85);
-elseif DIVISIONS = 86 then
-	setvalueset (GROUPS,GROUPS_VS86);
-elseif DIVISIONS = 87 then
-	setvalueset (GROUPS,GROUPS_VS87);
-elseif DIVISIONS = 88 then
-	setvalueset (GROUPS,GROUPS_VS88);
-elseif DIVISIONS = 90 then
-	setvalueset (GROUPS,GROUPS_VS90);
-elseif DIVISIONS = 92 then
-	setvalueset (GROUPS,GROUPS_VS92);
-elseif DIVISIONS = 93 then
-	setvalueset (GROUPS,GROUPS_VS93);
-elseif DIVISIONS = 94 then
-	setvalueset (GROUPS,GROUPS_VS94);
-elseif DIVISIONS = 95 then
-	setvalueset (GROUPS,GROUPS_VS95);
-elseif DIVISIONS = 96 then
-	setvalueset (GROUPS,GROUPS_VS96);
-elseif DIVISIONS = 97 then
-	setvalueset (GROUPS,GROUPS_VS97);
-elseif DIVISIONS = 98 then
-	setvalueset (GROUPS,GROUPS_VS98);
-elseif DIVISIONS = 99 then
-	setvalueset (GROUPS,GROUPS_VS99);
-endif;
+
+	if DIVISIONS = 01 then
+		setvalueset (GROUPS,GROUPS_VS01);
+	elseif DIVISIONS = 02 then
+		setvalueset (GROUPS,GROUPS_VS02);
+	elseif DIVISIONS = 03 then
+		setvalueset (GROUPS,GROUPS_VS03);
+	elseif DIVISIONS = 05 then
+		setvalueset (GROUPS,GROUPS_VS05);
+	elseif DIVISIONS = 06 then
+		setvalueset (GROUPS,GROUPS_VS06);
+	elseif DIVISIONS = 07 then
+		setvalueset (GROUPS,GROUPS_VS07);
+	elseif DIVISIONS = 08 then
+		setvalueset (GROUPS,GROUPS_VS08);
+	elseif DIVISIONS = 09 then
+		setvalueset (GROUPS,GROUPS_VS09);
+	elseif DIVISIONS = 10 then
+		setvalueset (GROUPS,GROUPS_VS10);
+	elseif DIVISIONS = 11 then
+		setvalueset (GROUPS,GROUPS_VS11);
+	elseif DIVISIONS = 12 then
+		setvalueset (GROUPS,GROUPS_VS12);
+	elseif DIVISIONS = 13 then
+		setvalueset (GROUPS,GROUPS_VS13);
+	elseif DIVISIONS = 14 then
+		setvalueset (GROUPS,GROUPS_VS14);
+	elseif DIVISIONS = 15 then
+		setvalueset (GROUPS,GROUPS_VS15);
+	elseif DIVISIONS = 16 then
+		setvalueset (GROUPS,GROUPS_VS16);
+	elseif DIVISIONS = 17 then
+		setvalueset (GROUPS,GROUPS_VS17);
+	elseif DIVISIONS = 18 then
+		setvalueset (GROUPS,GROUPS_VS18);
+	elseif DIVISIONS = 19 then
+		setvalueset (GROUPS,GROUPS_VS02);
+	elseif DIVISIONS = 02 then
+		setvalueset (GROUPS,GROUPS_VS19);
+	elseif DIVISIONS = 20 then
+		setvalueset (GROUPS,GROUPS_VS20);
+	elseif DIVISIONS = 21 then
+		setvalueset (GROUPS,GROUPS_VS21);
+	elseif DIVISIONS = 22 then
+		setvalueset (GROUPS,GROUPS_VS22);
+	elseif DIVISIONS = 23 then
+		setvalueset (GROUPS,GROUPS_VS23);
+	elseif DIVISIONS = 24 then
+		setvalueset (GROUPS,GROUPS_VS24);
+	elseif DIVISIONS = 25 then
+		setvalueset (GROUPS,GROUPS_VS25);
+	elseif DIVISIONS = 26 then
+		setvalueset (GROUPS,GROUPS_VS26);
+	elseif DIVISIONS = 27 then
+		setvalueset (GROUPS,GROUPS_VS27);
+	elseif DIVISIONS = 28 then
+		setvalueset (GROUPS,GROUPS_VS28);
+	elseif DIVISIONS = 29 then
+		setvalueset (GROUPS,GROUPS_VS29);
+	elseif DIVISIONS = 30 then
+		setvalueset (GROUPS,GROUPS_VS30);
+	elseif DIVISIONS = 31 then
+		setvalueset (GROUPS,GROUPS_VS31);
+	elseif DIVISIONS = 32 then
+		setvalueset (GROUPS,GROUPS_VS32);
+	elseif DIVISIONS = 33 then
+		setvalueset (GROUPS,GROUPS_VS33);
+	elseif DIVISIONS = 35 then
+		setvalueset (GROUPS,GROUPS_VS35);
+	elseif DIVISIONS = 36 then
+		setvalueset (GROUPS,GROUPS_VS36);
+	elseif DIVISIONS = 37 then
+		setvalueset (GROUPS,GROUPS_VS37);
+	elseif DIVISIONS = 38 then
+		setvalueset (GROUPS,GROUPS_VS38);
+	elseif DIVISIONS = 39 then
+		setvalueset (GROUPS,GROUPS_VS39);
+	elseif DIVISIONS = 41 then
+		setvalueset (GROUPS,GROUPS_VS41);
+	elseif DIVISIONS = 42 then
+		setvalueset (GROUPS,GROUPS_VS42);
+	elseif DIVISIONS = 43 then
+		setvalueset (GROUPS,GROUPS_VS43);
+	elseif DIVISIONS = 45 then
+		setvalueset (GROUPS,GROUPS_VS45);
+	elseif DIVISIONS = 46 then
+		setvalueset (GROUPS,GROUPS_VS46);
+	elseif DIVISIONS = 47 then
+		setvalueset (GROUPS,GROUPS_VS47);
+	elseif DIVISIONS = 49 then
+		setvalueset (GROUPS,GROUPS_VS49);
+	elseif DIVISIONS = 50 then
+		setvalueset (GROUPS,GROUPS_VS50);
+	elseif DIVISIONS = 51 then
+		setvalueset (GROUPS,GROUPS_VS51);
+	elseif DIVISIONS = 52 then
+		setvalueset (GROUPS,GROUPS_VS52);
+	elseif DIVISIONS = 53 then
+		setvalueset (GROUPS,GROUPS_VS53);
+	elseif DIVISIONS = 55 then
+		setvalueset (GROUPS,GROUPS_VS55);
+	elseif DIVISIONS = 56 then
+		setvalueset (GROUPS,GROUPS_VS56);
+	elseif DIVISIONS = 58 then
+		setvalueset (GROUPS,GROUPS_VS58);
+	elseif DIVISIONS = 59 then
+		setvalueset (GROUPS,GROUPS_VS59);
+	elseif DIVISIONS = 60 then
+		setvalueset (GROUPS,GROUPS_VS60);
+	elseif DIVISIONS = 61 then
+		setvalueset (GROUPS,GROUPS_VS61);
+	elseif DIVISIONS = 62 then
+		setvalueset (GROUPS,GROUPS_VS62);
+	elseif DIVISIONS = 63 then
+		setvalueset (GROUPS,GROUPS_VS63);
+	elseif DIVISIONS = 64 then
+		setvalueset (GROUPS,GROUPS_VS64);
+	elseif DIVISIONS = 65 then
+		setvalueset (GROUPS,GROUPS_VS65);
+	elseif DIVISIONS = 66 then
+		setvalueset (GROUPS,GROUPS_VS66);
+	elseif DIVISIONS = 68 then
+		setvalueset (GROUPS,GROUPS_VS68);
+	elseif DIVISIONS = 69 then
+		setvalueset (GROUPS,GROUPS_VS69);
+	elseif DIVISIONS = 70 then
+		setvalueset (GROUPS,GROUPS_VS70);
+	elseif DIVISIONS = 71 then
+		setvalueset (GROUPS,GROUPS_VS71);
+	elseif DIVISIONS = 72 then
+		setvalueset (GROUPS,GROUPS_VS72);
+	elseif DIVISIONS = 73 then
+		setvalueset (GROUPS,GROUPS_VS73);
+	elseif DIVISIONS = 74 then
+		setvalueset (GROUPS,GROUPS_VS74);
+	elseif DIVISIONS = 75 then
+		setvalueset (GROUPS,GROUPS_VS75);
+	elseif DIVISIONS = 77 then
+		setvalueset (GROUPS,GROUPS_VS77);
+	elseif DIVISIONS = 78 then
+		setvalueset (GROUPS,GROUPS_VS78);
+	elseif DIVISIONS = 79 then
+		setvalueset (GROUPS,GROUPS_VS79);
+	elseif DIVISIONS = 80 then
+		setvalueset (GROUPS,GROUPS_VS80);
+	elseif DIVISIONS = 81 then
+		setvalueset (GROUPS,GROUPS_VS81);
+	elseif DIVISIONS = 82 then
+		setvalueset (GROUPS,GROUPS_VS82);
+	elseif DIVISIONS = 84 then
+		setvalueset (GROUPS,GROUPS_VS84);
+	elseif DIVISIONS = 85 then
+		setvalueset (GROUPS,GROUPS_VS85);
+	elseif DIVISIONS = 86 then
+		setvalueset (GROUPS,GROUPS_VS86);
+	elseif DIVISIONS = 87 then
+		setvalueset (GROUPS,GROUPS_VS87);
+	elseif DIVISIONS = 88 then
+		setvalueset (GROUPS,GROUPS_VS88);
+	elseif DIVISIONS = 90 then
+		setvalueset (GROUPS,GROUPS_VS90);
+	elseif DIVISIONS = 92 then
+		setvalueset (GROUPS,GROUPS_VS92);
+	elseif DIVISIONS = 93 then
+		setvalueset (GROUPS,GROUPS_VS93);
+	elseif DIVISIONS = 94 then
+		setvalueset (GROUPS,GROUPS_VS94);
+	elseif DIVISIONS = 95 then
+		setvalueset (GROUPS,GROUPS_VS95);
+	elseif DIVISIONS = 96 then
+		setvalueset (GROUPS,GROUPS_VS96);
+	elseif DIVISIONS = 97 then
+		setvalueset (GROUPS,GROUPS_VS97);
+	elseif DIVISIONS = 98 then
+		setvalueset (GROUPS,GROUPS_VS98);
+	elseif DIVISIONS = 99 then
+		setvalueset (GROUPS,GROUPS_VS99);
+	endif;
+
 
 PROC CLASS
+
 onfocus
 
-if GROUPS = 011 then
- 	setvalueset (CLASS,CLASS_VS011);
-elseif GROUPS = 012 then
-	setvalueset (CLASS,CLASS_VS012);
-elseif GROUPS = 013 then
-	setvalueset (CLASS,CLASS_VS013);
-elseif GROUPS = 014 then
-	setvalueset (CLASS,CLASS_VS014);
-elseif GROUPS = 015 then
-	setvalueset (CLASS,CLASS_VS015);
-elseif GROUPS = 016 then
-	setvalueset (CLASS,CLASS_VS016);
-elseif GROUPS = 017 then
-	setvalueset (CLASS,CLASS_VS017);
-elseif GROUPS = 021 then
-	setvalueset (CLASS,CLASS_VS021);
-elseif GROUPS = 022 then
-	setvalueset (CLASS,CLASS_VS022);
-elseif GROUPS = 023 then
-	setvalueset (CLASS,CLASS_VS023);
-elseif GROUPS = 024 then
-	setvalueset (CLASS,CLASS_VS024);
-elseif GROUPS = 031 then
-	setvalueset (CLASS,CLASS_VS031);
-elseif GROUPS = 032 then
-	setvalueset (CLASS,CLASS_VS032);
-elseif GROUPS = 051 then
-	setvalueset (CLASS,CLASS_VS051);
-elseif GROUPS = 052 then
-	setvalueset (CLASS,CLASS_VS052);
-elseif GROUPS = 061 then
-	setvalueset (CLASS,CLASS_VS061);
-elseif GROUPS = 062 then
-	setvalueset (CLASS,CLASS_VS062);
-elseif GROUPS = 071 then
-	setvalueset (CLASS,CLASS_VS071);
-elseif GROUPS = 072 then
-	setvalueset (CLASS,CLASS_VS072);
-elseif GROUPS = 081 then
-	setvalueset (CLASS,CLASS_VS081);
-elseif GROUPS = 089 then
-	setvalueset (CLASS,CLASS_VS089);
-elseif GROUPS = 091 then
-	setvalueset (CLASS,CLASS_VS091);
-elseif GROUPS = 099 then
-	setvalueset (CLASS,CLASS_VS099);
-elseif GROUPS = 101 then
-	setvalueset (CLASS,CLASS_VS101);
-elseif GROUPS = 102 then
-	setvalueset (CLASS,CLASS_VS102);
-elseif GROUPS = 103 then
-	setvalueset (CLASS,CLASS_VS103);
-elseif GROUPS = 104 then
-	setvalueset (CLASS,CLASS_VS104);
-elseif GROUPS = 105 then
-	setvalueset (CLASS,CLASS_VS105);
-elseif GROUPS = 106 then
-	setvalueset (CLASS,CLASS_VS106);
-elseif GROUPS = 107 then
-	setvalueset (CLASS,CLASS_VS107);
-elseif GROUPS = 108 then
-	setvalueset (CLASS,CLASS_VS108);
-elseif GROUPS = 110 then
-	setvalueset (CLASS,CLASS_VS110);
-elseif GROUPS = 120 then
-	setvalueset (CLASS,CLASS_VS120);
-elseif GROUPS = 131 then
-	setvalueset (CLASS,CLASS_VS131);
-elseif GROUPS = 139 then
-	setvalueset (CLASS,CLASS_VS139);
-elseif GROUPS = 141 then
-	setvalueset (CLASS,CLASS_VS141);
-elseif GROUPS = 142 then
-	setvalueset (CLASS,CLASS_VS142);
-elseif GROUPS = 143 then
-	setvalueset (CLASS,CLASS_VS143);
-elseif GROUPS = 151 then
-	setvalueset (CLASS,CLASS_VS151);
-elseif GROUPS = 152 then
-	setvalueset (CLASS,CLASS_VS152);
-elseif GROUPS = 161 then
-	setvalueset (CLASS,CLASS_VS161);
-elseif GROUPS = 162 then
-	setvalueset (CLASS,CLASS_VS162);
-elseif GROUPS = 170 then
-	setvalueset (CLASS,CLASS_VS170);
-elseif GROUPS = 181 then
-	setvalueset (CLASS,CLASS_VS181);
-elseif GROUPS = 182 then
-	setvalueset (CLASS,CLASS_VS182);
-elseif GROUPS = 191 then
-	setvalueset (CLASS,CLASS_VS191);
-elseif GROUPS = 192 then
-	setvalueset (CLASS,CLASS_VS192);
-elseif GROUPS =	201	then	
-	setvalueset (CLASS,CLASS_VS201);
-elseif GROUPS =	202	then	
-	setvalueset (CLASS,CLASS_VS202);
-elseif GROUPS =	203	then	
-	setvalueset (CLASS,CLASS_VS203);
-elseif GROUPS =	210	then	
-	setvalueset (CLASS,CLASS_VS210);
-elseif GROUPS =	221	then	
-	setvalueset (CLASS,CLASS_VS221);
-elseif GROUPS =	222	then	
-	setvalueset (CLASS,CLASS_VS222);
-elseif GROUPS =	231	then	
-	setvalueset (CLASS,CLASS_VS231);
-elseif GROUPS =	239	then	
-	setvalueset (CLASS,CLASS_VS239);
-elseif GROUPS =	241	then	
-	setvalueset (CLASS,CLASS_VS241);
-elseif GROUPS =	242	then	
-	setvalueset (CLASS,CLASS_VS242);
-elseif GROUPS =	243	then	
-	setvalueset (CLASS,CLASS_VS243);
-elseif GROUPS =	251	then	
-	setvalueset (CLASS,CLASS_VS251);
-elseif GROUPS =	252	then	
-	setvalueset (CLASS,CLASS_VS252);
-elseif GROUPS =	259	then	
-	setvalueset (CLASS,CLASS_VS259);
-elseif GROUPS =	261	then	
-	setvalueset (CLASS,CLASS_VS261);
-elseif GROUPS =	262	then	
-	setvalueset (CLASS,CLASS_VS262);
-elseif GROUPS =	263	then
-	setvalueset (CLASS,CLASS_VS263);
-elseif GROUPS =	264	then
-	setvalueset (CLASS,CLASS_VS264);
-elseif GROUPS =	265	then
-	setvalueset (CLASS,CLASS_VS265);
-elseif GROUPS =	266	then
-	setvalueset (CLASS,CLASS_VS266);
-elseif GROUPS =	267	then
-	setvalueset (CLASS,CLASS_VS267);
-elseif GROUPS =	268	then
-	setvalueset (CLASS,CLASS_VS268);
-elseif GROUPS =	271	then
-	setvalueset (CLASS,CLASS_VS271);
-elseif GROUPS =	272	then
-	setvalueset (CLASS,CLASS_VS272);
-elseif GROUPS =	273	then
-	setvalueset (CLASS,CLASS_VS273);
-elseif GROUPS =	274	then
-	setvalueset (CLASS,CLASS_VS274);
-elseif GROUPS =	275	then
-	setvalueset (CLASS,CLASS_VS275);
-elseif GROUPS =	279	then
-	setvalueset (CLASS,CLASS_VS279);
-elseif GROUPS =	281	then
-	setvalueset (CLASS,CLASS_VS281);
-elseif GROUPS =	282	then
-	setvalueset (CLASS,CLASS_VS282);
-elseif GROUPS =	291	then
-	setvalueset (CLASS,CLASS_VS291);
-elseif GROUPS =	292	then
-	setvalueset (CLASS,CLASS_VS292);
-elseif GROUPS =	293	then
-	setvalueset (CLASS,CLASS_VS293);
-elseif GROUPS =	301	then	
-	setvalueset (CLASS,CLASS_VS301);
-elseif GROUPS =	302	then	
-	setvalueset (CLASS,CLASS_VS302);
-elseif GROUPS =	303	then	
-	setvalueset (CLASS,CLASS_VS303);
-elseif GROUPS =	304	then	
-	setvalueset (CLASS,CLASS_VS304);
-elseif GROUPS =	309	then	
-	setvalueset (CLASS,CLASS_VS309);
-elseif GROUPS =	310	then	
-	setvalueset (CLASS,CLASS_VS310);
-elseif GROUPS =	321	then
-	setvalueset (CLASS,CLASS_VS321);
-elseif GROUPS =	322	then
-	setvalueset (CLASS,CLASS_VS322);
-elseif GROUPS =	323	then
-	setvalueset (CLASS,CLASS_VS323);
-elseif GROUPS =	324	then
-	setvalueset (CLASS,CLASS_VS324);
-elseif GROUPS =	325	then
-	setvalueset (CLASS,CLASS_VS325);
-elseif GROUPS =	329	then
-	setvalueset (CLASS,CLASS_VS329);
-elseif GROUPS =	331	then
-	setvalueset (CLASS,CLASS_VS331);
-elseif GROUPS =	332	then
-	setvalueset (CLASS,CLASS_VS332);
-elseif GROUPS =	351	then
-	setvalueset (CLASS,CLASS_VS351);
-elseif GROUPS =	352	then
-	setvalueset (CLASS,CLASS_VS352);
-elseif GROUPS =	353	then
-	setvalueset (CLASS,CLASS_VS353);
-elseif GROUPS =	360	then
-	setvalueset (CLASS,CLASS_VS360);
-elseif GROUPS =	370	then
-	setvalueset (CLASS,CLASS_VS370);
-elseif GROUPS =	381	then
-	setvalueset (CLASS,CLASS_VS381);
-elseif GROUPS =	382	then
-	setvalueset (CLASS,CLASS_VS382);
-elseif GROUPS =	383	then
-	setvalueset (CLASS,CLASS_VS383);
-elseif GROUPS =	390	then
-	setvalueset (CLASS,CLASS_VS390);
-elseif GROUPS =	410	then
-	setvalueset (CLASS,CLASS_VS410);
-elseif GROUPS =	421	then
-	setvalueset (CLASS,CLASS_VS421);
-elseif GROUPS =	422	then
-	setvalueset (CLASS,CLASS_VS422);
-elseif GROUPS =	429	then
-	setvalueset (CLASS,CLASS_VS429);
-elseif GROUPS =	431	then
-	setvalueset (CLASS,CLASS_VS431);
-elseif GROUPS =	432	then
-	setvalueset (CLASS,CLASS_VS432);
-elseif GROUPS =	433	then
-	setvalueset (CLASS,CLASS_VS433);
-elseif GROUPS =	439	then
-	setvalueset (CLASS,CLASS_VS439);
-elseif GROUPS =	451	then
-	setvalueset (CLASS,CLASS_VS451);
-elseif GROUPS =	452	then
-	setvalueset (CLASS,CLASS_VS452);
-elseif GROUPS =	453	then
-	setvalueset (CLASS,CLASS_VS453);
-elseif GROUPS =	454	then
-	setvalueset (CLASS,CLASS_VS454);
-elseif GROUPS =	461	then
-	setvalueset (CLASS,CLASS_VS461);
-elseif GROUPS =	462	then
-	setvalueset (CLASS,CLASS_VS462);
-elseif GROUPS =	463	then
-	setvalueset (CLASS,CLASS_VS463);
-elseif GROUPS =	464	then
-	setvalueset (CLASS,CLASS_VS464);
-elseif GROUPS =	465	then
-	setvalueset (CLASS,CLASS_VS465);
-elseif GROUPS =	466	then
-	setvalueset (CLASS,CLASS_VS466);
-elseif GROUPS =	469	then
-	setvalueset (CLASS,CLASS_VS469);
-elseif GROUPS =	471	then
-	setvalueset (CLASS,CLASS_VS471);
-elseif GROUPS =	472	then
-	setvalueset (CLASS,CLASS_VS472);
-elseif GROUPS =	473	then
-	setvalueset (CLASS,CLASS_VS473);
-elseif GROUPS =	474	then
-	setvalueset (CLASS,CLASS_VS474);
-elseif GROUPS =	475	then
-	setvalueset (CLASS,CLASS_VS475);
-elseif GROUPS =	476	then
-	setvalueset (CLASS,CLASS_VS476);
-elseif GROUPS =	477	then
-	setvalueset (CLASS,CLASS_VS477);
-elseif GROUPS =	478	then
-	setvalueset (CLASS,CLASS_VS478);
-elseif GROUPS =	479	then
-	setvalueset (CLASS,CLASS_VS479);
-elseif GROUPS =	491	then
-	setvalueset (CLASS,CLASS_VS491);
-elseif GROUPS =	492	then
-	setvalueset (CLASS,CLASS_VS492);
-elseif GROUPS =	493	then
-	setvalueset (CLASS,CLASS_VS493);
-elseif GROUPS =	501	then
-	setvalueset (CLASS,CLASS_VS501);
-elseif GROUPS =	502	then
-	setvalueset (CLASS,CLASS_VS502);
-elseif GROUPS =	511	then
-	setvalueset (CLASS,CLASS_VS511);
-elseif GROUPS =	512	then
-	setvalueset (CLASS,CLASS_VS512);
-elseif GROUPS =	521	then
-	setvalueset (CLASS,CLASS_VS521);
-elseif GROUPS =	522	then
-	setvalueset (CLASS,CLASS_VS522);
-elseif GROUPS =	531	then
-	setvalueset (CLASS,CLASS_VS531);
-elseif GROUPS =	532	then
-	setvalueset (CLASS,CLASS_VS532);
-elseif GROUPS =	551	then
-	setvalueset (CLASS,CLASS_VS551);
-elseif GROUPS =	552	then
-	setvalueset (CLASS,CLASS_VS552);
-elseif GROUPS =	559	then
-	setvalueset (CLASS,CLASS_VS559);
-elseif GROUPS =	561	then
-	setvalueset (CLASS,CLASS_VS561);
-elseif GROUPS =	562	then
-	setvalueset (CLASS,CLASS_VS562);
-elseif GROUPS =	563	then
-	setvalueset (CLASS,CLASS_VS563);
-elseif GROUPS =	581	then
-	setvalueset (CLASS,CLASS_VS581);
-elseif GROUPS =	582	then
-	setvalueset (CLASS,CLASS_VS582);
-elseif GROUPS =	591	then
-	setvalueset (CLASS,CLASS_VS591);
-elseif GROUPS =	592	then
-	setvalueset (CLASS,CLASS_VS592);
-elseif GROUPS =	601	then
-	setvalueset (CLASS,CLASS_VS601);
-elseif GROUPS =	602	then
-	setvalueset (CLASS,CLASS_VS602);
-elseif GROUPS =	611	then
-	setvalueset (CLASS,CLASS_VS611);
-elseif GROUPS =	612	then
-	setvalueset (CLASS,CLASS_VS612);
-elseif GROUPS =	613	then
-	setvalueset (CLASS,CLASS_VS613);
-elseif GROUPS =	619	then
-	setvalueset (CLASS,CLASS_VS619);
-elseif GROUPS =	620	then
-	setvalueset (CLASS,CLASS_VS620);
-elseif GROUPS =	631	then
-	setvalueset (CLASS,CLASS_VS631);
-elseif GROUPS =	639	then
-	setvalueset (CLASS,CLASS_VS639);
-elseif GROUPS =	641	then
-	setvalueset (CLASS,CLASS_VS641);
-elseif GROUPS =	642	then
-	setvalueset (CLASS,CLASS_VS642);
-elseif GROUPS =	643	then
-	setvalueset (CLASS,CLASS_VS643);
-elseif GROUPS =	649	then
-	setvalueset (CLASS,CLASS_VS649);
-elseif GROUPS =	651	then
-	setvalueset (CLASS,CLASS_VS651);
-elseif GROUPS =	652	then
-	setvalueset (CLASS,CLASS_VS652);
-elseif GROUPS =	653	then
-	setvalueset (CLASS,CLASS_VS653);
-elseif GROUPS =	661	then
-	setvalueset (CLASS,CLASS_VS661);
-elseif GROUPS =	662	then
-	setvalueset (CLASS,CLASS_VS662);
-elseif GROUPS =	663	then
-	setvalueset (CLASS,CLASS_VS663);
-elseif GROUPS =	681	then
-	setvalueset (CLASS,CLASS_VS681);
-elseif GROUPS =	682	then
-	setvalueset (CLASS,CLASS_VS682);
-elseif GROUPS =	691	then
-	setvalueset (CLASS,CLASS_VS691);
-elseif GROUPS =	692	then
-	setvalueset (CLASS,CLASS_VS692);
-elseif GROUPS =	701	then
-	setvalueset (CLASS,CLASS_VS701);
-elseif GROUPS =	702	then
-	setvalueset (CLASS,CLASS_VS702);
-elseif GROUPS =	711	then
-	setvalueset (CLASS,CLASS_VS711);
-elseif GROUPS =	712	then
-	setvalueset (CLASS,CLASS_VS712);
-elseif GROUPS =	721	then
-	setvalueset (CLASS,CLASS_VS721);
-elseif GROUPS =	722	then
-	setvalueset (CLASS,CLASS_VS722);
-elseif GROUPS =	731	then
-	setvalueset (CLASS,CLASS_VS731);
-elseif GROUPS =	732	then
-	setvalueset (CLASS,CLASS_VS732);
-elseif GROUPS =	741	then
-	setvalueset (CLASS,CLASS_VS741);
-elseif GROUPS =	742	then
-	setvalueset (CLASS,CLASS_VS742);
-elseif GROUPS =	749	then
-	setvalueset (CLASS,CLASS_VS749);
-elseif GROUPS =	750	then
-	setvalueset (CLASS,CLASS_VS750);
-elseif GROUPS =	771	then
-	setvalueset (CLASS,CLASS_VS771);
-elseif GROUPS =	772	then
-	setvalueset (CLASS,CLASS_VS772);
-elseif GROUPS =	773	then
-	setvalueset (CLASS,CLASS_VS773);
-elseif GROUPS =	774	then
-	setvalueset (CLASS,CLASS_VS774);
-elseif GROUPS =	781	then
-	setvalueset (CLASS,CLASS_VS781);
-elseif GROUPS =	782	then
-	setvalueset (CLASS,CLASS_VS782);
-elseif GROUPS =	783	then
-	setvalueset (CLASS,CLASS_VS783);
-elseif GROUPS =	791	then
-	setvalueset (CLASS,CLASS_VS791);
-elseif GROUPS =	799	then
-	setvalueset (CLASS,CLASS_VS799);
-elseif GROUPS =	801	then
-	setvalueset (CLASS,CLASS_VS801);
-elseif GROUPS =	802	then
-	setvalueset (CLASS,CLASS_VS802);
-elseif GROUPS =	803	then
-	setvalueset (CLASS,CLASS_VS803);
-elseif GROUPS =	811	then
-	setvalueset (CLASS,CLASS_VS811);
-elseif GROUPS =	812	then
-	setvalueset (CLASS,CLASS_VS812);
-elseif GROUPS =	813	then
-	setvalueset (CLASS,CLASS_VS813);
-elseif GROUPS =	821	then
-	setvalueset (CLASS,CLASS_VS821);
-elseif GROUPS =	822	then
-	setvalueset (CLASS,CLASS_VS822);
-elseif GROUPS =	823	then
-	setvalueset (CLASS,CLASS_VS823);
-elseif GROUPS =	829	then
-	setvalueset (CLASS,CLASS_VS829);
-elseif GROUPS =	841	then
-	setvalueset (CLASS,CLASS_VS841);
-elseif GROUPS =	842	then
-	setvalueset (CLASS,CLASS_VS842);
-elseif GROUPS =	843	then
-	setvalueset (CLASS,CLASS_VS843);
-elseif GROUPS =	851	then
-	setvalueset (CLASS,CLASS_VS851);
-elseif GROUPS =	852	then
-	setvalueset (CLASS,CLASS_VS852);
-elseif GROUPS =	853	then
-	setvalueset (CLASS,CLASS_VS853);
-elseif GROUPS =	854	then
-	setvalueset (CLASS,CLASS_VS854);
-elseif GROUPS =	855	then
-	setvalueset (CLASS,CLASS_VS855);
-elseif GROUPS =	861	then
-	setvalueset (CLASS,CLASS_VS861);
-elseif GROUPS =	862	then
-	setvalueset (CLASS,CLASS_VS862);
-elseif GROUPS =	869	then
-	setvalueset (CLASS,CLASS_VS869);
-elseif GROUPS =	871	then
-	setvalueset (CLASS,CLASS_VS871);
-elseif GROUPS =	872	then
-	setvalueset (CLASS,CLASS_VS872);
-elseif GROUPS =	873	then
-	setvalueset (CLASS,CLASS_VS873);
-elseif GROUPS =	879	then
-	setvalueset (CLASS,CLASS_VS879);
-elseif GROUPS =	881	then
-	setvalueset (CLASS,CLASS_VS881);
-elseif GROUPS =	889	then
-	setvalueset (CLASS,CLASS_VS889);
-elseif GROUPS =	900	then
-	setvalueset (CLASS,CLASS_VS900);
-elseif GROUPS =	910	then
-	setvalueset (CLASS,CLASS_VS910);
-elseif GROUPS =	920	then
-	setvalueset (CLASS,CLASS_VS920);
-elseif GROUPS =	931	then
-	setvalueset (CLASS,CLASS_VS931);
-elseif GROUPS =	932	then
-	setvalueset (CLASS,CLASS_VS932);
-elseif GROUPS =	941	then
-	setvalueset (CLASS,CLASS_VS941);
-elseif GROUPS =	942	then
-	setvalueset (CLASS,CLASS_VS942);
-elseif GROUPS =	949	then
-	setvalueset (CLASS,CLASS_VS949);
-elseif GROUPS =	951	then
-	setvalueset (CLASS,CLASS_VS951);
-elseif GROUPS =	952	then
-	setvalueset (CLASS,CLASS_VS952);
-elseif GROUPS =	960	then
-	setvalueset (CLASS,CLASS_VS960);
-elseif GROUPS =	970	then
-	setvalueset (CLASS,CLASS_VS970);
-elseif GROUPS =	981	then
-	setvalueset (CLASS,CLASS_VS981);
-elseif GROUPS =	982	then
-	setvalueset (CLASS,CLASS_VS982);
-elseif GROUPS =	990	then
-	setvalueset (CLASS,CLASS_VS990);
-endif;
+	if GROUPS = 011 then
+		setvalueset (CLASS,CLASS_VS011);
+	elseif GROUPS = 012 then
+		setvalueset (CLASS,CLASS_VS012);
+	elseif GROUPS = 013 then
+		setvalueset (CLASS,CLASS_VS013);
+	elseif GROUPS = 014 then
+		setvalueset (CLASS,CLASS_VS014);
+	elseif GROUPS = 015 then
+		setvalueset (CLASS,CLASS_VS015);
+	elseif GROUPS = 016 then
+		setvalueset (CLASS,CLASS_VS016);
+	elseif GROUPS = 017 then
+		setvalueset (CLASS,CLASS_VS017);
+	elseif GROUPS = 021 then
+		setvalueset (CLASS,CLASS_VS021);
+	elseif GROUPS = 022 then
+		setvalueset (CLASS,CLASS_VS022);
+	elseif GROUPS = 023 then
+		setvalueset (CLASS,CLASS_VS023);
+	elseif GROUPS = 024 then
+		setvalueset (CLASS,CLASS_VS024);
+	elseif GROUPS = 031 then
+		setvalueset (CLASS,CLASS_VS031);
+	elseif GROUPS = 032 then
+		setvalueset (CLASS,CLASS_VS032);
+	elseif GROUPS = 051 then
+		setvalueset (CLASS,CLASS_VS051);
+	elseif GROUPS = 052 then
+		setvalueset (CLASS,CLASS_VS052);
+	elseif GROUPS = 061 then
+		setvalueset (CLASS,CLASS_VS061);
+	elseif GROUPS = 062 then
+		setvalueset (CLASS,CLASS_VS062);
+	elseif GROUPS = 071 then
+		setvalueset (CLASS,CLASS_VS071);
+	elseif GROUPS = 072 then
+		setvalueset (CLASS,CLASS_VS072);
+	elseif GROUPS = 081 then
+		setvalueset (CLASS,CLASS_VS081);
+	elseif GROUPS = 089 then
+		setvalueset (CLASS,CLASS_VS089);
+	elseif GROUPS = 091 then
+		setvalueset (CLASS,CLASS_VS091);
+	elseif GROUPS = 099 then
+		setvalueset (CLASS,CLASS_VS099);
+	elseif GROUPS = 101 then
+		setvalueset (CLASS,CLASS_VS101);
+	elseif GROUPS = 102 then
+		setvalueset (CLASS,CLASS_VS102);
+	elseif GROUPS = 103 then
+		setvalueset (CLASS,CLASS_VS103);
+	elseif GROUPS = 104 then
+		setvalueset (CLASS,CLASS_VS104);
+	elseif GROUPS = 105 then
+		setvalueset (CLASS,CLASS_VS105);
+	elseif GROUPS = 106 then
+		setvalueset (CLASS,CLASS_VS106);
+	elseif GROUPS = 107 then
+		setvalueset (CLASS,CLASS_VS107);
+	elseif GROUPS = 108 then
+		setvalueset (CLASS,CLASS_VS108);
+	elseif GROUPS = 110 then
+		setvalueset (CLASS,CLASS_VS110);
+	elseif GROUPS = 120 then
+		setvalueset (CLASS,CLASS_VS120);
+	elseif GROUPS = 131 then
+		setvalueset (CLASS,CLASS_VS131);
+	elseif GROUPS = 139 then
+		setvalueset (CLASS,CLASS_VS139);
+	elseif GROUPS = 141 then
+		setvalueset (CLASS,CLASS_VS141);
+	elseif GROUPS = 142 then
+		setvalueset (CLASS,CLASS_VS142);
+	elseif GROUPS = 143 then
+		setvalueset (CLASS,CLASS_VS143);
+	elseif GROUPS = 151 then
+		setvalueset (CLASS,CLASS_VS151);
+	elseif GROUPS = 152 then
+		setvalueset (CLASS,CLASS_VS152);
+	elseif GROUPS = 161 then
+		setvalueset (CLASS,CLASS_VS161);
+	elseif GROUPS = 162 then
+		setvalueset (CLASS,CLASS_VS162);
+	elseif GROUPS = 170 then
+		setvalueset (CLASS,CLASS_VS170);
+	elseif GROUPS = 181 then
+		setvalueset (CLASS,CLASS_VS181);
+	elseif GROUPS = 182 then
+		setvalueset (CLASS,CLASS_VS182);
+	elseif GROUPS = 191 then
+		setvalueset (CLASS,CLASS_VS191);
+	elseif GROUPS = 192 then
+		setvalueset (CLASS,CLASS_VS192);
+	elseif GROUPS =	201	then
+		setvalueset (CLASS,CLASS_VS201);
+	elseif GROUPS =	202	then
+		setvalueset (CLASS,CLASS_VS202);
+	elseif GROUPS =	203	then
+		setvalueset (CLASS,CLASS_VS203);
+	elseif GROUPS =	210	then
+		setvalueset (CLASS,CLASS_VS210);
+	elseif GROUPS =	221	then
+		setvalueset (CLASS,CLASS_VS221);
+	elseif GROUPS =	222	then
+		setvalueset (CLASS,CLASS_VS222);
+	elseif GROUPS =	231	then
+		setvalueset (CLASS,CLASS_VS231);
+	elseif GROUPS =	239	then
+		setvalueset (CLASS,CLASS_VS239);
+	elseif GROUPS =	241	then
+		setvalueset (CLASS,CLASS_VS241);
+	elseif GROUPS =	242	then
+		setvalueset (CLASS,CLASS_VS242);
+	elseif GROUPS =	243	then
+		setvalueset (CLASS,CLASS_VS243);
+	elseif GROUPS =	251	then
+		setvalueset (CLASS,CLASS_VS251);
+	elseif GROUPS =	252	then
+		setvalueset (CLASS,CLASS_VS252);
+	elseif GROUPS =	259	then
+		setvalueset (CLASS,CLASS_VS259);
+	elseif GROUPS =	261	then
+		setvalueset (CLASS,CLASS_VS261);
+	elseif GROUPS =	262	then
+		setvalueset (CLASS,CLASS_VS262);
+	elseif GROUPS =	263	then
+		setvalueset (CLASS,CLASS_VS263);
+	elseif GROUPS =	264	then
+		setvalueset (CLASS,CLASS_VS264);
+	elseif GROUPS =	265	then
+		setvalueset (CLASS,CLASS_VS265);
+	elseif GROUPS =	266	then
+		setvalueset (CLASS,CLASS_VS266);
+	elseif GROUPS =	267	then
+		setvalueset (CLASS,CLASS_VS267);
+	elseif GROUPS =	268	then
+		setvalueset (CLASS,CLASS_VS268);
+	elseif GROUPS =	271	then
+		setvalueset (CLASS,CLASS_VS271);
+	elseif GROUPS =	272	then
+		setvalueset (CLASS,CLASS_VS272);
+	elseif GROUPS =	273	then
+		setvalueset (CLASS,CLASS_VS273);
+	elseif GROUPS =	274	then
+		setvalueset (CLASS,CLASS_VS274);
+	elseif GROUPS =	275	then
+		setvalueset (CLASS,CLASS_VS275);
+	elseif GROUPS =	279	then
+		setvalueset (CLASS,CLASS_VS279);
+	elseif GROUPS =	281	then
+		setvalueset (CLASS,CLASS_VS281);
+	elseif GROUPS =	282	then
+		setvalueset (CLASS,CLASS_VS282);
+	elseif GROUPS =	291	then
+		setvalueset (CLASS,CLASS_VS291);
+	elseif GROUPS =	292	then
+		setvalueset (CLASS,CLASS_VS292);
+	elseif GROUPS =	293	then
+		setvalueset (CLASS,CLASS_VS293);
+	elseif GROUPS =	301	then
+		setvalueset (CLASS,CLASS_VS301);
+	elseif GROUPS =	302	then
+		setvalueset (CLASS,CLASS_VS302);
+	elseif GROUPS =	303	then
+		setvalueset (CLASS,CLASS_VS303);
+	elseif GROUPS =	304	then
+		setvalueset (CLASS,CLASS_VS304);
+	elseif GROUPS =	309	then
+		setvalueset (CLASS,CLASS_VS309);
+	elseif GROUPS =	310	then
+		setvalueset (CLASS,CLASS_VS310);
+	elseif GROUPS =	321	then
+		setvalueset (CLASS,CLASS_VS321);
+	elseif GROUPS =	322	then
+		setvalueset (CLASS,CLASS_VS322);
+	elseif GROUPS =	323	then
+		setvalueset (CLASS,CLASS_VS323);
+	elseif GROUPS =	324	then
+		setvalueset (CLASS,CLASS_VS324);
+	elseif GROUPS =	325	then
+		setvalueset (CLASS,CLASS_VS325);
+	elseif GROUPS =	329	then
+		setvalueset (CLASS,CLASS_VS329);
+	elseif GROUPS =	331	then
+		setvalueset (CLASS,CLASS_VS331);
+	elseif GROUPS =	332	then
+		setvalueset (CLASS,CLASS_VS332);
+	elseif GROUPS =	351	then
+		setvalueset (CLASS,CLASS_VS351);
+	elseif GROUPS =	352	then
+		setvalueset (CLASS,CLASS_VS352);
+	elseif GROUPS =	353	then
+		setvalueset (CLASS,CLASS_VS353);
+	elseif GROUPS =	360	then
+		setvalueset (CLASS,CLASS_VS360);
+	elseif GROUPS =	370	then
+		setvalueset (CLASS,CLASS_VS370);
+	elseif GROUPS =	381	then
+		setvalueset (CLASS,CLASS_VS381);
+	elseif GROUPS =	382	then
+		setvalueset (CLASS,CLASS_VS382);
+	elseif GROUPS =	383	then
+		setvalueset (CLASS,CLASS_VS383);
+	elseif GROUPS =	390	then
+		setvalueset (CLASS,CLASS_VS390);
+	elseif GROUPS =	410	then
+		setvalueset (CLASS,CLASS_VS410);
+	elseif GROUPS =	421	then
+		setvalueset (CLASS,CLASS_VS421);
+	elseif GROUPS =	422	then
+		setvalueset (CLASS,CLASS_VS422);
+	elseif GROUPS =	429	then
+		setvalueset (CLASS,CLASS_VS429);
+	elseif GROUPS =	431	then
+		setvalueset (CLASS,CLASS_VS431);
+	elseif GROUPS =	432	then
+		setvalueset (CLASS,CLASS_VS432);
+	elseif GROUPS =	433	then
+		setvalueset (CLASS,CLASS_VS433);
+	elseif GROUPS =	439	then
+		setvalueset (CLASS,CLASS_VS439);
+	elseif GROUPS =	451	then
+		setvalueset (CLASS,CLASS_VS451);
+	elseif GROUPS =	452	then
+		setvalueset (CLASS,CLASS_VS452);
+	elseif GROUPS =	453	then
+		setvalueset (CLASS,CLASS_VS453);
+	elseif GROUPS =	454	then
+		setvalueset (CLASS,CLASS_VS454);
+	elseif GROUPS =	461	then
+		setvalueset (CLASS,CLASS_VS461);
+	elseif GROUPS =	462	then
+		setvalueset (CLASS,CLASS_VS462);
+	elseif GROUPS =	463	then
+		setvalueset (CLASS,CLASS_VS463);
+	elseif GROUPS =	464	then
+		setvalueset (CLASS,CLASS_VS464);
+	elseif GROUPS =	465	then
+		setvalueset (CLASS,CLASS_VS465);
+	elseif GROUPS =	466	then
+		setvalueset (CLASS,CLASS_VS466);
+	elseif GROUPS =	469	then
+		setvalueset (CLASS,CLASS_VS469);
+	elseif GROUPS =	471	then
+		setvalueset (CLASS,CLASS_VS471);
+	elseif GROUPS =	472	then
+		setvalueset (CLASS,CLASS_VS472);
+	elseif GROUPS =	473	then
+		setvalueset (CLASS,CLASS_VS473);
+	elseif GROUPS =	474	then
+		setvalueset (CLASS,CLASS_VS474);
+	elseif GROUPS =	475	then
+		setvalueset (CLASS,CLASS_VS475);
+	elseif GROUPS =	476	then
+		setvalueset (CLASS,CLASS_VS476);
+	elseif GROUPS =	477	then
+		setvalueset (CLASS,CLASS_VS477);
+	elseif GROUPS =	478	then
+		setvalueset (CLASS,CLASS_VS478);
+	elseif GROUPS =	479	then
+		setvalueset (CLASS,CLASS_VS479);
+	elseif GROUPS =	491	then
+		setvalueset (CLASS,CLASS_VS491);
+	elseif GROUPS =	492	then
+		setvalueset (CLASS,CLASS_VS492);
+	elseif GROUPS =	493	then
+		setvalueset (CLASS,CLASS_VS493);
+	elseif GROUPS =	501	then
+		setvalueset (CLASS,CLASS_VS501);
+	elseif GROUPS =	502	then
+		setvalueset (CLASS,CLASS_VS502);
+	elseif GROUPS =	511	then
+		setvalueset (CLASS,CLASS_VS511);
+	elseif GROUPS =	512	then
+		setvalueset (CLASS,CLASS_VS512);
+	elseif GROUPS =	521	then
+		setvalueset (CLASS,CLASS_VS521);
+	elseif GROUPS =	522	then
+		setvalueset (CLASS,CLASS_VS522);
+	elseif GROUPS =	531	then
+		setvalueset (CLASS,CLASS_VS531);
+	elseif GROUPS =	532	then
+		setvalueset (CLASS,CLASS_VS532);
+	elseif GROUPS =	551	then
+		setvalueset (CLASS,CLASS_VS551);
+	elseif GROUPS =	552	then
+		setvalueset (CLASS,CLASS_VS552);
+	elseif GROUPS =	559	then
+		setvalueset (CLASS,CLASS_VS559);
+	elseif GROUPS =	561	then
+		setvalueset (CLASS,CLASS_VS561);
+	elseif GROUPS =	562	then
+		setvalueset (CLASS,CLASS_VS562);
+	elseif GROUPS =	563	then
+		setvalueset (CLASS,CLASS_VS563);
+	elseif GROUPS =	581	then
+		setvalueset (CLASS,CLASS_VS581);
+	elseif GROUPS =	582	then
+		setvalueset (CLASS,CLASS_VS582);
+	elseif GROUPS =	591	then
+		setvalueset (CLASS,CLASS_VS591);
+	elseif GROUPS =	592	then
+		setvalueset (CLASS,CLASS_VS592);
+	elseif GROUPS =	601	then
+		setvalueset (CLASS,CLASS_VS601);
+	elseif GROUPS =	602	then
+		setvalueset (CLASS,CLASS_VS602);
+	elseif GROUPS =	611	then
+		setvalueset (CLASS,CLASS_VS611);
+	elseif GROUPS =	612	then
+		setvalueset (CLASS,CLASS_VS612);
+	elseif GROUPS =	613	then
+		setvalueset (CLASS,CLASS_VS613);
+	elseif GROUPS =	619	then
+		setvalueset (CLASS,CLASS_VS619);
+	elseif GROUPS =	620	then
+		setvalueset (CLASS,CLASS_VS620);
+	elseif GROUPS =	631	then
+		setvalueset (CLASS,CLASS_VS631);
+	elseif GROUPS =	639	then
+		setvalueset (CLASS,CLASS_VS639);
+	elseif GROUPS =	641	then
+		setvalueset (CLASS,CLASS_VS641);
+	elseif GROUPS =	642	then
+		setvalueset (CLASS,CLASS_VS642);
+	elseif GROUPS =	643	then
+		setvalueset (CLASS,CLASS_VS643);
+	elseif GROUPS =	649	then
+		setvalueset (CLASS,CLASS_VS649);
+	elseif GROUPS =	651	then
+		setvalueset (CLASS,CLASS_VS651);
+	elseif GROUPS =	652	then
+		setvalueset (CLASS,CLASS_VS652);
+	elseif GROUPS =	653	then
+		setvalueset (CLASS,CLASS_VS653);
+	elseif GROUPS =	661	then
+		setvalueset (CLASS,CLASS_VS661);
+	elseif GROUPS =	662	then
+		setvalueset (CLASS,CLASS_VS662);
+	elseif GROUPS =	663	then
+		setvalueset (CLASS,CLASS_VS663);
+	elseif GROUPS =	681	then
+		setvalueset (CLASS,CLASS_VS681);
+	elseif GROUPS =	682	then
+		setvalueset (CLASS,CLASS_VS682);
+	elseif GROUPS =	691	then
+		setvalueset (CLASS,CLASS_VS691);
+	elseif GROUPS =	692	then
+		setvalueset (CLASS,CLASS_VS692);
+	elseif GROUPS =	701	then
+		setvalueset (CLASS,CLASS_VS701);
+	elseif GROUPS =	702	then
+		setvalueset (CLASS,CLASS_VS702);
+	elseif GROUPS =	711	then
+		setvalueset (CLASS,CLASS_VS711);
+	elseif GROUPS =	712	then
+		setvalueset (CLASS,CLASS_VS712);
+	elseif GROUPS =	721	then
+		setvalueset (CLASS,CLASS_VS721);
+	elseif GROUPS =	722	then
+		setvalueset (CLASS,CLASS_VS722);
+	elseif GROUPS =	731	then
+		setvalueset (CLASS,CLASS_VS731);
+	elseif GROUPS =	732	then
+		setvalueset (CLASS,CLASS_VS732);
+	elseif GROUPS =	741	then
+		setvalueset (CLASS,CLASS_VS741);
+	elseif GROUPS =	742	then
+		setvalueset (CLASS,CLASS_VS742);
+	elseif GROUPS =	749	then
+		setvalueset (CLASS,CLASS_VS749);
+	elseif GROUPS =	750	then
+		setvalueset (CLASS,CLASS_VS750);
+	elseif GROUPS =	771	then
+		setvalueset (CLASS,CLASS_VS771);
+	elseif GROUPS =	772	then
+		setvalueset (CLASS,CLASS_VS772);
+	elseif GROUPS =	773	then
+		setvalueset (CLASS,CLASS_VS773);
+	elseif GROUPS =	774	then
+		setvalueset (CLASS,CLASS_VS774);
+	elseif GROUPS =	781	then
+		setvalueset (CLASS,CLASS_VS781);
+	elseif GROUPS =	782	then
+		setvalueset (CLASS,CLASS_VS782);
+	elseif GROUPS =	783	then
+		setvalueset (CLASS,CLASS_VS783);
+	elseif GROUPS =	791	then
+		setvalueset (CLASS,CLASS_VS791);
+	elseif GROUPS =	799	then
+		setvalueset (CLASS,CLASS_VS799);
+	elseif GROUPS =	801	then
+		setvalueset (CLASS,CLASS_VS801);
+	elseif GROUPS =	802	then
+		setvalueset (CLASS,CLASS_VS802);
+	elseif GROUPS =	803	then
+		setvalueset (CLASS,CLASS_VS803);
+	elseif GROUPS =	811	then
+		setvalueset (CLASS,CLASS_VS811);
+	elseif GROUPS =	812	then
+		setvalueset (CLASS,CLASS_VS812);
+	elseif GROUPS =	813	then
+		setvalueset (CLASS,CLASS_VS813);
+	elseif GROUPS =	821	then
+		setvalueset (CLASS,CLASS_VS821);
+	elseif GROUPS =	822	then
+		setvalueset (CLASS,CLASS_VS822);
+	elseif GROUPS =	823	then
+		setvalueset (CLASS,CLASS_VS823);
+	elseif GROUPS =	829	then
+		setvalueset (CLASS,CLASS_VS829);
+	elseif GROUPS =	841	then
+		setvalueset (CLASS,CLASS_VS841);
+	elseif GROUPS =	842	then
+		setvalueset (CLASS,CLASS_VS842);
+	elseif GROUPS =	843	then
+		setvalueset (CLASS,CLASS_VS843);
+	elseif GROUPS =	851	then
+		setvalueset (CLASS,CLASS_VS851);
+	elseif GROUPS =	852	then
+		setvalueset (CLASS,CLASS_VS852);
+	elseif GROUPS =	853	then
+		setvalueset (CLASS,CLASS_VS853);
+	elseif GROUPS =	854	then
+		setvalueset (CLASS,CLASS_VS854);
+	elseif GROUPS =	855	then
+		setvalueset (CLASS,CLASS_VS855);
+	elseif GROUPS =	861	then
+		setvalueset (CLASS,CLASS_VS861);
+	elseif GROUPS =	862	then
+		setvalueset (CLASS,CLASS_VS862);
+	elseif GROUPS =	869	then
+		setvalueset (CLASS,CLASS_VS869);
+	elseif GROUPS =	871	then
+		setvalueset (CLASS,CLASS_VS871);
+	elseif GROUPS =	872	then
+		setvalueset (CLASS,CLASS_VS872);
+	elseif GROUPS =	873	then
+		setvalueset (CLASS,CLASS_VS873);
+	elseif GROUPS =	879	then
+		setvalueset (CLASS,CLASS_VS879);
+	elseif GROUPS =	881	then
+		setvalueset (CLASS,CLASS_VS881);
+	elseif GROUPS =	889	then
+		setvalueset (CLASS,CLASS_VS889);
+	elseif GROUPS =	900	then
+		setvalueset (CLASS,CLASS_VS900);
+	elseif GROUPS =	910	then
+		setvalueset (CLASS,CLASS_VS910);
+	elseif GROUPS =	920	then
+		setvalueset (CLASS,CLASS_VS920);
+	elseif GROUPS =	931	then
+		setvalueset (CLASS,CLASS_VS931);
+	elseif GROUPS =	932	then
+		setvalueset (CLASS,CLASS_VS932);
+	elseif GROUPS =	941	then
+		setvalueset (CLASS,CLASS_VS941);
+	elseif GROUPS =	942	then
+		setvalueset (CLASS,CLASS_VS942);
+	elseif GROUPS =	949	then
+		setvalueset (CLASS,CLASS_VS949);
+	elseif GROUPS =	951	then
+		setvalueset (CLASS,CLASS_VS951);
+	elseif GROUPS =	952	then
+		setvalueset (CLASS,CLASS_VS952);
+	elseif GROUPS =	960	then
+		setvalueset (CLASS,CLASS_VS960);
+	elseif GROUPS =	970	then
+		setvalueset (CLASS,CLASS_VS970);
+	elseif GROUPS =	981	then
+		setvalueset (CLASS,CLASS_VS981);
+	elseif GROUPS =	982	then
+		setvalueset (CLASS,CLASS_VS982);
+	elseif GROUPS =	990	then
+		setvalueset (CLASS,CLASS_VS990);
+	endif;
 
 
 PROC E36
-//if person's employer is RSA then location of employment must be RSA
-if  E33 <> 7 and E36 = 13 or E33 = 7 and E36 <> 13 then
-	errmsg("%s's location of employment is RSA then Employer must be RSA", strip(B2))
-	select("Correct current employer", E33,
-		   "Correct Location of Employment", E36);
-endif;
 
+	//if person's employer is RSA then location of employment must be RSA
+	if ( E33 <> 7 and E36 = 13 ) or ( E33 = 7 and E36 <> 13 ) then
+		errmsg("%s's location of employment is RSA then Employer must be RSA", strip(B2))
+		select("Correct current employer", E33, "Correct Location of Employment", E36);
+	endif;
 
-// skip to E38(ever worked in RSA in the past 10 years) if location of employment is outside Lesotho
-if E36 in 13:42 then
-	skip to E38;
-endif;
+	// skip to E38 (ever worked in RSA in the past 10 years) if location of employment is outside Lesotho
+	if E36 in 13:42 then
+		skip to E38;
+	endif;
+
 
 PROC E37
+
 onfocus
 
-//if location of employment(E36) is in any of the 10 districts of Lesotho,then 
-//in E37 only the list of the district location chosen in E36 should appear  
- 
-numeric realdistrict = DISTRICT;
-if E36 in 11,12 then 
- 		realdistrict = DISTRICT;
- else
- 	realdistrict = E36
-endif;
-	
-if realdistrict = 1 then
- 		setvalueset (E37,DISTRICT_01_VS);
+	//if location of employment(E36) is in any of the 10 districts of Lesotho, then
+	//in E37 only the list of the district location chosen in E36 should appear
+	numeric realdistrict;
+	if E36 in 11,12 then
+		realdistrict = DISTRICT;
+	else
+		realdistrict = E36;
+	endif;
+
+	if realdistrict = 1 then
+		setvalueset (E37,DISTRICT_01_VS);
 	elseif realdistrict = 2 then
 		setvalueset (E37,DISTRICT_02_VS);
 	elseif realdistrict = 3 then
@@ -2560,7 +2640,7 @@ if realdistrict = 1 then
 	elseif realdistrict = 5 then
 		setvalueset (E37,DISTRICT_05_VS);
 	elseif realdistrict = 6 then
-		setvalueset (E37,DISTRICT_06_VS);	
+		setvalueset (E37,DISTRICT_06_VS);
 	elseif realdistrict = 7 then
 		setvalueset (E37,DISTRICT_07_VS);
 	elseif realdistrict = 8 then
@@ -2568,700 +2648,733 @@ if realdistrict = 1 then
 	elseif realdistrict = 9 then
 		setvalueset (E37,DISTRICT_09_VS);
 	elseif realdistrict = 10 then
-		setvalueset (E37,DISTRICT_10_VS);		
-endif;
+		setvalueset (E37,DISTRICT_10_VS);
+	endif;
 
 
 PROC E38
-//if person's employer is RSA and location of employment must be RSA
-//then ever worked in RSA the past 10 years must presently working
-if E36 = 13 and E38 <> 3 then
-	errmsg("%s's location of employment is RSA then Employer must be presently working", strip(B2))
-	select("Correct Location of Employment", E36,
-		   "Correct ever worked the past 10 years must be presently working", E38);
-endif;
 
-//If employer and location is not RSA name should not be presently working in RSA
-if E33 <> 7 and E36 <> 13 and E38 = 3 then
- 	errmsg("%s's location of employment is not RSA ", strip(B2))
- 	select("Correct current employer", E33,
- 		   "Correct Location of Employment", E36,
- 		   "Correct ever worked in RSA", E38);
-endif;
-//skip to Section F (Fertility) if name ever worked in RSA in past 10 years(since April 2006) 
-if E38 = 1 or E38 = 9 then
-	skip to next;
-endif;
+	//if person's employer is RSA and location of employment must be RSA
+	//then ever worked in RSA the past 10 years must presently working
+	if E36 = 13 and E38 <> 3 then
+		errmsg("%s's location of employment is RSA then Employer must be presently working", strip(B2))
+		select("Correct Location of Employment", E36,
+			   "Correct ever worked the past 10 years must be presently working", E38);
+	endif;
+
+	//If employer and location is not RSA name should not be presently working in RSA
+	if E33 <> 7 and E36 <> 13 and E38 = 3 then
+		errmsg("%s's location of employment is not RSA", strip(B2))
+		select("Correct current employer", E33,
+			   "Correct Location of Employment", E36,
+			   "Correct ever worked in RSA", E38);
+	endif;
+
+	//skip to Section F (Fertility) if name never worked in RSA in past 10 years (since April 2006)
+	if E38 in 1,9 then
+		skip to next;
+	endif;
+
 
 PROC E39
-// A 1 .. yr old could not have be working (RSA)
-if (B5(curocc()) - E39) < 5 then 
-  errmsg("%s is %d years old, therefore could not have worked at the age of 5", strip(B2(curocc())),B5(curocc())),
-	select("Correct how long worked in RSA", E39);
-  reenter;
- endif;
-  
-  
+
+	// A 1 .. yr old could not have be working (RSA)
+	numeric ageStartedWorking = B5(curocc()) - E39;
+
+	if ageStartedWorking < MinAgeWorkRSA then
+		errmsg("%s is %d years old, therefore could not have worked at the age of %d",
+		strip(B2(curocc())),B5(curocc()),ageStartedWorking),
+		select("Correct how long worked in RSA", E39);
+	endif;
+
+
 PROC F40
+
 preproc
-//Skip to next section if sex is not female or age is not between 12 and 50 years
-if B4(curocc()) = 1 then
-	skip to next;
-endif;
 
-if not B5(curocc()) in MinAgeForFertility:MaxAgeForFertility then
-	skip to next;
-endif;
+	//Skip to next section if sex is not female or age is not between 12 and 50 years
+	if B4(curocc()) = 1 then
+		skip to next;
+	endif;
 
-if B7(curocc()) = 2 then
-	skip to next;
-endif;
+	if not B5(curocc()) in MinAgeForFertility:MaxAgeForFertility then
+		skip to next;
+	endif;
 
+	if B7(curocc()) = 2 then
+		skip to next;
+	endif;
 
 postproc
-//Skip over to next section if has never been pregnant or don't know
-if F40 in 2,9 then
-	skip to next;
-endif;
+
+	//Skip to next section if has never been pregnant or don't know
+	if F40 in 2,9 then
+		skip to next;
+	endif;
+
 
 PROC F41
 
-//Skip over to next section if has never given a live birth or don't know
-if F41 in 2,9 then
-	skip to next;
-endif;
+	//Skip to next section if has never given a live birth or don't know
+	if F41 in 2,9 then
+		skip to next;
+	endif;
+
 
 PROC F42B
-//Name should have at least 1 child born alive if has ever given a live birth
-if F41 = 1 and F42A = 0 and F42B = 0 then
-errmsg("There was a live birth")
-   select("Correct boys born alive", F42A, 
-		   "Correct girls born alive", F42B);
-endif;
+
+	//Name should have at least 1 child born alive if has ever given a live birth
+	if F42A = 0 and F42B = 0 then
+		errmsg("There was a live birth")
+		select("Correct boys born alive", F42A, "Correct girls born alive", F42B);
+	endif;
 
 
 PROC F42C
-//Make sure that the total of boys(F42A) and girls(F42B) born alive is the same as the total(F42C) entered.
-numeric F42_TOTAL;
-F42_TOTAL = F42A + F42B;
-if F42C <> F42_TOTAL then
-	errmsg("The total of %s's children that were born alive must be equal to the total of %d (boys born alive) and %d (girls born alive)",
-		   strip(B2(curocc())), F42A(curocc()), F42B(curocc()))
-	select("Correct boys born alive", F42A, 
-		   "Correct girls born alive", F42B,
-		   "Correct total children born alive", F42C);
-endif;
+
+	//Make sure that the total of boys(F42A) and girls(F42B) born alive is the same as the total(F42C) entered.
+	if F42C <> ( F42A + F42B ) then
+		errmsg("The total of %s's children that were born alive must be equal to the total of %d (boys born alive) and %d (girls born alive)",
+			strip(B2(curocc())), F42A(curocc()), F42B(curocc()))
+		select("Correct boys born alive", F42A,
+			   "Correct girls born alive", F42B,
+			   "Correct total children born alive", F42C);
+	endif;
 
 
 PROC F43C
-//Make sure that the total of boys(F43A) and girls(F43B) living in the household is the same as the total(F43C) entered.
-numeric F43_TOTAL;
-F43_TOTAL = F43A + F43B;
-if F43C <> F43_TOTAL then
-	errmsg("The total of %s's children that are still alive and living with her must be equal to the total of %d (boys still alive) and %d (girls still alive)",
-		   strip(B2(curocc())), F43A(curocc()), F43B(curocc()))
-	select("Correct boys still alive", F43A, 
-		   "Correct girls still alive", F43B,		    
-		   "Correct total children still alive", F43C);
-endif;
+
+	//Make sure that the total of boys(F43A) and girls(F43B) living in the household is the same as the total(F43C) entered.
+	if F43C <> ( F43A + F43B ) then
+		errmsg("The total of %s's children that are still alive and living with her must be equal to the total of %d (boys still alive) and %d (girls still alive)",
+			strip(B2(curocc())), F43A(curocc()), F43B(curocc()))
+		select("Correct boys still alive", F43A,
+			   "Correct girls still alive", F43B,
+			   "Correct total children still alive", F43C);
+	endif;
+
 
 PROC F44C
-//Make sure that the total of boys(F44A) and girls(F44B) that are living elsewhere is the same as the total(F44C) entered.
-numeric F44_TOTAL;
-F44_TOTAL = F44A + F44B;
-if F44C <> F44_TOTAL then
-	errmsg("The total of %s's children that are still alive elsewhere must be equal to the total of %d (boys still alive elsewhere) and %d (girls still alive elsewhere)",
-		   strip(B2(curocc())), F44A(curocc()), F44B(curocc()))
-	select("Correct boys still alive elsewhere", F44A, 
-		   "Correct girls still alive elsewhere", F44B,
-		   "Correct total children still alive elsewhere", F44C);
-endif;
+
+	//Make sure that the total of boys(F44A) and girls(F44B) that are living elsewhere is the same as the total(F44C) entered.
+	if F44C <> ( F44A + F44B ) then
+		errmsg("The total of %s's children that are still alive elsewhere must be equal to the total of %d (boys still alive elsewhere) and %d (girls still alive elsewhere)",
+			strip(B2(curocc())), F44A(curocc()), F44B(curocc()))
+		select("Correct boys still alive elsewhere", F44A,
+			   "Correct girls still alive elsewhere", F44B,
+			   "Correct total children still alive elsewhere", F44C);
+	endif;
+
 
 PROC F45C
-//Make sure that the total of boys(F45A) and girls(F45B) no longer alive is the same as the total(F45C) entered.
-numeric F45_TOTAL; 
-F45_TOTAL = F45A + F45B; //add boys(F45A) and girls(F45B) who are no longer alive
-if F45C <> F45_TOTAL then
-	errmsg("The total of %s's children that are no longer alive must be equal to the total of %d (boys no longer alive) and %d (girls no longer alive)",
-		   strip(B2(curocc())), F45A(curocc()), F45B(curocc()))
-	select("Correct boys no longer alive", F45A, 
-		   "Correct girls no longer alive", F45B,
-		   "Correct total children no longer alive", F45C);
-endif;
 
-//Make sure that the total of boys living in the household(F43A), boys living elsewhere(F44A) and 
-//boys who are no longer alive(F45A) is the same as the total for boys born alive(F42A).
-if F42A <> F43A + F44A + F45A then
-	errmsg("Total boys ever born for %s is (%d) and must be equal to the total of boys living with her (%d), living elsewhere (%d) and those that are no longer alive (%d).",
-		   strip(B2(curocc())), F42A(curocc()), F43A(curocc()), F44A(curocc()), F45A(curocc()))
-	select("Correct boys born alive", F42A, 
-		   "Correct boys living in the household", F43A,
-		   "Correct boys living elsewhere", F44A,
-		   "Correct boys no longer alive", F45A);
-endif;
+	//Make sure that the total of boys(F45A) and girls(F45B) no longer alive is the same as the total(F45C) entered.
+	if F45C <> ( F45A + F45B ) then
+		errmsg("The total of %s's children that are no longer alive must be equal to the total of %d (boys no longer alive) and %d (girls no longer alive)",
+			strip(B2(curocc())), F45A(curocc()), F45B(curocc()))
+		select("Correct boys no longer alive", F45A,
+			   "Correct girls no longer alive", F45B,
+			   "Correct total children no longer alive", F45C);
+	endif;
 
-//Make sure that the total of girls living in the household(F43B), girls living elsewhere(F44B) and 
-//girls who are no longer alive(F45B) is the same as the total for girls born alive(F42B).
-if F42B <> F43B + F44B + F45B then
-	errmsg("Total girls ever born for %s is (%d) and must be equal to the total of girls living with her (%d), living elsewhere (%d) and those that are no longer alive (%d).",
-		   strip(B2(curocc())), F42B, F43B, F44B, F45B)
-	select("Correct girls born alive", F42B, 
-		   "Correct girls living in the household", F43B,
-		   "Correct girls living elsewhere", F44B,
-		   "Correct girls no longer alive", F45B);
-endif;
+	//Make sure that the total of boys living in the household(F43A), boys living elsewhere(F44A) and
+	//boys who are no longer alive(F45A) is the same as the total for boys born alive(F42A).
+	if F42A <> ( F43A + F44A + F45A ) then
+		errmsg("Total boys ever born for %s is (%d) and must be equal to the total of boys living with her (%d), living elsewhere (%d) and those that are no longer alive (%d).",
+			strip(B2(curocc())), F42A(curocc()), F43A(curocc()), F44A(curocc()), F45A(curocc()))
+		select("Correct boys born alive", F42A,
+			   "Correct boys living in the household", F43A,
+			   "Correct boys living elsewhere", F44A,
+			   "Correct boys no longer alive", F45A);
+	endif;
 
-//Make sure that the total of total children living in the household(F43C), total children living elsewhere(F44C) and 
-//total children who are no longer alive(F45C) is the same as the total children born alive(F42C).
-if F42C <> F43C + F44C + F45C then
-	errmsg("Total children ever born for %s is (%d) and must be equal to the total of children living with her (%d), living elsewhere (%d) and those that are no longer alive (%d).",
-		   strip(B2(curocc())), F42C, F43C, F44C, F45C)
-	select("Correct total children born alive", F42C, 
-		   "Correct total children living in the household", F43C,
-		   "Correct total children living elsewhere", F44C,
-		   "Correct total children no longer alive", F45C);
-endif;
+	//Make sure that the total of girls living in the household(F43B), girls living elsewhere(F44B) and
+	//girls who are no longer alive(F45B) is the same as the total for girls born alive(F42B).
+	if F42B <> ( F43B + F44B + F45B ) then
+		errmsg("Total girls ever born for %s is (%d) and must be equal to the total of girls living with her (%d), living elsewhere (%d) and those that are no longer alive (%d).",
+			strip(B2(curocc())), F42B, F43B, F44B, F45B)
+		select("Correct girls born alive", F42B,
+			   "Correct girls living in the household", F43B,
+			   "Correct girls living elsewhere", F44B,
+			   "Correct girls no longer alive", F45B);
+	endif;
+
+	//Make sure that the total of total children living in the household(F43C), total children living elsewhere(F44C) and
+	//total children who are no longer alive(F45C) is the same as the total children born alive(F42C).
+	if F42C <> ( F43C + F44C + F45C ) then
+		errmsg("Total children ever born for %s is (%d) and must be equal to the total of children living with her (%d), living elsewhere (%d) and those that are no longer alive (%d).",
+			strip(B2(curocc())), F42C, F43C, F44C, F45C)
+		select("Correct total children born alive", F42C,
+			   "Correct total children living in the household", F43C,
+			   "Correct total children living elsewhere", F44C,
+			   "Correct total children no longer alive", F45C);
+	endif;
+
 
 PROC F46
-//First child bearing age should not be more than the person's age
-if F46(curocc()) > B5(curocc()) then
-	errmsg("%d years is more than %s's age (%d)",F46,Strip(B2(curocc())),B5(curocc()))
-	select("Correct first child bearing age",F46);
-endif;
+
+	//First child bearing age should not be more than the person's age
+	if F46(curocc()) > B5(curocc()) then
+		errmsg("%d years is more than %s's age (%d)",F46,strip(B2(curocc())),B5(curocc()))
+		select("Correct first child bearing age",F46);
+	endif;
+
+
 PROC F47B
 
-//you cannot have your last born child born before first child
-numeric youngestAgeOfChild = CensusYear - F47B - 1;
+	//you cannot have your last born child born before first child
+	numeric youngestPossibleAgeOfChild = CensusYear - F47B - 1;
 
-if ((B5(curocc()) - youngestAgeOfChild) < F46(curocc())) then
-	errmsg("%s cannot have her first child born after the last born year", 
-		   strip(B2(curocc()))),
-	select("Correct first child born bearing age", F46, "Correct year of last born child",F47B);
-	reenter;
-endif;
+	if ( B5(curocc()) - youngestPossibleAgeOfChild ) < F46(curocc()) then
+		errmsg("%s cannot have her last child born before the first born year",strip(B2(curocc()))),
+		select("Correct first child born bearing age", F46, "Correct year of last born child",F47B);
+	endif;
 
 
 PROC F48
-//Skip over to last child born sex (F50) if last born is still alive or don't know
-if F48 <> 2 then
-	skip to F50;
-endif;
+
+	//Skip over to last child born sex (F50) if last born is still alive or don't know
+	if F48 <> 2 then
+		skip to F50;
+	endif;
+
 
 PROC F49B
 
-//age of death cannot be greater than year of birth
-if cmcode(F49A,F49B) < cmcode(F47A,F47B) then  
-	errmsg("%s was born in %d %d, thefore cannot have died in the year %d %d",
-		   strip(B2(curocc())), F47A(curocc()), F47B(curocc()), F49A(curocc()), F49B(curocc()) )
-	select("Correct last born child month", F49A, 
-		   "Correct last born child year", F49B);
-endif;
+	//age of death cannot be greater than year of birth
+	if cmcode(F49A,F49B) < cmcode(F47A,F47B) then
+		errmsg("%s was born in %d %d, therefore cannot have died in %d %d",
+			strip(B2(curocc())), F47A(curocc()), F47B(curocc()), F49A(curocc()), F49B(curocc()) )
+		select("Correct last born child month", F49A,
+			   "Correct last born child year", F49B);
+	endif;
 
 
 PROC F50
-//Name cannot have boys alive only and have a last born as a female
-if F42A = 0 and F50 = 1 then
-errmsg("children born alive are Girls only");
-reenter;
-endif;
 
-//Name cannot have girls alive only and have a last born as a male
-if F42B = 0 and F50 = 2 then
-errmsg("children born alive are Boys only");
-reenter;
-endif;
+	//Name cannot have girls alive only and have a last born as a male
+	if F42A = 0 and F50 = 1 then
+		errmsg("children born alive are Girls only");
+		reenter;
+	endif;
+
+	//Name cannot have boys alive only and have a last born as a female
+	if F42B = 0 and F50 = 2 then
+		errmsg("children born alive are Boys only");
+		reenter;
+	endif;
 
 
 PROC G51
-// If there were no deaths in the household in 
-//the past fiver year then skip to housing characteristics
-if G51 = 2 or G51 = 9 then
-	skip to HOUSING_FORM;
-endif;
 
-
+	//If there were no deaths in the household in
+	//the past five years then skip to housing characteristics
+	if G51 <> 1 then
+		skip to HOUSING_FORM;
+	endif;
 
 
 PROC G53
 
+	if G53 = "" then
+		errmsg("Please enter name of the Deceased")
+		select("Enter name", G53);
+	endif;
 
-if G53 = "" then
-	errmsg("Please enter name of the Deceased")
-	select("Enter name", G53);
-endif;
+	G53 = toupper(G53);
 
-G53=toupper(G53);
+	// Set occurrence labels for death rosters to use name
+	string occurrenceLabel = strip(G53);
 
-// Set occurrence labels for individual rosters to use name
-string occurrenceLabel = strip(G53);
+	setocclabel(DEATHS_ROSTER(curocc()), occurrenceLabel);
 
-setocclabel(DEATHS_ROSTER(curocc()), occurrenceLabel);
+
 PROC G54B
-//Name 
-if G54A > 04 and G54B > 2015 then
-	errmsg("The Date is invalid")
-	select("Correct month the death occured", G54A,
-		   "Correct year the death occured", G54B);
-endif;
+
+	if G54A > CensusMonth and G54B > CensusYear then
+		errmsg("The Date is invalid")
+		select("Correct month the death occured", G54A,
+			   "Correct year the death occured", G54B);
+	endif;
+
 
 PROC G57
+
 preproc
-// Skip entire maternal mortality row for for women not in 
-//the range of 12 to 50 years and for all males
-if G55 = 1 then
-	skip to next;
-elseif G56 < MinAgeForFertility or G56 > MaxAgeForFertility then
-	skip to next;	
-endif;
+
+	// Skip entire maternal mortality row for for women not in
+	// the range of 12 to 50 years and for all males
+	if G55 = 1 then
+		skip to next;
+	elseif not G56 in MinAgeForFertility:MaxAgeForFertility then
+		skip to next;
+	endif;
 
 postproc
-//Skip when the deceased died while pregnant
-if G57 = 1 then 
-	skip to next;
-endif;
+
+	//Skip when the deceased died while pregnant
+	if G57 = 1 then
+		skip to next;
+	endif;
+
 
 PROC G58
-postproc
-//Skip when the deceased died while giving birth
-if G58 = 1 then 
-	skip to next;
-endif;
+
+	//Skip when the deceased died while giving birth
+	if G58 = 1 then
+		skip to next;
+	endif;
+
 
 PROC H60
 
-// Skip the other specify field for any code that is
-// not other (6).
-if H60 <> 6 then 
-	skip to H61; 
-endif;
+	// Skip the other specify field for any code that is not other (6).
+	if H60 <> 6 then
+		skip to H61;
+	endif;
 
 
 PROC H60_OTHER
 
-H60_OTHER = toupper(H60_OTHER);
+	H60_OTHER = toupper(H60_OTHER);
+
+
 PROC H61
-// Skip the other specify field for any code that is
-// not other (6).
-if H61 <> 6 then 
-	skip to H62;
-endif;
+
+	// Skip the other specify field for any code that is not other (6).
+	if H61 <> 6 then
+		skip to H62;
+	endif;
+
 
 PROC H61_OTHER
-H61_OTHER = toupper(H61_OTHER);
+
+	H61_OTHER = toupper(H61_OTHER);
+
 
 PROC H62
+
 preproc
-// skip over agency for land acquired (H62)if the land was not allocated by 
-//government agency or private developer
-if H61 in 3:9 then 
-	skip to H63;
-endif;
+
+	// skip over agency for land acquired (H62) if the land was not allocated by
+	// government agency or private developer
+	if H61 in 3:9 then
+		skip to H63;
+	endif;
 
 postproc
-// Skip the other specify field for any code that is
-// not other (5).
-if H62 <> 5 then 
-	skip to H63;
-endif;
+
+	// Skip the other specify field for any code that is not other (5).
+	if H62 <> 5 then
+		skip to H63;
+	endif;
 
 
 PROC H62_OTHER
 
-H62_OTHER = toupper(H62_OTHER);
+	H62_OTHER = toupper(H62_OTHER);
+
+
 PROC H64
-// Skip the other specify field for any code that is
-// not other (8).
-if H64 <> 8 then 
-	skip to H65;
-endif;
+
+	// Skip the other specify field for any code that is not other (8).
+	if H64 <> 8 then
+		skip to H65;
+	endif;
 
 
 PROC H64_OTHER
 
-H64_OTHER = toupper(H64_OTHER);
+	H64_OTHER = toupper(H64_OTHER);
+
 
 PROC H65
-// Skip the other specify field for any code that is
-// not other (6).
-if H65 <> 6 then 
-	skip to H66;
-endif;
+
+	// Skip the other specify field for any code that is not other (6).
+	if H65 <> 6 then
+		skip to H66;
+	endif;
 
 
 PROC H65_OTHER
-H65_OTHER = toupper(H65_OTHER);
+
+	H65_OTHER = toupper(H65_OTHER);
 
 
 PROC H66
-// Skip the other specify field for any code that is
-// not other (12).
-if H66 <> 12 then 
-	skip to H67;
-endif;
+
+	// Skip the other specify field for any code that is not other (12).
+	if H66 <> 12 then
+		skip to H67;
+	endif;
 
 
 PROC H66_OTHER
 
-H66_OTHER = toupper(H66_OTHER);
+	H66_OTHER = toupper(H66_OTHER);
+
+
 PROC H67
-// Skip the other specify field for any code that is
-// not other (9).
-if H67 <> 9 then 
-	skip to H68_RONTABOLE;
-endif;
+
+	// Skip the other specify field for any code that is not other (9).
+	if H67 <> 9 then
+		skip to H68_RONTABOLE;
+	endif;
 
 
 PROC H67_OTHER
-H67_OTHER = toupper(H67_OTHER);
+
+	H67_OTHER = toupper(H67_OTHER);
 
 
 PROC H68_RONTABOLE
-if H63 = 1 and H68_RONTABOLE = 0 then
-	errmsg("Rontabole/Mokhoro is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_RONTABOLE);
-endif;
+
+	if H63 = 1 and H68_RONTABOLE = 0 then
+		errmsg("Rontabole/Mokhoro is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_RONTABOLE);
+	endif;
 
 
 PROC H69_RONTABOLE
 
 preproc
-if H68_RONTABOLE = 0 then
-	H69_RONTABOLE = 0;
-	noinput;
-endif;
+
+	if H68_RONTABOLE = 0 then
+		H69_RONTABOLE = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_RONTABOLE <> 0 and H69_RONTABOLE < H68_RONTABOLE then
-	errmsg("Rontabole/Mokhoro must have rooms")
-	select("Correct number of units for Rontabole",H68_RONTABOLE,
-		   "Correct number of rooms for Rontabole",H69_RONTABOLE);
-endif;
+
+	if H68_RONTABOLE <> 0 and H69_RONTABOLE < H68_RONTABOLE then
+		errmsg("Rontabole/Mokhoro must have rooms")
+		select("Correct number of units for Rontabole",H68_RONTABOLE,
+			   "Correct number of rooms for Rontabole",H69_RONTABOLE);
+	endif;
 
 
 PROC H68_HEISI
 
-if H63 = 2 and H68_HEISI = 0 then
-	errmsg("Heisi is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_HEISI);
-endif;
+	if H63 = 2 and H68_HEISI = 0 then
+		errmsg("Heisi is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_HEISI);
+	endif;
 
 
 PROC H69_HEISI
 
 preproc
-if H68_HEISI = 0 then
-	H69_HEISI = 0;
-	noinput;
-endif;
+
+	if H68_HEISI = 0 then
+		H69_HEISI = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_HEISI <> 0 and H69_HEISI < H68_HEISI then
-	errmsg("Heisi must have rooms")
-	select("Correct number of units for Heisi",H68_HEISI,
-		   "Correct number of rooms for Heisi",H69_HEISI);
-endif;
+
+	if H68_HEISI <> 0 and H69_HEISI < H68_HEISI then
+		errmsg("Heisi must have rooms")
+		select("Correct number of units for Heisi",H68_HEISI,
+			   "Correct number of rooms for Heisi",H69_HEISI);
+	endif;
 
 
 PROC H68_POLATA
 
-if H63 = 3 and H68_POLATA = 0 then
-	errmsg("Polata is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_POLATA);
-endif;
+	if H63 = 3 and H68_POLATA = 0 then
+		errmsg("Polata is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_POLATA);
+	endif;
 
 
 PROC H69_POLATA
 
 preproc
-if H68_POLATA = 0 then
-	H69_POLATA = 0;
-	noinput;
-endif;
+
+	if H68_POLATA = 0 then
+		H69_POLATA = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_POLATA <> 0 and H69_POLATA < H68_POLATA then
-	errmsg("Polata must have rooms")
-	select("Correct number of units for Polata",H68_POLATA,
-		   "Correct number of rooms for Polata",H69_POLATA);
-endif;
+
+	if H68_POLATA <> 0 and H69_POLATA < H68_POLATA then
+		errmsg("Polata must have rooms")
+		select("Correct number of units for Polata",H68_POLATA,
+			   "Correct number of rooms for Polata",H69_POLATA);
+	endif;
 
 
 PROC H68_MALAENE
 
-if H63 = 4 and H68_MALAENE = 0 then
-	errmsg("Malaene is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_MALAENE);
-endif;
+	if H63 = 4 and H68_MALAENE = 0 then
+		errmsg("Malaene is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_MALAENE);
+	endif;
 
 
 PROC H69_MALAENE
 
 preproc
-if H68_MALAENE = 0 then
-	H69_MALAENE = 0;
-	noinput;
-endif;
+
+	if H68_MALAENE = 0 then
+		H69_MALAENE = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_MALAENE <> 0 and H69_MALAENE < H68_MALAENE then
-	errmsg("Malaene must have rooms")
-	select("Correct number of units for Malaene",H68_MALAENE,
-		   "Correct number of rooms for Malaene",H69_MALAENE);
-endif;
+
+	if H68_MALAENE <> 0 and H69_MALAENE < H68_MALAENE then
+		errmsg("Malaene must have rooms")
+		select("Correct number of units for Malaene",H68_MALAENE,
+			   "Correct number of rooms for Malaene",H69_MALAENE);
+	endif;
 
 
 PROC H68_OPTAKA
 
-if H63 = 5 and H68_OPTAKA = 0 then
-	errmsg("Optaka is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_OPTAKA);
-endif;
+	if H63 = 5 and H68_OPTAKA = 0 then
+		errmsg("Optaka is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_OPTAKA);
+	endif;
 
 
 PROC H69_OPTAKA
 
 preproc
-if H68_OPTAKA = 0 then
-	H69_OPTAKA = 0;
-	noinput;
-endif;
+
+	if H68_OPTAKA = 0 then
+		H69_OPTAKA = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_OPTAKA <> 0 and H69_OPTAKA < H68_OPTAKA then
-	errmsg("Optaka must have rooms")
-	select("Correct number of units for Optaka",H68_OPTAKA,
-		   "Correct number of rooms for Optaka",H69_OPTAKA);
-endif;
+
+	if H68_OPTAKA <> 0 and H69_OPTAKA < H68_OPTAKA then
+		errmsg("Optaka must have rooms")
+		select("Correct number of units for Optaka",H68_OPTAKA,
+			   "Correct number of rooms for Optaka",H69_OPTAKA);
+	endif;
 
 
 PROC H68_APARTMENT
 
-if H63 = 6 and H68_APARTMENT = 0 then
-	errmsg("Apartment/Town House is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_APARTMENT);
-endif;
-
+	if H63 = 6 and H68_APARTMENT = 0 then
+		errmsg("Apartment/Town House is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_APARTMENT);
+	endif;
 
 
 PROC H69_APARTMENT
 
 preproc
 
-if H68_APARTMENT = 0 then
-	H69_APARTMENT = 0;
-	noinput;
-endif;
+	if H68_APARTMENT = 0 then
+		H69_APARTMENT = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_APARTMENT <> 0 and H69_APARTMENT < H68_APARTMENT then
-	errmsg("Apartment/Town House must have rooms")
-	select("Correct number of units for Apartment/Town House",H68_APARTMENT,
-		   "Correct number of rooms for Apartment/Town House",H69_APARTMENT);
-endif;
 
+	if H68_APARTMENT <> 0 and H69_APARTMENT < H68_APARTMENT then
+		errmsg("Apartment/Town House must have rooms")
+		select("Correct number of units for Apartment/Town House",H68_APARTMENT,
+			   "Correct number of rooms for Apartment/Town House",H69_APARTMENT);
+	endif;
 
 
 PROC H68_MANSION
 
-if H63 = 7 and H68_MANSION = 0 then
-	errmsg("Bungalow/Mansion is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_MANSION);
-endif;
-
+	if H63 = 7 and H68_MANSION = 0 then
+		errmsg("Bungalow/Mansion is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_MANSION);
+	endif;
 
 
 PROC H69_MANSION
 
 preproc
-if H68_MANSION = 0 then
-	H69_MANSION = 0;
-	noinput;
-endif;
+
+	if H68_MANSION = 0 then
+		H69_MANSION = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_MANSION <> 0 and H69_MANSION < H68_MANSION then
-	errmsg("Bangalow/Mansion must have rooms")
-	select("Correct number of units for Bangalow",H68_MANSION,
-		   "Correct number of rooms for Bangalow",H69_MANSION);
-endif;
 
+	if H68_MANSION <> 0 and H69_MANSION < H68_MANSION then
+		errmsg("Bangalow/Mansion must have rooms")
+		select("Correct number of units for Bangalow",H68_MANSION,
+			   "Correct number of rooms for Bangalow",H69_MANSION);
+	endif;
 
 
 PROC H68_TEMP_STRUCTURE
 
-if H63 = 8 and H68_TEMP_STRUCTURE = 0 then
-	errmsg("Temporary Structure/Mokh'ukh'u is the main dwelling unit for this household and it must have at least 1 housing unit")
-	select("Correct main type of dwelling for the household",H63,
-		   "Correct number of dwelling units",H68_TEMP_STRUCTURE);
-endif;
-
+	if H63 = 8 and H68_TEMP_STRUCTURE = 0 then
+		errmsg("Temporary Structure/Mokh'ukh'u is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_TEMP_STRUCTURE);
+	endif;
 
 
 PROC H69_TEMP_STRUCTURE
 
 preproc
-if H68_TEMP_STRUCTURE = 0 then
-	H69_TEMP_STRUCTURE = 0;
-	noinput;
-endif;
+
+	if H68_TEMP_STRUCTURE = 0 then
+		H69_TEMP_STRUCTURE = 0;
+		noinput;
+	endif;
 
 postproc
-if H68_TEMP_STRUCTURE <> 0 and H69_TEMP_STRUCTURE < H68_TEMP_STRUCTURE then
-	errmsg("Temporary Structure/Mokh'ukh'u must have rooms")
-	select("Correct number of units for Temporary Structure/Mokh'ukh'u",H68_TEMP_STRUCTURE,
-		   "Correct number of rooms for Temporary Structure/Mokh'ukh'u",H69_TEMP_STRUCTURE);
-endif;
 
+	if H68_TEMP_STRUCTURE <> 0 and H69_TEMP_STRUCTURE < H68_TEMP_STRUCTURE then
+		errmsg("Temporary Structure/Mokh'ukh'u must have rooms")
+		select("Correct number of units for Temporary Structure/Mokh'ukh'u",H68_TEMP_STRUCTURE,
+			   "Correct number of rooms for Temporary Structure/Mokh'ukh'u",H69_TEMP_STRUCTURE);
+	endif;
 
 
 PROC H68_TOTAL
 
-if H68_TOTAL <> H68_RONTABOLE + H68_HEISI + H68_POLATA + H68_MALAENE + H68_OPTAKA + H68_APARTMENT + H68_MANSION + H68_TEMP_STRUCTURE then
-	errmsg("The total number of individual housing units should be the same as the total housing units entered")
+	if H68_TOTAL <> ( H68_RONTABOLE + H68_HEISI + H68_POLATA + H68_MALAENE + H68_OPTAKA + H68_APARTMENT + H68_MANSION + H68_TEMP_STRUCTURE ) then
+		errmsg("The total number of individual housing units should be the same as the total housing units entered")
 		select("Correct individual housing units",H68_RONTABOLE,"Correct Total housing units",H68_TOTAL);
-endif;
+	endif;
 
 
 PROC H69_TOTAL
 
-if H69_TOTAL <> H69_RONTABOLE + H69_HEISI + H69_POLATA + H69_MALAENE + H69_OPTAKA + H69_APARTMENT + H69_MANSION + H69_TEMP_STRUCTURE then
-	errmsg("The total number of individual housing rooms should be the same as the total housing rooms entered")
+	if H69_TOTAL <> ( H69_RONTABOLE + H69_HEISI + H69_POLATA + H69_MALAENE + H69_OPTAKA + H69_APARTMENT + H69_MANSION + H69_TEMP_STRUCTURE ) then
+		errmsg("The total number of individual housing rooms should be the same as the total housing rooms entered")
 		select("Correct individual housing rooms",H69_RONTABOLE,"Correct Total housing rooms",H69_TOTAL);
-endif;
-
+	endif;
 
 
 PROC H70
 
-postproc
-// Skip the other specify field for any code that is
-// not other (14).
-if H70 <> 14 then 
-	skip to H71;
-endif;
-
+	// Skip the other specify field for any code that is not other (14).
+	if H70 <> 14 then
+		skip to H71;
+	endif;
 
 
 PROC H70_OTHER
 
-H70_OTHER = toupper(H70_OTHER);
+	H70_OTHER = toupper(H70_OTHER);
 
 
 PROC H71
+
 preproc
-// skip over time taken to get drinking water (H71)if main source of drinking water
-// is not in the household yard
-if H70 in 1,2,4,5 then 
-	skip to H72;
-endif;
+
+	// skip over time taken to get drinking water (H71) if main source of drinking water
+	// is not in the household yard
+	if H70 in 1,2,4,5 then
+		skip to H72;
+	endif;
 
 
 PROC H72
-// Skip the other specify field for any code that is
-// not other (12).
-if H72 <> 12 then 
-	skip to H73;
-endif;
 
+	// Skip the other specify field for any code that is not other (12).
+	if H72 <> 12 then
+		skip to H73;
+	endif;
 
 
 PROC H72_OTHER
-H72_OTHER = toupper(H72_OTHER);
 
+	H72_OTHER = toupper(H72_OTHER);
 
 
 PROC H73
-// Skip the other specify field for any code that is
-// not other (12).
-if H73 <> 12 then 
-	skip to H74;
-endif;
 
+	// Skip the other specify field for any code that is not other (12).
+	if H73 <> 12 then
+		skip to H74;
+	endif;
 
 
 PROC H73_OTHER
-H73_OTHER = toupper(H73_OTHER);
 
+	H73_OTHER = toupper(H73_OTHER);
 
 
 PROC H74
-// Skip the other specify field for any code that is
-// not other (9).
-if H74 <> 8 then 
-	skip to H75;
-endif;
 
+	// Skip the other specify field for any code that is not other (9).
+	if H74 <> 8 then
+		skip to H75;
+	endif;
 
 
 PROC H74_OTHER
-H74_OTHER = toupper(H74_OTHER);
 
+	H74_OTHER = toupper(H74_OTHER);
 
 
 PROC H75
-// Skip the other specify field for any code that is
-// not other (9).
-if H75 <> 9 then 
-	skip to H76;
-endif;
 
+	// Skip the other specify field for any code that is not other (9).
+	if H75 <> 9 then
+		skip to H76;
+	endif;
 
 
 PROC H75_OTHER
-H75_OTHER = toupper(H75_OTHER);
 
+	H75_OTHER = toupper(H75_OTHER);
 
 
 PROC H76
-// Skip the other specify field for any code that is
-// not other (7).
-if H76 <> 8 then 
-	skip to H77;
-endif;
+
+	// Skip the other specify field for any code that is not other (7).
+	if H76 <> 8 then
+		skip to H77;
+	endif;
+
 
 PROC H76_OTHER
-H76_OTHER = toupper(H76_OTHER);
+
+	H76_OTHER = toupper(H76_OTHER);
 
 
 PROC NUMBER_OF_REFRIGERATORS
+
 preproc
-Numeric R;
-//Check to see whether refrigerator has been checked in the assets 
-//if checked enter the total number of refrigerators
-R = pos("M",H77);
-if R < 1 then
-	skip to H78
 
-endif;	
-
-postproc
-
-if R = 1 and NUMBER_OF_REFRIGERATORS = 0 then
-   errmsg("You must have atleast one fridge");
-   reenter;		
-endif
+	//Check to see whether refrigerator has been checked in the assets
+	//if checked, enter the total number of refrigerators
+	if pos("M",H77) = 0 then
+		skip to H78;
+	endif;
 
 
 PROC REFRIGERANT
-REFRIGERANT = toupper(REFRIGERANT);
+
+	REFRIGERANT = toupper(REFRIGERANT);
+
 
 PROC FINAL_RESULT_CODE
-//the status of the household is incomplete
-if FINAL_RESULT_CODE = 1 then
-	endlevel;
-endif;
+
+	//the status of the household is incomplete
+	if FINAL_RESULT_CODE = 1 then
+		endlevel;
+	endif;
 
 
 PROC PARTIALLY_COMPLETE_REASON
 
-PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
+	PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
 
-savepartial();
-stop(0);	//go back to the list of one /all HH.
+	savepartial();
+	stop(0);	//go back to the list of one/all HH.

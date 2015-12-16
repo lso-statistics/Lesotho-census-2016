@@ -1799,14 +1799,14 @@ Len=50
 DataType=Alpha
 
 [Item]
-Label=Main Activity Status in Past 12 Days
+Label=Main Activity Status in Past 12 Months
 Name=E32
 Start=469
 Len=2
 ZeroFill=Yes
 
 [ValueSet]
-Label=Main Activity Status in Past 12 Days
+Label=Main Activity Status in Past 12 Months
 Name=E32_VS1
 Value=10;Employer
 Value=20;Own account worker/farmer

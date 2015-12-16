@@ -3252,11 +3252,11 @@ Text=7 Days Other
 [EndColumn]
   
 [Column]
-Width=54
+Width=98
   
 [HeaderText]
-Position=0,0,54,104
-Text=Main Activity Status in Past 12 Days
+Position=0,48,98,104
+Text=Main Activity Status in Past 12 Months
  
 [Field]
 Name=E32
@@ -3265,7 +3265,7 @@ Item=E32,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
 [Text]
-Text=Main Activity Status in Past 12 Days
+Text=Main Activity Status in Past 12 Months
  
 [EndColumn]
   
@@ -3336,7 +3336,7 @@ Text=Occupation - Major Group
  
 [Field]
 Name=OCCUPATION_LEVEL_1
-Position=57,0,72,20
+Position=57,0,86,20
 Item=OCCUPATION_LEVEL_1,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
