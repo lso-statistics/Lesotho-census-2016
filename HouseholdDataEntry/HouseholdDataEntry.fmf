@@ -14,7 +14,7 @@ Name=FORM000
 Label=Identification
 QuestionTextHeight=85
 Level=1
-Size=924,613
+Size=744,613
   
 Item=DISTRICT
 Item=CONSTITUENCY
@@ -246,10 +246,9 @@ Max=1
   
 [Field]
 Name=INTERVIEW_DATE
-Position=578,487,668,507
+Position=578,487,719,507
 Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
-UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
@@ -353,7 +352,7 @@ Text=Village Number
   
 [Field]
 Name=VILLAGE_NAME
-Position=169,305,870,325
+Position=169,305,521,325
 Item=VILLAGE_NAME,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
@@ -377,7 +376,7 @@ Text=Household Number
   
 [Field]
 Name=HOUSEHOLD_HEAD_NAMES
-Position=198,383,899,403
+Position=198,383,548,403
 Item=HOUSEHOLD_HEAD_NAMES,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes

@@ -1,5 +1,5 @@
 ﻿[Run Information]
-Version=CSPro 6.1
+Version=CSPro 6.2
 AppType=Entry
 Description=2016 LESOTHO PHC
 
@@ -17,10 +17,10 @@ STAFF_DICT=.\staff.dat
 ASS_SUP_DICT=.\AssSup.dat
 
 [UserFiles]
-TMPFILE=
 SR_PFFFILE=
-TEMPFILE=
+TMPFILE=
 PFFFILE=
+TEMPFILE=
 
 [Parameters]
 
