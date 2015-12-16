@@ -7,7 +7,7 @@ Interactive=Ask
 
 [Files]
 Application=.\HouseholdDataEntry.ent
-InputData=.\PHC2016PILOTDATA-reformatted.dat
+InputData=.\03220423038.dat
 
 
 [Parameters]
