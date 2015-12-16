@@ -7282,7 +7282,7 @@ Value=0;No
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=195
+RecordLen=196
 
 [Item]
 Label=Number of visits
@@ -7345,7 +7345,7 @@ Value=2;No household member at home
 Value=3;Entire household absent for extended period of time
 Value=4;Dwelling vacant
 Value=5;Dwelling destroyed
-Value=6;Refusal 
+Value=6;Refusal
 
 [Item]
 Label=Final Result Code
@@ -7373,3 +7373,16 @@ Name=INTERVIEW_DATE
 Start=186
 Len=10
 DataType=Alpha
+
+[Item]
+Label=Approval Status
+Name=APPROVAL_STATUS
+Start=196
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Approval Status
+Name=APPROVAL_STATUS_VS1
+Value=0;Not Approved
+Value=1;Approved
