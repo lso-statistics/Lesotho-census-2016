@@ -1,5 +1,5 @@
 ﻿[Dictionary]
-Version=CSPro 6.1
+Version=CSPro 6.2
 Label=LesothoCensus2016
 Name=LESOTHOCENSUS2016_DICT
 RecordTypeStart=1
@@ -7282,7 +7282,7 @@ Value=0;No
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=196
+RecordLen=236
 
 [Item]
 Label=Number of visits
@@ -7386,3 +7386,39 @@ Label=Approval Status
 Name=APPROVAL_STATUS_VS1
 Value=0;Not Approved
 Value=1;Approved
+
+[Item]
+Label=Place of Interview Latitude
+Name=PL_LATITUDE
+Start=197
+Len=10
+
+[Item]
+Label=Place of Interview Longitude
+Name=PL_LONGITUDE
+Start=207
+Len=10
+
+[Item]
+Label=Place of Interview Altitude
+Name=PL_ALTITUDE
+Start=217
+Len=6
+
+[Item]
+Label=Place of Interview Satellites
+Name=PL_SATELLITES
+Start=223
+Len=2
+
+[Item]
+Label=Place of Interview Accuracy
+Name=PL_ACCURACY
+Start=225
+Len=4
+
+[Item]
+Label=Place of Interview Read Time
+Name=PL_READ_TIME
+Start=229
+Len=8

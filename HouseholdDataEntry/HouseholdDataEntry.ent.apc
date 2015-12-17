@@ -173,6 +173,21 @@ function deletedeaths()
 	endif;
 end; 
 
+function captureGPS()	
+	if gps(read) then
+		PL_LATITUDE = gps(latitude);
+		PL_LONGITUDE = gps(longitude);
+		PL_ALTITUDE = gps(altitude);
+		PL_SATELLITES = gps(satellites);
+		PL_ACCURACY = gps(accuracy);
+		PL_READ_TIME = gps(readtime);
+	else		
+		errmsg("GPS signal could not be acquired");	
+	endif;
+
+	gps(close);
+
+end;
 // declare arrays dynamic value set
 array numeric codes(100);
 array string labels(100);
@@ -183,6 +198,7 @@ preproc
 userbar (clear);
 userbar (add button, "Delete Person's Record", checkdelete);
 userbar (add button, "Delete Deceased",deletedeaths);
+userbar (add button, "Capture GPS Coordinates", captureGPS);
 userbar (show);
 
 PROC LESOTHOCENSUS2016_QUEST
@@ -197,7 +213,9 @@ preproc
 
 if demode() = add then
 	INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
+	gps(open);
 endif;
+
 PROC DISTRICT
 preproc
 
@@ -252,11 +270,17 @@ if HOUSEHOLD_STATUS = 6 then
 	   errmsg('Refusal can only be accepted if there had been atleast 3 attempts or visits');
 	   reenter HOUSEHOLD_STATUS;
    else
-       endlevel;
+   		if APPROVAL_STATUS = 1 then 
+			endlevel;
+		else
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
    endif;
 endif;
 //the status of the household is incomplete
-if HOUSEHOLD_STATUS in 2:6 then 
+if HOUSEHOLD_STATUS in 2:5 then 
 	if APPROVAL_STATUS = 1 then
 		endlevel;
 	else
@@ -265,9 +289,6 @@ if HOUSEHOLD_STATUS in 2:6 then
 		stop(0);
 	endif;
 endif;
-
-
-
 PROC B1
 preproc
 // Automatically fill in person number

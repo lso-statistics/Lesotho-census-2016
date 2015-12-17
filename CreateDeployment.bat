@@ -3,11 +3,11 @@ setlocal
 
 REM Find CSEntry.exe (path differs on 32 and 64 bit Windows)
 
-SET CSEntry="%ProgramFiles(x86)%\CSPro 6.1\CSEntry.exe"
+SET CSEntry="%ProgramFiles(x86)%\CSPro 6.2\CSEntry.exe"
 if exist %CSEntry% goto :gotcspro
-SET CSEntry="%ProgramFiles%\CSPro 6.1\CSEntry.exe"
+SET CSEntry="%ProgramFiles%\CSPro 6.2\CSEntry.exe"
 if exist %CSEntry% goto :gotcspro
-echo "Can't find CSEntry version 6.1. Is it installed?"
+echo "Can't find CSEntry version 6.2. Is it installed?"
 goto :eof
 :gotcspro
 

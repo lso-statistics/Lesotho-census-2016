@@ -2,21 +2,20 @@
 PROC GLOBAL
 // Arrays for dynamic value sets
 array numeric codes(200);
-array string labels(200);
 
+array string labels(200);
 array string mycodes(200);
 array string mylabels(200);
 array string mylabels2(200);
 array string myID(200);
+array string EAarray(25);
 
-file tempFile;
 array ageBySex5YearGroups(22, 2);
 
 string menuApplicationFolder, householdApplicationFolder;
 string supervisorDataFileFolder, enumeratorDataFileFolder,eacode;
 string loginFilename, assSupRevApplicationFolder;
 string enumeratorEA;
-file tmpFile;
 string enumeratorDataFileName,enumeratorDataFileNameCopy; //
 string supervisorDataFilename; //
 string enumtempFileName; //
@@ -24,10 +23,11 @@ numeric ea, totMales = 0, totFemales = 0, totPopulation = 0, males, females, pop
 
 list string fileListing; //variable to store all data files in a directory
 
+file tmpFile;
+file tempFile;
 file pffFile; // File variable for writing out data entry pff file
 
 //********************************************************************************************************
-array string EAarray(25);
 
 function pickEA()
 
@@ -157,7 +157,8 @@ function  ageBySexTable()
 	close(tempFile);
 
 	reportFilename = maketext("%sagebysex.html", pathname(Application));
-	agebysex = maketext("%s%d.dat", "../../Data/Enumerator/", EApicked);
+	//agebysex = maketext("%s%d.dat", "../../Data/Enumerator/", EApicked);
+	agebysex = maketext("%s%d.dat", enumeratorDataFileFolder, EApicked);
 	if getos() in 20:29 then
 		// Android - use "browse:"
 		execsystem(maketext("view:%s", reportFilename));
