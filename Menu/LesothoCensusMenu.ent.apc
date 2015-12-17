@@ -31,8 +31,8 @@ file pffFile; // File variable for writing out data entry pff file
 
 function pickEA()
 
-    //menuApplicationFolder = pathname(Application); //this is the path of our application;
-	//enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
+    menuApplicationFolder = pathname(Application); //this is the path of our application;
+	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator"; //this is the data folder (all our data is stored in here)
 	      
     numeric i = i;
     
@@ -267,10 +267,10 @@ function CreateAndRunPFF()
 	string pffFilename = tempFolder + "HouseholdDataEntry.pff";
 	string fileDescription = maketext("EA - %s", STAFF_EA);
 
-//	menuApplicationFolder = pathname(Application);
-//	householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
-//	dircreate(householdApplicationFolder);
-//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
+	menuApplicationFolder = pathname(Application);
+	householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
+	dircreate(householdApplicationFolder);
+	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
 	
 	setfile(pffFile,pffFilename,create);
 
@@ -313,9 +313,9 @@ function CreateAndRunSRPFF(asDistrict, asConstituency, alpha asCouncil, asZone, 
 	string pffFilename = tempFolder + "AssistSupReview.pff";
 	string fileDescription = maketext("EA - %011d", asEA);
 
-//	menuApplicationFolder = pathname(Application);
-//	assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
-//	supervisorDataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
+	menuApplicationFolder = pathname(Application);
+	assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
+	supervisorDataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
 	setfile(sr_pffFile,pffFilename,create);
 
 	filewrite(sr_pffFile,"[Run Information]");
@@ -363,8 +363,8 @@ function ShowSummaryReport()
 	filewrite(tempFile, "-------------------------------");
 	filewrite(tempFile, "");
 
-//	menuApplicationFolder = pathname(Application); //this is the path of our application
-//	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+	menuApplicationFolder = pathname(Application); //this is the path of our application
+	enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 		
 	numeric ctr;
     dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
@@ -817,10 +817,12 @@ enumeratorDataFileFolder = menuApplicationFolder + "../../Data/Enumerator/";
 supervisorDataFileFolder = menuApplicationFolder + "../../Data/Supervisor/";
 householdApplicationFolder = menuApplicationFolder + "../HouseholdDataEntry/";
 assSupRevApplicationFolder = menuApplicationFolder + "../AssistSupReview/";
+
 dircreate(enumeratorDataFileFolder);
 dircreate(supervisorDataFileFolder);
 dircreate(householdApplicationFolder);
 dircreate(assSupRevApplicationFolder);
+
 
 // Check to see if user is already logged in
 if fileexist(enumeratorEA) = 1 then
@@ -837,7 +839,19 @@ if fileexist(enumeratorEA) = 1 then
 endif;
 
 enumeratorDataFilename = maketext("%s%011d.dat", enumeratorDataFileFolder, ea);
+string SDFolder;
 
+
+SDFolder = pathname(CSEntryExternal);
+dircreate(SDFolder);
+numeric copied  = filecopy(enumeratorDataFilename, SDFolder);
+ 
+ if copied = 1 then
+ 	errmsg("Backup was successfuly made");
+ 	errmsg("%s ", SDFolder);
+ else
+ 	errmsg("Unable to create Backup")
+ endif;
 
 PROC USER_CODE
 preproc
@@ -1083,7 +1097,7 @@ locate(LESOTHOCENSUS2016_DICT, >=, "");
 // until loadcase returns zero when it hits end of file.
 numeric i = 1;
 do while loadcase(LESOTHOCENSUS2016_DICT) <> 0
-	codes(i) = HOUSEHOLD_NUMBER;
+	codes(i) = i;
 	
 	if FINAL_RESULT_CODE = 1 then		
 		labels(i) = maketext("%s", HOUSEHOLD_HEAD_NAMES);
@@ -1189,6 +1203,7 @@ onfocus
 string HH_status, Checked;
 //menuApplicationFolder = pathname(Application); //this is the path of our application
 numeric b = dircreate(pathname(Application)+"Temp");
+
 //enumeratorDataFileFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 numeric i;   
 enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, CONSTITUENCY_EACODE);
