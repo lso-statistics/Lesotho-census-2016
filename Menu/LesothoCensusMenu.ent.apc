@@ -951,7 +951,7 @@ postproc
 if fileexist(enumeratorDataFilename) = 1 then
 	if ASSISTANT_SUPERVISOR_MENU = 1 then
 		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
-	elseif ASSISTANT_SUPERVISOR_MENU = 2 then
+	elseif ASSISTANT_SUPERVISOR_MENU in 2:3 then
 		//skip to household_status;
 	elseif ASSISTANT_SUPERVISOR_MENU = 4 then
 		skip to APPROVE_CASES;
@@ -997,7 +997,6 @@ PROC CONSTITUENCY_SUPERVISOR_MENU
 postproc
 if CONSTITUENCY_SUPERVISOR_MENU = 1 then
 	skip to SUMMARY_REPORT_MENU;
-
 elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
 	SexRatioReport();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
@@ -1078,6 +1077,13 @@ else
 	reenter;
 endif;
 
+PROC POSTCHECK
+
+if POSTCHECK = 1 then
+	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
+endif;
+
+reenter;
 PROC CHOOSE_POSTCHECK_HOUSEHOLD
 
 onfocus
@@ -1122,13 +1128,6 @@ enddo;
 
 errmsg("Something went horribly wrong. Please contact technical support");
 reenter ASSISTANT_SUPERVISOR_MENU;
-PROC POSTCHECK
-
-if POSTCHECK = 1 then
-	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
-endif;
-
-reenter;
 PROC APPROVE_CASES
 
 onfocus
@@ -1177,7 +1176,6 @@ PROC SUMMARY_REPORT_MENU
 //menuApplicationFolder = pathname(Application); //this is the path of our application
 //enumeratorDataFileFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 
-		
 numeric i, ctr;
 dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
     if length(fileListing) > 0 then
@@ -1197,7 +1195,6 @@ dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
 
 //mycodes(i) = notappl;
 setvalueset(CONSTITUENCY_EACODE, mycodes, mylabels);
-	
 PROC IDENTIFIER
 onfocus
 string HH_status, Checked;

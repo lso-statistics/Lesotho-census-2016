@@ -1,5 +1,5 @@
 ﻿[FormFile]
-Version=CSPro 6.1
+Version=CSPro 6.2
 Name=LESOTHOCENSUSMENU_FF
 Label=LesothoCensusMenu
 DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
@@ -13,7 +13,7 @@ File=.\LesothoCensusMenu.dcf
 Name=FORM000
 Label=LesothoCensusMenu questionnaire
 Level=1
-Size=433,352
+Size=433,344
   
 Item=USER_CODE
 Item=ENUMERATOR_MENU
@@ -123,38 +123,38 @@ Text=Choose Report
  
   
 [Field]
-Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Position=253,243,296,263
-Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
-DataCaptureType=RadioButton
-Form=1
-  
-[Text]
-Position=44,247,230,263
-Text=Choose Postcheck Household
- 
-  
-[Field]
 Name=POSTCHECK
-Position=253,277,268,297
+Position=253,237,268,257
 Item=POSTCHECK,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=44,280,108,296
+Position=44,240,108,256
 Text=Postcheck
  
   
 [Field]
+Name=CHOOSE_POSTCHECK_HOUSEHOLD
+Position=253,267,296,287
+Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
+DataCaptureType=RadioButton
+Form=1
+  
+[Text]
+Position=44,271,230,287
+Text=Choose Postcheck Household
+ 
+  
+[Field]
 Name=APPROVE_CASES
-Position=253,306,296,326
+Position=253,298,296,318
 Item=APPROVE_CASES,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=44,311,138,327
+Position=44,303,138,319
 Text=Approve Cases
  
 [EndGroup]
