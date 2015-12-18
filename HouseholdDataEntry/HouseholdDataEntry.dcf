@@ -519,6 +519,7 @@ Label=Residential Status
 Name=B7
 Start=183
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Residential Status
@@ -534,6 +535,7 @@ Label=Residence Absent/Outside Lesotho
 Name=B8
 Start=184
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=Residence Absent/Outside Lesotho
@@ -609,6 +611,7 @@ Label=How Long Outside Lesotho
 Name=B9
 Start=186
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=How Long Outside Lesotho
@@ -742,6 +745,7 @@ Label=Residence April 2015 Other Countries
 Name=B12B
 Start=197
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=Residence April 2015 Other Countries
@@ -820,6 +824,7 @@ Label=Residence April 2011 Other Countries
 Name=B13B
 Start=202
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=Residence April 2011 Other Countries
@@ -861,6 +866,7 @@ Label=Residence April 2006
 Name=B14
 Start=204
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Residence April 2006
@@ -897,6 +903,7 @@ Label=Residence April 2006
 Name=B14B
 Start=207
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=Residence April 2006
@@ -981,6 +988,7 @@ Label=Language Spoken Mostly
 Name=B16
 Start=211
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Language Spoken Mostly
@@ -1005,6 +1013,7 @@ Label=Father Alive
 Name=B17
 Start=232
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Father Alive
@@ -1018,6 +1027,7 @@ Label=Mother Alive
 Name=B18
 Start=233
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Mother Alive
@@ -1031,6 +1041,7 @@ Label=Marital Status
 Name=B19
 Start=234
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Marital Status
@@ -1049,6 +1060,7 @@ Label=Age at First Marriage
 Name=B20
 Start=235
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=Age at First Marriage
@@ -1062,6 +1074,7 @@ Label=First or Only Spouse Alive
 Name=B21
 Start=237
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=First or Only Spouse Alive
@@ -3683,6 +3696,7 @@ Label=Section
 Name=SECTION
 Start=553
 Len=2
+ZeroFill=Yes
 
 [ValueSet]
 Label=Section
@@ -7259,6 +7273,7 @@ Label=Is Respondent Household Member
 Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
 Start=633
 Len=1
+ZeroFill=Yes
 
 [ValueSet]
 Label=Is Respondent Household Member
@@ -7277,7 +7292,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=236
+RecordLen=242
 
 [Item]
 Label=Number of visits
@@ -7308,6 +7323,7 @@ Name=VISIT_YEAR
 Start=130
 Len=4
 ItemType=SubItem
+ZeroFill=Yes
 
 [Item]
 Label=Visit month
@@ -7386,34 +7402,40 @@ Value=1;Approved
 Label=Place of Interview Latitude
 Name=PL_LATITUDE
 Start=197
-Len=10
+Len=14
+Decimal=9
+DecimalChar=Yes
 
 [Item]
 Label=Place of Interview Longitude
 Name=PL_LONGITUDE
-Start=207
-Len=10
+Start=211
+Len=14
+Decimal=9
+DecimalChar=Yes
 
 [Item]
 Label=Place of Interview Altitude
 Name=PL_ALTITUDE
-Start=217
+Start=225
 Len=6
 
 [Item]
 Label=Place of Interview Satellites
 Name=PL_SATELLITES
-Start=223
+Start=231
 Len=2
 
 [Item]
 Label=Place of Interview Accuracy
 Name=PL_ACCURACY
-Start=225
+Start=233
 Len=4
+Decimal=1
+DecimalChar=Yes
 
 [Item]
 Label=Place of Interview Read Time
 Name=PL_READ_TIME
-Start=229
-Len=8
+Start=237
+Len=6

@@ -12,10 +12,9 @@ array string EAarray(25);
 
 array ageBySex5YearGroups(22, 2);
 
-string menuApplicationFolder, householdApplicationFolder;
-string supervisorDataFileFolder, enumeratorDataFileFolder,eacode;
-string loginFilename, assSupRevApplicationFolder;
-string enumeratorEA;
+string menuApplicationFolder, householdApplicationFolder, assSupRevApplicationFolder;
+string supervisorDataFileFolder, enumeratorDataFileFolder;
+string loginFilename, eacode, enumeratorEA;
 string enumeratorDataFileName,enumeratorDataFileNameCopy; //
 string supervisorDataFilename; //
 string enumtempFileName; //
@@ -164,9 +163,11 @@ function  ageBySexTable()
 		execsystem(maketext("view:%s", reportFilename));
 	else
 		// Windows - use "explorer.exe <filename>"
-		execsystem(maketext("%sexplorer.exe %s", 
-						    pathname(Windows), 
-						    reportFilename));
+		//execsystem(maketext("%sexplorer.exe %s", 
+		//				    pathname(Windows), 
+		//				    reportFilename));
+		
+		execsystem(maketext("view:%s", reportFilename));
 	endif;
 end;
 //******************************************************************************************************

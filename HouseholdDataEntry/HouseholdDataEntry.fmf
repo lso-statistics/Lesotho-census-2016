@@ -14,7 +14,7 @@ Name=FORM000
 Label=Identification
 QuestionTextHeight=85
 Level=1
-Size=975,613
+Size=1049,613
   
 Item=DISTRICT
 Item=CONSTITUENCY
@@ -31,14 +31,8 @@ Item=HOUSEHOLD_STATUS
 Item=VILLAGE_NAME
 Item=HOUSEHOLD_HEAD_NAMES
 Item=INTERVIEW_DATE
-Item=PL_LATITUDE
-Item=PL_LONGITUDE
-Item=PL_ALTITUDE
-Item=PL_SATELLITES
-Item=PL_ACCURACY
-Item=PL_READ_TIME
   
-Box=595,52,950,240,Thin
+Box=770,66,1024,100,Thin
   
 [Text]
 Name=TEXT1
@@ -252,13 +246,13 @@ Max=1
   
 [Field]
 Name=INTERVIEW_DATE
-Position=800,60,941,80
+Position=877,71,1018,91
 Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
 Form=1
   
 [Text]
-Position=598,60,690,76
+Position=774,74,866,90
 Text=Interview Date
  
   
@@ -470,84 +464,6 @@ Form=1
 [Text]
 Position=31,570,141,586
 Text=Household Status
- 
-  
-[Field]
-Name=PL_LATITUDE
-Position=800,84,941,104
-Item=PL_LATITUDE,LESOTHOCENSUS2016_DICT
-Protected=Yes
-FieldLabelType=DictionaryLabel
-Form=1
-  
-[Text]
-Position=598,87,769,103
-Text=Place of Interview Latitude
- 
-  
-[Field]
-Name=PL_LONGITUDE
-Position=800,108,941,128
-Item=PL_LONGITUDE,LESOTHOCENSUS2016_DICT
-Protected=Yes
-FieldLabelType=DictionaryLabel
-Form=1
-  
-[Text]
-Position=598,111,781,127
-Text=Place of Interview Longitude
- 
-  
-[Field]
-Name=PL_ALTITUDE
-Position=801,131,886,151
-Item=PL_ALTITUDE,LESOTHOCENSUS2016_DICT
-Protected=Yes
-FieldLabelType=DictionaryLabel
-Form=1
-  
-[Text]
-Position=598,136,766,152
-Text=Place of Interview Altitude
- 
-  
-[Field]
-Name=PL_SATELLITES
-Position=801,157,830,177
-Item=PL_SATELLITES,LESOTHOCENSUS2016_DICT
-Protected=Yes
-FieldLabelType=DictionaryLabel
-Form=1
-  
-[Text]
-Position=597,160,775,176
-Text=Place of Interview Satellites
- 
-  
-[Field]
-Name=PL_ACCURACY
-Position=801,182,858,202
-Item=PL_ACCURACY,LESOTHOCENSUS2016_DICT
-Protected=Yes
-FieldLabelType=DictionaryLabel
-Form=1
-  
-[Text]
-Position=599,185,776,201
-Text=Place of Interview Accuracy
- 
-  
-[Field]
-Name=PL_READ_TIME
-Position=801,208,914,228
-Item=PL_READ_TIME,LESOTHOCENSUS2016_DICT
-Protected=Yes
-FieldLabelType=DictionaryLabel
-Form=1
-  
-[Text]
-Position=599,211,787,227
-Text=Place of Interview Read Time
  
 [EndGroup]
   

@@ -195,25 +195,30 @@ function DeleteDeath()
 
 end;
 
-
+{
 function captureGPS()
-
-	if gps(read) then
-		PL_LATITUDE = gps(latitude);
-		PL_LONGITUDE = gps(longitude);
-		PL_ALTITUDE = gps(altitude);
-		PL_SATELLITES = gps(satellites);
-		PL_ACCURACY = gps(accuracy);
-		PL_READ_TIME = gps(readtime);
+	if gps(open) = 1 then
+		if gps(read, 60) then
+			if gps(readlast) <> 1 then
+				errmsg("GPS signal could not be acquired");
+			else
+				PL_LATITUDE = gps(latitude);
+				PL_LONGITUDE = gps(longitude);
+				PL_ALTITUDE = gps(altitude);
+				PL_SATELLITES = gps(satellites);
+				PL_ACCURACY = gps(accuracy);
+				PL_READ_TIME = gps(readtime);
+				errmsg("Successfully recorded the household GPS coordinates");
+			endif;
+		endif;
+		gps(close);
 	else
-		errmsg("GPS signal could not be acquired");
+		errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
+		exit;
 	endif;
 
-	gps(close);
-
 end;
-
-
+}
 
 PROC LESOTHOCENSUS2016_FF
 
@@ -222,7 +227,7 @@ preproc
 	userbar (clear);
 	userbar (add button, "Delete Person's Record", DeletePerson);
 	userbar (add button, "Delete Deceased",DeleteDeath);
-	userbar (add button, "Capture GPS Coordinates", captureGPS);
+	//userbar (add button, "Capture GPS Coordinates", captureGPS);
 	userbar (show);
 
 
@@ -239,7 +244,6 @@ preproc
 
 	if demode() = add then
 		INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
-		gps(open);
 	endif;
 
 
@@ -318,7 +322,7 @@ PROC VISIT_DATE
 PROC HOUSEHOLD_STATUS
 
 	//the status of the household is incomplete
-
+{
 	if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
 		errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
 		reenter;
@@ -333,7 +337,49 @@ PROC HOUSEHOLD_STATUS
 			stop(0);
 		endif;
 	endif;
+}
+trace(on,"trace.txt");
+if gps(open) = 1 then
+	trace("successfully opened GPS");
+	if gps(read, 120) then
+		//trace("successfully read frm the receiver; longitude is");
+		PL_LATITUDE = gps(latitude);
+		PL_LONGITUDE = gps(longitude);
+		PL_ALTITUDE = gps(altitude);
+		PL_SATELLITES = gps(satellites);
+		PL_ACCURACY = gps(accuracy);
+		PL_READ_TIME = gps(readtime);
+		//trace("read all the GPS values");
+		if HOUSEHOLD_STATUS in 2:5 then
+			trace("household not available for questioning");
+			if APPROVAL_STATUS = 1 then
+				trace("household approved");
+				endlevel;
+			else
+				trace("household waiting for approval");
+				savepartial();
+				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+				stop(0);
+			endif;
+		endif;
+		if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
+			trace("refusal household");
+			errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
+			reenter;
+		endif;
 
+	else
+		trace("unable to read from the receiver");	
+	endif;
+	gps(close);
+	trace("closed gps");
+	
+else
+	errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
+	exit;
+endif;
+trace("exit postpro");
+trace(off);
 
 PROC B1
 
@@ -3365,13 +3411,37 @@ PROC REFRIGERANT
 
 
 PROC FINAL_RESULT_CODE
-
+{
 	//the status of the household is incomplete
 	if FINAL_RESULT_CODE = 1 then
 		endlevel;
 	endif;
+}
 
-
+if gps(open) = 1 then
+	if gps(read, 60) then
+		if gps(readlast) <> 1 then
+			errmsg("GPS signal could not be acquired");
+		else
+			PL_LATITUDE = gps(latitude);
+			PL_LONGITUDE = gps(longitude);
+			PL_ALTITUDE = gps(altitude);
+			PL_SATELLITES = gps(satellites);
+			PL_ACCURACY = gps(accuracy);
+			PL_READ_TIME = gps(readtime);
+			
+			//the status of the household is incomplete
+			if FINAL_RESULT_CODE = 1 then
+			
+				endlevel;
+			endif;
+		endif;
+	endif;
+	gps(close);
+else
+	errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
+	exit;
+endif;
 PROC PARTIALLY_COMPLETE_REASON
 
 	PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
