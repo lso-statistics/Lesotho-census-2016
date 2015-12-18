@@ -338,49 +338,36 @@ PROC HOUSEHOLD_STATUS
 		endif;
 	endif;
 }
-trace(on,"trace.txt");
-if gps(open) = 1 then
-	trace("successfully opened GPS");
-	if gps(read, 120) then
-		//trace("successfully read frm the receiver; longitude is");
+if gps(open) = 1 then // tablet gps is open
+	if gps(read, 120) then //tyr to read for 120 seconds
 		PL_LATITUDE = gps(latitude);
 		PL_LONGITUDE = gps(longitude);
 		PL_ALTITUDE = gps(altitude);
 		PL_SATELLITES = gps(satellites);
 		PL_ACCURACY = gps(accuracy);
 		PL_READ_TIME = gps(readtime);
-		//trace("read all the GPS values");
-		if HOUSEHOLD_STATUS in 2:5 then
-			trace("household not available for questioning");
+		if HOUSEHOLD_STATUS in 2:5 then 
 			if APPROVAL_STATUS = 1 then
-				trace("household approved");
 				endlevel;
 			else
-				trace("household waiting for approval");
 				savepartial();
 				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 				stop(0);
 			endif;
 		endif;
 		if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
-			trace("refusal household");
 			errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
 			reenter;
 		endif;
 
 	else
-		trace("unable to read from the receiver");	
 	endif;
 	gps(close);
-	trace("closed gps");
 	
 else
 	errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
 	exit;
 endif;
-trace("exit postpro");
-trace(off);
-
 PROC B1
 
 preproc
@@ -3423,12 +3410,12 @@ if gps(open) = 1 then
 		if gps(readlast) <> 1 then
 			errmsg("GPS signal could not be acquired");
 		else
-			PL_LATITUDE = gps(latitude);
-			PL_LONGITUDE = gps(longitude);
-			PL_ALTITUDE = gps(altitude);
-			PL_SATELLITES = gps(satellites);
-			PL_ACCURACY = gps(accuracy);
-			PL_READ_TIME = gps(readtime);
+			E_LATITUDE = gps(latitude);
+			E_LONGITUDE = gps(longitude);
+			E_ALTITUDE = gps(altitude);
+			E_SATELLITES = gps(satellites);
+			E_ACCURACY = gps(accuracy);
+			E_READ_TIME = gps(readtime);
 			
 			//the status of the household is incomplete
 			if FINAL_RESULT_CODE = 1 then

@@ -27,6 +27,20 @@ file pffFile; // File variable for writing out data entry pff file
 
 //********************************************************************************************************
 
+function OnStop() // if they try to stop adding data without finishing the case
+
+	numeric selection;
+	selection = errmsg("Are you sure quit the program?")
+	select("Yes",continue,"No",continue);
+
+	if selection = 1 then
+		stop(1);
+	else
+		reenter;
+	endif;
+
+end;
+
 function pickEA()
 
     menuApplicationFolder = pathname(Application); //this is the path of our application;

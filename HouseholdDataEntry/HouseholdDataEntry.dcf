@@ -7292,7 +7292,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=242
+RecordLen=288
 
 [Item]
 Label=Number of visits
@@ -7438,4 +7438,46 @@ DecimalChar=Yes
 Label=Place of Interview Read Time
 Name=PL_READ_TIME
 Start=237
+Len=6
+
+[Item]
+Label=End of Interview Latitude
+Name=E_LATITUDE
+Start=243
+Len=14
+Decimal=9
+DecimalChar=Yes
+
+[Item]
+Label=End of Interview Longitude
+Name=E_LONGITUDE
+Start=257
+Len=14
+Decimal=9
+DecimalChar=Yes
+
+[Item]
+Label=End of Interview Altitude
+Name=E_ALTITUDE
+Start=271
+Len=6
+
+[Item]
+Label=End of Interview Satellites
+Name=E_SATELLITES
+Start=277
+Len=2
+
+[Item]
+Label=End of Interview Accuracy
+Name=E_ACCURACY
+Start=279
+Len=4
+Decimal=1
+DecimalChar=Yes
+
+[Item]
+Label=End of Interview Read Time
+Name=E_READ_TIME
+Start=283
 Len=6
