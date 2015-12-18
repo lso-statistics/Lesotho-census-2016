@@ -15,7 +15,7 @@ InputData=.\menu.dat
 LESOTHOCENSUS2016_DICT=.\dummy.dat
 STAFF_DICT=.\staff.dat
 ASS_SUP_DICT=.\AssSup.dat
-ASSIST_SUPERVISOR_REVIEW_DICT=.\dummy.dat
+ASSIST_SUPERVISOR_REVIEW_DICT=.\dummy2.dat
 
 [UserFiles]
 TMPFILE=

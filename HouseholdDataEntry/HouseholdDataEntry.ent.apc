@@ -3503,9 +3503,12 @@ if demode() = add then
 		endif;
 	endif;
 endif;
+
+
 PROC PARTIALLY_COMPLETE_REASON
 
-PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
+	CheckBlank(PARTIALLY_COMPLETE_REASON);
+	PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
 
-savepartial();
-stop(0);	//go back to the list of one/all HH.
+	savepartial();
+	stop(0);	//go back to the list of one/all HH.

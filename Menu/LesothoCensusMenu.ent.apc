@@ -430,13 +430,6 @@ function ShowSummaryReport()
 			
 			totPopulation = totMales + totFemales;
 	
-			supervisorDataFilename = maketext("%sRV%011s.dat", supervisorDataFileFolder, eacode);
-
-			if fileexist(supervisorDataFilename) then
-			
-				result = setfile(ASSIST_SUPERVISOR_REVIEW_DICT, supervisorDataFilename);
-						
-			// Start at first household in enumerator data file
 			// get the postcheck values
 			supervisorDataFilename = getSupervisorDataFilename();
 			
@@ -449,13 +442,15 @@ function ShowSummaryReport()
 					// Loop through all households 
 					// until loadcase returns zero when it hits end of file.
 					do postChecked = 0 while loadcase(ASSIST_SUPERVISOR_REVIEW_DICT) <> 0
-							
-					enddo;				
-					
+					enddo;
+
 				endif;
-			endif;
-		endif;	
 				
+			endif;
+	
+		endif;	
+		
+			
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"%-30s%s","Households","Household Status");
 		filewrite(tempFile,"%-30d%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
@@ -951,13 +946,6 @@ else
 	reenter;
 endif;
 
-PROC POSTCHECK
-
-if POSTCHECK = 1 then
-	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
-endif;
-
-reenter;
 PROC CHOOSE_POSTCHECK_HOUSEHOLD
 
 onfocus
