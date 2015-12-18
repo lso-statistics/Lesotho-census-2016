@@ -21,6 +21,12 @@ array string labels(100);
 array string personsArray(50, 2);
 array string deceasedArray(30, 1);
 
+function CheckBlank(string Value)
+ if Value = '' then
+	 errmsg('field cannot be blank');
+	 reenter;
+ endif;
+end;
 
 // Show list of entries in persons roster in a dialog
 // and let interviewer pick one.
@@ -236,7 +242,7 @@ preproc
 PROC INTERVIEW_DATE
 
 preproc
-
+//skip to DEMOGRAPHICS_FORM;
 	if demode() = add then
 		INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
 		gps(open);
@@ -255,6 +261,7 @@ preproc
 		ZONE = tonumber(sysparm("ZONE"));
 		SETTLEMENT = tonumber(sysparm("SETTLEMENT"));
 		ENUMERATION_AREA = tonumber(sysparm("ENUMERATION_AREA"));
+		ENUMERATOR_CODE = tonumber(sysparm("STAFF_CODE"));
 
 		// Make protected so interviewer cannot change id-items
 		set attributes (DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, SETTLEMENT, ENUMERATION_AREA) protect;
@@ -293,18 +300,11 @@ preproc
 
 PROC VILLAGE_NAME
 
-	if VILLAGE_NAME = "" then
-		errmsg("Please enter Village name");
-		reenter;
-	endif;
-
+CheckBlank(VILLAGE_NAME);
 
 PROC HOUSEHOLD_HEAD_NAMES
 
-	if HOUSEHOLD_HEAD_NAMES = "" then
-		errmsg("Please enter the name of the Household head");
-		reenter;
-	endif;
+CheckBlank(HOUSEHOLD_HEAD_NAMES);
 
 	HOUSEHOLD_HEAD_NAMES = toupper(HOUSEHOLD_HEAD_NAMES);
 
@@ -451,15 +451,6 @@ PROC DEMOGRAPHIC_ROSTER
 	if B19(head) in 2:3,5 then
 		//Check each spouse in the household
 		do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
-			if B3(spouse) = 2 then
-				//Check for same sex
-				if B4(spouse) = B4(head) then
-					errmsg("If %s is %s's spouse, then they must be of opposite sex",
-					strip(B2(spouse)), strip(B2(head)))
-					select("Correct household head sex", B4(head),
-					"Correct spouse relationship", B3(spouse),
-					"Correct spouse sex", B4(spouse));
-				endif;
 				//Check for different marrital status
 				if B19(spouse) <> B19(head) then
 					errmsg("If %s is %s's spouse, then they must have the same marital status",
@@ -468,7 +459,6 @@ PROC DEMOGRAPHIC_ROSTER
 					"Correct spouse relationship", B3(spouse),
 					"Correct spouse marital status", B19(spouse));
 				endif;
-			endif;
 		enddo;
 	endif;
 
@@ -512,6 +502,23 @@ postproc
 	endif;
 
 
+PROC B4
+
+postproc
+// If household head is monogamously married then his/her spouse must be
+// monogamously married and of different sex.
+numeric head, spouse;
+head = seek(B3 = 1);
+if B3 = 2 then
+	//Check for same sex
+	if B4 = B4(head) then
+		errmsg("If %s is %s's spouse, then they must be of opposite sex",
+		strip(B2), strip(B2(head)))
+		select("Correct household head sex", B4(head),
+		"Correct spouse relationship", B3,
+		"Correct spouse sex", B4);
+	endif;
+endif;
 PROC B5
 
 	//Parent's age should be 12 years more than child's age.
@@ -549,7 +556,7 @@ PROC B6B
 PROC B7
 
 	//checks that household head and spouse are not visitors
-	if B3 = 1 then
+	if B3 = 1 or B3 = 2 then
 		if B7 = 2 then
 			errmsg("%s is the %s and should not be a visitor",
 			strip(B2(curocc())), getlabel(B3_RELATIONSHIP(curocc())))
@@ -791,6 +798,7 @@ PROC B16
 
 PROC B16A
 
+CheckBlank(B16A);
 	B16A = toupper(B16A);
 
 
@@ -965,6 +973,8 @@ postproc
 
 PROC C24A_OTHER
 
+CheckBlank(C24A_OTHER);
+
 	C24A_OTHER = toupper(C24A_OTHER);
 
 
@@ -986,6 +996,8 @@ postproc
 
 
 PROC C24B_OTHER
+
+CheckBlank(C24B_OTHER);
 
 	C24B_OTHER = toupper(C24B_OTHER);
 
@@ -1009,6 +1021,8 @@ postproc
 
 PROC C24C_OTHER
 
+CheckBlank(C24C_OTHER);
+
 	C24C_OTHER = toupper(C24C_OTHER);
 
 
@@ -1030,6 +1044,8 @@ postproc
 
 
 PROC C24D_OTHER
+
+CheckBlank(C24D_OTHER);
 
 	C24D_OTHER = toupper(C24D_OTHER);
 
@@ -1053,6 +1069,8 @@ postproc
 
 PROC C24E_OTHER
 
+CheckBlank(C24E_OTHER);
+
 	C24E_OTHER = toupper(C24E_OTHER);
 
 
@@ -1074,6 +1092,8 @@ postproc
 
 
 PROC C24F_OTHER
+
+CheckBlank(C24F_OTHER);
 
 	C24F_OTHER = toupper(C24F_OTHER);
 
@@ -1347,6 +1367,8 @@ PROC D27
 
 PROC D27_OTHER
 
+CheckBlank(D27_OTHER);
+
 	//For code 30 in D27 skip to next section
 	D27_OTHER = toupper(D27_OTHER);
 	skip to next;
@@ -1457,6 +1479,7 @@ postproc
 
 PROC E31OTHER
 
+CheckBlank(E31OTHER);
 	//skip to E33 if coded 81 in E31
 	skip to E33;
 
@@ -1482,6 +1505,9 @@ PROC E32
 	endif;
 
 
+PROC E32OTHER
+
+CheckBlank(E32OTHER);
 PROC E33
 
 	//go to specify if coded 9 in E33 then skip to E34
@@ -1490,6 +1516,9 @@ PROC E33
 	endif;
 
 
+PROC E33OTHER
+
+CheckBlank(E33OTHER);
 PROC OCCUPATION_LEVEL_1
 
 	if OCCUPATION_LEVEL_1 = 11 then
@@ -2936,6 +2965,8 @@ PROC H60
 
 PROC H60_OTHER
 
+CheckBlank(H60_OTHER);
+
 	H60_OTHER = toupper(H60_OTHER);
 
 
@@ -2948,6 +2979,8 @@ PROC H61
 
 
 PROC H61_OTHER
+
+CheckBlank(H61_OTHER);
 
 	H61_OTHER = toupper(H61_OTHER);
 
@@ -2972,6 +3005,8 @@ postproc
 
 PROC H62_OTHER
 
+CheckBlank(H62_OTHER);
+
 	H62_OTHER = toupper(H62_OTHER);
 
 
@@ -2984,6 +3019,8 @@ PROC H64
 
 
 PROC H64_OTHER
+
+CheckBlank(H64_OTHER);
 
 	H64_OTHER = toupper(H64_OTHER);
 
@@ -2998,6 +3035,8 @@ PROC H65
 
 PROC H65_OTHER
 
+CheckBlank(H65_OTHER);
+
 	H65_OTHER = toupper(H65_OTHER);
 
 
@@ -3011,6 +3050,8 @@ PROC H66
 
 PROC H66_OTHER
 
+CheckBlank(H66_OTHER);
+
 	H66_OTHER = toupper(H66_OTHER);
 
 
@@ -3023,6 +3064,8 @@ PROC H67
 
 
 PROC H67_OTHER
+
+CheckBlank(H67_OTHER);
 
 	H67_OTHER = toupper(H67_OTHER);
 
@@ -3269,6 +3312,8 @@ PROC H70
 
 PROC H70_OTHER
 
+CheckBlank(H70_OTHER);
+
 	H70_OTHER = toupper(H70_OTHER);
 
 
@@ -3293,6 +3338,8 @@ PROC H72
 
 PROC H72_OTHER
 
+CheckBlank(H72_OTHER);
+
 	H72_OTHER = toupper(H72_OTHER);
 
 
@@ -3305,6 +3352,8 @@ PROC H73
 
 
 PROC H73_OTHER
+
+CheckBlank(H73_OTHER);
 
 	H73_OTHER = toupper(H73_OTHER);
 
@@ -3319,6 +3368,8 @@ PROC H74
 
 PROC H74_OTHER
 
+CheckBlank(H74_OTHER);
+
 	H74_OTHER = toupper(H74_OTHER);
 
 
@@ -3332,6 +3383,8 @@ PROC H75
 
 PROC H75_OTHER
 
+CheckBlank(H75_OTHER);
+
 	H75_OTHER = toupper(H75_OTHER);
 
 
@@ -3344,6 +3397,8 @@ PROC H76
 
 
 PROC H76_OTHER
+
+CheckBlank(H76_OTHER);
 
 	H76_OTHER = toupper(H76_OTHER);
 
