@@ -14,7 +14,7 @@ Name=FORM000
 Label=Identification
 QuestionTextHeight=85
 Level=1
-Size=975,613
+Size=1025,673
   
 Item=DISTRICT
 Item=CONSTITUENCY
@@ -290,6 +290,7 @@ Text=Constituency
 Name=COMMUNITY_COUNCIL
 Position=169,117,212,137
 Item=COMMUNITY_COUNCIL,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -393,17 +394,6 @@ Position=23,380,190,396
 Text=Names of Household Head
  
   
-[Field]
-Name=NUMBER_OF_VISITS
-Position=204,409,219,429
-Item=NUMBER_OF_VISITS,LESOTHOCENSUS2016_DICT
-Form=1
-  
-[Text]
-Position=22,412,123,428
-Text=Number of visits
- 
-  
 [Grid]
 Name=VISIT_DATE000
 Label=Visit date
@@ -412,8 +402,7 @@ Required=Yes
 Type=Item
 TypeName=VISIT_DATE
 Max=3
-MaxField=NUMBER_OF_VISITS
-DisplaySize=26,443,217,551
+DisplaySize=26,423,217,531
 Orientation=Horizontal
 FieldRowHeight=28
 HeadingRowHeight=0
@@ -449,7 +438,7 @@ Text=Visit date
 Name=VISIT_DATE
 Position=0,0,113,20
 Item=VISIT_DATE,LESOTHOCENSUS2016_DICT
-DataCaptureType=Date,YYYYMMDD
+Protected=Yes
   
 [Text]
 Position=0,0,60,16
@@ -458,6 +447,18 @@ Text=Visit date
 [EndColumn]
   
 [EndGrid]
+ 
+  
+[Field]
+Name=NUMBER_OF_VISITS
+Position=173,539,188,559
+Item=NUMBER_OF_VISITS,LESOTHOCENSUS2016_DICT
+Protected=Yes
+Form=1
+  
+[Text]
+Position=32,542,133,558
+Text=Number of visits
  
   
 [Field]

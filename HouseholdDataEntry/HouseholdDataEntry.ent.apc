@@ -242,7 +242,7 @@ preproc
 PROC INTERVIEW_DATE
 
 preproc
-//skip to DEMOGRAPHICS_FORM;
+
 	if demode() = add then
 		INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
 		gps(open);
@@ -311,9 +311,25 @@ CheckBlank(HOUSEHOLD_HEAD_NAMES);
 
 PROC VISIT_DATE
 
-	// TODO!
-	//VISIT_DATE = sysdate("YYYYMMDD");
+preproc
 
+	if visualvalue(VISIT_DATE(curocc())) = notappl then
+		 VISIT_DATE = sysdate("YYYYMMDD");
+	endif;
+
+postproc
+
+	if VISIT_DATE = sysdate("YYYYMMDD") then
+		endgroup;
+	endif;
+
+
+
+PROC NUMBER_OF_VISITS
+
+preproc
+
+	NUMBER_OF_VISITS = totocc(VISIT_DATE000);
 
 PROC HOUSEHOLD_STATUS
 

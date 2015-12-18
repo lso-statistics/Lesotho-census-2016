@@ -7296,7 +7296,6 @@ Label=Visit date
 Name=VISIT_DATE
 Start=130
 Len=8
-DataType=Alpha
 Occurrences=3
 OccurrenceLabel=1,first
 OccurrenceLabel=2,second
