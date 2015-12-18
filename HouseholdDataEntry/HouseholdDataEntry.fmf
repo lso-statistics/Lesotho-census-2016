@@ -2810,7 +2810,6 @@ Text=Ever Attended School
 Name=D26
 Position=78,0,93,20
 Item=D26,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2829,7 +2828,6 @@ Text=Highest Education Level
 Name=D27
 Position=89,0,118,20
 Item=D27,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2868,7 +2866,6 @@ Text=How to Read
 Name=D28
 Position=69,0,84,20
 Item=D28,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2887,7 +2884,6 @@ Text=How to Write
 Name=D29
 Position=70,0,85,20
 Item=D29,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2906,7 +2902,6 @@ Text=Field of Specialization
 Name=D30
 Position=62,0,91,20
 Item=D30,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4225,7 +4220,6 @@ Max=1
 Name=G51
 Position=290,51,305,71
 Item=G51,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=RadioButton
 Form=7
   
@@ -4238,7 +4232,6 @@ Text=Any Deaths in the Last Five Years
 Name=G52
 Position=288,84,317,104
 Item=G52,LESOTHOCENSUS2016_DICT
-UpperCase=Yes
 DataCaptureType=ComboBox
 Form=7
   
@@ -5058,6 +5051,7 @@ Text=Rubbish Other
 Name=H77
 Position=95,806,278,826
 Item=H77,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=CheckBox
 Form=8
   

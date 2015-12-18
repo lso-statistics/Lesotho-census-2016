@@ -127,7 +127,6 @@ PROC RV_HOUSEHOLD_HEAD_NAMES
 		errmsg("Household not found in enumerator data file");
 		stop(1);
 	endif;
-	RV_ENUMERATOR_CODE = ENUMERATOR_CODE;
 
 	// Prefill in names in names roster from enumerator data file
 	RV_NO_OF_PREFILLED_MEMBERS = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
@@ -137,6 +136,8 @@ PROC RV_HOUSEHOLD_HEAD_NAMES
 		RV_B1(i) = i;
 		RV_B2(i) = B2(i);
 	enddo;
+
+	RV_ENUMERATOR_CODE = ENUMERATOR_CODE;
 
 
 PROC DEMOGRAPHICS_FORM

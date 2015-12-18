@@ -17,16 +17,17 @@ array numeric codes(100);
 array string labels(100);
 
 
+function CheckBlank(string value)
+	if value = "" then
+		errmsg("The field cannot be blank");
+		reenter;
+	endif;
+end;
+
+
 //Max of 50 people in a household with 2 (person number and person name) columns to be displayed.
 array string personsArray(50, 2);
 array string deceasedArray(30, 1);
-
-function CheckBlank(string Value)
- if Value = '' then
-	 errmsg('field cannot be blank');
-	 reenter;
- endif;
-end;
 
 // Show list of entries in persons roster in a dialog
 // and let interviewer pick one.
@@ -243,7 +244,6 @@ PROC INTERVIEW_DATE
 
 preproc
 
-SKIP to DEMOGRAPHIC_ROSTER;		//temp for testing. reme...to delete
 	if demode() = add then
 		INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
 		gps(open);
@@ -301,12 +301,13 @@ preproc
 
 PROC VILLAGE_NAME
 
-CheckBlank(VILLAGE_NAME);
+	CheckBlank(VILLAGE_NAME);
+	VILLAGE_NAME = toupper(VILLAGE_NAME);
+
 
 PROC HOUSEHOLD_HEAD_NAMES
 
-CheckBlank(HOUSEHOLD_HEAD_NAMES);
-
+	CheckBlank(HOUSEHOLD_HEAD_NAMES);
 	HOUSEHOLD_HEAD_NAMES = toupper(HOUSEHOLD_HEAD_NAMES);
 
 
@@ -325,12 +326,12 @@ postproc
 	endif;
 
 
-
 PROC NUMBER_OF_VISITS
 
 preproc
 
 	NUMBER_OF_VISITS = totocc(VISIT_DATE000);
+
 
 PROC HOUSEHOLD_STATUS
 
@@ -425,9 +426,10 @@ PROC IS_RESPONDENT_HOUSEHOLD_MEMBER
 PROC RESPONDENT_NAME
 
 	//this is the case where the respondent is not a member of the household
-	if RESPONDENT_NAME <> "" then
-		skip to DEMOGRAPHIC_ROSTER;
-	endif
+	CheckBlank(RESPONDENT_NAME);
+	RESPONDENT_NAME = toupper(RESPONDENT_NAME);
+
+	skip to DEMOGRAPHIC_ROSTER;
 
 
 PROC RESPONDENT
@@ -448,40 +450,7 @@ onfocus
 	setvalueset(RESPONDENT, codes, labels);
 
 
-PROC DEMOGRAPHIC_ROSTER
-
-	// Count number of heads of household so that we can ensure
-	// that there is exactly one head of household.
-	numeric numberOfHeads = count(DEMOGRAPHIC_ROSTER where B3 = 1);
-
-	if numberOfHeads <> 1 then
-		errmsg("You have entered %d heads of household. Only one head of household is allowed",
-			numberOfHeads);
-		reenter B3(1);
-	endif;
-
-	// If household head is monogamously married then his/her spouse must be
-	// monogamously married and of different sex.
-	numeric head, spouse;
-	head = seek(B3 = 1);
-
-	if B19(head) in 2:3,5 then
-		//Check each spouse in the household
-		do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
-				//Check for different marrital status
-				if B19(spouse) <> B19(head) then
-					errmsg("If %s is %s's spouse, then they must have the same marital status",
-					strip(B2(spouse)), strip(B2(head)))
-					select("Correct household head marital status", B19(head),
-					"Correct spouse relationship", B3(spouse),
-					"Correct spouse marital status", B19(spouse));
-				endif;
-		enddo;
-	endif;
-
-
 PROC B3
-
 
 onfocus
 
@@ -498,31 +467,30 @@ postproc
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
-	
+
 	if B19(1) = 4 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Living Together",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
-	
+
 	if B19(1) = 5 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Separated",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
-	
 	if B19(1) = 6 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Divorced",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
-	
+
 	if B19(1) = 7 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Widowed",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
-	
+
 	if B19(1) = 9 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while head marital status is unknown",
 		strip(B2(curocc())), strip(B2(1)))
@@ -532,21 +500,16 @@ postproc
 
 PROC B4
 
-postproc
-// If household head is monogamously married then his/her spouse must be
-// monogamously married and of different sex.
-numeric head, spouse;
-head = seek(B3 = 1);
-if B3 = 2 then
-	//Check for same sex
-	if B4 = B4(head) then
+	// If household head is married then his/her spouse must be of different sex.
+	if B3 = 2 and B4 = B4(1) then
 		errmsg("If %s is %s's spouse, then they must be of opposite sex",
-		strip(B2), strip(B2(head)))
-		select("Correct household head sex", B4(head),
-		"Correct spouse relationship", B3,
-		"Correct spouse sex", B4);
+		strip(B2), strip(B2(1)))
+		select("Correct household head sex", B4(1),
+			   "Correct spouse relationship", B3,
+			   "Correct spouse sex", B4);
 	endif;
-endif;
+
+
 PROC B5
 
 	//Parent's age should be 12 years more than child's age.
@@ -573,30 +536,25 @@ PROC B5
 
 PROC B6B
 
-///============================================
-//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5) minus one year.
-	
-if CensusYear = B6B then
-	if B6A > 04 then
-		errmsg("%s Cannot be born later than (%d) ",strip(B2(curocc())),B6A)
+	//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5) minus one year.
+
+	if B6B = CensusYear and B6A > CensusMonth then
+		errmsg("%s cannot be born later than the census date/month",strip(B2(curocc())))
 		select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()));
-		
-	endif;
-	
-elseif((CensusYear - B6B) <> B5) and ((CensusYear - B6B) <> B5 - 1) then
+
+	elseif ( ( CensusYear - B6B ) <> B5 ) and ( ( CensusYear - B6B ) <> ( B5 - 1 ) ) then
 		errmsg("The year of birth is invalid")
 		select("Correct Age", B5(curocc()), "Correct Year of Birth", B6B(curocc()));
-		
-	endif;	
+	endif;
+
+
 PROC B7
 
 	//checks that household head and spouse are not visitors
-	if B3 = 1 or B3 = 2 then
-		if B7 = 2 then
-			errmsg("%s is the %s and should not be a visitor",
-			strip(B2(curocc())), getlabel(B3_RELATIONSHIP(curocc())))
-			select("Correct Current Residential Status",B7);
-		endif;
+	if B3 in 1, 2 and B7 = 2 then
+		errmsg("%s is the %s and should not be a visitor",
+		strip(B2(curocc())), getlabel(B3_RELATIONSHIP(curocc())))
+		select("Correct Current Residential Status",B7);
 	endif;
 
 	// skip over absent/outside Lesotho (B8 and B9)
@@ -833,7 +791,7 @@ PROC B16
 
 PROC B16A
 
-CheckBlank(B16A);
+	CheckBlank(B16A);
 	B16A = toupper(B16A);
 
 
@@ -1008,8 +966,7 @@ postproc
 
 PROC C24A_OTHER
 
-CheckBlank(C24A_OTHER);
-
+	CheckBlank(C24A_OTHER);
 	C24A_OTHER = toupper(C24A_OTHER);
 
 
@@ -1032,8 +989,7 @@ postproc
 
 PROC C24B_OTHER
 
-CheckBlank(C24B_OTHER);
-
+	CheckBlank(C24B_OTHER);
 	C24B_OTHER = toupper(C24B_OTHER);
 
 
@@ -1056,8 +1012,7 @@ postproc
 
 PROC C24C_OTHER
 
-CheckBlank(C24C_OTHER);
-
+	CheckBlank(C24C_OTHER);
 	C24C_OTHER = toupper(C24C_OTHER);
 
 
@@ -1080,8 +1035,7 @@ postproc
 
 PROC C24D_OTHER
 
-CheckBlank(C24D_OTHER);
-
+	CheckBlank(C24D_OTHER);
 	C24D_OTHER = toupper(C24D_OTHER);
 
 
@@ -1104,8 +1058,7 @@ postproc
 
 PROC C24E_OTHER
 
-CheckBlank(C24E_OTHER);
-
+	CheckBlank(C24E_OTHER);
 	C24E_OTHER = toupper(C24E_OTHER);
 
 
@@ -1128,8 +1081,7 @@ postproc
 
 PROC C24F_OTHER
 
-CheckBlank(C24F_OTHER);
-
+	CheckBlank(C24F_OTHER);
 	C24F_OTHER = toupper(C24F_OTHER);
 
 
@@ -1402,10 +1354,10 @@ PROC D27
 
 PROC D27_OTHER
 
-CheckBlank(D27_OTHER);
+	CheckBlank(D27_OTHER);
+	D27_OTHER = toupper(D27_OTHER);
 
 	//For code 30 in D27 skip to next section
-	D27_OTHER = toupper(D27_OTHER);
 	skip to next;
 
 
@@ -1514,7 +1466,9 @@ postproc
 
 PROC E31OTHER
 
-CheckBlank(E31OTHER);
+	CheckBlank(E31OTHER);
+	E31OTHER = toupper(E31OTHER);
+
 	//skip to E33 if coded 81 in E31
 	skip to E33;
 
@@ -1542,7 +1496,10 @@ PROC E32
 
 PROC E32OTHER
 
-CheckBlank(E32OTHER);
+	CheckBlank(E32OTHER);
+	E32OTHER = toupper(E32OTHER);
+
+
 PROC E33
 
 	//go to specify if coded 9 in E33 then skip to E34
@@ -1553,7 +1510,10 @@ PROC E33
 
 PROC E33OTHER
 
-CheckBlank(E33OTHER);
+	CheckBlank(E33OTHER);
+	E33OTHER = toupper(E33OTHER);
+
+
 PROC OCCUPATION_LEVEL_1
 
 	if OCCUPATION_LEVEL_1 = 11 then
@@ -2897,12 +2857,15 @@ PROC F47B
 
 PROC F48
 
+	if F48 = 2 and F45C = 0 then
+		errmsg("You have already said there were zero children dead, so you cannot say no last born alive")
+		select("Correct last born child alive",F48);
+	endif;
 
-if F45C = 0 and F48 = 2 then
-	errmsg("You have already said there was zero children dead, so you cannot say no last born alive")
-	select("Correct last born child alive",F48);
-endif;
-
+	//Skip over to last child born sex (F50) if last born is still alive or don't know
+	if F48 <> 2 then
+		skip to F50;
+	endif;
 
 
 PROC F49B
@@ -2918,36 +2881,33 @@ PROC F49B
 
 PROC F50
 
-	//For a boy no longer alive, if F(48) for last born child is NO, then we expect F50 to be Male
-	//For a girl no longer alive, if F(48) for last born child is NO, then we expect F50 to be Female
-	
-	
 	if F48 = 2 then
+		//Name cannot have girls dead only and have a last dead child as a male
 		if F45A = 0 and F50 = 1 then
-			errmsg("children born alive are Girls only");
+			errmsg("children dead are Girls only");
 			reenter;
 		endif;
-	
-		//Name cannot have boys alive only and have a last born as a female
+
+		//Name cannot have boys dead only and have a last dead child as a female
 		if F45B = 0 and F50 = 2 then
-			errmsg("");
+			errmsg("children dead are Boys only");
 			reenter;
 		endif;
-	endif;
-	
-	if F42A = 0 and F50 = 1 then
+
+	else
+		//Name cannot have girls alive only and have a last born as a male
+		if F42A = 0 and F50 = 1 then
 			errmsg("children born alive are Girls only");
 			reenter;
 		endif;
-	
+
 		//Name cannot have boys alive only and have a last born as a female
 		if F42B = 0 and F50 = 2 then
 			errmsg("children born alive are Boys only");
 			reenter;
+		endif;
+
 	endif;
-		
-
-
 
 
 PROC G51
@@ -2976,15 +2936,13 @@ PROC G53
 
 PROC G54B
 
-	//death month and year cannot be greater than of the census.
-
-	if cmcode(G54A,G54B) >= cmcode(CensusMonth,CensusYear)   then
-	
-		errmsg("The Date-of-death month and year cannot be greater than that of the census ")
+	// death month and year cannot be greater than of the census.
+	if cmcode(G54A,G54B) > cmcode(CensusMonth,CensusYear) then
+		errmsg("The Date-of-death month and year cannot be greater than that of the census")
 		select("Correct month the death occured", G54A,
 			   "Correct year the death occured", G54B);
-	
 	endif;
+
 
 PROC G57
 
@@ -3024,8 +2982,7 @@ PROC H60
 
 PROC H60_OTHER
 
-CheckBlank(H60_OTHER);
-
+	CheckBlank(H60_OTHER);
 	H60_OTHER = toupper(H60_OTHER);
 
 
@@ -3039,8 +2996,7 @@ PROC H61
 
 PROC H61_OTHER
 
-CheckBlank(H61_OTHER);
-
+	CheckBlank(H61_OTHER);
 	H61_OTHER = toupper(H61_OTHER);
 
 
@@ -3064,8 +3020,7 @@ postproc
 
 PROC H62_OTHER
 
-CheckBlank(H62_OTHER);
-
+	CheckBlank(H62_OTHER);
 	H62_OTHER = toupper(H62_OTHER);
 
 
@@ -3079,8 +3034,7 @@ PROC H64
 
 PROC H64_OTHER
 
-CheckBlank(H64_OTHER);
-
+	CheckBlank(H64_OTHER);
 	H64_OTHER = toupper(H64_OTHER);
 
 
@@ -3094,8 +3048,7 @@ PROC H65
 
 PROC H65_OTHER
 
-CheckBlank(H65_OTHER);
-
+	CheckBlank(H65_OTHER);
 	H65_OTHER = toupper(H65_OTHER);
 
 
@@ -3109,8 +3062,7 @@ PROC H66
 
 PROC H66_OTHER
 
-CheckBlank(H66_OTHER);
-
+	CheckBlank(H66_OTHER);
 	H66_OTHER = toupper(H66_OTHER);
 
 
@@ -3124,8 +3076,7 @@ PROC H67
 
 PROC H67_OTHER
 
-CheckBlank(H67_OTHER);
-
+	CheckBlank(H67_OTHER);
 	H67_OTHER = toupper(H67_OTHER);
 
 
@@ -3139,12 +3090,13 @@ PROC H68_RONTABOLE
 
 
 PROC H69_RONTABOLE
+
 preproc
 
-if H68_RONTABOLE = 0 then
-	H69_RONTABOLE = 0;
-noinput;
-endif;
+	if H68_RONTABOLE = 0 then
+		H69_RONTABOLE = 0;
+		noinput;
+	endif;
 
 postproc
 
@@ -3154,14 +3106,14 @@ postproc
 			   "Correct number of rooms for Rontabole",H69_RONTABOLE);
 	endif;
 
-
-
 	if H68_RONTABOLE <> 0 and H69_RONTABOLE < H68_RONTABOLE then
 		errmsg("Rontabole/Mokhoro must have rooms")
 		select("Correct number of units for Rontabole",H68_RONTABOLE,
 			   "Correct number of rooms for Rontabole",H69_RONTABOLE);
 	endif;
 
+
+PROC H68_HEISI
 
 	if H63 = 2 and H68_HEISI = 0 then
 		errmsg("Heisi is the main dwelling unit for this household and it must have at least 1 housing unit")
@@ -3174,26 +3126,24 @@ PROC H69_HEISI
 
 preproc
 
-if H68_HEISI = 0 then
-	H69_HEISI = 0;
-noinput;
-endif;
+	if H68_HEISI = 0 then
+		H69_HEISI = 0;
+		noinput;
+	endif;
 
 postproc
 
-if H68_HEISI = 0 and H69_HEISI <> 0 then
+	if H68_HEISI = 0 and H69_HEISI <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_HEISI,
-			   "Correct number of rooms for Rontabole",H69_HEISI);
+		select("Correct number of units for Heisi",H68_HEISI,
+			   "Correct number of rooms for Heisi",H69_HEISI);
 	endif;
-	
+
 	if H68_HEISI <> 0 and H69_HEISI < H68_HEISI then
 		errmsg("Heisi must have rooms")
 		select("Correct number of units for Heisi",H68_HEISI,
 			   "Correct number of rooms for Heisi",H69_HEISI);
 	endif;
-
-
 
 
 PROC H68_POLATA
@@ -3209,19 +3159,18 @@ PROC H69_POLATA
 
 preproc
 
-if H68_POLATA = 0 then
-	H69_POLATA = 0;
-noinput;
-endif;
+	if H68_POLATA = 0 then
+		H69_POLATA = 0;
+		noinput;
+	endif;
 
 postproc
 
 	if H68_POLATA = 0 and H69_POLATA <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_POLATA,
-			   "Correct number of rooms for Rontabole",H69_POLATA);
+		select("Correct number of units for Polata",H68_POLATA,
+			   "Correct number of rooms for Polata",H69_POLATA);
 	endif;
-
 
 	if H68_POLATA <> 0 and H69_POLATA < H68_POLATA then
 		errmsg("Polata must have rooms")
@@ -3243,17 +3192,17 @@ PROC H69_MALAENE
 
 preproc
 
-if H68_MALAENE = 0 then
-	H69_MALAENE = 0;
-noinput;
-endif;
+	if H68_MALAENE = 0 then
+		H69_MALAENE = 0;
+		noinput;
+	endif;
 
 postproc
 
 	if H68_MALAENE = 0 and H69_MALAENE <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_MALAENE,
-			   "Correct number of rooms for Rontabole",H69_MALAENE);
+		select("Correct number of units for Malaene",H68_MALAENE,
+			   "Correct number of rooms for Malaene",H69_MALAENE);
 	endif;
 
 	if H68_MALAENE <> 0 and H69_MALAENE < H68_MALAENE then
@@ -3276,20 +3225,18 @@ PROC H69_OPTAKA
 
 preproc
 
-if H68_OPTAKA = 0 then
-	H69_OPTAKA = 0;
-noinput;
-endif;
+	if H68_OPTAKA = 0 then
+		H69_OPTAKA = 0;
+		noinput;
+	endif;
 
 postproc
 
 	if H68_OPTAKA = 0 and H69_OPTAKA <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_OPTAKA,
-			   "Correct number of rooms for Rontabole",H69_OPTAKA);
+		select("Correct number of units for Optaka",H68_OPTAKA,
+			   "Correct number of rooms for Optaka",H69_OPTAKA);
 	endif;
-	
-postproc
 
 	if H68_OPTAKA <> 0 and H69_OPTAKA < H68_OPTAKA then
 		errmsg("Optaka must have rooms")
@@ -3311,17 +3258,17 @@ PROC H69_APARTMENT
 
 preproc
 
-if H68_APARTMENT = 0 then
-	H69_APARTMENT = 0;
-noinput;
-endif;
+	if H68_APARTMENT = 0 then
+		H69_APARTMENT = 0;
+		noinput;
+	endif;
 
 postproc
 
 	if H68_APARTMENT = 0 and H69_APARTMENT <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_APARTMENT,
-			   "Correct number of rooms for Rontabole",H69_APARTMENT);
+		select("Correct number of units for Apartment/Town House",H68_APARTMENT,
+			   "Correct number of rooms for Apartment/Town House",H69_APARTMENT);
 	endif;
 
 	if H68_APARTMENT <> 0 and H69_APARTMENT < H68_APARTMENT then
@@ -3344,17 +3291,17 @@ PROC H69_MANSION
 
 preproc
 
-if H68_MANSION = 0 then
-	H69_MANSION = 0;
-noinput;
-endif;
+	if H68_MANSION = 0 then
+		H69_MANSION = 0;
+		noinput;
+	endif;
 
 postproc
 
-	if H68_MANSION = 0 and H69_MANSION<> 0 then
+	if H68_MANSION = 0 and H69_MANSION <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_MANSION,
-			   "Correct number of rooms for Rontabole",H69_MANSION);
+		select("Correct number of units for Bangalow",H68_MANSION,
+			   "Correct number of rooms for Bangalow",H69_MANSION);
 	endif;
 
 	if H68_MANSION <> 0 and H69_MANSION < H68_MANSION then
@@ -3377,17 +3324,17 @@ PROC H69_TEMP_STRUCTURE
 
 preproc
 
-if H68_TEMP_STRUCTURE = 0 then
-	H69_TEMP_STRUCTURE = 0;
-noinput;
-endif;
+	if H68_TEMP_STRUCTURE = 0 then
+		H69_TEMP_STRUCTURE = 0;
+		noinput;
+	endif;
 
 postproc
 
 	if H68_TEMP_STRUCTURE = 0 and H69_TEMP_STRUCTURE <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Rontabole",H68_TEMP_STRUCTURE,
-			   "Correct number of rooms for Rontabole",H69_TEMP_STRUCTURE);
+		select("Correct number of units for Temporary Structure/Mokh'ukh'u",H68_TEMP_STRUCTURE,
+			   "Correct number of rooms for Temporary Structure/Mokh'ukh'u",H69_TEMP_STRUCTURE);
 	endif;
 
 	if H68_TEMP_STRUCTURE <> 0 and H69_TEMP_STRUCTURE < H68_TEMP_STRUCTURE then
@@ -3423,8 +3370,7 @@ PROC H70
 
 PROC H70_OTHER
 
-CheckBlank(H70_OTHER);
-
+	CheckBlank(H70_OTHER);
 	H70_OTHER = toupper(H70_OTHER);
 
 
@@ -3449,8 +3395,7 @@ PROC H72
 
 PROC H72_OTHER
 
-CheckBlank(H72_OTHER);
-
+	CheckBlank(H72_OTHER);
 	H72_OTHER = toupper(H72_OTHER);
 
 
@@ -3464,8 +3409,7 @@ PROC H73
 
 PROC H73_OTHER
 
-CheckBlank(H73_OTHER);
-
+	CheckBlank(H73_OTHER);
 	H73_OTHER = toupper(H73_OTHER);
 
 
@@ -3479,8 +3423,7 @@ PROC H74
 
 PROC H74_OTHER
 
-CheckBlank(H74_OTHER);
-
+	CheckBlank(H74_OTHER);
 	H74_OTHER = toupper(H74_OTHER);
 
 
@@ -3494,8 +3437,7 @@ PROC H75
 
 PROC H75_OTHER
 
-CheckBlank(H75_OTHER);
-
+	CheckBlank(H75_OTHER);
 	H75_OTHER = toupper(H75_OTHER);
 
 
@@ -3509,8 +3451,7 @@ PROC H76
 
 PROC H76_OTHER
 
-CheckBlank(H76_OTHER);
-
+	CheckBlank(H76_OTHER);
 	H76_OTHER = toupper(H76_OTHER);
 
 
@@ -3527,6 +3468,7 @@ preproc
 
 PROC REFRIGERANT
 
+	CheckBlank(REFRIGERANT);
 	REFRIGERANT = toupper(REFRIGERANT);
 
 
