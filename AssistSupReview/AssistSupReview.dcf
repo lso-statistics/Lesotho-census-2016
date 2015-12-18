@@ -1,5 +1,5 @@
 ﻿[Dictionary]
-Version=CSPro 6.1
+Version=CSPro 6.2
 Label=Assistant Supervisor Review
 Name=ASSIST_SUPERVISOR_REVIEW_DICT
 RecordTypeStart=1
@@ -483,11 +483,32 @@ Label=RV_Control
 Name=RV_CONTROL
 RecordTypeValue='C'
 Required=No
-RecordLen=130
+RecordLen=140
 
 [Item]
 Label=No of household members
-Name=NO_OF_HOUSEHOLD_MEMBERS
+Name=RV_NO_OF_HOUSEHOLD_MEMBERS
 Start=129
 Len=2
+ZeroFill=Yes
+
+[Item]
+Label=No of household members (prefilled from enumerator)
+Name=RV_NO_OF_PREFILLED_MEMBERS
+Start=131
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Supervisor Code
+Name=RV_SUPERVISOR_CODE
+Start=133
+Len=4
+ZeroFill=Yes
+
+[Item]
+Label=Enumerator Code
+Name=RV_ENUMERATOR_CODE
+Start=137
+Len=4
 ZeroFill=Yes
