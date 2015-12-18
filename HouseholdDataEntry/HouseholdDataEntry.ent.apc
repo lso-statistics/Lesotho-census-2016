@@ -261,6 +261,7 @@ preproc
 		ZONE = tonumber(sysparm("ZONE"));
 		SETTLEMENT = tonumber(sysparm("SETTLEMENT"));
 		ENUMERATION_AREA = tonumber(sysparm("ENUMERATION_AREA"));
+		ENUMERATOR_CODE = tonumber(sysparm("STAFF_CODE"));
 
 		// Make protected so interviewer cannot change id-items
 		set attributes (DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, SETTLEMENT, ENUMERATION_AREA) protect;

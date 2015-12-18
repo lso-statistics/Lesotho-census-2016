@@ -292,6 +292,7 @@ function CreateAndRunPFF()
 	filewrite(pffFile,"ZONE=%d",S_ZONE);
 	filewrite(pffFile,"SETTLEMENT=%d",S_SETTLEMENT);
 	filewrite(pffFile,"ENUMERATION_AREA=%s",STAFF_EA);
+	filewrite(pffFile,"STAFF_CODE=%d",USER_CODE);
 	
 	close(pffFile);
 
