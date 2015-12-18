@@ -237,6 +237,7 @@ PROC INTERVIEW_DATE
 
 preproc
 
+SKIP to DEMOGRAPHIC_ROSTER;		//temp for testing. reme...to delete
 	if demode() = add then
 		INTERVIEW_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
 		gps(open);
@@ -475,6 +476,7 @@ PROC DEMOGRAPHIC_ROSTER
 
 PROC B3
 
+
 onfocus
 
 	if curocc() = 1 then
@@ -490,23 +492,33 @@ postproc
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
+	
 	if B19(1) = 4 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Living Together",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
+	
 	if B19(1) = 5 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Separated",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
+	
 	if B19(1) = 6 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Divorced",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
+	
 	if B19(1) = 7 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Widowed",
+		strip(B2(curocc())), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3);
+	endif;
+	
+	if B19(1) = 9 and B3(curocc()) = 2 then
+		errmsg("%s cannot be a spouse to %s while head marital status is unknown",
 		strip(B2(curocc())), strip(B2(1)))
 		select("Correct head marital status",B19(1),"Correct relationship",B3);
 	endif;
@@ -538,14 +550,21 @@ PROC B5
 
 PROC B6B
 
-	//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5)
-	//plus or minus one year.
-	if ((CensusYear - B6B) <> B5) and ((CensusYear - B6B) <> B5 + 1) and ((CensusYear - B6B) <> B5 - 1) then
+///============================================
+//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5) minus one year.
+	
+if CensusYear = B6B then
+	if B6A > 04 then
+		errmsg("%s Cannot be born later than (%d) ",strip(B2(curocc())),B6A)
+		select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()));
+		
+	endif;
+	
+elseif((CensusYear - B6B) <> B5) and ((CensusYear - B6B) <> B5 - 1) then
 		errmsg("The year of birth is invalid")
 		select("Correct Age", B5(curocc()), "Correct Year of Birth", B6B(curocc()));
-	endif;
-
-
+		
+	endif;	
 PROC B7
 
 	//checks that household head and spouse are not visitors
@@ -884,8 +903,8 @@ preproc
 
 PROC C23A
 
-	//Disability of people aged over 3 years should not be 'cannot yet be determined' (5)
-	if B5(curocc()) > 3 and C23A(curocc()) = 5 then
+	//Disability of people aged over 1 years should not be 'cannot yet be determined' (5)
+	if B5(curocc()) >= 1 and C23A(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
@@ -893,7 +912,7 @@ PROC C23A
 
 PROC C23B
 
-	if B5(curocc()) > 3 and C23B(curocc()) = 5 then
+	if B5(curocc()) >= 1 and C23B(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
@@ -901,7 +920,7 @@ PROC C23B
 
 PROC C23C
 
-	if B5(curocc()) > 3 and C23C(curocc()) = 5 then
+	if B5(curocc()) >= 3 and C23C(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
@@ -909,7 +928,7 @@ PROC C23C
 
 PROC C23D
 
-	if B5(curocc()) > 3 and C23D(curocc()) = 5 then
+	if B5(curocc()) >= 3 and C23D(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
@@ -917,7 +936,7 @@ PROC C23D
 
 PROC C23E
 
-	if B5(curocc()) > 3 and C23E(curocc()) = 5 then
+	if B5(curocc()) >= 3 and C23E(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
@@ -925,7 +944,7 @@ PROC C23E
 
 PROC C23F
 
-	if B5(curocc()) > 3 and C23F(curocc()) = 5 then
+	if B5(curocc()) >= 4 and C23F(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
@@ -2833,10 +2852,12 @@ PROC F47B
 
 PROC F48
 
-	//Skip over to last child born sex (F50) if last born is still alive or don't know
-	if F48 <> 2 then
-		skip to F50;
-	endif;
+
+if F45C = 0 and F48 = 2 then
+	errmsg("You have already said there was zero children dead, so you cannot say no last born alive")
+	select("Correct last born child alive",F48);
+endif;
+
 
 
 PROC F49B
@@ -2852,17 +2873,36 @@ PROC F49B
 
 PROC F50
 
-	//Name cannot have girls alive only and have a last born as a male
+	//For a boy no longer alive, if F(48) for last born child is NO, then we expect F50 to be Male
+	//For a girl no longer alive, if F(48) for last born child is NO, then we expect F50 to be Female
+	
+	
+	if F48 = 2 then
+		if F45A = 0 and F50 = 1 then
+			errmsg("children born alive are Girls only");
+			reenter;
+		endif;
+	
+		//Name cannot have boys alive only and have a last born as a female
+		if F45B = 0 and F50 = 2 then
+			errmsg("");
+			reenter;
+		endif;
+	endif;
+	
 	if F42A = 0 and F50 = 1 then
-		errmsg("children born alive are Girls only");
-		reenter;
+			errmsg("children born alive are Girls only");
+			reenter;
+		endif;
+	
+		//Name cannot have boys alive only and have a last born as a female
+		if F42B = 0 and F50 = 2 then
+			errmsg("children born alive are Boys only");
+			reenter;
 	endif;
+		
 
-	//Name cannot have boys alive only and have a last born as a female
-	if F42B = 0 and F50 = 2 then
-		errmsg("children born alive are Boys only");
-		reenter;
-	endif;
+
 
 
 PROC G51
@@ -2891,12 +2931,15 @@ PROC G53
 
 PROC G54B
 
-	if G54A > CensusMonth and G54B > CensusYear then
-		errmsg("The Date is invalid")
+	//death month and year cannot be greater than of the census.
+
+	if cmcode(G54A,G54B) >= cmcode(CensusMonth,CensusYear)   then
+	
+		errmsg("The Date-of-death month and year cannot be greater than that of the census ")
 		select("Correct month the death occured", G54A,
 			   "Correct year the death occured", G54B);
+	
 	endif;
-
 
 PROC G57
 
@@ -3037,15 +3080,22 @@ PROC H68_RONTABOLE
 
 
 PROC H69_RONTABOLE
-
 preproc
 
-	if H68_RONTABOLE = 0 then
-		H69_RONTABOLE = 0;
-		noinput;
-	endif;
+if H68_RONTABOLE = 0 then
+	H69_RONTABOLE = 0;
+noinput;
+endif;
 
 postproc
+
+	if H68_RONTABOLE = 0 and H69_RONTABOLE <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_RONTABOLE,
+			   "Correct number of rooms for Rontabole",H69_RONTABOLE);
+	endif;
+
+
 
 	if H68_RONTABOLE <> 0 and H69_RONTABOLE < H68_RONTABOLE then
 		errmsg("Rontabole/Mokhoro must have rooms")
@@ -3053,8 +3103,6 @@ postproc
 			   "Correct number of rooms for Rontabole",H69_RONTABOLE);
 	endif;
 
-
-PROC H68_HEISI
 
 	if H63 = 2 and H68_HEISI = 0 then
 		errmsg("Heisi is the main dwelling unit for this household and it must have at least 1 housing unit")
@@ -3067,18 +3115,26 @@ PROC H69_HEISI
 
 preproc
 
-	if H68_HEISI = 0 then
-		H69_HEISI = 0;
-		noinput;
-	endif;
+if H68_HEISI = 0 then
+	H69_HEISI = 0;
+noinput;
+endif;
 
 postproc
 
+if H68_HEISI = 0 and H69_HEISI <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_HEISI,
+			   "Correct number of rooms for Rontabole",H69_HEISI);
+	endif;
+	
 	if H68_HEISI <> 0 and H69_HEISI < H68_HEISI then
 		errmsg("Heisi must have rooms")
 		select("Correct number of units for Heisi",H68_HEISI,
 			   "Correct number of rooms for Heisi",H69_HEISI);
 	endif;
+
+
 
 
 PROC H68_POLATA
@@ -3094,12 +3150,19 @@ PROC H69_POLATA
 
 preproc
 
-	if H68_POLATA = 0 then
-		H69_POLATA = 0;
-		noinput;
-	endif;
+if H68_POLATA = 0 then
+	H69_POLATA = 0;
+noinput;
+endif;
 
 postproc
+
+	if H68_POLATA = 0 and H69_POLATA <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_POLATA,
+			   "Correct number of rooms for Rontabole",H69_POLATA);
+	endif;
+
 
 	if H68_POLATA <> 0 and H69_POLATA < H68_POLATA then
 		errmsg("Polata must have rooms")
@@ -3121,12 +3184,18 @@ PROC H69_MALAENE
 
 preproc
 
-	if H68_MALAENE = 0 then
-		H69_MALAENE = 0;
-		noinput;
-	endif;
+if H68_MALAENE = 0 then
+	H69_MALAENE = 0;
+noinput;
+endif;
 
 postproc
+
+	if H68_MALAENE = 0 and H69_MALAENE <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_MALAENE,
+			   "Correct number of rooms for Rontabole",H69_MALAENE);
+	endif;
 
 	if H68_MALAENE <> 0 and H69_MALAENE < H68_MALAENE then
 		errmsg("Malaene must have rooms")
@@ -3148,11 +3217,19 @@ PROC H69_OPTAKA
 
 preproc
 
-	if H68_OPTAKA = 0 then
-		H69_OPTAKA = 0;
-		noinput;
-	endif;
+if H68_OPTAKA = 0 then
+	H69_OPTAKA = 0;
+noinput;
+endif;
 
+postproc
+
+	if H68_OPTAKA = 0 and H69_OPTAKA <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_OPTAKA,
+			   "Correct number of rooms for Rontabole",H69_OPTAKA);
+	endif;
+	
 postproc
 
 	if H68_OPTAKA <> 0 and H69_OPTAKA < H68_OPTAKA then
@@ -3175,12 +3252,18 @@ PROC H69_APARTMENT
 
 preproc
 
-	if H68_APARTMENT = 0 then
-		H69_APARTMENT = 0;
-		noinput;
-	endif;
+if H68_APARTMENT = 0 then
+	H69_APARTMENT = 0;
+noinput;
+endif;
 
 postproc
+
+	if H68_APARTMENT = 0 and H69_APARTMENT <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_APARTMENT,
+			   "Correct number of rooms for Rontabole",H69_APARTMENT);
+	endif;
 
 	if H68_APARTMENT <> 0 and H69_APARTMENT < H68_APARTMENT then
 		errmsg("Apartment/Town House must have rooms")
@@ -3202,12 +3285,18 @@ PROC H69_MANSION
 
 preproc
 
-	if H68_MANSION = 0 then
-		H69_MANSION = 0;
-		noinput;
-	endif;
+if H68_MANSION = 0 then
+	H69_MANSION = 0;
+noinput;
+endif;
 
 postproc
+
+	if H68_MANSION = 0 and H69_MANSION<> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_MANSION,
+			   "Correct number of rooms for Rontabole",H69_MANSION);
+	endif;
 
 	if H68_MANSION <> 0 and H69_MANSION < H68_MANSION then
 		errmsg("Bangalow/Mansion must have rooms")
@@ -3229,12 +3318,18 @@ PROC H69_TEMP_STRUCTURE
 
 preproc
 
-	if H68_TEMP_STRUCTURE = 0 then
-		H69_TEMP_STRUCTURE = 0;
-		noinput;
-	endif;
+if H68_TEMP_STRUCTURE = 0 then
+	H69_TEMP_STRUCTURE = 0;
+noinput;
+endif;
 
 postproc
+
+	if H68_TEMP_STRUCTURE = 0 and H69_TEMP_STRUCTURE <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Rontabole",H68_TEMP_STRUCTURE,
+			   "Correct number of rooms for Rontabole",H69_TEMP_STRUCTURE);
+	endif;
 
 	if H68_TEMP_STRUCTURE <> 0 and H69_TEMP_STRUCTURE < H68_TEMP_STRUCTURE then
 		errmsg("Temporary Structure/Mokh'ukh'u must have rooms")
