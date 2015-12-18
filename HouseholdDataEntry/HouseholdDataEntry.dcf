@@ -7292,7 +7292,11 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
+<<<<<<< HEAD
 RecordLen=288
+=======
+RecordLen=240
+>>>>>>> 377a8944a34805410ab59617e6f6d64931274b9e
 
 [Item]
 Label=Number of visits
@@ -7481,3 +7485,10 @@ Label=End of Interview Read Time
 Name=E_READ_TIME
 Start=283
 Len=6
+
+[Item]
+Label=Enumerator Code
+Name=ENUMERATOR_CODE
+Start=289
+Len=4
+ZeroFill=Yes

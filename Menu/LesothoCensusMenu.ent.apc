@@ -1,6 +1,8 @@
 ﻿PROC GLOBAL
+
 // Arrays for dynamic value sets
 array numeric codes(200);
+
 
 array string labels(200);
 array string mycodes(200);
@@ -17,7 +19,7 @@ string loginFilename, eacode, enumeratorEA;
 string enumeratorDataFileName,enumeratorDataFileNameCopy; //
 string supervisorDataFilename; //
 string enumtempFileName; //
-numeric ea, totMales = 0, totFemales = 0, totPopulation = 0, males, females, population; //
+numeric postChecked = 0, ea, totMales = 0, totFemales = 0, totPopulation = 0, males, females, population; //
 
 list string fileListing; //variable to store all data files in a directory
 
@@ -99,6 +101,20 @@ function agebysexProcessing(string eaFilename)
 end;
 //***************************************************************************************************
 
+
+
+
+
+
+
+//****************************************************************************************************
+function chooseEA()
+	numeric EApicked = pickEA();// 0 = view all, 1+ = index of EA
+	
+
+end;
+
+//****************************************************************************************************
 function  ageBySexTable()
 	numeric EApicked = pickEA();// 0 = view all, 1+ = index of EA
 	
@@ -307,6 +323,7 @@ function CreateAndRunPFF()
 	filewrite(pffFile,"ZONE=%d",S_ZONE);
 	filewrite(pffFile,"SETTLEMENT=%d",S_SETTLEMENT);
 	filewrite(pffFile,"ENUMERATION_AREA=%s",STAFF_EA);
+	filewrite(pffFile,"STAFF_CODE=%d",USER_CODE);
 	
 	close(pffFile);
 
@@ -391,6 +408,8 @@ function ShowSummaryReport()
 		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
 		// Create a dynamic value set of all completed households
 		// in the enumerator data file.	
+		//errmsg("This is the EnumeratorDataFilename = %s", enumeratorDataFileName);
+		
 		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
 		if result <> 1 then
 			errmsg("Unable to load enumerator data file");
@@ -410,24 +429,33 @@ function ShowSummaryReport()
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
+			numeric totHH = 0;
 			totMales = 0;
 			totFemales = 0;
 			totPopulation = 0;
+			postChecked = 0;
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if FINAL_RESULT_CODE = 1 then
 					CompletedHH = CompletedHH + 1;
+					totHH = totHH + 1;
 				elseif FINAL_RESULT_CODE = 6 then
 					PartialHH = PartialHH + 1;
+					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 2 then
 					NoMember = NoMember + 1;
+					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 3 then
 					Absent = Absent + 1;
+					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 4 then
 					Vacant = Vacant + 1;
+					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 5 then
 					Destroyed = Destroyed + 1;
+					totHH = totHH + 1;
 				elseif not FINAL_RESULT_CODE in 1,6 then
 					PartialSave = PartialSave + 1;
+					totHH = totHH + 1;
 				endif;
 				TotalHH = TotalHH +1;
 				
@@ -441,23 +469,51 @@ function ShowSummaryReport()
 			enddo;
 			
 			totPopulation = totMales + totFemales;
-		endif;		
+	
+	
+			supervisorDataFileFolder = menuApplicationFolder + "../../Data/Supervisor/"; //this is the data folder (all our data is stored in here)
+			supervisorDataFilename = maketext("%sRV%011s.dat", supervisorDataFileFolder, eacode);
+
+			if fileexist(supervisorDataFilename) then
+			
+	
+				result = setfile(ASSIST_SUPERVISOR_REVIEW_DICT, supervisorDataFilename);
+			
+			
+				// Start at first household in enumerator data file
+				if locate(ASSIST_SUPERVISOR_REVIEW_DICT, >=, "") <> 0 then	
+					// Loop through all households 
+					// until loadcase returns zero when it hits end of file.
+					//numeric i;
+					do postChecked = 0 while loadcase(ASSIST_SUPERVISOR_REVIEW_DICT) <> 0
+							
+					enddo;
+					
+					//totPopulation = totMales + totFemales;
+				endif;
+				
+			endif;
+	
+		endif;	
+		
+			
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
-		filewrite(tempfile,"Households%s","								Household Status");
-		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
-		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
-		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
-		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
-		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
-		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
-		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempfile,"%-30s%s","Households","Household Status");
+		filewrite(tempFile,"%-30d%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%-30d%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%-30d%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%-30d%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%-30d%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%-30d%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%-30dPartially saved",PartialSave);
 		filewrite(tempFile, "----------------------------------------------------------");
-		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"%-30d%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
 		filewrite(tempFile, "==========================================================");
-		filewrite(tempFile,"%d										%s",totMales,"Total Males");
-		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
-		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
+		filewrite(tempFile,"%-30d%s",totMales,"Total Males");
+		filewrite(tempFile,"%-30d%s",totFemales,"Total Females");
+		filewrite(tempFile,"%-30d%s",totPopulation,"Total Population");
+		filewrite(tempFile,"%-30d%s",postChecked, "Total HH Post Checked");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -545,20 +601,20 @@ function ShowSummaryReport_EA(string eacode)
 				
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
-		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
-		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
-		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
-		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
-		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
-		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
-		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile,"%d%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%dPartially saved",PartialSave);
 		filewrite(tempFile, "----------------------------------------------------------");
-		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"%d%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
 		filewrite(tempFile, "==========================================================");
-		filewrite(tempFile,"%d										%s",totMales,"Total Males");
-		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
-		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
+		filewrite(tempFile,"%d%s",totMales,"Total Males");
+		filewrite(tempFile,"%d%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -654,20 +710,20 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 		filewrite(tempFile,"DATE: %s", viewdate);
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
-		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
-		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
-		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
-		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
-		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
-		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
-		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile,"%d%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%dPartially saved",PartialSave);
 		filewrite(tempFile, "----------------------------------------------------------");
-		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"%d%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
 		filewrite(tempFile, "==========================================================");
-		filewrite(tempFile,"%d										%s",totMales,"Total Males");
-		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
-		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
+		filewrite(tempFile,"%d%s",totMales,"Total Males");
+		filewrite(tempFile,"%d%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -758,20 +814,20 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 		filewrite(tempFile,"DATE: %s", viewdate);
 		filewrite(tempFile,"EA CODE: %011d",ENUMERATION_AREA);
 		filewrite(tempfile,"Households%s","								Household Status");
-		filewrite(tempFile,"%d										%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
-		filewrite(tempFile,"%d										%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
-		filewrite(tempFile,"%d										%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
-		filewrite(tempFile,"%d										%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
-		filewrite(tempFile,"%d										%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
-		filewrite(tempFile,"%d										%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
-		filewrite(tempFile,"%d										Partially saved",PartialSave);
+		filewrite(tempFile,"%d%s",CompletedHH,getlabel(FINAL_RESULT_CODE,1));
+		filewrite(tempFile,"%d%s",PartialHH,getlabel(FINAL_RESULT_CODE,6));
+		filewrite(tempFile,"%d%s",NoMember,getlabel(HOUSEHOLD_STATUS,2));
+		filewrite(tempFile,"%d%s",Absent,getlabel(HOUSEHOLD_STATUS,3));
+		filewrite(tempFile,"%d%s",Vacant,getlabel(HOUSEHOLD_STATUS,4));
+		filewrite(tempFile,"%d%s",Destroyed,getlabel(HOUSEHOLD_STATUS,5));
+		filewrite(tempFile,"%dPartially saved",PartialSave);
 		filewrite(tempFile, "----------------------------------------------------------");
-		filewrite(tempFile,"%d										%s",TotalHH,"Total Households");
+		filewrite(tempFile,"%d%s",TotalHH,"Total Households");
 		filewrite(tempFile,"");
 		filewrite(tempFile, "==========================================================");
-		filewrite(tempFile,"%d										%s",totMales,"Total Males");
-		filewrite(tempFile,"%d										%s",totFemales,"Total Females");
-		filewrite(tempFile,"%d										%s",totPopulation,"Total Population");
+		filewrite(tempFile,"%d%s",totMales,"Total Males");
+		filewrite(tempFile,"%d%s",totFemales,"Total Females");
+		filewrite(tempFile,"%d%s",totPopulation,"Total Population");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
@@ -1033,6 +1089,8 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then
 	else
 		reenter;
 	endif;
+elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
+		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
 elseif CONSTITUENCY_SUPERVISOR_MENU = 9 then
 	// Logout
 	// Erase login file so that we don't automatically
@@ -1123,8 +1181,7 @@ endif;
 // until loadcase returns zero when it hits end of file.
 numeric i = 1;
 do while loadcase(LESOTHOCENSUS2016_DICT) <> 0
-	codes(i) = i;
-	
+	codes(i) = i;	
 	if FINAL_RESULT_CODE = 1 then	
 		myID(i) = key(LESOTHOCENSUS2016_DICT);
 		labels(i) = maketext("%s", HOUSEHOLD_HEAD_NAMES);
@@ -1197,8 +1254,8 @@ writecase(LESOTHOCENSUS2016_DICT);
 reenter APPROVE_CASES;
 PROC SUMMARY_REPORT_MENU
 
-//menuApplicationFolder = pathname(Application); //this is the path of our application
-//enumeratorDataFileFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
+menuApplicationFolder = pathname(Application); //this is the path of our application
+enumeratorDataFileFolder = menuApplicationFolder + "../Data/Enumerator/"; //this is the data folder (all our data is stored in here)
 
 numeric i, ctr;
 dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
@@ -1276,6 +1333,10 @@ do i = 1 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 		endif;
 	endif;
 	
+	checked = getlabel(POSTCHECK,1);
+	
+	
+	mylabels2(i) = strip(checked);
 	
 	mycodes(i) = Strip(key(LESOTHOCENSUS2016_DICT));
 	//mylabels(i)= maketext("%d %S %D %S",VILLAGE_NUMBER,VILLAGE_NAME,HOUSEHOLD_NUMBER,HOUSEHOLD_HEAD_NAMES); 
@@ -1284,19 +1345,6 @@ do i = 1 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 	
 enddo;
 
-locate(ASS_SUP_DICT, >=, ""); 
-do i = 1 while loadcase(ASS_SUP_DICT) <> 0
-	if CHOOSE_POSTCHECK_HOUSEHOLD = HOUSEHOLD_NUMBER then
-		if POSTCHECK = 1 then
-			Checked = getlabel(POSTCHECK, 1);
-		else
-			Checked = getlabel(POSTCHECK, 2);
-		endif;	
-	
-	endif;
-	
-	mylabels2(i)= strip(Checked);
-enddo;
 
 mycodes(i) = "";
 
