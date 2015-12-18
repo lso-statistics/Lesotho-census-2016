@@ -1,5 +1,5 @@
 ﻿[FormFile]
-Version=CSPro 6.1
+Version=CSPro 6.2
 Name=ASSISTSUPREVIEW_FF
 Label=AssistSupReview
 DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
@@ -38,7 +38,7 @@ Size=801,674
   
 Item=NAMES_ROSTER
 Item=DEMOGRAPHICS_ROSTER
-Item=NO_OF_HOUSEHOLD_MEMBERS
+Item=RV_NO_OF_HOUSEHOLD_MEMBERS
   
 [EndForm]
   
@@ -68,107 +68,107 @@ Text=District
   
 [Field]
 Name=RV_CONSTITUENCY
-Position=231,75,260,95
+Position=231,74,260,94
 Item=RV_CONSTITUENCY,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,78,131,94
+Position=50,77,131,93
 Text=Constituency
  
   
 [Field]
 Name=RV_COMMUNITY_COUNCIL
-Position=231,105,274,125
+Position=231,103,274,123
 Item=RV_COMMUNITY_COUNCIL,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,108,174,124
+Position=50,106,174,122
 Text=Community Council
  
   
 [Field]
 Name=RV_ZONE
-Position=231,135,246,155
+Position=231,133,246,153
 Item=RV_ZONE,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,138,81,154
+Position=50,136,81,152
 Text=Zone
  
   
 [Field]
 Name=RV_SETTLEMENT
-Position=231,195,246,215
+Position=231,163,246,183
 Item=RV_SETTLEMENT,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,198,119,214
+Position=50,166,119,182
 Text=Settlement
  
   
 [Field]
 Name=RV_ENUMERATION_AREA
-Position=231,165,386,185
+Position=231,193,386,213
 Item=RV_ENUMERATION_AREA,ASSIST_SUPERVISOR_REVIEW_DICT
 Form=1
   
 [Text]
-Position=50,168,165,184
+Position=50,196,165,212
 Text=Enumeration Area
  
   
 [Field]
 Name=RV_WARD
-Position=231,226,260,246
+Position=231,223,260,243
 Item=RV_WARD,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=52,230,86,246
+Position=50,227,84,243
 Text=Ward
  
   
 [Field]
 Name=RV_VILLAGE_NUMBER
-Position=231,255,260,275
+Position=231,253,260,273
 Item=RV_VILLAGE_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
 Form=1
   
 [Text]
-Position=50,258,149,274
+Position=50,256,149,272
 Text=Village Number
  
   
 [Field]
-Name=RV_HOUSEHOLD_NUMBER
-Position=231,315,274,335
-Item=RV_HOUSEHOLD_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
-Form=1
-  
-[Text]
-Position=50,318,171,334
-Text=Household Number
- 
-  
-[Field]
 Name=RV_VILLAGE_NAME
-Position=233,286,643,306
+Position=231,283,641,303
 Item=RV_VILLAGE_NAME,ASSIST_SUPERVISOR_REVIEW_DICT
 UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=52,290,138,306
+Position=50,287,136,303
 Text=Village Name
+ 
+  
+[Field]
+Name=RV_HOUSEHOLD_NUMBER
+Position=231,313,274,333
+Item=RV_HOUSEHOLD_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
+Form=1
+  
+[Text]
+Position=50,316,171,332
+Text=Household Number
  
   
 [Field]
@@ -179,7 +179,7 @@ UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=51,350,218,366
+Position=50,350,217,366
 Text=Names of Household Head
  
 [EndGroup]
@@ -200,7 +200,7 @@ Required=No
 Type=Record
 TypeName=RV_INDIVIDUAL
 Max=50
-DisplaySize=27,25,534,329
+DisplaySize=27,25,512,329
 Orientation=Horizontal
 FieldRowHeight=0
 HeadingRowHeight=0
@@ -469,9 +469,9 @@ Text=Person Number
  
 [Field]
 Name=RV_B1
-Position=27,0,56,20
+Position=14,0,43,20
 Item=RV_B1,ASSIST_SUPERVISOR_REVIEW_DICT
-DataCaptureType=ComboBox
+Protected=Yes
   
 [Text]
 Position=0,0,101,16
@@ -488,7 +488,7 @@ Text=Names
  
 [Field]
 Name=RV_B2
-Position=0,0,228,20
+Position=3,0,231,20
 Item=RV_B2,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
@@ -508,7 +508,7 @@ Text=In household
  
 [Field]
 Name=RV_IN_HOUSEHOLD
-Position=53,0,68,20
+Position=27,0,42,20
 Item=RV_IN_HOUSEHOLD,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
   
@@ -526,7 +526,7 @@ Text=More People
  
 [Field]
 Name=RV_MORE_PEOPLE
-Position=34,0,49,20
+Position=17,0,32,20
 Item=RV_MORE_PEOPLE,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
   
@@ -539,9 +539,9 @@ Text=More People
  
   
 [Field]
-Name=NO_OF_HOUSEHOLD_MEMBERS
+Name=RV_NO_OF_HOUSEHOLD_MEMBERS
 Position=747,37,776,57
-Item=NO_OF_HOUSEHOLD_MEMBERS,ASSIST_SUPERVISOR_REVIEW_DICT
+Item=RV_NO_OF_HOUSEHOLD_MEMBERS,ASSIST_SUPERVISOR_REVIEW_DICT
 Protected=Yes
 Form=2
   
@@ -558,7 +558,7 @@ Required=No
 Type=Record
 TypeName=RV_INDIVIDUAL
 Max=50
-MaxField=NO_OF_HOUSEHOLD_MEMBERS
+MaxField=RV_NO_OF_HOUSEHOLD_MEMBERS
 DisplaySize=27,345,356,649
 Orientation=Horizontal
 FieldRowHeight=0
@@ -828,7 +828,7 @@ Text=Relationship
  
 [Field]
 Name=RV_B3
-Position=50,0,79,20
+Position=25,0,54,20
 Item=RV_B3,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
   
@@ -846,7 +846,7 @@ Text=Sex
  
 [Field]
 Name=RV_B4
-Position=10,0,25,20
+Position=5,0,20,20
 Item=RV_B4,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
   
@@ -882,7 +882,7 @@ Text=Residential status
  
 [Field]
 Name=RV_B7
-Position=96,0,111,20
+Position=48,0,63,20
 Item=RV_B7,ASSIST_SUPERVISOR_REVIEW_DICT
 DataCaptureType=RadioButton
   
