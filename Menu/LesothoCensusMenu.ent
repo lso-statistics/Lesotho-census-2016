@@ -13,6 +13,7 @@ CAPIFont2Color=16711680
 File=..\HouseholdDataEntry\HouseholdDataEntry.dcf
 File=.\Staff.dcf
 File=.\AssSup.dcf
+File=..\AssistSupReview\AssistSupReview.dcf
 [AppCode]
 File=.\LesothoCensusMenu.ent.apc
 [Message]
@@ -26,3 +27,4 @@ Dict-Type=.\LesothoCensusMenu.dcf,Input,.\LesothoCensusMenu.fmf
 Dict-Type=..\HouseholdDataEntry\HouseholdDataEntry.dcf,External
 Dict-Type=.\Staff.dcf,External
 Dict-Type=.\AssSup.dcf,External
+Dict-Type=..\AssistSupReview\AssistSupReview.dcf,External
