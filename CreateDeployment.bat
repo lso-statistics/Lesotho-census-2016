@@ -41,8 +41,8 @@ REM Copy .pff for Menu
 copy /y .\Menu\*.pff .\Deployment\LesothoCensus2016\Menu
 
 REM Copy .pnc files
-copy /y Client.pnc .\Deployment\LesothoCensus2016
-copy /y Server.pnc .\Deployment\LesothoCensus2016
+copy /y EnumeratorInitialSync.pnc .\Deployment\LesothoCensus2016
 copy /y SupervisorInitialSync.pnc .\Deployment\LesothoCensus2016
+copy /y SyncWithEnumerator.pnc .\Deployment\LesothoCensus2016
 copy /y SyncWithServer.pnc .\Deployment\LesothoCensus2016
 copy /y SyncWithSupervisor.pnc .\Deployment\LesothoCensus2016

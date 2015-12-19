@@ -6,31 +6,31 @@ AppName=2016 Lesotho PHC - Sync With Supervisor
 Type=Bluetooth 
 
 [Sync]
-ServerPath=/Application/HouseholdDataEntry
-ClientPath=/LesothoCensus2016/HouseholdDataEntry
+ServerPath=/LesothoCensus2016/Application/HouseholdDataEntry
+ClientPath=/LesothoCensus2016/Application/HouseholdDataEntry
 Get=HouseholdDataEntry.pen
 
-ServerPath=/Application/Menu
-ClientPath=/LesothoCensus2016/Menu
+ServerPath=/LesothoCensus2016/Application/Menu
+ClientPath=/LesothoCensus2016/Application/Menu
 Get=LesothoCensusMenu.pen
 Get=LesothoCensusMenu.pff
 Get=staff.dat
 Get=AssSup.dat
 
-ServerPath=/Application/AssistSupReview
-ClientPath=/LesothoCensus2016/AssistSupReview
+ServerPath=/LesothoCensus2016/Application/AssistSupReview
+ClientPath=/LesothoCensus2016/Application/AssistSupReview
 Get=AssistSupReview.pen
 
-CreateServerPath=/DataBackup/Enumerator/%DeviceID%/%DateTime%
-ServerPath=/DataBackup/Enumerator/%DeviceID%/%DateTime%
-ClientPath=/LesothoCensus2016/HouseholdDataEntry
+CreateServerPath=/LesothoCensus2016/DataBackup/Enumerator/%DeviceID%/%DateTime%
+ServerPath=/LesothoCensus2016/DataBackup/Enumerator/%DeviceID%/%DateTime%
+ClientPath=/LesothoCensus2016/Data/Enumerator
 Put=*.dat
 Put=*.dat.not
 Put=*.dat.idx
 Put=*.dat.sts
 Put=*.dat.lst
 Put=*.dat.log
-ServerPath=/Data/Enumerator
+ServerPath=/LesothoCensus2016/Data/Enumerator
 Put=*.dat
 Put=*.dat.not
 Put=*.dat.idx
@@ -38,16 +38,16 @@ Put=*.dat.sts
 Put=*.dat.lst
 Put=*.dat.log
 
-CreateServerPath=/DataBackup/Supervisor/%DeviceID%/%DateTime%
-ServerPath=/DataBackup/Supervisor/%DeviceID%/%DateTime%
-ClientPath=/LesothoCensus2016/AssistSupReview
+CreateServerPath=/LesothoCensus2016/DataBackup/Supervisor/%DeviceID%/%DateTime%
+ServerPath=/LesothoCensus2016/DataBackup/Supervisor/%DeviceID%/%DateTime%
+ClientPath=/LesothoCensus2016/Data/Supervisor
 Put=*.dat
 Put=*.dat.not
 Put=*.dat.idx
 Put=*.dat.sts
 Put=*.dat.lst
 Put=*.dat.log
-ServerPath=/Data/Supervisor
+ServerPath=/LesothoCensus2016/Data/Supervisor
 Put=*.dat
 Put=*.dat.not
 Put=*.dat.idx

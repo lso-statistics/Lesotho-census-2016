@@ -1,0 +1,26 @@
+[SyncFile]
+Version=6.1
+AppName=Initial Sync
+Description=Setting up the tablet for first time
+
+[Connection] 
+Type=Bluetooth 
+
+[Sync]
+ServerPath=/LesothoCensus2016/Application/HouseholdDataEntry
+CreateClientPath=/LesothoCensus2016/Application/HouseholdDataEntry
+ClientPath=/LesothoCensus2016/Application/HouseholdDataEntry
+Get=HouseholdDataEntry.pen
+
+ServerPath=/LesothoCensus2016/Application/Menu
+CreateClientPath=/LesothoCensus2016/Application/Menu
+ClientPath=/LesothoCensus2016/Application/Menu
+Get=LesothoCensusMenu.pen
+Get=LesothoCensusMenu.pff
+Get=staff.dat
+Get=AssSup.dat
+
+ServerPath=/LesothoCensus2016/Application/AssistSupReview
+CreateClientPath=/LesothoCensus2016/Application/AssistSupReview
+ClientPath=/LesothoCensus2016/Application/AssistSupReview
+Get=AssistSupReview.pen

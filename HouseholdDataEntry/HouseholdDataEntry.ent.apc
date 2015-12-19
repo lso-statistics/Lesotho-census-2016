@@ -201,19 +201,19 @@ function DeleteDeath()
 
 end;
 
-{
+
 function captureGPS()
 	if gps(open) = 1 then
-		if gps(read, 60) then
+		if gps(read, 120) then
 			if gps(readlast) <> 1 then
 				errmsg("GPS signal could not be acquired");
 			else
-				PL_LATITUDE = gps(latitude);
-				PL_LONGITUDE = gps(longitude);
-				PL_ALTITUDE = gps(altitude);
-				PL_SATELLITES = gps(satellites);
-				PL_ACCURACY = gps(accuracy);
-				PL_READ_TIME = gps(readtime);
+				HH_LATITUDE = gps(latitude);
+				HH_LONGITUDE = gps(longitude);
+				HH_ALTITUDE = gps(altitude);
+				HH_SATELLITES = gps(satellites);
+				HH_ACCURACY = gps(accuracy);
+				HH_READ_TIME = gps(readtime);
 				errmsg("Successfully recorded the household GPS coordinates");
 			endif;
 		endif;
@@ -224,7 +224,7 @@ function captureGPS()
 	endif;
 
 end;
-}
+
 
 PROC LESOTHOCENSUS2016_FF
 
@@ -233,7 +233,7 @@ preproc
 	userbar (clear);
 	userbar (add button, "Delete Person's Record", DeletePerson);
 	userbar (add button, "Delete Deceased",DeleteDeath);
-	//userbar (add button, "Capture GPS Coordinates", captureGPS);
+	userbar (add button, "Capture Household GPS Coordinates", captureGPS);
 	userbar (show);
 
 
@@ -337,31 +337,13 @@ preproc
 
 PROC HOUSEHOLD_STATUS
 
-	//the status of the household is incomplete
-{
-	if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
-		errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
-		reenter;
-	endif;
-
-	if HOUSEHOLD_STATUS in 2:6 then
-		if APPROVAL_STATUS = 1 then
-			endlevel;
-		else
-			savepartial();
-			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-			stop(0);
+if demode() = add then
+	if HH_LATITUDE = notappl then
+		if HOUSEHOLD_STATUS in 2:6 then
+			errmsg("You cannot save the household without its GPS coordinates. Please capture the coordinates.");
+			reenter;
 		endif;
-	endif;
-}
-if gps(open) = 1 then // tablet gps is open
-	if gps(read, 120) then //tyr to read for 120 seconds
-		PL_LATITUDE = gps(latitude);
-		PL_LONGITUDE = gps(longitude);
-		PL_ALTITUDE = gps(altitude);
-		PL_SATELLITES = gps(satellites);
-		PL_ACCURACY = gps(accuracy);
-		PL_READ_TIME = gps(readtime);
+	else
 		if HOUSEHOLD_STATUS in 2:5 then 
 			if APPROVAL_STATUS = 1 then
 				endlevel;
@@ -371,18 +353,20 @@ if gps(open) = 1 then // tablet gps is open
 				stop(0);
 			endif;
 		endif;
+		
 		if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
 			errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
 			reenter;
+		elseif HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS = 3 then
+			if APPROVAL_STATUS = 1 then
+				endlevel;
+			else
+				savepartial();
+				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+				stop(0);
+			endif;
 		endif;
-
-	else
 	endif;
-	gps(close);
-	
-else
-	errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
-	exit;
 endif;
 PROC B1
 
@@ -3469,40 +3453,22 @@ PROC REFRIGERANT
 
 
 PROC FINAL_RESULT_CODE
-{
-	//the status of the household is incomplete
-	if FINAL_RESULT_CODE = 1 then
-		endlevel;
-	endif;
-}
 
-if gps(open) = 1 then
-	if gps(read, 60) then
-		if gps(readlast) <> 1 then
-			errmsg("GPS signal could not be acquired");
-		else
-			E_LATITUDE = gps(latitude);
-			E_LONGITUDE = gps(longitude);
-			E_ALTITUDE = gps(altitude);
-			E_SATELLITES = gps(satellites);
-			E_ACCURACY = gps(accuracy);
-			E_READ_TIME = gps(readtime);
-			
-			//the status of the household is incomplete
-			if FINAL_RESULT_CODE = 1 then
-			
-				endlevel;
-			endif;
+if demode() = add then
+	if HH_LATITUDE = notappl then
+		if FINAL_RESULT_CODE = 1 then
+			errmsg("You cannot save the household without its GPS coordinates. Please capture the coordinates.");
+			reenter;
+		endif;
+	else
+		if FINAL_RESULT_CODE = 1 then 
+			endlevel;
 		endif;
 	endif;
-	gps(close);
-else
-	errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
-	exit;
 endif;
 PROC PARTIALLY_COMPLETE_REASON
 
-	PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
+PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
 
-	savepartial();
-	stop(0);	//go back to the list of one/all HH.
+savepartial();
+stop(0);	//go back to the list of one/all HH.
