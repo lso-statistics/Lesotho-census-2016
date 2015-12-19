@@ -6,9 +6,8 @@ array numeric codes(200);
 array string labels(200);
 array string mycodes(200);
 array string mylabels(200);
-array string mylabels2(200);
 array string myID(200);
-array string EAarray(25);
+array string EAarray(50);
 
 array ageBySex5YearGroups(22, 2);
 
@@ -18,13 +17,27 @@ string loginFilename, eacode, enumeratorEA;
 string enumeratorDataFileName,enumeratorDataFileNameCopy; //
 string supervisorDataFilename; //
 string enumtempFileName; //
-numeric postChecked = 0, ea, totMales = 0, totFemales = 0, totPopulation = 0, males, females, population; //
+numeric postChecked = 0, ea, totMales = 0, totFemales = 0, totPopulation = 0; //
 
 list string fileListing; //variable to store all data files in a directory
 
 file tmpFile;
 file tempFile;
 file pffFile; // File variable for writing out data entry pff file
+
+
+function string getSupervisorDataFilename() // get the supervisor data filename from the enumerator data filename
+	numeric lastSlash = length(enumeratorDataFileName);
+	
+	do while lastSlash > 0 and not enumeratorDataFileName[lastSlash:1] in "\","/"
+		lastSlash = lastSlash - 1;
+	enddo;
+	
+	// combine the file name to the supervisor data path
+	getSupervisorDataFilename = maketext("%sRV%s",supervisorDataFileFolder,enumeratorDataFileName[lastSlash + 1]);
+
+end;
+
 
 //********************************************************************************************************
 
@@ -44,19 +57,19 @@ end;
 
 function pickEA()
 	      
-    numeric i = i;
+    numeric i;
     
     dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
         
         if length(fileListing) > 0 then
-           eaarray(1) = "View All";
+           EAarray(1) = "View All";
             do i = 1 while i <= length(fileListing)
                 eacode = fileListing(i)[length(fileListing(i))-14:11];
-                
-                EAarray(i+1) = eacode;
+                EAarray(i + 1) = eacode;
             enddo;
         else
             errmsg("No data files found.");
+            reenter;
         endif;
         
         EAarray(i+1) = "";
@@ -97,15 +110,6 @@ function agebysexProcessing(string eaFilename)
 end;
 //***************************************************************************************************
 
-
-//****************************************************************************************************
-function chooseEA()
-
-	numeric EApicked = pickEA();// 0 = view all, 1+ = index of EA
-
-end;
-
-//****************************************************************************************************
 function  ageBySexTable()
 	numeric EApicked = pickEA();// 0 = view all, 1+ = index of EA
 	
@@ -334,9 +338,9 @@ function CreateAndRunSRPFF()
 	filewrite(sr_pffFile,"StartMode=Add;%s", key(LESOTHOCENSUS2016_DICT));	
 
 	filewrite(sr_pffFile,"[Files]");
-	filewrite(sr_pffFile,"Application=%sAssistSupReview.ent", assSupRevApplicationFolder);	
-	supervisorDataFilename = maketext("RV%011d.dat", ENUMERATION_AREA);
-	filewrite(sr_pffFile,"InputData=%s%s",supervisorDataFileFolder,supervisorDataFilename);
+	filewrite(sr_pffFile,"Application=%sAssistSupReview.ent", assSupRevApplicationFolder);
+	supervisorDataFilename = getSupervisorDataFilename();
+	filewrite(sr_pffFile,"InputData=%s",supervisorDataFilename);
 
 	filewrite(sr_pffFile,"[Parameters]");
 	filewrite(sr_pffFile,"DISTRICT=%d",DISTRICT);
@@ -378,9 +382,6 @@ function ShowSummaryReport()
 		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
 		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
-		// Create a dynamic value set of all completed households
-		// in the enumerator data file.	
-		//errmsg("This is the EnumeratorDataFilename = %s", enumeratorDataFileName);
 		
 		numeric result = setfile(LESOTHOCENSUS2016_DICT, enumeratorDataFileName);
 		if result <> 1 then
@@ -401,7 +402,6 @@ function ShowSummaryReport()
 			numeric Vacant = 0;
 			numeric Destroyed = 0;
 			numeric PartialSave = 0;
-			numeric totHH = 0;
 			totMales = 0;
 			totFemales = 0;
 			totPopulation = 0;
@@ -409,35 +409,23 @@ function ShowSummaryReport()
 			do i = 0 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 				if FINAL_RESULT_CODE = 1 then
 					CompletedHH = CompletedHH + 1;
-					totHH = totHH + 1;
 				elseif FINAL_RESULT_CODE = 6 then
 					PartialHH = PartialHH + 1;
-					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 2 then
 					NoMember = NoMember + 1;
-					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 3 then
 					Absent = Absent + 1;
-					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 4 then
 					Vacant = Vacant + 1;
-					totHH = totHH + 1;
 				elseif HOUSEHOLD_STATUS = 5 then
 					Destroyed = Destroyed + 1;
-					totHH = totHH + 1;
 				elseif not FINAL_RESULT_CODE in 1,6 then
 					PartialSave = PartialSave + 1;
-					totHH = totHH + 1;
 				endif;
 				TotalHH = TotalHH +1;
 				
-				males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
-				females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
-				//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
-			
-				totMales = totMales + males;
-				totFemales = totFemales + females;
-				//totPopulation = totPopulation + population;
+				totMales = totMales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+				totFemales = totFemales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
 			enddo;
 			
 			totPopulation = totMales + totFemales;
@@ -448,15 +436,22 @@ function ShowSummaryReport()
 			
 				result = setfile(ASSIST_SUPERVISOR_REVIEW_DICT, supervisorDataFilename);
 						
-				// Start at first household in enumerator data file
+			// Start at first household in enumerator data file
+			// get the postcheck values
+			supervisorDataFilename = getSupervisorDataFilename();
+			
+			if fileexist(supervisorDataFilename) then
+
+				setfile(ASSIST_SUPERVISOR_REVIEW_DICT, supervisorDataFilename);
+			
+				// Start at first household in supervisor data file
 				if locate(ASSIST_SUPERVISOR_REVIEW_DICT, >=, "") <> 0 then	
 					// Loop through all households 
 					// until loadcase returns zero when it hits end of file.
-					//numeric i;
 					do postChecked = 0 while loadcase(ASSIST_SUPERVISOR_REVIEW_DICT) <> 0
 							
 					enddo;				
-					//totPopulation = totMales + totFemales;
+					
 				endif;
 			endif;
 		endif;	
@@ -556,13 +551,8 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 					endif;
 					TotalHH = TotalHH +1;
 				
-					males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
-					females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
-					//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
-				
-					totMales = totMales + males;
-					totFemales = totFemales + females;
-					//totPopulation = totPopulation + population;
+					totMales = totMales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+					totFemales = totFemales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
 				endif;
 			enddo;
 			
@@ -657,13 +647,8 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 					endif;
 					TotalHH = TotalHH +1;
 				
-					males  = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
-					females = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
-					//population = count(LESOTHOCENSUS2016_DICT.INDIVIDUAL);
-				
-					totMales = totMales + males;
-					totFemales = totFemales + females;
-					//totPopulation = totPopulation + population;
+					totMales = totMales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
+					totFemales = totFemales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
 				endif;
 			enddo;
 			
@@ -702,6 +687,7 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 						    reportFilename));
 	endif;
 end;
+
 function CreateAndRunCSPFF()
 
 	string tempFolder = pathname(Temp);
@@ -763,18 +749,12 @@ if fileexist(enumeratorEA) = 1 then
 endif;
 
 enumeratorDataFilename = maketext("%s%011d.dat", enumeratorDataFileFolder, ea);
-string SDFolder;
 
-SDFolder = pathname(CSEntryExternal);
+string SDFolder = pathname(CSEntryExternal);
+
 dircreate(SDFolder);
-numeric copied  = filecopy(enumeratorDataFilename, SDFolder);
+filecopy(enumeratorDataFilename, SDFolder);
  
- if copied = 1 then
- 	errmsg("Backup was successfuly made");
- 	errmsg("%s ", SDFolder);
- else
- 	errmsg("Unable to create Backup")
- endif;
 
 PROC USER_CODE
 preproc
@@ -869,27 +849,24 @@ elseif ENUMERATOR_MENU = 9 then
 endif;
 
 PROC ASSISTANT_SUPERVISOR_MENU
-	
-postproc
-if fileexist(enumeratorDataFilename) = 1 then
-	if ASSISTANT_SUPERVISOR_MENU = 1 then
-		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
-	elseif ASSISTANT_SUPERVISOR_MENU in 2:3 then
-		//skip to household_status;
-	elseif ASSISTANT_SUPERVISOR_MENU = 4 then
-		skip to APPROVE_CASES;
-	elseif ASSISTANT_SUPERVISOR_MENU = 9 then
-		// Logout
-		// Erase login file so that we don't automatically
-		// login next time.
-		filedelete(loginFilename);
-		// Quit data entry
-		stop(1);
-	endif;
-elseif fileexist(enumeratorDataFilename) = 0 and ASSISTANT_SUPERVISOR_MENU <> 9 then
-	errmsg("There is no data entered yet");
+
+
+if ASSISTANT_SUPERVISOR_MENU in 1:3 and fileexist(enumeratorDataFileName) <> 1 then
+	errmsg("The enumerator has not started data entry yet.");
 	reenter;
-else
+endif;
+
+if ASSISTANT_SUPERVISOR_MENU = 1 then
+	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
+elseif ASSISTANT_SUPERVISOR_MENU = 2 then
+	errmsg("TODO: Household Status");
+	reenter;
+elseif ASSISTANT_SUPERVISOR_MENU = 3 then
+	skip to APPROVE_CASES;
+elseif ASSISTANT_SUPERVISOR_MENU = 9 then
+	// Logout
+	// Erase login file so that we don't automatically
+	// login next time.
 	filedelete(loginFilename);
 	// Quit data entry
 	stop(1);
@@ -920,8 +897,6 @@ elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then
 	else
 		reenter;
 	endif;
-elseif CONSTITUENCY_SUPERVISOR_MENU = 7 then
-		skip to CHOOSE_POSTCHECK_HOUSEHOLD;
 elseif CONSTITUENCY_SUPERVISOR_MENU = 9 then
 	// Logout
 	// Erase login file so that we don't automatically
@@ -1002,6 +977,11 @@ if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 1 then
 	reenter ASSISTANT_SUPERVISOR_MENU;
 endif;
 
+// open the supervisor data file to see if the file has already been postchecked
+supervisorDataFilename = getSupervisorDataFilename();
+numeric supervisorFileExists = fileexist(supervisorDataFilename) and setfile(ASSIST_SUPERVISOR_REVIEW_DICT,supervisorDataFilename);
+
+
 // Loop through all households 
 // until loadcase returns zero when it hits end of file.
 numeric i = 1;
@@ -1009,7 +989,13 @@ do while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 	codes(i) = i;	
 	if FINAL_RESULT_CODE = 1 then	
 		myID(i) = key(LESOTHOCENSUS2016_DICT);
-		labels(i) = maketext("%s", HOUSEHOLD_HEAD_NAMES);
+		labels(i) = maketext("%s", strip(HOUSEHOLD_HEAD_NAMES));
+		
+		if supervisorFileExists and find(ASSIST_SUPERVISOR_REVIEW_DICT,=,myID(i)) then
+			// the household has already been postchecked
+			labels(i) = "✓  " + labels(i);
+		endif;
+
 		i = i + 1; 
 	endif;	
 enddo;
@@ -1021,6 +1007,7 @@ endif;
 
 codes(i) = notappl;
 setvalueset(CHOOSE_POSTCHECK_HOUSEHOLD, codes, labels);
+CHOOSE_POSTCHECK_HOUSEHOLD = notappl;
 
 postproc
 
@@ -1032,6 +1019,7 @@ CreateAndRunSRPFF();
 
 errmsg("Something went horribly wrong. Please contact technical support");
 reenter ASSISTANT_SUPERVISOR_MENU;
+
 PROC APPROVE_CASES
 
 onfocus
@@ -1046,7 +1034,11 @@ if result <> 1 then
 endif;
 
 // Start at first household in enumerator data file
-locate(LESOTHOCENSUS2016_DICT, >=, "");
+if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 1 then
+	errmsg("There are no households in the enumerator data file");
+	reenter ASSISTANT_SUPERVISOR_MENU;
+endif;
+
 // Loop through all households 
 // until loadcase returns zero when it hits end of file.
 numeric i = 1;
@@ -1151,11 +1143,7 @@ do i = 1 while loadcase(LESOTHOCENSUS2016_DICT) <> 0
 			HH_status = getlabel(HOUSEHOLD_STATUS,5);
 		endif;
 	endif;
-	
-	checked = getlabel(POSTCHECK,1);	
-	
-	mylabels2(i) = strip(checked);
-	
+
 	mycodes(i) = Strip(key(LESOTHOCENSUS2016_DICT));
 	//mylabels(i)= maketext("%d %S %D %S",VILLAGE_NUMBER,VILLAGE_NAME,HOUSEHOLD_NUMBER,HOUSEHOLD_HEAD_NAMES); 
 	mylabels(i)= STRIP(HH_status);
@@ -1165,7 +1153,7 @@ enddo;
 
 mycodes(i) = "";
 
-setvalueset(IDENTIFIER, mycodes, mylabels, mylabels2);
+setvalueset(IDENTIFIER, mycodes, mylabels);
 
 postproc
 //reenter CONSTITUENCY_SUPERVISOR_MENU;

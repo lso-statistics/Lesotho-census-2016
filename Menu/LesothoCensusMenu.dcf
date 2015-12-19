@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=177
+RecordLen=176
 
 [Item]
 Label=User Code
@@ -56,9 +56,8 @@ Len=1
 Label=Assistant Supervisor Menu
 Name=ASSISTANT_SUPERVISOR_MENU_VS1
 Value=1;Postcheck Households
-Value=2;Summary Report
-Value=3;Household Status
-Value=4;Approve cases
+Value=2;Household Status
+Value=3;Approve Cases
 Value=9;Logout
 
 [Item]
@@ -76,32 +75,19 @@ Value=3;Population Pyramid
 Value=4;Household Status
 Value=5;Sync With Enum
 Value=6;Sync With HQ
-Value=7;Post Check
 Value=9;Logout
-
-[Item]
-Label=Postcheck
-Name=POSTCHECK
-Start=10
-Len=1
-
-[ValueSet]
-Label=Postcheck
-Name=POSTCHECK_VS1
-Value=1;postChecked
-Value=2;not postChecked
 
 [Item]
 Label=Choose Postcheck Household
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Start=11
+Start=10
 Len=3
 ZeroFill=Yes
 
 [Item]
 Label=View Date
 Name=VIEW_DATE
-Start=14
+Start=13
 Len=10
 DataType=Alpha
 
@@ -134,7 +120,7 @@ Value='30/04/2016';30/04/2016
 [Item]
 Label=Summary Report Menu
 Name=SUMMARY_REPORT_MENU
-Start=24
+Start=23
 Len=1
 
 [ValueSet]
@@ -148,27 +134,27 @@ Value=4;Household Status Report
 [Item]
 Label=Choose Report
 Name=CHOOSE_REPORT
-Start=25
+Start=24
 Len=11
 DataType=Alpha
 
 [Item]
 Label=Constituency EACode
 Name=CONSTITUENCY_EACODE
-Start=36
+Start=35
 Len=11
 DataType=Alpha
 
 [Item]
 Label=Household ID
 Name=IDENTIFIER
-Start=47
+Start=46
 Len=128
 DataType=Alpha
 
 [Item]
 Label=Approve Cases
 Name=APPROVE_CASES
-Start=175
+Start=174
 Len=3
 ZeroFill=Yes
