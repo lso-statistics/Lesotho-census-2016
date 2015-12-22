@@ -824,10 +824,10 @@ endif;
 
 PROC ENUMERATOR_MENU
 
-if ENUMERATOR_MENU = 1 then
+if ENUMERATOR_MENU = 1 then		//launch the screen for household data entry
 	// Launch data entry
 	CreateAndRunPFF();
-elseif ENUMERATOR_MENU = 2 then
+elseif ENUMERATOR_MENU = 2 then		//send data to the supervisor
 	if sync("SyncWithSupervisor.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
@@ -851,12 +851,11 @@ if ASSISTANT_SUPERVISOR_MENU in 1:3 and fileexist(enumeratorDataFileName) <> 1 t
 	reenter;
 endif;
 
-if ASSISTANT_SUPERVISOR_MENU = 1 then
+if ASSISTANT_SUPERVISOR_MENU = 1 then	//option for postchecking households
 	skip to CHOOSE_POSTCHECK_HOUSEHOLD;
-elseif ASSISTANT_SUPERVISOR_MENU = 2 then
-	errmsg("TODO: Household Status");
-	reenter;
-elseif ASSISTANT_SUPERVISOR_MENU = 3 then
+elseif ASSISTANT_SUPERVISOR_MENU = 2 then //option for viewing status of household completion
+	skip to VIEW_DATE;
+elseif ASSISTANT_SUPERVISOR_MENU = 3 then //option for reviewing and approving households that were captured as refusals or absent
 	skip to APPROVE_CASES;
 elseif ASSISTANT_SUPERVISOR_MENU = 9 then
 	// Logout
@@ -870,22 +869,22 @@ endif;
 PROC CONSTITUENCY_SUPERVISOR_MENU
 
 postproc
-if CONSTITUENCY_SUPERVISOR_MENU = 1 then
+if CONSTITUENCY_SUPERVISOR_MENU = 1 then	//view data
 	skip to SUMMARY_REPORT_MENU;
-elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then	//sex ratio
 	SexRatioReport();
-elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then	//population pyramid
 	agebysexTable();
-elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 4 then	//option for viewing status of household completion
 	 skip to VIEW_DATE;  
-elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 5 then	//receive data from the enumerator
 	if sync("ServerWithEnumerator.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
 	else
 		reenter;
 	endif;
-elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then
+elseif CONSTITUENCY_SUPERVISOR_MENU = 6 then	//send data to the server
 	if sync("SyncWithServer.pnc") then
 		errmsg("Sync was successful");
 		stop(0);
