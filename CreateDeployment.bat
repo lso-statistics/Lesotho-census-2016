@@ -41,20 +41,20 @@ REM Create .pen files
 %CSEntry% /pen .\AssistSupReview\AssistSupReview.ent
 
 REM copy lookup files
-copy /y .\Menu\staff.dat .\Deployment\LesothoCensus2016\Menu
-copy /y .\Menu\AssSup.dat .\Deployment\LesothoCensus2016\Menu
+copy /y .\Menu\staff.dat .\Deployment\LesothoCensus2016\Application\Menu
+copy /y .\Menu\AssSup.dat .\Deployment\LesothoCensus2016\Application\Menu
 
 REM Copy applications to deployment
-move /y .\Menu\LesothoCensusMenu.pen .\Deployment\LesothoCensus2016\Menu
-move /y .\HouseholdDataEntry\HouseholdDataEntry.pen .\Deployment\LesothoCensus2016\HouseholdDataEntry
-move /y .\AssistSupReview\AssistSupReview.pen .\Deployment\LesothoCensus2016\AssistSupReview
+move /y .\Menu\LesothoCensusMenu.pen .\Deployment\LesothoCensus2016\Application\Menu
+move /y .\HouseholdDataEntry\HouseholdDataEntry.pen .\Deployment\LesothoCensus2016\Application\HouseholdDataEntry
+move /y .\AssistSupReview\AssistSupReview.pen .\Deployment\LesothoCensus2016\Application\AssistSupReview
 
 REM Copy .pff for Menu
-copy /y .\Menu\*.pff .\Deployment\LesothoCensus2016\Menu
+copy /y .\Menu\*.pff .\Deployment\LesothoCensus2016\Application\Menu
 
 REM Copy .pnc files
-copy /y EnumeratorInitialSync.pnc .\Deployment\LesothoCensus2016
-copy /y SupervisorInitialSync.pnc .\Deployment\LesothoCensus2016
-copy /y SyncWithEnumerator.pnc .\Deployment\LesothoCensus2016
-copy /y SyncWithServer.pnc .\Deployment\LesothoCensus2016
-copy /y SyncWithSupervisor.pnc .\Deployment\LesothoCensus2016
+copy /y EnumeratorInitialSync.pnc .\Deployment\LesothoCensus2016\Application
+copy /y SupervisorInitialSync.pnc .\Deployment\LesothoCensus2016\Application
+copy /y SyncWithEnumerator.pnc .\Deployment\LesothoCensus2016\Application
+copy /y SyncWithServer.pnc .\Deployment\LesothoCensus2016\Application
+copy /y SyncWithSupervisor.pnc .\Deployment\LesothoCensus2016\Application
