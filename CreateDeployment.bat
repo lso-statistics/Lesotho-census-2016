@@ -18,9 +18,21 @@ mkdir Deployment
 cd Deployment
 mkdir LesothoCensus2016
 cd LesothoCensus2016
+mkdir Application
+mkdir Data
+mkdir DataBackup
+cd Application
 mkdir HouseholdDataEntry
 mkdir Menu
 mkdir AssistSupReview
+cd..
+cd Data
+mkdir Enumerator
+mkdir Supervisor
+cd..
+cd DataBackup
+mkdir Enumerator
+mkdir Supervisor
 cd..\..
 
 REM Create .pen files
