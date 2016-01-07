@@ -1,6 +1,5 @@
 setlocal
 
-
 REM Find CSEntry.exe (path differs on 32 and 64 bit Windows)
 
 SET CSEntry="%ProgramFiles(x86)%\CSPro 6.2\CSEntry.exe"
@@ -33,7 +32,7 @@ cd..
 cd DataBackup
 mkdir Enumerator
 mkdir Supervisor
-cd..\..
+cd..\..\..
 
 REM Create .pen files
 %CSEntry% /pen .\Menu\LesothoCensusMenu.ent
