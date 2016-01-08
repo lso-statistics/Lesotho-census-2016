@@ -486,7 +486,7 @@ function ShowSummaryReport()
 						    reportFilename));
 	endif;
 end;
-
+{
 //function to display all the EAs for a specific date selected by the supervisor
 function ShowSummaryReportAllbyDATE(string viewdate)
 
@@ -588,7 +588,7 @@ function ShowSummaryReportAllbyDATE(string viewdate)
 						    reportFilename));
 	endif;
 end;
-
+}
 //function to display data for the EA selected by the supervisor on a specific date
 function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 
@@ -597,6 +597,12 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 	filewrite(tempFile, "Enumeration Area Summary Report by Day");
 	filewrite(tempFile, "-------------------------------");
 	filewrite(tempFile, "");
+	
+	numeric ctr;
+    dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
+    
+	do ctr = 1 while ctr <= length(fileListing)
+		eacode = fileListing(ctr)[length(fileListing(ctr))-14:11];
 	
 		enumeratorDataFilename = maketext("%s%011s.dat", enumeratorDataFileFolder, eacode);
 		// Create a dynamic value set of all completed households
@@ -670,7 +676,7 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 		filewrite(tempFile,"******end of report for current enumeration area code******");
 		filewrite(tempFile,"***********************************************************");
 		filewrite(tempFile,"");
-	    
+	  enddo;
 	close(tempFile);
 	if getos() in 20:29 then
 		// Android - use "browse:"
@@ -937,7 +943,8 @@ setvalueset(CHOOSE_REPORT, mycodes, mylabels);
 postproc
 if CHOOSE_REPORT = "View all" then
 	//ShowSummaryReport();
-	ShowSummaryReportAllbyDATE(VIEW_DATE);
+	//ShowSummaryReportAllbyDATE(VIEW_DATE)
+	ShowSummaryReport_EAbyDATE(CHOOSE_REPORT, VIEW_DATE);
 	reenter;
 else
 	//ShowSummaryReport_EA(CHOOSE_REPORT);
