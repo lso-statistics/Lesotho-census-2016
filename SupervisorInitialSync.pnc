@@ -19,7 +19,6 @@ ClientPath=/LesothoCensus2016/Application/Menu
 Get=LesothoCensusMenu.pen
 Get=LesothoCensusMenu.pff
 Get=staff.dat
-Get=AssSup.dat
 
 ServerPath=/Application/AssistSupReview
 CreateClientPath=/LesothoCensus2016/Application/AssistSupReview

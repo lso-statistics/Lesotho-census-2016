@@ -641,7 +641,6 @@ if fileexist(enumeratorEA) = 1 then
 		if result = 1 then
 			// We have read in ea code from eacode file
 			ea = tonumber(codeString);
-			//ASS_SUP_EA = maketext("%011d",ea);
 		endif;
 		close(tmpFile);
 	endif;
