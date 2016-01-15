@@ -202,12 +202,12 @@ function DeleteDeath()
 
 end;
 
-
-function captureGPS()
-	if gps(open) = 1 then
-		if gps(read, 120) then
-			if gps(readlast) <> 1 then
-				errmsg("GPS signal could not be acquired");
+//a function to capture the gps coordinates of the household
+function captureHH_Coordinates()
+	if gps(open) = 1 then //try to open a gps connection and if successful
+		if gps(read, 120) then //take the readings from the gps
+			if gps(readlast) <> 1 then //if the was nothing read from the gps
+				errmsg("GPS signal could not be acquired. Please stand outside the building or away from trees as this might block satellite signals");
 			else
 				HH_LATITUDE = gps(latitude);
 				HH_LONGITUDE = gps(longitude);
@@ -223,7 +223,6 @@ function captureGPS()
 		errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
 		exit;
 	endif;
-
 end;
 
 
@@ -234,7 +233,7 @@ preproc
 	userbar (clear);
 	userbar (add button, "Delete Person's Record", DeletePerson);
 	userbar (add button, "Delete Deceased",DeleteDeath);
-	userbar (add button, "Capture Household GPS Coordinates", captureGPS);
+	userbar (add button, "Capture Household GPS Coordinates", captureHH_Coordinates);
 	userbar (show);
 
 

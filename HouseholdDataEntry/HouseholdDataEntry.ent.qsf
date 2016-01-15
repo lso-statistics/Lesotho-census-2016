@@ -1,8 +1,15 @@
 ﻿[CAPI QUESTIONS]
-Version=CSPro 6.1
+Version=CSPro 6.2
 
 [LANGUAGES]
 ENG=English
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.B1
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B1. Person Number\par
+ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.B10
@@ -149,7 +156,7 @@ ENG=}
 Field=LESOTHOCENSUS2016_DICT.B2
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs16 B2.\b0\i  Write names of all persons who were present in this household on the census night (i.e. Saturday night 09\super th\nosupersub  April 2016). Start with head of household. Consider surname for the household head and those different from the household head.\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs16 B2.\b0\i  \i0 Write names of all persons who were present in this household on the census night (i.e. Saturday night 09\super th\nosupersub  April 2016). Start with head of household. Consider surname for the household head and those different from the household head.\i\par
 ENG=\pard\sl276\slmult1\i0\f1\'b7 \i\f0 Please include babies, small children, old people and visitors who were present on the census night (i.e. 9\super h\nosupersub April 2016). For babies with no names, write BABY.\par
 ENG=\i0\f1\'b7 \i\f0 Also include usual members of the household who did not sleep in the household during the reference night, were absent for less than six months and are elsewhere in Lesotho.\par
 ENG=\pard\fi-360\li360\sl276\slmult1\i0\f1\'b7 \i\f0 Include usual members who are absent and are outside the country for less than three years.\par
@@ -511,6 +518,18 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.COMMUNITY_COUNCIL
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Select Community Council\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.CONSTITUENCY
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Select Constituency\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.D26
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
@@ -569,6 +588,12 @@ Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\expndtw-6\b\f0\fs18 D30. What is \expndtw0\f1 %getocclabel%'s\expndtw-6\f0  field of  specialization (minor group)?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.DISTRICT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Select District\par
 ENG=}
 
 [QUESTION]
@@ -677,6 +702,12 @@ ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E39. For how long has \cf1\f1 %getocclabel%\cf0\f0  worked in RSA in the past 10 years (since April 2006)?\cf1\b0\i\fs16\par
 ENG=\cf0 Enter 00 for less than one year and then the number of years \cf1 worked between 2006 and 2016\par
 ENG=\pard\cf0\b\i0\fs18\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.ENUMERATION_AREA
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Enter Enumeration Area\par
 ENG=}
 
 [QUESTION]
@@ -1289,19 +1320,26 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.HOUSEHOLD_NUMBER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Enter Household Number\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Enter Household Number\i\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.HOUSEHOLD_STATUS
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 Household Status\par
 ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.INTERVIEW_DATE
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Reason why the questionnaire is partially complete\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Date of Interview:\par
 ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.IS_RESPONDENT_HOUSEHOLD_MEMBER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Is the Respondent the member of the household?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Is the respondent the member of the household?\par
 ENG=}
 
 [QUESTION]
@@ -1313,6 +1351,12 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Are there
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.NUMBER_OF_HOUSEHOLD_MEMBERS
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Total number of household members for %HOUSEHOLD_HEAD_NAMES%'s household\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.NUMBER_OF_REFRIGERATORS
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 Enter the number of refrigerators the household have\par
@@ -1321,7 +1365,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.NUMBER_OF_VISITS
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Ke lekhetlo la bokae u etela lelapa lee?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Ke lekhetlo la bokae u etela lelapa lee?\i\par
 ENG=}
 
 [QUESTION]
@@ -1360,6 +1404,12 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.PARTIALLY_COMPLETE_REASON
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Reason why the questionnaire is partially complete\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.REFRIGERANT
 Occurrences=1:5
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
@@ -1376,7 +1426,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.RESPONDENT_NAME
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Who is the the Respondent?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Enter name of the respondent?\par
 ENG=}
 
 [QUESTION]
@@ -1388,6 +1438,12 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E35. What
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.SETTLEMENT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Select Settlement\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.VILLAGE_NAME
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 What is the Village Name?\par
@@ -1396,7 +1452,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.VILLAGE_NUMBER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Enter Village Number\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Enter Village Number\i\par
 ENG=}
 
 [QUESTION]
@@ -1404,14 +1460,20 @@ Field=LESOTHOCENSUS2016_DICT.VISIT_DATE
 Occurrences=1:3
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\i\f0\fs16 Enter the date of the %getocclabel% visit:\b\i0\fs18\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs16 Enter the date of the %getocclabel% visit:\fs18\par
 ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.WARD
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\i\f0\fs18 Select Ward Code\cf1\b0\i0\f1\fs24\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Select Ward Code\cf1\b0\f1\fs24\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.ZONE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Select Zone\par
 ENG=}
 
 [HELP]
