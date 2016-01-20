@@ -8,6 +8,9 @@
 *.tbw
 *.log
 ~$*.xlsx
+~$*.xls
+~$*.doc
+~$*.docx
 Menu/login.txt
 Menu/eacode.txt
 Menu/summaryreport.txt

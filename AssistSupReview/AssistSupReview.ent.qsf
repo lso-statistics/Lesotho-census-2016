@@ -1,5 +1,5 @@
 ﻿[CAPI QUESTIONS]
-Version=CSPro 6.1
+Version=CSPro 6.2
 
 [LANGUAGES]
 ENG=English
@@ -52,6 +52,48 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B7. What 
 ENG=}
 
 [QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_COMMUNITY_COUNCIL
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Community Council\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_CONSTITUENCY
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Constituency\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_DISTRICT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 District\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_ENUMERATION_AREA
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Enumeration Area\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_HOUSEHOLD_HEAD_NAMES
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Name of Household Head\b0\fs24\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_HOUSEHOLD_NUMBER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Household Number\par
+ENG=}
+
+[QUESTION]
 Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_IN_HOUSEHOLD
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
@@ -64,5 +106,40 @@ Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_MORE_PEOPLE
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Are there more people in this household?\b0\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_SETTLEMENT
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Settlement Type\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_VILLAGE_NAME
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Village Name\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_VILLAGE_NUMBER
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Village Number\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_WARD
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Ward\par
+ENG=}
+
+[QUESTION]
+Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_ZONE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs18 Zone\par
 ENG=}
 

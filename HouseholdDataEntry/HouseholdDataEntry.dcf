@@ -7292,7 +7292,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=246
+RecordLen=280
 
 [Item]
 Label=Number of visits
@@ -7445,3 +7445,25 @@ Name=ENUMERATOR_CODE
 Start=243
 Len=4
 ZeroFill=Yes
+
+[Item]
+Label=Place of Interview Latitude
+Name=PL_LATITUDE
+Start=247
+Len=14
+Decimal=9
+DecimalChar=Yes
+
+[Item]
+Label=Place of Interview Longitude
+Name=PL_LONGITUDE
+Start=261
+Len=14
+Decimal=9
+DecimalChar=Yes
+
+[Item]
+Label=Place of Interview Read Time
+Name=PL_READ_TIME
+Start=275
+Len=6
