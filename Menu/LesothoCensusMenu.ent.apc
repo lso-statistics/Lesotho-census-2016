@@ -933,11 +933,17 @@ endif;
 // Loop through all households 
 // until loadcase returns zero when it hits end of file.
 numeric i = 1;
+
 do while loadcase(LESOTHOCENSUS2016_DICT) <> 0	
 	if HOUSEHOLD_STATUS in 2:6 and APPROVAL_STATUS <> 1 then
 		codes(i) = i;
 		myID(i) = key(LESOTHOCENSUS2016_DICT);
-		labels(i) = maketext("%s  %s", strip(HOUSEHOLD_HEAD_NAMES), getLabel(HOUSEHOLD_STATUS_VS1, HOUSEHOLD_STATUS));
+		labels(i) = maketext("%03d %s  %s", HOUSEHOLD_NUMBER, strip(HOUSEHOLD_HEAD_NAMES), getLabel(HOUSEHOLD_STATUS_VS1, HOUSEHOLD_STATUS));
+		i = i + 1;
+	elseif MISSING_FERTILITY = 1 and APPROVAL_STATUS <> 1 then
+		codes(i) = i;
+		myID(i) = key(LESOTHOCENSUS2016_DICT);
+		labels(i) = maketext("%03d %s  Missing fertility", HOUSEHOLD_NUMBER, strip(HOUSEHOLD_HEAD_NAMES));
 		i = i + 1;
 	endif;	
 enddo;
@@ -956,6 +962,7 @@ postproc
 locate(LESOTHOCENSUS2016_DICT, =, myID(APPROVE_CASES));
 retrieve(LESOTHOCENSUS2016_DICT);
 APPROVAL_STATUS = 1;
+MISSING_FERTILITY = 0;
 writecase(LESOTHOCENSUS2016_DICT);
 reenter APPROVE_CASES;
 PROC SUMMARY_REPORT_MENU

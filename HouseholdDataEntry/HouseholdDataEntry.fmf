@@ -165,7 +165,7 @@ Name=FORM009
 Label=Housing Characteristics
 QuestionTextHeight=80
 Level=1
-Size=843,1549
+Size=843,1582
   
 Item=H60
 Item=H61
@@ -221,6 +221,7 @@ Item=H69_APARTMENT
 Item=H69_MANSION
 Item=H69_TEMP_STRUCTURE
 Item=H69_TOTAL
+Item=MISSING_FERTILITY
   
   
 [Text]
@@ -3739,6 +3740,46 @@ Width=10
 [EndColumn]
   
 [Column]
+Width=87
+  
+[HeaderText]
+Position=0,0,87,40
+Text=Respondent Available?
+ 
+[Field]
+Name=RESPONDENT_AVAILABLE
+Position=64,0,79,20
+Item=RESPONDENT_AVAILABLE,LESOTHOCENSUS2016_DICT
+FieldLabelType=DictionaryLabel
+DataCaptureType=RadioButton
+  
+[Text]
+Position=0,0,150,16
+Text=Respondent Available?
+ 
+[EndColumn]
+  
+[Column]
+Width=135
+  
+[HeaderText]
+Position=0,16,135,40
+Text=Fertility Respondent
+ 
+[Field]
+Name=FERTILITY_RESPONDENT
+Position=98,0,127,20
+Item=FERTILITY_RESPONDENT,LESOTHOCENSUS2016_DICT
+FieldLabelType=DictionaryLabel
+DataCaptureType=RadioButton
+  
+[Text]
+Position=0,0,131,16
+Text=Fertility Respondent
+ 
+[EndColumn]
+  
+[Column]
 Width=98
   
 [HeaderText]
@@ -5215,6 +5256,21 @@ Form=8
 [Text]
 Position=41,1508,210,1524
 Text=Partially Complete Reason
+ 
+  
+[Field]
+Name=MISSING_FERTILITY
+Position=223,1537,238,1557
+Item=MISSING_FERTILITY,LESOTHOCENSUS2016_DICT
+Protected=Yes
+HideInCaseTree=Yes
+FieldLabelType=DictionaryLabel
+DataCaptureType=RadioButton
+Form=8
+  
+[Text]
+Position=41,1540,140,1556
+Text=Missing Fertility
  
 [EndGroup]
   

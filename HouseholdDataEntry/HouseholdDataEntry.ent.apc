@@ -15,7 +15,8 @@ numeric MinAgeWorkRSA = 5;
 // declare arrays dynamic value set
 array numeric codes(100);
 array string labels(100);
-
+array numeric respondentCodes(100);
+array string respondentLabels(100);
 
 function CheckBlank(string value)
 	if value = "" then
@@ -337,7 +338,7 @@ preproc
 
 
 PROC HOUSEHOLD_STATUS
-
+{
 if demode() = add then
 	if HH_LATITUDE = notappl then
 		if HOUSEHOLD_STATUS in 2:6 then
@@ -367,6 +368,29 @@ if demode() = add then
 				stop(0);
 			endif;
 		endif;
+	endif;
+endif;
+}
+if HOUSEHOLD_STATUS in 2:5 then 
+	if APPROVAL_STATUS = 1 then
+		endlevel;
+	else
+		savepartial();
+		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+		stop(0);
+	endif;
+endif;
+		
+if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
+	errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
+	reenter;
+elseif HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS = 3 then
+	if APPROVAL_STATUS = 1 then
+		endlevel;
+	else
+		savepartial();
+		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+		stop(0);
 	endif;
 endif;
 PROC B1
@@ -466,6 +490,54 @@ onfocus
 	setvalueset(RESPONDENT, codes, labels);
 
 
+PROC DEMOGRAPHIC_ROSTER
+
+// Count number of heads of household so that we can ensure
+// that there is exactly one head of household.
+
+numeric numberOfHeads = count(DEMOGRAPHIC_ROSTER where B3 = 1);
+{numeric i;
+do i = 1 while i <= totocc(DEMOGRAPHIC_ROSTER)
+	// check if the ith person is head
+	if B3(i) = 1 then
+		numberOfHeads = numberOfHeads + 1;
+	endif;
+enddo;
+}
+if numberOfHeads <> 1 then
+	errmsg("You have entered %d heads of household. Only one head of household is allowed",
+			numberOfHeads);
+	reenter B3(1);
+endif;
+
+// If household head is monogamously married then his/her spouse must be
+// monogamously married and of different sex.
+numeric head, spouse;
+head = seek(B3 = 1);
+
+if B19(head) in 2:3,5 then
+	//Check each spouse in the household
+	do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
+		if B3(spouse) = 2 then
+			//Check for same sex
+			if B4(spouse) = B4(head) then
+				errmsg("If %s is %s's spouse, then they must be of opposite sex",
+					   strip(B2(spouse)), strip(B2(head)))
+				select("Correct household head sex", B4(head),
+					   "Correct spouse relationship", B3(spouse),
+					   "Correct spouse sex", B4(spouse));
+			endif;
+			//Check for different marrital status
+			if B19(spouse) <> B19(head) then
+				errmsg("If %s is %s's spouse, then they must have the same marital status",
+					   strip(B2(spouse)), strip(B2(head)))
+				select("Correct household head marital status", B19(head),
+					   "Correct spouse relationship", B3(spouse),
+					   "Correct spouse marital status", B19(spouse));
+			endif;
+		endif;
+	enddo;
+endif;
 PROC B3
 
 onfocus
@@ -565,7 +637,7 @@ PROC B6B
 
 
 PROC B7
-
+	
 	//checks that household head and spouse are not visitors
 	if B3 in 1, 2 and B7 = 2 then
 		errmsg("%s is the %s and should not be a visitor",
@@ -957,7 +1029,7 @@ preproc
 		if C22 = 2 then //not albino
 			skip to next;
 		else //albino
-			skip to C25E;
+			skip to C25A;
 		endif;
 	endif;
 
@@ -1102,17 +1174,17 @@ PROC C24F_OTHER
 
 
 PROC C25A
-
+{
 preproc
 
 	//Should not be asked about using eye glasses if no difficulty in seeing
 	if not C23A(curocc()) in 2:4 then
 		skip to C25B;
 	endif;
-
+}
 
 PROC C25B
-
+{
 preproc
 
 	//Should not be asked about using hearing aid if no difficulty in hearing
@@ -1120,9 +1192,9 @@ preproc
 		skip to C25C;
 	endif;
 
-
+}
 PROC C25C
-
+{
 preproc
 
 	//Should not be asked about using walking stick/frame/cruches if no difficulty in walking or climbing stairs
@@ -1130,9 +1202,9 @@ preproc
 		skip to C25D;
 	endif;
 
-
+}
 PROC C25D
-
+{
 preproc
 
 	//Should not be asked about using a wheelchair if no difficulty in walking or climbing stairs
@@ -1140,18 +1212,18 @@ preproc
 		skip to C25E;
 	endif;
 
-
+}
 PROC C25E
-
+{
 	//chronic medication for albino
 	if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9
 		and C23E in 1,5,9 and C23F in 1,5,9 and C22 = 1 then
 		skip to next;
 	endif;
-
+}
 
 PROC C25F
-
+{
 preproc
 
 	//Should not be asked about using white cane if no difficulty in seeing
@@ -1159,27 +1231,27 @@ preproc
 		skip to C25G;
 	endif;
 
-
+}
 PROC C25G
-
+{
 preproc
 
 	//Should not be asked about using guide dog if no difficulty in seeing
 	if not C23A(curocc()) in 2:4 then
 		skip to C25H1;
 	endif;
-
+}
 
 PROC C25H1
 
-
+{
 preproc
 
 	//Should not be asked about using sign language if no difficulty in hearing/communicating
 	if not ( C23B(curocc()) in 2:4 or C23C(curocc()) in 2:4 ) then
 		skip to next;
 	endif;
-
+}
 
 PROC D26
 
@@ -2728,7 +2800,7 @@ PROC E39
 	endif;
 
 
-PROC F40
+PROC RESPONDENT_AVAILABLE
 
 preproc
 
@@ -2744,6 +2816,55 @@ preproc
 	if B7(curocc()) = 2 then
 		skip to next;
 	endif;
+
+postproc
+
+if RESPONDENT_AVAILABLE = 1 then
+	skip to F40;
+elseif RESPONDENT_AVAILABLE = 2 then
+	skip to next;
+endif;
+
+
+PROC FERTILITY_RESPONDENT
+
+onfocus
+
+	// set value set to be list of names of household members
+	// and line numbers of household members.
+	// and B7(i) = 1 and B1(i) <> B1(curocc()) and B5(i) > 11 and 
+	
+	numeric i;
+	
+	do i = 1 while i <= totocc(DEMOGRAPHIC_ROSTER)
+		codes(i) = B1(i);
+		labels(i) = B2(i);
+	enddo;
+	
+	codes(i) = notappl;
+	
+	setvalueset(FERTILITY_RESPONDENT, codes, labels);
+
+postproc
+
+	if B5(FERTILITY_RESPONDENT) < 12 then
+		errmsg("%s too young to answer questions on fertility", strip(B2(FERTILITY_RESPONDENT)))
+		select("Select someone else", FERTILITY_RESPONDENT);
+	endif;
+	
+	if B7(FERTILITY_RESPONDENT) in 2:4 then
+		errmsg("%s is a %s and cannot answer for %s", strip(B2(FERTILITY_RESPONDENT)), getlabel(B7_VS1,B7(FERTILITY_RESPONDENT)), strip(B2(curocc())))
+		select("Select someone else", FERTILITY_RESPONDENT);
+	elseif B7(FERTILITY_RESPONDENT) = 5 then
+		errmsg("%s is %s and cannot answer for %s", strip(B2(FERTILITY_RESPONDENT)), getlabel(B7_VS1,B7(FERTILITY_RESPONDENT)), strip(B2(curocc())))
+		select("Select someone else", FERTILITY_RESPONDENT);
+	endif;
+	
+	if B1(curocc()) = FERTILITY_RESPONDENT then
+		errmsg("%s is not available and cannot be a proxy for herself.", strip(B2(curocc())))
+		select("Select someone else", FERTILITY_RESPONDENT);
+	endif;
+PROC F40
 
 postproc
 
@@ -3490,6 +3611,8 @@ PROC REFRIGERANT
 
 PROC FINAL_RESULT_CODE
 
+numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE > 1);
+{
 if demode() = add then
 	if HH_LATITUDE = notappl then
 		if FINAL_RESULT_CODE = 1 then
@@ -3498,12 +3621,28 @@ if demode() = add then
 		endif;
 	else
 		if FINAL_RESULT_CODE = 1 then 
-			endlevel;
+			if noFertility > 0 and APPROVAL_STATUS = 1 then
+				endlevel;
+			else
+				MISSING_FERTILITY = 1;
+				savepartial();
+				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+				stop(0);
+			endif;
 		endif;
 	endif;
 endif;
-
-
+}
+if FINAL_RESULT_CODE = 1 then 
+	if noFertility > 0 and APPROVAL_STATUS = 1 then
+		endlevel;
+	else
+		MISSING_FERTILITY = 1;
+		savepartial();
+		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+		stop(0);
+	endif;
+endif;
 PROC PARTIALLY_COMPLETE_REASON
 
 	CheckBlank(PARTIALLY_COMPLETE_REASON);

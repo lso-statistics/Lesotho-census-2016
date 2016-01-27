@@ -377,7 +377,7 @@ Name=INDIVIDUAL
 RecordTypeValue='I'
 Required=No
 MaxRecords=50
-RecordLen=616
+RecordLen=619
 
 [Item]
 Label=Person Number
@@ -6070,7 +6070,6 @@ Label=Ever Pregnant
 Name=F40_VS1
 Value=1;Yes
 Value=2;No
-Value=9;Don't Know
 
 [Item]
 Label=Ever Given Live Birth
@@ -6359,9 +6358,30 @@ Value=2;Female
 Value=9;Don't Know
 
 [Item]
+Label=Respondent Available?
+Name=RESPONDENT_AVAILABLE
+Start=615
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Respondent Available?
+Name=RESPONDENT_AVAILABLE_VS1
+Value=1;Yes
+Value=2;No, wait for her
+Value=3;No, use proxy
+
+[Item]
+Label=Fertility Respondent
+Name=FERTILITY_RESPONDENT
+Start=616
+Len=2
+ZeroFill=Yes
+
+[Item]
 Label=More People
 Name=MORE_PEOPLE
-Start=615
+Start=618
 Len=1
 ZeroFill=Yes
 
@@ -6374,7 +6394,7 @@ Value=2;No
 [Item]
 Label=Orphan
 Name=ORPHAN
-Start=616
+Start=619
 Len=1
 ZeroFill=Yes
 
@@ -6521,9 +6541,35 @@ Required=No
 RecordLen=663
 
 [Item]
+Label=Any Deaths in the Last Five Years
+Name=G51
+Start=129
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Any Deaths in the Last Five Years
+Name=G51_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Don't Know
+
+[Item]
+Label=Number of Deaths in the Last Five Years
+Name=G52
+Start=130
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Deaths in the Last Five Years
+Name=G52_VS1
+Value=1:10;1 - 10
+
+[Item]
 Label=Tenure Status
 Name=H60
-Start=129
+Start=132
 Len=1
 ZeroFill=Yes
 
@@ -6541,7 +6587,7 @@ Value=9;Don't know
 [Item]
 Label=Land Acquired From
 Name=H61
-Start=130
+Start=133
 Len=1
 ZeroFill=Yes
 
@@ -6557,16 +6603,9 @@ Value=6;Other
 Value=9;Don’t Know
 
 [Item]
-Label=Number of Household Members
-Name=NUMBER_OF_HOUSEHOLD_MEMBERS
-Start=131
-Len=2
-ZeroFill=Yes
-
-[Item]
 Label=Agency Land Acquired From
 Name=H62
-Start=133
+Start=134
 Len=1
 ZeroFill=Yes
 
@@ -6583,7 +6622,7 @@ Value=9;Don’t know
 [Item]
 Label=Type of Main Dwelling
 Name=H63
-Start=134
+Start=135
 Len=1
 ZeroFill=Yes
 
@@ -6602,7 +6641,7 @@ Value=8;Temporary Structure/Mok’huk’hu
 [Item]
 Label=Ownership Status of Main Dwelling
 Name=H64
-Start=135
+Start=136
 Len=1
 ZeroFill=Yes
 
@@ -6621,7 +6660,7 @@ Value=8;Other
 [Item]
 Label=Main Roofing Material
 Name=H65
-Start=136
+Start=137
 Len=1
 ZeroFill=Yes
 
@@ -6638,7 +6677,7 @@ Value=6;Other
 [Item]
 Label=Main Wall Material
 Name=H66
-Start=137
+Start=138
 Len=2
 ZeroFill=Yes
 
@@ -6661,7 +6700,7 @@ Value=12;Other (Specify)
 [Item]
 Label=Main Floor Material
 Name=H67
-Start=139
+Start=140
 Len=1
 ZeroFill=Yes
 
@@ -6681,7 +6720,7 @@ Value=9;Other
 [Item]
 Label=Housing Units - Rontabole
 Name=H68_RONTABOLE
-Start=140
+Start=141
 Len=2
 ZeroFill=Yes
 OccurrenceLabel=1,Rontabole
@@ -6694,7 +6733,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Heisi
 Name=H68_HEISI
-Start=142
+Start=143
 Len=2
 ZeroFill=Yes
 
@@ -6706,7 +6745,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Polata
 Name=H68_POLATA
-Start=144
+Start=145
 Len=2
 ZeroFill=Yes
 
@@ -6718,7 +6757,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Malaene
 Name=H68_MALAENE
-Start=146
+Start=147
 Len=2
 ZeroFill=Yes
 
@@ -6730,7 +6769,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Optaka
 Name=H68_OPTAKA
-Start=148
+Start=149
 Len=2
 ZeroFill=Yes
 
@@ -6742,7 +6781,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Apartment
 Name=H68_APARTMENT
-Start=150
+Start=151
 Len=2
 ZeroFill=Yes
 
@@ -6754,7 +6793,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Mansion
 Name=H68_MANSION
-Start=152
+Start=153
 Len=2
 ZeroFill=Yes
 
@@ -6766,7 +6805,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Temporary Structure
 Name=H68_TEMP_STRUCTURE
-Start=154
+Start=155
 Len=2
 ZeroFill=Yes
 
@@ -6778,7 +6817,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Total
 Name=H68_TOTAL
-Start=156
+Start=157
 Len=2
 ZeroFill=Yes
 
@@ -6790,7 +6829,7 @@ Value=0:40;0 - 40
 [Item]
 Label=Number of Rooms - Rontabole
 Name=H69_RONTABOLE
-Start=158
+Start=159
 Len=2
 ZeroFill=Yes
 OccurrenceLabel=1,Rontabole
@@ -6803,7 +6842,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Heisi
 Name=H69_HEISI
-Start=160
+Start=161
 Len=2
 ZeroFill=Yes
 
@@ -6815,7 +6854,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Polata
 Name=H69_POLATA
-Start=162
+Start=163
 Len=2
 ZeroFill=Yes
 
@@ -6827,7 +6866,7 @@ Value=0:30;0 - 30
 [Item]
 Label=Number of Rooms - Malaene
 Name=H69_MALAENE
-Start=164
+Start=165
 Len=2
 ZeroFill=Yes
 
@@ -6839,7 +6878,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Optaka
 Name=H69_OPTAKA
-Start=166
+Start=167
 Len=2
 ZeroFill=Yes
 
@@ -6851,7 +6890,7 @@ Value=0:30;0 - 30
 [Item]
 Label=Number of Rooms - Apartment
 Name=H69_APARTMENT
-Start=168
+Start=169
 Len=2
 ZeroFill=Yes
 
@@ -6863,7 +6902,7 @@ Value=0:15;0 - 15
 [Item]
 Label=Number of Rooms - Mansion
 Name=H69_MANSION
-Start=170
+Start=171
 Len=2
 ZeroFill=Yes
 
@@ -6875,7 +6914,7 @@ Value=0:99;0 - 99
 [Item]
 Label=Number of Rooms - Temporary Structure
 Name=H69_TEMP_STRUCTURE
-Start=172
+Start=173
 Len=2
 ZeroFill=Yes
 
@@ -6887,7 +6926,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Total
 Name=H69_TOTAL
-Start=174
+Start=175
 Len=2
 ZeroFill=Yes
 
@@ -6899,7 +6938,7 @@ Value=0:99;0 - 99
 [Item]
 Label=Main Source of Drinking Water
 Name=H70
-Start=176
+Start=177
 Len=2
 ZeroFill=Yes
 
@@ -6924,7 +6963,7 @@ Value=14;Other
 [Item]
 Label=Distance to Get Drinking Water
 Name=H71
-Start=178
+Start=179
 Len=1
 ZeroFill=Yes
 
@@ -6942,7 +6981,7 @@ Value=7;120+
 [Item]
 Label=Main Source of Energy for Cooking
 Name=H72
-Start=179
+Start=180
 Len=2
 ZeroFill=Yes
 
@@ -6965,7 +7004,7 @@ Value=12;Other
 [Item]
 Label=Main Source of Energy for Heating
 Name=H73
-Start=181
+Start=182
 Len=2
 ZeroFill=Yes
 
@@ -6988,7 +7027,7 @@ Value=12;Other
 [Item]
 Label=Main Source of Energy for Lighting
 Name=H74
-Start=183
+Start=184
 Len=1
 ZeroFill=Yes
 
@@ -7007,7 +7046,7 @@ Value=8;Other
 [Item]
 Label=Main Type of Sanitation
 Name=H75
-Start=184
+Start=185
 Len=1
 ZeroFill=Yes
 
@@ -7027,7 +7066,7 @@ Value=9;Other
 [Item]
 Label=Disposal of Rubbish or Refuse
 Name=H76
-Start=185
+Start=186
 Len=1
 ZeroFill=Yes
 
@@ -7046,7 +7085,7 @@ Value=8;Other
 [Item]
 Label=Assets
 Name=H77
-Start=186
+Start=187
 Len=13
 DataType=Alpha
 
@@ -7068,9 +7107,33 @@ Value='L            ';Generator
 Value='M            ';Refrigerator
 
 [Item]
+Label=Number of Refrigerators
+Name=NUMBER_OF_REFRIGERATORS
+Start=200
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Refrigerators
+Name=NUMBER_OF_REFRIGERATORS_VS1
+Value=1;1
+Value=2;2
+Value=3;3
+Value=4;4
+Value=5;5
+
+[Item]
+Label=Refrigerant
+Name=REFRIGERANT
+Start=201
+Len=20
+DataType=Alpha
+Occurrences=5
+
+[Item]
 Label=Ownership of Fields
 Name=H78
-Start=199
+Start=301
 Len=1
 ZeroFill=Yes
 
@@ -7083,7 +7146,7 @@ Value=2;No
 [Item]
 Label=Operation of Fields
 Name=H79
-Start=200
+Start=302
 Len=1
 ZeroFill=Yes
 
@@ -7096,7 +7159,7 @@ Value=2;No
 [Item]
 Label=Livestock and Poultry
 Name=H80
-Start=201
+Start=303
 Len=4
 Occurrences=14
 ZeroFill=Yes
@@ -7121,145 +7184,102 @@ Name=H80_VS1
 Value=0:9999;0 - 9999
 
 [Item]
-Label=Any Deaths in the Last Five Years
-Name=G51
-Start=257
-Len=1
-ZeroFill=Yes
-
-[ValueSet]
-Label=Any Deaths in the Last Five Years
-Name=G51_VS1
-Value=1;Yes
-Value=2;No
-Value=9;Don't Know
-
-[Item]
-Label=Number of Deaths in the Last Five Years
-Name=G52
-Start=258
-Len=2
-ZeroFill=Yes
-
-[ValueSet]
-Label=Number of Deaths in the Last Five Years
-Name=G52_VS1
-Value=1:10;1 - 10
-
-[Item]
 Label=Tenure Other
 Name=H60_OTHER
-Start=260
+Start=359
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Land Acquired Other
 Name=H61_OTHER
-Start=280
+Start=379
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Agency Other
 Name=H62_OTHER
-Start=300
+Start=399
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Ownership Status Other
 Name=H64_OTHER
-Start=320
+Start=419
 Len=30
 DataType=Alpha
 
 [Item]
 Label=Roofing Material Other
 Name=H65_OTHER
-Start=350
+Start=449
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Wall Material Other
 Name=H66_OTHER
-Start=370
+Start=469
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Floor Material Other
 Name=H67_OTHER
-Start=390
+Start=489
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Drinking Water Other
 Name=H70_OTHER
-Start=410
+Start=509
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Energy for Cooking Other
 Name=H72_OTHER
-Start=430
+Start=529
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Energy for Heating Other
 Name=H73_OTHER
-Start=450
+Start=549
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Energy for Lighting Other
 Name=H74_OTHER
-Start=470
+Start=569
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Sanitation Other
 Name=H75_OTHER
-Start=490
+Start=589
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Rubbish Other
 Name=H76_OTHER
-Start=510
+Start=609
 Len=20
 DataType=Alpha
 
 [Item]
-Label=Number of Refrigerators
-Name=NUMBER_OF_REFRIGERATORS
-Start=530
-Len=1
+Label=Number of Household Members
+Name=NUMBER_OF_HOUSEHOLD_MEMBERS
+Start=629
+Len=2
 ZeroFill=Yes
-
-[ValueSet]
-Label=Number of Refrigerators
-Name=NUMBER_OF_REFRIGERATORS_VS1
-Value=1;1
-Value=2;2
-Value=3;3
-Value=4;4
-Value=5;5
-
-[Item]
-Label=Refrigerant
-Name=REFRIGERANT
-Start=531
-Len=20
-DataType=Alpha
-Occurrences=5
 
 [Item]
 Label=Respondent
@@ -7292,7 +7312,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=280
+RecordLen=247
 
 [Item]
 Label=Number of visits
@@ -7447,23 +7467,8 @@ Len=4
 ZeroFill=Yes
 
 [Item]
-Label=Place of Interview Latitude
-Name=PL_LATITUDE
+Label=Missing Fertility
+Name=MISSING_FERTILITY
 Start=247
-Len=14
-Decimal=9
-DecimalChar=Yes
-
-[Item]
-Label=Place of Interview Longitude
-Name=PL_LONGITUDE
-Start=261
-Len=14
-Decimal=9
-DecimalChar=Yes
-
-[Item]
-Label=Place of Interview Read Time
-Name=PL_READ_TIME
-Start=275
-Len=6
+Len=1
+ZeroFill=Yes

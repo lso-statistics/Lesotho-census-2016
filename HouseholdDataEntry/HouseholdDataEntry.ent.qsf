@@ -884,6 +884,14 @@ ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 F50. Is \
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.FERTILITY_RESPONDENT
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 Who is going to answer questions about %getocclabel%'s fertility?\cf0\f1\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.FINAL_RESULT_CODE
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Result code\par
@@ -1421,6 +1429,14 @@ ENG=}
 Field=LESOTHOCENSUS2016_DICT.RESPONDENT
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Who is the respondent?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.RESPONDENT_AVAILABLE
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Is \cf1\f1 %getocclabel% available to answer questions about her fertility?\cf0\f0\par
 ENG=}
 
 [QUESTION]
