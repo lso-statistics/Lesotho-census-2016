@@ -5039,58 +5039,59 @@ Type=Item
 TypeName=REFRIGERANT
 Max=5
 MaxField=NUMBER_OF_REFRIGERATORS
-DisplaySize=45,884,420,1048
+DisplaySize=45,884,214,1048
 Orientation=Horizontal
-FieldRowHeight=0
+FieldRowHeight=28
 HeadingRowHeight=24
 FreeMovement=No
  
 [Text]
-Position=0,4,86,28
-Text=refrigerant 1
+Position=0,0,90,28
+Text=Refrigerant 1
  
   
 [Text]
-Position=0,4,86,28
-Text=refrigerant 2
+Position=0,0,90,28
+Text=Refrigerant 2
  
   
 [Text]
-Position=0,4,86,28
-Text=refrigerant 3
+Position=0,4,90,28
+Text=Refrigerant 3
  
   
 [Text]
-Position=0,4,86,28
-Text=refrigerant 4
+Position=0,4,90,28
+Text=Refrigerant 4
  
   
 [Text]
-Position=0,4,86,28
-Text=refrigerant 5
+Position=0,4,90,28
+Text=Refrigerant 5
  
   
 [Column]
-Width=10
 [EndColumn]
   
 [Column]
-Width=289
+Width=79
   
 [HeaderText]
-Position=210,0,289,24
+Position=0,0,79,24
 Text=Refrigerant
+HorizontalAlignment=Center
  
 [Field]
 Name=REFRIGERANT
-Position=0,0,281,20
+Position=56,0,71,20
 Item=REFRIGERANT,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
-UseUnicodeTextBox=Yes
+DataCaptureType=RadioButton
   
 [Text]
 Position=0,0,72,16
 Text=Refrigerant
+HorizontalAlignment=Center
  
 [EndColumn]
   
@@ -5265,7 +5266,6 @@ Item=MISSING_FERTILITY,LESOTHOCENSUS2016_DICT
 Protected=Yes
 HideInCaseTree=Yes
 FieldLabelType=DictionaryLabel
-DataCaptureType=RadioButton
 Form=8
   
 [Text]

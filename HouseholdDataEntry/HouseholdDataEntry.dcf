@@ -6538,7 +6538,7 @@ Label=Housing
 Name=HOUSING
 RecordTypeValue='H'
 Required=No
-RecordLen=663
+RecordLen=568
 
 [Item]
 Label=Any Deaths in the Last Five Years
@@ -7126,14 +7126,27 @@ Value=5;5
 Label=Refrigerant
 Name=REFRIGERANT
 Start=201
-Len=20
-DataType=Alpha
+Len=1
 Occurrences=5
+OccurrenceLabel=1,Refrigirant 1
+OccurrenceLabel=2,Refrigirant 2
+OccurrenceLabel=3,Refrigirant 3
+OccurrenceLabel=4,Refrigirant 4
+OccurrenceLabel=5,Refrigirant 5
+
+[ValueSet]
+Label=Refrigerant
+Name=REFRIGERANT_VS1
+Value=1;NH3
+Value=2;R134a
+Value=3;R600a
+Value=4;HCL
+Value=5;Not Shown
 
 [Item]
 Label=Ownership of Fields
 Name=H78
-Start=301
+Start=206
 Len=1
 ZeroFill=Yes
 
@@ -7146,7 +7159,7 @@ Value=2;No
 [Item]
 Label=Operation of Fields
 Name=H79
-Start=302
+Start=207
 Len=1
 ZeroFill=Yes
 
@@ -7159,7 +7172,7 @@ Value=2;No
 [Item]
 Label=Livestock and Poultry
 Name=H80
-Start=303
+Start=208
 Len=4
 Occurrences=14
 ZeroFill=Yes
@@ -7186,112 +7199,112 @@ Value=0:9999;0 - 9999
 [Item]
 Label=Tenure Other
 Name=H60_OTHER
-Start=359
+Start=264
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Land Acquired Other
 Name=H61_OTHER
-Start=379
+Start=284
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Agency Other
 Name=H62_OTHER
-Start=399
+Start=304
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Ownership Status Other
 Name=H64_OTHER
-Start=419
+Start=324
 Len=30
 DataType=Alpha
 
 [Item]
 Label=Roofing Material Other
 Name=H65_OTHER
-Start=449
+Start=354
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Wall Material Other
 Name=H66_OTHER
-Start=469
+Start=374
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Floor Material Other
 Name=H67_OTHER
-Start=489
+Start=394
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Drinking Water Other
 Name=H70_OTHER
-Start=509
+Start=414
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Energy for Cooking Other
 Name=H72_OTHER
-Start=529
+Start=434
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Energy for Heating Other
 Name=H73_OTHER
-Start=549
+Start=454
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Energy for Lighting Other
 Name=H74_OTHER
-Start=569
+Start=474
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Sanitation Other
 Name=H75_OTHER
-Start=589
+Start=494
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Rubbish Other
 Name=H76_OTHER
-Start=609
+Start=514
 Len=20
 DataType=Alpha
 
 [Item]
 Label=Number of Household Members
 Name=NUMBER_OF_HOUSEHOLD_MEMBERS
-Start=629
+Start=534
 Len=2
 ZeroFill=Yes
 
 [Item]
 Label=Respondent
 Name=RESPONDENT
-Start=631
+Start=536
 Len=2
 ZeroFill=Yes
 
 [Item]
 Label=Is Respondent Household Member
 Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
-Start=633
+Start=538
 Len=1
 ZeroFill=Yes
 
@@ -7304,7 +7317,7 @@ Value=2;No
 [Item]
 Label=Respondent Name
 Name=RESPONDENT_NAME
-Start=634
+Start=539
 Len=30
 DataType=Alpha
 

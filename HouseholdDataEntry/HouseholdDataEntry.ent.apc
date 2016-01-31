@@ -3075,12 +3075,20 @@ PROC G54B
 
 	// death month and year cannot be greater than of the census.
 	if cmcode(G54A,G54B) > cmcode(CensusMonth,CensusYear) then
-		errmsg("The Date-of-death month and year cannot be greater than that of the census")
+		errmsg("Date of death cannot be greater than that of the census")
 		select("Correct month the death occured", G54A,
 			   "Correct year the death occured", G54B);
 	endif;
 
-
+numeric i = sysdate("YYYY");
+numeric j = sysdate("MM");
+if i - 5 = G54B then
+	if G54A < j then
+		errmsg("Only deaths that occured since April %d are to be recorded", G54B)
+		select("Correct month death occured", G54A,
+			   "Correct year death occured", G54B);
+	endif;
+endif;
 PROC G57
 
 preproc
@@ -3605,8 +3613,8 @@ preproc
 
 PROC REFRIGERANT
 
-	CheckBlank(REFRIGERANT);
-	REFRIGERANT = toupper(REFRIGERANT);
+//	CheckBlank(REFRIGERANT);
+//	REFRIGERANT = toupper(REFRIGERANT);
 
 
 PROC FINAL_RESULT_CODE
