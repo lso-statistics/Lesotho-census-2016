@@ -113,8 +113,8 @@ end;
 function  ageBySexTable()
 	numeric EApicked = pickEA();// 0 = view all, 1+ = index of EA
 	
-	//trace(maketext("Load file: %s", maketext("%s%011d.dat", "../Data/Enumerator/", EApicked)));
-	//setfile(LESOTHOCENSUS2016_DICT, maketext("%s%s%011d.dat", pathname(Application), "../Data/Enumerator/", EApicked));
+	//trace(maketext("Load file: %s", maketext("%s%011d.dat", "../../Data/Enumerator/", EApicked)));
+	//setfile(LESOTHOCENSUS2016_DICT, maketext("%s%s%011d.dat", pathname(Application), "../../Data/Enumerator/", EApicked));
 	string reportFilename;
 	string agebysex;
 
@@ -180,18 +180,18 @@ function  ageBySexTable()
 	close(tempFile);
 
 	reportFilename = maketext("%sagebysex.html", pathname(Application));
-	//agebysex = maketext("%s%d.dat", "../../Data/Enumerator/", EApicked);
-	agebysex = maketext("%s%d.dat", enumeratorDataFileFolder, EApicked);
+	//agebysex = maketext("%s%011d.dat", "../../Data/Enumerator/", EApicked);
+	agebysex = maketext("%s%011d.dat", enumeratorDataFileFolder, EApicked);
 	if getos() in 20:29 then
 		// Android - use "browse:"
 		execsystem(maketext("view:%s", reportFilename));
 	else
 		// Windows - use "explorer.exe <filename>"
-		//execsystem(maketext("%sexplorer.exe %s", 
-		//				    pathname(Windows), 
-		//				    reportFilename));
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
 		
-		execsystem(maketext("view:%s", reportFilename));
+		//execsystem(maketext("view:%s", reportFilename));
 	endif;
 end;
 //******************************************************************************************************

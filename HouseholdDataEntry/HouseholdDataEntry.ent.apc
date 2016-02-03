@@ -341,12 +341,12 @@ PROC HOUSEHOLD_STATUS
 {
 if demode() = add then
 	if HH_LATITUDE = notappl then
-		if HOUSEHOLD_STATUS in 2:6 then
+		if HOUSEHOLD_STATUS in 2:5 then
 			errmsg("You cannot save the household without its GPS coordinates. Please capture the coordinates.");
 			reenter;
 		endif;
 	else
-		if HOUSEHOLD_STATUS in 2:5 then 
+		if HOUSEHOLD_STATUS in 2:4 then 
 			if APPROVAL_STATUS = 1 then
 				endlevel;
 			else
@@ -356,10 +356,10 @@ if demode() = add then
 			endif;
 		endif;
 		
-		if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
+		if HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS < 3 then
 			errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
 			reenter;
-		elseif HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS = 3 then
+		elseif HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS = 3 then
 			if APPROVAL_STATUS = 1 then
 				endlevel;
 			else
@@ -371,7 +371,7 @@ if demode() = add then
 	endif;
 endif;
 }
-if HOUSEHOLD_STATUS in 2:5 then 
+if HOUSEHOLD_STATUS in 2:4 then 
 	if APPROVAL_STATUS = 1 then
 		endlevel;
 	else
@@ -381,10 +381,10 @@ if HOUSEHOLD_STATUS in 2:5 then
 	endif;
 endif;
 		
-if HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS < 3 then
+if HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS < 3 then
 	errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
 	reenter;
-elseif HOUSEHOLD_STATUS = 6 and NUMBER_OF_VISITS = 3 then
+elseif HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS = 3 then
 	if APPROVAL_STATUS = 1 then
 		endlevel;
 	else
@@ -972,53 +972,59 @@ preproc
 
 
 PROC C23A
-
+//remove age restrictions in all the disability questions
+{
 	//Disability of people aged over 1 years should not be 'cannot yet be determined' (5)
 	if B5(curocc()) >= 1 and C23A(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
-
+}
 
 PROC C23B
-
+//remove age restrictions in all the disability questions
+{
 	if B5(curocc()) >= 1 and C23B(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
-
+}
 
 PROC C23C
-
+//remove age restrictions in all the disability questions
+{
 	if B5(curocc()) >= 3 and C23C(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
-
+}
 
 PROC C23D
-
+//remove age restrictions in all the disability questions
+{
 	if B5(curocc()) >= 3 and C23D(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
-
+}
 
 PROC C23E
-
+//remove age restrictions in all the disability questions
+{
 	if B5(curocc()) >= 3 and C23E(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
-
+}
 
 PROC C23F
-
+//remove age restrictions in all the disability questions
+{
 	if B5(curocc()) >= 4 and C23F(curocc()) = 5 then
 		errmsg("%s is old enough for his/her disability to be determined",strip(B2(curocc())));
 		reenter;
 	endif;
-
+}
 
 PROC C24A
 
@@ -1026,11 +1032,7 @@ preproc
 
 	//skip the cause of disability for persons who are not albino and have no difficulity
 	if C23A in 1,5,9 and C23B in 1,5,9 and C23C in 1,5,9 and C23D in 1,5,9 and C23E in 1,5,9 and C23F in 1,5,9 then
-		if C22 = 2 then //not albino
-			skip to next;
-		else //albino
-			skip to C25A;
-		endif;
+		skip to C25A;
 	endif;
 
 	//skip to C24B if the persons don't have difficulty in seeing
@@ -1276,7 +1278,7 @@ postproc
 	endif;
 
 	// People not at school, prison, or convents must not be atttending school
-	if B7 in 4,5 and not B9B(curocc()) in 1:3 and D26(curocc()) = 2 then
+	if B7 in 4,5 and B9B(curocc()) in 4:6 and D26(curocc()) = 2 then
 		errmsg("%s is in Institution but not attending school", strip(B2(curocc())))
 		select("Correct Institutions outside Lesotho", B9B(curocc()),
 			   "Correct ever attended school", D26(curocc()));
@@ -1478,31 +1480,37 @@ PROC D30B
 
 onfocus
 
-	if D30 = 1 then
+	if D30 = 1000 then
 		setvalueset (D30B,D30B_VS1);
-	elseif D30 = 2 then
+	elseif D30 = 2000 then
 		setvalueset (D30B,D30B_VS2);
-	elseif D30 = 3 then
+	elseif D30 = 3000 then
 		setvalueset (D30B,D30B_VS3);
-	elseif D30 = 4 then
+	elseif D30 = 4000 then
 		setvalueset (D30B,D30B_VS4);
-	elseif D30 = 5 then
+	elseif D30 = 5000 then
 		setvalueset (D30B,D30B_VS5);
-	elseif D30 = 6 then
+	elseif D30 = 6000 then
 		setvalueset (D30B,D30B_VS6);
-	elseif D30 = 7 then
+	elseif D30 = 7000 then
 		setvalueset (D30B,D30B_VS7);
-	elseif D30 = 8 then
+	elseif D30 = 8000 then
 		setvalueset (D30B,D30B_VS8);
-	elseif D30 = 9 then
+	elseif D30 = 9000 then
 		setvalueset (D30B,D30B_VS9);
-	elseif D30 = 10 then
-		setvalueset (D30B,D30B_VS10);
-	elseif D30 = 11 then
+	elseif D30 = 1100 then
 		setvalueset (D30B,D30B_VS11);
+	elseif D30 = 1200 then
+		setvalueset (D30B,D30B_VS12);
+	elseif D30 = 1300 then
+		setvalueset (D30B,D30B_VS13);
 	endif;
 
+postproc
 
+	if D30B <> 1301 then
+		skip to next;
+	endif;
 PROC E31
 
 preproc
@@ -3423,10 +3431,41 @@ postproc
 	endif;
 
 
+PROC H68_BUNGALOW
+
+	if H63 = 7 and H68_BUNGALOW = 0 then
+		errmsg("Bungalow is the main dwelling unit for this household and it must have at least 1 housing unit")
+		select("Correct main type of dwelling for the household",H63,
+			   "Correct number of dwelling units",H68_BUNGALOW);
+	endif;
+
+
+PROC H69_BUNGALOW
+
+preproc
+
+	if H68_BUNGALOW = 0 then
+		H69_BUNGALOW = 0;
+		noinput;
+	endif;
+
+postproc
+
+	if H68_BUNGALOW = 0 and H69_BUNGALOW <> 0 then
+		errmsg("You cannot have a room if no housing unit is available")
+		select("Correct number of units for Bungalow",H68_BUNGALOW,
+			   "Correct number of rooms for Bungalow",H69_BUNGALOW);
+	endif;
+
+	if H68_BUNGALOW <> 0 and H69_BUNGALOW < H68_BUNGALOW then
+		errmsg("Bungalow must have rooms")
+		select("Correct number of units for Bungalow",H68_BUNGALOW,
+			   "Correct number of rooms for Bungalow",H69_BUNGALOW);
+	endif;
 PROC H68_MANSION
 
-	if H63 = 7 and H68_MANSION = 0 then
-		errmsg("Bungalow/Mansion is the main dwelling unit for this household and it must have at least 1 housing unit")
+	if H63 = 8 and H68_MANSION = 0 then
+		errmsg("Mansion is the main dwelling unit for this household and it must have at least 1 housing unit")
 		select("Correct main type of dwelling for the household",H63,
 			   "Correct number of dwelling units",H68_MANSION);
 	endif;
@@ -3445,20 +3484,20 @@ postproc
 
 	if H68_MANSION = 0 and H69_MANSION <> 0 then
 		errmsg("You cannot have a room if no housing unit is available")
-		select("Correct number of units for Bangalow",H68_MANSION,
-			   "Correct number of rooms for Bangalow",H69_MANSION);
+		select("Correct number of units for Mansion",H68_MANSION,
+			   "Correct number of rooms for Mansion",H69_MANSION);
 	endif;
 
 	if H68_MANSION <> 0 and H69_MANSION < H68_MANSION then
-		errmsg("Bangalow/Mansion must have rooms")
-		select("Correct number of units for Bangalow",H68_MANSION,
-			   "Correct number of rooms for Bangalow",H69_MANSION);
+		errmsg("Mansion must have rooms")
+		select("Correct number of units for Mansion",H68_MANSION,
+			   "Correct number of rooms for Mansion",H69_MANSION);
 	endif;
 
 
 PROC H68_TEMP_STRUCTURE
 
-	if H63 = 8 and H68_TEMP_STRUCTURE = 0 then
+	if H63 = 9 and H68_TEMP_STRUCTURE = 0 then
 		errmsg("Temporary Structure/Mokh'ukh'u is the main dwelling unit for this household and it must have at least 1 housing unit")
 		select("Correct main type of dwelling for the household",H63,
 			   "Correct number of dwelling units",H68_TEMP_STRUCTURE);
@@ -3491,7 +3530,7 @@ postproc
 
 PROC H68_TOTAL
 
-	if H68_TOTAL <> ( H68_RONTABOLE + H68_HEISI + H68_POLATA + H68_MALAENE + H68_OPTAKA + H68_APARTMENT + H68_MANSION + H68_TEMP_STRUCTURE ) then
+	if H68_TOTAL <> ( H68_RONTABOLE + H68_HEISI + H68_POLATA + H68_MALAENE + H68_OPTAKA + H68_APARTMENT + H68_BUNGALOW + H68_MANSION + H68_TEMP_STRUCTURE ) then
 		errmsg("The total number of individual housing units should be the same as the total housing units entered")
 		select("Correct individual housing units",H68_RONTABOLE,"Correct Total housing units",H68_TOTAL);
 	endif;
@@ -3499,7 +3538,7 @@ PROC H68_TOTAL
 
 PROC H69_TOTAL
 
-	if H69_TOTAL <> ( H69_RONTABOLE + H69_HEISI + H69_POLATA + H69_MALAENE + H69_OPTAKA + H69_APARTMENT + H69_MANSION + H69_TEMP_STRUCTURE ) then
+	if H69_TOTAL <> ( H69_RONTABOLE + H69_HEISI + H69_POLATA + H69_MALAENE + H69_OPTAKA + H69_APARTMENT + H69_BUNGALOW + H69_MANSION + H69_TEMP_STRUCTURE ) then
 		errmsg("The total number of individual housing rooms should be the same as the total housing rooms entered")
 		select("Correct individual housing rooms",H69_RONTABOLE,"Correct Total housing rooms",H69_TOTAL);
 	endif;
@@ -3618,7 +3657,7 @@ PROC REFRIGERANT
 
 
 PROC FINAL_RESULT_CODE
-
+numeric fertilityEligible = count(DEMOGRAPHIC_ROSTER where B4 = 2 and B7 <> 2 and B5 in 12:50);
 numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE > 1);
 {
 if demode() = add then
@@ -3629,26 +3668,34 @@ if demode() = add then
 		endif;
 	else
 		if FINAL_RESULT_CODE = 1 then 
-			if noFertility > 0 and APPROVAL_STATUS = 1 then
-				endlevel;
+			if fertilityEligible > 0 then
+				if noFertility > 0 and APPROVAL_STATUS = 1 then
+					endlevel;
+				else
+					MISSING_FERTILITY = 1;
+					savepartial();
+					errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+					stop(0);
+				endif;
 			else
-				MISSING_FERTILITY = 1;
-				savepartial();
-				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-				stop(0);
+				endlevel;
 			endif;
 		endif;
 	endif;
 endif;
 }
 if FINAL_RESULT_CODE = 1 then 
-	if noFertility > 0 and APPROVAL_STATUS = 1 then
-		endlevel;
+	if fertilityEligible > 0 then
+		if noFertility > 0 and APPROVAL_STATUS = 1 then
+			endlevel;
+		else
+			MISSING_FERTILITY = 1;
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
 	else
-		MISSING_FERTILITY = 1;
-		savepartial();
-		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-		stop(0);
+		endlevel;
 	endif;
 endif;
 PROC PARTIALLY_COMPLETE_REASON

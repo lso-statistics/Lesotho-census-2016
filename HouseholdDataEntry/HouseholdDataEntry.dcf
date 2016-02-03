@@ -377,7 +377,7 @@ Name=INDIVIDUAL
 RecordTypeValue='I'
 Required=No
 MaxRecords=50
-RecordLen=619
+RecordLen=691
 
 [Item]
 Label=Person Number
@@ -468,7 +468,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Age
 Name=B5_VS1
-Value=0:130;0 - 130
+Value=0:135;0 - 135
 
 [Item]
 Label=Date of Birth
@@ -512,7 +512,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Year of Birth
 Name=B6B_VS1
-Value=1886:2016;1886 - 2016
+Value=1881:2016;1881 - 2016
 
 [Item]
 Label=Residential Status
@@ -700,7 +700,7 @@ ZeroFill=Yes
 Label=How Long Lived in Village/Town
 Name=B11_VS1
 Value=0;Less than 1 year (enter 0)
-Value=1:130;1 - 130 (enter number of years)
+Value=1:135;1 - 135 (enter number of years)
 Value=998;Since birth
 
 [Item]
@@ -1002,16 +1002,9 @@ Value=6;Chinese
 Value=7;Other (Specify)
 
 [Item]
-Label=Other Language Spoken Mostly
-Name=B16A
-Start=212
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Father Alive
 Name=B17
-Start=232
+Start=212
 Len=1
 ZeroFill=Yes
 
@@ -1025,7 +1018,7 @@ Value=9;Don't know
 [Item]
 Label=Mother Alive
 Name=B18
-Start=233
+Start=213
 Len=1
 ZeroFill=Yes
 
@@ -1039,7 +1032,7 @@ Value=9;Don't know
 [Item]
 Label=Marital Status
 Name=B19
-Start=234
+Start=214
 Len=1
 ZeroFill=Yes
 
@@ -1058,7 +1051,7 @@ Value=9;Don't know
 [Item]
 Label=Age at First Marriage
 Name=B20
-Start=235
+Start=215
 Len=2
 ZeroFill=Yes
 
@@ -1072,7 +1065,7 @@ Value=88;Not applicable
 [Item]
 Label=First or Only Spouse Alive
 Name=B21
-Start=237
+Start=217
 Len=1
 ZeroFill=Yes
 
@@ -1086,7 +1079,7 @@ Value=9;Don't know
 [Item]
 Label=Albino
 Name=C22
-Start=238
+Start=218
 Len=1
 ZeroFill=Yes
 
@@ -1099,7 +1092,7 @@ Value=2;No
 [Item]
 Label=Difficulty Seeing
 Name=C23A
-Start=239
+Start=219
 Len=1
 ZeroFill=Yes
 
@@ -1116,7 +1109,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Hearing
 Name=C23B
-Start=240
+Start=220
 Len=1
 ZeroFill=Yes
 
@@ -1133,7 +1126,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Communication
 Name=C23C
-Start=241
+Start=221
 Len=1
 ZeroFill=Yes
 
@@ -1150,7 +1143,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Walking
 Name=C23D
-Start=242
+Start=222
 Len=1
 ZeroFill=Yes
 
@@ -1167,7 +1160,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Remembering
 Name=C23E
-Start=243
+Start=223
 Len=1
 ZeroFill=Yes
 
@@ -1184,7 +1177,7 @@ Value=9;Don't Know
 [Item]
 Label=Difficulty Self Care
 Name=C23F
-Start=244
+Start=224
 Len=1
 ZeroFill=Yes
 
@@ -1201,7 +1194,7 @@ Value=9;Don't Know
 [Item]
 Label=Main Cause Seeing
 Name=C24A
-Start=245
+Start=225
 Len=2
 ZeroFill=Yes
 
@@ -1224,16 +1217,9 @@ Value=13;Other (Specify)
 Value=99;Don't Know
 
 [Item]
-Label=Cause Seeing Other
-Name=C24A_OTHER
-Start=247
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Main Cause Hearing
 Name=C24B
-Start=267
+Start=227
 Len=2
 ZeroFill=Yes
 
@@ -1255,16 +1241,9 @@ Value=13;Other (Specify)
 Value=99;Don't Know
 
 [Item]
-Label=Cause Hearing Other
-Name=C24B_OTHER
-Start=269
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Main Cause Communication
 Name=C24C
-Start=289
+Start=229
 Len=2
 ZeroFill=Yes
 
@@ -1286,16 +1265,9 @@ Value=13;Other (Specify)
 Value=99;Don't Know
 
 [Item]
-Label=Cause Communicating Other
-Name=C24C_OTHER
-Start=291
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Main Cause Walking
 Name=C24D
-Start=311
+Start=231
 Len=2
 ZeroFill=Yes
 
@@ -1317,16 +1289,9 @@ Value=13;Other (Specify)
 Value=99;Don't Know
 
 [Item]
-Label=Cause Walking Other
-Name=C24D_OTHER
-Start=313
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Main Cause Remembering
 Name=C24E
-Start=333
+Start=233
 Len=2
 ZeroFill=Yes
 
@@ -1348,16 +1313,9 @@ Value=13;Other (Specify)
 Value=99;Don't Know
 
 [Item]
-Label=Cause Remembering Other
-Name=C24E_OTHER
-Start=335
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Main Cause Self Care
 Name=C24F
-Start=355
+Start=235
 Len=2
 ZeroFill=Yes
 
@@ -1379,16 +1337,9 @@ Value=13;Other (Specify)
 Value=99;Don't Know
 
 [Item]
-Label=Cause Self Care Other
-Name=C24F_OTHER
-Start=357
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Use Eye Glasses
 Name=C25A
-Start=377
+Start=237
 Len=1
 ZeroFill=Yes
 
@@ -1402,7 +1353,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Hearing Aid
 Name=C25B
-Start=378
+Start=238
 Len=1
 ZeroFill=Yes
 
@@ -1416,7 +1367,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Walking Stick
 Name=C25C
-Start=379
+Start=239
 Len=1
 ZeroFill=Yes
 
@@ -1430,7 +1381,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Wheelchair
 Name=C25D
-Start=380
+Start=240
 Len=1
 ZeroFill=Yes
 
@@ -1444,7 +1395,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Chronic Medication
 Name=C25E
-Start=381
+Start=241
 Len=1
 ZeroFill=Yes
 
@@ -1458,7 +1409,7 @@ Value=9;Don't Know
 [Item]
 Label=Use White Cane
 Name=C25F
-Start=382
+Start=242
 Len=1
 ZeroFill=Yes
 
@@ -1472,7 +1423,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Guide Dog
 Name=C25G
-Start=383
+Start=243
 Len=1
 ZeroFill=Yes
 
@@ -1486,7 +1437,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Official Sign Language
 Name=C25H1
-Start=384
+Start=244
 Len=1
 ZeroFill=Yes
 
@@ -1500,7 +1451,7 @@ Value=9;Don't Know
 [Item]
 Label=Use Non Official Sign Language
 Name=C25H2
-Start=385
+Start=245
 Len=1
 ZeroFill=Yes
 
@@ -1514,7 +1465,7 @@ Value=9;Don't Know
 [Item]
 Label=Ever Attended School
 Name=D26
-Start=386
+Start=246
 Len=1
 ZeroFill=Yes
 
@@ -1529,7 +1480,7 @@ Value=9;Don't Know
 [Item]
 Label=Highest Education Level
 Name=D27
-Start=387
+Start=247
 Len=2
 ZeroFill=Yes
 
@@ -1566,16 +1517,9 @@ Value=88;N/A
 Value=99;Don’t know
 
 [Item]
-Label=Highest Education Level Other
-Name=D27_OTHER
-Start=389
-Len=20
-DataType=Alpha
-
-[Item]
 Label=How to Read
 Name=D28
-Start=409
+Start=249
 Len=1
 ZeroFill=Yes
 
@@ -1590,7 +1534,7 @@ Value=9;Don't Know
 [Item]
 Label=How to Write
 Name=D29
-Start=410
+Start=250
 Len=1
 ZeroFill=Yes
 
@@ -1605,166 +1549,161 @@ Value=9;Don't Know
 [Item]
 Label=Field of Specialization - Major
 Name=D30
-Start=411
-Len=2
+Start=251
+Len=4
 ZeroFill=Yes
 
 [ValueSet]
 Label=Field of Specialization - Major
 Name=D30_VS1
-Value=1;Physical and earth science professionals
-Value=2;Life science professionals
-Value=3;Engineering professionals
-Value=4;Architects, planners, surveyors and designers
-Value=5;Health professionals
-Value=6;Teaching professionals
-Value=7;Business and administration professionals
-Value=8;Information and communications technology professionals
-Value=9;Legal professionals
-Value=10;Librarians, archivists and curators
-Value=11;Social and religious professionals
+Value=1000;Physical and earth science professionals
+Value=2000;Life science professionals
+Value=3000;Engineering professionals
+Value=4000;Architects, planners, surveyors and designers
+Value=5000;Health professionals
+Value=6000;Teaching professionals
+Value=7000;Business and administration professionals
+Value=8000;Information and communications technology professionals
+Value=9000;Legal professionals
+Value=1100;Social and religious professionals
+Value=1200;Librarians, archivists and curators
+Value=1300;Other
 
 [Item]
 Label=Field of Specialization - Minor
 Name=D30B
-Start=413
+Start=255
 Len=4
 ZeroFill=Yes
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS1
-Value=11;Physics
-Value=12;Astronomy
-Value=13;Meteorology
-Value=14;Chemistry
-Value=15;Geology
-Value=16;Mathematics
-Value=17;Actuaries
-Value=18;Statistics
-Value=19;Demography and Population
+Value=1001;Physics
+Value=1002;Astronomy
+Value=1003;Meteorology
+Value=1004;Chemistry
+Value=1005;Geology
+Value=1006;Mathematics
+Value=1007;Actuaries
+Value=1008;Statistics
+Value=1009;Demography and Population
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS2
-Value=21;Biology
-Value=22;Zoology
-Value=23;Farming
-Value=24;Forestry
-Value=25;Environmental protection
+Value=2001;Biology
+Value=2002;Zoology
+Value=2003;Farming
+Value=2004;Forestry
+Value=2005;Environmental protection
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS3
-Value=31;Industrial and production engineering
-Value=32;Civil engineering
-Value=33;Environmental engineering
-Value=34;Mechanical engineering
-Value=35;Chemical engineering
-Value=36;Mining engineering
-Value=37;Electrical engineering
-Value=38;Electronics engineering
-Value=39;Telecommunications engineers
-Value=310;Ships' engineers
-Value=311;Aircraft pilots and related associate professionals
-Value=312;Air traffic controllers
+Value=3001;Industrial and production engineering
+Value=3002;Civil engineering
+Value=3003;Environmental engineering
+Value=3004;Mechanical engineering
+Value=3005;Chemical engineering
+Value=3006;Mining engineering
+Value=3007;Electrical engineering
+Value=3008;Electronics engineering
+Value=3009;Telecommunications engineers
+Value=3010;Ships' engineers
+Value=3011;Aircraft pilots and related associate professionals
+Value=3012;Air traffic controllers
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS4
-Value=41;Building architecture
-Value=42;Landscape architecture
-Value=43;Product and garment design
-Value=44;Town and traffic planners
-Value=45;Cartographers and surveyors
-Value=46;Graphic and multimedia design
+Value=4001;Building architecture
+Value=4002;Landscape architecture
+Value=4003;Product and garment design
+Value=4004;Town and traffic planners
+Value=4005;Cartographers and surveyors
+Value=4006;Graphic and multimedia design
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS5
-Value=51;Medical doctors
-Value=52;Generalist medical practitioners
-Value=53;Specialist medical practitioners
-Value=54;Nursing professionals
-Value=55;Midwifery professionals
-Value=56;Paramedical practitioners
-Value=57;Veterinarians
-Value=58;Dentists
-Value=59;Pharmacy
-Value=510;Physiotherapists
-Value=511;Dieticians and nutritionists
-Value=512;Audiologists and speech therapists
-Value=513;Optometrists and ophthalmic opticians
+Value=5001;Medical doctors
+Value=5002;Generalist medical practitioners
+Value=5003;Specialist medical practitioners
+Value=5004;Nursing professionals
+Value=5005;Midwifery professionals
+Value=5006;Paramedical practitioners
+Value=5007;Veterinarians
+Value=5008;Dentists
+Value=5009;Pharmacy
+Value=5010;Physiotherapists
+Value=5011;Dieticians and nutritionists
+Value=5012;Audiologists and speech therapists
+Value=5013;Optometrists and ophthalmic opticians
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS6
-Value=61;University and higher education teachers
-Value=62;Vocational education teachers
-Value=63;Secondary education teachers
-Value=64;Primary school teachers
-Value=65;Early childhood teachers
-Value=66;Other teaching professionals
-Value=67;Education methods specialists
-Value=68;Special needs teachers
-Value=69;Other language teachers
-Value=610;Other music teachers
-Value=611;Other arts teachers
-Value=612;Information technology trainers
+Value=6001;University and higher education teachers
+Value=6002;Vocational education teachers
+Value=6003;Secondary education teachers
+Value=6004;Primary school teachers
+Value=6005;Early childhood teachers
+Value=6006;Other teaching professionals
+Value=6007;Education methods specialists
+Value=6008;Special needs teachers
+Value=6009;Other language teachers
+Value=6010;Other music teachers
+Value=6011;Other arts teachers
+Value=6012;Information technology trainers
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS7
-Value=71;Finance professionals
-Value=72;Accountants
-Value=73;Financial
-Value=74;Investment analysts
-Value=75;Administration professionals
-Value=76;Management, procurement and organization
-Value=77;Policy administration professionals
-Value=78;Personnel and careers professionals
-Value=79;Training and staff development professionals
-Value=710;Sales, marketing and public relations professionals
-Value=711;Advertising
-Value=712;Marketing professionals
-Value=713;Public relations professionals
-Value=714;Tourism and hospitality
+Value=7001;Finance professionals
+Value=7002;Accountants
+Value=7003;Financial
+Value=7004;Investment analysts
+Value=7005;Administration professionals
+Value=7006;Management, procurement and organization
+Value=7007;Policy administration professionals
+Value=7008;Personnel and careers professionals
+Value=7009;Training and staff development professionals
+Value=7010;Sales, marketing and public relations professionals
+Value=7011;Advertising
+Value=7012;Marketing professionals
+Value=7013;Public relations professionals
+Value=7014;Tourism and hospitality
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS8
-Value=81;Systems analysts
-Value=82;Software developers
-Value=83;Web and multimedia developers
-Value=84;Applications programmers
-Value=85;Database designers and administrators
-Value=86;Systems administrators
-Value=87;Computer network professionals
+Value=8001;Systems analysts
+Value=8002;Software developers
+Value=8003;Web and multimedia developers
+Value=8004;Applications programmers
+Value=8005;Database designers and administrators
+Value=8006;Systems administrators
+Value=8007;Computer network professionals
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS9
-Value=91;Legal studies/Law
-Value=92;Peace and conflict studies
-
-[ValueSet]
-Label=Field of Specialization - Minor
-Name=D30B_VS10
-Value=101;Archivists and curators
-Value=102;Librarians and related information professionals
+Value=9001;Legal studies/Law
+Value=9002;Peace and conflict studies
 
 [ValueSet]
 Label=Field of Specialization - Minor
 Name=D30B_VS11
-Value=111;Economists
-Value=112;Sociologists, anthropologists and related professionals
-Value=113;Philosophers, historians and political scientists
-Value=114;Psychologists
-Value=115;Social work and counselling professionals
-Value=116;Religious/Theology professionals
-Value=117;Authors, journalists and linguists
-Value=118;Authors and related writers
-Value=119;Journalists
+Value=1101;Economists
+Value=1102;Sociologists, anthropologists and related professionals
+Value=1103;Philosophers, historians and political scientists
+Value=1104;Psychologists
+Value=1105;Social work and counselling professionals
+Value=1106;Religious/Theology professionals
+Value=1107;Authors, journalists and linguists
+Value=1108;Authors and related writers
+Value=1109;Journalists
 Value=1110;Translators, interpreters and other linguists
 Value=1111;Creative and performing artists
 Value=1112;Visual artists
@@ -1780,10 +1719,21 @@ Value=1121;Gallery and museum
 Value=1122;Chefs
 Value=1123;Hardy crafts and designers
 
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS12
+Value=1201;Archivists and curators
+Value=1202;Librarians and related information professionals
+
+[ValueSet]
+Label=Field of Specialization - Minor
+Name=D30B_VS13
+Value=1301;Other
+
 [Item]
 Label=Main Activity Status in Past 7 Days
 Name=E31
-Start=417
+Start=259
 Len=2
 ZeroFill=Yes
 
@@ -1805,16 +1755,9 @@ Value=81;Other (Specify)
 Value=99;Don’t know
 
 [Item]
-Label=7 Days Other
-Name=E31OTHER
-Start=419
-Len=50
-DataType=Alpha
-
-[Item]
 Label=Main Activity Status in Past 12 Months
 Name=E32
-Start=469
+Start=261
 Len=2
 ZeroFill=Yes
 
@@ -1835,16 +1778,9 @@ Value=81;Other (Specify)
 Value=99;Don’t know
 
 [Item]
-Label=12 Months Other
-Name=E32OTHER
-Start=471
-Len=50
-DataType=Alpha
-
-[Item]
 Label=Employer
 Name=E33
-Start=521
+Start=263
 Len=1
 ZeroFill=Yes
 
@@ -1861,16 +1797,9 @@ Value=7;RSA
 Value=9;Other (Specify)
 
 [Item]
-Label=Employer
-Name=E33OTHER
-Start=522
-Len=20
-DataType=Alpha
-
-[Item]
 Label=Occupation - Major Group
 Name=OCCUPATION_LEVEL_1
-Start=542
+Start=264
 Len=2
 ZeroFill=Yes
 
@@ -1892,7 +1821,7 @@ Value=11;Show All
 [Item]
 Label=Occupation - Sub Major Group
 Name=OCCUPATION_LEVEL_2
-Start=544
+Start=266
 Len=2
 ZeroFill=Yes
 
@@ -1982,7 +1911,7 @@ Value=3;Armed forces occupations, other ranks
 [Item]
 Label=Occupation - Minor Group
 Name=OCCUPATION_LEVEL_3
-Start=546
+Start=268
 Len=3
 ZeroFill=Yes
 
@@ -2291,7 +2220,7 @@ Value=31;Armed forces occupations, other ranks
 [Item]
 Label=Occupation - Unit Group
 Name=OCCUPATION_LEVEL_4
-Start=549
+Start=271
 Len=4
 ZeroFill=Yes
 
@@ -3694,7 +3623,7 @@ Value=7523;Woodworking-machine tool setters and operators
 [Item]
 Label=Section
 Name=SECTION
-Start=553
+Start=275
 Len=2
 ZeroFill=Yes
 
@@ -3726,7 +3655,7 @@ Value=21;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Divisions
 Name=DIVISIONS
-Start=555
+Start=277
 Len=2
 ZeroFill=Yes
 
@@ -3905,7 +3834,7 @@ Value=99;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Groups
 Name=GROUPS
-Start=557
+Start=279
 Len=3
 ZeroFill=Yes
 
@@ -4502,7 +4431,7 @@ Value=990;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Class
 Name=CLASS
-Start=560
+Start=282
 Len=4
 ZeroFill=Yes
 
@@ -5880,7 +5809,7 @@ Value=9900;Activities of extraterritorial organizations and bodies
 [Item]
 Label=Employment Location
 Name=E36
-Start=564
+Start=286
 Len=2
 ZeroFill=Yes
 
@@ -5934,7 +5863,7 @@ Value=99;Don’t know
 [Item]
 Label=Location in Urban/Peri-Urban
 Name=E37
-Start=566
+Start=288
 Len=4
 ZeroFill=Yes
 
@@ -6034,7 +5963,7 @@ Value=8888;Not Applicable
 [Item]
 Label=Worked in RSA
 Name=E38
-Start=570
+Start=292
 Len=1
 ZeroFill=Yes
 
@@ -6049,7 +5978,7 @@ Value=9;Don't Know
 [Item]
 Label=RSA Work Duration
 Name=E39
-Start=571
+Start=293
 Len=2
 ZeroFill=Yes
 
@@ -6061,7 +5990,7 @@ Value=0:10;0 - 10
 [Item]
 Label=Ever Pregnant
 Name=F40
-Start=573
+Start=295
 Len=1
 ZeroFill=Yes
 
@@ -6074,7 +6003,7 @@ Value=2;No
 [Item]
 Label=Ever Given Live Birth
 Name=F41
-Start=574
+Start=296
 Len=1
 ZeroFill=Yes
 
@@ -6088,7 +6017,7 @@ Value=9;Don't Know
 [Item]
 Label=Boys Born Alive
 Name=F42A
-Start=575
+Start=297
 Len=2
 ZeroFill=Yes
 
@@ -6100,7 +6029,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Girls Born Alive
 Name=F42B
-Start=577
+Start=299
 Len=2
 ZeroFill=Yes
 
@@ -6112,7 +6041,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Total Born Alive
 Name=F42C
-Start=579
+Start=301
 Len=2
 ZeroFill=Yes
 
@@ -6124,7 +6053,7 @@ Value=1:20;1 - 20
 [Item]
 Label=Boys Living in Household
 Name=F43A
-Start=581
+Start=303
 Len=2
 ZeroFill=Yes
 
@@ -6136,7 +6065,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Girls Living in Household
 Name=F43B
-Start=583
+Start=305
 Len=2
 ZeroFill=Yes
 
@@ -6148,7 +6077,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Total Living in Household
 Name=F43C
-Start=585
+Start=307
 Len=2
 ZeroFill=Yes
 
@@ -6160,7 +6089,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Boys Living Elsewhere
 Name=F44A
-Start=587
+Start=309
 Len=2
 ZeroFill=Yes
 
@@ -6172,7 +6101,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Girls Living Elsewhere
 Name=F44B
-Start=589
+Start=311
 Len=2
 ZeroFill=Yes
 
@@ -6184,7 +6113,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Total Living Elsewhere
 Name=F44C
-Start=591
+Start=313
 Len=2
 ZeroFill=Yes
 
@@ -6196,7 +6125,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Boys Deceased
 Name=F45A
-Start=593
+Start=315
 Len=2
 ZeroFill=Yes
 
@@ -6208,7 +6137,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Girls Deceased
 Name=F45B
-Start=595
+Start=317
 Len=2
 ZeroFill=Yes
 
@@ -6220,7 +6149,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Total Deceased
 Name=F45C
-Start=597
+Start=319
 Len=2
 ZeroFill=Yes
 
@@ -6232,7 +6161,7 @@ Value=0:20;0 - 20
 [Item]
 Label=First Child Bearing Age
 Name=F46
-Start=599
+Start=321
 Len=2
 ZeroFill=Yes
 
@@ -6244,14 +6173,14 @@ Value=12:50;12 - 50
 [Item]
 Label=Last Child Birth Date
 Name=F47
-Start=601
+Start=323
 Len=6
 DataType=Alpha
 
 [Item]
 Label=Last Child Birth Month
 Name=F47A
-Start=601
+Start=323
 Len=2
 ItemType=SubItem
 ZeroFill=Yes
@@ -6275,7 +6204,7 @@ Value=12;December
 [Item]
 Label=Last Child Birth Year
 Name=F47B
-Start=603
+Start=325
 Len=4
 ItemType=SubItem
 ZeroFill=Yes
@@ -6288,7 +6217,7 @@ Value=1978:2016;1978 - 2016
 [Item]
 Label=Last Born Alive
 Name=F48
-Start=607
+Start=329
 Len=1
 ZeroFill=Yes
 
@@ -6302,14 +6231,14 @@ Value=9;Don't Know
 [Item]
 Label=Last Born Deceased Date
 Name=F49
-Start=608
+Start=330
 Len=6
 DataType=Alpha
 
 [Item]
 Label=Last Born Deceased Month
 Name=F49A
-Start=608
+Start=330
 Len=2
 ItemType=SubItem
 ZeroFill=Yes
@@ -6333,7 +6262,7 @@ Value=12;December
 [Item]
 Label=Last Born Deceased Year
 Name=F49B
-Start=610
+Start=332
 Len=4
 ItemType=SubItem
 ZeroFill=Yes
@@ -6346,7 +6275,7 @@ Value=1978:2016;1978 - 2016
 [Item]
 Label=Sex of Last Born
 Name=F50
-Start=614
+Start=336
 Len=1
 ZeroFill=Yes
 
@@ -6358,9 +6287,93 @@ Value=2;Female
 Value=9;Don't Know
 
 [Item]
+Label=Other Language Spoken Mostly
+Name=B16A
+Start=337
+Len=20
+DataType=Alpha
+
+[Item]
+Label=Other Cause (Seeing)
+Name=C24A_OTHER
+Start=357
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Cause (Hearing)
+Name=C24B_OTHER
+Start=387
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Cause (Communicating)
+Name=C24C_OTHER
+Start=417
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Cause (Walking)
+Name=C24D_OTHER
+Start=447
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Cause (Remembering)
+Name=C24E_OTHER
+Start=477
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Cause (Self Care)
+Name=C24F_OTHER
+Start=507
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Highest Education Level Other
+Name=D27_OTHER
+Start=537
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Field of Specialization
+Name=D30_OTHER
+Start=567
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Activity (7 Days)
+Name=E31OTHER
+Start=597
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Activity (12 Months)
+Name=E32OTHER
+Start=627
+Len=30
+DataType=Alpha
+
+[Item]
+Label=Other Employer
+Name=E33OTHER
+Start=657
+Len=30
+DataType=Alpha
+
+[Item]
 Label=Respondent Available?
 Name=RESPONDENT_AVAILABLE
-Start=615
+Start=687
 Len=1
 ZeroFill=Yes
 
@@ -6374,14 +6387,14 @@ Value=3;No, use proxy
 [Item]
 Label=Fertility Respondent
 Name=FERTILITY_RESPONDENT
-Start=616
+Start=688
 Len=2
 ZeroFill=Yes
 
 [Item]
 Label=More People
 Name=MORE_PEOPLE
-Start=618
+Start=690
 Len=1
 ZeroFill=Yes
 
@@ -6394,7 +6407,7 @@ Value=2;No
 [Item]
 Label=Orphan
 Name=ORPHAN
-Start=619
+Start=691
 Len=1
 ZeroFill=Yes
 
@@ -6538,7 +6551,7 @@ Label=Housing
 Name=HOUSING
 RecordTypeValue='H'
 Required=No
-RecordLen=568
+RecordLen=692
 
 [Item]
 Label=Any Deaths in the Last Five Years
@@ -6635,8 +6648,9 @@ Value=3;Polata
 Value=4;Malaene
 Value=5;Optaka
 Value=6;Apartment/Town House
-Value=7;Bungalow/Mansion
-Value=8;Temporary Structure/Mok’huk’hu
+Value=7;Bungalow
+Value=8;Mansion
+Value=9;Temporary Structure/Mok’huk’hu
 
 [Item]
 Label=Ownership Status of Main Dwelling
@@ -6791,9 +6805,16 @@ Name=H68_APARTMENT_VS1
 Value=0:20;0 - 20
 
 [Item]
+Label=Housing Units - Bungalow
+Name=H68_BUNGALOW
+Start=153
+Len=2
+ZeroFill=Yes
+
+[Item]
 Label=Housing Units - Mansion
 Name=H68_MANSION
-Start=153
+Start=155
 Len=2
 ZeroFill=Yes
 
@@ -6805,7 +6826,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Temporary Structure
 Name=H68_TEMP_STRUCTURE
-Start=155
+Start=157
 Len=2
 ZeroFill=Yes
 
@@ -6817,7 +6838,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Housing Units - Total
 Name=H68_TOTAL
-Start=157
+Start=159
 Len=2
 ZeroFill=Yes
 
@@ -6829,7 +6850,7 @@ Value=0:40;0 - 40
 [Item]
 Label=Number of Rooms - Rontabole
 Name=H69_RONTABOLE
-Start=159
+Start=161
 Len=2
 ZeroFill=Yes
 OccurrenceLabel=1,Rontabole
@@ -6842,7 +6863,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Heisi
 Name=H69_HEISI
-Start=161
+Start=163
 Len=2
 ZeroFill=Yes
 
@@ -6854,7 +6875,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Polata
 Name=H69_POLATA
-Start=163
+Start=165
 Len=2
 ZeroFill=Yes
 
@@ -6866,7 +6887,7 @@ Value=0:30;0 - 30
 [Item]
 Label=Number of Rooms - Malaene
 Name=H69_MALAENE
-Start=165
+Start=167
 Len=2
 ZeroFill=Yes
 
@@ -6878,7 +6899,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Optaka
 Name=H69_OPTAKA
-Start=167
+Start=169
 Len=2
 ZeroFill=Yes
 
@@ -6890,7 +6911,7 @@ Value=0:30;0 - 30
 [Item]
 Label=Number of Rooms - Apartment
 Name=H69_APARTMENT
-Start=169
+Start=171
 Len=2
 ZeroFill=Yes
 
@@ -6900,9 +6921,16 @@ Name=H69_APARTMENT_VS1
 Value=0:15;0 - 15
 
 [Item]
+Label=Number of Rooms - Bungalow
+Name=H69_BUNGALOW
+Start=173
+Len=2
+ZeroFill=Yes
+
+[Item]
 Label=Number of Rooms - Mansion
 Name=H69_MANSION
-Start=171
+Start=175
 Len=2
 ZeroFill=Yes
 
@@ -6914,7 +6942,7 @@ Value=0:99;0 - 99
 [Item]
 Label=Number of Rooms - Temporary Structure
 Name=H69_TEMP_STRUCTURE
-Start=173
+Start=177
 Len=2
 ZeroFill=Yes
 
@@ -6926,7 +6954,7 @@ Value=0:20;0 - 20
 [Item]
 Label=Number of Rooms - Total
 Name=H69_TOTAL
-Start=175
+Start=179
 Len=2
 ZeroFill=Yes
 
@@ -6938,7 +6966,7 @@ Value=0:99;0 - 99
 [Item]
 Label=Main Source of Drinking Water
 Name=H70
-Start=177
+Start=181
 Len=2
 ZeroFill=Yes
 
@@ -6963,7 +6991,7 @@ Value=14;Other
 [Item]
 Label=Distance to Get Drinking Water
 Name=H71
-Start=179
+Start=183
 Len=1
 ZeroFill=Yes
 
@@ -6981,7 +7009,7 @@ Value=7;120+
 [Item]
 Label=Main Source of Energy for Cooking
 Name=H72
-Start=180
+Start=184
 Len=2
 ZeroFill=Yes
 
@@ -7004,7 +7032,7 @@ Value=12;Other
 [Item]
 Label=Main Source of Energy for Heating
 Name=H73
-Start=182
+Start=186
 Len=2
 ZeroFill=Yes
 
@@ -7027,7 +7055,7 @@ Value=12;Other
 [Item]
 Label=Main Source of Energy for Lighting
 Name=H74
-Start=184
+Start=188
 Len=1
 ZeroFill=Yes
 
@@ -7046,7 +7074,7 @@ Value=8;Other
 [Item]
 Label=Main Type of Sanitation
 Name=H75
-Start=185
+Start=189
 Len=1
 ZeroFill=Yes
 
@@ -7066,7 +7094,7 @@ Value=9;Other
 [Item]
 Label=Disposal of Rubbish or Refuse
 Name=H76
-Start=186
+Start=190
 Len=1
 ZeroFill=Yes
 
@@ -7085,7 +7113,7 @@ Value=8;Other
 [Item]
 Label=Assets
 Name=H77
-Start=187
+Start=191
 Len=13
 DataType=Alpha
 
@@ -7109,7 +7137,7 @@ Value='M            ';Refrigerator
 [Item]
 Label=Number of Refrigerators
 Name=NUMBER_OF_REFRIGERATORS
-Start=200
+Start=204
 Len=1
 ZeroFill=Yes
 
@@ -7125,7 +7153,7 @@ Value=5;5
 [Item]
 Label=Refrigerant
 Name=REFRIGERANT
-Start=201
+Start=205
 Len=1
 Occurrences=5
 OccurrenceLabel=1,Refrigirant 1
@@ -7146,7 +7174,7 @@ Value=5;Not Shown
 [Item]
 Label=Ownership of Fields
 Name=H78
-Start=206
+Start=210
 Len=1
 ZeroFill=Yes
 
@@ -7159,7 +7187,7 @@ Value=2;No
 [Item]
 Label=Operation of Fields
 Name=H79
-Start=207
+Start=211
 Len=1
 ZeroFill=Yes
 
@@ -7172,7 +7200,7 @@ Value=2;No
 [Item]
 Label=Livestock and Poultry
 Name=H80
-Start=208
+Start=212
 Len=4
 Occurrences=14
 ZeroFill=Yes
@@ -7186,10 +7214,10 @@ OccurrenceLabel=7,Improved pigs
 OccurrenceLabel=8,Improved poultry
 OccurrenceLabel=9,Dogs
 OccurrenceLabel=10,Bees(Hives)
-OccurrenceLabel=11,Ducks
-OccurrenceLabel=12,Geese
-OccurrenceLabel=13,Turkey
-OccurrenceLabel=14,Rabbits
+OccurrenceLabel=11,Ducks (e.g. Makau, Matata, etc)
+OccurrenceLabel=12,Geese (Likhants'i)
+OccurrenceLabel=13,Turkey (Likalakuni)
+OccurrenceLabel=14,Rabbits ('Mutlanyana)
 
 [ValueSet]
 Label=Livestock and Poultry
@@ -7199,112 +7227,112 @@ Value=0:9999;0 - 9999
 [Item]
 Label=Tenure Other
 Name=H60_OTHER
-Start=264
-Len=20
+Start=268
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Land Acquired Other
 Name=H61_OTHER
-Start=284
-Len=20
+Start=298
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Agency Other
 Name=H62_OTHER
-Start=304
-Len=20
+Start=328
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Ownership Status Other
 Name=H64_OTHER
-Start=324
+Start=358
 Len=30
 DataType=Alpha
 
 [Item]
 Label=Roofing Material Other
 Name=H65_OTHER
-Start=354
-Len=20
+Start=388
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Wall Material Other
 Name=H66_OTHER
-Start=374
-Len=20
+Start=418
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Floor Material Other
 Name=H67_OTHER
-Start=394
-Len=20
+Start=448
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Drinking Water Other
 Name=H70_OTHER
-Start=414
-Len=20
+Start=478
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Energy for Cooking Other
 Name=H72_OTHER
-Start=434
-Len=20
+Start=508
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Energy for Heating Other
 Name=H73_OTHER
-Start=454
-Len=20
+Start=538
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Energy for Lighting Other
 Name=H74_OTHER
-Start=474
-Len=20
+Start=568
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Sanitation Other
 Name=H75_OTHER
-Start=494
-Len=20
+Start=598
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Rubbish Other
 Name=H76_OTHER
-Start=514
-Len=20
+Start=628
+Len=30
 DataType=Alpha
 
 [Item]
 Label=Number of Household Members
 Name=NUMBER_OF_HOUSEHOLD_MEMBERS
-Start=534
+Start=658
 Len=2
 ZeroFill=Yes
 
 [Item]
 Label=Respondent
 Name=RESPONDENT
-Start=536
+Start=660
 Len=2
 ZeroFill=Yes
 
 [Item]
 Label=Is Respondent Household Member
 Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
-Start=538
+Start=662
 Len=1
 ZeroFill=Yes
 
@@ -7317,7 +7345,7 @@ Value=2;No
 [Item]
 Label=Respondent Name
 Name=RESPONDENT_NAME
-Start=539
+Start=663
 Len=30
 DataType=Alpha
 
@@ -7325,7 +7353,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=247
+RecordLen=267
 
 [Item]
 Label=Number of visits
@@ -7387,8 +7415,7 @@ Value=7;Continue with interview
 Value=2;No household member at home
 Value=3;Entire household absent for extended period of time
 Value=4;Dwelling vacant
-Value=5;Dwelling destroyed
-Value=6;Refusal
+Value=5;Refusal
 
 [Item]
 Label=Final Result Code
@@ -7407,20 +7434,20 @@ Value=6;Partially Complete
 Label=Partially Complete Reason
 Name=PARTIALLY_COMPLETE_REASON
 Start=156
-Len=30
+Len=50
 DataType=Alpha
 
 [Item]
 Label=Interview Date
 Name=INTERVIEW_DATE
-Start=186
+Start=206
 Len=10
 DataType=Alpha
 
 [Item]
 Label=Assistant Supervisor Approval Status
 Name=APPROVAL_STATUS
-Start=196
+Start=216
 Len=1
 ZeroFill=Yes
 
@@ -7433,7 +7460,7 @@ Value=1;Approved
 [Item]
 Label=Household Latitude
 Name=HH_LATITUDE
-Start=197
+Start=217
 Len=14
 Decimal=9
 DecimalChar=Yes
@@ -7441,7 +7468,7 @@ DecimalChar=Yes
 [Item]
 Label=Household Longitude
 Name=HH_LONGITUDE
-Start=211
+Start=231
 Len=14
 Decimal=9
 DecimalChar=Yes
@@ -7449,19 +7476,19 @@ DecimalChar=Yes
 [Item]
 Label=Household Altitude
 Name=HH_ALTITUDE
-Start=225
+Start=245
 Len=6
 
 [Item]
 Label=Household Satellites
 Name=HH_SATELLITES
-Start=231
+Start=251
 Len=2
 
 [Item]
 Label=Household Accuracy
 Name=HH_ACCURACY
-Start=233
+Start=253
 Len=4
 Decimal=1
 DecimalChar=Yes
@@ -7469,19 +7496,19 @@ DecimalChar=Yes
 [Item]
 Label=Household Read Time
 Name=HH_READ_TIME
-Start=237
+Start=257
 Len=6
 
 [Item]
 Label=Enumerator Code
 Name=ENUMERATOR_CODE
-Start=243
+Start=263
 Len=4
 ZeroFill=Yes
 
 [Item]
 Label=Missing Fertility
 Name=MISSING_FERTILITY
-Start=247
+Start=267
 Len=1
 ZeroFill=Yes

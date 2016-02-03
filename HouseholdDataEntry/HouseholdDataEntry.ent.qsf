@@ -157,7 +157,7 @@ Field=LESOTHOCENSUS2016_DICT.B2
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs16 B2.\b0\i  \i0 Write names of all persons who were present in this household on the census night (i.e. Saturday night 09\super th\nosupersub  April 2016). Start with head of household. Consider surname for the household head and those different from the household head.\i\par
-ENG=\pard\sl276\slmult1\i0\f1\'b7 \i\f0 Please include babies, small children, old people and visitors who were present on the census night (i.e. 9\super h\nosupersub April 2016). For babies with no names, write BABY.\par
+ENG=\pard\sl276\slmult1\i0\f1\'b7 \i\f0 Please include babies, small children, old people and visitors who were present on the census night (i.e. 9\super th\nosupersub April 2016). For babies with no names, write BABY.\par
 ENG=\i0\f1\'b7 \i\f0 Also include usual members of the household who did not sleep in the household during the reference night, were absent for less than six months and are elsewhere in Lesotho.\par
 ENG=\pard\fi-360\li360\sl276\slmult1\i0\f1\'b7 \i\f0 Include usual members who are absent and are outside the country for less than three years.\par
 ENG=\pard\sa200\sl276\slmult1\i0\f1\'b7 \i\f0 Include those in Institutions outside the country irrespective of duration of stay.\b\fs22\par
@@ -583,6 +583,14 @@ ENG=\pard\b\i0\fs18\par
 ENG=}
 
 [QUESTION]
+Field=LESOTHOCENSUS2016_DICT.D30_OTHER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\expndtw-6\b\f0\fs18 D30. Specify \expndtw0\f1 %getocclabel%'s\expndtw-6\f0  field of specialization\par
+ENG=}
+
+[QUESTION]
 Field=LESOTHOCENSUS2016_DICT.D30B
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
@@ -633,7 +641,7 @@ Field=LESOTHOCENSUS2016_DICT.E32OTHER
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E32. If job seeking (coded 50 in E31) what was \cf1\f1 %getocclabel%\cf0\f0\rquote s main activity status in the past 12 months ?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 E32. If job seeking (coded 50 in E31) what was \cf1\f1 %getocclabel%\cf0\f0\rquote s main activity status in the past 12 months?\par
 ENG=}
 
 [QUESTION]
@@ -1070,7 +1078,8 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H67
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\f0\fs18 H67. What is the main floor material used for the main house of the household?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H67. What is the main floor material used for the main house of the household?\par
+ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H67_OTHER
@@ -1094,7 +1103,13 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H68_APARTMENT
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Town House/Apartment \i0 are available in this household?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Town House/Apartment(s) \i0 are available in this household?\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H68_BUNGALOW
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Bungalow(s) \i0 are available in this household?\par
 ENG=}
 
 [QUESTION]
@@ -1112,7 +1127,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H68_MANSION
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Bungalow/Mansion \i0 are available in this household?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Mansion(s) \i0 are available in this household?\par
 ENG=}
 
 [QUESTION]
@@ -1124,7 +1139,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H68_POLATA
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Polata \i0 are available in this household?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H68. How many \i Polata(s) \i0 are available in this household?\par
 ENG=}
 
 [QUESTION]
@@ -1148,7 +1163,13 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H69_APARTMENT
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Town House/Apartment \i0 of the household? \par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Town House/Apartment(s) \i0 of the household? \par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.H69_BUNGALOW
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Bungalow(s) \i0 of the household? \par
 ENG=}
 
 [QUESTION]
@@ -1166,7 +1187,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H69_MANSION
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Bungalow/Mansion \i0 of the household? \par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Mansion(s) \i0 of the household? \par
 ENG=}
 
 [QUESTION]
@@ -1178,7 +1199,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H69_POLATA
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Polata \i0 of the household? \par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H69. How many rooms are available in all \i Polata(s) \i0 of the household? \par
 ENG=}
 
 [QUESTION]

@@ -14,7 +14,7 @@ Name=FORM000
 Label=Identification
 QuestionTextHeight=85
 Level=1
-Size=1049,613
+Size=720,535
   
 Item=DISTRICT
 Item=CONSTITUENCY
@@ -32,14 +32,17 @@ Item=VILLAGE_NAME
 Item=HOUSEHOLD_HEAD_NAMES
 Item=INTERVIEW_DATE
   
-Box=770,66,1024,100,Thin
+Box=432,64,686,98,Thin
+Box=18,56,695,362,Thin
+Box=18,368,695,510,Thin
+Box=164,7,490,47,Etched
   
 [Text]
 Name=TEXT1
-Position=137,21,343,43
-Text=SectionA: Identification
+Position=177,11,480,45
+Text=Section A: Identification
 Form=1
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -48,7 +51,7 @@ Name=FORM001
 Label=Demographics
 QuestionTextHeight=61
 Level=1
-Size=1481,855
+Size=1496,840
   
 Item=NUMBER_OF_HOUSEHOLD_MEMBERS
 Item=DEMOGRAPHIC_ROSTER
@@ -57,13 +60,15 @@ Item=RESPONDENT
 Item=IS_RESPONDENT_HOUSEHOLD_MEMBER
 Item=RESPONDENT_NAME
   
+Box=164,6,507,52,Etched
+Box=23,58,706,433,Thin
   
 [Text]
 Name=TEXT2
-Position=151,21,371,43
+Position=179,14,494,48
 Text=Section B: Demographics
 Form=2
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -75,13 +80,14 @@ Size=1184,429
   
 Item=DISABILITY_ROSTER
   
+Box=277,14,550,53,Etched
   
 [Text]
 Name=TEXT000
-Position=360,23,539,45
+Position=288,16,541,50
 Text=Section C: Disability
 Form=3
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -89,17 +95,18 @@ Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskervill
 Name=FORM004
 Label=Education
 Level=1
-Size=839,442
+Size=995,442
   
 Item=EDUCATION_ROSTER
   
+Box=336,21,612,64,Etched
   
 [Text]
 Name=TEXT5
-Position=268,35,453,57
+Position=342,26,607,60
 Text=Section D: Education
 Form=4
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -107,17 +114,19 @@ Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskervill
 Name=FORM006
 Label=Economic Activity Status
 Level=1
-Size=1314,479
+Size=1314,478
   
 Item=ECONOMIC_ACTIVITY_ROSTER
   
+Box=515,27,517,40,Etched
+Box=260,11,718,55,Etched
   
 [Text]
 Name=TEXT001
-Position=278,28,587,50
+Position=267,18,711,52
 Text=Section E: Economic Activity Status
 Form=5
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -129,13 +138,14 @@ Size=1076,425
   
 Item=FERTILITY_ROSTER
   
+Box=341,9,590,50,Etched
   
 [Text]
 Name=TEXT002
-Position=327,25,488,47
+Position=351,13,581,47
 Text=Section F: Fertility
 Form=6
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -150,13 +160,14 @@ Item=G51
 Item=G52
 Item=DEATHS_ROSTER
   
+Box=114,4,935,45,Etched
   
 [Text]
 Name=TEXT4
-Position=257,12,818,34
+Position=123,8,927,42
 Text=Section G: Deaths of Household Members in the Past Five Years
 Form=7
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -165,7 +176,7 @@ Name=FORM009
 Label=Housing Characteristics
 QuestionTextHeight=80
 Level=1
-Size=843,1582
+Size=961,2163
   
 Item=H60
 Item=H61
@@ -222,14 +233,23 @@ Item=H69_MANSION
 Item=H69_TEMP_STRUCTURE
 Item=H69_TOTAL
 Item=MISSING_FERTILITY
+Item=H68_BUNGALOW
+Item=H69_BUNGALOW
   
+Box=165,10,614,48,Etched
+Box=29,57,790,305,Thin
+Box=29,311,790,590,Thin
+Box=28,594,790,812,Thin
+Box=28,817,275,1055,Thin
+Box=27,1061,275,1398,Thin
+Box=371,1099,866,1188,Thin
   
 [Text]
 Name=TEXT3
-Position=176,24,479,46
+Position=173,12,607,46
 Text=Section H: Housing Characteristics
 Form=8
-Font=-019 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
+Font=-029 0000 0000 0000 0700 0000 0000 0000 0000 0003 0002 0001 0018 Baskerville Old Face
  
 [EndForm]
   
@@ -247,145 +267,145 @@ Max=1
   
 [Field]
 Name=INTERVIEW_DATE
-Position=877,71,1018,91
+Position=539,69,680,89
 Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
 Form=1
   
 [Text]
-Position=774,74,866,90
+Position=436,72,528,88
 Text=Interview Date
  
   
 [Field]
 Name=DISTRICT
-Position=169,57,198,77
+Position=198,63,227,83
 Item=DISTRICT,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,60,66,76
+Position=25,66,68,82
 Text=District
  
   
 [Field]
 Name=CONSTITUENCY
-Position=169,87,198,107
+Position=198,89,227,109
 Item=CONSTITUENCY,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,90,104,106
+Position=25,93,106,109
 Text=Constituency
  
   
 [Field]
 Name=COMMUNITY_COUNCIL
-Position=169,117,212,137
+Position=198,117,241,137
 Item=COMMUNITY_COUNCIL,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,120,147,136
+Position=25,119,149,135
 Text=Community Council
  
   
 [Field]
 Name=ZONE
-Position=169,147,184,167
+Position=198,143,213,163
 Item=ZONE,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,150,54,166
+Position=26,145,57,161
 Text=Zone
  
   
 [Field]
 Name=SETTLEMENT
-Position=169,177,184,197
+Position=198,168,213,188
 Item=SETTLEMENT,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,180,92,196
+Position=25,174,94,190
 Text=Settlement
  
   
 [Field]
 Name=ENUMERATION_AREA
-Position=169,209,324,229
+Position=198,194,353,214
 Item=ENUMERATION_AREA,LESOTHOCENSUS2016_DICT
 Form=1
   
 [Text]
-Position=23,212,138,228
+Position=26,199,141,215
 Text=Enumeration Area
  
   
 [Field]
 Name=WARD
-Position=169,237,198,257
+Position=198,221,227,241
 Item=WARD,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,240,57,256
+Position=26,225,60,241
 Text=Ward
  
   
 [Field]
 Name=VILLAGE_NUMBER
-Position=169,267,198,287
+Position=198,249,227,269
 Item=VILLAGE_NUMBER,LESOTHOCENSUS2016_DICT
 Form=1
   
 [Text]
-Position=23,270,122,286
+Position=25,252,124,268
 Text=Village Number
  
   
 [Field]
 Name=VILLAGE_NAME
-Position=169,305,521,325
+Position=198,279,550,299
 Item=VILLAGE_NAME,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=25,306,111,322
+Position=25,280,111,296
 Text=Village Name
  
   
 [Field]
 Name=HOUSEHOLD_NUMBER
-Position=167,343,210,363
+Position=198,307,241,327
 Item=HOUSEHOLD_NUMBER,LESOTHOCENSUS2016_DICT
 Form=1
   
 [Text]
-Position=21,346,142,362
+Position=25,311,146,327
 Text=Household Number
  
   
 [Field]
 Name=HOUSEHOLD_HEAD_NAMES
-Position=198,383,548,403
+Position=198,335,548,355
 Item=HOUSEHOLD_HEAD_NAMES,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=23,380,190,396
+Position=24,338,191,354
 Text=Names of Household Head
  
   
@@ -397,10 +417,10 @@ Required=Yes
 Type=Item
 TypeName=VISIT_DATE
 Max=3
-DisplaySize=26,423,217,531
+DisplaySize=23,381,199,503
 Orientation=Horizontal
 FieldRowHeight=28
-HeadingRowHeight=0
+HeadingRowHeight=31
 FreeMovement=No
  
 [Text]
@@ -426,7 +446,7 @@ Width=10
 Width=121
   
 [HeaderText]
-Position=54,0,121,24
+Position=54,7,121,31
 Text=Visit date
  
 [Field]
@@ -446,25 +466,25 @@ Text=Visit date
   
 [Field]
 Name=NUMBER_OF_VISITS
-Position=173,539,188,559
+Position=351,428,366,448
 Item=NUMBER_OF_VISITS,LESOTHOCENSUS2016_DICT
 Protected=Yes
 Form=1
   
 [Text]
-Position=32,542,133,558
+Position=228,432,329,448
 Text=Number of visits
  
   
 [Field]
 Name=HOUSEHOLD_STATUS
-Position=173,568,188,588
+Position=351,457,366,477
 Item=HOUSEHOLD_STATUS,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=31,570,141,586
+Position=228,461,338,477
 Text=Household Status
  
 [EndGroup]
@@ -485,7 +505,7 @@ Required=No
 Type=Record
 TypeName=INDIVIDUAL
 Max=50
-DisplaySize=14,61,423,365
+DisplaySize=32,64,428,368
 Orientation=Horizontal
 FieldRowHeight=0
 HeadingRowHeight=0
@@ -746,15 +766,15 @@ Width=10
 [EndColumn]
   
 [Column]
-Width=105
+Width=66
   
 [HeaderText]
-Position=47,0,105,40
+Position=8,0,66,40
 Text=Person Number
  
 [Field]
 Name=B1
-Position=68,0,97,20
+Position=29,0,58,20
 Item=B1,LESOTHOCENSUS2016_DICT
 Protected=Yes
   
@@ -765,15 +785,15 @@ Text=Person Number
 [EndColumn]
   
 [Column]
-Width=174
+Width=227
   
 [HeaderText]
-Position=123,16,174,40
+Position=176,16,227,40
 Text=Names
  
 [Field]
 Name=B2
-Position=0,0,155,20
+Position=0,0,215,20
 Item=B2,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
@@ -785,15 +805,15 @@ Text=Names
 [EndColumn]
   
 [Column]
-Width=88
+Width=59
   
 [HeaderText]
-Position=35,0,88,40
+Position=6,0,59,40
 Text=More People
  
 [Field]
 Name=MORE_PEOPLE
-Position=65,0,80,20
+Position=36,0,51,20
 Item=MORE_PEOPLE,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -807,50 +827,50 @@ Text=More People
   
 [Field]
 Name=NUMBER_OF_HOUSEHOLD_MEMBERS
-Position=551,92,580,112
+Position=668,67,697,87
 Item=NUMBER_OF_HOUSEHOLD_MEMBERS,LESOTHOCENSUS2016_DICT
 Protected=Yes
 Form=2
   
 [Text]
-Position=478,66,677,82
+Position=459,70,658,86
 Text=Number of Household Members
  
   
 [Field]
 Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
-Position=243,384,258,404
+Position=267,380,282,400
 Item=IS_RESPONDENT_HOUSEHOLD_MEMBER,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=2
   
 [Text]
-Position=13,384,229,400
+Position=32,381,248,397
 Text=Is Respondent Household Member
  
   
 [Field]
 Name=RESPONDENT_NAME
-Position=315,424,736,444
+Position=447,378,687,398
 Item=RESPONDENT_NAME,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=2
   
 [Text]
-Position=183,429,299,445
+Position=319,382,435,398
 Text=Respondent Name
  
   
 [Field]
 Name=RESPONDENT
-Position=112,427,141,447
+Position=124,408,153,428
 Item=RESPONDENT,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=2
   
 [Text]
-Position=12,434,87,450
+Position=31,410,106,426
 Text=Respondent
  
   
@@ -863,7 +883,7 @@ Type=Record
 TypeName=INDIVIDUAL
 Max=50
 MaxField=NUMBER_OF_HOUSEHOLD_MEMBERS
-DisplaySize=8,457,1456,830
+DisplaySize=23,442,1471,815
 Orientation=Horizontal
 FieldRowHeight=0
 HeadingRowHeight=0
@@ -1252,10 +1272,10 @@ Text=Residence Absent/Outside Lesotho
 [EndColumn]
   
 [Column]
-Width=142
+Width=73
   
 [HeaderText]
-Position=46,32,142,72
+Position=11,16,73,72
 Text=Time Outside Lesotho
  
 [Field]
@@ -1609,8 +1629,10 @@ Text=Age at First Marriage
 Name=B20
 Position=29,0,58,20
 Item=B20,LESOTHOCENSUS2016_DICT
+DataCaptureType=RadioButton
   
 [Text]
+Position=0,0,135,16
 Text=Age at First Marriage
  
 [EndColumn]
@@ -2456,7 +2478,7 @@ Type=Record
 TypeName=INDIVIDUAL
 Max=50
 MaxField=NUMBER_OF_HOUSEHOLD_MEMBERS
-DisplaySize=24,81,814,417
+DisplaySize=24,81,970,417
 Orientation=Horizontal
 FieldRowHeight=0
 HeadingRowHeight=0
@@ -2809,15 +2831,15 @@ Text=How to Write
 [EndColumn]
   
 [Column]
-Width=99
+Width=127
   
 [HeaderText]
-Position=0,16,99,56
+Position=28,16,127,56
 Text=Field of Specialization
  
 [Field]
 Name=D30
-Position=62,0,91,20
+Position=62,0,119,20
 Item=D30,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -2845,6 +2867,27 @@ Text=Field of Specialization - Minor
  
 [EndColumn]
   
+[Column]
+Width=128
+  
+[HeaderText]
+Position=29,16,128,56
+Text=Other Field of Specialization
+ 
+[Field]
+Name=D30_OTHER
+Position=0,0,112,20
+Item=D30_OTHER,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
+UseUnicodeTextBox=Yes
+FieldLabelType=DictionaryLabel
+  
+[Text]
+Position=0,16,99,56
+Text=Other Field of Specialization
+ 
+[EndColumn]
+  
 [EndGrid]
  
 [EndGroup]
@@ -2866,7 +2909,7 @@ Type=Record
 TypeName=INDIVIDUAL
 Max=50
 MaxField=NUMBER_OF_HOUSEHOLD_MEMBERS
-DisplaySize=18,68,1289,454
+DisplaySize=18,67,1289,453
 Orientation=Horizontal
 FieldRowHeight=0
 HeadingRowHeight=0
@@ -3130,7 +3173,7 @@ Width=10
 Width=58
   
 [HeaderText]
-Position=0,16,58,104
+Position=0,0,58,88
 Text=Main Activity Status in Past 7 Days
  
 [Field]
@@ -3148,7 +3191,7 @@ Text=Main Activity Status in Past 7 Days
 Width=169
   
 [HeaderText]
-Position=81,80,169,104
+Position=81,64,169,88
 Text=7 Days Other
  
 [Field]
@@ -3168,7 +3211,7 @@ Text=7 Days Other
 Width=98
   
 [HeaderText]
-Position=0,48,98,104
+Position=0,32,98,88
 Text=Main Activity Status in Past 12 Months
  
 [Field]
@@ -3186,7 +3229,7 @@ Text=Main Activity Status in Past 12 Months
 Width=151
   
 [HeaderText]
-Position=41,80,151,104
+Position=41,64,151,88
 Text=12 Months Other
  
 [Field]
@@ -3206,7 +3249,7 @@ Text=12 Months Other
 Width=68
   
 [HeaderText]
-Position=0,80,68,104
+Position=0,64,68,88
 Text=Employer
  
 [Field]
@@ -3224,7 +3267,7 @@ Text=Employer
 Width=146
   
 [HeaderText]
-Position=78,80,146,104
+Position=78,64,146,88
 Text=Employer
  
 [Field]
@@ -3241,11 +3284,12 @@ Text=Employer
 [EndColumn]
   
 [Column]
-Width=132
+Width=100
   
 [HeaderText]
-Position=0,64,132,104
+Position=4,48,96,88
 Text=Occupation - Major Group
+HorizontalAlignment=Center
  
 [Field]
 Name=OCCUPATION_LEVEL_1
@@ -3254,7 +3298,9 @@ Item=OCCUPATION_LEVEL_1,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
 [Text]
+Position=8,48,100,88
 Text=Occupation - Major Group
+HorizontalAlignment=Center
  
 [EndColumn]
   
@@ -3262,7 +3308,7 @@ Text=Occupation - Major Group
 Width=121
   
 [HeaderText]
-Position=0,64,121,104
+Position=0,48,121,88
 Text=Occupation - Sub Major Group
  
 [Field]
@@ -3277,10 +3323,10 @@ Text=Occupation - Sub Major Group
 [EndColumn]
   
 [Column]
-Width=132
+Width=98
   
 [HeaderText]
-Position=0,64,132,104
+Position=6,48,98,88
 Text=Occupation - Minor Group
  
 [Field]
@@ -3295,10 +3341,10 @@ Text=Occupation - Minor Group
 [EndColumn]
   
 [Column]
-Width=121
+Width=90
   
 [HeaderText]
-Position=0,64,121,104
+Position=2,48,90,88
 Text=Occupation - Unit Group
  
 [Field]
@@ -3313,15 +3359,15 @@ Text=Occupation - Unit Group
 [EndColumn]
   
 [Column]
-Width=70
+Width=58
   
 [HeaderText]
-Position=14,80,70,104
+Position=2,64,58,88
 Text=Section
  
 [Field]
 Name=SECTION
-Position=33,0,62,20
+Position=21,0,50,20
 Item=SECTION,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -3335,7 +3381,7 @@ Text=Section
 Width=64
   
 [HeaderText]
-Position=0,80,64,104
+Position=0,64,64,88
 Text=Divisions
  
 [Field]
@@ -3354,7 +3400,7 @@ Text=Divisions
 Width=53
   
 [HeaderText]
-Position=0,80,53,104
+Position=0,64,53,88
 Text=Groups
  
 [Field]
@@ -3372,7 +3418,7 @@ Text=Groups
 Width=65
   
 [HeaderText]
-Position=24,80,65,104
+Position=24,64,65,88
 Text=Class
  
 [Field]
@@ -3390,7 +3436,7 @@ Text=Class
 Width=87
   
 [HeaderText]
-Position=0,64,87,104
+Position=0,48,87,88
 Text=Employment Location
  
 [Field]
@@ -3408,7 +3454,7 @@ Text=Employment Location
 Width=118
   
 [HeaderText]
-Position=0,64,118,104
+Position=0,48,118,88
 Text=Location in Urban/Peri-Urban
  
 [Field]
@@ -3426,7 +3472,7 @@ Text=Location in Urban/Peri-Urban
 Width=57
   
 [HeaderText]
-Position=0,64,57,104
+Position=0,48,57,88
 Text=Worked in RSA
  
 [Field]
@@ -3444,7 +3490,7 @@ Text=Worked in RSA
 Width=62
   
 [HeaderText]
-Position=0,48,62,104
+Position=0,32,62,88
 Text=RSA Work Duration
  
 [Field]
@@ -3743,7 +3789,7 @@ Width=10
 Width=87
   
 [HeaderText]
-Position=0,0,87,40
+Position=0,16,87,56
 Text=Respondent Available?
  
 [Field]
@@ -3760,15 +3806,15 @@ Text=Respondent Available?
 [EndColumn]
   
 [Column]
-Width=135
+Width=97
   
 [HeaderText]
-Position=0,16,135,40
+Position=14,16,97,56
 Text=Fertility Respondent
  
 [Field]
 Name=FERTILITY_RESPONDENT
-Position=98,0,127,20
+Position=60,0,89,20
 Item=FERTILITY_RESPONDENT,LESOTHOCENSUS2016_DICT
 FieldLabelType=DictionaryLabel
 DataCaptureType=RadioButton
@@ -3780,15 +3826,15 @@ Text=Fertility Respondent
 [EndColumn]
   
 [Column]
-Width=98
+Width=75
   
 [HeaderText]
-Position=0,16,98,40
+Position=9,16,75,56
 Text=Ever Pregnant
  
 [Field]
 Name=F40
-Position=75,0,90,20
+Position=52,0,67,20
 Item=F40,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -3798,15 +3844,15 @@ Text=Ever Pregnant
 [EndColumn]
   
 [Column]
-Width=112
+Width=71
   
 [HeaderText]
-Position=0,0,112,40
+Position=2,0,71,56
 Text=Ever Given Live Birth
  
 [Field]
 Name=F41
-Position=89,0,104,20
+Position=48,0,63,20
 Item=F41,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -3816,15 +3862,15 @@ Text=Ever Given Live Birth
 [EndColumn]
   
 [Column]
-Width=108
+Width=53
   
 [HeaderText]
-Position=0,16,108,40
+Position=9,0,53,56
 Text=Boys Born Alive
  
 [Field]
 Name=F42A
-Position=71,0,100,20
+Position=16,0,45,20
 Item=F42A,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3834,15 +3880,15 @@ Text=Boys Born Alive
 [EndColumn]
   
 [Column]
-Width=107
+Width=52
   
 [HeaderText]
-Position=0,16,107,40
+Position=8,0,52,56
 Text=Girls Born Alive
  
 [Field]
 Name=F42B
-Position=70,0,99,20
+Position=15,0,44,20
 Item=F42B,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3852,15 +3898,15 @@ Text=Girls Born Alive
 [EndColumn]
   
 [Column]
-Width=109
+Width=55
   
 [HeaderText]
-Position=0,16,109,40
+Position=11,0,55,56
 Text=Total Born Alive
  
 [Field]
 Name=F42C
-Position=72,0,101,20
+Position=18,0,47,20
 Item=F42C,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3870,15 +3916,15 @@ Text=Total Born Alive
 [EndColumn]
   
 [Column]
-Width=101
+Width=75
   
 [HeaderText]
-Position=0,0,101,40
+Position=0,0,75,56
 Text=Boys Living in Household
  
 [Field]
 Name=F43A
-Position=64,0,93,20
+Position=38,0,67,20
 Item=F43A,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3888,15 +3934,15 @@ Text=Boys Living in Household
 [EndColumn]
   
 [Column]
-Width=100
+Width=86
   
 [HeaderText]
-Position=0,0,100,40
+Position=2,0,86,56
 Text=Girls Living in Household
  
 [Field]
 Name=F43B
-Position=63,0,92,20
+Position=49,0,78,20
 Item=F43B,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3906,15 +3952,15 @@ Text=Girls Living in Household
 [EndColumn]
   
 [Column]
-Width=102
+Width=89
   
 [HeaderText]
-Position=0,0,102,40
+Position=3,0,89,56
 Text=Total Living in Household
  
 [Field]
 Name=F43C
-Position=65,0,94,20
+Position=52,0,81,20
 Item=F43C,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3925,15 +3971,15 @@ Text=Total Living in Household
 [EndColumn]
   
 [Column]
-Width=85
+Width=76
   
 [HeaderText]
-Position=0,0,85,40
+Position=2,0,76,56
 Text=Boys Living Elsewhere
  
 [Field]
 Name=F44A
-Position=48,0,77,20
+Position=39,0,68,20
 Item=F44A,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3943,15 +3989,15 @@ Text=Boys Living Elsewhere
 [EndColumn]
   
 [Column]
-Width=84
+Width=74
   
 [HeaderText]
-Position=0,0,84,40
+Position=0,0,74,56
 Text=Girls Living Elsewhere
  
 [Field]
 Name=F44B
-Position=47,0,76,20
+Position=37,0,66,20
 Item=F44B,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3961,15 +4007,15 @@ Text=Girls Living Elsewhere
 [EndColumn]
   
 [Column]
-Width=86
+Width=74
   
 [HeaderText]
-Position=0,0,86,40
+Position=0,0,74,56
 Text=Total Living Elsewhere
  
 [Field]
 Name=F44C
-Position=49,0,78,20
+Position=37,0,66,20
 Item=F44C,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3979,15 +4025,15 @@ Text=Total Living Elsewhere
 [EndColumn]
   
 [Column]
-Width=104
+Width=71
   
 [HeaderText]
-Position=0,16,104,40
+Position=1,16,71,56
 Text=Boys Deceased
  
 [Field]
 Name=F45A
-Position=67,0,96,20
+Position=34,0,63,20
 Item=F45A,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -3997,15 +4043,15 @@ Text=Boys Deceased
 [EndColumn]
   
 [Column]
-Width=103
+Width=78
   
 [HeaderText]
-Position=0,16,103,40
+Position=8,16,78,56
 Text=Girls Deceased
  
 [Field]
 Name=F45B
-Position=66,0,95,20
+Position=41,0,70,20
 Item=F45B,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -4015,15 +4061,15 @@ Text=Girls Deceased
 [EndColumn]
   
 [Column]
-Width=105
+Width=74
   
 [HeaderText]
-Position=0,16,105,40
+Position=4,16,74,56
 Text=Total Deceased
  
 [Field]
 Name=F45C
-Position=68,0,97,20
+Position=37,0,66,20
 Item=F45C,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -4033,15 +4079,15 @@ Text=Total Deceased
 [EndColumn]
   
 [Column]
-Width=130
+Width=96
   
 [HeaderText]
-Position=0,0,130,40
+Position=9,16,96,56
 Text=First Child Bearing Age
  
 [Field]
 Name=F46
-Position=93,0,122,20
+Position=59,0,88,20
 Item=F46,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -4052,15 +4098,15 @@ Text=First Child Bearing Age
 [EndColumn]
   
 [Column]
-Width=109
+Width=90
   
 [HeaderText]
-Position=0,0,109,40
+Position=9,16,90,56
 Text=Last Child Birth Month
  
 [Field]
 Name=F47A
-Position=72,0,101,20
+Position=53,0,82,20
 Item=F47A,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -4070,15 +4116,15 @@ Text=Last Child Birth Month
 [EndColumn]
   
 [Column]
-Width=137
+Width=79
   
 [HeaderText]
-Position=0,16,137,40
+Position=4,16,79,56
 Text=Last Child Birth Year
  
 [Field]
 Name=F47B
-Position=72,0,129,20
+Position=14,0,71,20
 Item=F47B,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -4089,15 +4135,15 @@ Text=Last Child Birth Year
 [EndColumn]
   
 [Column]
-Width=104
+Width=54
   
 [HeaderText]
-Position=0,16,104,40
+Position=10,0,54,56
 Text=Last Born Alive
  
 [Field]
 Name=F48
-Position=81,0,96,20
+Position=31,0,46,20
 Item=F48,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -4107,15 +4153,15 @@ Text=Last Born Alive
 [EndColumn]
   
 [Column]
-Width=138
+Width=75
   
 [HeaderText]
-Position=0,0,138,40
+Position=1,0,75,56
 Text=Last Born Deceased Month
  
 [Field]
 Name=F49A
-Position=101,0,130,20
+Position=38,0,67,20
 Item=F49A,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -4125,15 +4171,15 @@ Text=Last Born Deceased Month
 [EndColumn]
   
 [Column]
-Width=138
+Width=79
   
 [HeaderText]
-Position=0,0,138,40
+Position=5,0,79,56
 Text=Last Born Deceased Year
  
 [Field]
 Name=F49B
-Position=73,0,130,20
+Position=14,0,71,20
 Item=F49B,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
   
@@ -4144,15 +4190,15 @@ Text=Last Born Deceased Year
 [EndColumn]
   
 [Column]
-Width=113
+Width=60
   
 [HeaderText]
-Position=0,16,113,40
+Position=7,0,60,56
 Text=Sex of Last Born
  
 [Field]
 Name=F50
-Position=90,0,105,20
+Position=37,0,52,20
 Item=F50,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
   
@@ -4439,14 +4485,14 @@ Form=8
   
 [Field]
 Name=H60_OTHER
-Position=525,64,804,84
+Position=495,64,774,84
 Item=H60_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=349,67,433,83
+Position=329,67,413,83
 Text=Tenure Other
  
   
@@ -4465,14 +4511,14 @@ Form=8
   
 [Field]
 Name=H61_OTHER
-Position=525,99,806,119
+Position=494,96,775,116
 Item=H61_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=352,100,484,116
+Position=331,97,463,113
 Text=Land Acquired Other
  
   
@@ -4491,14 +4537,14 @@ Form=8
   
 [Field]
 Name=H62_OTHER
-Position=526,130,807,150
+Position=494,125,775,145
 Item=H62_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=353,133,439,149
+Position=331,128,417,144
 Text=Agency Other
  
   
@@ -4530,14 +4576,14 @@ Form=8
   
 [Field]
 Name=H64_OTHER
-Position=526,185,806,205
+Position=496,185,776,205
 Item=H64_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=352,188,502,204
+Position=332,188,482,204
 Text=Ownership Status Other
  
   
@@ -4556,14 +4602,14 @@ Form=8
   
 [Field]
 Name=H65_OTHER
-Position=527,219,808,239
+Position=495,216,776,236
 Item=H65_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=352,222,496,238
+Position=331,219,475,235
 Text=Roofing Material Other
  
   
@@ -4582,14 +4628,14 @@ Form=8
   
 [Field]
 Name=H66_OTHER
-Position=527,252,808,272
+Position=495,247,776,267
 Item=H66_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=353,255,477,271
+Position=331,250,455,266
 Text=Wall Material Other
  
   
@@ -4608,425 +4654,451 @@ Form=8
   
 [Field]
 Name=H67_OTHER
-Position=528,285,809,305
+Position=494,276,775,296
 Item=H67_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=352,288,480,304
+Position=330,279,458,295
 Text=Floor Material Other
  
   
 [Field]
 Name=H68_RONTABOLE
-Position=225,322,254,342
+Position=273,317,302,337
 Item=H68_RONTABOLE,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=43,324,206,340
+Position=37,321,200,337
 Text=Housing Units - Rontabole
  
   
 [Field]
 Name=H69_RONTABOLE
-Position=537,320,566,340
+Position=595,315,624,335
 Item=H69_RONTABOLE,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=329,325,519,341
+Position=327,320,517,336
 Text=Number of Rooms - Rontabole
  
   
 [Field]
 Name=H68_HEISI
-Position=225,348,254,368
+Position=273,343,302,363
 Item=H68_HEISI,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=42,352,171,368
+Position=37,348,166,364
 Text=Housing Units - Heisi
  
   
 [Field]
 Name=H69_HEISI
-Position=537,347,566,367
+Position=595,342,624,362
 Item=H69_HEISI,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=330,347,486,363
+Position=328,342,484,358
 Text=Number of Rooms - Heisi
  
   
 [Field]
 Name=H68_POLATA
-Position=224,376,253,396
+Position=272,371,301,391
 Item=H68_POLATA,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=42,380,181,396
+Position=38,375,177,391
 Text=Housing Units - Polata
  
   
 [Field]
 Name=H69_POLATA
-Position=536,375,565,395
+Position=594,370,623,390
 Item=H69_POLATA,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=330,375,496,391
+Position=328,370,494,386
 Text=Number of Rooms - Polata
  
   
 [Field]
 Name=H68_MALAENE
-Position=224,403,253,423
+Position=272,398,301,418
 Item=H68_MALAENE,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=39,406,192,422
+Position=37,401,190,417
 Text=Housing Units - Malaene
  
   
 [Field]
 Name=H69_MALAENE
-Position=536,401,565,421
+Position=594,396,623,416
 Item=H69_MALAENE,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=331,403,511,419
+Position=329,398,509,414
 Text=Number of Rooms - Malaene
  
   
 [Field]
 Name=H68_OPTAKA
-Position=224,431,253,451
+Position=272,426,301,446
 Item=H68_OPTAKA,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=41,434,184,450
+Position=37,429,180,445
 Text=Housing Units - Optaka
  
   
 [Field]
 Name=H69_OPTAKA
-Position=537,426,566,446
+Position=595,421,624,441
 Item=H69_OPTAKA,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=332,429,502,445
+Position=330,424,500,440
 Text=Number of Rooms - Optaka
  
   
 [Field]
 Name=H68_APARTMENT
-Position=225,457,254,477
+Position=273,452,302,472
 Item=H68_APARTMENT,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=40,459,204,475
+Position=38,454,202,470
 Text=Housing Units - Apartment
  
   
 [Field]
 Name=H69_APARTMENT
-Position=537,456,566,476
+Position=595,451,624,471
 Item=H69_APARTMENT,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=332,456,523,472
+Position=330,451,521,467
 Text=Number of Rooms - Apartment
  
   
 [Field]
+Name=H68_BUNGALOW
+Position=273,479,302,499
+Item=H68_BUNGALOW,LESOTHOCENSUS2016_DICT
+FieldLabelType=DictionaryLabel
+DataCaptureType=RadioButton
+Form=8
+  
+[Text]
+Position=38,481,200,497
+Text=Housing Units - Bungalow
+ 
+  
+[Field]
+Name=H69_BUNGALOW
+Position=596,479,625,499
+Item=H69_BUNGALOW,LESOTHOCENSUS2016_DICT
+FieldLabelType=DictionaryLabel
+DataCaptureType=RadioButton
+Form=8
+  
+[Text]
+Position=331,481,520,497
+Text=Number of Rooms - Bungalow
+ 
+  
+[Field]
 Name=H68_MANSION
-Position=224,485,253,505
+Position=272,507,301,527
 Item=H68_MANSION,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=41,487,192,503
+Position=38,512,189,528
 Text=Housing Units - Mansion
  
   
 [Field]
 Name=H69_MANSION
-Position=538,483,567,503
+Position=596,505,625,525
 Item=H69_MANSION,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=332,482,510,498
+Position=330,507,508,523
 Text=Number of Rooms - Mansion
  
   
 [Field]
 Name=H68_TEMP_STRUCTURE
-Position=293,517,322,537
+Position=273,534,302,554
 Item=H68_TEMP_STRUCTURE,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=39,517,268,533
+Position=37,536,266,552
 Text=Housing Units - Temporary Structure
  
   
 [Field]
 Name=H69_TEMP_STRUCTURE
-Position=600,508,629,528
+Position=596,533,625,553
 Item=H69_TEMP_STRUCTURE,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=334,512,590,528
+Position=329,536,585,552
 Text=Number of Rooms - Temporary Structure
  
   
 [Field]
 Name=H68_TOTAL
-Position=226,538,255,558
+Position=272,559,301,579
 Item=H68_TOTAL,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=40,540,170,556
+Position=37,558,167,574
 Text=Housing Units - Total
  
   
 [Field]
 Name=H69_TOTAL
-Position=543,537,572,557
+Position=595,560,624,580
 Item=H69_TOTAL,LESOTHOCENSUS2016_DICT
 DataCaptureType=ComboBox
 Form=8
   
 [Text]
-Position=334,542,491,558
+Position=328,563,485,579
 Text=Number of Rooms - Total
  
   
 [Field]
 Name=H70
-Position=286,574,315,594
+Position=273,600,302,620
 Item=H70,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=46,580,241,596
+Position=36,602,231,618
 Text=Main Source of Drinking Water
 Form=8
  
   
 [Field]
 Name=H70_OTHER
-Position=530,576,811,596
+Position=495,600,776,620
 Item=H70_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=360,579,494,595
+Position=319,604,453,620
 Text=Drinking Water Other
  
   
 [Field]
 Name=H71
-Position=286,606,301,626
+Position=273,632,288,652
 Item=H71,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=46,610,241,626
+Position=36,632,231,648
 Text=Distance to Get Drinking Water
 Form=8
  
   
 [Field]
 Name=H72
-Position=285,635,314,655
+Position=272,661,301,681
 Item=H72,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=46,640,267,656
+Position=36,662,257,678
 Text=Main Source of Energy for Cooking
 Form=8
  
   
 [Field]
 Name=H72_OTHER
-Position=535,636,816,656
+Position=494,661,775,681
 Item=H72_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=361,639,521,655
+Position=320,664,480,680
 Text=Energy for Cooking Other
  
   
 [Field]
 Name=H73
-Position=285,666,314,686
+Position=272,692,301,712
 Item=H73,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=46,669,264,685
+Position=36,691,254,707
 Text=Main Source of Energy for Heating
 Form=8
  
   
 [Field]
 Name=H73_OTHER
-Position=536,669,817,689
+Position=495,694,776,714
 Item=H73_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=361,669,518,685
+Position=320,694,477,710
 Text=Energy for Heating Other
  
   
 [Field]
 Name=H74
-Position=286,697,301,717
+Position=273,723,288,743
 Item=H74,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=46,698,267,714
+Position=36,720,257,736
 Text=Main Source of Energy for Lighting
 Form=8
  
   
 [Field]
 Name=H74_OTHER
-Position=536,702,817,722
+Position=495,725,776,745
 Item=H74_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=360,701,520,717
+Position=319,724,479,740
 Text=Energy for Lighting Other
  
   
 [Field]
 Name=H75
-Position=286,727,301,747
+Position=273,753,288,773
 Item=H75,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=46,732,197,748
+Position=36,754,187,770
 Text=Main Type of Sanitation
 Form=8
  
   
 [Field]
 Name=H75_OTHER
-Position=537,734,818,754
+Position=496,755,777,775
 Item=H75_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=359,733,463,749
+Position=318,754,422,770
 Text=Sanitation Other
  
   
 [Field]
 Name=H76
-Position=286,757,301,777
+Position=273,783,288,803
 Item=H76,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=45,763,233,779
+Position=35,785,223,801
 Text=Disposal of Rubbish or Refuse
 Form=8
  
   
 [Field]
 Name=H76_OTHER
-Position=537,767,818,787
+Position=496,786,777,806
 Item=H76_OTHER,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=360,766,450,782
+Position=317,786,407,802
 Text=Rubbish Other
  
   
 [Field]
 Name=H77
-Position=95,806,278,826
+Position=83,825,266,845
 Item=H77,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 DataCaptureType=CheckBox
 Form=8
   
 [Text]
-Position=47,808,86,824
+Position=35,827,74,843
 Text=Assets
 Form=8
  
   
 [Field]
 Name=NUMBER_OF_REFRIGERATORS
-Position=226,851,241,871
+Position=216,855,231,875
 Item=NUMBER_OF_REFRIGERATORS,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=44,854,196,870
+Position=34,858,186,874
 Text=Number of Refrigerators
  
   
@@ -5039,7 +5111,7 @@ Type=Item
 TypeName=REFRIGERANT
 Max=5
 MaxField=NUMBER_OF_REFRIGERATORS
-DisplaySize=45,884,214,1048
+DisplaySize=35,885,204,1049
 Orientation=Horizontal
 FieldRowHeight=28
 HeadingRowHeight=24
@@ -5100,26 +5172,26 @@ HorizontalAlignment=Center
   
 [Field]
 Name=H78
-Position=200,1068,215,1088
+Position=185,1067,200,1087
 Item=H78,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=47,1070,173,1086
+Position=32,1069,158,1085
 Text=Ownership of Fields
 Form=8
  
   
 [Field]
 Name=H79
-Position=200,1096,215,1116
+Position=185,1095,200,1115
 Item=H79,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=47,1100,168,1116
+Position=32,1099,153,1115
 Text=Operation of Fields
 Form=8
  
@@ -5132,79 +5204,79 @@ Required=No
 Type=Item
 TypeName=H80
 Max=14
-DisplaySize=40,1129,272,1449
+DisplaySize=33,1123,265,1392
 Orientation=Horizontal
-FieldRowHeight=32
+FieldRowHeight=34
 HeadingRowHeight=40
 FreeMovement=No
  
 [Text]
-Position=71,8,116,32
+Position=71,0,116,34
 Text=Cattle
  
   
 [Text]
-Position=67,8,116,32
+Position=67,0,116,34
 Text=Sheep
  
   
 [Text]
-Position=72,8,116,32
+Position=72,0,116,34
 Text=Goats
  
   
 [Text]
-Position=66,8,116,32
+Position=66,0,116,34
 Text=Horses
  
   
 [Text]
-Position=71,8,116,32
+Position=71,0,116,34
 Text=Mules
  
   
 [Text]
-Position=55,8,116,32
+Position=55,0,116,34
 Text=Donkeys
  
   
 [Text]
-Position=18,8,116,32
+Position=18,0,116,34
 Text=Improved pigs
  
   
 [Text]
-Position=0,8,116,32
+Position=0,0,116,34
 Text=Improved poultry
  
   
 [Text]
-Position=77,8,116,32
+Position=77,0,116,34
 Text=Dogs
  
   
 [Text]
-Position=35,8,116,32
+Position=35,0,116,34
 Text=Bees(Hives)
  
   
 [Text]
-Position=71,8,116,32
+Position=71,0,116,34
 Text=Ducks
  
   
 [Text]
-Position=68,8,116,32
+Position=68,0,116,34
 Text=Geese
  
   
 [Text]
-Position=66,8,116,32
+Position=66,0,116,34
 Text=Turkey
  
   
 [Text]
-Position=61,8,116,32
+Position=61,0,116,34
 Text=Rabbits
  
   
@@ -5236,32 +5308,32 @@ Text=Livestock and Poultry
   
 [Field]
 Name=FINAL_RESULT_CODE
-Position=228,1467,243,1487
+Position=565,1104,580,1124
 Item=FINAL_RESULT_CODE,LESOTHOCENSUS2016_DICT
 DataCaptureType=RadioButton
 Form=8
   
 [Text]
-Position=43,1471,155,1487
+Position=383,1108,495,1124
 Text=Final Result Code
  
   
 [Field]
 Name=PARTIALLY_COMPLETE_REASON
-Position=227,1504,648,1524
+Position=565,1134,857,1154
 Item=PARTIALLY_COMPLETE_REASON,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=8
   
 [Text]
-Position=41,1508,210,1524
+Position=382,1137,551,1153
 Text=Partially Complete Reason
  
   
 [Field]
 Name=MISSING_FERTILITY
-Position=223,1537,238,1557
+Position=564,1162,579,1182
 Item=MISSING_FERTILITY,LESOTHOCENSUS2016_DICT
 Protected=Yes
 HideInCaseTree=Yes
@@ -5269,7 +5341,7 @@ FieldLabelType=DictionaryLabel
 Form=8
   
 [Text]
-Position=41,1540,140,1556
+Position=382,1165,481,1181
 Text=Missing Fertility
  
 [EndGroup]

@@ -40,6 +40,8 @@ REM Create .pen files
 %CSEntry% /pen .\Menu\LesothoCensusMenu.ent
 %CSEntry% /pen .\HouseholdDataEntry\HouseholdDataEntry.ent
 %CSEntry% /pen .\AssistSupReview\AssistSupReview.ent
+
+REM Create .dat lookup file
 %Excel2CSPro% /run /excel=".\Menu\staff.xlsx" /dcf=".\Menu\Staff.dcf" /output=".\Menu\staff.dat" /utf8="1" /worksheet="1" /rowStart="2" /columns="1+"
 
 REM copy lookup files
