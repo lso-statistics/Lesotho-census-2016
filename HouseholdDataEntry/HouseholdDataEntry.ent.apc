@@ -624,18 +624,30 @@ PROC B5
 
 PROC B6B
 
-	//The difference between year of birth(B6B) and the census date(2016) should be equal to age(B5) minus one year.
+	numeric birthMonth = B6A; //variable storing month of birth
+	numeric birthYear = B6B; //variable storing year of birth
+	numeric age; //varible storing computed age of the responded
+	
+	if CensusYear > B6B then //if census year is greater than year of birth...
+		if CensusMonth - birthMonth < 0 then //...check to see if census month is greater than birth month and if not...
+			age = CensusYear - birthYear - 1; //...age in completed years will be equal to census year minus birth month minus 1
+		else
+			age = CensusYear - birthYear; //...else age in completed years will be equal to census year minus year of birth
+		endif;
+		
+		if age <> B5 then //if computed age is different from what the enumerator entered reject this age
+			errmsg("Please enter %s's age in completed years. e.g. A person born in %s %d is %d years", strip(B2(curocc())), getlabel(B6A_VS1, B6A), B6B, age)
+			select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()), "Correct Year of Birth", B6B(curocc()));
+		endif;
 
-	if B6B = CensusYear and B6A > CensusMonth then
-		errmsg("%s cannot be born later than the census date/month",strip(B2(curocc())))
+	elseif B6B = CensusYear and B6A > CensusMonth then
+		errmsg("%s cannot be born later than the census date/month", strip(B2(curocc())))
 		select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()));
-
-	elseif ( ( CensusYear - B6B ) <> B5 ) and ( ( CensusYear - B6B ) <> ( B5 - 1 ) ) then
-		errmsg("The year of birth is invalid")
-		select("Correct Age", B5(curocc()), "Correct Year of Birth", B6B(curocc()));
 	endif;
 
 
+	
+	
 PROC B7
 	
 	//checks that household head and spouse are not visitors
@@ -3658,7 +3670,24 @@ PROC REFRIGERANT
 
 PROC FINAL_RESULT_CODE
 numeric fertilityEligible = count(DEMOGRAPHIC_ROSTER where B4 = 2 and B7 <> 2 and B5 in 12:50);
-numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE > 1);
+numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE in 2:3);
+
+if FINAL_RESULT_CODE = 1 then 
+	if fertilityEligible > 0 then
+		if noFertility = 0 then
+			endlevel;
+		elseif noFertility > 0 and APPROVAL_STATUS = 1 then
+			endlevel;
+		else
+			MISSING_FERTILITY = 1;
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
+	else
+		endlevel;
+	endif;
+endif;
 {
 if demode() = add then
 	if HH_LATITUDE = notappl then
@@ -3669,7 +3698,9 @@ if demode() = add then
 	else
 		if FINAL_RESULT_CODE = 1 then 
 			if fertilityEligible > 0 then
-				if noFertility > 0 and APPROVAL_STATUS = 1 then
+				if noFertility = 0 then
+					endlevel;
+				elseif noFertility > 0 and APPROVAL_STATUS = 1 then
 					endlevel;
 				else
 					MISSING_FERTILITY = 1;
@@ -3684,20 +3715,7 @@ if demode() = add then
 	endif;
 endif;
 }
-if FINAL_RESULT_CODE = 1 then 
-	if fertilityEligible > 0 then
-		if noFertility > 0 and APPROVAL_STATUS = 1 then
-			endlevel;
-		else
-			MISSING_FERTILITY = 1;
-			savepartial();
-			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-			stop(0);
-		endif;
-	else
-		endlevel;
-	endif;
-endif;
+
 PROC PARTIALLY_COMPLETE_REASON
 
 	CheckBlank(PARTIALLY_COMPLETE_REASON);

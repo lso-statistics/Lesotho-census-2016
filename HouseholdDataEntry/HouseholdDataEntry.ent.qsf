@@ -25,8 +25,8 @@ Field=LESOTHOCENSUS2016_DICT.B11
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\brdrt\brdrs\brdrw10\brsp20 \sa200\sl276\slmult1\cf1\b\f0\fs18 B11. For how long has \f1 %getocclabel%\f0  lived in this village /town?\par
-ENG=E\b0\i nter Number of Years. Enter 000 for less than one (1) year, 998 since birth.\cf0\b\i0\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\brdrt\brdrs\brdrw10\brsp20 \sa200\sl276\slmult1\cf1\b\f0\fs18 B11. For how long has \f1 %getocclabel%\f0  lived in this village /town?\par
+ENG=\b0\i Enter Number of Years. Enter 000 for less than one (1) year, 998 since birth.\cf0\b\i0\par
 ENG=}
 
 [QUESTION]
@@ -168,11 +168,11 @@ ENG=}
 Field=LESOTHOCENSUS2016_DICT.B20
 Condition=B19 <> 4
 Occurrences=1:50
-ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fswiss\fprq2\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
-ENG=\b0\i\fs16 Enter age in completed years. \par
-ENG=\pard Code 888 for those Living together but never married before\i0 .\b\fs18\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
+ENG=\pard\sl276\slmult1\cf0\b0\i\f2 Enter age in completed years. \par
+ENG=Code 88 for those Living together but never married before.\cf1\b\i0\f0\par
 ENG=}
 
 [QUESTION]
@@ -181,9 +181,9 @@ Condition=B19 = 4
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 B20. What is \f1 %getocclabel%\f0\rquote s age at first marriage\par
 ENG=\par
-ENG=If the person has never been married, enter 88\par
+ENG=\b0\i If the person has never been married, enter 88\b\i0\par
 ENG=}
 
 [QUESTION]
@@ -259,13 +259,13 @@ Field=LESOTHOCENSUS2016_DICT.B9
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 B9. If \cf1\f1 %getocclabel%\cf0\f0  is outside Lesotho how long has (name) lived in that country?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 B9. If \cf1\f1 %getocclabel%\cf0\f0  is outside Lesotho how long has he/she lived in that country?\par
 ENG=\par
-ENG=Note:\par
-ENG=\tab Give duration since last visit home and it should be less than three (3) years. Except those in institutions (barracks and convents)\par
-ENG=\tab Enter 00 for less than 1 year.\par
+ENG=\b0\i Note:\par
+ENG=Give duration since last visit home and it should be less than three (3) years. Except those in institutions (barracks and convents)\par
+ENG=Enter 00 for less than 1 year.\par
 ENG=\par
-ENG=\tab Total number of lived outside for thise away for more than 1 year. \par
+ENG=Total number of years lived outside for those away for more than 1 year. \b\i0\par
 ENG=\par
 ENG=}
 
@@ -282,7 +282,7 @@ Field=LESOTHOCENSUS2016_DICT.C22
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C22. Is  %getocclabel% an Albino?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C22. Is %getocclabel% an Albino?\par
 ENG=}
 
 [QUESTION]
@@ -765,7 +765,7 @@ Field=LESOTHOCENSUS2016_DICT.F43A
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 F43. How many of \cf1\f1 %getocclabel%\cf0\f0  boys are still alive and living with her in this household?  \par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 F43. How many of \cf1\f1 %getocclabel%'s\cf0\f0  boys are still alive and living with her in this household?  \par
 ENG=}
 
 [QUESTION]
@@ -1006,7 +1006,7 @@ ENG=}
 Field=LESOTHOCENSUS2016_DICT.H60_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify other tenure status of the MAIN dwelling of the household\cf1\b0\f1\fs24\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H60. Specify other tenure status of the MAIN dwelling of the household\cf1\b0\f1\fs24\par
 ENG=}
 
 [QUESTION]
@@ -1018,7 +1018,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H61_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify other whom the owner acquired his/her land from\fs22\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H61. Specify other whom the owner acquired his/her land from\fs22\par
 ENG=}
 
 [QUESTION]
@@ -1030,7 +1030,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H62_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify other agency from which the owner acquire his/her land\fs22\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H62. Specify other agency from which the owner acquire his/her land\fs22\par
 ENG=}
 
 [QUESTION]
@@ -1048,7 +1048,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H64_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other ownership status of the MAIN dwelling used by the household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H64. Specify the other ownership status of the MAIN dwelling used by the household\par
 ENG=}
 
 [QUESTION]
@@ -1060,7 +1060,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H65_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other  main roofing material used for the main house of this household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H65. Specify the other  main roofing material used for the main house of this household\par
 ENG=}
 
 [QUESTION]
@@ -1072,7 +1072,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H66_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other wall material used for construction of the main house of this household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H66. Specify the other wall material used for construction of the main house of this household\par
 ENG=}
 
 [QUESTION]
@@ -1084,7 +1084,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H67_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main floor material used for the main house of the household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H67. Specify the other main floor material used for the main house of the household\par
 ENG=}
 
 [QUESTION]
@@ -1237,7 +1237,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H70_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of drinking water for the household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H70. Specify the other main source of drinking water for the household\par
 ENG=}
 
 [QUESTION]
@@ -1257,7 +1257,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H72_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of energy for cooking for the household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H72. Specify the other main source of energy for cooking for the household\par
 ENG=}
 
 [QUESTION]
@@ -1269,7 +1269,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H73_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of energy for heating for the household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H73. Specify the other main source of energy for heating for the household\par
 ENG=}
 
 [QUESTION]
@@ -1282,7 +1282,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H74_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main source of energy for lighting for the household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H74. Specify the other main source of energy for lighting for the household\par
 ENG=}
 
 [QUESTION]
@@ -1295,7 +1295,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H75_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other main type of sanitation facility used by this household\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H75. Specify the other main type of sanitation facility used by this household\par
 ENG=}
 
 [QUESTION]
@@ -1308,7 +1308,7 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.H76_OTHER
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Specify the other method how refuse or rubbish from this household disposed off\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 H76. Specify the other method how refuse or rubbish from this household disposed off\par
 ENG=}
 
 [QUESTION]
@@ -1400,11 +1400,11 @@ ENG=}
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.OCCUPATION_LEVEL_1
 Occurrences=1:50
-ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1\f1 %getocclabel%\cf0\f0\rquote s major group of occupation?\par
-ENG=\pard\sa200\sl276\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\cf1\expndtw-4\b0\i\fs16\par
-ENG=Ask all those coded 10 to 40, 60 and 81 in E31 and E32. \par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 E34. What is \cf1 %getocclabel%\cf0\rquote s major group of occupation?\par
+ENG=\par
+ENG=\pard\sa200\sl276\slmult1\cf1\expndtw-4\b0\i\fs16 Ask all those coded 10 to 40, 60 and 81 in E31 and E32.\par
 ENG=\pard\cf0\expndtw0\b\i0\fs18\par
 ENG=}
 

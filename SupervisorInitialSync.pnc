@@ -1,5 +1,7 @@
 [SyncFile]
-Version=6.1
+Version=6.2
+AppName=Supervisor Initial Sync
+Description=Setting up the tablet for first time
 
 [Connection]
 Type=FTP
@@ -8,6 +10,15 @@ Username=cspro
 Password=census2016
 
 [Sync]
+ServerPath=/LesothoCensus2016/Application
+CreateClientPath=/LesothoCensus2016/Application
+ClientPath=/LesothoCensus2016/Application
+Get=SupervisorInitialSync.pnc
+Get=EnumeratorInitialSync.pnc
+Get=SyncWithEnumerator.pnc
+Get=SyncWithSupervisor.pnc
+Get=SyncWithServer.pnc
+
 ServerPath=/Application/HouseholdDataEntry
 CreateClientPath=/LesothoCensus2016/Application/HouseholdDataEntry
 ClientPath=/LesothoCensus2016/Application/HouseholdDataEntry

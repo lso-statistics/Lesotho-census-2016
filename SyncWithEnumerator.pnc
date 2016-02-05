@@ -1,7 +1,7 @@
 [SyncFile]
-Version=CSPro 6.1
-Description=Sync with Enumerator
-RootFolder=storage/emulated/0/csentry/LesothoCensus2016
+Version=CSPro 6.2
+AppName=2016 Lesotho PHC - Sync With Enumerator
+Description=Receive data from enumerator
 
 [Connection]
 Type=BluetoothServer

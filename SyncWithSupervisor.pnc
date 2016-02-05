@@ -1,6 +1,7 @@
 [SyncFile]
-Version=6.1
+Version=6.2
 AppName=2016 Lesotho PHC - Sync With Supervisor
+Description=Send data to supervisor
 
 [Connection] 
 Type=Bluetooth 

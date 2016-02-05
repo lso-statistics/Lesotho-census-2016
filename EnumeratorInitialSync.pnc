@@ -1,12 +1,21 @@
 [SyncFile]
-Version=6.1
-AppName=Initial Sync
+Version=6.2
+AppName=Enumerator Initial Sync
 Description=Setting up the tablet for first time
 
 [Connection] 
 Type=Bluetooth 
 
 [Sync]
+ServerPath=/LesothoCensus2016/Application
+CreateClientPath=/LesothoCensus2016/Application
+ClientPath=/LesothoCensus2016/Application
+Get=SupervisorInitialSync.pnc
+Get=EnumeratorInitialSync.pnc
+Get=SyncWithEnumerator.pnc
+Get=SyncWithSupervisor.pnc
+Get=SyncWithServer.pnc
+
 ServerPath=/LesothoCensus2016/Application/HouseholdDataEntry
 CreateClientPath=/LesothoCensus2016/Application/HouseholdDataEntry
 ClientPath=/LesothoCensus2016/Application/HouseholdDataEntry

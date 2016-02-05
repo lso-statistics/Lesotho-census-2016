@@ -1,6 +1,7 @@
 [SyncFile]
-Version=6.1
-AppName=2016 Lesotho PHC - Sync With Supervisor
+Version=6.2
+AppName=2016 Lesotho PHC - Sync With Server
+Description=Send data to the server
 
 [Connection]
 Type=FTP
