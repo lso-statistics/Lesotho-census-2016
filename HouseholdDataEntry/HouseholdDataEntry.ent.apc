@@ -3029,7 +3029,7 @@ PROC F49B
 
 	//age of death cannot be greater than year of birth
 	if cmcode(F49A,F49B) < cmcode(F47A,F47B) then
-		errmsg("%s was born in %d %d, therefore cannot have died in %d %d",
+		errmsg("%s's child was born in %d %d, therefore cannot have died in %d %d",
 			strip(B2(curocc())), F47A(curocc()), F47B(curocc()), F49A(curocc()), F49B(curocc()) )
 		select("Correct last born child month", F49A,
 			   "Correct last born child year", F49B);
@@ -3041,26 +3041,26 @@ PROC F50
 	if F48 = 2 then
 		//Name cannot have girls dead only and have a last dead child as a male
 		if F45A = 0 and F50 = 1 then
-			errmsg("children dead are Girls only");
+			errmsg("Children dead are Girls only");
 			reenter;
 		endif;
 
 		//Name cannot have boys dead only and have a last dead child as a female
 		if F45B = 0 and F50 = 2 then
-			errmsg("children dead are Boys only");
+			errmsg("Children dead are Boys only");
 			reenter;
 		endif;
 
 	else
 		//Name cannot have girls alive only and have a last born as a male
 		if F42A = 0 and F50 = 1 then
-			errmsg("children born alive are Girls only");
+			errmsg("Children born alive are Girls only");
 			reenter;
 		endif;
 
 		//Name cannot have boys alive only and have a last born as a female
 		if F42B = 0 and F50 = 2 then
-			errmsg("children born alive are Boys only");
+			errmsg("Children born alive are Boys only");
 			reenter;
 		endif;
 
