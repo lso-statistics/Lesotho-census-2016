@@ -1560,7 +1560,7 @@ postproc
 
 	//Name should be a student (80) if is still attending school (code 2 in D26)
 	if D26(curocc()) = 2 and E31 <> 80 then
-		errmsg("%s is still attending hence a student",strip(B2))
+		errmsg("%s is still attending hence a student",strip(B2(curocc())))
 		select("Correct ever attended school", D26(curocc()),
 			   "Correct main activity in the past 7 days", E31);
 	endif;
@@ -2752,7 +2752,7 @@ PROC E36
 
 	//if person's employer is RSA then location of employment must be RSA
 	if ( E33 <> 7 and E36 = 13 ) or ( E33 = 7 and E36 <> 13 ) then
-		errmsg("%s's location of employment is RSA then Employer must be RSA", strip(B2))
+		errmsg("%s's location of employment is RSA then Employer must be RSA", strip(B2(curocc())))
 		select("Correct current employer", E33, "Correct Location of Employment", E36);
 	endif;
 
@@ -2803,14 +2803,14 @@ PROC E38
 	//if person's employer is RSA and location of employment must be RSA
 	//then ever worked in RSA the past 10 years must presently working
 	if E36 = 13 and E38 <> 3 then
-		errmsg("%s's location of employment is RSA then Employer must be presently working", strip(B2))
+		errmsg("%s's location of employment is RSA then Employer must be presently working", strip(B2(curocc())))
 		select("Correct Location of Employment", E36,
 			   "Correct ever worked the past 10 years must be presently working", E38);
 	endif;
 
 	//If employer and location is not RSA name should not be presently working in RSA
 	if E33 <> 7 and E36 <> 13 and E38 = 3 then
-		errmsg("%s's location of employment is not RSA", strip(B2))
+		errmsg("%s's location of employment is not RSA", strip(B2(curocc())))
 		select("Correct current employer", E33,
 			   "Correct Location of Employment", E36,
 			   "Correct ever worked in RSA", E38);
