@@ -7051,6 +7051,7 @@ Value=9;Animal dung
 Value=10;Crop waste
 Value=11;Straw/shrubs/grass
 Value=12;Other
+Value=13;None
 
 [Item]
 Label=Main Source of Energy for Lighting

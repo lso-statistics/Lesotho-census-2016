@@ -14,7 +14,7 @@ Name=FORM001
 Label=Identification
 QuestionTextHeight=76
 Level=1
-Size=668,391
+Size=828,391
   
 Item=RV_DISTRICT
 Item=RV_CONSTITUENCY
@@ -27,6 +27,7 @@ Item=RV_VILLAGE_NUMBER
 Item=RV_HOUSEHOLD_NUMBER
 Item=RV_VILLAGE_NAME
 Item=RV_HOUSEHOLD_HEAD_NAMES
+Item=POSTCHECKING_DATE
   
 [EndForm]
   
@@ -181,6 +182,20 @@ Form=1
 [Text]
 Position=50,350,217,366
 Text=Names of Household Head
+ 
+  
+[Field]
+Name=POSTCHECKING_DATE
+Position=662,70,803,90
+Item=POSTCHECKING_DATE,ASSIST_SUPERVISOR_REVIEW_DICT
+Protected=Yes
+UseUnicodeTextBox=Yes
+FieldLabelType=DictionaryLabel
+Form=1
+  
+[Text]
+Position=517,73,634,89
+Text=Postchecking Date
  
 [EndGroup]
   

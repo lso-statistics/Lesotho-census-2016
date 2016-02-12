@@ -15,9 +15,36 @@ function OnStop() // if they try to stop adding data without finishing the case
 
 end;
 
+//a function to capture the gps coordinates of the household
+function captureHH_Coordinates()
+	if gps(open) = 1 then //try to open a gps connection and if successful
+		if gps(read, 120) then //take the readings from the gps
+			if gps(readlast) <> 1 then //if the was nothing read from the gps
+				errmsg("GPS signal could not be acquired. Please stand outside the building or away from trees as this might block satellite signals");
+			else
+				SHH_LATITUDE = gps(latitude);
+				SHH_LONGITUDE = gps(longitude);
+				SHH_ALTITUDE = gps(altitude);
+				SHH_SATELLITES = gps(satellites);
+				SHH_ACCURACY = gps(accuracy);
+				SHH_READ_TIME = gps(readtime);
+				errmsg("Successfully recorded the household GPS coordinates");
+			endif;
+		endif;
+		gps(close);
+	else
+		errmsg("The GPS functionality is not enabled on this tablet. Please enable GPS (Location) on your device and try again");
+		exit;
+	endif;
+end;
 
 PROC ASSISTSUPREVIEW_FF
 
+preproc
+
+	userbar (clear);
+	userbar (add button, "Capture Household GPS Coordinates", captureHH_Coordinates);
+	userbar (show);
 
 PROC RV_LESOTHOCENSUS2016_QUEST
 
@@ -140,6 +167,13 @@ PROC RV_HOUSEHOLD_HEAD_NAMES
 	RV_ENUMERATOR_CODE = ENUMERATOR_CODE;
 
 
+PROC POSTCHECKING_DATE
+
+preproc
+
+	if demode() = add then
+		POSTCHECKING_DATE = edit("99/99/9999", sysdate("DDMMYYYY"));
+	endif;
 PROC DEMOGRAPHICS_FORM
 
 	errmsg("Are you finished entering data?")
@@ -248,33 +282,15 @@ PROC DEMOGRAPHICS_ROSTER
 	// Sex of household head must be different from sex of spouse
 	numeric head, spouse;
 	head = seek(RV_B3 = 1);
-	{
-	if B19(head) in 2:3,5 then
-		//Check each spouse in the household
-		do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
-			if B3(spouse) = 2 then
-				//Check for same sex
-				if B4(spouse) = B4(head) then
-					errmsg("If %s is %s's spouse, then they must be of opposite sex",
-						   strip(B2(spouse)), strip(B2(head)))
-					select("Correct household head sex", B4(head),
-						   "Correct spouse relationship", B3(spouse),
-						   "Correct spouse sex", B4(spouse));
-				endif;
-				//Check for different marrital status
-				if B19(spouse) <> B19(head) then
-					errmsg("If %s is %s's spouse, then they must have the same marital status",
-						   strip(B2(spouse)), strip(B2(head)))
-					select("Correct household head marital status", B19(head),
-						   "Correct spouse relationship", B3(spouse),
-						   "Correct spouse marital status", B19(spouse));
-				endif;
-			endif;
-		enddo;
+	
+	if demode() = add then
+		if SHH_LATITUDE = notappl then
+			errmsg("You cannot save the household without its GPS coordinates. Please capture the coordinates.");
+			reenter RV_B7(RV_NO_OF_HOUSEHOLD_MEMBERS);
+		else
+			endlevel;
+		endif;
 	endif;
-	}
-
-
 PROC RV_B3
 
 preproc

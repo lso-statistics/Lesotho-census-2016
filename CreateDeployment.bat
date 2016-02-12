@@ -22,6 +22,7 @@ cd LesothoCensus2016
 mkdir Application
 mkdir Data
 mkdir DataBackup
+mkdir Documents
 cd Application
 mkdir HouseholdDataEntry
 mkdir Menu
@@ -61,3 +62,6 @@ copy /y SupervisorInitialSync.pnc .\Deployment\LesothoCensus2016\Application
 copy /y SyncWithEnumerator.pnc .\Deployment\LesothoCensus2016\Application
 copy /y SyncWithServer.pnc .\Deployment\LesothoCensus2016\Application
 copy /y SyncWithSupervisor.pnc .\Deployment\LesothoCensus2016\Application
+
+REM Copy documents
+copy /y .\Documents\Statistics_Act_2001.pdf .\Deployment\LesothoCensus2016\Documents

@@ -483,7 +483,7 @@ Label=RV_Control
 Name=RV_CONTROL
 RecordTypeValue='C'
 Required=No
-RecordLen=140
+RecordLen=196
 
 [Item]
 Label=No of household members
@@ -512,3 +512,52 @@ Name=RV_ENUMERATOR_CODE
 Start=137
 Len=4
 ZeroFill=Yes
+
+[Item]
+Label=Household Latitude
+Name=SHH_LATITUDE
+Start=141
+Len=14
+Decimal=9
+DecimalChar=Yes
+
+[Item]
+Label=Household Longitude
+Name=SHH_LONGITUDE
+Start=155
+Len=14
+Decimal=9
+DecimalChar=Yes
+
+[Item]
+Label=Household Altitude
+Name=SHH_ALTITUDE
+Start=169
+Len=6
+
+[Item]
+Label=Household Satellites
+Name=SHH_SATELLITES
+Start=175
+Len=2
+
+[Item]
+Label=Household Accuracy
+Name=SHH_ACCURACY
+Start=177
+Len=4
+Decimal=1
+DecimalChar=Yes
+
+[Item]
+Label=Household Read Time
+Name=SHH_READ_TIME
+Start=181
+Len=6
+
+[Item]
+Label=Postchecking Date
+Name=POSTCHECKING_DATE
+Start=187
+Len=10
+DataType=Alpha
