@@ -338,7 +338,7 @@ preproc
 
 
 PROC HOUSEHOLD_STATUS
-{
+
 if demode() = add then
 	if HH_LATITUDE = notappl then
 		if HOUSEHOLD_STATUS in 2:5 then
@@ -370,7 +370,7 @@ if demode() = add then
 		endif;
 	endif;
 endif;
-}
+{
 if HOUSEHOLD_STATUS in 2:4 then 
 	if APPROVAL_STATUS = 1 then
 		endlevel;
@@ -393,6 +393,7 @@ elseif HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS = 3 then
 		stop(0);
 	endif;
 endif;
+}
 PROC B1
 
 preproc
@@ -441,6 +442,7 @@ PROC MORE_PEOPLE
 
 	// End roster if there are no more household members to enter
 	if MORE_PEOPLE = 2 then
+		savepartial();
 		endgroup;
 	endif;
 
@@ -974,6 +976,8 @@ PROC B20
 	endif;
 
 
+PROC B21
+savepartial();
 PROC C22
 
 preproc
@@ -1267,6 +1271,8 @@ preproc
 	endif;
 }
 
+PROC C25H2
+savepartial();
 PROC D26
 
 preproc
@@ -1298,6 +1304,7 @@ postproc
 
 	// For those coded 9 skip to next section
 	if D26 = 9 then
+		savepartial();
 		skip to next;
 	endif;
 
@@ -1482,6 +1489,8 @@ PROC D29
 		select("Correct highest level of education", D27,"Correct know how to write", D29);
 	endif;
 
+	savepartial();
+	
 	// Since we only ask this question to people who responded
 	// 00-07, 18 and 19 (preschool-primary, none, none-formal) in D27
 	// and D30 does not apply to those categories skip to next section.
@@ -1519,10 +1528,14 @@ onfocus
 	endif;
 
 postproc
-
+	
+	savepartial();
+	
 	if D30B <> 1301 then
 		skip to next;
 	endif;
+PROC D30_OTHER
+savepartial();
 PROC E31
 
 preproc
@@ -1555,6 +1568,7 @@ postproc
 
 	//skip to Section F(Fertility) if Main Activity Status in Past 7 Days is Job seeking for the first time
 	if E31 = 55 then
+		savepartial();
 		skip to next;
 
 	//skip to Name of Employer (E33) if Main Activity Status in Past 7 Days is coded 10 to 40 and 60
@@ -2804,6 +2818,7 @@ PROC E38
 
 	//skip to Section F (Fertility) if name never worked in RSA in past 10 years (since April 2006)
 	if E38 in 1,9 then
+		savepartial();
 		skip to next;
 	endif;
 
@@ -2818,6 +2833,8 @@ PROC E39
 		strip(B2(curocc())),B5(curocc()),ageStartedWorking),
 		select("Correct how long worked in RSA", E39);
 	endif;
+	
+	savepartial();
 
 
 PROC RESPONDENT_AVAILABLE
@@ -2842,6 +2859,7 @@ postproc
 if RESPONDENT_AVAILABLE = 1 then
 	skip to F40;
 elseif RESPONDENT_AVAILABLE = 2 then
+	savepartial();
 	skip to next;
 endif;
 
@@ -2890,6 +2908,7 @@ postproc
 
 	//Skip to next section if has never been pregnant or don't know
 	if F40 in 2,9 then
+		savepartial();
 		skip to next;
 	endif;
 
@@ -2898,6 +2917,7 @@ PROC F41
 
 	//Skip to next section if has never given a live birth or don't know
 	if F41 in 2,9 then
+		savepartial();
 		skip to next;
 	endif;
 
@@ -3066,12 +3086,14 @@ PROC F50
 
 	endif;
 
+	savepartial();
 
 PROC G51
 
 	//If there were no deaths in the household in
 	//the past five years then skip to housing characteristics
 	if G51 <> 1 then
+		savepartial();
 		skip to HOUSING_FORM;
 	endif;
 
@@ -3113,6 +3135,7 @@ PROC G57
 
 preproc
 
+	savepartial();
 	// Skip entire maternal mortality row for for women not in
 	// the range of 12 to 50 years and for all males
 	if G55 = 1 then
@@ -3125,6 +3148,7 @@ postproc
 
 	//Skip when the deceased died while pregnant
 	if G57 = 1 then
+		savepartial();
 		skip to next;
 	endif;
 
@@ -3133,10 +3157,13 @@ PROC G58
 
 	//Skip when the deceased died while giving birth
 	if G58 = 1 then
+		savepartial();
 		skip to next;
 	endif;
 
 
+PROC G59
+savepartial();
 PROC H60
 
 	// Skip the other specify field for any code that is not other (6).
@@ -3672,6 +3699,7 @@ PROC FINAL_RESULT_CODE
 numeric fertilityEligible = count(DEMOGRAPHIC_ROSTER where B4 = 2 and B7 <> 2 and B5 in 12:50);
 numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE in 2:3);
 
+{
 if FINAL_RESULT_CODE = 1 then 
 	if fertilityEligible > 0 then
 		if noFertility = 0 then
@@ -3688,7 +3716,7 @@ if FINAL_RESULT_CODE = 1 then
 		endlevel;
 	endif;
 endif;
-{
+}
 if demode() = add then
 	if HH_LATITUDE = notappl then
 		if FINAL_RESULT_CODE = 1 then
@@ -3714,7 +3742,6 @@ if demode() = add then
 		endif;
 	endif;
 endif;
-}
 
 PROC PARTIALLY_COMPLETE_REASON
 
