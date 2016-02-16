@@ -727,6 +727,12 @@ PROC B9B
 	endif;
 
 
+PROC B10
+
+if B10(curocc()) = DISTRICT then
+	errmsg("If %s was born in %s, then it must be at the same village/town he is enumerated or different village/town. Please correct as necessary", strip(B2(curocc())), getlabel(B10_VS1, B10(curocc())));
+	reenter
+endif;
 PROC B11
 
 	//Years lived in a village/town (B11) should not be more than age (B5)
