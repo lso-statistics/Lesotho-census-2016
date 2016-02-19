@@ -270,6 +270,7 @@ Name=INTERVIEW_DATE
 Position=539,69,680,89
 Item=INTERVIEW_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -281,6 +282,7 @@ Text=Interview Date
 Name=DISTRICT
 Position=198,63,227,83
 Item=DISTRICT,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -293,6 +295,7 @@ Text=District
 Name=CONSTITUENCY
 Position=198,89,227,109
 Item=CONSTITUENCY,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -318,6 +321,7 @@ Text=Community Council
 Name=ZONE
 Position=198,143,213,163
 Item=ZONE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -330,6 +334,7 @@ Text=Zone
 Name=SETTLEMENT
 Position=198,168,213,188
 Item=SETTLEMENT,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -342,6 +347,7 @@ Text=Settlement
 Name=ENUMERATION_AREA
 Position=198,194,353,214
 Item=ENUMERATION_AREA,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -353,6 +359,7 @@ Text=Enumeration Area
 Name=WARD
 Position=198,221,227,241
 Item=WARD,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -365,6 +372,7 @@ Text=Ward
 Name=VILLAGE_NUMBER
 Position=198,249,227,269
 Item=VILLAGE_NUMBER,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -389,6 +397,7 @@ Text=Village Name
 Name=HOUSEHOLD_NUMBER
 Position=198,307,241,327
 Item=HOUSEHOLD_NUMBER,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -454,6 +463,7 @@ Name=VISIT_DATE
 Position=0,0,113,20
 Item=VISIT_DATE,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UpperCase=Yes
   
 [Text]
 Position=0,0,60,16
@@ -469,6 +479,7 @@ Name=NUMBER_OF_VISITS
 Position=351,428,366,448
 Item=NUMBER_OF_VISITS,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -480,6 +491,7 @@ Text=Number of visits
 Name=HOUSEHOLD_STATUS
 Position=351,457,366,477
 Item=HOUSEHOLD_STATUS,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -777,6 +789,7 @@ Name=B1
 Position=29,0,58,20
 Item=B1,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UpperCase=Yes
   
 [Text]
 Position=0,0,99,16
@@ -815,6 +828,7 @@ Text=More People
 Name=MORE_PEOPLE
 Position=36,0,51,20
 Item=MORE_PEOPLE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -830,6 +844,7 @@ Name=NUMBER_OF_HOUSEHOLD_MEMBERS
 Position=668,67,697,87
 Item=NUMBER_OF_HOUSEHOLD_MEMBERS,LESOTHOCENSUS2016_DICT
 Protected=Yes
+UpperCase=Yes
 Form=2
   
 [Text]
@@ -841,6 +856,7 @@ Text=Number of Household Members
 Name=IS_RESPONDENT_HOUSEHOLD_MEMBER
 Position=267,380,282,400
 Item=IS_RESPONDENT_HOUSEHOLD_MEMBER,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=2
   
@@ -866,6 +882,7 @@ Text=Respondent Name
 Name=RESPONDENT
 Position=124,408,153,428
 Item=RESPONDENT,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=2
   
@@ -1154,6 +1171,7 @@ Text=Relationship
 Name=B3
 Position=50,0,79,20
 Item=B3,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1172,6 +1190,7 @@ Text=Sex
 Name=B4
 Position=10,0,25,20
 Item=B4,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1191,6 +1210,7 @@ Text=Age
 Name=B5
 Position=0,0,43,20
 Item=B5,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -1210,6 +1230,7 @@ Text=Month of Birth
 Name=B6A
 Position=10,0,39,20
 Item=B6A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1228,6 +1249,7 @@ Text=Year of  Birth
 Name=B6B
 Position=0,0,57,20
 Item=B6B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -1246,6 +1268,7 @@ Text=Residential Status
 Name=B7
 Position=56,0,71,20
 Item=B7,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1264,6 +1287,7 @@ Text=Residence Absent/Outside Lesotho
 Name=B8
 Position=37,0,66,20
 Item=B8,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1282,6 +1306,7 @@ Text=Time Outside Lesotho
 Name=B9
 Position=22,0,51,20
 Item=B9,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -1301,6 +1326,7 @@ Text=Institution
 Name=B9B
 Position=47,0,62,20
 Item=B9B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1320,6 +1346,7 @@ Text=Where Born
 Name=B10
 Position=13,0,42,20
 Item=B10,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1338,6 +1365,7 @@ Text=How Long Lived in Village/Town
 Name=B11
 Position=35,0,78,20
 Item=B11,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -1357,6 +1385,7 @@ Text=Residence April 2015
 Name=B12
 Position=51,0,66,20
 Item=B12,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1375,6 +1404,7 @@ Text=Residence April 2015 Elsewhere Lesotho
 Name=B12A
 Position=41,0,70,20
 Item=B12A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1393,6 +1423,7 @@ Text=Residence April 2015 Other Countries
 Name=B12B
 Position=37,0,66,20
 Item=B12B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1411,6 +1442,7 @@ Text=Residence April 2011
 Name=B13
 Position=51,0,66,20
 Item=B13,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1429,6 +1461,7 @@ Text=Residence April 2011 Elsewhere Lesotho
 Name=B13A
 Position=41,0,70,20
 Item=B13A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1447,6 +1480,7 @@ Text=Residence April 2011 Other Countries
 Name=B13B
 Position=37,0,66,20
 Item=B13B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1465,6 +1499,7 @@ Text=Residence April 2006
 Name=B14
 Position=51,0,66,20
 Item=B14,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1483,6 +1518,7 @@ Text=Residence April 2006 Elsewhere Lesotho
 Name=B14A
 Position=41,0,70,20
 Item=B14A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1501,6 +1537,7 @@ Text=Residence April 2006
 Name=B14B
 Position=37,0,66,20
 Item=B14B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1519,6 +1556,7 @@ Text=Citizenship
 Name=B15
 Position=41,0,70,20
 Item=B15,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1537,6 +1575,7 @@ Text=Language Spoken Mostly
 Name=B16
 Position=49,0,64,20
 Item=B16,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1575,6 +1614,7 @@ Text=Father Alive
 Name=B17
 Position=26,0,41,20
 Item=B17,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1593,6 +1633,7 @@ Text=Mother Alive
 Name=B18
 Position=29,0,44,20
 Item=B18,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1611,6 +1652,7 @@ Text=Marital Status
 Name=B19
 Position=29,0,44,20
 Item=B19,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1629,6 +1671,7 @@ Text=Age at First Marriage
 Name=B20
 Position=29,0,58,20
 Item=B20,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1648,6 +1691,7 @@ Text=First or Only Spouse Alive
 Name=B21
 Position=29,0,44,20
 Item=B21,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1947,6 +1991,7 @@ Text=Albino
 Name=C22
 Position=26,0,41,20
 Item=C22,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1966,6 +2011,7 @@ Text=Difficulty Seeing
 Name=C23A
 Position=40,0,55,20
 Item=C23A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -1985,6 +2031,7 @@ Text=Difficulty Hearing
 Name=C23B
 Position=40,0,55,20
 Item=C23B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2004,6 +2051,7 @@ Text=Difficulty Communication
 Name=C23C
 Position=85,0,100,20
 Item=C23C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2023,6 +2071,7 @@ Text=Difficulty Walking
 Name=C23D
 Position=44,0,59,20
 Item=C23D,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2042,6 +2091,7 @@ Text=Difficulty Remembering
 Name=C23E
 Position=75,0,90,20
 Item=C23E,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2060,6 +2110,7 @@ Text=Difficulty Self Care
 Name=C23F
 Position=40,0,55,20
 Item=C23F,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2078,6 +2129,7 @@ Text=Main Cause Seeing
 Name=C24A
 Position=16,0,45,20
 Item=C24A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2116,6 +2168,7 @@ Text=Main Cause Hearing
 Name=C24B
 Position=21,0,50,20
 Item=C24B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2154,6 +2207,7 @@ Text=Main Cause Communication
 Name=C24C
 Position=71,0,100,20
 Item=C24C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2192,6 +2246,7 @@ Text=Main Cause Walking
 Name=C24D
 Position=30,0,59,20
 Item=C24D,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2230,6 +2285,7 @@ Text=Main Cause Remembering
 Name=C24E
 Position=61,0,90,20
 Item=C24E,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2268,6 +2324,7 @@ Text=Main Cause Self Care
 Name=C24F
 Position=10,0,39,20
 Item=C24F,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2306,6 +2363,7 @@ Text=Use Eye Glasses
 Name=C25A
 Position=33,0,48,20
 Item=C25A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2324,6 +2382,7 @@ Text=Use Hearing Aid
 Name=C25B
 Position=43,0,58,20
 Item=C25B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2342,6 +2401,7 @@ Text=Use Walking Stick
 Name=C25C
 Position=39,0,54,20
 Item=C25C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2360,6 +2420,7 @@ Text=Use Wheelchair
 Name=C25D
 Position=58,0,73,20
 Item=C25D,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2378,6 +2439,7 @@ Text=Use Chronic Medication
 Name=C25E
 Position=55,0,70,20
 Item=C25E,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2396,6 +2458,7 @@ Text=Use White Cane
 Name=C25F
 Position=25,0,40,20
 Item=C25F,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2414,6 +2477,7 @@ Text=Use Guide Dog
 Name=C25G
 Position=23,0,38,20
 Item=C25G,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2432,6 +2496,7 @@ Text=Use Official Sign Language
 Name=C25H1
 Position=49,0,64,20
 Item=C25H1,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2450,6 +2515,7 @@ Text=Use Non Official Sign Language
 Name=C25H2
 Position=49,0,64,20
 Item=C25H2,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2749,6 +2815,7 @@ Text=Ever Attended School
 Name=D26
 Position=78,0,93,20
 Item=D26,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2767,6 +2834,7 @@ Text=Highest Education Level
 Name=D27
 Position=89,0,118,20
 Item=D27,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2805,6 +2873,7 @@ Text=How to Read
 Name=D28
 Position=69,0,84,20
 Item=D28,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2823,6 +2892,7 @@ Text=How to Write
 Name=D29
 Position=70,0,85,20
 Item=D29,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2841,6 +2911,7 @@ Text=Field of Specialization
 Name=D30
 Position=62,0,119,20
 Item=D30,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -2859,6 +2930,7 @@ Text=Field of Specialization - Minor
 Name=D30B
 Position=46,0,103,20
 Item=D30B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3180,6 +3252,7 @@ Text=Main Activity Status in Past 7 Days
 Name=E31
 Position=21,0,50,20
 Item=E31,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3218,6 +3291,7 @@ Text=Main Activity Status in Past 12 Months
 Name=E32
 Position=17,0,46,20
 Item=E32,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3256,6 +3330,7 @@ Text=Employer
 Name=E33
 Position=45,0,60,20
 Item=E33,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3295,6 +3370,7 @@ HorizontalAlignment=Center
 Name=OCCUPATION_LEVEL_1
 Position=57,0,86,20
 Item=OCCUPATION_LEVEL_1,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3315,6 +3391,7 @@ Text=Occupation - Sub Major Group
 Name=OCCUPATION_LEVEL_2
 Position=44,0,73,20
 Item=OCCUPATION_LEVEL_2,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3333,6 +3410,7 @@ Text=Occupation - Minor Group
 Name=OCCUPATION_LEVEL_3
 Position=30,0,73,20
 Item=OCCUPATION_LEVEL_3,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3351,6 +3429,7 @@ Text=Occupation - Unit Group
 Name=OCCUPATION_LEVEL_4
 Position=15,0,72,20
 Item=OCCUPATION_LEVEL_4,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3369,6 +3448,7 @@ Text=Section
 Name=SECTION
 Position=21,0,50,20
 Item=SECTION,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3388,6 +3468,7 @@ Text=Divisions
 Name=DIVISIONS
 Position=27,0,56,20
 Item=DIVISIONS,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3407,6 +3488,7 @@ Text=Groups
 Name=GROUPS
 Position=2,0,45,20
 Item=GROUPS,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3425,6 +3507,7 @@ Text=Class
 Name=CLASS
 Position=0,0,57,20
 Item=CLASS,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3443,6 +3526,7 @@ Text=Employment Location
 Name=E36
 Position=50,0,79,20
 Item=E36,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3461,6 +3545,7 @@ Text=Location in Urban/Peri-Urban
 Name=E37
 Position=53,0,110,20
 Item=E37,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3479,6 +3564,7 @@ Text=Worked in RSA
 Name=E38
 Position=34,0,49,20
 Item=E38,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3497,6 +3583,7 @@ Text=RSA Work Duration
 Name=E39
 Position=25,0,54,20
 Item=E39,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3796,6 +3883,7 @@ Text=Respondent Available?
 Name=RESPONDENT_AVAILABLE
 Position=64,0,79,20
 Item=RESPONDENT_AVAILABLE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 FieldLabelType=DictionaryLabel
 DataCaptureType=RadioButton
   
@@ -3816,6 +3904,7 @@ Text=Fertility Respondent
 Name=FERTILITY_RESPONDENT
 Position=60,0,89,20
 Item=FERTILITY_RESPONDENT,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 FieldLabelType=DictionaryLabel
 DataCaptureType=RadioButton
   
@@ -3836,6 +3925,7 @@ Text=Ever Pregnant
 Name=F40
 Position=52,0,67,20
 Item=F40,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3854,6 +3944,7 @@ Text=Ever Given Live Birth
 Name=F41
 Position=48,0,63,20
 Item=F41,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -3872,6 +3963,7 @@ Text=Boys Born Alive
 Name=F42A
 Position=16,0,45,20
 Item=F42A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3890,6 +3982,7 @@ Text=Girls Born Alive
 Name=F42B
 Position=15,0,44,20
 Item=F42B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3908,6 +4001,7 @@ Text=Total Born Alive
 Name=F42C
 Position=18,0,47,20
 Item=F42C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3926,6 +4020,7 @@ Text=Boys Living in Household
 Name=F43A
 Position=38,0,67,20
 Item=F43A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3944,6 +4039,7 @@ Text=Girls Living in Household
 Name=F43B
 Position=49,0,78,20
 Item=F43B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3962,6 +4058,7 @@ Text=Total Living in Household
 Name=F43C
 Position=52,0,81,20
 Item=F43C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3981,6 +4078,7 @@ Text=Boys Living Elsewhere
 Name=F44A
 Position=39,0,68,20
 Item=F44A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -3999,6 +4097,7 @@ Text=Girls Living Elsewhere
 Name=F44B
 Position=37,0,66,20
 Item=F44B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4017,6 +4116,7 @@ Text=Total Living Elsewhere
 Name=F44C
 Position=37,0,66,20
 Item=F44C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4035,6 +4135,7 @@ Text=Boys Deceased
 Name=F45A
 Position=34,0,63,20
 Item=F45A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4053,6 +4154,7 @@ Text=Girls Deceased
 Name=F45B
 Position=41,0,70,20
 Item=F45B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4071,6 +4173,7 @@ Text=Total Deceased
 Name=F45C
 Position=37,0,66,20
 Item=F45C,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4089,6 +4192,7 @@ Text=First Child Bearing Age
 Name=F46
 Position=59,0,88,20
 Item=F46,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4108,6 +4212,7 @@ Text=Last Child Birth Month
 Name=F47A
 Position=53,0,82,20
 Item=F47A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4126,6 +4231,7 @@ Text=Last Child Birth Year
 Name=F47B
 Position=14,0,71,20
 Item=F47B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4145,6 +4251,7 @@ Text=Last Born Alive
 Name=F48
 Position=31,0,46,20
 Item=F48,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4163,6 +4270,7 @@ Text=Last Born Deceased Month
 Name=F49A
 Position=38,0,67,20
 Item=F49A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4181,6 +4289,7 @@ Text=Last Born Deceased Year
 Name=F49B
 Position=14,0,71,20
 Item=F49B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4200,6 +4309,7 @@ Text=Sex of Last Born
 Name=F50
 Position=37,0,52,20
 Item=F50,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4223,6 +4333,7 @@ Max=1
 Name=G51
 Position=290,51,305,71
 Item=G51,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=7
   
@@ -4235,6 +4346,7 @@ Text=Any Deaths in the Last Five Years
 Name=G52
 Position=288,84,317,104
 Item=G52,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=7
   
@@ -4343,6 +4455,7 @@ Text=Month of Death
 Name=G54A
 Position=67,0,96,20
 Item=G54A,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4361,6 +4474,7 @@ Text=Year of Death
 Name=G54B
 Position=28,0,85,20
 Item=G54B,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4379,6 +4493,7 @@ Text=Deceased Sex
 Name=G55
 Position=76,0,91,20
 Item=G55,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4397,6 +4512,7 @@ Text=Deceased Age at Death
 Name=G56
 Position=68,0,111,20
 Item=G56,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -4415,6 +4531,7 @@ Text=While Pregnant
 Name=G57
 Position=84,0,99,20
 Item=G57,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4433,6 +4550,7 @@ Text=While Giving Birth
 Name=G58
 Position=101,0,116,20
 Item=G58,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4451,6 +4569,7 @@ Text=Six Weeks After Delivery
 Name=G59
 Position=90,0,105,20
 Item=G59,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -4474,6 +4593,7 @@ Max=1
 Name=H60
 Position=279,64,294,84
 Item=H60,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4500,6 +4620,7 @@ Text=Tenure Other
 Name=H61
 Position=279,94,294,114
 Item=H61,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4526,6 +4647,7 @@ Text=Land Acquired Other
 Name=H62
 Position=279,124,294,144
 Item=H62,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4552,6 +4674,7 @@ Text=Agency Other
 Name=H63
 Position=279,154,294,174
 Item=H63,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4565,6 +4688,7 @@ Form=8
 Name=H64
 Position=279,186,294,206
 Item=H64,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4591,6 +4715,7 @@ Text=Ownership Status Other
 Name=H65
 Position=279,216,294,236
 Item=H65,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4617,6 +4742,7 @@ Text=Roofing Material Other
 Name=H66
 Position=279,246,308,266
 Item=H66,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4643,6 +4769,7 @@ Text=Wall Material Other
 Name=H67
 Position=279,276,294,296
 Item=H67,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4669,6 +4796,7 @@ Text=Floor Material Other
 Name=H68_RONTABOLE
 Position=273,317,302,337
 Item=H68_RONTABOLE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4681,6 +4809,7 @@ Text=Housing Units - Rontabole
 Name=H69_RONTABOLE
 Position=595,315,624,335
 Item=H69_RONTABOLE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4693,6 +4822,7 @@ Text=Number of Rooms - Rontabole
 Name=H68_HEISI
 Position=273,343,302,363
 Item=H68_HEISI,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4705,6 +4835,7 @@ Text=Housing Units - Heisi
 Name=H69_HEISI
 Position=595,342,624,362
 Item=H69_HEISI,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4717,6 +4848,7 @@ Text=Number of Rooms - Heisi
 Name=H68_POLATA
 Position=272,371,301,391
 Item=H68_POLATA,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4729,6 +4861,7 @@ Text=Housing Units - Polata
 Name=H69_POLATA
 Position=594,370,623,390
 Item=H69_POLATA,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4741,6 +4874,7 @@ Text=Number of Rooms - Polata
 Name=H68_MALAENE
 Position=272,398,301,418
 Item=H68_MALAENE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4753,6 +4887,7 @@ Text=Housing Units - Malaene
 Name=H69_MALAENE
 Position=594,396,623,416
 Item=H69_MALAENE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4765,6 +4900,7 @@ Text=Number of Rooms - Malaene
 Name=H68_OPTAKA
 Position=272,426,301,446
 Item=H68_OPTAKA,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4777,6 +4913,7 @@ Text=Housing Units - Optaka
 Name=H69_OPTAKA
 Position=595,421,624,441
 Item=H69_OPTAKA,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4789,6 +4926,7 @@ Text=Number of Rooms - Optaka
 Name=H68_APARTMENT
 Position=273,452,302,472
 Item=H68_APARTMENT,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4801,6 +4939,7 @@ Text=Housing Units - Apartment
 Name=H69_APARTMENT
 Position=595,451,624,471
 Item=H69_APARTMENT,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4813,6 +4952,7 @@ Text=Number of Rooms - Apartment
 Name=H68_BUNGALOW
 Position=273,479,302,499
 Item=H68_BUNGALOW,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 FieldLabelType=DictionaryLabel
 DataCaptureType=RadioButton
 Form=8
@@ -4826,6 +4966,7 @@ Text=Housing Units - Bungalow
 Name=H69_BUNGALOW
 Position=596,479,625,499
 Item=H69_BUNGALOW,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 FieldLabelType=DictionaryLabel
 DataCaptureType=RadioButton
 Form=8
@@ -4839,6 +4980,7 @@ Text=Number of Rooms - Bungalow
 Name=H68_MANSION
 Position=272,507,301,527
 Item=H68_MANSION,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4851,6 +4993,7 @@ Text=Housing Units - Mansion
 Name=H69_MANSION
 Position=596,505,625,525
 Item=H69_MANSION,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4863,6 +5006,7 @@ Text=Number of Rooms - Mansion
 Name=H68_TEMP_STRUCTURE
 Position=273,534,302,554
 Item=H68_TEMP_STRUCTURE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4875,6 +5019,7 @@ Text=Housing Units - Temporary Structure
 Name=H69_TEMP_STRUCTURE
 Position=596,533,625,553
 Item=H69_TEMP_STRUCTURE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4887,6 +5032,7 @@ Text=Number of Rooms - Temporary Structure
 Name=H68_TOTAL
 Position=272,559,301,579
 Item=H68_TOTAL,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4899,6 +5045,7 @@ Text=Housing Units - Total
 Name=H69_TOTAL
 Position=595,560,624,580
 Item=H69_TOTAL,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
 Form=8
   
@@ -4911,6 +5058,7 @@ Text=Number of Rooms - Total
 Name=H70
 Position=273,600,302,620
 Item=H70,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4937,6 +5085,7 @@ Text=Drinking Water Other
 Name=H71
 Position=273,632,288,652
 Item=H71,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4950,6 +5099,7 @@ Form=8
 Name=H72
 Position=272,661,301,681
 Item=H72,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -4976,6 +5126,7 @@ Text=Energy for Cooking Other
 Name=H73
 Position=272,692,301,712
 Item=H73,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5002,6 +5153,7 @@ Text=Energy for Heating Other
 Name=H74
 Position=273,723,288,743
 Item=H74,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5028,6 +5180,7 @@ Text=Energy for Lighting Other
 Name=H75
 Position=273,753,288,773
 Item=H75,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5054,6 +5207,7 @@ Text=Sanitation Other
 Name=H76
 Position=273,783,288,803
 Item=H76,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5094,6 +5248,7 @@ Form=8
 Name=NUMBER_OF_REFRIGERATORS
 Position=216,855,231,875
 Item=NUMBER_OF_REFRIGERATORS,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5174,6 +5329,7 @@ HorizontalAlignment=Center
 Name=H78
 Position=185,1067,200,1087
 Item=H78,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5187,6 +5343,7 @@ Form=8
 Name=H79
 Position=185,1095,200,1115
 Item=H79,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5295,6 +5452,7 @@ Text=Livestock and Poultry
 Name=H80
 Position=34,0,91,20
 Item=H80,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -5310,6 +5468,7 @@ Text=Livestock and Poultry
 Name=FINAL_RESULT_CODE
 Position=565,1104,580,1124
 Item=FINAL_RESULT_CODE,LESOTHOCENSUS2016_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=8
   
@@ -5337,6 +5496,7 @@ Position=564,1162,579,1182
 Item=MISSING_FERTILITY,LESOTHOCENSUS2016_DICT
 Protected=Yes
 HideInCaseTree=Yes
+UpperCase=Yes
 FieldLabelType=DictionaryLabel
 Form=8
   

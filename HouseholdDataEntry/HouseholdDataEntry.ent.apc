@@ -498,14 +498,7 @@ PROC DEMOGRAPHIC_ROSTER
 // that there is exactly one head of household.
 
 numeric numberOfHeads = count(DEMOGRAPHIC_ROSTER where B3 = 1);
-{numeric i;
-do i = 1 while i <= totocc(DEMOGRAPHIC_ROSTER)
-	// check if the ith person is head
-	if B3(i) = 1 then
-		numberOfHeads = numberOfHeads + 1;
-	endif;
-enddo;
-}
+
 if numberOfHeads <> 1 then
 	errmsg("You have entered %d heads of household. Only one head of household is allowed",
 			numberOfHeads);
@@ -630,7 +623,7 @@ PROC B6B
 	numeric birthYear = B6B; //variable storing year of birth
 	numeric age; //varible storing computed age of the responded
 	
-	if CensusYear > B6B then //if census year is greater than year of birth...
+	if CensusYear >= B6B then //if census year is greater than year of birth...
 		if CensusMonth - birthMonth < 0 then //...check to see if census month is greater than birth month and if not...
 			age = CensusYear - birthYear - 1; //...age in completed years will be equal to census year minus birth month minus 1
 		else
@@ -1302,7 +1295,7 @@ postproc
 	endif;
 
 	// People not at school, prison, or convents must not be atttending school
-	if B7 in 4,5 and B9B(curocc()) in 4:6 and D26(curocc()) = 2 then
+	if B7(curocc()) in 4,5 and B9B(curocc()) in 4:6 and D26(curocc()) = 2 then
 		errmsg("%s is in Institution but not attending school", strip(B2(curocc())))
 		select("Correct Institutions outside Lesotho", B9B(curocc()),
 			   "Correct ever attended school", D26(curocc()));
@@ -1399,7 +1392,7 @@ PROC D27
 			if not D27 in 0,1:7,11:14,18,30 then
 				errmsg("%s is %d years old and attended/is attending school, the highest level of education completed cannot be %s",
 				strip(B2(curocc())),B5(curocc()), getlabel(D27_VS1,D27))
-				select("Correct Age", B5, "Correct ever attended school",D26, "Correct highest education level", D27);
+				select("Correct Age", B5(curocc()), "Correct ever attended school",D26, "Correct highest education level", D27);
 			endif;
 		elseif B5(curocc()) =17 then
 			if not D27 in 0,1:7,11:15,18,30 then
@@ -1541,7 +1534,11 @@ postproc
 		skip to next;
 	endif;
 PROC D30_OTHER
-savepartial();
+
+	CheckBlank(D30_OTHER);
+	D30_OTHER = toupper(D30_OTHER);
+
+	savepartial();
 PROC E31
 
 preproc
@@ -1775,7 +1772,6 @@ onfocus
 
 	if OCCUPATION_LEVEL_1 = 11 then
 		setvalueset(OCCUPATION_LEVEL_4, OCCUPATION_LEVEL_4_VS033);
-
 	elseif OCCUPATION_LEVEL_3 = 111 then
 		setvalueset (OCCUPATION_LEVEL_4,OCCUPATION_LEVEL_4_VS111);
 	elseif OCCUPATION_LEVEL_3 = 112 then
@@ -2876,7 +2872,6 @@ onfocus
 
 	// set value set to be list of names of household members
 	// and line numbers of household members.
-	// and B7(i) = 1 and B1(i) <> B1(curocc()) and B5(i) > 11 and 
 	
 	numeric i;
 	
@@ -2908,6 +2903,13 @@ postproc
 		errmsg("%s is not available and cannot be a proxy for herself.", strip(B2(curocc())))
 		select("Select someone else", FERTILITY_RESPONDENT);
 	endif;
+
+{
+	if B4(FERTILITY_RESPONDENT) = 1 then
+		errmsg("%s is a male and cannot answer questions on fertility", strip(B2(FERTILITY_RESPONDENT)))
+		select("Select someone else", FERTILITY_RESPONDENT);
+	endif;
+}
 PROC F40
 
 postproc
@@ -3693,12 +3695,6 @@ preproc
 	if pos("M",H77) = 0 then
 		skip to H78;
 	endif;
-
-
-PROC REFRIGERANT
-
-//	CheckBlank(REFRIGERANT);
-//	REFRIGERANT = toupper(REFRIGERANT);
 
 
 PROC FINAL_RESULT_CODE
