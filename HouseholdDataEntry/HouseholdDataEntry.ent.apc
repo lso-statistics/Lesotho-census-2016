@@ -369,31 +369,30 @@ if demode() = add then
 			endif;
 		endif;
 	endif;
-endif;
-{
-if HOUSEHOLD_STATUS in 2:4 then 
-	if APPROVAL_STATUS = 1 then
-		endlevel;
-	else
-		savepartial();
-		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-		stop(0);
+else
+	if HOUSEHOLD_STATUS in 2:4 then 
+		if APPROVAL_STATUS = 1 then
+			endlevel;
+		else
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
+	endif;
+	
+	if HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS < 3 then
+		errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
+		reenter;
+	elseif HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS = 3 then
+		if APPROVAL_STATUS = 1 then
+			endlevel;
+		else
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
 	endif;
 endif;
-		
-if HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS < 3 then
-	errmsg("Refusal can only be accepted if there had been at least 3 attempts or visits");
-	reenter;
-elseif HOUSEHOLD_STATUS = 5 and NUMBER_OF_VISITS = 3 then
-	if APPROVAL_STATUS = 1 then
-		endlevel;
-	else
-		savepartial();
-		errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-		stop(0);
-	endif;
-endif;
-}
 PROC B1
 
 preproc
@@ -2842,7 +2841,6 @@ PROC E39
 PROC RESPONDENT_AVAILABLE
 
 preproc
-
 	//Skip to next section if sex is not female or age is not between 12 and 50 years
 	if B4(curocc()) = 1 then
 		skip to next;
@@ -2854,6 +2852,13 @@ preproc
 
 	if B7(curocc()) = 2 then
 		skip to next;
+	endif;
+
+onfocus
+	if curocc() = RESPONDENT then
+		setvalueset(RESPONDENT_AVAILABLE,RESPONDENT_AVAILABLE_VS1);
+	else
+		setvalueset(RESPONDENT_AVAILABLE,RESPONDENT_AVAILABLE_VS2);
 	endif;
 
 postproc
@@ -3701,24 +3706,6 @@ PROC FINAL_RESULT_CODE
 numeric fertilityEligible = count(DEMOGRAPHIC_ROSTER where B4 = 2 and B7 <> 2 and B5 in 12:50);
 numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE in 2:3);
 
-{
-if FINAL_RESULT_CODE = 1 then 
-	if fertilityEligible > 0 then
-		if noFertility = 0 then
-			endlevel;
-		elseif noFertility > 0 and APPROVAL_STATUS = 1 then
-			endlevel;
-		else
-			MISSING_FERTILITY = 1;
-			savepartial();
-			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
-			stop(0);
-		endif;
-	else
-		endlevel;
-	endif;
-endif;
-}
 if demode() = add then
 	if HH_LATITUDE = notappl then
 		if FINAL_RESULT_CODE = 1 then
@@ -3741,6 +3728,24 @@ if demode() = add then
 			else
 				endlevel;
 			endif;
+		endif;
+	endif;
+
+else
+	if FINAL_RESULT_CODE = 1 then 
+		if fertilityEligible > 0 then
+			if noFertility = 0 then
+				endlevel;
+			elseif noFertility > 0 and APPROVAL_STATUS = 1 then
+				endlevel;
+			else
+				MISSING_FERTILITY = 1;
+				savepartial();
+				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+				stop(0);
+			endif;
+		else
+			endlevel;
 		endif;
 	endif;
 endif;
