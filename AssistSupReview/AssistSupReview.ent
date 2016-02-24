@@ -11,6 +11,7 @@ CAPIFont1=-016 0000 0000 0000 0400 0000 0000 0000 0000 0000 0000 0000 0000 Arial
 CAPIFont2=-016 0000 0000 0000 0400 0000 0000 0000 0000 0000 0000 0000 0000 Arial
 CAPIFont1Color=0
 CAPIFont2Color=16711680
+CaseTree=Always
 [External Dictionaries]
 File=..\HouseholdDataEntry\HouseholdDataEntry.dcf
 [AppCode]

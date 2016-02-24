@@ -8,7 +8,6 @@ Type=Bluetooth
 
 [Sync]
 ServerPath=/LesothoCensus2016/Application
-CreateClientPath=/LesothoCensus2016/Application
 ClientPath=/LesothoCensus2016/Application
 Get=SupervisorInitialSync.pnc
 Get=EnumeratorInitialSync.pnc
@@ -17,7 +16,6 @@ Get=SyncWithSupervisor.pnc
 Get=SyncWithServer.pnc
 
 ServerPath=/LesothoCensus2016/Documents
-CreateClientPath=/LesothoCensus2016/Documents
 ClientPath=/LesothoCensus2016/Documents
 Get=Statistics_Act_2001.pdf
 

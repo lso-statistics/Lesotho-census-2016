@@ -59,6 +59,7 @@ Max=1
 Name=RV_DISTRICT
 Position=231,45,260,65
 Item=RV_DISTRICT,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -71,6 +72,7 @@ Text=District
 Name=RV_CONSTITUENCY
 Position=231,74,260,94
 Item=RV_CONSTITUENCY,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -83,6 +85,7 @@ Text=Constituency
 Name=RV_COMMUNITY_COUNCIL
 Position=231,103,274,123
 Item=RV_COMMUNITY_COUNCIL,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -95,6 +98,7 @@ Text=Community Council
 Name=RV_ZONE
 Position=231,133,246,153
 Item=RV_ZONE,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -107,6 +111,7 @@ Text=Zone
 Name=RV_SETTLEMENT
 Position=231,163,246,183
 Item=RV_SETTLEMENT,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -119,6 +124,7 @@ Text=Settlement
 Name=RV_ENUMERATION_AREA
 Position=231,193,386,213
 Item=RV_ENUMERATION_AREA,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -130,6 +136,7 @@ Text=Enumeration Area
 Name=RV_WARD
 Position=231,223,260,243
 Item=RV_WARD,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
@@ -142,6 +149,7 @@ Text=Ward
 Name=RV_VILLAGE_NUMBER
 Position=231,253,260,273
 Item=RV_VILLAGE_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -153,6 +161,7 @@ Text=Village Number
 Name=RV_VILLAGE_NAME
 Position=231,283,641,303
 Item=RV_VILLAGE_NAME,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
@@ -165,6 +174,7 @@ Text=Village Name
 Name=RV_HOUSEHOLD_NUMBER
 Position=231,313,274,333
 Item=RV_HOUSEHOLD_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 Form=1
   
 [Text]
@@ -176,6 +186,7 @@ Text=Household Number
 Name=RV_HOUSEHOLD_HEAD_NAMES
 Position=231,343,641,363
 Item=RV_HOUSEHOLD_HEAD_NAMES,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
@@ -189,6 +200,7 @@ Name=POSTCHECKING_DATE
 Position=662,70,803,90
 Item=POSTCHECKING_DATE,ASSIST_SUPERVISOR_REVIEW_DICT
 Protected=Yes
+UpperCase=Yes
 UseUnicodeTextBox=Yes
 FieldLabelType=DictionaryLabel
 Form=1
@@ -487,6 +499,7 @@ Name=RV_B1
 Position=14,0,43,20
 Item=RV_B1,ASSIST_SUPERVISOR_REVIEW_DICT
 Protected=Yes
+UpperCase=Yes
   
 [Text]
 Position=0,0,101,16
@@ -525,6 +538,7 @@ Text=In household
 Name=RV_IN_HOUSEHOLD
 Position=27,0,42,20
 Item=RV_IN_HOUSEHOLD,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -543,6 +557,7 @@ Text=More People
 Name=RV_MORE_PEOPLE
 Position=17,0,32,20
 Item=RV_MORE_PEOPLE,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -558,6 +573,7 @@ Name=RV_NO_OF_HOUSEHOLD_MEMBERS
 Position=747,37,776,57
 Item=RV_NO_OF_HOUSEHOLD_MEMBERS,ASSIST_SUPERVISOR_REVIEW_DICT
 Protected=Yes
+UpperCase=Yes
 Form=2
   
 [Text]
@@ -845,6 +861,7 @@ Text=Relationship
 Name=RV_B3
 Position=25,0,54,20
 Item=RV_B3,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -863,6 +880,7 @@ Text=Sex
 Name=RV_B4
 Position=5,0,20,20
 Item=RV_B4,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]
@@ -881,6 +899,7 @@ Text=Age
 Name=RV_B5
 Position=0,0,43,20
 Item=RV_B5,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=ComboBox
   
 [Text]
@@ -899,6 +918,7 @@ Text=Residential status
 Name=RV_B7
 Position=48,0,63,20
 Item=RV_B7,ASSIST_SUPERVISOR_REVIEW_DICT
+UpperCase=Yes
 DataCaptureType=RadioButton
   
 [Text]

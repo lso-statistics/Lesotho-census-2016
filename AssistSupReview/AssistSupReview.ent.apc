@@ -7,7 +7,8 @@ function OnStop() // if they try to stop adding data without finishing the case
 	selection = errmsg("Are you sure that you want to stop postchecking this household?")
 	select("Yes",continue,"No",continue);
 
-	if selection = 1 then
+	if selection = 1 then		
+		savepartial();
 		stop(1);
 	else
 		reenter;
@@ -252,6 +253,7 @@ postproc
 
 	// If no more people in household then end roster
 	if RV_MORE_PEOPLE = 2 then
+		savepartial();
 		endgroup;
 	endif;
 
@@ -359,6 +361,10 @@ PROC RV_B5
 
 PROC RV_B7
 
+preproc
+
+savepartial();
+	
 postproc
 
 	// For individuals that are also in enumerator data file (current row < rows in enumerator file),
@@ -379,3 +385,4 @@ postproc
 				select("Correct Current Residential Status",RV_B7);
 		endif;
 	endif;
+
