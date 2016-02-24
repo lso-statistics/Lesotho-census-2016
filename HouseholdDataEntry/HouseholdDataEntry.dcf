@@ -6385,6 +6385,7 @@ Value=1;Yes
 [ValueSet]
 Label=Respondent Available?
 Name=RESPONDENT_AVAILABLE_VS2
+Value=1;Yes
 Value=2;No, wait for her
 Value=3;No, use proxy
 
