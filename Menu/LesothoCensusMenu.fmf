@@ -24,7 +24,6 @@ Item=CHOOSE_REPORT
 Item=VIEW_DATE
 Item=CONSTITUENCY_SUPERVISOR_MENU
 Item=APPROVE_CASES
-Item=SUMMARY_REPORT_MENU
 Item=CONSTITUENCY_EACODE
 Item=IDENTIFIER
   
@@ -64,7 +63,7 @@ Max=1
   
 [Field]
 Name=USER_CODE
-Position=233,116,290,136
+Position=253,116,310,136
 Item=USER_CODE,LESOTHOCENSUSMENU_DICT
 Form=1
   
@@ -75,7 +74,7 @@ Text=User Code
   
 [Field]
 Name=ENUMERATOR_MENU
-Position=233,144,248,164
+Position=253,144,268,164
 Item=ENUMERATOR_MENU,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -87,7 +86,7 @@ Text=Enumerator Menu
   
 [Field]
 Name=ASSISTANT_SUPERVISOR_MENU
-Position=232,171,247,191
+Position=252,171,267,191
 Item=ASSISTANT_SUPERVISOR_MENU,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -99,7 +98,7 @@ Text=Assistant Supervisor Menu
   
 [Field]
 Name=CONSTITUENCY_SUPERVISOR_MENU
-Position=232,198,247,218
+Position=252,198,267,218
 Item=CONSTITUENCY_SUPERVISOR_MENU,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -111,7 +110,7 @@ Text=Constituency Supervisor Menu
   
 [Field]
 Name=VIEW_DATE
-Position=231,227,372,247
+Position=251,227,392,247
 Item=VIEW_DATE,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -123,7 +122,7 @@ Text=Date
   
 [Field]
 Name=CHOOSE_REPORT
-Position=230,255,385,275
+Position=250,255,405,275
 Item=CHOOSE_REPORT,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -135,7 +134,7 @@ Text=Choose Report
   
 [Field]
 Name=CHOOSE_POSTCHECK_HOUSEHOLD
-Position=230,283,273,303
+Position=250,283,293,303
 Item=CHOOSE_POSTCHECK_HOUSEHOLD,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -147,7 +146,7 @@ Text=Choose Postcheck Household
   
 [Field]
 Name=APPROVE_CASES
-Position=230,309,273,329
+Position=250,309,293,329
 Item=APPROVE_CASES,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
@@ -158,40 +157,27 @@ Text=Approve Cases
  
   
 [Field]
-Name=SUMMARY_REPORT_MENU
-Position=230,337,245,357
-Item=SUMMARY_REPORT_MENU,LESOTHOCENSUSMENU_DICT
-DataCaptureType=RadioButton
-Form=1
-  
-[Text]
-Position=22,341,168,357
-Text=Summary Report Menu
-Form=1
- 
-  
-[Field]
 Name=CONSTITUENCY_EACODE
-Position=230,366,385,386
+Position=250,336,405,356
 Item=CONSTITUENCY_EACODE,LESOTHOCENSUSMENU_DICT
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=23,368,158,384
+Position=23,338,158,354
 Text=Constituency EACode
 Form=1
  
   
 [Field]
 Name=IDENTIFIER
-Position=230,396,572,416
+Position=250,366,478,386
 Item=IDENTIFIER,LESOTHOCENSUSMENU_DICT
 UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=24,396,108,412
+Position=24,366,108,382
 Text=Household ID
 Form=1
  

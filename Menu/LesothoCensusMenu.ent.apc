@@ -773,7 +773,7 @@ PROC CONSTITUENCY_SUPERVISOR_MENU
 
 postproc
 if CONSTITUENCY_SUPERVISOR_MENU = 1 then	//view data
-	skip to SUMMARY_REPORT_MENU;
+	skip to CONSTITUENCY_EACODE;
 elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then	//sex ratio
 	SexRatioReport();
 elseif CONSTITUENCY_SUPERVISOR_MENU = 3 then	//population pyramid
@@ -965,7 +965,9 @@ APPROVAL_STATUS = 1;
 MISSING_FERTILITY = 0;
 writecase(LESOTHOCENSUS2016_DICT);
 reenter APPROVE_CASES;
-PROC SUMMARY_REPORT_MENU
+PROC CONSTITUENCY_EACODE
+
+onfocus
 
 numeric i, ctr;
 dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
@@ -987,6 +989,7 @@ dirlist(fileListing,enumeratorDataFileFolder,"*.dat");
 //mycodes(i) = notappl;
 setvalueset(CONSTITUENCY_EACODE, mycodes, mylabels);
 PROC IDENTIFIER
+
 onfocus
 string HH_status, Checked;
 //menuApplicationFolder = pathname(Application); //this is the path of our application
@@ -1059,8 +1062,4 @@ postproc
 CreateAndRunCSPFF();
 //CreateAndRunSRPFF(DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL,ZONE, ENUMERATION_AREA, WARD, SETTLEMENT, VILLAGE_NUMBER, HOUSEHOLD_NUMBER);
 
-if SUMMARY_REPORT_MENU = 2 then
-   SexRatioReport();
-   
-endif;
 reenter;

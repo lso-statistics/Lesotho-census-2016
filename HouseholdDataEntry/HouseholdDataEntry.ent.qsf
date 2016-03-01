@@ -281,7 +281,7 @@ Field=LESOTHOCENSUS2016_DICT.C23A
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23A. Does %getocclabel% have a difficulty in seeing even when wearing glasses (if %getocclabel% usualy wears them)?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23A. Does %getocclabel% have a difficulty in seeing, even when wearing glasses (if %getocclabel% usualy wears them)?\par
 ENG=}
 
 [QUESTION]
@@ -289,7 +289,7 @@ Field=LESOTHOCENSUS2016_DICT.C23B
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23B. Does %getocclabel% have a difficulty in hearing even when using hearing aid (if %getocclabel% usualy uses them)?\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\f0\fs18 C23B. Does %getocclabel% have a difficulty in hearing, even when using hearing aid (if %getocclabel% usualy uses them)?\par
 ENG=}
 
 [QUESTION]
@@ -868,6 +868,13 @@ ENG=}
 
 [QUESTION]
 Field=LESOTHOCENSUS2016_DICT.FERTILITY_RESPONDENT
+Condition=<>
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Please select proxy\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.FERTILITY_RESPONDENT
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
 ENG={\colortbl ;\red0\green0\blue0;}
@@ -1342,6 +1349,13 @@ Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}
 ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Are there more people in this household?\cf1\b0\f1\fs24\par
+ENG=}
+
+[QUESTION]
+Field=LESOTHOCENSUS2016_DICT.NON_HOUSEHOLD_MEMBER
+Occurrences=1:50
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Enter name of proxy\par
 ENG=}
 
 [QUESTION]

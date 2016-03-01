@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=176
+RecordLen=175
 
 [Item]
 Label=User Code
@@ -118,43 +118,29 @@ Value='29/04/2016';29/04/2016
 Value='30/04/2016';30/04/2016
 
 [Item]
-Label=Summary Report Menu
-Name=SUMMARY_REPORT_MENU
-Start=23
-Len=1
-
-[ValueSet]
-Label=Summary Report Menu
-Name=SUMMARY_REPORT_MENU_VS1
-Value=1;Age by Sex
-Value=2;Sex Ratio
-Value=3;Progress Report by Date
-Value=4;Household Status Report
-
-[Item]
 Label=Choose Report
 Name=CHOOSE_REPORT
-Start=24
+Start=23
 Len=11
 DataType=Alpha
 
 [Item]
 Label=Constituency EACode
 Name=CONSTITUENCY_EACODE
-Start=35
+Start=34
 Len=11
 DataType=Alpha
 
 [Item]
 Label=Household ID
 Name=IDENTIFIER
-Start=46
+Start=45
 Len=128
 DataType=Alpha
 
 [Item]
 Label=Approve Cases
 Name=APPROVE_CASES
-Start=174
+Start=173
 Len=3
 ZeroFill=Yes

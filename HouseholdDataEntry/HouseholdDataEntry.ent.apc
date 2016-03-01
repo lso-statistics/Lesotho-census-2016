@@ -2885,18 +2885,21 @@ onfocus
 		labels(i) = B2(i);
 	enddo;
 	
-	codes(i) = notappl;
+	codes(i) = i;
+	labels(i) = "NON HOUSEHOLD MEMBER";
+	
+	codes(i+1) = notappl;
 	
 	setvalueset(FERTILITY_RESPONDENT, codes, labels);
 
 postproc
 
 	if B5(FERTILITY_RESPONDENT) < 12 then
-		errmsg("%s too young to answer questions on fertility", strip(B2(FERTILITY_RESPONDENT)))
+		errmsg("%s is too young to answer questions on fertility", strip(B2(FERTILITY_RESPONDENT)))
 		select("Select someone else", FERTILITY_RESPONDENT);
 	endif;
 	
-	if B7(FERTILITY_RESPONDENT) in 2:4 then
+	if B7(FERTILITY_RESPONDENT) in 3:4 then
 		errmsg("%s is a %s and cannot answer for %s", strip(B2(FERTILITY_RESPONDENT)), getlabel(B7_VS1,B7(FERTILITY_RESPONDENT)), strip(B2(curocc())))
 		select("Select someone else", FERTILITY_RESPONDENT);
 	elseif B7(FERTILITY_RESPONDENT) = 5 then
@@ -2909,12 +2912,9 @@ postproc
 		select("Select someone else", FERTILITY_RESPONDENT);
 	endif;
 
-{
-	if B4(FERTILITY_RESPONDENT) = 1 then
-		errmsg("%s is a male and cannot answer questions on fertility", strip(B2(FERTILITY_RESPONDENT)))
-		select("Select someone else", FERTILITY_RESPONDENT);
+	if FERTILITY_RESPONDENT <> totocc(PERSON_ROSTER) + 1 then
+		skip to F40;
 	endif;
-}
 PROC F40
 
 postproc
@@ -3101,6 +3101,10 @@ PROC F50
 
 	savepartial();
 
+PROC NON_HOUSEHOLD_MEMBER
+
+	CheckBlank(NON_HOUSEHOLD_MEMBER);
+	NON_HOUSEHOLD_MEMBER = toupper(NON_HOUSEHOLD_MEMBER);
 PROC G51
 
 	//If there were no deaths in the household in

@@ -377,7 +377,7 @@ Name=INDIVIDUAL
 RecordTypeValue='I'
 Required=No
 MaxRecords=50
-RecordLen=691
+RecordLen=721
 
 [Item]
 Label=Person Number
@@ -630,7 +630,7 @@ Label=Institution
 Name=B9B_VS1
 Value=1;School
 Value=2;Prison
-Value=3;Convents
+Value=3;Diplomat
 Value=4;Barracks
 Value=5;Hospitals
 Value=6;None
@@ -6410,9 +6410,16 @@ Value=1;Yes
 Value=2;No
 
 [Item]
+Label=Non Household Member
+Name=NON_HOUSEHOLD_MEMBER
+Start=691
+Len=30
+DataType=Alpha
+
+[Item]
 Label=Orphan
 Name=ORPHAN
-Start=691
+Start=721
 Len=1
 ZeroFill=Yes
 
