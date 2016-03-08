@@ -6048,7 +6048,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Total Born Alive
 Name=F42C_VS1
-Value=1:20;1 - 20
+Value=0:20;1 - 20
 
 [Item]
 Label=Boys Living in Household
@@ -6823,6 +6823,11 @@ Start=153
 Len=2
 ZeroFill=Yes
 
+[ValueSet]
+Label=Housing Units - Bungalow
+Name=H68_BUNGALOW_VS1
+Value=0:20;0 - 20
+
 [Item]
 Label=Housing Units - Mansion
 Name=H68_MANSION
@@ -6938,6 +6943,11 @@ Name=H69_BUNGALOW
 Start=173
 Len=2
 ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Rooms - Bungalow
+Name=H69_BUNGALOW_VS1
+Value=0:99;0 - 99
 
 [Item]
 Label=Number of Rooms - Mansion

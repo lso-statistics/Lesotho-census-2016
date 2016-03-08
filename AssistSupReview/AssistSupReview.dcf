@@ -434,7 +434,7 @@ ZeroFill=Yes
 [ValueSet]
 Label=Age
 Name=RV_B5_VS1
-Value=0:130;0-130
+Value=0:135;0 - 135
 
 [Item]
 Label=Residential status

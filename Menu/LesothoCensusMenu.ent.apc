@@ -90,26 +90,21 @@ function agebysexProcessing(string eaFilename)
 
 	setfile(LESOTHOCENSUS2016_DICT, eaFilename);
 	
-	if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 1 then	
-		errmsg("There are no households in the selected enumerator data file");
-		filedelete(eaFilename);
-		reenter;
-	else
-		while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
+	locate(LESOTHOCENSUS2016_DICT, >=, "");
+	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
 			
-			// Loop through each individual in household
-			numeric personNum;
-			do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
-				
-				if (B4(personNum) in 0:130) then
-					numeric ageGroup = int(low(100,B5(personNum))/5) + 1;
-					   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
-					   inc(ageBySex5YearGroups(22, B4(personNum)));			
-				endif;
-			enddo;
+		// Loop through each individual in household
+		numeric personNum;
+		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
 			
-		 enddo;
-	endif;
+			if (B4(personNum) in 0:130) then
+				numeric ageGroup = int(low(100,B5(personNum))/5) + 1;
+				   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));
+				   inc(ageBySex5YearGroups(22, B4(personNum)));			
+			endif;
+		enddo;
+			
+	enddo;
 	close(LESOTHOCENSUS2016_DICT);
 
 end;
@@ -207,22 +202,17 @@ function SexRatioProcessing(string eaFilename)
 	
 	// Loop through all households 
 	// until loadcase returns zero when it hits end of file.
-	if locate(LESOTHOCENSUS2016_DICT, >=, "") <> 1 then	
-		errmsg("There are no households in the selected enumerator data file");
-		filedelete(eaFilename);
-		reenter;
-	else
-		while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
-			// Loop through each individual in household
-			numeric personNum;
-			do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
-				if (B5(personNum) in 0:130) then
-				   numeric ageGroup = int (low(100,B5(personNum))/5) + 1;
-				   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));				
-				endif;
-			enddo;		
-		 enddo;	
-	endif; 
+	locate(LESOTHOCENSUS2016_DICT, >=, "");
+	while loadcase(LESOTHOCENSUS2016_DICT) <> 0 do
+		// Loop through each individual in household
+		numeric personNum;
+		do personNum = 1 while personNum <= count(LESOTHOCENSUS2016_DICT.INDIVIDUAL)
+			if (B5(personNum) in 0:130) then
+			   numeric ageGroup = int (low(100,B5(personNum))/5) + 1;
+			   inc(ageBySex5YearGroups(ageGroup, B4(personNum)));				
+			endif;
+		enddo;		
+	enddo;	 
 	close(LESOTHOCENSUS2016_DICT);
 end;
 
@@ -901,8 +891,9 @@ elseif ENUMERATOR_MENU = 9 then
 endif;
 
 PROC ASSISTANT_SUPERVISOR_MENU
-
-
+	
+postproc
+		
 if ASSISTANT_SUPERVISOR_MENU in 1:3 and fileexist(enumeratorDataFileName) <> 1 then
 	errmsg("The enumerator has not started data entry yet.");
 	reenter;
@@ -924,8 +915,9 @@ elseif ASSISTANT_SUPERVISOR_MENU = 9 then
 endif;
 
 PROC CONSTITUENCY_SUPERVISOR_MENU
-
+		
 postproc
+
 if CONSTITUENCY_SUPERVISOR_MENU = 1 then	//view data
 	skip to CONSTITUENCY_EACODE;
 elseif CONSTITUENCY_SUPERVISOR_MENU = 2 then	//sex ratio

@@ -382,7 +382,7 @@ Text=Village Number
   
 [Field]
 Name=VILLAGE_NAME
-Position=198,279,550,299
+Position=198,279,468,299
 Item=VILLAGE_NAME,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
@@ -407,7 +407,7 @@ Text=Household Number
   
 [Field]
 Name=HOUSEHOLD_HEAD_NAMES
-Position=198,335,548,355
+Position=198,335,465,355
 Item=HOUSEHOLD_HEAD_NAMES,LESOTHOCENSUS2016_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
