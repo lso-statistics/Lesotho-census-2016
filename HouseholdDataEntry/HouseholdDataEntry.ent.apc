@@ -1563,15 +1563,14 @@ postproc
 		errmsg("%s is too young to be retired", strip(B2(curocc())))
 		select("Correct main activity status in the past 7 days", E31);
 	endif;
-
-	//Name should be a student (80) if is still attending school (code 2 in D26)
-	if D26(curocc()) = 2 and E31 <> 80 then
-		errmsg("%s is still attending hence a student",strip(B2(curocc())))
+	
+	//Name can ONLY be a student (80) if is still attending school (code 2 in D26)
+	if D26(curocc()) <> 2 and E31 = 80 then
+		errmsg("%s cannot be a student because s/he never attended school",strip(B2(curocc())))
 		select("Correct ever attended school", D26(curocc()),
 			   "Correct main activity in the past 7 days", E31);
 	endif;
-
-
+	
 	//skip to Section F(Fertility) if Main Activity Status in Past 7 Days is Job seeking for the first time
 	if E31 = 55 then
 		savepartial();
@@ -1580,7 +1579,7 @@ postproc
 	//skip to Name of Employer (E33) if Main Activity Status in Past 7 Days is coded 10 to 40 and 60
 	elseif E31 in 10:40,60 then
 		skip to E33;
-
+	
 	//skip to Ever worked in RSA (E38) if Main Activity Status in Past 7 Days is coded 65 to 80 and 99
 	elseif E31 in 65:80,99 then
 		skip to E38;
@@ -2903,6 +2902,7 @@ postproc
 		select("Select someone else", FERTILITY_RESPONDENT);
 	endif;
 	
+	{
 	if B7(FERTILITY_RESPONDENT) in 3:4 then
 		errmsg("%s is a %s and cannot answer for %s", strip(B2(FERTILITY_RESPONDENT)), getlabel(B7_VS1,B7(FERTILITY_RESPONDENT)), strip(B2(curocc())))
 		select("Select someone else", FERTILITY_RESPONDENT);
@@ -2910,6 +2910,7 @@ postproc
 		errmsg("%s is %s and cannot answer for %s", strip(B2(FERTILITY_RESPONDENT)), getlabel(B7_VS1,B7(FERTILITY_RESPONDENT)), strip(B2(curocc())))
 		select("Select someone else", FERTILITY_RESPONDENT);
 	endif;
+	}
 	
 	if B1(curocc()) = FERTILITY_RESPONDENT then
 		errmsg("%s is not available and cannot be a proxy for herself.", strip(B2(curocc())))
