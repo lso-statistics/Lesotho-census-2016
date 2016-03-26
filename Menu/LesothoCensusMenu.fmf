@@ -63,8 +63,10 @@ Max=1
   
 [Field]
 Name=USER_CODE
-Position=253,116,310,136
+Position=253,116,338,136
 Item=USER_CODE,LESOTHOCENSUSMENU_DICT
+UpperCase=Yes
+UseUnicodeTextBox=Yes
 Form=1
   
 [Text]

@@ -8,7 +8,7 @@ function OnStop() // if they try to stop adding data without finishing the case
 	select("Yes",continue,"No",continue);
 
 	if selection = 1 then		
-		savepartial();
+		//savepartial();
 		stop(1);
 	else
 		reenter;
@@ -80,9 +80,6 @@ postproc
 	execpff(menuApplicationFolder + "LesothoCensusMenu.pff",stop);
 
 
-PROC IDENTIFICATION_FORM
-
-
 PROC RV_DISTRICT
 
 preproc
@@ -100,7 +97,7 @@ preproc
 		RV_VILLAGE_NAME = sysparm("VILLAGE_NAME");
 		RV_HOUSEHOLD_NUMBER = tonumber(sysparm("HOUSEHOLD_NUMBER"));
 		RV_HOUSEHOLD_HEAD_NAMES = sysparm("HOUSEHOLD_HEAD_NAMES");
-		RV_SUPERVISOR_CODE = tonumber(sysparm("STAFF_CODE"));
+		RV_SUPERVISOR_CODE = sysparm("STAFF_CODE");
 
 		// Make protected so interviewer cannot change id-items
 		set attributes (RV_DISTRICT, RV_CONSTITUENCY, RV_COMMUNITY_COUNCIL, RV_ZONE, RV_SETTLEMENT, RV_ENUMERATION_AREA, RV_WARD, RV_VILLAGE_NUMBER, RV_VILLAGE_NAME, RV_HOUSEHOLD_NUMBER, RV_HOUSEHOLD_HEAD_NAMES) protect;
@@ -253,7 +250,7 @@ postproc
 
 	// If no more people in household then end roster
 	if RV_MORE_PEOPLE = 2 then
-		savepartial();
+		//savepartial();
 		endgroup;
 	endif;
 
@@ -280,15 +277,11 @@ PROC DEMOGRAPHICS_ROSTER
 				numberOfHeads);
 		reenter RV_B3(1);
 	endif;
-
-	// Sex of household head must be different from sex of spouse
-	numeric head, spouse;
-	head = seek(RV_B3 = 1);
 	
 	if demode() = add then
 		if SHH_LATITUDE = notappl then
 			errmsg("You cannot save the household without its GPS coordinates. Please capture the coordinates.");
-			reenter RV_B7(RV_NO_OF_HOUSEHOLD_MEMBERS);
+			reenter RV_B7(curocc());
 		else
 			endlevel;
 		endif;
@@ -308,7 +301,7 @@ postproc
 	// For individuals that are also in enumerator data file (current row < rows in enumerator file),
 	// compare relationship entered by enumerator with that entered by supervisor
 	if curocc() <= RV_NO_OF_PREFILLED_MEMBERS then
-		if RV_B3 <> B3(curocc()) then
+		if RV_B3(curocc()) <> B3(curocc()) then
 			errmsg("Relationship does not match relationship entered by enumerator")
 			select("Correct Relationship",RV_B3(curocc()),"Accept", continue);
 		endif;
@@ -322,7 +315,7 @@ postproc
 	// For individuals that are also in enumerator data file (current row < rows in enumerator file),
 	// compare sex entered by enumerator with that entered by supervisor
 	if curocc() <= RV_NO_OF_PREFILLED_MEMBERS then
-		if RV_B4 <> B4(curocc()) then
+		if RV_B4(curocc()) <> B4(curocc()) then
 			errmsg("Sex does not match sex entered by enumerator")
 			select("Correct Sex",RV_B4(curocc()),"Accept", continue);
 		endif;
@@ -334,7 +327,7 @@ PROC RV_B5
 	// For individuals that are also in enumerator data file (current row < rows in enumerator file),
 	// compare age entered by enumerator with that entered by supervisor
 	if curocc() <= RV_NO_OF_PREFILLED_MEMBERS then
-		if RV_B5 <> B5(curocc()) then
+		if RV_B5(curocc()) <> B5(curocc()) then
 			errmsg("Age does not match age entered by enumerator")
 			select("Correct Age",RV_B5(curocc()),"Accept", continue);
 		endif;
@@ -347,30 +340,28 @@ PROC RV_B5
 		if RV_B3(curocc()) = 4 and RV_B5(head) < RV_B5(curocc()) + 12 then
 			errmsg("%s's age should be 12 years more than %s's age",strip(RV_B2(head)),
 					strip(RV_B2(curocc())))
-			select("Correct mother's age",RV_B5(head),"Correct child's age",RV_B5);
+			select("Correct mother's age",RV_B5(head),"Correct child's age",RV_B5(curocc()));
 
 			//If head of the household is female, grandmother's age should be 24 years
 			//more than grandchild's age.
 		elseif RV_B3(curocc()) = 12 and RV_B5(head) < RV_B5(curocc()) + 24 then
 			errmsg("%s's age should be 24 years more than %s's age",strip(RV_B2(head)),
 					strip(RV_B2(curocc())))
-			select("Correct grandmother's age",RV_B5(head),"Correct grandchild's age",RV_B5);
+			select("Correct grandmother's age",RV_B5(head),"Correct grandchild's age",RV_B5(curocc()));
 		endif;
 	endif;
 
 
 PROC RV_B7
 
-preproc
 
-savepartial();
 	
 postproc
 
 	// For individuals that are also in enumerator data file (current row < rows in enumerator file),
 	// compare residential status entered by enumerator with that entered by supervisor
 	if curocc() <= RV_NO_OF_PREFILLED_MEMBERS then
-		if RV_B7 <> B7(curocc()) then
+		if RV_B7(curocc()) <> B7(curocc()) then
 			errmsg("Residential status does not match that one entered by enumerator")
 			select("Correct Residential",RV_B7(curocc()),"Accept", continue);
 		endif;
@@ -378,11 +369,11 @@ postproc
 
 	//checks for Head and spouse are not visitors
 
-	if RV_B3 in 1,2 then
-		if RV_B7 = 2 then
+	if RV_B3(curocc()) = 1 then
+		if RV_B7(curocc()) = 2 then
 			errmsg("%s is the %s and should not be a visitor",
 				strip(RV_B2(curocc())), getlabel(RV_B3_VS1,RV_B3(curocc())))
-				select("Correct Current Residential Status",RV_B7);
+				select("Correct Current Residential Status",RV_B7(curocc()));
 		endif;
 	endif;
 

@@ -14,7 +14,7 @@ Name=FORM001
 Label=Identification
 QuestionTextHeight=76
 Level=1
-Size=828,391
+Size=713,420
   
 Item=RV_DISTRICT
 Item=RV_CONSTITUENCY
@@ -29,6 +29,16 @@ Item=RV_VILLAGE_NAME
 Item=RV_HOUSEHOLD_HEAD_NAMES
 Item=POSTCHECKING_DATE
   
+Box=33,76,687,395,Thin
+Box=32,15,688,64,Thin
+  
+[Text]
+Name=TEXT1
+Position=202,25,510,53
+Text=Section A: Identification
+Form=1
+Font=-024 0000 0000 0000 0600 0000 0000 0000 0000 0003 0002 0001 0018 Bookman Old Style
+ 
 [EndForm]
   
 [Form]
@@ -57,147 +67,147 @@ Max=1
   
 [Field]
 Name=RV_DISTRICT
-Position=231,45,260,65
+Position=221,83,250,103
 Item=RV_DISTRICT,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,48,93,64
+Position=40,86,83,102
 Text=District
  
   
 [Field]
 Name=RV_CONSTITUENCY
-Position=231,74,260,94
+Position=221,111,250,131
 Item=RV_CONSTITUENCY,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,77,131,93
+Position=40,114,121,130
 Text=Constituency
  
   
 [Field]
 Name=RV_COMMUNITY_COUNCIL
-Position=231,103,274,123
+Position=221,140,264,160
 Item=RV_COMMUNITY_COUNCIL,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,106,174,122
+Position=40,143,164,159
 Text=Community Council
  
   
 [Field]
 Name=RV_ZONE
-Position=231,133,246,153
+Position=221,167,236,187
 Item=RV_ZONE,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,136,81,152
+Position=40,170,71,186
 Text=Zone
  
   
 [Field]
 Name=RV_SETTLEMENT
-Position=231,163,246,183
+Position=221,194,236,214
 Item=RV_SETTLEMENT,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,166,119,182
+Position=40,197,109,213
 Text=Settlement
  
   
 [Field]
 Name=RV_ENUMERATION_AREA
-Position=231,193,386,213
+Position=221,221,376,241
 Item=RV_ENUMERATION_AREA,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 Form=1
   
 [Text]
-Position=50,196,165,212
+Position=41,224,156,240
 Text=Enumeration Area
  
   
 [Field]
 Name=RV_WARD
-Position=231,223,260,243
+Position=220,249,249,269
 Item=RV_WARD,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 DataCaptureType=RadioButton
 Form=1
   
 [Text]
-Position=50,227,84,243
+Position=39,253,73,269
 Text=Ward
  
   
 [Field]
 Name=RV_VILLAGE_NUMBER
-Position=231,253,260,273
+Position=220,277,249,297
 Item=RV_VILLAGE_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 Form=1
   
 [Text]
-Position=50,256,149,272
+Position=39,280,138,296
 Text=Village Number
  
   
 [Field]
 Name=RV_VILLAGE_NAME
-Position=231,283,641,303
+Position=220,305,448,325
 Item=RV_VILLAGE_NAME,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=50,287,136,303
+Position=39,309,125,325
 Text=Village Name
  
   
 [Field]
 Name=RV_HOUSEHOLD_NUMBER
-Position=231,313,274,333
+Position=220,333,263,353
 Item=RV_HOUSEHOLD_NUMBER,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 Form=1
   
 [Text]
-Position=50,316,171,332
+Position=39,336,160,352
 Text=Household Number
  
   
 [Field]
 Name=RV_HOUSEHOLD_HEAD_NAMES
-Position=231,343,641,363
+Position=221,361,447,381
 Item=RV_HOUSEHOLD_HEAD_NAMES,ASSIST_SUPERVISOR_REVIEW_DICT
 UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
 [Text]
-Position=50,350,217,366
+Position=39,365,206,381
 Text=Names of Household Head
  
   
 [Field]
 Name=POSTCHECKING_DATE
-Position=662,70,803,90
+Position=540,82,681,102
 Item=POSTCHECKING_DATE,ASSIST_SUPERVISOR_REVIEW_DICT
 Protected=Yes
 UpperCase=Yes
@@ -206,7 +216,7 @@ FieldLabelType=DictionaryLabel
 Form=1
   
 [Text]
-Position=517,73,634,89
+Position=410,87,527,103
 Text=Postchecking Date
  
 [EndGroup]

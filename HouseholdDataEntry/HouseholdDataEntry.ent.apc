@@ -266,7 +266,7 @@ preproc
 		ZONE = tonumber(sysparm("ZONE"));
 		SETTLEMENT = tonumber(sysparm("SETTLEMENT"));
 		ENUMERATION_AREA = tonumber(sysparm("ENUMERATION_AREA"));
-		ENUMERATOR_CODE = tonumber(sysparm("STAFF_CODE"));
+		ENUMERATOR_CODE = sysparm("STAFF_CODE");
 
 		// Make protected so interviewer cannot change id-items
 		set attributes (DISTRICT, CONSTITUENCY, COMMUNITY_COUNCIL, ZONE, SETTLEMENT, ENUMERATION_AREA) protect;
@@ -497,6 +497,9 @@ onfocus
 
 PROC DEMOGRAPHIC_ROSTER
 
+
+numeric head, spouse;
+head = seek(B3 = 1);
 // Count number of heads of household so that we can ensure
 // that there is exactly one head of household.
 
@@ -508,10 +511,36 @@ if numberOfHeads <> 1 then
 	reenter B3(1);
 endif;
 
+// Count number of spouse of household head so that we can ensure
+// that if spouses are more than 1 then it's polygamous marriage.
+
+numeric numberOfSpouses = count(DEMOGRAPHIC_ROSTER where B3 = 2);
+
+if numberOfSpouses > 1 then
+	if not B19(head) = 3 then
+		errmsg("%s has more than 1 spouse, they must be polygamously married",
+				strip(B2(head)))
+		select("Correct household head marital status", B19(head),
+			   "Correct spouse relationship", B3(spouse),
+			   "Correct spouse marital status", B19(spouse));
+	endif;
+	
+	//Check each spouse in the household
+	do spouse = 1 while spouse <= totocc(DEMOGRAPHIC_ROSTER)
+		if B3(spouse) = 2 then
+			if B7(spouse) <> 2 and not B19(spouse) = 3 then
+				errmsg("%s is not the only spouse for %s. They must be polygamously married",
+						strip(B2(spouse)), strip(B2(head)))
+				select("Correct household head marital status", B19(head),
+			   			"Correct spouse relationship", B3(spouse),
+			   			"Correct spouse marital status", B19(spouse));
+			endif;
+		endif;
+	enddo;	
+endif;
+
 // If household head is monogamously married then his/her spouse must be
 // monogamously married and of different sex.
-numeric head, spouse;
-head = seek(B3 = 1);
 
 if B19(head) in 2:3,5 then
 	//Check each spouse in the household
@@ -549,50 +578,50 @@ onfocus
 postproc
 
 	if B19(1) = 1 and B3(curocc()) = 2 then
-		errmsg("%s cannot be a spouse to %s while is never married",
-		strip(B2(curocc())), strip(B2(1)))
-		select("Correct head marital status",B19(1),"Correct relationship",B3);
+		errmsg("%s cannot be %s's spouse while %s is never married",
+		strip(B2(curocc())), strip(B2(1)), strip(B2(1)))
+		select("Correct head marital status",B19(1),"Correct relationship",B3(curocc()));
 	endif;
 
 	if B19(1) = 4 and B3(curocc()) = 2 then
-		errmsg("%s cannot be a spouse to %s while is Living Together",
+		errmsg("%s cannot be a spouse to %s while they are Living Together",
 		strip(B2(curocc())), strip(B2(1)))
-		select("Correct head marital status",B19(1),"Correct relationship",B3);
+		select("Correct head marital status",B19(1),"Correct relationship",B3(curocc()));
 	endif;
 
 	if B19(1) = 5 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Separated",
 		strip(B2(curocc())), strip(B2(1)))
-		select("Correct head marital status",B19(1),"Correct relationship",B3);
+		select("Correct head marital status",B19(1),"Correct relationship",B3(curocc()));
 	endif;
 	if B19(1) = 6 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Divorced",
 		strip(B2(curocc())), strip(B2(1)))
-		select("Correct head marital status",B19(1),"Correct relationship",B3);
+		select("Correct head marital status",B19(1),"Correct relationship",B3(curocc()));
 	endif;
 
 	if B19(1) = 7 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while is Widowed",
 		strip(B2(curocc())), strip(B2(1)))
-		select("Correct head marital status",B19(1),"Correct relationship",B3);
+		select("Correct head marital status",B19(1),"Correct relationship",B3(curocc()));
 	endif;
 
 	if B19(1) = 9 and B3(curocc()) = 2 then
 		errmsg("%s cannot be a spouse to %s while head marital status is unknown",
 		strip(B2(curocc())), strip(B2(1)))
-		select("Correct head marital status",B19(1),"Correct relationship",B3);
+		select("Correct head marital status",B19(1),"Correct relationship",B3(curocc()));
 	endif;
 
 
 PROC B4
 
 	// If household head is married then his/her spouse must be of different sex.
-	if B3 = 2 and B4 = B4(1) then
+	if B3(curocc()) = 2 and B4(curocc()) = B4(1) then
 		errmsg("If %s is %s's spouse, then they must be of opposite sex",
-		strip(B2), strip(B2(1)))
+		strip(B2(curocc())), strip(B2(1)))
 		select("Correct household head sex", B4(1),
-			   "Correct spouse relationship", B3,
-			   "Correct spouse sex", B4);
+			   "Correct spouse relationship", B3(curocc()),
+			   "Correct spouse sex", B4(curocc()));
 	endif;
 
 
@@ -601,58 +630,38 @@ PROC B5
 	//Parent's age should be 12 years more than child's age.
 	if B3(curocc()) = 4 and B5(1) < B5(curocc()) + MinAgeDiffBtwnChildAndParent then
 		errmsg("%s's age should be 12 years more than %s's age",strip(B2(1)),strip(B2(curocc())))
-		select("Correct parent's age",B5(1),"Correct child's age",B5);
+		select("Correct parent's age",B5(1),"Correct child's age",B5(curocc()));
 
 	//Grandparent's age should be 24 years more than grandchild's age.
 	elseif B3(curocc()) = 12 and B5(1) < B5(curocc()) + ( 2 * MinAgeDiffBtwnChildAndParent ) then
 		errmsg("%s's age should be 24 years more than %s's age",strip(B2(1)),strip(B2(curocc())))
-		select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5);
+		select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5(curocc()));
 
 	//Own parent's age should be 12 years more than household head's age.
 	elseif B3(curocc()) = 8 and B5(curocc()) < B5(1) + MinAgeDiffBtwnChildAndParent then
 		errmsg("%s's age should be 12 years less than %s's age",strip(B2(1)),strip(B2(curocc())))
-		select("Correct household head's age",B5(1),"Correct own parent's age",B5);
+		select("Correct household head's age",B5(1),"Correct own parent's age",B5(curocc()));
 
 	//Grandparent's age should be 24 years more than grandchild's age.
 	elseif B3(curocc()) = 11 and B5(curocc()) < B5(1) + ( 2 * MinAgeDiffBtwnChildAndParent ) then
 		errmsg("%s's age should be 24 years more than %s's age",strip(B2(1)),strip(B2(curocc())))
-		select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5);
+		select("Correct grandparent's age",B5(1),"Correct grandchild's age",B5(curocc()));
 	endif;
 
 
 PROC B6B
-
-	numeric birthMonth = B6A; //variable storing month of birth
-	numeric birthYear = B6B; //variable storing year of birth
-	numeric age; //varible storing computed age of the responded
 	
-	if CensusYear >= B6B then //if census year is greater than year of birth...
-		if CensusMonth - birthMonth < 0 then //...check to see if census month is greater than birth month and if not...
-			age = CensusYear - birthYear - 1; //...age in completed years will be equal to census year minus birth month minus 1
-		else
-			age = CensusYear - birthYear; //...else age in completed years will be equal to census year minus year of birth
-		endif;
-		
-		if age <> B5 then //if computed age is different from what the enumerator entered reject this age
-			errmsg("Please enter %s's age in completed years. e.g. A person born in %s %d is %d years", strip(B2(curocc())), getlabel(B6A_VS1, B6A), B6B, age)
-			select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()), "Correct Year of Birth", B6B(curocc()));
-		endif;
-
-	elseif B6B = CensusYear and B6A > CensusMonth then
-		errmsg("%s cannot be born later than the census date/month", strip(B2(curocc())))
-		select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()));
+	if ((CensusYear - B6B) <> B5) and ((CensusYear - B6B) <> B5 + 1) then
+		errmsg("Please enter %s's age in completed years.", strip(B2(curocc())))
+		select("Correct Age", B5(curocc()), "Correct Month of Birth", B6A(curocc()), "Correct Year of Birth", B6B(curocc()));
 	endif;
-
-
-	
-	
 PROC B7
 	
 	//checks that household head and spouse are not visitors
-	if B3 in 1, 2 and B7 = 2 then
+	if B3 = 1 and B7 = 2 then
 		errmsg("%s is the %s and should not be a visitor",
-		strip(B2(curocc())), getlabel(B3_RELATIONSHIP(curocc())))
-		select("Correct Current Residential Status",B7);
+		strip(B2(curocc())), getlabel(B3_RELATIONSHIP, B3(curocc())))
+		select("Correct Current Residential Status",B7(curocc()));
 	endif;
 
 	// skip over absent/outside Lesotho (B8 and B9)
@@ -734,7 +743,7 @@ PROC B11
 	//Years lived in a village/town (B11) should not be more than age (B5)
 	if B11 > B5 and B11 <> 998 then
 		errmsg("Years lived (%d) should not be more than age (%d)", B11(curocc()), B5(curocc()))
-		select("Correct Age", B5, "Correct How Long Lived in Village", B11);
+		select("Correct Age", B5(curocc()), "Correct How Long Lived in Village", B11(curocc()));
 	endif;
 
 
@@ -752,12 +761,12 @@ postproc
 	//We cannot say a person was not yet born yet he was
 	if B5 >= 1 and B12 = 0 then
 		errmsg("%s was already born in 2015",strip(B2(curocc())))
-		select("Correct Age", B5, "Correct Residence in April 2015", B12);
+		select("Correct Age", B5(curocc()), "Correct Residence in April 2015", B12(curocc()));
 
 	//for those less than 1 year in B5, 2015 they were not yet born
 	elseif B5 < 1 and B12 <> 0 then
 		errmsg("%s was not yet born in 2015",strip(B2(curocc())))
-		select("Correct Age", B5, "Correct Residence in April 2015", B12);
+		select("Correct Age", B5(curocc()), "Correct Residence in April 2015", B12(curocc()));
 	endif;
 
 
@@ -780,7 +789,7 @@ PROC B12A
 
 	if B12A = DISTRICT then
 		errmsg("You cannot choose Elsewhere in Lesotho and select the same district as to enumeration District")
-		select("correct April 2015", B12, "correct April 2015 Elsewhere Lesotho", B12A);
+		select("correct April 2015", B12(curocc()), "correct April 2015 Elsewhere Lesotho", B12A(curocc()));
 	endif;
 
 	//skip over other countries for elsewhere in Lesotho (B12=3)
@@ -801,12 +810,12 @@ postproc
 	//We cannot say a person was not yet born yet he was
 	if B5 >= 5 and B13 = 0 then
 		errmsg("%s was already born in 2011",strip(B2(curocc())))
-		select("Correct Age", B5, "Correct Residence in April 2011", B13);
+		select("Correct Age", B5(curocc()), "Correct Residence in April 2011", B13(curocc()));
 
 	//for those less than 5 year in B5, 2011 they were not yet born
 	elseif B5 < 5 and B13 <> 0 then
 		errmsg("%s was not yet born in 2011",strip(B2(curocc())))
-		select("Correct Age", B5, "Correct Residence in April 2011", B13);
+		select("Correct Age", B5(curocc()), "Correct Residence in April 2011", B13(curocc()));
 	endif;
 
 
@@ -829,7 +838,7 @@ PROC B13A
 
 	if B13A = DISTRICT then
 		errmsg("You cannot choose Elsewhere in Lesotho and select the same district as to enumeration District")
-		select("correct April 2011", B13, "correct April 2011 Elsewhere Lesotho", B13A);
+		select("correct April 2011", B13(curocc()), "correct April 2011 Elsewhere Lesotho", B13A(curocc()));
 	endif;
 
 	//skip over other countries for elsewhere in Lesotho (B13=3)
@@ -942,12 +951,12 @@ postproc
 		if B19(1) = 2 and B19(curocc()) <> 2 then
 			errmsg("%s cannot be monogamously married to %s while their marital status is different",
 			strip(B2(curocc())), strip(B2(1)))
-			select("Correct head marital status",B19(1),"Correct spouse marital status",B19(2),"Correct relationship",B3);
+			select("Correct head marital status",B19(1),"Correct spouse marital status",B19(curocc()),"Correct relationship",B3(curocc()));
 
 		elseif B19(1) = 3 and B19(curocc()) <> 3 then
 			errmsg("%s cannot be polygamously married to %s while their marital status is different",
 			strip(B2(curocc())), strip(B2(1)))
-			select("Correct head marital status",B19(1),"Correct spouse marital status",B19(2),"Correct relationship",B3);
+			select("Correct head marital status",B19(1),"Correct spouse marital status",B19(curocc()),"Correct relationship",B3(curocc()));
 
 		endif;
 
@@ -1566,7 +1575,7 @@ postproc
 	
 	//Name can ONLY be a student (80) if is still attending school (code 2 in D26)
 	if D26(curocc()) <> 2 and E31 = 80 then
-		errmsg("%s cannot be a student because s/he never attended school",strip(B2(curocc())))
+		errmsg("%s cannot be a student because s/he is not attended school",strip(B2(curocc())))
 		select("Correct ever attended school", D26(curocc()),
 			   "Correct main activity in the past 7 days", E31);
 	endif;
@@ -3050,10 +3059,15 @@ PROC F47B
 
 	if ( B5(curocc()) - youngestPossibleAgeOfChild ) < F46(curocc()) then
 		errmsg("%s cannot have her last child born before the first born year",strip(B2(curocc()))),
-		select("Correct first child born bearing age", F46, "Correct year of last born child",F47B);
+		select("Correct first child born bearing age", F46(curocc()), "Correct year of last born child",F47B(curocc()));
 	endif;
 
 
+	if cmcode(F47A,F47B) > cmcode(CensusMonth,CensusYear) then
+		errmsg("Selected date is in future. Please select a correct date")
+		select("Correct month of birth", F47A,
+			   "Correct year of birth", F47B);
+	endif;
 PROC F48
 
 	if F48 = 2 and F45C = 0 then
@@ -3766,5 +3780,53 @@ PROC PARTIALLY_COMPLETE_REASON
 	CheckBlank(PARTIALLY_COMPLETE_REASON);
 	PARTIALLY_COMPLETE_REASON = toupper(PARTIALLY_COMPLETE_REASON);
 
+	numeric fertilityEligible = count(DEMOGRAPHIC_ROSTER where B4 = 2 and B7 <> 2 and B5 in 12:50);
+	numeric noFertility = count(FERTILITY_ROSTER where RESPONDENT_AVAILABLE in 2:3);
+{
+	if fertilityEligible > 0 then
+		if noFertility > 0 and APPROVAL_STATUS <> 1 then
+			MISSING_FERTILITY = 1;
+			APPROVAL_STATUS = 0;
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
+	endif;
+	//go back to the list of one/all HH.
+
 	savepartial();
-	stop(0);	//go back to the list of one/all HH.
+	stop(0);
+}
+
+if demode() = add then
+	if HH_LATITUDE = notappl then
+		errmsg("You cannot save the household without its GPS coordinates. Please capture the coordinates.");
+		reenter;
+	else
+		if fertilityEligible > 0 then
+			if noFertility > 0 and APPROVAL_STATUS <> 1 then
+				MISSING_FERTILITY = 1;
+				APPROVAL_STATUS = 0;
+				savepartial();
+				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+				stop(0);
+			endif;
+		else
+			savepartial();
+			stop(0);
+		endif;
+	endif;
+else
+	if fertilityEligible > 0 then
+		if noFertility > 0 and APPROVAL_STATUS <> 1 then
+			MISSING_FERTILITY = 1;
+			APPROVAL_STATUS = 0;
+			savepartial();
+			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
+			stop(0);
+		endif;
+	else
+		savepartial();
+		stop(0);		
+	endif;
+endif;

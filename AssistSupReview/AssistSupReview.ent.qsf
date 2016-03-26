@@ -105,7 +105,7 @@ ENG=}
 Field=ASSIST_SUPERVISOR_REVIEW_DICT.RV_MORE_PEOPLE
 Occurrences=1:50
 ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}}
-ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\b\f0\fs18 Are there more people in this household?\b0\par
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\f0\fs18 Are there more people in this household?\par
 ENG=}
 
 [QUESTION]

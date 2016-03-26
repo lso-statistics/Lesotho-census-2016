@@ -1,5 +1,5 @@
 ﻿[Dictionary]
-Version=CSPro 6.1
+Version=CSPro 6.2
 Label=Staff
 Name=STAFF_DICT
 RecordTypeStart=1
@@ -18,26 +18,26 @@ Name=STAFF_QUEST
 Label=STAFF_CODE
 Name=STAFF_CODE
 Start=2
-Len=4
-ZeroFill=Yes
+Len=6
+DataType=Alpha
 
 [Record]
 Label=Staff record
 Name=STAFF_REC
 RecordTypeValue='1'
-RecordLen=56
+RecordLen=58
 
 [Item]
 Label=STAFF_NAME
 Name=STAFF_NAME
-Start=6
+Start=8
 Len=30
 DataType=Alpha
 
 [Item]
 Label=STAFF_ROLE
 Name=STAFF_ROLE
-Start=36
+Start=38
 Len=1
 
 [ValueSet]
@@ -50,14 +50,14 @@ Value=3;Constituency Supervisor
 [Item]
 Label=STAFF_EA
 Name=STAFF_EA
-Start=37
+Start=39
 Len=11
 DataType=Alpha
 
 [Item]
 Label=District
 Name=S_DISTRICT
-Start=48
+Start=50
 Len=2
 ZeroFill=Yes
 
@@ -78,7 +78,7 @@ Value=10;Thaba-Tseka
 [Item]
 Label=Constituency
 Name=S_CONSTITUENCY
-Start=50
+Start=52
 Len=2
 ZeroFill=Yes
 
@@ -169,7 +169,7 @@ Value=80;Bobatsi
 [Item]
 Label=Community Council
 Name=S_COMMUNITY_COUNCIL
-Start=52
+Start=54
 Len=3
 DataType=Alpha
 
@@ -256,7 +256,7 @@ Value='J05';Mokhotlong
 [Item]
 Label=Zone
 Name=S_ZONE
-Start=55
+Start=57
 Len=1
 ZeroFill=Yes
 
@@ -271,7 +271,7 @@ Value=4;Senqu river valley
 [Item]
 Label=Settlement
 Name=S_SETTLEMENT
-Start=56
+Start=58
 Len=1
 ZeroFill=Yes
 

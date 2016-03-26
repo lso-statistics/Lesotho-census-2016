@@ -306,7 +306,7 @@ function CreateAndRunPFF()
 	filewrite(pffFile,"ZONE=%d",S_ZONE);
 	filewrite(pffFile,"SETTLEMENT=%d",S_SETTLEMENT);
 	filewrite(pffFile,"ENUMERATION_AREA=%s",STAFF_EA);
-	filewrite(pffFile,"STAFF_CODE=%d",USER_CODE);
+	filewrite(pffFile,"STAFF_CODE=%s",USER_CODE);
 	
 	close(pffFile);
 
@@ -354,7 +354,7 @@ function CreateAndRunSRPFF()
 	filewrite(sr_pffFile,"VILLAGE_NAME=%s",VILLAGE_NAME);
 	filewrite(sr_pffFile,"HOUSEHOLD_NUMBER=%d",HOUSEHOLD_NUMBER);
 	filewrite(sr_pffFile,"HOUSEHOLD_HEAD_NAMES=%s",HOUSEHOLD_HEAD_NAMES);
-	filewrite(sr_pffFile,"STAFF_CODE=%d",USER_CODE);
+	filewrite(sr_pffFile,"STAFF_CODE=%s",USER_CODE);
 	
 	close(sr_pffFile);
 
@@ -810,7 +810,8 @@ if fileexist(loginFilename) = 1 then
 			// We have read in staff code from login file
 			// we need to check that it is valid by looking it up in
 			// the staff lookup file.
-			STAFF_CODE = tonumber(codeString);
+			//STAFF_CODE = tonumber(codeString);
+			STAFF_CODE = codeString;
 			if loadcase(STAFF_DICT, STAFF_CODE) = 1 then
 				// User code from login file is valid, use noinput
 				// to avoid entering user code.
@@ -1081,7 +1082,7 @@ endif;
 numeric i = 1;
 
 do while loadcase(LESOTHOCENSUS2016_DICT) <> 0	
-	if HOUSEHOLD_STATUS in 2:6 and APPROVAL_STATUS <> 1 then
+	if HOUSEHOLD_STATUS in 2:5 and APPROVAL_STATUS <> 1 then
 		codes(i) = i;
 		myID(i) = key(LESOTHOCENSUS2016_DICT);
 		labels(i) = maketext("%03d %s  %s", HOUSEHOLD_NUMBER, strip(HOUSEHOLD_HEAD_NAMES), getLabel(HOUSEHOLD_STATUS_VS1, HOUSEHOLD_STATUS));

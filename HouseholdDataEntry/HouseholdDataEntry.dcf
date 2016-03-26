@@ -7376,7 +7376,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=267
+RecordLen=269
 
 [Item]
 Label=Number of visits
@@ -7526,12 +7526,12 @@ Len=6
 Label=Enumerator Code
 Name=ENUMERATOR_CODE
 Start=263
-Len=4
-ZeroFill=Yes
+Len=6
+DataType=Alpha
 
 [Item]
 Label=Missing Fertility
 Name=MISSING_FERTILITY
-Start=267
+Start=269
 Len=1
 ZeroFill=Yes

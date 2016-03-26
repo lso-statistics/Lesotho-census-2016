@@ -483,7 +483,7 @@ Label=RV_Control
 Name=RV_CONTROL
 RecordTypeValue='C'
 Required=No
-RecordLen=196
+RecordLen=200
 
 [Item]
 Label=No of household members
@@ -503,20 +503,20 @@ ZeroFill=Yes
 Label=Supervisor Code
 Name=RV_SUPERVISOR_CODE
 Start=133
-Len=4
-ZeroFill=Yes
+Len=6
+DataType=Alpha
 
 [Item]
 Label=Enumerator Code
 Name=RV_ENUMERATOR_CODE
-Start=137
-Len=4
-ZeroFill=Yes
+Start=139
+Len=6
+DataType=Alpha
 
 [Item]
 Label=Household Latitude
 Name=SHH_LATITUDE
-Start=141
+Start=145
 Len=14
 Decimal=9
 DecimalChar=Yes
@@ -524,7 +524,7 @@ DecimalChar=Yes
 [Item]
 Label=Household Longitude
 Name=SHH_LONGITUDE
-Start=155
+Start=159
 Len=14
 Decimal=9
 DecimalChar=Yes
@@ -532,19 +532,19 @@ DecimalChar=Yes
 [Item]
 Label=Household Altitude
 Name=SHH_ALTITUDE
-Start=169
+Start=173
 Len=6
 
 [Item]
 Label=Household Satellites
 Name=SHH_SATELLITES
-Start=175
+Start=179
 Len=2
 
 [Item]
 Label=Household Accuracy
 Name=SHH_ACCURACY
-Start=177
+Start=181
 Len=4
 Decimal=1
 DecimalChar=Yes
@@ -552,12 +552,12 @@ DecimalChar=Yes
 [Item]
 Label=Household Read Time
 Name=SHH_READ_TIME
-Start=181
+Start=185
 Len=6
 
 [Item]
 Label=Postchecking Date
 Name=POSTCHECKING_DATE
-Start=187
+Start=191
 Len=10
 DataType=Alpha
