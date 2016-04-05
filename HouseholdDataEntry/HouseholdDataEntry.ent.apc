@@ -226,6 +226,15 @@ function captureHH_Coordinates()
 	endif;
 end;
 
+//a function to display date the application was published. This will help us to identify the latest application
+function showVersion()
+
+	numeric publishDay = int(publishdate() / 1000000); // ignore the time
+	errmsg("Application published on: %d", publishDay);
+	//if datediff(publishDay,sysdate("YYYYMMDD")) > 20 then
+	//    errmsg("This program expires after 20 days. Sync to get a new program.");	    
+	//endif; 
+end;
 
 PROC LESOTHOCENSUS2016_FF
 
@@ -235,6 +244,7 @@ preproc
 	userbar (add button, "Delete Person's Record", DeletePerson);
 	userbar (add button, "Delete Deceased",DeleteDeath);
 	userbar (add button, "Capture Household GPS Coordinates", captureHH_Coordinates);
+	userbar (add button, "Show application version", showVersion);
 	userbar (show);
 
 
