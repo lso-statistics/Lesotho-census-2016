@@ -65,7 +65,6 @@ Max=1
 Name=USER_CODE
 Position=253,116,338,136
 Item=USER_CODE,LESOTHOCENSUSMENU_DICT
-UpperCase=Yes
 UseUnicodeTextBox=Yes
 Form=1
   
