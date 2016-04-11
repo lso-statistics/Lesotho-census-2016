@@ -13,7 +13,7 @@ File=.\LesothoCensusMenu.dcf
 Name=FORM000
 Label=LesothoCensusMenu questionnaire
 Level=1
-Size=613,449
+Size=613,421
 CapturePos=450,29
   
 Item=USER_CODE
@@ -27,7 +27,7 @@ Item=APPROVE_CASES
 Item=CONSTITUENCY_EACODE
 Item=IDENTIFIER
   
-Box=18,110,588,424,Thin
+Box=18,109,588,396,Thin
 Box=208,18,381,47,Etched
 Box=71,56,548,92,Etched
 Box=17,9,588,103,Raised
@@ -171,8 +171,10 @@ Form=1
   
 [Field]
 Name=IDENTIFIER
-Position=250,366,478,386
+Position=250,366,405,386
 Item=IDENTIFIER,LESOTHOCENSUSMENU_DICT
+Protected=Yes
+HideInCaseTree=Yes
 UseUnicodeTextBox=Yes
 Form=1
   

@@ -350,6 +350,7 @@ if demode() = add then
 			if APPROVAL_STATUS = 1 then
 				endlevel;
 			else
+				APPROVAL_STATUS = 0;
 				savepartial();
 				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 				stop(0);
@@ -363,6 +364,7 @@ if demode() = add then
 			if APPROVAL_STATUS = 1 then
 				endlevel;
 			else
+				APPROVAL_STATUS = 0;
 				savepartial();
 				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 				stop(0);
@@ -374,6 +376,7 @@ else
 		if APPROVAL_STATUS = 1 then
 			endlevel;
 		else
+			APPROVAL_STATUS = 0;
 			savepartial();
 			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 			stop(0);
@@ -387,6 +390,7 @@ else
 		if APPROVAL_STATUS = 1 then
 			endlevel;
 		else
+			APPROVAL_STATUS = 0;
 			savepartial();
 			errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 			stop(0);
@@ -2915,6 +2919,10 @@ postproc
 	if FERTILITY_RESPONDENT <> totocc(PERSON_ROSTER) + 1 then
 		skip to F40;
 	endif;
+PROC NON_HOUSEHOLD_MEMBER
+
+	CheckBlank(NON_HOUSEHOLD_MEMBER);
+	NON_HOUSEHOLD_MEMBER = toupper(NON_HOUSEHOLD_MEMBER);
 PROC F40
 
 postproc
@@ -3101,10 +3109,6 @@ PROC F50
 
 	savepartial();
 
-PROC NON_HOUSEHOLD_MEMBER
-
-	CheckBlank(NON_HOUSEHOLD_MEMBER);
-	NON_HOUSEHOLD_MEMBER = toupper(NON_HOUSEHOLD_MEMBER);
 PROC G51
 
 	//If there were no deaths in the household in
@@ -3725,6 +3729,7 @@ if demode() = add then
 					endlevel;
 				else
 					MISSING_FERTILITY = 1;
+					APPROVAL_STATUS = 0;
 					savepartial();
 					errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 					stop(0);
@@ -3744,6 +3749,7 @@ else
 				endlevel;
 			else
 				MISSING_FERTILITY = 1;
+				APPROVAL_STATUS = 0;
 				savepartial();
 				errmsg("The supervisor must approve this case in order for the enumerator to complete it");
 				stop(0);

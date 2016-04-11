@@ -125,7 +125,7 @@ Len=11
 DataType=Alpha
 
 [Item]
-Label=Constituency EACode
+Label=Constituency EA Code
 Name=CONSTITUENCY_EACODE
 Start=34
 Len=11

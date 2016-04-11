@@ -22,7 +22,6 @@ cd LesothoCensus2016
 mkdir Application
 mkdir Data
 mkdir DataBackup
-mkdir Documents
 cd Application
 mkdir HouseholdDataEntry
 mkdir Menu
@@ -47,6 +46,11 @@ REM Create .dat lookup file
 
 REM copy lookup files
 copy /y .\Menu\staff.dat .\Deployment\LesothoCensus2016\Application\Menu
+copy /y .\Menu\agebysex.html .\Deployment\LesothoCensus2016\Application\Menu
+copy /y .\Menu\agebysex.js .\Deployment\LesothoCensus2016\Application\Menu
+copy /y .\Menu\d3.v3.min.js .\Deployment\LesothoCensus2016\Application\Menu
+copy /y .\Menu\jquery.min.js .\Deployment\LesothoCensus2016\Application\Menu
+copy /y .\Menu\mustache.min.js .\Deployment\LesothoCensus2016\Application\Menu
 
 REM Copy applications to deployment
 move /y .\Menu\LesothoCensusMenu.pen .\Deployment\LesothoCensus2016\Application\Menu
@@ -62,6 +66,3 @@ copy /y SupervisorInitialSync.pnc .\Deployment\LesothoCensus2016\Application
 copy /y SyncWithEnumerator.pnc .\Deployment\LesothoCensus2016\Application
 copy /y SyncWithServer.pnc .\Deployment\LesothoCensus2016\Application
 copy /y SyncWithSupervisor.pnc .\Deployment\LesothoCensus2016\Application
-
-REM Copy documents
-copy /y .\Documents\Statistics_Act_2001.pdf .\Deployment\LesothoCensus2016\Documents

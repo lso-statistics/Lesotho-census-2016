@@ -5,7 +5,7 @@ Description=Send data to the server
 
 [Connection]
 Type=FTP
-Host=ftp://10.1.30.187
+Host=ftp://192.168.0.131
 Username=cspro
 Password=census2016
 
@@ -19,10 +19,6 @@ Get=SyncWithEnumerator.pnc
 Get=SyncWithSupervisor.pnc
 Get=SyncWithServer.pnc
 
-ServerPath=/LesothoCensus2016/Documents
-ClientPath=/LesothoCensus2016/Documents
-Get=Statistics_Act_2001.pdf
-
 ServerPath=/LesothoCensus2016/Application/HouseholdDataEntry
 ClientPath=/LesothoCensus2016/Application/HouseholdDataEntry
 Get=HouseholdDataEntry.pen
@@ -32,6 +28,11 @@ ClientPath=/LesothoCensus2016/Application/Menu
 Get=LesothoCensusMenu.pen
 Get=LesothoCensusMenu.pff
 Get=staff.dat
+Get=agebysex.html
+Get=agebysex.js
+Get=d3.v3.min.js
+Get=jquery.min.js
+Get=mustache.min.js
 
 ServerPath=/LesothoCensus2016/Application/AssistSupReview
 ClientPath=/LesothoCensus2016/Application/AssistSupReview
