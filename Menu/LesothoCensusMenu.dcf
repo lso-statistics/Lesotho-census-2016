@@ -24,7 +24,7 @@ Len=1
 Label=LesothoCensusMenu record
 Name=LESOTHOCENSUSMENU_REC
 RecordTypeValue='1'
-RecordLen=22
+RecordLen=32
 
 [Item]
 Label=User Code
@@ -69,8 +69,41 @@ Len=3
 ZeroFill=Yes
 
 [Item]
+Label=View Date
+Name=VIEW_DATE
+Start=12
+Len=10
+DataType=Alpha
+
+[ValueSet]
+Label=View Date
+Name=VIEW_DATE_VS1
+Value='View all  ';View all
+Value='10/04/2016';10/04/2016
+Value='11/04/2016';11/04/2016
+Value='12/04/2016';12/04/2016
+Value='13/04/2016';13/04/2016
+Value='14/04/2016';14/04/2016
+Value='15/04/2016';15/04/2016
+Value='16/04/2016';16/04/2016
+Value='17/04/2016';17/04/2016
+Value='18/04/2016';18/04/2016
+Value='19/04/2016';19/04/2016
+Value='20/04/2016';20/04/2016
+Value='21/04/2016';21/04/2016
+Value='22/04/2016';22/04/2016
+Value='23/04/2016';23/04/2016
+Value='24/04/2016';24/04/2016
+Value='25/04/2016';25/04/2016
+Value='26/04/2016';26/04/2016
+Value='27/04/2016';27/04/2016
+Value='28/04/2016';28/04/2016
+Value='29/04/2016';29/04/2016
+Value='30/04/2016';30/04/2016
+
+[Item]
 Label=Choose Report
 Name=CHOOSE_REPORT
-Start=12
+Start=22
 Len=11
 DataType=Alpha

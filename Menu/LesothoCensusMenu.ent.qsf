@@ -43,3 +43,10 @@ ENG={\colortbl ;\red0\green0\blue0;}
 ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs24 Please enter your user code to start the interview.\b0\par
 ENG=}
 
+[QUESTION]
+Field=LESOTHOCENSUSMENU_DICT.VIEW_DATE
+ENG={\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+ENG={\colortbl ;\red0\green0\blue0;}
+ENG={\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\cf1\b\fs24 Which day do you want to see the report for?\par
+ENG=}
+
