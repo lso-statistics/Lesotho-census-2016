@@ -552,7 +552,7 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 			
 			totPopulation = totMales + totFemales;
 			
-			if viewdate = INTERVIEW_DATE then
+			if viewdate = POSTCHECKING_DATE then
 				// get the postcheck values
 				supervisorDataFilename = getSupervisorDataFilename();
 				
@@ -679,7 +679,7 @@ function ShowSummaryReport_AllbyDATE(string viewdate)
 			
 			totPopulation = totMales + totFemales;
 			
-			if viewdate = INTERVIEW_DATE then
+			if viewdate = POSTCHECKING_DATE then
 				// get the postcheck values
 				supervisorDataFilename = getSupervisorDataFilename();				
 				if fileexist(supervisorDataFilename) then	
@@ -845,7 +845,7 @@ else
 		// Login successfull, save out the staff code
 		// so that they don't have to login again until they logout.
 		if setfile(tmpFile, loginFilename, create) = 1 then
-			filewrite(tmpFile, "%d", STAFF_CODE);
+			filewrite(tmpFile, "%s", STAFF_CODE);
 			close(tmpFile);
 			
 			//Save out the enumeration area for the enumerator so that the assisstant supervisor can use it to postcheck 
