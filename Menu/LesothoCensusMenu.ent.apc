@@ -761,6 +761,476 @@ function CreateAndRunCSPFF()
 
 end;
 
+
+{
+Logic for removal of duplicate records from HouseholdDataEntry data files.
+Normally this would not be needed as CSPro will not allow the creation of
+duplicate cases however due to a bug in an earlier version of CSPro the system
+was generating extra copies of a case on partial save. This logic attempts
+to remove any of these extra copies from all data files in a directory.
+}
+
+// max total cases allowed in single data file
+numeric maxCases = 9999; 
+
+// max number of copies of a single case
+numeric maxDups = 999;
+
+// stores the list of unique case ids found in the data file
+array string caseIds(maxCases);
+
+// stores the starting/ending line #s in data file for each copy of case whose
+// id is in corresponding index in caseIds array.
+array caseStartLines(maxCases, maxDups);
+array caseEndLines(maxCases, maxDups);
+
+// Number of times case with id at corresponding index in caseIds array
+// occurs in the data file. This will be the maximum valid index for this
+// case in the caseStartLines/caseEndLines/caseNumValidRecords arrays.
+array caseNumCopies(maxCases);
+
+// Completeness score for each case.
+// First dimension is the case index in caseIds array
+// and second index is the copy number which will between
+// one and caseNumCopies for the same index.
+array caseScores(maxCases, maxDups);
+
+file removeDupsReport, removeDupsInput, removeDupsOutput, removeDupsReportBackup;
+
+// Total number of unique cases found in data file.
+// This is actual size of caseIds array.
+numeric uniqueCasesInFile = 0;
+
+// Total cases, including duplicates, found in data file.
+numeric totalCasesInFile = 0;
+
+list string dataFileListing;
+
+// Return index of case in caseIds array whose
+// case id matches the string id.
+function findCase(string id)
+	numeric i;
+	do i = 1 while i <= uniqueCasesInFile
+		if caseIds(i) = id then
+			findCase = i;
+			exit;
+		endif;
+	enddo;
+	findCase = 0;
+end;
+
+// Add a case to the caseIds, caseStartLines and caseNumCopies arrays.
+function addCase(string id, lineNo)
+	numeric caseIndex = findCase(id);
+	if caseIndex = 0 then
+		// First time we are seeing this case. Add it to the arrays.
+		inc(uniqueCasesInFile);
+		if uniqueCasesInFile > maxCases then
+			errmsg("Max number of cases (%d) exceeded, try breaking this up into smaller files",  maxCases);
+			addCase = 0;
+			exit;
+		endif;
+		caseIndex = uniqueCasesInFile;
+		caseIds(caseIndex) = id;
+		caseNumCopies(caseIndex) = 0;
+	endif;
+	
+	// Update the number of copies found.
+	inc(caseNumCopies(caseIndex));
+	if caseNumCopies(caseIndex) > maxDups then
+		errmsg("Max number of dups per case (%d) exceeded for case %s", maxDups, id);
+		addCase = 0;
+		exit;
+	endif;
+	
+	// Add the start line for this occurrence of case.
+	caseStartLines(caseIndex, caseNumCopies(caseIndex)) = lineNo;
+	
+	addCase = 1;
+end
+
+// Add a end line to caseEndlines array and num valid records for case to caseNumValidRecords array.
+function addEndLineAndScore(string id, endLine, score)
+	numeric caseIndex = findCase(id);
+	caseEndLines(caseIndex, caseNumCopies(caseIndex)) = endLine;
+	caseScores(caseIndex, caseNumCopies(caseIndex)) = score;
+end;
+
+// Create backup folder as child of baseBackupFolder with current date/time and return path.
+function string createBackupFolder(string baseBackupFolder)
+	dircreate(baseBackupFolder);
+	string folder = maketext("%s%08d%06d/", baseBackupFolder, sysdate("YYYYMMDD"), systime());
+	dircreate(folder);
+	createBackupFolder = folder;
+end;
+
+function string filenameFromPath(string path)
+	numeric i;
+	do i = length(path) while i >= 1 and not path[i:1] in "/", "\" by -1
+	enddo;
+	filenameFromPath = path[i + 1];
+end;
+
+function backupFile(string dataFilePath, string backupFolder)
+	string dataFileName = filenameFromPath(dataFilePath);
+	backupFile = filecopy(dataFilePath, backupFolder + dataFileName);
+end;
+
+function backupDataFiles(string dataFileFolder, string fileMask, string baseBackupFolder)
+    dirlist(dataFileListing,dataFileFolder, fileMask);
+	string backupFolder = createBackupFolder(baseBackupFolder);
+	numeric result = 1;
+	numeric dataFileCtr;
+	do dataFileCtr = 1 while dataFileCtr <= length(dataFileListing)
+		string dataFilePath = dataFileListing(dataFileCtr);
+		if backupFile(dataFilePath, backupFolder) <> 1 then
+			result = 0;
+		endif;
+	enddo;
+	backupDataFiles = result;
+end;
+
+
+// Find the copy of the case in the data file that has
+// is the most "complete", i.e. has the final result code
+// set to complete and/or the most valid records.
+// In the case of ties pick the one that comes last in the
+// data file. Returns index of the copy in the array
+// of start/end lines for the case.
+function getCaseCopyToKeep(caseIndex)
+	numeric i;
+	numeric maxValidIndex = 0;
+	numeric maxScore = 0;
+	do i = 1 while i <= caseNumCopies(caseIndex)
+		numeric score = caseScores(caseIndex, i);
+		if score >= maxScore then
+			maxValidIndex = i;
+			maxScore = score;
+		endif;
+	enddo;
+	getCaseCopyToKeep = maxValidIndex;
+end;
+
+function computeRecordScore(string line)
+
+	numeric score = 0;
+	string lineRecType = line[1:1];
+	if lineRecType = "V" then
+		// Final result code gives the most points since
+		// a completed case should always win out over an incomplete case
+		numeric finalResultCode = tonumber(line[155:1]);
+		if finalResultCode = 1 then
+			score = score + 10000;
+		endif;
+		// If result codes are equal then a case with more
+		// visits should win
+		numeric numberOfVisits = tonumber(line[129:1]);
+		if numberOfVisits in 1:3 then
+			score = score + 1000 * numberOfVisits;
+		endif;
+	elseif lineRecType = "H" then
+		// Give an additional point for presence of housing record even if
+		// it is empty so we keep cases with empty housing and visits over
+		// cases with just visits
+		score = score + 1;
+		// If deaths portion of housing record is filled in then
+		// then they got past all invidividuals so the case gets 100 points
+		string deathsPart = line[129:3];
+		if deathsPart <> "" then
+			score = score + 100;
+		endif;
+		// If housing section is filled in then
+		// then they got almost to the end so the case an
+		// additional 100
+		string housingSectionPart = line[132:135];
+		if housingSectionPart <> "" then
+			score = score + 100;
+		endif;
+	elseif lineRecType = "I" then
+		// For individual records one point for the name
+		// and two points for info beyond the name.
+		// Individual record are not weighted highly since
+		// often individual records are deleted in later visits.
+		string namesPart = line[131:40];
+		if namesPart <> "" then
+			score = score + 1;
+		endif;
+		string demographicsPart = line[171:519];
+		if demographicsPart <> "" then
+			score = score + 2;
+		endif;
+	elseif lineRecType = "D" then
+		// For death records one point for the name
+		// and two points for info beyond the name.
+		// Death record are not weighted highly since
+		// often death records are deleted in later visits.
+		namesPart = line[129:30];
+		if namesPart <> "" then
+			score = score + 1;
+		endif;
+		demographicsPart = line[159];
+		if demographicsPart <> "" then
+			score = score + 2;
+		endif;
+	endif;
+	computeRecordScore = score;
+end;
+
+// Concatenate all files in dataFileFolder matching fileMask into one file at concatedFilePath.
+// It is safe to have concatenated be one of the folders being concatenated.
+function concatenateFiles(string dataFileFolder, string fileMask, string concatenatedFilePath)
+
+	// Write to a temp file that we will use to replace the concatenated file once complete.
+	string tmpFilePath = dataFileFolder + "tmpDataForRemoveDups.dat";
+	
+	if fileconcat(tmpFilePath, dataFileFolder + fileMask) then
+	
+		filedelete(dataFileFolder + fileMask);
+		if filerename(tmpFilePath, concatenatedFilePath) = 0 then
+			concatenateFiles = 0;
+			exit;
+		endif;
+		concatenateFiles = 1;
+	else
+		concatenateFiles = 0;
+	endif;	
+end;
+
+// Remove all duplicate cases in data files in dataFileFolder matching STAFF_EA and
+// combine them into a single data file.
+// Make backup copies of each data file and put it in subdirectory of baseBackupFolder
+// with current date/time.
+// Displays a report showing results for each file.
+function removeDuplicates(string dataFileFolder, string baseBackupFolder)
+
+	if STAFF_EA = "" then
+		errmsg("You must login to use this function");
+	endif;
+	 
+	// Use all files that start with EA code so that we include backups 012345678912p.dat and 012345678912old.dat
+	// created by IT coordinators.
+	string eaDataFileMask = maketext("%s*.dat", STAFF_EA);
+
+	if not fileexist(dataFileFolder + eaDataFileMask) then
+		errmsg("No data files to remove duplicates from");
+		exit;	
+	endif;
+	
+	if backupDataFiles(dataFileFolder, eaDataFileMask, baseBackupFolder) = 0 then
+		errmsg("Failed to create backup. Unable to remove duplicates");
+		exit;
+	endif;
+
+	string dataFilePath = dataFileFolder + STAFF_EA + ".dat";	
+	
+	// Combine the backup and the new files before removing duplicates
+	if concatenateFiles(dataFileFolder, eaDataFileMask, dataFilePath) = 0 then
+		errmsg("Failed to combine data and backup files. Unable to remove duplicates");
+		exit;
+	endif;
+
+	string reportFilename = maketext("%sremovedups-report.txt", pathname(Application));
+	string reportBackupFilename = maketext("%sremovedups-report.bk", pathname(Application));
+	filecopy(reportFilename, reportBackupFilename);
+	setfile(removeDupsReport, reportFilename, update);
+	
+	filewrite(removeDupsReport, "Duplicate removal results");
+	filewrite(removeDupsReport, "Folder: %s", dataFileFolder);
+	filewrite(removeDupsReport, "Performed: %s at %s", edit("99/99",sysdate("DDMM")), edit("99:99:99",systime()));
+	filewrite(removeDupsReport, "");
+	
+	uniqueCasesInFile = 0;
+	totalCasesInFile = 0;
+							
+	setfile(removeDupsInput, dataFilePath);
+
+	string currentCase = "";
+	string lastRecType = "";
+	string line;
+	numeric lineNo = 0;
+
+	numeric hadError = 0;
+				
+	numeric caseScore = 0;
+			
+	// Read through the data file and build the array of cases.
+	while fileread(removeDupsInput, line) do
+		string lineRecType = line[1:1];
+		inc(lineNo);
+		
+		// Skip deleted records or empty lines (added by IT coordinators editing files in notepad)
+		if lineRecType = "~" or line = "" then
+			next;
+		endif;
+		
+		// Make sure that this is a known record type, if not this file is really messed up
+		// and needs to be looked at
+		if not lineRecType in "I", "V", "H", "D" then
+			hadError = 1;
+			filewrite(removeDupsReport, "Invalid record type found file. Please contact the IT team for help.");
+			break; 					
+		endif;
+		
+		string lineCase = line[2:127];
+		
+		// Check to see if this line is the start of a new case.
+		// A new case starts when either the case id is different from
+		// the case id on the last line or if the case ids are the same
+		// but the record type on the last line was a visits record since
+		// visits is always the last record in a case. This captures the case
+		// where the duplicates are adjacent in the data file.
+		if lineCase <> currentCase or lastRecType = "V" then
+
+			// Add score and end line for last case
+			if currentCase <> "" then
+				addEndLineAndScore(currentCase, lineNo - 1, caseScore);
+				caseScore = 0;
+			endif;
+				
+			currentCase = lineCase;
+			if addCase(lineCase, lineNo) = 0 then
+				hadError = 1;
+				filewrite(removeDupsReport, "Failed to process case %s", lineCase);
+				break; 					
+			endif;
+			inc(totalCasesInFile);
+
+		endif;
+		lastRecType = lineRecType;
+						
+		caseScore = caseScore + computeRecordScore(line);
+	enddo;
+	
+	addEndLineAndScore(currentCase, lineNo, caseScore);
+	
+	close(removeDupsInput);
+		
+	// See if we found any duplicate cases.
+	numeric i;
+	numeric foundDuplicate = 0;
+	do i = 1 while i <= uniqueCasesInFile
+		if caseNumCopies(i) > 1 then
+			foundDuplicate = 1;
+			break;
+		endif;
+	enddo;
+	
+	if not foundDuplicate then
+		filewrite(removeDupsReport, "No duplicates found");
+	else
+		// Write out list of dups found.
+		filewrite(removeDupsReport, "Removed duplicates of the following cases. Please review them for correctness.");
+		filewrite(removeDupsReport, "");
+		do i = 1 while i <= uniqueCasesInFile
+			if caseNumCopies(i) > 1 then
+				filewrite(removeDupsReport, "%s", caseIds(i));
+{						filewrite(removeDupsReport, "%s: %d occurrences\n", caseIds(i), caseNumCopies(i));
+				numeric j;
+				do j = 1 while j <= caseNumCopies(i)
+					filewrite(removeDupsReport, "    Lines %d-%d: score %d\n", 
+						caseStartLines(i, j), 
+						caseEndLines(i, j), 
+						caseScores(i, j));
+				enddo;
+				numeric indexOfCopyToKeep = getCaseCopyToKeep(i);
+				if indexOfCopyToKeep <> caseNumCopies(i) then
+					filewrite(removeDupsReport, "    Copy to keep is not last in file. Using copy at line %d instead of last copy at line %d",
+						caseStartLines(i, indexOfCopyToKeep),
+						caseStartLines(i, caseNumCopies(i)));
+				endif;
+}
+			endif;
+		enddo;
+					
+		// Write out the new data file with duplicates removed.
+		setfile(removeDupsInput, dataFilePath);
+
+		// Write to a temp file that we will use to replace the data file once complete.
+		string tmpFilePath = dataFileFolder + "tmpDataForRemoveDups.dat";
+		setfile(removeDupsOutput, tmpFilePath, create);
+		
+		lineNo = 0;
+		while fileread(removeDupsInput, line) do
+			lineRecType = line[1:1];
+			inc(lineNo);
+			
+			// Skip deleted records or empty lines (added by IT coordinators editing files in notepad)
+			if lineRecType = "~" or line = "" then
+				next;
+			endif;
+
+			lineCase = line[2:127];
+			
+			// Find the case by id so we can see if it is a duplicate
+			numeric caseIndex = findCase(lineCase);
+			if caseIndex <= 0 then
+				filewrite(removeDupsReport, "Failed to find case %s in cases list from first pass. Skipping file.", lineCase);
+				hadError = 1;
+				break;
+			endif;
+			
+			// Get the start/end of copy of this case with most valid records.
+			numeric indexOfCopyToKeep = getCaseCopyToKeep(caseIndex);
+			numeric startLineForCopyToKeep = caseStartLines(caseIndex, indexOfCopyToKeep);
+			numeric endLineForCopyToKeep = caseEndLines(caseIndex, indexOfCopyToKeep);
+			
+			// Only copy the line to the output file if it is part of the copy being kept.
+			if lineNo in startLineForCopyToKeep:endLineForCopyToKeep then
+			
+				// Mark as dups removed
+				if caseNumCopies(caseIndex) > 1 and line[1:1] = "V" and line[216:1] <> "" then
+					line[270:1] = "1";
+				endif;
+				
+				if filewrite(removeDupsOutput, line) = 0 then
+					hadError = 1;
+					filewrite(removeDupsReport, "Failed to write to temporary file. Skipping file.");
+					break;
+				endif;
+			endif;
+		enddo;
+		close(removeDupsInput);
+		close(removeDupsOutput);
+
+		if not hadError then
+			// Delete the original data file and rename the tmp folder to replace the original
+			if filedelete(dataFilePath) <> 1 then
+				filewrite(removeDupsReport, "Failed to delete original data file. Skipping file.");
+			else
+				if filerename(tmpFilePath, dataFilePath) = 0 then
+					filewrite(removeDupsReport, "Failed to update original data file. You will need to restore if from the backup file.");					
+				endif;
+			endif;
+		endif;
+		filedelete(tmpFilePath);
+	endif;
+
+	// Copy log of previous remove duplicates runs from backup report file
+	if setfile(removeDupsReportBackup, reportBackupFilename) then
+		filewrite(removeDupsReport, "");
+		filewrite(removeDupsReport, "-------------------------------");
+		filewrite(removeDupsReport, "");
+		while fileread(removeDupsReportBackup, line) do
+			filewrite(removeDupsReport, line);
+		enddo;
+		close(removeDupsReportBackup);
+	endif;
+		
+	close(removeDupsReport);
+	
+	// Display the report
+	if getos() in 20:29 then
+		// Android - use "browse:"
+		execsystem(maketext("view:%s", reportFilename));
+	else
+		// Windows - use "explorer.exe <filename>"
+		execsystem(maketext("%sexplorer.exe %s", 
+						    pathname(Windows), 
+						    reportFilename));
+	endif;
+end;
+
+
 PROC LESOTHOCENSUSMENU_FF
 preproc
 
@@ -796,7 +1266,6 @@ string SDFolder = pathname(CSEntryExternal);
 
 dircreate(SDFolder);
 filecopy(enumeratorDataFilename, SDFolder);
- 
 
 PROC USER_CODE
 preproc
@@ -871,7 +1340,12 @@ else
 endif;
 
 PROC ENUMERATOR_MENU
+preproc
+userbar(clear);
+userbar(add button, "Remove Duplicate Households (Enumerator Data Files)", removeDuplicates(enumeratorDataFileFolder, enumeratorDataFileFolder + "BackupsForDupRemoval/"));
+userbar(show);
 
+postproc
 if ENUMERATOR_MENU = 1 then		//launch the screen for household data entry
 	// Launch data entry
 	CreateAndRunPFF();

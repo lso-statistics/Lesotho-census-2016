@@ -7376,7 +7376,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=269
+RecordLen=270
 
 [Item]
 Label=Number of visits
@@ -7535,3 +7535,16 @@ Name=MISSING_FERTILITY
 Start=269
 Len=1
 ZeroFill=Yes
+
+[Item]
+Label=Duplicates removed
+Name=DUPLICATES_REMOVED
+Start=270
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Duplicates removed
+Name=DUPLICATES_REMOVED_VS1
+Value=0;No
+Value=1;Yes
