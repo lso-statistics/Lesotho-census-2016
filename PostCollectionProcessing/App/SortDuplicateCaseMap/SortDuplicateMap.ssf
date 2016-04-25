@@ -1,0 +1,13 @@
+﻿[CSSort]
+Version=CSPro 6.2
+
+[Dictionaries]
+File=..\..\Dict\MapLinesToDuplicates.dcf
+
+[SortType]
+Type=Record
+Using=MAPLINESTODUPLICATES_REC,"MapLinesToDuplicates record"
+
+[Keys]
+Key=Ascending,L2D_CASE_ID,"Case ID"
+Key=Ascending,L2D_LINE_NUMBER,"Line number"

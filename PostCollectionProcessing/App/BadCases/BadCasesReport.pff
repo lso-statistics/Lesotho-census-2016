@@ -1,0 +1,20 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\BadCasesReport.bch
+Listing=.\BadCasesReport.lst
+
+
+[UserFiles]
+FILE_MAINDATA_LST=..\RemoveBlankPersonRecs\RemoveBlankPersonRecs.lst
+FILE_OUTPUT=.\BadCasesReport.csv
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+

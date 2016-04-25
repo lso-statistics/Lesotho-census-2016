@@ -1,0 +1,20 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\ApplyDuplicateCaseMap.bch
+InputData=..\..\Data\02-RemoveBlankLines\Census2016-02-RemoveBlanks.dat
+OutputData=..\..\Data\03-RemoveDuplicates\Census2016-03-RemoveDups.dat
+Listing=.\ApplyDuplicateCaseMap.lst
+
+[ExternalFiles]
+MAPLINESTODUPLICATES_DICT=..\..\Data\Working\DuplicateMapPruned.dat
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+

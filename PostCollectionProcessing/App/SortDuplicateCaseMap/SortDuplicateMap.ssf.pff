@@ -1,0 +1,14 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Sort
+Description=Record sort on duplicate case map so that it can be pruned
+
+[Files]
+Application=.\SortDuplicateMap.ssf
+InputData=..\..\Data\Working\DuplicateMap.dat
+OutputData=..\..\Data\Working\DuplicateMapSorted.dat
+Listing=.\SortDuplicateMap.ssf.lst
+
+[Parameters]
+ViewListing=OnError
+ViewResults=No

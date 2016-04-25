@@ -1,0 +1,67 @@
+﻿[FormFile]
+Version=CSPro 6.2
+Name=BADCASES_FF
+Label=BadCasesReport
+DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
+FieldEntryFont=0018 0000 0000 0000 0600 0000 0000 0000 0000 0000 0000 0000 0000 Courier New
+Type=OperatorControlled
+  
+[Dictionaries]
+File=.\BadCases.dcf
+  
+[Form]
+Name=FORM000
+Label=(Id Items)
+Level=1
+Size=300,300
+  
+Item=BADCASES_ID
+  
+[EndForm]
+  
+[Form]
+Name=FORM001
+Label=BadCases record
+Level=1
+Size=300,300
+  
+Item=DUMMYVAL
+  
+[EndForm]
+  
+[Level]
+Name=BADCASES_QUEST
+Label=BadCases questionnaire
+  
+[Group]
+Required=Yes
+Name=IDS0_EDT
+Label=(Id Items)
+Form=1
+LogicControl=No
+Max=1
+  
+[Field]
+Name=BADCASES_ID
+Item=BADCASES_ID,BADCASES_DICT
+Form=1
+  
+[EndGroup]
+  
+[Group]
+Required=Yes
+Name=BADCASES_REC_EDT
+Label=BadCases record
+Form=2
+LogicControl=No
+Type=Record
+TypeName=BADCASES_REC
+Max=1
+  
+[Field]
+Name=DUMMYVAL
+Item=DUMMYVAL,BADCASES_DICT
+Form=2
+  
+[EndGroup]
+  

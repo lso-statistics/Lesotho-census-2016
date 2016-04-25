@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=RemoveBlanks
+Name=EMPTYBATCH
+AppType=Batch
+[AppCode]
+File=.\RemoveBlankPersonRecs.bch.apc
+[Message]
+File=.\RemoveBlankPersonRecs.bch.mgf
+[Order]
+File=.\RemoveBlankPersonRecs.ord
+[Dictionary Types]
+Dict-Type=.\HouseholdDataEntry.dcf,Input,.\RemoveBlankPersonRecs.ord

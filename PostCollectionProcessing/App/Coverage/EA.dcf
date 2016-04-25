@@ -1,0 +1,42 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=EA
+Name=EA_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Relative
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=EA questionnaire
+Name=EA_QUEST
+
+[IdItems]
+
+[Item]
+Label=EA identification
+Name=EA_ID
+Start=1
+Len=11
+ZeroFill=Yes
+
+[Record]
+Label=EA record
+Name=EA_REC
+RecordTypeValue=''
+RecordLen=15
+
+[Item]
+Label=Status Flag
+Name=STATUS_FLAG
+Start=12
+Len=1
+DataType=Alpha
+
+[Item]
+Label=Total Cases
+Name=TOTAL_CASES
+Start=13
+Len=3
+ZeroFill=Yes

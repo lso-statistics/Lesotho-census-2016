@@ -1,0 +1,109 @@
+﻿{ Apply the duplicate case map to a data file to remove duplicate cases.
+  Takes as input the main data file containing duplicates and the 
+  external data file containing the mapping between lines and duplicate
+  cases that was generated from the main data file.
+  Meant to be run after BuildDuplicateCaseMap and PruneDuplicateCaseMap.
+  
+  The duplicate case map contains a mapping between the starting line
+  number in the data file of a case and info about the duplicate of
+  that case if there is any. After running PruneDuplicateCaseMap the
+  mapping will only contain entries for cases that are duplicated.
+  This means that if the start line of the case is not found in the
+  mapping then there are no duplicates of that case in the data file.
+  
+  If a case is found in the map then the keep flag in the mapping
+  determines whether or not the copy of the case at this line
+  number is the one we should keep. This will be the one with
+  the highest completion score which is set by BuildDuplicateCaseMap.
+  
+  This program deals with both adjacent and non-adjacent duplicates
+  where an adjacent duplicate is determined by the presence of an
+  additional record in the same case after the visits record.
+}
+PROC GLOBAL
+
+// Track current line number in file.
+numeric lineNo = 1;
+numeric totalCases = 0;
+
+// Find the last line in the case starts at start line
+function findCaseEndLine(startLine)
+	numeric i;
+	// Check for a visitors record
+	do i = startLine while i < totocc(CASELINES_REC_EDT)
+		if RECORD_TYPE(i) = "V" then
+			// Found visitor record, must be last line
+			findCaseEndLine = i;
+			exit;
+		endif;
+	enddo;
+	// No visitor record before end of case
+	findCaseEndLine = totocc(CASELINES_REC_EDT);
+end;
+
+// Mark the case starting at startLine and
+// ending at endLine as a duplicate by setting
+// the DUPLICATES_REMOVED variable in the
+// visitors record.
+function markAsDuplicatesRemoved(startLine, endLine)
+	numeric i;
+	do i = startLine while i <= endLine
+		if RECORD_TYPE(i) = "V" then
+			RECORD_DATA(i)[142:1] = "2";
+		endif;
+	enddo;
+end;
+
+PROC CASELINES_FF
+
+PROC CASELINES_QUEST
+preproc
+
+// See which, if any, cases we should keep. Since adjacent duplicates
+// are loaded as one case we have to look for the presence of an extra
+// visitors record to find duplicate adjacent cases. For example if
+// we have a visitors record followed by an individual record then
+// the individual record is really the start of a new case.
+numeric toKeepStart = 0;
+numeric toKeepEnd = 0;
+numeric i;
+do i = 1 while i <= totocc(CASELINES_REC_EDT)
+	// New case start is either the first line or the first line after
+	// a visitor record.
+	if i = 1 or RECORD_TYPE(i - 1) = "V" then
+		totalCases = totalCases + 1;
+
+		// Check to see if the case is in the list of duplicates to skip.
+		L2D_LINE_NUMBER = lineNo + i - 1;
+		if not loadcase(MAPLINESTODUPLICATES_DICT, L2D_LINE_NUMBER) then
+			// Not in the list of duplcites so we want to keep
+			toKeepStart = i;
+			toKeepEnd = findCaseEndLine(toKeepStart);
+		else
+			if L2D_KEEP = 1 then
+				// In the list of duplicates but this is the copy to keep
+				toKeepStart = i;
+				toKeepEnd = findCaseEndLine(toKeepStart);
+				markAsDuplicatesRemoved(toKeepStart, toKeepEnd);
+				errmsg("Retaining duplicate case %s on lines %d-%d", LINES_ID, toKeepStart, toKeepEnd) summary denom = totalCases;
+			else
+				// In the list but not the one to keep. It will get skipped below.
+				errmsg("Skipping duplicate case %s on lines %d-%d", LINES_ID, toKeepStart, toKeepEnd) summary denom = totalCases;
+			endif;
+		endif;
+	endif;
+enddo;
+
+lineNo = lineNo + totocc(CASELINES_REC_EDT);
+
+// Didn't find anything to keep so skip the entire case
+if toKeepStart = 0 then
+	skip case;
+endif;
+
+// Delete all the records that are not in the range that should be kept
+do i = totocc(CASELINES_REC_EDT) while i >= 1 by -1
+	if not i in toKeepStart:toKeepEnd then
+		delete(CASELINES_REC_EDT(i));
+	endif;
+enddo;

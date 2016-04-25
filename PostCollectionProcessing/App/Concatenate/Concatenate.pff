@@ -1,0 +1,12 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Concatenate
+Description=Concatenate raw data files
+
+[Files]
+InputData=..\..\Data\00-RawData\*.dat
+OutputData=..\..\Data\01-Concatenate\Census2016-01-Concat.dat
+
+[Parameters]
+ViewListing=OnError
+ViewResults=No

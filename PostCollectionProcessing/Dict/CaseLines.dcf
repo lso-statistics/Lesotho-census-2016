@@ -1,0 +1,44 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=CaseLines
+Name=CASELINES_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Absolute
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=CaseLines questionnaire
+Name=CASELINES_QUEST
+
+[IdItems]
+
+[Item]
+Label=Case ID
+Name=LINES_ID
+Start=2
+Len=127
+DataType=Alpha
+
+[Record]
+Label=CaseLines record
+Name=CASELINES_REC
+RecordTypeValue=''
+Required=No
+MaxRecords=9999
+RecordLen=1127
+
+[Item]
+Label=Record Type
+Name=RECORD_TYPE
+Start=1
+Len=1
+DataType=Alpha
+
+[Item]
+Label=Data
+Name=RECORD_DATA
+Start=129
+Len=999
+DataType=Alpha

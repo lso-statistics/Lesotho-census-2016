@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=BADCASESREPORT
+Name=BADCASESREPORT
+AppType=Batch
+[AppCode]
+File=.\BadCasesReport.bch.apc
+[Message]
+File=.\BadCasesReport.bch.mgf
+[Order]
+File=.\BadCasesReport.ord
+[Dictionary Types]
+Dict-Type=.\BadCases.dcf,Input,.\BadCasesReport.ord

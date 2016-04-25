@@ -1,0 +1,16 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\PruneDuplicateCaseMap.bch
+InputData=..\..\Data\Working\DuplicateMapSorted.dat
+OutputData=..\..\Data\Working\DuplicateMapPruned.dat
+Listing=.\PruneDuplicateCaseMap.lst
+
+[Parameters]
+ViewListing=OnError
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No

@@ -1,0 +1,36 @@
+﻿{
+Remove blank lines introduced by hand editing the data files.
+Uses a different dictionary to be able to read the file 
+without triggering invalid record type/missing group and other
+structure errors.
+}
+
+PROC GLOBAL
+numeric lineNo = 1;
+PROC REMOVEBLANKLINES_FF
+
+PROC REMOVEBLANKLINES_QUEST
+preproc
+
+if LINES_ID = "" then
+	numeric i = 0;
+	numeric numLinesToKeep = 0;
+	do i = totocc(LINES_REC_EDT) while i > 0 by -1
+
+		if RECORD_TYPE(i) = "" and DATA(i) = "" then
+			errmsg("Skipping blank line %d", lineNo) summary denom=lineNo;
+			delete(LINES_REC_EDT(i));
+		else
+			numLinesToKeep = numLinesToKeep + 1;
+			errmsg("Line %d missing case ID: %s%127s%s", lineNo, RECORD_TYPE(i), LINES_ID, DATA(i)) denom=lineNo; 
+		endif;
+		
+		lineNo = lineNo + 1;
+	enddo;
+	
+	if numLinesToKeep = 0 then
+		skip case;
+	endif;
+else
+	lineNo = lineNo + totocc(LINES_REC_EDT);
+endif;

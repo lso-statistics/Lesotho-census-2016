@@ -1,0 +1,33 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=BadCases
+Name=BADCASES_DICT
+RecordTypeStart=1
+RecordTypeLen=1
+Positions=Relative
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=BadCases questionnaire
+Name=BADCASES_QUEST
+
+[IdItems]
+
+[Item]
+Label=BadCases identification
+Name=BADCASES_ID
+Start=2
+Len=1
+
+[Record]
+Label=BadCases record
+Name=BADCASES_REC
+RecordTypeValue='1'
+RecordLen=3
+
+[Item]
+Label=DummyVal
+Name=DUMMYVAL
+Start=3
+Len=1

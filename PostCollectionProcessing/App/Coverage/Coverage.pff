@@ -1,0 +1,21 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\Coverage.bch
+InputData=..\..\Data\04-RemoveEmptyIndividuals\Census2016-04-RemoveEmptyIndividuals.dat
+Listing=.\Coverage.lst
+
+[ExternalFiles]
+EA_DICT=.\EACodes.prn
+
+[UserFiles]
+FILE_COVERAGE_REPORT=.\CoverageReport.dat
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No

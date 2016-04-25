@@ -1,0 +1,46 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=MapLinesToDuplicates
+Name=MAPLINESTODUPLICATES_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Relative
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=MapLinesToDuplicates questionnaire
+Name=MAPLINESTODUPLICATES_QUEST
+
+[IdItems]
+
+[Item]
+Label=Line number
+Name=L2D_LINE_NUMBER
+Start=1
+Len=15
+
+[Record]
+Label=MapLinesToDuplicates record
+Name=MAPLINESTODUPLICATES_REC
+RecordTypeValue=''
+RecordLen=148
+
+[Item]
+Label=Case ID
+Name=L2D_CASE_ID
+Start=16
+Len=127
+DataType=Alpha
+
+[Item]
+Label=Score
+Name=L2D_SCORE
+Start=143
+Len=5
+
+[Item]
+Label=Keep this copy
+Name=L2D_KEEP
+Start=148
+Len=1

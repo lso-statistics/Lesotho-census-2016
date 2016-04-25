@@ -1,0 +1,75 @@
+﻿[FormFile]
+Version=CSPro 6.2
+Name=REMOVEBLANKLINES_FF
+Label=RemoveBlankLines
+DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
+FieldEntryFont=0018 0000 0000 0000 0600 0000 0000 0000 0000 0000 0000 0000 0000 Courier New
+Type=OperatorControlled
+  
+[Dictionaries]
+File=.\RemoveBlankLines.dcf
+  
+[Form]
+Name=FORM000
+Label=(Id Items)
+Level=1
+Size=300,300
+  
+Item=LINES_ID
+  
+[EndForm]
+  
+[Form]
+Name=FORM001
+Label=Lines record
+Level=1
+Repeat=LINES_REC
+Size=300,300
+  
+Item=RECORD_TYPE
+Item=DATA
+  
+[EndForm]
+  
+[Level]
+Name=REMOVEBLANKLINES_QUEST
+Label=RemoveBlankLines questionnaire
+  
+[Group]
+Required=Yes
+Name=IDS0_EDT
+Label=(Id Items)
+Form=1
+LogicControl=No
+Max=1
+  
+[Field]
+Name=LINES_ID
+Item=LINES_ID,REMOVEBLANKLINES_DICT
+Form=1
+  
+[EndGroup]
+  
+[Group]
+Required=No
+Name=LINES_REC_EDT
+Label=Lines record
+Form=2
+LogicControl=No
+Type=Record
+TypeName=LINES_REC
+Max=9999
+  
+[Field]
+Name=RECORD_TYPE
+Item=RECORD_TYPE,REMOVEBLANKLINES_DICT
+Form=2
+  
+  
+[Field]
+Name=DATA
+Item=DATA,REMOVEBLANKLINES_DICT
+Form=2
+  
+[EndGroup]
+  

@@ -1,0 +1,18 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\RemoveBlankLines.bch
+InputData=..\..\Data\01-Concatenate\Census2016-01-Concat.dat
+OutputData=..\..\Data\02-RemoveBlankLines\Census2016-02-RemoveBlanks.dat
+Listing=.\RemoveBlankLines.lst
+
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+

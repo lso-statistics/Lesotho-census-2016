@@ -1,0 +1,28 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=FileList
+Name=FILELIST_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Relative
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=FileList questionnaire
+Name=FILELIST_QUEST
+
+[IdItems]
+
+[Item]
+Label=File name
+Name=FILE_NAME
+Start=1
+Len=127
+DataType=Alpha
+
+[Record]
+Label=FileList record
+Name=FILELIST_REC
+RecordTypeValue=''
+RecordLen=127

@@ -1,0 +1,40 @@
+﻿[CSPro Production Runner]
+[NumberProcesses]
+1
+[PathReference]
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\Production\
+[Tree]
+[Group]
+[Expand]
+Census Postprocessing
+[Group]
+[Expand]
+Concatenate
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\Concatenate\Concatenate.pff
+[EndGroup]
+[Group]
+[Expand]
+Remove blank lines
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankLines\RemoveBlankLines.pff
+[EndGroup]
+[Group]
+[Expand]
+Remove duplicate cases
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\BuildDuplicateCaseMap\BuildDuplicateCaseMap.pff
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\SortDuplicateCaseMap\SortDuplicateMap.ssf.pff
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\PruneDuplicateCaseMap\PruneDuplicateCaseMap.pff
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\ApplyDuplicateCaseMap\ApplyDuplicateCaseMap.pff
+[EndGroup]
+[Group]
+[Expand]
+Remove blank individual records from end of case
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankPersonRecs\RemoveBlankPersonRecs.pff
+[EndGroup]
+[Group]
+[Expand]
+Initial reports
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\BadCases\BadCasesReport.pff
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\Coverage\Coverage.pff
+C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\LesothoTabs\LesothoTabs.xtb.pff
+[EndGroup]
+[EndGroup]

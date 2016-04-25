@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=PRUNEDUPLICATECASEMAP
+Name=PRUNEDUPLICATECASEMAP
+AppType=Batch
+[AppCode]
+File=.\PruneDuplicateCaseMap.bch.apc
+[Message]
+File=.\PruneDuplicateCaseMap.bch.mgf
+[Order]
+File=.\PruneDuplicateCaseMap.ord
+[Dictionary Types]
+Dict-Type=..\..\Dict\MapDuplicatesToLines.dcf,Input,.\PruneDuplicateCaseMap.ord

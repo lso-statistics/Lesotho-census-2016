@@ -1,0 +1,15 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=LESOTHOTABS
+Name=LESOTHOTABS
+AppType=Tabulation
+[External Dictionaries]
+File=.\LesothoTabs.xtb.wrk.dcf
+[AppCode]
+File=.\LesothoTabs.xtb.apc
+[Message]
+File=.\LesothoTabs.xtb.mgf
+[TabSpecs]
+File=.\LesothoTabs.xts
+[Dictionary Types]
+Dict-Type=.\LesothoTabs.xtb.wrk.dcf,Working

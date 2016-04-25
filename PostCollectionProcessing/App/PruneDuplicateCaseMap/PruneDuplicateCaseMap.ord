@@ -1,0 +1,82 @@
+﻿[FormFile]
+Version=CSPro 6.2
+Name=MAPDUPLICATESTOLINES_FF
+Label=PruneDuplicateCaseMap
+DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
+FieldEntryFont=0018 0000 0000 0000 0600 0000 0000 0000 0000 0000 0000 0000 0000 Courier New
+Type=OperatorControlled
+  
+[Dictionaries]
+File=..\..\Dict\MapDuplicatesToLines.dcf
+  
+[Form]
+Name=FORM000
+Label=(Id Items)
+Level=1
+Size=300,300
+  
+Item=D2L_CASE_ID
+  
+[EndForm]
+  
+[Form]
+Name=FORM001
+Label=MapDuplicatesToLines record
+Level=1
+Repeat=MAPDUPLICATESTOLINES_REC
+Size=300,300
+  
+Item=D2L_LINE_NUMBER
+Item=D2L_SCORE
+Item=D2L_KEEP
+  
+[EndForm]
+  
+[Level]
+Name=MAPDUPLICATESTOLINES_QUEST
+Label=MapDuplicatesToLines questionnaire
+  
+[Group]
+Required=Yes
+Name=IDS0_EDT
+Label=(Id Items)
+Form=1
+LogicControl=No
+Max=1
+  
+[Field]
+Name=D2L_CASE_ID
+Item=D2L_CASE_ID,MAPDUPLICATESTOLINES_DICT
+Form=1
+  
+[EndGroup]
+  
+[Group]
+Required=Yes
+Name=MAPDUPLICATESTOLINES_REC_EDT
+Label=MapDuplicatesToLines record
+Form=2
+LogicControl=No
+Type=Record
+TypeName=MAPDUPLICATESTOLINES_REC
+Max=9999
+  
+[Field]
+Name=D2L_LINE_NUMBER
+Item=D2L_LINE_NUMBER,MAPDUPLICATESTOLINES_DICT
+Form=2
+  
+  
+[Field]
+Name=D2L_SCORE
+Item=D2L_SCORE,MAPDUPLICATESTOLINES_DICT
+Form=2
+  
+  
+[Field]
+Name=D2L_KEEP
+Item=D2L_KEEP,MAPDUPLICATESTOLINES_DICT
+Form=2
+  
+[EndGroup]
+  

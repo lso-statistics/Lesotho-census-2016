@@ -1,0 +1,52 @@
+﻿{
+ This program updates the number of cases for each enumeration area code in the External file for EA_DICT.
+ If the EA is not found in the external file the EA code is added to it with an "X"  as the status flag.
+ At the start of each run the external file is initialised with the EACodes-initial.dat file which has all the 
+ EA codes from the area names file with status code set to N and cases set to 000.
+ 
+ 
+ Input: Concatenated main data file.
+ Input: EACodes-initial.dat formatted as EA codes with status and the number of cases set to 000 
+ Output: EA_DICT external file .prn file
+ 
+ The excel file EAStatus.xlsx is set to refresh on file open with the new set of results. 
+ Make sure to select the EA_DICT prn file on opening the xls file to import.
+}
+PROC GLOBAL
+
+numeric currentEA=0;
+numeric loadCaseFlag = 0;
+
+PROC HOUSEHOLDDATAENTRY_FF
+preproc 
+{initialize the EACodes file status to N and number of Cases to 0 }
+close(EA_DICT);
+filecopy("EACodes-initial.dat",filename(EA_DICT));
+open(EA_DICT);
+
+postproc 
+ {Final write in case the status has not been updated  }
+  writecase(EA_DICT,EA_ID);
+
+ 
+PROC LESOTHOCENSUS2016_QUEST
+if (currentEA <> ENUMERATION_AREA) then 
+	currentEA = ENUMERATION_AREA;
+	 if(EA_ID <> notappl) then 
+	    errmsg("Writing Total Cases for current EA =%d , Total Cases =%d", EA_ID, TOTAL_CASES);
+	 	writecase(EA_DICT,EA_ID);
+	 endif;
+	 EA_ID = ENUMERATION_AREA;
+	 loadCaseFlag = loadcase(EA_DICT,EA_ID);
+
+	 if (loadCaseFlag <> 1) then {EA not found in the external file}
+	 	STATUS_FLAG='X';
+	 	TOTAL_CASES = 0;
+	 	errmsg("EA does not exist in the EA file %d. Verify the EA codes",ENUMERATION_AREA);
+	 else 
+	 	if (STATUS_FLAG = 'N') then STATUS_FLAG='Y'; endif; // change the flag from 'N' to 'Y' if EA is found in the external file
+	 	TOTAL_CASES = TOTAL_CASES+1;
+	 endif;
+else {update the total cases if the enumeration area did not change}
+	TOTAL_CASES = TOTAL_CASES+1;
+endif;

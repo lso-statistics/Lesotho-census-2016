@@ -1,0 +1,16 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\RemoveBlankPersonRecs.bch
+InputData=..\..\Data\03-RemoveDuplicates\Census2016-03-RemoveDups.dat
+OutputData=..\..\Data\04-RemoveEmptyIndividuals\Census2016-04-RemoveEmptyIndividuals.dat
+Listing=.\RemoveBlankPersonRecs.lst
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No

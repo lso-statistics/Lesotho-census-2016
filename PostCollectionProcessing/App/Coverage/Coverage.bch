@@ -1,0 +1,16 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=COVERAGE
+Name=COVERAGE
+AppType=Batch
+[External Dictionaries]
+File=.\EA.dcf
+[AppCode]
+File=.\Coverage.bch.apc
+[Message]
+File=.\Coverage.bch.mgf
+[Order]
+File=.\Coverage.ord
+[Dictionary Types]
+Dict-Type=.\HouseholdDataEntry.dcf,Input,.\Coverage.ord
+Dict-Type=.\EA.dcf,External

@@ -1,0 +1,88 @@
+﻿{ This program parses the listing from a listing report that has errors, warning or user messages
+  and generates a semicolon delimted file 
+  InputDataFile: <none>
+  Output: not required
+  FILE_MAINDATA_LST: Listing file containing the errors 
+  FILE_OUTPUT: semicolon delimited output file name
+  Listing report assumes that the data file name is contained in the cased id at position 10 and is of length 11
+  Listing report format:  DataFileName ; [Case ID] ;  Error Msg ; Error Msg ; ...
+}
+PROC GLOBAL
+File FILE_MAINDATA_LST, FILE_OUTPUT;
+string lineString, csvString;
+numeric readFlag =1, casePos, startPos, endPos;
+string delimiter =";";
+
+{remove leading spaces in a string}
+function string removeLeadingSpaces(string str)
+  numeric spacePos  = 1;
+  while(pos(' ', str[spacePos:1]) > 0) do
+  	spacePos = spacePos+1 ;
+  enddo;
+  removeLeadingSpaces= str[spacePos];
+end;
+
+{Build the error report string from the main data file listing report for each case}
+function string BuildCaseCSVString()
+	string errorCode, errorString ,errorMsgLine;
+	errorString ="";
+	do  while (readFlag = fileread(FILE_MAINDATA_LST,lineString))
+	 //remove leading spaces and parse for the error code and error message in the listing for the current case
+	 lineString = removeLeadingSpaces(lineString);
+	 if(lineString = "") then  exit; endif; //bail out if the current case messages are done
+ 	 // Find the warnings, errors or user messages in  the lineString   
+	 if(lineString[1:1]= "W" or lineString[1:1] = "U" or lineString[1:1] ="E") then
+	   lineString = lineString[2]; lineString = removeLeadingSpaces(lineString);
+	   errorCode =  lineString[1:pos(' ',lineString)];
+	   lineString =  lineString[pos(' ',lineString)];lineString = removeLeadingSpaces(lineString);
+	  //append the error message to the csvString once for eache error code
+	   if pos(errorCode, errorString) <= 0 then 
+	    errorString = errorString + delimiter + errorCode;
+	    errorMsgLine = lineString;
+	    csvString = csvString + delimiter+ errorMsgLine;
+	   endif;
+	 endif;
+	enddo;
+end;
+
+PROC BADCASES_FF
+
+
+
+
+//Check the input index file, data file existance
+if fileexist(FILE_MAINDATA_LST) <> 1 then 
+	errmsg("file %s does not exist", filename(FILE_MAINDATA_LST));
+	stop();
+endif;
+
+if strip(filename(FILE_OUTPUT)) = "" then 
+	errmsg("file name cannot be empty");
+	stop();
+endif;
+
+fileEmpty(FILE_OUTPUT);
+//file write header
+filewrite(FILE_OUTPUT,"DataFileName; Case Ids; Reason1; Reason2");
+
+//Parse the file to get *** Case
+do  while (readFlag = fileread(FILE_MAINDATA_LST,lineString))
+ //Get the CaseID substring 
+ casePos =pos ("***", lineString);
+ 
+ if(casePos > 0) then
+  csvString = ""; //intialize the string
+  startPos = pos("[", lineString);
+  endPos = pos("]", lineString);
+  if(startPos > endPos and startPos > 0) then {bad structure}
+  	  csvString=BuildCaseCSVString();
+  else 
+	  csvString = lineString[startPos:endPos-startPos+1];
+	  csvString =  csvString[10:11]+ ".dat"+ delimiter + csvString; //
+	  BuildCaseCSVString();
+ endif;
+  filewrite(FILE_OUTPUT,csvString);
+ endif;
+enddo;
+close(FILE_OUTPUT);
+close(FILE_MAINDATA_LST);

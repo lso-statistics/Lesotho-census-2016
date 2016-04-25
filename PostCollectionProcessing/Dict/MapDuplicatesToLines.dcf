@@ -1,0 +1,53 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=MapDuplicatesToLines
+Name=MAPDUPLICATESTOLINES_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Absolute
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=MapDuplicatesToLines questionnaire
+Name=MAPDUPLICATESTOLINES_QUEST
+
+[IdItems]
+
+[Item]
+Label=Case ID
+Name=D2L_CASE_ID
+Start=16
+Len=127
+DataType=Alpha
+
+[Record]
+Label=MapDuplicatesToLines record
+Name=MAPDUPLICATESTOLINES_REC
+RecordTypeValue=''
+MaxRecords=9999
+RecordLen=148
+
+[Item]
+Label=Line number
+Name=D2L_LINE_NUMBER
+Start=1
+Len=15
+
+[Item]
+Label=Score
+Name=D2L_SCORE
+Start=143
+Len=5
+
+[Item]
+Label=Keep this copy
+Name=D2L_KEEP
+Start=148
+Len=1
+
+[ValueSet]
+Label=Keep this copy
+Name=D2L_KEEP_VS1
+Value=0;No
+Value=1;Yes

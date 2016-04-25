@@ -1,0 +1,134 @@
+﻿DataFileName; Case Ids; Reason1; Reason2
+01030313032.dat;[0103B0310103031303201301SENTELINA                                         017MABATAUNG THULO                                   ];Required Record or Group VISITS not found
+01040413011.dat;[0104B0410104041301101302MANAMELA HA MAIEANE                               041MPATA PITSO                                       ];Required Record or Group VISITS not found
+01040413013.dat;[0104B0410104041301301301HA POKANE                                         015MAMOHATO JOEL                                     ];Required Record or Group VISITS not found
+02070223013.dat;[0207C0220207022301303302MATLAMENG HA MOSHOESHOE                           003MOKHOTHOMETSI LEQHAOE                             ];Required Record or Group VISITS not found
+10208031301.dat;[I0208C0310208031301203301HARA NTSANE                                       018MOLISANA LEKONA                                  ];Required Record or Group VISITS not found
+02080313012.dat;[0208C0310208031301203301HA RANTSANE                                       017THABANG PHOMANE                                   ];Required Record or Group VISITS not found
+02080313017.dat;[0208C0310208031301703301THABA PHATS'OA TARABANE                           038MOSHISHI CHERE                                    ];Required Record or Group VISITS not found
+02090413002.dat;[0209C0410209041300203301LE                     177MOOROSI KALOLI                                    22016042020160421        71];Required Record or Group VISITS not found
+02100513033.dat;[0210C0510210051303303314METOLONG                                          014MATHABISOCHITJA                                   ];Required Record or Group VISITS not found
+02100523047.dat;[0210C0520210052304703301HA MAKEPE                                         045TSEHLA KHOBAI                                     ];Required Record or Group VISITS not found
+02110511048.dat;[0211B0510211051104803101HÀMAPAPE                                          068N                                                 ];Required Record or Group VISITS not found
+02120713004.dat;[0212C071021207130040                                                                                                           ];Required Record or Group VISITS not found
+02120713041.dat;[0212C0710212071304103301HA MOSISI                                         013MOKILANE MOKILANE                                 ];Required Record or Group VISITS not found
+02131211075.dat;[0213C1210213121107503101HA MPHUTHING                                      0I0213C1210213121107503101HA MPHUTHING               ];Required Record or Group VISITS not found
+02131211075.dat;[0213C1210213121107503101HA MPHUTHING                                      038MAMOSA RAMMUPUOA                                  ];Required Record or Group VISITS not found
+02151311032.dat;[0215C1310215131103204101HA MATHATA                                        046MABOKANG TEMA                                     ];Required Record or Group VISITS not found
+02151311059.dat;[0215C1310215131105904101HA MOHOLISA                                       082RETHABILE LEFATLE                                 ];Invalid Record type
+02151311140.dat;[0215C1310215131114004101HA NYENYE                                         096NAU TSOBOKHOALI                                   ];Required Record or Group VISITS not found
+02151311147.dat;[0215C1310215131114703101HA NYENYE THELLABOY                               011METTOHLANGSING MOHAPI                             ];Required Record or Group VISITS not found
+02171013039.dat;[0217C1010217101303904301HA MOKHETHI                                       014MOKHOSI MATOOANE                                  ];Required Record or Group VISITS not found
+03220413011.dat;[0322D0410322041301105302HA JANE                                           039MAKHOTSO LEQABANYO                                ];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805202MATSOKUNG CANA                                    020MAMONTSI KANE                                    0];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805202MATSOKUNG CANA                                    020MAMONTSI KANE                                    2];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805202MATSOKUNG CANA                                    023TSOTLEHO KANE                                    0];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805202MATSOKUNG CANA                                    023TSOTLEHO KANE                                    T];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805202MATSOKUNG CANA                                    028MARETSELISITSOE                                   ];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805201MATSOKUNG HANTEBELE                               045LEHLOHONOLO RAMOTSO                              0];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805201MATSOKUNG HANTEBELE                               045LEHLOHONOLO RAMOTSO                              2];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805201MATSOKUNG HANTEBELE                               046NYAKANE RAMOTSO                                  0];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805201MATSOKUNG HANTEBELE                               046NYAKANE RAMOTSO                                  2];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805201MATSOKUNG HANTEBELE                               052MATSEPANG KHABO                                  0];Required Record or Group VISITS not found
+03230512018.dat;[0323D0510323051201805201MATSOKUNG HANTEBELE                               075MAFELLENG POSA                                    ];Required Record or Group VISITS not found
+03230513034.dat;[0323D0510323051303406301HA BOOSE                                          003MOHATLE MONALELI                                  ];Required Record or Group VISITS not found
+03230513035.dat;[0323D0510323051303505302LIPHIRING  HAMANKO                                010KOBELI  RAMOSITSANE                               ];Required Record or Group VISITS not found
+03230513037.dat;[0323D0510323051303705302HA PHALATSANE                                     024LETSA KOBELI                                    01];Required Record or Group VISITS not found
+03230513037.dat;[0323D0510323051303705302HA PHALATSANE                                     024LETSA KOBELI                                    02];Required Record or Group VISITS not found
+03230513037.dat;[0323D0510323051303705302HA PHALATSANE                                     024LETSA KOBELI                                    03];Required Record or Group VISITS not found
+03230513037.dat;[0323D0510323051303705302HA PHALATSANE                                     024LETSA KOBELI                                    04];Required Record or Group VISITS not found
+03230513037.dat;[0323D0510323051303705302HA PHALATSANE                                     024LETSA KOBELI                                    2 ];Required Record or Group VISITS not found
+03291111019.dat;[0329A1110329111101907101HA MABOTE PHAHAMENG                               065KHAUHELO KANE                                     ];Required Record or Group VISITS not found
+03291111042.dat;[0329A1110329111104207101MABOTE-PHAHAMENG                                  015MALIMAKATSO MOHALE                                ];Required Record or Group VISITS not found
+04301111089.dat;[0430A1110430111108908101MOTIMPOSO PHAHAMENG                               038'MALITS'EOANA MOIKANGOA                           ];Required Record or Group VISITS not found
+04311111022.dat;[0431A1110431111102209101SEAPOINT                                          035MALERATO DICHABA                                  ];Required Record or Group VISITS not found
+04311111040.dat;[0431A1110431111104009101MASERU EAST                                       015MATHABANG NQOKO                                   ];Required Record or Group VISITS not found
+04311111046.dat;[0431A1110431111104608101MOHALALITOE                                       093KHAUHELO SENNANE                                  ];Required Record or Group VISITS not found
+04311111046.dat;[0431A1110431111104608103NTTC                                              044EMANUEL COHNDOMA                                  ];Required Record or Group VISITS not found
+04351111007.dat;[0435A1110435111100708102LITHABANENG HA KEISO                              022NKOMO MBATHA                                      ];Invalid Record type
+10435111100.dat;[I0435A1110435111100708101LEBUNG 2 LITHABANENG                              033MONAHENG SETLABA                                 ];Required Record or Group VISITS not found
+10435111100.dat;[I0435A1110435111100708101LEBUNG 2 LITHABANENG                              039PATRICK KOKOANA                                  ];Invalid Record type;Required Record or Group VISITS not found
+04351111007.dat;[0435A1110435111100708101LEBUNG 2 LITHABANENG                              040JOHN MOILOA                                       ];Invalid Record type
+10435111100.dat;[I0435A1110435111100708101LEBUNG 2 LITHABANENG                              044NTHEBE TLALI                                     ];Required Record or Group VISITS not found
+04351111029.dat;[0435A1110435111102908101LOWER SEOLI 2                                     072YET TO BE KNOWN, ABSENT                           ];Required Record or Group VISITS not found
+04351111075.dat;[0435A1110435111107508101LITHOTENG MALUTI                                  014LETHALE LETHALE                                   ];Required Record or Group VISITS not found
+04361111013.dat;[0436A1110436111101308101MAJOE A LITSOENE                                  004MABOKANG SIETANE                                  ];Required Record or Group VISITS not found
+04361111024.dat;[0436A1110436111102408101TSENOLA                                           036FEDDIAN KOLOKO                                    ];Required Record or Group VISITS not found
+04361111057.dat;[0436A1110436111105708101UPPER THAMAE                                      081MOEKETSI SEKITLA                                  ];Required Record or Group VISITS not found
+04361111121.dat;[0436A1110436111112108101HA LEQELE                                         027MAKHOBALO MAKHOBALO                               ];Required Record or Group VISITS not found
+04361111140.dat;[0436A1110436111114008101LITHABANENG HA KHOATHELA                          023MAMATSIELIESO MOROAHAE                            ];Required Record or Group VISITS not found
+04361111140.dat;[0436A1110436111114008101LITHABANENG HA KHOATHELA                          024MAMATSIELIESO MOROAHAE                            ];Required Record or Group VISITS not found
+04361111140.dat;[0436A1110436111114008101LITHABANENG HA KHOATHELA                          025MAMATSIELIESO MOROAHAE                            ];Required Record or Group VISITS not found
+04371111016.dat;[0437A1110437111101608101MAKHOAKHOENG                                      020TEBATSO KHAKHA                                    ];Required Record or Group VISITS not found
+04371111040.dat;[0437A1110437111104008101SHALABENG2                                        006MAHLATSI MONYAKO                                  ];Too many occurrences for Record or Group HOUSING (Case: 
+04380113007.dat;[0438A0110438011300708301HA FAKO                                           001MOLIKENG MONAHENG                                 ];Required Record or Group VISITS not found
+04381111045.dat;[0438A1110438111104508101HA LEQELE                                         068MANTLATSENG PULE                                  ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708302PHOMOLO                                           053MOLAHLEHI MALEKE                                  ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708302PHOMOLO                                           056NKETJOANE MOROKOLE                                ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708301HA LEBILETSA                                      026LIBETE LEKANYANE                                  ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708302PHOMOLO                                           049MASAKALE PHOHLELI                                 ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708302PHOMOLO                                           046MATHABANG RANTHEBA                                ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708302PHOMOLO                                           044MATANKISO TUMELO                                  ];Required Record or Group VISITS not found
+04400333007.dat;[0440A0330440033300708302PHOMOLO                                           037LETS'IKHOANE LETS'IKOANE                          ];Required Record or Group VISITS not found
+04410412068.dat;[0441A0410441041206812201THOTENG                                           044MAMOHAU KANETSI                                   ];Invalid Record type
+04410412068.dat;[0441A0410441041206812201THOTENG                                           079NNINI MATHIBELI                                   ];Required Record or Group VISITS not found
+04420512002.dat;[0442A0510442051200209201HA PAKI                                           046LEBOHANG MPHANYA                                  ];Invalid Record type
+04440713045.dat;[0444A0710444071304510301HA RAMATEKANE                                     029MONEHELELI MONEHELELI                             ];Required Record or Group VISITS not found
+04450812030.dat;[0445A0810445081203009201MOKOATING                                         043MATETETSO MASUMUTHE                               ];Required Record or Group VISITS not found
+04450812030.dat;[0445A0810445081203009201MAKOABATING                                       049MOSITO MPELI                                      ];Required Record or Group VISITS not found
+04450813006.dat;[0445A0810445081300609302HA CHEBOKO                                        031FAKATHE TEETSA                                    ];Required Record or Group VISITS not found
+04450813006.dat;[0445A0810445081300609303HA PITA                                           035HABANG KHELE                                     0];Required Record or Group VISITS not found
+04450813060.dat;[0445A0810445081306009301MAUTENG MATEBELENG                                017'MAMPHO JANE MOLETOA                            01];Required Record or Group VISITS not found
+04450813062.dat;[0445A0810445081306209302MANTSANENG HA SEPHOKO                            015NKOEBO NTSANE                                     2];Required Record or Group VISITS not found
+04450813062.dat;[0445A0810445081306209302MANTSANENG HA SEPHOKO                            017MOTLALEPULA LEKHOOA                               2];Required Record or Group VISITS not found
+04450813067.dat;[0445A0810445081306709305HA MOOROSI                                        029TSEPO MOTHOBI                                     ];Required Record or Group VISITS not found
+06570213063.dat;[0657F0210657021306318301PHAHAMENG                                         012PULENGS EMATHA                                    ];Required Record or Group VISITS not found
+06570213065.dat;[0657F0210657021306518302MASETELING                                        032THAPELO NNEKO                                     ];Required Record or Group VISITS not found
+06570213065.dat;[0657F0210657021306518302MASETELING                                        042PHAKISO SEBUSI                                    ];Required Record or Group VISITS not found
+06580811006.dat;[0658F0810658081100619101QALAKHENG LALANE                                  011'MATHABO SEHLATSANA                               ];Required Record or Group VISITS not found
+06580811009.dat;[0658F0810658081100919101QALAKHENG                                         041MALIBUSENG SEKHOSANA                              ];Invalid Record type
+06580811009.dat;[0658F0810658081100919101QALAKHENG                                         092MPHO MAFENTERE                                    ];Invalid Record type
+06580811009.dat;[0658F0810658081100919101QALAKHENG                                         102RANA MALEFANE                                     ];Invalid Record type
+06580811014.dat;[0658F0810658081101417101HA SECHELE                                        078MASECHELE SECHELE                                 ];Required Record or Group VISITS not found
+06580811018.dat;[0658F0810658081101815101HA SECHELE                                        060FUSI MAKOA                                        ];Required Record or Group VISITS not found
+06580811018.dat;[0658F0810658081101817101HA SECHELE                                        065ITUMELENG KHOTSO                                  ];Required Record or Group VISITS not found
+06580811019.dat;[0658F0810658081101917101HA SECHELE                                        038MOKETE KOMPI                                      ];Required Record or Group VISITS not found
+06580811019.dat;[0658F0810658081101917101HA SECHELE                                        050PHATHEKA MATEBESI                                 ];Required Record or Group VISITS not found
+06580811049.dat;[0658F0810658081104917101THOTENG LINOTSING                                 094SOFIA                                             ];Invalid Record type
+06580811050.dat;[0658F0810658081105017101THOTENG                                           026'MAPOLOKO KAIBE                                   ];Invalid Record type
+06580811056.dat;[0658F0810658081105617101THOTENG                                           050MAIKHETHELENG RAFEI                               ];Invalid Record type
+06580811087.dat;[0658F0810658081108717101HASEKOATI                                         005TSEPO THEJANE                                     ];Invalid Record type
+06590343020.dat;[0659F0340659034302017302HA RAKOLOI                                        061MALIKONELO RAMORARA                               ];Invalid Record type
+06590343023.dat;[0659F0340659034302317303HOUPLAS                                           090RATLALI PHOMANE                                   ];Invalid Record type
+06610323024.dat;[0661F0320661032302415302HA SEKAKE                                         017MANYAKALLO TIKOE                                  ];Required Record or Group VISITS not found
+06610323024.dat;[0661F0320661032302415303HA MAPURU                                         071MOTLALENTOA  MAPURU                               ];Required Record or Group VISITS not found
+06610323024.dat;[0661F0320661032302415303HA MAPURU                                         072MOTLALENTOA  MAPURU                               ];Required Record or Group VISITS not found
+06610323024.dat;[0661F0320661032302415303HA MAPURU                                         073MOTLALENTOA  MAPURU                               ];Required Record or Group VISITS not found
+06610323024.dat;[0661F0320661032302415303HA MAPURU                                         074MOTLALENTOA  MAPURU                               ];Required Record or Group VISITS not found
+06610323024.dat;[0661F0320661032302415303HA MAPURU                                         075MOTLALENTOA  MAPURU                               ];Required Record or Group VISITS not found
+06610323024.dat;[0661F0320661032302415303HA MAPURU                                         076MOTLALENTOA  MAPURU                               ];Required Record or Group VISITS not found
+06610523007.dat;[0661F0520661052300720301HA TAELE                                          001REFILOE RANGOAJANE                                ];Required Record or Group VISITS not found
+06610523007.dat;[0661F0520661052300720302MATLALI                                           002TAFITA MOROEROE                                   ];Required Record or Group VISITS not found
+06610523013.dat;[0661F0520661052301315301HA KOKO                                           032'MATELANG MONGALO                                 ];Required Record or Group VISITS not found
+06610523032.dat;[0661F0520661052303220301THOTENG SEKOLONG                                  014'MANTHUSENG TS'OAELI                              ];Required Record or Group VISITS not found
+06610523032.dat;[0661F0520661052303220301HA QOANE                                          040MOKETE MOFENYA                                    ];Required Record or Group VISITS not found
+06610523032.dat;[0661F0520661052303220301HA QOANE                                          042MOEKETSI TS'EPISO                                 ];Required Record or Group VISITS not found
+06610523032.dat;[0661F0520661052303220301HA QOANE                                          053'MANOTHISE QOFELA                                 ];Required Record or Group VISITS not found
+06610523032.dat;[0661F0520661052303220302HA BIEANE                                         064THAKA-LIOLI MOHANOE                               ];Required Record or Group VISITS not found
+06610523032.dat;[0661F0520661052303220302HA BIEANE                                         069MOJALEFA MOTLOMELO                                ];Required Record or Group VISITS not found
+06630733015.dat;[0663F0730663073301517301HA RANKHUBA                                       027TLOLOKO TSUKULU                                   ];Required Record or Group VISITS not found
+07640641024.dat;[0764G0640764064102421101SEAKA                                             024TEBALO  MOKHETHO                                  ];Required Record or Group VISITS not found
+07680533027.dat;[0768G0530768053302721302HA SEBAPALA                                       024NKOKO MORAI                                       ];Required Record or Group VISITS not found
+0768I0768G0.dat;[0768G0530768I0768G0530768053302721302HA SEBAPALA                                       021SABALELE TOMOSE                      ];Required Record or Group VISITS not found
+08690133072.dat;[0869H0130869013307222301HA MALEFANE                                       075BOKANG SHALE                                      ];Required Record or Group VISITS not found
+08690431036.dat;[0869H0430869043103622101HA MANTEKO                                        013MALEHLAILE MATSIPA                                ];Required Record or Group VISITS not found
+09780233049.dat;[0978J0230978023304923301PHAHAMENG                                         024RET'SELISITSOE PHATE                              ];Required Record or Group VISITS not found
+09780233049.dat;[0978J0230978023304923301PHAHAMENG                                                                                              ];Required Record or Group VISITS not found
+09780233049.dat;[0978J0230978023304923301PHAHAMENG                                         027LEBOHANG MAZE                                     ];Required Record or Group VISITS not found
+09790333045.dat;[0979J0330979033304523302THABAKHUBELU                                      038NONEMBELE BANDA                                   ];Required Record or Group VISITS not found
+09790333046.dat;[0979J0330979033304623301LINOTSING                                         095RAMAFOLE LETEANE                                  ];Required Record or Group VISITS not found
+09800433021.dat;[0980J0430980043302123301HARAFOLATSANE HLOAHLOENG                          016SEEALUMA NTHO                                     ];Required Record or Group VISITS not found
+10750433049.dat;[1075K0431075043304924303MAPHEPHENG                                        071MAMOQEKELE MOSOEU                                 ];Required Record or Group VISITS not found
+10750433049.dat;[1075K0431075043304924303MAPHEPHENG                                        051LEBOHANG MOSUOE                                   ];Required Record or Group VISITS not found
+10760533024.dat;[1076K0531076053302422301HA MATSOETSOE                                     007KHOTLISO MAFUEA                                   ];Required Record or Group VISITS not found
+10760543015.dat;[1076K0541076054301522301SEKOAINYANE                                       030THATO RAMONE                                      ];Invalid Record type

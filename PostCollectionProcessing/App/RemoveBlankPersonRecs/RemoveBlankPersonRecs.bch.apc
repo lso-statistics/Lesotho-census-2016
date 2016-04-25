@@ -1,0 +1,36 @@
+﻿{
+	This program removes blank person records at the end of the case.
+	Input: Main data file 
+	Ouput: Listing
+	Note: The listing file from this program is the input to the BadCases report program
+	The listing file has messages for invalid sex and birth values to be parsed by the BadCases report program
+}
+PROC GLOBAL
+
+PROC HOUSEHOLDDATAENTRY_FF
+
+PROC INDIVIDUAL_EDT
+numeric invalidSex;
+numeric invalidBirth, i;
+
+
+i = totocc(INDIVIDUAL_EDT);
+while (i >= 1) do
+  {delete person if and only if name, relationship, sex and age are all blank}
+  if B2(i) = "" and B3(i) = notappl and  B4(i) = notappl and B5(i)=notappl  then
+	   delete(INDIVIDUAL_EDT(i)); { remove "blank" person records at the end }
+   else 
+	  {non blank person record found stop deleting persons form this case}
+	   break;
+  endif;
+  i=i-1;
+enddo;
+
+
+invalidSex = count(INDIVIDUAL_EDT where not (B4 in 1:2)); {sex not in 1:2}
+invalidBirth = count(INDIVIDUAL_EDT where not( B6A  in 1:12)); {month of birth not in 1:12}
+{uncomment this if you want to report invalid sex and birth in the badcases report program}
+{
+if  (invalidSex > 0 ) then errmsg(101) endif; 
+if  (invalidBirth > 0 ) then errmsg(102) endif; 
+}

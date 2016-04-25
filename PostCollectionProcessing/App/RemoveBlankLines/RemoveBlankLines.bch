@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=REMOVEBLANKLINES
+Name=REMOVEBLANKLINES
+AppType=Batch
+[AppCode]
+File=.\RemoveBlankLines.bch.apc
+[Message]
+File=.\RemoveBlankLines.bch.mgf
+[Order]
+File=.\RemoveBlankLines.ord
+[Dictionary Types]
+Dict-Type=.\RemoveBlankLines.dcf,Input,.\RemoveBlankLines.ord

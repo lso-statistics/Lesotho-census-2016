@@ -1,0 +1,15 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Tabulation
+Operation=All
+
+[Files]
+Application=.\LesothoTabs.xtb
+InputData=..\..\Data\04-RemoveEmptyIndividuals\Census2016-04-RemoveEmptyIndividuals.dat
+OutputTBW=..\..\Reports\LesothoTabs.xtb.tbw
+AreaNames=..\AreaNames\Lesotho.anm
+Listing=.\LesothoTabs.xtb.lst
+
+[Parameters]
+ViewListing=OnError
+ViewResults=Yes

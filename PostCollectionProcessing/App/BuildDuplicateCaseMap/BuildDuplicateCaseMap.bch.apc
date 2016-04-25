@@ -1,0 +1,171 @@
+﻿{
+Creates a duplicate map file from a Census2016 data file.
+
+This is the first step of the 4 step duplicate case removal
+workflow. Normally this would not be needed however due to
+an earlier bug in CSPro a large number of dupicate cases were
+generated on enumerator devices. This is an overly complicated 
+in order to work around the lack of a hashtable and the super
+slow performance of multiple insertions into external data files,
+especially with long alpha id-items.
+
+The multi-step approach is as follows:
+
+1. Create an external file that maps line numbers to case ids
+but don't use an index file so that it is fast. Assign a
+completion score to each copy of each case. 
+
+2. Sort the external file by case ids to get all the duplicates
+of a case along with their line numbers to be together in the
+file.
+
+3. Remove the entries in the external file for cases that do
+not have duplicates and mark the copy of each duplicate case
+with the highest completion score as the one to keep. This
+file is now small enough to be used as a lookup file.
+
+4. Run through the original data file and use the external
+file from step 3 to exclude the duplicates that are not
+marked as keep.
+
+This application performs step 1 - creation of the initial
+duplicate map file.
+
+Step 2 is done using the sort data tool with a record sort
+using the case id and line number as keys.
+
+Step 3 is done with the PruneDuplicateCaseMap batch app.
+
+Step 4 is done with the ApplyDuplicateCaseMap batch app.
+
+The duplicate map file is an external file that uses the 
+MapLinesToDuplicates.dcf dictionary. This is a mapping from
+the line number of the first record of a case in the main data
+file to the case id of the case and the completion score for
+the case. The mapping is used by later programs to remove
+duplicate cases.
+
+Input is from the main data file - a Census2016 household data file.
+The main output file is ignored but the external mapping file is
+generated from the MAPLINESTODUPLICATES_DICT.
+
+This program deals with both adjacent and non-adjacent duplicates
+where an adjacent duplicate is determined by the presence of an
+additional record in the same case after the visits record.
+
+In order to correctly the adjacent duplicates and avoid
+"Too many occurrences of group" errors this program uses a
+different dictionary. Instead of using the regular household
+dictionary it uses the CASELINES dictionary which reads in any
+number of adjacent records with the same case id as a single
+case indendent of record type. The record type is treated as
+a variable on the record.
+
+The program is meant to be followed by a record sort using the
+case id and the line number (ascending) as sort keys. 
+This groups all the cases with the same id together in the
+mapping file so that they can be read by the dictionary 
+MAPDUPLICATESTOLINES_DICT which will group them together into
+a single case for pruning.
+}
+
+PROC GLOBAL
+numeric lineNo = 1;
+
+// Compute a completion score for a record. The score is
+// an estimate of how complete a case is. When duplicates
+// are the copy the highest score is retained so that data
+// loss is minimized.
+function computeRecordScore(string recType, string recData)
+
+	numeric score = 0;
+	if recType = "V" then
+		// Final result code gives the most points since
+		// a completed case should always win out over an incomplete case
+		numeric finalResultCode = tonumber(recData[27:1]);
+		if finalResultCode = 1 then
+			score = score + 10000;
+		endif;
+		// If result codes are equal then a case with more
+		// visits should win
+		numeric numberOfVisits = tonumber(recData[1:1]);
+		if numberOfVisits in 1:3 then
+			score = score + 1000 * numberOfVisits;
+		endif;
+	elseif recType = "H" then
+		// Give an additional point for presence of housing record even if
+		// it is empty so we keep cases with empty housing and visits over
+		// cases with just visits
+		score = score + 1;
+		// If deaths portion of housing record is filled in then
+		// then they got past all invidividuals so the case gets 100 points
+		string deathsPart = recData[1:3];
+		if deathsPart <> "" then
+			score = score + 100;
+		endif;
+		// If housing section is filled in then
+		// then they got almost to the end so the case an
+		// additional 100
+		string housingSectionPart = recData[4:135];
+		if housingSectionPart <> "" then
+			score = score + 100;
+		endif;
+	elseif recType = "I" then
+		// For individual records one point for the name
+		// and two points for info beyond the name.
+		// Individual record are not weighted highly since
+		// often individual records are deleted in later visits.
+		string namesPart = recData[3:40];
+		if namesPart <> "" then
+			score = score + 1;
+		endif;
+		string demographicsPart = recData[43:519];
+		if demographicsPart <> "" then
+			score = score + 2;
+		endif;
+	elseif recType = "D" then
+		// For death records one point for the name
+		// and two points for info beyond the name.
+		// Death record are not weighted highly since
+		// often death records are deleted in later visits.
+		namesPart = recData[1:30];
+		if namesPart <> "" then
+			score = score + 1;
+		endif;
+		demographicsPart = recData[31];
+		if demographicsPart <> "" then
+			score = score + 2;
+		endif;
+	endif;
+	computeRecordScore = score;
+end;
+
+PROC CASELINES_FF
+preproc
+
+// Clear out the existing mapping to start a new one. 
+// We don't want to add to the mapping from the last run.
+string mappingFilename = filename(MAPLINESTODUPLICATES_DICT);
+close(MAPLINESTODUPLICATES_DICT);
+setfile(MAPLINESTODUPLICATES_DICT, mappingFilename, create);
+
+PROC CASELINES_QUEST
+
+numeric i;
+numeric score = 0;
+numeric currentCaseStart = lineNo;
+do i = 1 while i <= totocc(CASELINES_REC_EDT)
+	score = score + computeRecordScore(RECORD_TYPE(i), RECORD_DATA(i));
+	if RECORD_TYPE(i) = "V" or i = totocc(CASELINES_REC_EDT) then
+		L2D_LINE_NUMBER = currentCaseStart;
+		L2D_CASE_ID = LINES_ID;
+		L2D_SCORE = score;
+		if not writecase(MAPLINESTODUPLICATES_DICT(noindex), L2D_LINE_NUMBER) then
+			errmsg("FATAL ERROR: Failed to add entry for case %s at line %d", LINES_ID, lineNo);
+			stop(1);
+		endif;
+		score = 0;
+		currentCaseStart = lineNo + 1;
+	endif;
+	lineNo = lineNo + 1;
+enddo;

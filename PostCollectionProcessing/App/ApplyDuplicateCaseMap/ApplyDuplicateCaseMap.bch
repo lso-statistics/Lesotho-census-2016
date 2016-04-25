@@ -1,0 +1,16 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=APPLYDUPLICATECASEMAP
+Name=APPLYDUPLICATECASEMAP
+AppType=Batch
+[External Dictionaries]
+File=..\..\Dict\MapLinesToDuplicates.dcf
+[AppCode]
+File=.\ApplyDuplicateCaseMap.bch.apc
+[Message]
+File=.\ApplyDuplicateCaseMap.bch.mgf
+[Order]
+File=.\ApplyDuplicateCaseMap.ord
+[Dictionary Types]
+Dict-Type=..\..\Dict\MapLinesToDuplicates.dcf,External
+Dict-Type=..\..\Dict\CaseLines.dcf,Input,.\ApplyDuplicateCaseMap.ord
