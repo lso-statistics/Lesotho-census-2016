@@ -1,5 +1,5 @@
 ﻿[TabSpecs]
-Version=CSPro 6.2
+Version=CSPro 6.3
 Label=LesothoTabs
 Name=LESOTHOTABS
 GenerateLogic=Yes
@@ -9,9 +9,9 @@ SelectedPrinterChanged=Yes
 File=.\HouseholdDataEntry.dcf
  
 [AreaStructure]
-Names=DISTRICT,CONSTITUENCY
+Names=DISTRICT,CONSTITUENCY,ENUMERATION_AREA
 Standard=Yes
-LowestLevel=CONSTITUENCY
+LowestLevel=ENUMERATION_AREA
  
 [ConSpec]
 Name=TOTAL
@@ -24,6 +24,12 @@ Level=DISTRICT
 Name=CONSTITUENCY
 Level=DISTRICT
 Level=CONSTITUENCY
+ 
+[ConSpec]
+Name=ENUMERATION_AREA
+Level=DISTRICT
+Level=CONSTITUENCY
+Level=ENUMERATION_AREA
  
 [TabSetFormat]
 Name=TabSetFmt, default
@@ -110,7 +116,13 @@ Type=Total
 
 
 [TallyFormat]
-Name=RowTallyFmt, 7
+Name=RowTallyFmt, 8
+[TallyStatistic]
+Type=Total
+
+
+[TallyFormat]
+Name=RowTallyFmt, 9
 [TallyStatistic]
 Type=Total
 
@@ -473,6 +485,22 @@ Hidden=No
 SpanCells=No
 ExtendLines=Yes
 
+[Format]
+Name=TitleFmt, 1
+IndentLeft=0.00
+IndentRight=0.00
+Hidden=No
+SpanCells=NotApplicable
+Custom=Table 1. Total Population by Sex, Households, Household Size
+
+[Format]
+Name=TitleFmt, 2
+IndentLeft=0.00
+IndentRight=0.00
+Hidden=No
+SpanCells=NotApplicable
+Custom=Table 2. Household Status at Constituency Level
+
  
 [Table]
 Name=TABLE1
@@ -480,7 +508,8 @@ Num=1
  
 [Title]
 Label='Table 1. Sex, W01, W01'
-GridViewSize=0,19,0,0,0,0
+Format=TitleFmt, 1
+GridViewSize=0,76,0,0,0,0
  
 [SubTitle]
 Label=''
@@ -530,7 +559,7 @@ Label=''
 Name=SYSTEM_TOTAL
 Label=System Total
 VarType=Dict
-Format=RowTallyFmt, 7
+Format=RowTallyFmt, 8
  
 [Value]
 Label=%AreaName%
@@ -628,5 +657,118 @@ Universe=
 [PostCalc]
 PostCalc=table1[*,5] = table1[*,0]/table1[*,4];
  
+[Table]
+Name=TABLE2
+Num=2
+ 
+[Title]
+Label='Table 2. Household Status'
+Format=TitleFmt, 2
+GridViewSize=0,57,0,0,0,0
+ 
+[SubTitle]
+Label=''
+ 
+[PageNote]
+Label=''
+ 
+[EndNote]
+Label=''
+ 
+[HeaderLeft]
+Label=''
+ 
+[HeaderCenter]
+Label=''
+ 
+[HeaderRight]
+Label=''
+ 
+[FooterLeft]
+Label=''
+ 
+[FooterCenter]
+Label=''
+ 
+[FooterRight]
+Label=''
+ 
+[StubHead]
+Label=''
+GridViewSize=164,24,0,0,0,0
+GridViewSize=164,24,0,0,0,0
+ 
+[SecondaryStubHead]
+Label=''
+ 
+[AreaCaption]
+Label='%AreaName%'
+ 
+[OneRowColTotal]
+Label=''
+ 
+ 
+[Rows]
+ 
+[Variable]
+Name=SYSTEM_TOTAL
+Label=System Total
+VarType=Dict
+Format=RowTallyFmt, 9
+ 
+[Value]
+Label=%AreaName%
+TabValueType=Total
+TabValueStatIndex=0
+GridViewSize=0,24,0,0,0,0
+ 
+[EndVar]
+ 
+[Cols]
+ 
+[Variable]
+Name=HOUSEHOLD_STATUS_VS1
+Label=Household Status
+VarType=Dict
+ 
+[Value]
+Label=Total
+TabValueType=Total
+TabValueStatIndex=0
+GridViewSize=75,0,0,0,0,0
+ 
+[Value]
+Label=Continue with interview
+TabValueType=VSetValue
+TabValueStatIndex=1
+GridViewSize=145,0,0,0,0,0
+ 
+[Value]
+Label=No household member at home
+TabValueType=VSetValue
+TabValueStatIndex=1
+GridViewSize=195,0,0,0,0,0
+ 
+[Value]
+Label=Entire household absent for extended period of time
+TabValueType=VSetValue
+TabValueStatIndex=1
+GridViewSize=311,0,0,0,0,0
+ 
+[Value]
+Label=Dwelling vacant
+TabValueType=VSetValue
+TabValueStatIndex=1
+GridViewSize=103,0,0,0,0,0
+ 
+[Value]
+Label=Refusal
+TabValueType=VSetValue
+TabValueStatIndex=1
+GridViewSize=75,0,0,0,0,0
+ 
+[EndVar]
+ 
 [Level]
 Table=TABLE1
+Table=TABLE2

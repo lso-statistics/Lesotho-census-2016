@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=CHECKFORBADCASES
+Name=CHECKFORBADCASES
+AppType=Batch
+[AppCode]
+File=.\CheckForBadCases.bch.apc
+[Message]
+File=.\CheckForBadCases.bch.mgf
+[Order]
+File=.\CheckForBadCases.ord
+[Dictionary Types]
+Dict-Type=..\..\Dict\CaseLines.dcf,Input,.\CheckForBadCases.ord

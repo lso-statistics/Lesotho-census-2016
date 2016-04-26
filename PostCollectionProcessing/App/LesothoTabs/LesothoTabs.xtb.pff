@@ -1,15 +1,15 @@
 ﻿[Run Information]
-Version=CSPro 6.2
+Version=CSPro 6.3
 AppType=Tabulation
 Operation=All
 
 [Files]
 Application=.\LesothoTabs.xtb
-InputData=..\..\Data\04-RemoveEmptyIndividuals\Census2016-04-RemoveEmptyIndividuals.dat
+InputData=..\..\Data\05-RecodeRemoveInvalidEAs\Census2016-05-RecodeEAs.dat
 OutputTBW=..\..\Reports\LesothoTabs.xtb.tbw
 AreaNames=..\AreaNames\Lesotho.anm
 Listing=.\LesothoTabs.xtb.lst
 
 [Parameters]
 ViewListing=OnError
-ViewResults=Yes
+ViewResults=No

@@ -1,0 +1,20 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\RecodeRemoveInvalidEAs.bch
+InputData=..\..\Data\04-RemoveEmptyIndividuals\Census2016-04-RemoveEmptyIndividuals.dat
+OutputData=..\..\Data\05-RecodeRemoveInvalidEAs\Census2016-05-RecodeEAs.dat
+Listing=.\RecodeRemoveInvalidEAs.lst
+
+[ExternalFiles]
+STAFF_DICT=..\..\..\Menu\staff.dat
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+
