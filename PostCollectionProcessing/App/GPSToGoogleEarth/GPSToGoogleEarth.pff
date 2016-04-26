@@ -1,0 +1,18 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\GPSToGoogleEarth.bch
+InputData=..\..\Data\03-Concatenate\Census2016-03-Concat-Fixed.dat
+Listing=.\GPSToGoogleEarth.lst
+WriteData=..\..\Data\Census2016.kml
+
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+
