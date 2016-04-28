@@ -427,7 +427,8 @@ function ShowSummaryReport()
 				
 				totMales = totMales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
 				totFemales = totFemales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
-				if APPROVAL_STATUS = 0 then
+				
+				if APPROVAL_STATUS = 0 and (HOUSEHOLD_STATUS in 2:5 or MISSING_FERTILITY = 1) then
 					seekingApproval = seekingApproval + 1;
 				endif;
 				
@@ -544,9 +545,10 @@ function ShowSummaryReport_EAbyDATE(string eacode, string viewdate)
 					totMales = totMales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
 					totFemales = totFemales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
 					
-					if APPROVAL_STATUS = 0 then
+					if APPROVAL_STATUS = 0 and (HOUSEHOLD_STATUS in 2:5 or MISSING_FERTILITY = 1) then
 						seekingApproval = seekingApproval + 1;
 					endif;
+					
 				endif;
 			enddo;
 			
@@ -671,9 +673,10 @@ function ShowSummaryReport_AllbyDATE(string viewdate)
 					totMales = totMales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 1);
 					totFemales = totFemales + count(LESOTHOCENSUS2016_DICT.INDIVIDUAL WHERE B4 = 2);
 					
-					if APPROVAL_STATUS = 0 then
+					if APPROVAL_STATUS = 0 and (HOUSEHOLD_STATUS in 2:5 or MISSING_FERTILITY = 1) then
 						seekingApproval = seekingApproval + 1;
 					endif;
+					
 				endif;
 			enddo;
 			
