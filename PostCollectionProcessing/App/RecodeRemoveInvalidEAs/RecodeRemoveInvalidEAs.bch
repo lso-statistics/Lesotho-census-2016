@@ -1,0 +1,16 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=RECODEREMOVEINVALIDEAS
+Name=RECODEREMOVEINVALIDEAS
+AppType=Batch
+[External Dictionaries]
+File=..\..\..\Menu\Staff.dcf
+[AppCode]
+File=.\RecodeRemoveInvalidEAs.bch.apc
+[Message]
+File=.\RecodeRemoveInvalidEAs.bch.mgf
+[Order]
+File=.\RecodeRemoveInvalidEAs.ord
+[Dictionary Types]
+Dict-Type=..\..\..\HouseholdDataEntry\HouseholdDataEntry.dcf,Input,.\RecodeRemoveInvalidEAs.ord
+Dict-Type=..\..\..\Menu\Staff.dcf,External

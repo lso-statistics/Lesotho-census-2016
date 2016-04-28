@@ -1,13 +1,13 @@
 ﻿[FormFile]
-Version=CSPro 6.3
+Version=CSPro 6.2
 Name=HOUSEHOLDDATAENTRY_FF
-Label=EmptyBatch
+Label=GPSToGoogleEarth
 DefaultTextFont=-013 0000 0000 0000 0700 0000 0000 0000 0000 0000 0000 0000 0000 Arial
 FieldEntryFont=0018 0000 0000 0000 0600 0000 0000 0000 0000 0000 0000 0000 0000 Courier New
 Type=OperatorControlled
   
 [Dictionaries]
-File=.\HouseholdDataEntry.dcf
+File=..\..\..\HouseholdDataEntry\HouseholdDataEntry.dcf
   
 [Form]
 Name=FORM000
@@ -244,7 +244,7 @@ Item=RESPONDENT_NAME
 Name=FORM004
 Label=Visits
 Level=1
-Size=300,450
+Size=300,480
   
 Item=NUMBER_OF_VISITS
 Item=VISIT_YEAR
@@ -263,6 +263,7 @@ Item=HH_ACCURACY
 Item=HH_READ_TIME
 Item=ENUMERATOR_CODE
 Item=MISSING_FERTILITY
+Item=DUPLICATES_REMOVED
   
 [EndForm]
   
@@ -1615,6 +1616,12 @@ Form=5
 [Field]
 Name=MISSING_FERTILITY
 Item=MISSING_FERTILITY,LESOTHOCENSUS2016_DICT
+Form=5
+  
+  
+[Field]
+Name=DUPLICATES_REMOVED
+Item=DUPLICATES_REMOVED,LESOTHOCENSUS2016_DICT
 Form=5
   
 [EndGroup]

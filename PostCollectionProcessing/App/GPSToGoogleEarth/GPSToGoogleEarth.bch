@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.2
+Label=GPSTOGOOGLEEARTH
+Name=GPSTOGOOGLEEARTH
+AppType=Batch
+[AppCode]
+File=.\GPSToGoogleEarth.bch.apc
+[Message]
+File=.\GPSToGoogleEarth.bch.mgf
+[Order]
+File=.\GPSToGoogleEarth.ord
+[Dictionary Types]
+Dict-Type=..\..\..\HouseholdDataEntry\HouseholdDataEntry.dcf,Input,.\GPSToGoogleEarth.ord

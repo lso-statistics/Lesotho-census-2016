@@ -2,7 +2,7 @@
 [NumberProcesses]
 1
 [PathReference]
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\Production\
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\Production\
 [Tree]
 [Group]
 [Expand]
@@ -10,31 +10,41 @@ Census Postprocessing
 [Group]
 [Expand]
 Concatenate
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\Concatenate\Concatenate.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\Concatenate\Concatenate.pff
 [EndGroup]
 [Group]
 [Expand]
 Remove blank lines
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankLines\RemoveBlankLines.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankLines\RemoveBlankLines.pff
 [EndGroup]
 [Group]
 [Expand]
 Remove duplicate cases
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\BuildDuplicateCaseMap\BuildDuplicateCaseMap.pff
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\SortDuplicateCaseMap\SortDuplicateMap.ssf.pff
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\PruneDuplicateCaseMap\PruneDuplicateCaseMap.pff
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\ApplyDuplicateCaseMap\ApplyDuplicateCaseMap.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\BuildDuplicateCaseMap\BuildDuplicateCaseMap.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\SortDuplicateCaseMap\SortDuplicateMap.ssf.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\PruneDuplicateCaseMap\PruneDuplicateCaseMap.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\ApplyDuplicateCaseMap\ApplyDuplicateCaseMap.pff
+[EndGroup]
+[Group]
+[Expand]
+Check for bad cases (from manual edits)
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\CheckForBadCases\CheckForBadCases.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\BadCases\BadCasesReport.pff
 [EndGroup]
 [Group]
 [Expand]
 Remove blank individual records from end of case
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankPersonRecs\RemoveBlankPersonRecs.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankPersonRecs\RemoveBlankPersonRecs.pff
+[EndGroup]
+[Group]
+[Expand]
+RemoveRecodeInvalidEAs
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\RecodeRemoveInvalidEAs\RecodeRemoveInvalidEAs.pff
 [EndGroup]
 [Group]
 [Expand]
 Initial reports
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\BadCases\BadCasesReport.pff
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\Coverage\Coverage.pff
-C:\Users\josh\Lesotho-census-2016\PostCollectionProcessing\App\LesothoTabs\LesothoTabs.xtb.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\Coverage\Coverage.pff
+C:\Users\josh\Documents\GitHub\Lesotho-census-2016\PostCollectionProcessing\App\LesothoTabs\LesothoTabs.xtb.pff
 [EndGroup]
 [EndGroup]

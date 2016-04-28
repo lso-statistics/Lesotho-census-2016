@@ -1,5 +1,5 @@
 ﻿[Run Information]
-Version=CSPro 6.2
+Version=CSPro 6.3
 AppType=Batch
 
 [Files]
@@ -8,7 +8,7 @@ Listing=.\BadCasesReport.lst
 
 
 [UserFiles]
-FILE_MAINDATA_LST=..\RemoveBlankPersonRecs\RemoveBlankPersonRecs.lst
+FILE_MAINDATA_LST=..\CheckForBadCases\CheckForBadCases.lst
 FILE_OUTPUT=.\BadCasesReport.csv
 
 [Parameters]

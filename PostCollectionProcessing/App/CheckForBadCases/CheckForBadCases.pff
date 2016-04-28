@@ -1,0 +1,17 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Batch
+
+[Files]
+Application=.\CheckForBadCases.bch
+InputData=..\..\Data\03-RemoveDuplicates\Census2016-03-RemoveDups.dat
+Listing=.\CheckForBadCases.lst
+
+
+[Parameters]
+ViewListing=Always
+ViewResults=Yes
+ListingWidth=80
+MessageWrap=No
+ErrmsgOverride=No
+
