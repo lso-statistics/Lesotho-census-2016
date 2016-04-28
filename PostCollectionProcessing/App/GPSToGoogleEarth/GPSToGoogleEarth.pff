@@ -1,10 +1,10 @@
 ﻿[Run Information]
-Version=CSPro 6.2
+Version=CSPro 6.3
 AppType=Batch
 
 [Files]
 Application=.\GPSToGoogleEarth.bch
-InputData=..\..\Data\03-Concatenate\Census2016-03-Concat-Fixed.dat
+InputData=..\..\Data\05-RecodeRemoveInvalidEAs\Census2016-05-RecodeEAs.dat
 Listing=.\GPSToGoogleEarth.lst
 WriteData=..\..\Data\Census2016.kml
 
