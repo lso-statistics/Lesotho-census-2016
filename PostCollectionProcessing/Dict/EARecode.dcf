@@ -1,0 +1,35 @@
+﻿[Dictionary]
+Version=CSPro 6.3
+Label=EARecode
+Name=EARECODE_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Relative
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=EARecode questionnaire
+Name=EARECODE_QUEST
+
+[IdItems]
+
+[Item]
+Label=Original EA
+Name=EAR_ORIGINAL_EA
+Start=1
+Len=11
+ZeroFill=Yes
+
+[Record]
+Label=EARecode record
+Name=EARECODE_REC
+RecordTypeValue=''
+RecordLen=22
+
+[Item]
+Label=New EA
+Name=EAR_NEW_EA
+Start=12
+Len=11
+ZeroFill=Yes

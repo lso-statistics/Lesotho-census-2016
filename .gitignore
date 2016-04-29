@@ -33,3 +33,7 @@ Documents/~$*.doc
 Documents/~$*.docx
 Documents/~$*.ppt
 Documents/~$*.pptx
+!PostCollectionProcessing/Data/Lookup/*.dat
+PostCollectionProcessing/App/BadCases/BadCasesReport.csv
+PostCollectionProcessing/App/Coverage/EACodes.prn
+ 
