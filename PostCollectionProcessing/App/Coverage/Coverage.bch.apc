@@ -20,8 +20,17 @@ numeric loadCaseFlag = 0;
 PROC HOUSEHOLDDATAENTRY_FF
 preproc 
 {initialize the EACodes file status to N and number of Cases to 0 }
+string eafilename = filename(EA_DICT); 
 close(EA_DICT);
-filecopy("EACodes-initial.dat",filename(EA_DICT));
+if filecopy("../../Data/Lookup/Coverage-initial-eas.dat", eafilename) <> 1 then
+	errmsg("Couldn't copy file 'Coverage-initial-eas.dat'. Aborting");
+	stop(1);
+endif;
+string eaindexfilename = eafilename + ".idx";
+if fileexist(eaindexfilename) and not filedelete(eafilename + ".idx") then
+	errmsg("Couldn't delete index file for %s. Aborting", eafilename);
+	stop(1);
+endif;
 open(EA_DICT);
 
 postproc 
@@ -41,7 +50,7 @@ if (currentEA <> ENUMERATION_AREA) then
 
 	 if (loadCaseFlag <> 1) then {EA not found in the external file}
 	 	STATUS_FLAG='X';
-	 	TOTAL_CASES = 0;
+	 	TOTAL_CASES = 1;
 	 	errmsg("EA does not exist in the EA file %d. Verify the EA codes",ENUMERATION_AREA);
 	 else 
 	 	if (STATUS_FLAG = 'N') then STATUS_FLAG='Y'; endif; // change the flag from 'N' to 'Y' if EA is found in the external file

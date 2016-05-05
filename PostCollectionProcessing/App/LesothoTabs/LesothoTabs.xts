@@ -116,13 +116,13 @@ Type=Total
 
 
 [TallyFormat]
-Name=RowTallyFmt, 8
+Name=RowTallyFmt, 10
 [TallyStatistic]
 Type=Total
 
 
 [TallyFormat]
-Name=RowTallyFmt, 9
+Name=RowTallyFmt, 11
 [TallyStatistic]
 Type=Total
 
@@ -491,7 +491,7 @@ IndentLeft=0.00
 IndentRight=0.00
 Hidden=No
 SpanCells=NotApplicable
-Custom=Table 1. Total Population by Sex, Households, Household Size
+Custom=Table 1. Total Population by Sex, Households, Household Size for occupied households excluding partial cases
 
 [Format]
 Name=TitleFmt, 2
@@ -499,7 +499,7 @@ IndentLeft=0.00
 IndentRight=0.00
 Hidden=No
 SpanCells=NotApplicable
-Custom=Table 2. Household Status at Constituency Level
+Custom=Table 2. Household Status by EA for all households including partial cases
 
  
 [Table]
@@ -509,7 +509,7 @@ Num=1
 [Title]
 Label='Table 1. Sex, W01, W01'
 Format=TitleFmt, 1
-GridViewSize=0,76,0,0,0,0
+GridViewSize=0,152,0,0,0,0
  
 [SubTitle]
 Label=''
@@ -559,7 +559,7 @@ Label=''
 Name=SYSTEM_TOTAL
 Label=System Total
 VarType=Dict
-Format=RowTallyFmt, 8
+Format=RowTallyFmt, 10
  
 [Value]
 Label=%AreaName%
@@ -664,7 +664,7 @@ Num=2
 [Title]
 Label='Table 2. Household Status'
 Format=TitleFmt, 2
-GridViewSize=0,57,0,0,0,0
+GridViewSize=0,45,0,0,0,0
  
 [SubTitle]
 Label=''
@@ -714,7 +714,7 @@ Label=''
 Name=SYSTEM_TOTAL
 Label=System Total
 VarType=Dict
-Format=RowTallyFmt, 9
+Format=RowTallyFmt, 11
  
 [Value]
 Label=%AreaName%
