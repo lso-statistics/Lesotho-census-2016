@@ -1,0 +1,13 @@
+﻿[CSPro Application]
+Version=CSPro 6.3
+Label=WRITEOUTDATAFORARCHIVING
+Name=WRITEOUTDATAFORARCHIVING
+AppType=Batch
+[AppCode]
+File=.\WriteOutDataForArchiving.bch.apc
+[Message]
+File=.\WriteOutDataForArchiving.bch.mgf
+[Order]
+File=.\WriteOutDataForArchiving.ord
+[Dictionary Types]
+Dict-Type=..\..\..\HouseholdDataEntry\HouseholdDataEntry.dcf,Input,.\WriteOutDataForArchiving.ord

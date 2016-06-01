@@ -1,2 +1,9 @@
 ﻿DataFileName; Case Ids; Reason1; Reason2
-04301111089.dat;[0430A1110430111108908101MOTIMPOSO PHAHAMENG                               038'MALITS'EOANA MOIKANGOA                           ];Missing visits record
+02131211019.dat;[0213C1210213121101903101HA SENG                                           001LIMAKATSO TJEKE MAROTHOLI PHATE                   ];Invalid month of birth
+02131211058.dat;[0213C1210213121105803101HA NAMANE                                         0011                                                 ];Invalid month of birth
+02131211058.dat;[0213C1210213121105803101HA NAMANE                                         006'MALOKISANG MOETI                                 ];Invalid month of birth
+02131211058.dat;[0213C1210213121105803105MAPUTSOE                                          001MAPULANE SEHLOOHO                                 ];Invalid month of birth
+04351111095.dat;[0435A1110435111109508101SEOLI HA BESELE                                   048LIBUSENG TSUNYANE                                 ];Missing visits record
+04351111105.dat;[0435A1110435111110508101MASOWE                                               TANKISO LIKOCHE                                   ];Invalid month of birth
+04351111182.dat;[0435A1110435111118212101HASENG                                            001(TELLO SENOKO)MAROTHOLI PHATE                     ];Invalid month of birth
+04410412143.dat;[0441A0410441041214309201MAZENOD HAPAKI                                    001LIPHOKO LETSIE                                    ];Invalid month of birth
