@@ -1,0 +1,14 @@
+﻿[Run Information]
+Version=CSPro 6.2
+AppType=Sort
+Description=Sort cases so we can identify same households with different household numbers
+
+[Files]
+Application=.\SortCases.ssf
+InputData=..\..\Data\05-RecodeRemoveInvalidEAs\Census2016-05-RecodeEAs.dat
+OutputData=..\..\Data\06-SortCases\Census2016-06-SortedData.dat
+Listing=.\SortCases.ssf.lst
+
+[Parameters]
+ViewListing=OnError
+ViewResults=No

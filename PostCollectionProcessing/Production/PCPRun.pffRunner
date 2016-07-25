@@ -1,0 +1,55 @@
+﻿[CSPro Production Runner]
+[NumberProcesses]
+1
+[PathReference]
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\Production\
+[Tree]
+[Group]
+[Expand]
+Census Postprocessing
+[Group]
+[Expand]
+Concatenate
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\Concatenate\Concatenate.pff
+[EndGroup]
+[Group]
+[Expand]
+Remove blank lines
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankLines\RemoveBlankLines.pff
+[EndGroup]
+[Group]
+[Expand]
+Remove duplicate cases
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\BuildDuplicateCaseMap\BuildDuplicateCaseMap.pff
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\SortDuplicateCaseMap\SortDuplicateMap.ssf.pff
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\PruneDuplicateCaseMap\PruneDuplicateCaseMap.pff
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\ApplyDuplicateCaseMap\ApplyDuplicateCaseMap.pff
+[EndGroup]
+[Group]
+[Expand]
+Check for bad cases (from manual edits)
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\CheckForBadCases\CheckForBadCases.pff
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\BadCases\BadCasesReport.pff
+[EndGroup]
+[Group]
+[Expand]
+Remove blank individual records from end of case
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\RemoveBlankPersonRecs\RemoveBlankPersonRecs.pff
+[EndGroup]
+[Group]
+[Expand]
+RemoveRecodeInvalidEAs
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\RecodeRemoveInvalidEAs\RecodeRemoveInvalidEAs.pff
+[EndGroup]
+[Group]
+[Expand]
+Initial reports
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\Coverage\Coverage.pff
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\LesothoTabs\LesothoTabs.xtb.pff
+[EndGroup]
+[Group]
+[Expand]
+GPS to Google Earth
+D:\bos\other\Training\CS Pro\Application\git\Lesotho-census-2016\PostCollectionProcessing\App\GPSToGoogleEarth\GPSToGoogleEarth.pff
+[EndGroup]
+[EndGroup]

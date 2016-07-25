@@ -8,11 +8,9 @@ InputData=..\..\Data\05-RecodeRemoveInvalidEAs\Census2016-05-RecodeEAs.dat
 Listing=.\GPSToGoogleEarth.lst
 WriteData=..\..\Data\Census2016.kml
 
-
 [Parameters]
 ViewListing=Always
 ViewResults=Yes
 ListingWidth=80
 MessageWrap=No
 ErrmsgOverride=No
-

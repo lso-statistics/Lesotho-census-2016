@@ -1,0 +1,44 @@
+﻿[Dictionary]
+Version=CSPro 6.2
+Label=LesothoTabs - Working Storage Dictionary
+Name=WS_DICT
+RecordTypeStart=1
+RecordTypeLen=1
+Positions=Relative
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=Working Storage Level
+Name=WS_LEVEL
+
+[IdItems]
+
+[Item]
+Label=Dummy Id
+Name=DUMMY_ID
+Start=2
+Len=1
+
+[Record]
+Label=Working Storage Record
+Name=WS_REC
+RecordTypeValue='1'
+RecordLen=9
+
+[Item]
+Label=System Total
+Name=SYSTEM_TOTAL
+Start=3
+Len=1
+
+[Item]
+Label=W01
+Name=W01
+Start=4
+Len=6
+
+[ValueSet]
+Label=W01
+Name=W01_VS1
+Value=1;Dummy

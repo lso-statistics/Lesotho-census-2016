@@ -116,13 +116,13 @@ Type=Total
 
 
 [TallyFormat]
-Name=RowTallyFmt, 14
+Name=RowTallyFmt, 18
 [TallyStatistic]
 Type=Total
 
 
 [TallyFormat]
-Name=RowTallyFmt, 15
+Name=RowTallyFmt, 19
 [TallyStatistic]
 Type=Total
 
@@ -559,7 +559,7 @@ Label=''
 Name=SYSTEM_TOTAL
 Label=System Total
 VarType=Dict
-Format=RowTallyFmt, 14
+Format=RowTallyFmt, 18
  
 [Value]
 Label=Total
@@ -638,7 +638,7 @@ SubTable=Entire Table
 LoopingVarName=
 Weight=
 Value=
-Universe=HOUSEHOLD_STATUS = 7 and FINAL_RESULT_CODE <>  notappl
+Universe=HOUSEHOLD_STATUS = 7 and H80(14) <>  notappl
 TabLogic=W01=1;
 [Unit]
 SubTable=SYSTEM_TOTAL by W01_VS1(1)
@@ -714,10 +714,10 @@ Label=''
 Name=SYSTEM_TOTAL
 Label=System Total
 VarType=Dict
-Format=RowTallyFmt, 15
+Format=RowTallyFmt, 19
  
 [Value]
-Label=%AreaName%
+Label=Total
 TabValueType=Total
 TabValueStatIndex=0
 GridViewSize=0,24,0,0,0,0

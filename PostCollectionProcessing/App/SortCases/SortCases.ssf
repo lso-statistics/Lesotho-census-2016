@@ -1,0 +1,13 @@
+﻿[CSSort]
+Version=CSPro 6.3
+
+[Dictionaries]
+File=..\..\Dict\HouseholdDataEntry.dcf
+
+[SortType]
+Type=Questionnaire
+
+[Keys]
+Key=Ascending,ENUMERATION_AREA,"Enumeration Area"
+Key=Ascending,HOUSEHOLD_HEAD_NAMES,"Names of Household Head"
+Key=Ascending,HOUSEHOLD_NUMBER,"Household Number"

@@ -1,5 +1,5 @@
 ﻿[Dictionary]
-Version=CSPro 6.3
+Version=CSPro 6.2
 Label=LesothoCensus2016
 Name=LESOTHOCENSUS2016_DICT
 RecordTypeStart=1
@@ -457,6 +457,14 @@ Label=Sex
 Name=B4_VS1
 Value=1;Male
 Value=2;Female
+
+[ValueSet]
+Label=Sex
+Name=B4_VS2
+Value=1;Male
+Value=2;Female
+Value=' ';Not Appl
+Name=NOTAPPL,Special
 
 [Item]
 Label=Age
@@ -7376,7 +7384,7 @@ DataType=Alpha
 Label=Visits
 Name=VISITS
 RecordTypeValue='V'
-RecordLen=270
+RecordLen=269
 
 [Item]
 Label=Number of visits
@@ -7535,17 +7543,3 @@ Name=MISSING_FERTILITY
 Start=269
 Len=1
 ZeroFill=Yes
-
-[Item]
-Label=Duplicates removed
-Name=DUPLICATES_REMOVED
-Start=270
-Len=1
-ZeroFill=Yes
-
-[ValueSet]
-Label=Duplicates removed
-Name=DUPLICATES_REMOVED_VS1
-Value=0;No
-Value=1;On tablet in field
-Value=2;By batch edit at HQ

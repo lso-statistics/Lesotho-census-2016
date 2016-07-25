@@ -9,6 +9,7 @@ Output: Main data file with updated EAs, cases with invalid EAs stripped out.
 
 PROC GLOBAL
 numeric totalCases = 0;
+string CommCouncilLetter;
 
 // return true if all digits of s are numeric
 function isNumeric(string s)
@@ -38,10 +39,42 @@ end;
 function string communityCouncilFromEA(eacode)
 // TODO
 // Fill in logic to assign letter portion of 
-// of community council. This gets the numeric
+// of community council. 	
+	if int(eacode/1000000000) = 1 then
+		CommCouncilLetter = 'B';
+	elseif int(eacode/1000000000) = 2 then
+		if int(eacode/10000000) % 100 = 11 and int(eacode/100000) % 100 = 5 then
+			CommCouncilLetter = 'B';
+		else
+			CommCouncilLetter = 'C';
+		endif;
+	elseif int(eacode/1000000000) = 3 then
+		if int(eacode/10000000) % 100 in 27:29 and int(eacode/100000) % 100 = 11 then
+			CommCouncilLetter = 'A';
+		else
+			CommCouncilLetter = 'D';
+		endif;
+	elseif int(eacode/1000000000) = 4 then
+		CommCouncilLetter = 'A';
+	elseif int(eacode/1000000000) = 5 then
+		CommCouncilLetter = 'E';
+	elseif int(eacode/1000000000) = 6 then
+		CommCouncilLetter = 'F';
+	elseif int(eacode/1000000000) = 7 then
+		CommCouncilLetter = 'G';
+	elseif int(eacode/1000000000) = 8 then
+		CommCouncilLetter = 'H';
+	elseif int(eacode/1000000000) = 9 then
+		CommCouncilLetter = 'J';
+	elseif int(eacode/1000000000) = 10 then
+		CommCouncilLetter = 'K';	
+	endif;
+	
+// This gets the numeric
 // portion (2 digits) which should be preceeded by
 // a letter.
-	communityCouncilFromEA = maketext("%02d", int(eacode/100000) % 100);
+	communityCouncilFromEA = maketext("%s%02d", CommCouncilLetter, int(eacode/100000) % 100);
+
 end;
 
 function zoneFromEA(eacode)
